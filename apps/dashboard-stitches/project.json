@@ -1,0 +1,62 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/dashboard-stitches",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/dashboard-stitches",
+        "outputPath": "dist/apps/dashboard-stitches"
+      },
+      "configurations": {
+        "production": {},
+        "development": {
+          "outputPath": "apps/dashboard-stitches"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/next:server",
+      "options": {
+        "buildTarget": "dashboard-stitches:build",
+        "dev": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "dashboard-stitches:build:production",
+          "dev": false
+        },
+        "development": {
+          "buildTarget": "dashboard-stitches:build:development",
+          "dev": true
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "export": {
+      "executor": "@nrwl/next:export",
+      "options": {
+        "buildTarget": "dashboard-stitches:build:production"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/apps/dashboard-stitches"],
+      "options": {
+        "jestConfig": "apps/dashboard-stitches/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/dashboard-stitches/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": ["example"]
+}

@@ -1,4 +1,14 @@
 {
   "version": 2,
-  "projects": {}
+  "projects": {
+    "dashboard-emotion": "apps/dashboard-emotion",
+    "dashboard-stitches": "apps/dashboard-stitches",
+    "emotion": "packages/emotion",
+    "primitives": "packages/primitives",
+    "stitches": "packages/stitches",
+    "styled-components": "packages/styled-components",
+    "theme": "packages/theme",
+    "vanilla-extract": "packages/vanilla-extract"
+  },
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }

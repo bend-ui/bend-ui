@@ -1,0 +1,47 @@
+{
+  "folders": [
+    {
+      "name": "🧬 particles",
+      "path": "."
+    },
+    {
+      "name": "📦 @particles/primitives",
+      "path": "packages/primitives"
+    },
+    {
+      "name": "📦 @particles/emotion",
+      "path": "packages/emotion"
+    },
+    {
+      "name": "📦 @particles/stitches",
+      "path": "packages/stitches"
+    },
+    {
+      "name": "📦 @particles/styled-components",
+      "path": "packages/styled-components"
+    },
+    {
+      "name": "📦 @particles/theme",
+      "path": "packages/theme"
+    },
+    {
+      "name": "📦 @particles/vanilla-extract",
+      "path": "packages/vanilla-extract"
+    },
+    {
+      "name": "🧪 Dashboard (Emotion)",
+      "path": "apps/dashboard-emotion"
+    },
+    {
+      "name": "🧪 Dashboard (Stitches)",
+      "path": "apps/dashboard-stitches"
+    }
+  ],
+  "settings": {
+    "jest.autoRun": "off",
+    "jest.testExplorer": {
+      "enabled": false
+    },
+    "typescript.tsdk": "✨ particles/✨ ds/node_modules/typescript/lib"
+  }
+}

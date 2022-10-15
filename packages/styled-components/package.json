@@ -1,0 +1,16 @@
+{
+  "name": "@particles/styled-components",
+  "version": "1.0.0",
+  "author": "Benoit Deziel",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo 'no test'"
+  },
+  "dependencies": {
+    "@floating-ui/react-dom": "^1.0.0",
+    "system-props": "^0.22.0"
+  },
+  "peerDependencies": {
+    "styled-components": ">=5"
+  }
+}

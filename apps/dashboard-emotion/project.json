@@ -1,0 +1,62 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/dashboard-emotion",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/dashboard-emotion",
+        "outputPath": "dist/apps/dashboard-emotion"
+      },
+      "configurations": {
+        "production": {},
+        "development": {
+          "outputPath": "apps/dashboard-emotion"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/next:server",
+      "options": {
+        "buildTarget": "dashboard-emotion:build",
+        "dev": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "dashboard-emotion:build:production",
+          "dev": false
+        },
+        "development": {
+          "buildTarget": "dashboard-emotion:build:development",
+          "dev": true
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "export": {
+      "executor": "@nrwl/next:export",
+      "options": {
+        "buildTarget": "dashboard-emotion:build:production"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/apps/dashboard-emotion"],
+      "options": {
+        "jestConfig": "apps/dashboard-emotion/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/dashboard-emotion/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": []
+}

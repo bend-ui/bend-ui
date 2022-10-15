@@ -1,0 +1,41 @@
+import { CSSProperties } from 'react';
+import { useTransition } from 'transition-hook';
+import { createComponent } from '@particles/primitives';
+import { getTransitionStyles } from './getTransitionStyles';
+import { ParticlesTransition } from './transitions';
+
+type TransitionParams = {
+  duration?: number;
+  transition?: ParticlesTransition;
+};
+
+type GroupedTransitionsProps<T extends string = string> = {
+  transitions: Record<T, TransitionParams>;
+};
+
+export type TransitionProps<T extends string> = {
+  children?: (styles: Record<T, CSSProperties>) => React.ReactNode;
+  isMounted: boolean;
+  duration?: number;
+} & GroupedTransitionsProps<T>;
+
+const GroupedTransition = <T extends string>(props: TransitionProps<T>) => {
+  const { children, isMounted, transitions, duration = 300 } = props;
+  const { stage, shouldMount } = useTransition(isMounted, duration);
+
+  const transitionStyles = Object.keys(transitions).reduce(
+    (acc, element) =>
+      Object.assign(acc, {
+        [element]: getTransitionStyles(
+          transitions[element].transition || 'fade',
+          stage,
+          transitions[element].duration || 300
+        ),
+      }),
+    {} as Record<T, CSSProperties>
+  );
+
+  return shouldMount && <>{children(transitionStyles)}</>;
+};
+
+export default createComponent(GroupedTransition);

@@ -1,0 +1,23 @@
+import React from 'react';
+import { Meta } from '@storybook/react';
+import { useTiles } from './useTiles';
+
+export default {
+  title: 'Layout/Tiles',
+} as Meta;
+
+export const Default = () => {
+  const { getTilesStyles } = useTiles({ cols: 3 });
+  return (
+    <div style={{ ...getTilesStyles, gap: '16px' }}>
+      {[...Array(5).fill(true)].map((tile) => (
+        <div style={{ backgroundColor: 'rgba(255,0,255,0.1)', padding: '1em' }}>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius
+          reprehenderit provident fugit, quaerat sequi vitae vero tempore nam
+          quis iste dolore voluptatibus molestiae? Corporis sunt tenetur
+          explicabo quibusdam. Est, neque!
+        </div>
+      ))}
+    </div>
+  );
+};

@@ -1,0 +1,11 @@
+/* eslint-disable */
+export default {
+  displayName: 'styled-components',
+
+  transform: {
+    '^.+\\.[tj]sx?$': ['babel-jest', { presets: ['@nrwl/react/babel'] }],
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  coverageDirectory: '../../coverage/packages/styled-components',
+  preset: '../../jest.preset.js',
+};
