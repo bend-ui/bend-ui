@@ -1,11 +1,10 @@
-import { forwardRef } from '@particles/primitives';
 import clsx from 'clsx';
-import React from 'react';
+import { forwardRef } from '@particles/primitives';
 import { SXProp } from '../../styles';
 import { Media } from '../Media';
 import { Text } from '../Text';
-import useStyles from './Checkbox.styles';
 import { useCheckbox } from './useCheckbox';
+import useStyles from './Checkbox.styles';
 
 export type CheckboxProps = {
   children?: React.ReactNode;

@@ -17,13 +17,13 @@
     "baseUrl": ".",
     "paths": {
       "@particles/emotion": ["packages/emotion/src/index.ts"],
+      "@particles/primitives": ["packages/primitives/src/index.ts"],
       "@particles/stitches": ["packages/stitches/src/index.ts"],
       "@particles/styled-components": [
         "packages/styled-components/src/index.ts"
       ],
       "@particles/theme": ["packages/theme/src/index.ts"],
-      "@particles/vanilla-extract": ["packages/vanilla-extract/src/index.ts"],
-      "@particles/primitives": ["packages/primitives/src/index.ts"]
+      "@particles/vanilla-extract": ["packages/vanilla-extract/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

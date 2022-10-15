@@ -1,6 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { FiCircle } from 'react-icons/fi';
-import { Button } from './';
+import { TbBrandTelegram } from 'react-icons/tb';
+import { Group } from '../Group';
+import { Button, ButtonProps } from './';
 
 export default {
   title: 'Components/Button',
@@ -26,7 +27,7 @@ Danger.args = {
 export const WithIcon = Base.bind({});
 
 WithIcon.args = {
-  icon: <FiCircle />,
+  icon: <TbBrandTelegram />,
 };
 
 export const As = Base.bind({});
@@ -34,4 +35,21 @@ export const As = Base.bind({});
 As.args = {
   as: 'a',
   href: '/',
+};
+
+export const Sizes: ComponentStory<typeof Button> = (args) => {
+  const buttonSizes: Array<ButtonProps['size']> = [
+    'sm',
+    'md',
+    'lg',
+    'xl',
+    '2xl',
+  ];
+  return (
+    <Group>
+      {buttonSizes.map((size) => (
+        <Button {...args} size={size} />
+      ))}
+    </Group>
+  );
 };

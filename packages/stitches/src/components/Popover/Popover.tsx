@@ -1,4 +1,4 @@
-import React from 'react';
+import { cloneElement, isValidElement } from 'react';
 import clsx from 'clsx';
 import {
   findChildrenByType,
@@ -62,14 +62,13 @@ const Popover = (props: PopoverProps) => {
 
   return (
     <>
-      {React.isValidElement(button) &&
-        React.cloneElement(button, { ...getAnchorProps })}
+      {isValidElement(button) && cloneElement(button, { ...getAnchorProps })}
       <Portal>
         <Transition isMounted={isOpen}>
           {(transitionStyles) =>
-            React.isValidElement(panel) &&
-            React.cloneElement(panel, {
-              className: clsx(styles['root']),
+            isValidElement(panel) &&
+            cloneElement(panel, {
+              className: clsx(styles.root),
               ...getPopoverProps({ style: transitionStyles }),
             })
           }

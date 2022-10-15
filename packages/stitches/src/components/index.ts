@@ -35,5 +35,4 @@ export * from './Accordion';
 export * from './Stat';
 export * from './Divider';
 export * from './Pagination';
-export * from './Stat';
 export * from './Table';

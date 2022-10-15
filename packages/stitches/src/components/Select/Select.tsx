@@ -1,11 +1,11 @@
-import React from 'react';
+import { Children, cloneElement, isValidElement } from 'react';
 import clsx from 'clsx';
+import { useDisclosure, useSelect } from '@particles/primitives';
 import { SXProp } from '../../styles';
 import { Box } from '../Box';
 import { Panel } from '../Panel';
 import useStyles from './Select.styles';
 import { Option } from './SelectOption';
-import { useDisclosure, useSelect } from '@particles/primitives';
 
 export type SelectProps = {
   children: React.ReactNode;
@@ -42,10 +42,10 @@ const Select = (props: SelectProps) => {
       </Box>
       {isOpen && (
         <Panel className={clsx(styles.dropdown)} {...getListboxProps()}>
-          {React.Children.toArray(children).map(
+          {Children.toArray(children).map(
             (child) =>
-              React.isValidElement(child) &&
-              React.cloneElement(
+              isValidElement(child) &&
+              cloneElement(
                 child,
                 getOptionProps({
                   onClick: () => {

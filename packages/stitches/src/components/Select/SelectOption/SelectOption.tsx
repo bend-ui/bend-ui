@@ -1,8 +1,7 @@
-import React from 'react';
 import clsx from 'clsx';
+import { forwardRef } from '@particles/primitives';
 import { Box } from '../../Box';
 import useStyles from './SelectOption.styles';
-import { forwardRef } from '@particles/primitives';
 
 type SelectOption = {
   children: React.ReactNode;

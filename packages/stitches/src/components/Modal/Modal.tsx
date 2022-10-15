@@ -3,8 +3,6 @@ import clsx from 'clsx';
 import { Portal } from '@particles/primitives';
 import { SXProp } from '../../styles';
 import { Box } from '../Box';
-import { DismissButton } from '../Button';
-import { Level } from '../Level';
 import { Panel } from '../Panel';
 import { Transition } from '../Transition';
 import useStyles from './Modal.styles';

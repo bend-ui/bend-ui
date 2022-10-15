@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import useStyles from './Table.styles';
 import { forwardRef } from '@particles/primitives';
+import useStyles from './Table.styles';
 
 const Table = forwardRef((props, ref) => {
   const { children } = props;

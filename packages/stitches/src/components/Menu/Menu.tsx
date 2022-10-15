@@ -1,4 +1,9 @@
-import React, { cloneElement, isValidElement, PropsWithChildren } from 'react';
+import {
+  Children,
+  cloneElement,
+  isValidElement,
+  PropsWithChildren,
+} from 'react';
 import { createContext, forwardRef } from '@particles/primitives';
 import clsx from 'clsx';
 import { SXProp } from '../../styles';
@@ -48,7 +53,7 @@ type DropdownMenuTrigger = {
 
 const Trigger = (props: DropdownMenuTrigger) => {
   const { children } = props;
-  const child = React.Children.only(children);
+  const child = Children.only(children);
   const { getTriggerProps } = useMenuContext();
 
   return isValidElement(child) && cloneElement(child, getTriggerProps());
@@ -102,7 +107,7 @@ const Item = forwardRef<DropdownMenuItemProps, 'button'>((props, ref) => {
       {...getItemProps()}
       {...rest}
     >
-      {React.isValidElement(Icon) && <Icon />}
+      {isValidElement(Icon) && <Icon />}
       {children}
     </Box>
   );

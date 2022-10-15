@@ -1,8 +1,8 @@
 import clsx from 'clsx';
+import { forwardRef } from '@particles/primitives';
 import { SXProp } from '../../styles';
 import { Box } from '../Box';
 import useStyles from './Avatar.styles';
-import { forwardRef } from '@particles/primitives';
 
 export type AvatarProps = {
   src: string;
