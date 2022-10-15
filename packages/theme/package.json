@@ -2,6 +2,6 @@
   "name": "@particles/theme",
   "version": "0.0.1",
   "dependencies": {
-    "deepmerge": "^4.2.2"
+    "deepmerge": "4.2.2"
   }
 }

@@ -8,11 +8,11 @@
     "testEnvironment": "node"
   },
   "dependencies": {
-    "@floating-ui/react-dom-interactions": "^0.10.1",
-    "csstype": "^3.1.1"
+    "@floating-ui/react-dom-interactions": "0.10.1",
+    "csstype": "3.1.1"
   },
   "devDependencies": {
-    "tailwindcss": "^3.1.8",
+    "tailwindcss": "3.1.8",
     "clsx": "1.2.1"
   }
 }
