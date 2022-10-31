@@ -34,7 +34,7 @@
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
     "@commitlint/config-nx-scopes": "^17.0.0",
-    "@emotion/babel-plugin": "11.10.2",
+    "@emotion/babel-plugin": "11.10.5",
     "@nrwl/cli": "15.0.4",
     "@nrwl/cypress": "15.0.4",
     "@nrwl/eslint-plugin-nx": "15.0.4",
