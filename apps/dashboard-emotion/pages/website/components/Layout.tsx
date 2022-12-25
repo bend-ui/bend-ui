@@ -10,9 +10,7 @@ export const Layout = ({ children }) => {
           <Level sx={{ py: '$lg' }}>
             <Box>
               <Link href="/">
-                <a>
-                  <Logo size={32} />
-                </a>
+                <Logo size={32} />
               </Link>
               <Nav>
                 <Nav.Link as={NavLink} href="/website">

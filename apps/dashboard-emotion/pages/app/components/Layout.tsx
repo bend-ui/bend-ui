@@ -24,9 +24,7 @@ export const Layout = (props) => {
       <AppShell.Sidebar>
         <Stack>
           <Link href="/">
-            <a>
-              <Logo size={32} />
-            </a>
+            <Logo size={32} />
           </Link>
           <Input placeholder="Search" icon={<FiSearch />} />
           <Nav orientation="vertical" variant="pill">

@@ -8,10 +8,14 @@ export const NavLink = forwardRef<LinkProps, 'a'>((props, ref) => {
   const isActive = pathname === href;
 
   return (
-    <Link href={href} passHref={passHref}>
-      <a ref={ref} aria-current={isActive ? 'page' : null} {...rest}>
-        {children}
-      </a>
+    <Link
+      href={href}
+      passHref={passHref}
+      ref={ref}
+      aria-current={isActive ? 'page' : null}
+      {...rest}
+    >
+      {children}
     </Link>
   );
 });

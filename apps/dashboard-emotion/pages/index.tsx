@@ -15,14 +15,10 @@ export function Index() {
       quo.
       <ul>
         <li>
-          <Link href="/app">
-            <a>App</a>
-          </Link>
+          <Link href="/app">App</Link>
         </li>
         <li>
-          <Link href="/website">
-            <a>Website</a>
-          </Link>
+          <Link href="/website">Website</Link>
         </li>
       </ul>
     </Container>
