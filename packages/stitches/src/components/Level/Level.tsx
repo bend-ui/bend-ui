@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import { forwardRef, Level as LevelPrimitive } from '@particles/primitives';
-import { SXProp } from '../../styles';
+import { DefaultComponentProps } from '../../styles';
 import useStyles from './Level.styles';
 
-type LevelProps = SXProp;
+type LevelProps = DefaultComponentProps;
 
 export const Level = forwardRef<LevelProps, 'div'>((props, ref) => {
   const { children, ...rest } = props;

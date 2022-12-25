@@ -1,11 +1,11 @@
 import { Children, cloneElement } from 'react';
 import { forwardRef } from '@particles/primitives';
-import { SXProp } from '../../styles';
+import { DefaultComponentProps } from '../../styles';
 import { Box } from '../Box';
 
 export type BreadcrumbsProps = {
   separator?: React.ReactElement;
-} & SXProp;
+} & DefaultComponentProps;
 
 const Breadcrumbs = forwardRef<BreadcrumbsProps, 'div'>((props, ref) => {
   const { children, separator = '+', ...rest } = props;
@@ -32,7 +32,7 @@ const Breadcrumbs = forwardRef<BreadcrumbsProps, 'div'>((props, ref) => {
   );
 });
 
-export type BreadcrumbsItemProps = SXProp;
+export type BreadcrumbsItemProps = DefaultComponentProps;
 
 const Item = forwardRef<BreadcrumbsItemProps, 'a'>((props, ref) => {
   const { children, as = 'a', ...rest } = props;

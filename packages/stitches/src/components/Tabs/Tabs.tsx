@@ -7,13 +7,13 @@ import {
   useTabs,
 } from '@particles/primitives';
 import clsx from 'clsx';
-import { SXProp } from '../../styles';
+import { DefaultComponentProps } from '../../styles';
 import { Box } from '../Box';
 import { Nav } from '../Nav';
 import { NavProps } from '../Nav/Nav';
 import useStyles from './Tabs.styles';
 
-type TabsProps = NavProps & SXProp;
+type TabsProps = NavProps & DefaultComponentProps;
 
 const Tabs = forwardRef<TabsProps, 'div'>((props, ref) => {
   const { children, ...rest } = props;
@@ -28,7 +28,7 @@ const Tabs = forwardRef<TabsProps, 'div'>((props, ref) => {
   );
 });
 
-type TabsListProps = SXProp;
+type TabsListProps = DefaultComponentProps;
 
 const List = forwardRef<TabsListProps, 'div'>((props, ref) => {
   const { children, ...rest } = props;
@@ -40,7 +40,7 @@ const List = forwardRef<TabsListProps, 'div'>((props, ref) => {
   );
 });
 
-type TabsTabProps = { value: string } & SXProp;
+type TabsTabProps = { value: string } & DefaultComponentProps;
 
 const Tab = forwardRef<TabsTabProps, 'button'>((props, ref) => {
   const { children, value, ...rest } = props;
@@ -53,7 +53,7 @@ const Tab = forwardRef<TabsTabProps, 'button'>((props, ref) => {
   );
 });
 
-type TabsPaneProps = { value: string } & SXProp;
+type TabsPaneProps = { value: string } & DefaultComponentProps;
 
 const Pane = forwardRef<TabsPaneProps, 'div'>((props, ref) => {
   const { children, value, ...rest } = props;

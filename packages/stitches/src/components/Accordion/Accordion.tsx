@@ -1,6 +1,6 @@
 import { forwardRef } from '@particles/primitives';
 import { useEffect, useRef } from 'react';
-import { SXProp } from '../../styles';
+import { DefaultComponentProps } from '../../styles';
 import { Box } from '../Box';
 
 const useAccordion = (props) => {
@@ -15,7 +15,7 @@ const useAccordion = (props) => {
   }, [ref]);
 };
 
-export type AccordionProps = SXProp;
+export type AccordionProps = DefaultComponentProps;
 
 const Accordion = forwardRef<AccordionProps, 'div'>((props, ref) => {
   const { children, ...rest } = props;
@@ -31,7 +31,7 @@ const Accordion = forwardRef<AccordionProps, 'div'>((props, ref) => {
   );
 });
 
-export type AccordionItemProps = SXProp;
+export type AccordionItemProps = DefaultComponentProps;
 
 const Item = forwardRef<AccordionItemProps, 'details'>((props, ref) => {
   const { children, ...rest } = props;

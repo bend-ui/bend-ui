@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import { forwardRef } from '@particles/primitives';
-import { SXProp } from '../../styles';
+import { DefaultComponentProps } from '../../styles';
 import { Box } from '../Box';
 import useStyles from './Media.styles';
 
-export type MediaProps = SXProp;
+export type MediaProps = DefaultComponentProps;
 
 const Media = forwardRef<MediaProps, 'div'>((props, ref) => {
   const { children, className, ...rest } = props;
@@ -18,7 +18,7 @@ const Media = forwardRef<MediaProps, 'div'>((props, ref) => {
 
 Media.displayName = 'Media';
 
-export type MediaImageProps = SXProp;
+export type MediaImageProps = DefaultComponentProps;
 
 const Image = forwardRef<MediaImageProps, 'div'>((props, ref) => {
   const { children, ...rest } = props;
@@ -33,7 +33,7 @@ const Image = forwardRef<MediaImageProps, 'div'>((props, ref) => {
 
 Image.displayName = 'Media.Image';
 
-export type MediaContentProps = SXProp;
+export type MediaContentProps = DefaultComponentProps;
 
 const Content = forwardRef<MediaContentProps, 'div'>((props, ref) => {
   const { children, className, ...rest } = props;

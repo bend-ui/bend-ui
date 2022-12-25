@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { createContext, forwardRef } from '@particles/primitives';
-import { SXProp } from '../../styles';
+import { DefaultComponentProps } from '../../styles';
 import { Box } from '../Box';
 import { Group, GroupProps } from '../Group';
 import useStyles, { NavStylesParams } from './Nav.styles';
@@ -9,7 +9,7 @@ const [NavContextProvider, useNavContext] = createContext('Nav', {
   variant: null,
 });
 
-export type NavProps = NavStylesParams & GroupProps & SXProp;
+export type NavProps = NavStylesParams & GroupProps & DefaultComponentProps;
 
 const Nav = forwardRef<NavProps, 'nav'>((props, ref) => {
   const {
@@ -40,7 +40,7 @@ Nav.displayName = 'Nav';
 export type NavLinkProps = {
   icon?: React.ReactElement;
   addonEnd?: React.ReactElement;
-} & SXProp;
+} & DefaultComponentProps;
 
 const Link = forwardRef<NavLinkProps, 'a'>((props, ref) => {
   const { children, as = 'a', icon, addonEnd, className, ...rest } = props;

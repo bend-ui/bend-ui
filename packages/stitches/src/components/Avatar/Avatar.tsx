@@ -1,13 +1,13 @@
 import clsx from 'clsx';
 import { forwardRef } from '@particles/primitives';
-import { SXProp } from '../../styles';
+import { DefaultComponentProps } from '../../styles';
 import { Box } from '../Box';
 import useStyles from './Avatar.styles';
 
 export type AvatarProps = {
   src: string;
   size?: 'sm' | 'md' | 'lg';
-} & SXProp;
+} & DefaultComponentProps;
 
 export const Avatar = forwardRef<AvatarProps, 'img'>((props, ref) => {
   const { src, size = 'md', ...rest } = props;

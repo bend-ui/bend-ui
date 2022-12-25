@@ -1,13 +1,13 @@
 import { forwardRef } from '@particles/primitives';
 import clsx from 'clsx';
-import { SXProp } from '../../styles';
+import { DefaultComponentProps } from '../../styles';
 import { Box } from '../Box';
 import useStyles from './Group.styles';
 
 export type GroupProps = {
   orientation?: 'vertical' | 'horizontal';
   align?: 'start' | 'center' | 'end';
-} & SXProp;
+} & DefaultComponentProps;
 
 export const Group = forwardRef<GroupProps, 'div'>((props, ref) => {
   const {

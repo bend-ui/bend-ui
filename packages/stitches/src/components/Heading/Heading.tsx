@@ -1,13 +1,13 @@
 import { forwardRef } from '@particles/primitives';
 import clsx from 'clsx';
-import { SXProp, TextStyles } from '../../styles';
+import { DefaultComponentProps, TextStyles } from '../../styles';
 import { Box } from '../Box';
 import useStyles from './Heading.styles';
 
 export type HeadingProps = {
   variant?: TextStyles;
   align?: 'left' | 'center' | 'right';
-} & SXProp;
+} & DefaultComponentProps;
 
 export const Heading = forwardRef<HeadingProps, 'h1'>((props, ref) => {
   const {

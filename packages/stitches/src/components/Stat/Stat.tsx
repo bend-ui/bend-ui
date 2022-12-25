@@ -1,8 +1,8 @@
 import { forwardRef } from '@particles/primitives';
-import { SXProp } from '../../styles';
+import { DefaultComponentProps } from '../../styles';
 import { Box } from '../Box';
 
-export type StatProps = SXProp;
+export type StatProps = DefaultComponentProps;
 
 const Stat = forwardRef<StatProps, 'div'>((props, ref) => {
   const { children, ...rest } = props;
@@ -13,7 +13,7 @@ const Stat = forwardRef<StatProps, 'div'>((props, ref) => {
   );
 });
 
-export type StatLabelProps = SXProp;
+export type StatLabelProps = DefaultComponentProps;
 
 const Label = forwardRef<StatLabelProps, 'div'>((props, ref) => {
   const { children, ...rest } = props;
@@ -24,7 +24,7 @@ const Label = forwardRef<StatLabelProps, 'div'>((props, ref) => {
   );
 });
 
-export type StatNumberProps = SXProp;
+export type StatNumberProps = DefaultComponentProps;
 
 const Number = forwardRef<StatNumberProps, 'div'>((props, ref) => {
   const { children, ...rest } = props;
@@ -35,7 +35,7 @@ const Number = forwardRef<StatNumberProps, 'div'>((props, ref) => {
   );
 });
 
-export type StatHelpTextProps = SXProp;
+export type StatHelpTextProps = DefaultComponentProps;
 
 const HelpText = forwardRef<StatHelpTextProps, 'div'>((props, ref) => {
   const { children, ...rest } = props;

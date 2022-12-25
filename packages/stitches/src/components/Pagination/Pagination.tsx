@@ -1,8 +1,8 @@
 import { forwardRef } from '@particles/primitives';
-import { SXProp } from '../../styles';
+import { DefaultComponentProps } from '../../styles';
 import { Box } from '../Box';
 
-export type PaginationProps = SXProp;
+export type PaginationProps = DefaultComponentProps;
 
 const Pagination = forwardRef<PaginationProps, 'nav'>((props, ref) => {
   const { children, as = 'nav', ...rest } = props;

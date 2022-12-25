@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { forwardRef } from '@particles/primitives';
-import { SXProp } from '../../styles';
+import { DefaultComponentProps } from '../../styles';
 import { Box } from '../Box';
 import useStyles, { BadgeStylesParams } from './Badge.styles';
 
@@ -8,7 +8,7 @@ export type BadgeProps = {
   icon?: React.ReactElement;
   iconEnd?: React.ReactElement;
 } & BadgeStylesParams &
-  SXProp;
+  DefaultComponentProps;
 
 export const Badge = forwardRef<BadgeProps, 'span'>((props, ref) => {
   const {

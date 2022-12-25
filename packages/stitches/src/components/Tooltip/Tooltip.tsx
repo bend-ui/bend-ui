@@ -1,6 +1,6 @@
 import { cloneElement, isValidElement } from 'react';
 import clsx from 'clsx';
-import { SXProp } from '../../styles';
+import { DefaultComponentProps } from '../../styles';
 import { Box } from '../Box';
 import { Transition } from '../Transition';
 import useStyles from './Tooltip.styles';
@@ -11,7 +11,7 @@ export type TootipProps = {
   label: string;
   placement?: TooltipPlacement;
   className?: string;
-} & SXProp;
+} & DefaultComponentProps;
 
 const Tooltip = (props: TootipProps) => {
   const { children, label, placement, className, ...rest } = props;

@@ -1,6 +1,6 @@
 import { forwardRef } from '@particles/primitives';
 import clsx from 'clsx';
-import { SXProp } from '../../styles';
+import { DefaultComponentProps } from '../../styles';
 import { DismissButton } from '../Button';
 import { Level } from '../Level';
 import { Panel } from '../Panel';
@@ -12,7 +12,7 @@ export type ToastProps = {
   title: React.ReactNode;
   icon?: React.ReactElement;
   isLoading?: boolean;
-} & SXProp;
+} & DefaultComponentProps;
 
 const Toast = forwardRef<ToastProps, 'div'>((props, ref) => {
   const { children, title, ...rest } = props;

@@ -1,3 +1,4 @@
+import { createComponent } from '@particles/primitives';
 import clsx from 'clsx';
 import { Box } from '../Box';
 import useStyles, { TilesStylesParams } from './Tiles.styles';
@@ -31,4 +32,4 @@ const Col = (props: TilesColProps) => {
 
 Col.displayName = 'Tiles.Col';
 
-export default Object.assign(Tiles, { Col });
+export default createComponent(Tiles, { Col });

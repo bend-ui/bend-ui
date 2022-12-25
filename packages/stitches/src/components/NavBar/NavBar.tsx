@@ -1,8 +1,8 @@
 import { forwardRef } from '@particles/primitives';
-import { SXProp } from '../../styles';
+import { DefaultComponentProps } from '../../styles';
 import { Level } from '../Level';
 
-export type NavBarProps = SXProp;
+export type NavBarProps = DefaultComponentProps;
 
 const NavBar = forwardRef<NavBarProps, 'div'>((props, ref) => {
   const { children, ...rest } = props;

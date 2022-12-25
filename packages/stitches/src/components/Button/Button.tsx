@@ -1,6 +1,6 @@
 import { forwardRef } from '@particles/primitives';
 import clsx from 'clsx';
-import { SXProp } from '../../styles';
+import { DefaultComponentProps } from '../../styles';
 import useStyles, { ButtonStylesParams } from './Button.styles';
 
 export type ButtonProps = {
@@ -8,7 +8,7 @@ export type ButtonProps = {
   icon?: React.ReactElement;
   iconEnd?: React.ReactElement;
 } & ButtonStylesParams &
-  SXProp;
+  DefaultComponentProps;
 
 const Button = forwardRef<ButtonProps, 'button'>((props, ref) => {
   const {

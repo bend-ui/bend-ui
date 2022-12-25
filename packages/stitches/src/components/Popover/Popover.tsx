@@ -6,7 +6,7 @@ import {
   Portal,
   runIfFn,
 } from '@particles/primitives';
-import { SXProp } from '../../styles';
+import { DefaultComponentProps } from '../../styles';
 import { Button, ButtonProps } from '../Button';
 import { Transition } from '../Transition';
 import { Panel, PanelProps } from '../Panel';
@@ -48,7 +48,7 @@ export type PopoverProps = {
   placement?: PopoverPlacement;
   isOpen?: boolean;
   children: React.ReactNode;
-} & SXProp;
+} & DefaultComponentProps;
 
 const Popover = (props: PopoverProps) => {
   const { children, placement = 'bottom' } = props;

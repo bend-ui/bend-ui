@@ -6,7 +6,7 @@ import {
 } from 'react';
 import { createContext, forwardRef } from '@particles/primitives';
 import clsx from 'clsx';
-import { SXProp } from '../../styles';
+import { DefaultComponentProps } from '../../styles';
 import { Box } from '../Box';
 import { Panel } from '../Panel';
 import { Divider } from '../Divider';
@@ -28,7 +28,7 @@ export type DropdownMenuProps = {
   children?: React.ReactNode;
   isOpen?: boolean;
   isLazy?: boolean;
-} & SXProp;
+} & DefaultComponentProps;
 
 export const DropdownMenu = forwardRef<DropdownMenuProps, 'div'>(
   (props, ref) => {
@@ -61,7 +61,7 @@ const Trigger = (props: DropdownMenuTrigger) => {
 
 Trigger.displayName = 'DropdownMenu.Trigger';
 
-export type DropdownMenuListProps = PropsWithChildren<SXProp>;
+export type DropdownMenuListProps = PropsWithChildren<DefaultComponentProps>;
 
 const List = (props: DropdownMenuListProps) => {
   const { children, sx, ...rest } = props;
@@ -87,7 +87,7 @@ List.displayName = 'DropdownMenu.List';
 
 export type DropdownMenuItemProps = {
   icon?: React.ComponentType<any>;
-} & SXProp;
+} & DefaultComponentProps;
 
 const Item = forwardRef<DropdownMenuItemProps, 'button'>((props, ref) => {
   const { children, icon: Icon, sx, onClick, ...rest } = props;

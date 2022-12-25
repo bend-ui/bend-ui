@@ -1,8 +1,8 @@
 import { forwardRef } from '@particles/primitives';
-import { SXProp } from '../../styles';
+import { DefaultComponentProps } from '../../styles';
 import { Box } from '../Box';
 
-export type FormControlProps = SXProp;
+export type FormControlProps = DefaultComponentProps;
 
 const FormControl = forwardRef<FormControlProps, 'div'>((props, ref) => {
   const { children, ...rest } = props;
@@ -13,7 +13,7 @@ const FormControl = forwardRef<FormControlProps, 'div'>((props, ref) => {
   );
 });
 
-export type FormControlLabelProps = SXProp;
+export type FormControlLabelProps = DefaultComponentProps;
 
 const Label = forwardRef<FormControlLabelProps, 'label'>((props, ref) => {
   const { children, as = 'label', ...rest } = props;
@@ -24,7 +24,7 @@ const Label = forwardRef<FormControlLabelProps, 'label'>((props, ref) => {
   );
 });
 
-export type FormControlDescriptionProps = SXProp;
+export type FormControlDescriptionProps = DefaultComponentProps;
 
 const Description = forwardRef<FormControlDescriptionProps, 'div'>(
   (props, ref) => {
@@ -37,7 +37,7 @@ const Description = forwardRef<FormControlDescriptionProps, 'div'>(
   }
 );
 
-export type FormControlErrorProps = SXProp;
+export type FormControlErrorProps = DefaultComponentProps;
 
 const Error = forwardRef<FormControlErrorProps, 'div'>((props, ref) => {
   const { children, ...rest } = props;

@@ -1,7 +1,7 @@
-import { FloatingFocusManager } from '@floating-ui/react-dom-interactions';
+import { FloatingFocusManager } from '@floating-ui/react';
 import clsx from 'clsx';
 import { Portal } from '@particles/primitives';
-import { SXProp } from '../../styles';
+import { DefaultComponentProps } from '../../styles';
 import { Box } from '../Box';
 import { Panel } from '../Panel';
 import { Transition } from '../Transition';
@@ -13,7 +13,7 @@ export type ModalProps = {
   children: React.ReactNode;
   title?: React.ReactNode;
 } & UseModalProps &
-  SXProp;
+  DefaultComponentProps;
 
 const Modal = (props: ModalProps) => {
   const { children, isOpen, onClose, title } = props;

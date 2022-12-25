@@ -1,10 +1,10 @@
 import { forwardRef } from '@particles/primitives';
-import { SXProp } from '../../styles';
+import { DefaultComponentProps } from '../../styles';
 import { Box } from '../Box';
 
 export type DividerProps = {
   orientation?: 'horizontal' | 'vertical';
-} & SXProp;
+} & DefaultComponentProps;
 
 const Divider = forwardRef<DividerProps, 'hr'>((props, ref) => {
   const { children, ...rest } = props;

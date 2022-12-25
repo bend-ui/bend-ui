@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { forwardRef } from '@particles/primitives';
-import { css, SXProp } from '../../styles';
+import { css, DefaultComponentProps } from '../../styles';
 
-type BoxProps = SXProp;
+type BoxProps = DefaultComponentProps;
 
 export const Box = forwardRef<BoxProps, 'div'>((props, ref) => {
   const { as: Component = 'div', children, sx, className, ...rest } = props;

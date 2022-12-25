@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import { forwardRef } from '@particles/primitives';
-import { SXProp } from '../../styles';
+import { DefaultComponentProps } from '../../styles';
 import { Box } from '../Box';
 import useStyles, { TextStylesParams } from './Text.styles';
 
-export type TextProps = TextStylesParams & SXProp;
+export type TextProps = TextStylesParams & DefaultComponentProps;
 
 export const Text = forwardRef<TextProps, 'p'>((props, ref) => {
   const {

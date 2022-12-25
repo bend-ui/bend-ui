@@ -1,8 +1,8 @@
 import { forwardRef } from '@particles/primitives';
-import { SXProp } from '../../styles';
+import { DefaultComponentProps } from '../../styles';
 import { Box } from '../Box';
 
-export type FlexProps = SXProp;
+export type FlexProps = DefaultComponentProps;
 
 export const Flex = forwardRef<FlexProps, 'div'>((props, ref) => {
   const { children, ...rest } = props;
