@@ -1,4 +1,3 @@
-import React from 'react';
 import { useAccordion, useAccordionItem } from './useAccordion';
 
 export interface AccordionProps {
