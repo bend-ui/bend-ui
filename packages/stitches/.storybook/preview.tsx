@@ -1,7 +1,9 @@
+import * as React from 'react';
 import { withPerformance } from 'storybook-addon-performance';
 import { darkTheme, globalStyles, ThemeProvider } from '../src/styles';
 import { modernTheme } from '../src/themes';
 import { DocsContainer } from './DocsContainer';
+import { themeDark, themeLight } from './themes';
 
 export const parameters = {
   darkMode: {
@@ -9,7 +11,9 @@ export const parameters = {
     darkClass: darkTheme.className,
     lightClass: undefined,
     stylePreview: true,
-    classTarget: 'html',
+    classTarget: 'body',
+    dark: themeDark,
+    light: themeLight,
   },
   docs: {
     container: DocsContainer,
