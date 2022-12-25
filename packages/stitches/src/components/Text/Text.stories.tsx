@@ -4,7 +4,7 @@ import { Stack } from '../Stack';
 import { Text } from './';
 
 export default {
-  title: 'Typography/Text',
+  title: 'Components/Typography/Text',
   component: Text,
 } as ComponentMeta<typeof Text>;
 

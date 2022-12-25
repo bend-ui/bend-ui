@@ -4,7 +4,7 @@ import { Button } from '../Button';
 import { Drawer } from '.';
 
 export default {
-  title: 'Overlay/Drawer',
+  title: 'Components/Overlay/Drawer',
   component: Drawer,
 } as ComponentMeta<typeof Drawer>;
 

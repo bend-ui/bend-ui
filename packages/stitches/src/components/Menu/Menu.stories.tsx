@@ -6,7 +6,7 @@ import { Button } from '../Button';
 import { DropdownMenu } from './';
 
 export default {
-  title: 'Components/Menu',
+  title: 'Components/Overlay/Menu',
   component: DropdownMenu,
 } as ComponentMeta<typeof DropdownMenu>;
 

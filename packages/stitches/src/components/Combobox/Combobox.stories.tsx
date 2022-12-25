@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Combobox } from '.';
 
 export default {
-  title: 'Forms/Combobox',
+  title: 'Components/Forms/Combobox',
   component: Combobox,
 } as ComponentMeta<typeof Combobox>;
 

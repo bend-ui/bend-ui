@@ -5,6 +5,7 @@ import { Center } from './';
 
 export default {
   title: 'Layout/Center',
+  component: Center,
   parameters: {
     layout: 'fullscreen',
   },

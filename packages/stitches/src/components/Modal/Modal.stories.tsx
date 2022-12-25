@@ -5,7 +5,7 @@ import { Input } from '../Input';
 import { Modal } from './';
 
 export default {
-  title: 'Overlay/Modal',
+  title: 'Components/Overlay/Modal',
   component: Modal,
 } as ComponentMeta<typeof Modal>;
 

@@ -1,6 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { TbBrandTelegram } from 'react-icons/tb';
 import { Group } from '../Group';
+
 import { Button, ButtonProps } from './';
 
 export default {
@@ -38,17 +39,13 @@ As.args = {
 };
 
 export const Sizes: ComponentStory<typeof Button> = (args) => {
-  const buttonSizes: Array<ButtonProps['size']> = [
-    'sm',
-    'md',
-    'lg',
-    'xl',
-    '2xl',
-  ];
+  const buttonSizes: Array<ButtonProps['size']> = ['sm', 'md', 'lg'];
   return (
     <Group>
       {buttonSizes.map((size) => (
-        <Button {...args} size={size} />
+        <Button {...args} size={size}>
+          Button {size}
+        </Button>
       ))}
     </Group>
   );
