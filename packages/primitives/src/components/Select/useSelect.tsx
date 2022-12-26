@@ -7,8 +7,7 @@ import {
   useFloating,
   useInteractions,
   useListNavigation,
-  useRole,
-} from '@floating-ui/react-dom-interactions';
+} from '@floating-ui/react';
 
 export type UseSelectProps = {
   isOpen: boolean;

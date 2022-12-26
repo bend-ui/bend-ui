@@ -8,7 +8,7 @@ import {
   useFloating,
   useInteractions,
   useRole,
-} from '@floating-ui/react-dom-interactions';
+} from '@floating-ui/react';
 import { useDisclosure } from '../../hooks';
 
 export type UsePopoverProps = {

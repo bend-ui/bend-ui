@@ -1,22 +1,20 @@
-import React from 'react';
+import { ComponentPropsWithoutRef, forwardRef } from 'react';
 
-type MediaRootProps = React.ComponentPropsWithoutRef<'div'>;
+type MediaRootProps = ComponentPropsWithoutRef<'div'>;
 
-const Root = React.forwardRef<HTMLDivElement, MediaRootProps>((props, ref) => {
+const Root = forwardRef<HTMLDivElement, MediaRootProps>((props, ref) => {
   return <div ref={ref} {...props} />;
 });
 
-type MediaImageProps = React.ComponentPropsWithoutRef<'div'>;
+type MediaImageProps = ComponentPropsWithoutRef<'div'>;
 
-const Image = React.forwardRef<HTMLDivElement, MediaImageProps>(
-  (props, ref) => {
-    return <div ref={ref} {...props} />;
-  }
-);
+const Image = forwardRef<HTMLDivElement, MediaImageProps>((props, ref) => {
+  return <div ref={ref} {...props} />;
+});
 
-type MediaBodyProps = React.ComponentPropsWithoutRef<'div'>;
+type MediaBodyProps = ComponentPropsWithoutRef<'div'>;
 
-const Body = React.forwardRef<HTMLDivElement, MediaBodyProps>((props, ref) => {
+const Body = forwardRef<HTMLDivElement, MediaBodyProps>((props, ref) => {
   return <div ref={ref} {...props} />;
 });
 

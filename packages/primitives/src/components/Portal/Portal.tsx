@@ -1,17 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { ReactNode, useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 export interface PortalProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
   containerRef?: HTMLDivElement;
 }
 
 export const Portal = (props: PortalProps) => {
   const { children, containerRef } = props;
-  const [mounted, setMounted] = React.useState(false);
-  const ref = React.useRef<HTMLDivElement>();
+  const [mounted, setMounted] = useState(false);
+  const ref = useRef<HTMLDivElement>();
 
-  React.useEffect(() => {
+  useEffect(() => {
     setMounted(true);
     ref.current = containerRef || document.createElement('div');
 
@@ -28,5 +28,5 @@ export const Portal = (props: PortalProps) => {
     return null;
   }
 
-  return ReactDOM.createPortal(children, ref.current);
+  return createPortal(children, ref.current);
 };

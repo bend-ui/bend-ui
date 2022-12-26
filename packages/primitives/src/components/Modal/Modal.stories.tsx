@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { FloatingOverlay } from '@floating-ui/react-dom-interactions';
+import { FloatingOverlay } from '@floating-ui/react';
 import { useDisclosure } from '../../hooks';
 import { Portal } from '../Portal';
 import { useModal } from './useModal';

@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useState } from 'react';
 import {
   autoUpdate,
   flip,
@@ -11,7 +11,7 @@ import {
   useHover,
   useInteractions,
   useRole,
-} from '@floating-ui/react-dom-interactions';
+} from '@floating-ui/react';
 import { mergeRefs } from '../../utils';
 
 export interface UseTooltipProps {

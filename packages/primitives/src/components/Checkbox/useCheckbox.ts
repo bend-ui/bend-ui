@@ -1,11 +1,11 @@
-import React from 'react';
+import { useCallback, useState } from 'react';
 
 export const useCheckbox = ({ defaultValue = false }) => {
   // TODO: use toggle hook
   // TODO: use controlled hook
-  const [isChecked, setChecked] = React.useState(defaultValue);
+  const [isChecked, setChecked] = useState(defaultValue);
 
-  const getInputProps = React.useCallback(
+  const getInputProps = useCallback(
     () => ({ checked: isChecked, onChange: () => setChecked(!isChecked) }),
     [isChecked]
   );

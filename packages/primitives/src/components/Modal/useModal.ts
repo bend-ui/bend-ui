@@ -4,7 +4,7 @@ import {
   useFloating,
   useInteractions,
   useRole,
-} from '@floating-ui/react-dom-interactions';
+} from '@floating-ui/react';
 import { useLockBodyScroll } from '../../hooks';
 import { createContext } from '../../utils';
 

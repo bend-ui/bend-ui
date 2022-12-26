@@ -5,7 +5,7 @@ import {
   useInteractions,
   useListNavigation,
   useRole,
-} from '@floating-ui/react-dom-interactions';
+} from '@floating-ui/react';
 
 type UseDropdownProps = {
   isOpen: boolean;

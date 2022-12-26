@@ -1,27 +1,24 @@
-import { FloatingFocusManager } from '@floating-ui/react-dom-interactions';
-import React from 'react';
+import { FloatingFocusManager } from '@floating-ui/react';
+import { Children, cloneElement, isValidElement, ReactNode } from 'react';
 import { forwardRef } from '../../utils';
 import { PopoverProvider, usePopoverContext } from './PopoverContext';
 import { usePopover, UsePopoverProps } from './usePopover';
 
 type PopoverTriggerProps = {
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
 const Trigger = (props: PopoverTriggerProps) => {
   const { children } = props;
 
-  const child = React.Children.only(children);
+  const child = Children.only(children);
   const { getTriggerProps } = usePopoverContext();
 
-  return (
-    React.isValidElement(child) &&
-    React.cloneElement(child, { ...getTriggerProps() })
-  );
+  return isValidElement(child) && cloneElement(child, { ...getTriggerProps() });
 };
 
 type PopoverPanelProps = {
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
 const Panel = forwardRef<PopoverPanelProps, 'div'>((props, ref) => {
@@ -40,7 +37,7 @@ const Panel = forwardRef<PopoverPanelProps, 'div'>((props, ref) => {
 });
 
 type PopoverProps = {
-  children?: React.ReactNode;
+  children?: ReactNode;
 } & UsePopoverProps;
 
 const Popover = (props: PopoverProps) => {

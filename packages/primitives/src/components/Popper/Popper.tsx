@@ -1,9 +1,5 @@
 import React, { useLayoutEffect } from 'react';
-import {
-  useClick,
-  useFloating,
-  useInteractions,
-} from '@floating-ui/react-dom-interactions';
+import { useClick, useFloating, useInteractions } from '@floating-ui/react';
 
 export interface PopperProps {
   anchorRef: React.RefObject<any>;
