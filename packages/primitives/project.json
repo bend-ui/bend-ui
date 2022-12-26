@@ -69,5 +69,6 @@
         }
       }
     }
-  }
+  },
+  "name": "packages-primitives"
 }

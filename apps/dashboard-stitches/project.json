@@ -58,5 +58,6 @@
       }
     }
   },
-  "tags": ["example"]
+  "tags": ["example"],
+  "name": "dashboard-stitches"
 }
