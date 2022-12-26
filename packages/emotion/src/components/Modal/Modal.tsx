@@ -1,4 +1,4 @@
-import { FloatingOverlay } from '@floating-ui/react-dom-interactions';
+import { FloatingOverlay } from '@floating-ui/react';
 import {
   createComponent,
   forwardRef,
