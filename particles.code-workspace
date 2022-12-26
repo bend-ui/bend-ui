@@ -42,6 +42,15 @@
     "jest.testExplorer": {
       "enabled": false
     },
-    "typescript.tsdk": "✨ particles/✨ ds/node_modules/typescript/lib"
+    "typescript.tsdk": "✨ particles/✨ ds/node_modules/typescript/lib",
+    "jest.disabledWorkspaceFolders": [
+      "📦 @particles/emotion",
+      "📦 @particles/stitches",
+      "📦 @particles/styled-components",
+      "📦 @particles/theme",
+      "📦 @particles/vanilla-extract",
+      "🧪 Dashboard (Emotion)",
+      "🧪 Dashboard (Stitches)"
+    ]
   }
 }
