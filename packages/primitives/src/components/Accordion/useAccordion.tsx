@@ -1,8 +1,6 @@
 import { useReducer } from 'react';
 import { useDisclosure } from '../../hooks';
 
-export interface UseAccordionProps {}
-
 type Action =
   | { type: 'OPEN_ACCORDION'; paneId: string }
   | { type: 'CLOSE_ACCORDION'; paneId: string }
@@ -19,7 +17,7 @@ const accordionReducer = (state, action: Action) => {
   }
 };
 
-export const useAccordion = (props: UseAccordionProps) => {
+export const useAccordion = () => {
   const [state, dispatch] = useReducer(accordionReducer, null);
   return {};
 };

@@ -1,6 +1,10 @@
-import { useLocalStorage } from "./useLocalStorage";
+import { useLocalStorage } from './useLocalStorage';
 
 export default {
-  title: "Hooks/useLocalStorage",
+  title: 'Hooks/useLocalStorage',
   component: useLocalStorage,
+};
+
+export const Default = () => {
+  useLocalStorage();
 };

@@ -28,7 +28,10 @@ export const Layout = ({ children }) => {
               </Nav>
             </Box>
             <Box>
-              <Avatar src="https://images.unsplash.com/photo-1597223557154-721c1cecc4b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=48&q=80" />
+              <Avatar
+                src="https://images.unsplash.com/photo-1597223557154-721c1cecc4b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=48&q=80"
+                alt="An avatar"
+              />
             </Box>
           </Level>
         </Container>

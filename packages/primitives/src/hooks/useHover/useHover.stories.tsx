@@ -1,6 +1,10 @@
-import { useHover } from "./useHover";
+import { useHover } from './useHover';
 
 export default {
-  title: "Hooks/useHover",
+  title: 'Hooks/useHover',
   component: useHover,
+};
+
+export const Default = () => {
+  useHover();
 };

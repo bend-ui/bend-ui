@@ -1,4 +1,4 @@
-import React from 'react';
+import { useRef } from 'react';
 import { forwardRef } from '@particles/primitives';
 import { system, SystemProps } from '../../system';
 import useStyles from './Input.styles';
@@ -13,7 +13,7 @@ export const Input = forwardRef<InputProps, 'input'>((props, ref) => {
   const { as = 'input', prefix, suffix, ...rest } = props;
   const { styles } = useStyles();
 
-  const inputRef = React.useRef<HTMLInputElement>();
+  const inputRef = useRef<HTMLInputElement>();
 
   const handleWrapperClick = () => {
     inputRef.current.focus();

@@ -1,4 +1,3 @@
-import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Checkbox } from './Checkbox';
 
@@ -14,7 +13,7 @@ const Template: ComponentStory<typeof Checkbox> = (args) => (
 export const Primary = Template.bind({});
 Primary.args = {};
 
-export const defaultChecked = Template.bind({});
-defaultChecked.args = {
+export const DefaultChecked = Template.bind({});
+DefaultChecked.args = {
   defaultChecked: true,
 };

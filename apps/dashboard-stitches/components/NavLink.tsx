@@ -1,7 +1,12 @@
 import Link, { LinkProps } from 'next/link';
 import { useRouter } from 'next/router';
+import { ReactNode } from 'react';
 
-export const NavLink: React.FC<LinkProps> = (props) => {
+type NavLinkProps = LinkProps & {
+  children?: ReactNode;
+};
+
+export const NavLink = (props: NavLinkProps) => {
   const { children, href, ...rest } = props;
   const { pathname } = useRouter();
   const isActive = pathname.startsWith(href as string);

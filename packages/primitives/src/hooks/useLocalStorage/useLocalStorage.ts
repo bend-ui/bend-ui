@@ -1,1 +1,3 @@
-export const useLocalStorage = () => {};
+export const useLocalStorage = () => {
+  return {};
+};

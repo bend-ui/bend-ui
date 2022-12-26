@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { useDisclosure } from '@particles/primitives';
-import { shift, useFloating } from '@floating-ui/react-dom';
+import { shift, useFloating } from '@floating-ui/react';
 
 export interface UseTooltipProps {
   placement?:

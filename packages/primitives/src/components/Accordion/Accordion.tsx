@@ -6,7 +6,7 @@ export interface AccordionProps {
 
 const Accordion = (props: AccordionProps) => {
   const { children, ...rest } = props;
-  const {} = useAccordion({});
+  const { ...accordionProps } = useAccordion();
   return <div {...rest}>{children}</div>;
 };
 

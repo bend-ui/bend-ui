@@ -1,7 +1,8 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
-interface Props {}
+export type TilesProps = { children?: ReactNode };
 
-export const Tiles = (props: Props) => {
-  return <div></div>;
+export const Tiles = (props: TilesProps) => {
+  const { children, ...rest } = props;
+  return <div {...rest}>{children}</div>;
 };

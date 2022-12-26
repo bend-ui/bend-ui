@@ -1,4 +1,3 @@
-import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Button } from '..';
 import { Popover } from './Popover';

@@ -10,6 +10,7 @@
   "rules": {
     "import/no-unresolved": "error",
     "import/no-named-as-default": "off",
+    "import/default": "off",
     "sort-imports": [
       "error",
       {

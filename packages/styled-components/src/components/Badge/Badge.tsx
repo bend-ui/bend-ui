@@ -1,4 +1,3 @@
-import React from 'react';
 import { Badge as BadgePrimitive, forwardRef } from '@particles/primitives';
 import { system } from '../../system';
 import useStyles from './Badge.styles';

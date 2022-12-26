@@ -1,4 +1,3 @@
-import React from 'react';
 import { system } from '../../../system';
 import useStyles from './Header.styles';
 

@@ -1,1 +1,3 @@
-export const useDarkMode = () => {};
+export const useDarkMode = () => {
+  return;
+};

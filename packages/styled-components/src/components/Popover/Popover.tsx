@@ -1,5 +1,5 @@
-import React from 'react';
 import { createContext } from '@particles/primitives';
+import { Children, cloneElement, FC } from 'react';
 import { Panel } from '../Panel';
 import { usePopover } from './usePopover';
 
@@ -8,16 +8,16 @@ type PopoverContext = ReturnType<typeof usePopover>;
 const [PopoverProvider, usePopoverContext] =
   createContext<PopoverContext>('PopoverContext');
 
-const Trigger: React.FC = (props) => {
+const Trigger: FC = (props) => {
   const { children } = props;
-  const child: any = React.Children.only(children);
+  const child: any = Children.only(children);
 
   const { getTriggerProps } = usePopoverContext();
 
-  return React.cloneElement(child, getTriggerProps(child.props));
+  return cloneElement(child, getTriggerProps(child.props));
 };
 
-const Content: React.FC = (props) => {
+const Content: FC = (props) => {
   const { children } = props;
 
   const { getPopoverProps } = usePopoverContext();
@@ -46,7 +46,7 @@ export interface PopoverProps {
   strategy: 'absolute' | 'fixed';
 }
 
-export const Root: React.FC<PopoverProps> = (props) => {
+export const Root: FC<PopoverProps> = (props) => {
   const { children, placement, strategy } = props;
 
   const context = usePopover({ placement, strategy });

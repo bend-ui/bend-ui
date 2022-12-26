@@ -1,4 +1,10 @@
-import React, { useRef } from 'react';
+import {
+  Children,
+  cloneElement,
+  isValidElement,
+  RefObject,
+  useRef,
+} from 'react';
 import {
   createContext,
   forwardRef,
@@ -12,7 +18,7 @@ import useStyles from './Menu.styles';
 interface MenuContextProps {
   isOpen: boolean;
   toggle(): void;
-  triggerRef: React.RefObject<any>;
+  triggerRef: RefObject<any>;
 }
 
 const [MenuContextProvider, useMenuContext] =
@@ -20,12 +26,12 @@ const [MenuContextProvider, useMenuContext] =
 
 const Trigger: React.FC = (props) => {
   const { children, ...rest } = props;
-  const child = React.Children.only(children);
+  const child = Children.only(children);
   const { triggerRef, toggle } = useMenuContext();
 
   return (
     <system.div {...rest}>
-      {React.cloneElement(child as React.ReactElement, {
+      {cloneElement(child as React.ReactElement, {
         onClick: toggle,
         ref: triggerRef,
       })}
@@ -79,7 +85,7 @@ const Item = forwardRef<MenuItemProps, 'button'>((props, ref) => {
       onClick={handleClick}
       {...rest}
     >
-      {React.isValidElement(Icon) && <Icon />}
+      {isValidElement(Icon) && <Icon />}
       {children}
     </system.button>
   );

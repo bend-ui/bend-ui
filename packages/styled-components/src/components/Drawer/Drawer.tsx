@@ -1,8 +1,12 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import { system } from '../../system';
 import useStyles from './Drawer.styles';
 
-export const Root: React.FC = (props) => {
+export type DrawerProps = {
+  children?: ReactNode;
+};
+
+export const Root = (props: DrawerProps) => {
   const { children, ...rest } = props;
   const { styles } = useStyles();
   return (

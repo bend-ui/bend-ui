@@ -1,4 +1,3 @@
-import React from 'react';
 import { forwardRef } from '@particles/primitives';
 import { system, SystemProps } from '../../system';
 import useStyles from './Panel.styles';

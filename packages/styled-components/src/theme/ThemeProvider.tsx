@@ -1,5 +1,5 @@
 import { Theme } from '@particles/theme';
-import React, { useContext } from 'react';
+import { ReactNode, useContext } from 'react';
 import {
   ThemeContext as ThemeContextSc,
   ThemeProvider as ThemeProviderSc,
@@ -16,7 +16,7 @@ export function useThemeStyles() {
 
 export interface ThemeProviderProps {
   theme?: Theme;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export const ThemeProvider = (props) => {

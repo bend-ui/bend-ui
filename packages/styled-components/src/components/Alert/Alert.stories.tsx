@@ -1,4 +1,3 @@
-import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { FiInfo } from 'react-icons/fi';
 import { Alert } from './Alert';
@@ -22,8 +21,8 @@ Base.args = {
     libero fuga.`,
 };
 
-export const withComponents = Template.bind({});
-withComponents.args = {
+export const WithComponents = Template.bind({});
+WithComponents.args = {
   title: <h3>Info</h3>,
   icon: <FiInfo />,
   children: (

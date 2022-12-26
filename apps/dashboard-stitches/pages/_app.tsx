@@ -6,7 +6,7 @@ import './styles.css';
 function CustomApp({ Component, pageProps }: AppProps) {
   globalStyles();
   return (
-    <ThemeProvider theme={{}}>
+    <ThemeProvider>
       <Head>
         <title>Welcome to dashboard!</title>
       </Head>

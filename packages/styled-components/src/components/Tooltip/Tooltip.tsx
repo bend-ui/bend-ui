@@ -1,21 +1,22 @@
-import React from 'react';
+import { Children, cloneElement, FC, ReactNode } from 'react';
 import { system } from '../../system';
 import { useTooltip } from './useTooltip';
 import useStyles from './Tooltip.styles';
 
 interface TooltipProps {
-  label: React.ReactNode;
+  children?: ReactNode;
+  label: ReactNode;
 }
 
-export const Tooltip: React.FC<TooltipProps> = (props) => {
+export const Tooltip: FC<TooltipProps> = (props) => {
   const { children, label, ...rest } = props;
-  const child: any = React.Children.only(children);
+  const child: any = Children.only(children);
   const { getTriggerProps, getTooltipProps } = useTooltip();
   const { styles } = useStyles();
 
   return (
     <>
-      {React.cloneElement(child, getTriggerProps(child.props))}
+      {cloneElement(child, getTriggerProps(child.props))}
       <system.div sx={styles.root} {...getTooltipProps(rest)}>
         {label}
       </system.div>

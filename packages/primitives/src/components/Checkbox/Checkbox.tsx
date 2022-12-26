@@ -1,8 +1,8 @@
-import React from 'react';
+import { forwardRef } from 'react';
 
 export type CheckboxProps = React.ComponentPropsWithoutRef<'input'>;
 
-const Root = React.forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
+const Root = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
   const { children, ...rest } = props;
 
   // TODO: use warn function
@@ -27,7 +27,7 @@ const Root = React.forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 
 export type CheckboxIndicatorProps = React.ComponentPropsWithoutRef<'button'>;
 
-const Indicator = React.forwardRef<HTMLButtonElement, CheckboxIndicatorProps>(
+const Indicator = forwardRef<HTMLButtonElement, CheckboxIndicatorProps>(
   (props, ref) => {
     return <button ref={ref} {...props} />;
   }
@@ -35,10 +35,8 @@ const Indicator = React.forwardRef<HTMLButtonElement, CheckboxIndicatorProps>(
 
 export type CheckboxLabelProps = React.ComponentPropsWithoutRef<'label'>;
 
-const Label = React.forwardRef<HTMLLabelElement, CheckboxLabelProps>(
-  (props, ref) => {
-    return <label ref={ref} htmlFor="aCheckbox" {...props} />;
-  }
-);
+const Label = forwardRef<HTMLLabelElement, CheckboxLabelProps>((props, ref) => {
+  return <label ref={ref} htmlFor="aCheckbox" {...props} />;
+});
 
 export const Checkbox = Object.assign(Root, { Indicator, Label });
