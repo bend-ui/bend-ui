@@ -89,14 +89,15 @@ export const theme = {
     surface: palette.white,
     'on-surface': palette.neutral900,
     outline: palette.zinc200,
-    text: palette.neutral50,
-    'text-muted': palette.neutral200,
+    text: palette.neutral800,
+    'text-muted': palette.neutral500,
   },
   shadows: {
     ...shadows,
-    focusRing: `0 0 0 4px ${palette.blue100}`,
+    focusRing: `0 0 0 4px ${palette.violet100}`,
   },
   radii,
+  zIndices: {},
   breakpoints,
   mediaQueries: {
     bp1: '(max-width: 40em)',
@@ -106,6 +107,11 @@ export const theme = {
   components: {},
   fns: {
     textStyles: (value: keyof typeof textStyles) => textStyles[value],
+    focusStyles: () => ({
+      '&:focus:not(:focus-visible)': {
+        outline: 'none',
+      },
+    }),
   },
 };
 
