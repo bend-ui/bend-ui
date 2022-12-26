@@ -3,7 +3,7 @@ import {
   useFloating,
   useInteractions,
   useRole,
-} from '@floating-ui/react-dom-interactions';
+} from '@floating-ui/react';
 import { useTransition } from '../Transition';
 import { getTransitionStyles } from '../Transition/getTransitionStyles';
 

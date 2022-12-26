@@ -1,4 +1,4 @@
-import { css, CSS } from './';
+import { css, CSS, useTheme } from './';
 
 export interface UseStylesOptions<Key extends string> {
   classNames?: Partial<Record<Key, string>>;
@@ -17,7 +17,8 @@ export const createStyles = <Key extends string = string, Params = void>(
       : () => getCssObjectOrCssObject;
 
   const useStyles = (params: Params, options?: UseStylesOptions<Key>) => {
-    const cssObject = getCssObject(params);
+    const theme = useTheme();
+    const cssObject = getCssObject({ ...params, theme });
 
     const themeStyles = options?.theme?.components?.[options.name];
 

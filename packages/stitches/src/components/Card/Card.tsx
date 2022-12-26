@@ -1,21 +1,23 @@
-import { forwardRef } from '@particles/primitives';
+import { createComponent, forwardRef } from '@particles/primitives';
 import clsx from 'clsx';
 import { useDefaultProps, useTheme } from '../../styles';
 import useStyles from './Card.styles';
+import { CardFooter } from './CardFooter';
+import { CardHeader } from './CardHeader';
 
 export interface CardProps {
   variant?: 'solid' | 'outline' | 'subtle';
   palette?: 'primary' | 'danger';
 }
 
-const defaultProps = { variant: 'solid', palette: 'primary' };
-
 export const Card = forwardRef<CardProps, 'div'>((props, ref) => {
-  const { children, className, variant, palette, ...rest } = useDefaultProps(
-    'Card',
-    defaultProps,
-    props
-  );
+  const {
+    children,
+    className,
+    variant = 'solid',
+    palette = 'primary',
+    ...rest
+  } = useDefaultProps('Card', props);
   const { theme } = useTheme();
 
   const { styles } = useStyles({ variant, palette }, { name: 'Card', theme });
@@ -28,40 +30,7 @@ export const Card = forwardRef<CardProps, 'div'>((props, ref) => {
 
 Card.displayName = 'Card';
 
-export interface CardHeaderProps {
-  children?: React.ReactNode;
-  size?: 'sm' | 'md';
-}
-
-export const CardHeader = forwardRef<CardHeaderProps, 'div'>((props, ref) => {
-  const { children, ...rest } = props;
-  const { theme } = useTheme();
-  const { styles } = useStyles({}, { name: 'Card', theme });
-  return (
-    <div ref={ref} className={styles['header']} {...rest}>
-      {children}
-    </div>
-  );
+export default createComponent(Card, {
+  Header: CardHeader,
+  Footer: CardFooter,
 });
-
-CardHeader.displayName = 'Card.Header';
-
-export interface CardFooterProps {
-  children?: React.ReactNode;
-  size?: 'sm' | 'md';
-}
-
-export const CardFooter = forwardRef<CardFooterProps, 'div'>((props, ref) => {
-  const { children, ...rest } = props;
-  const { theme } = useTheme();
-  const { styles } = useStyles({}, { name: 'Card', theme });
-  return (
-    <div ref={ref} className={styles['footer']} {...rest}>
-      {children}
-    </div>
-  );
-});
-
-CardFooter.displayName = 'Card.Footer';
-
-export default Object.assign(Card, { Header: CardHeader, Footer: CardFooter });

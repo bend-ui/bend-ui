@@ -11,7 +11,7 @@ export interface ButtonStylesParams {
 export default createStyles(({ palette }: ButtonStylesParams) => ({
   button: {
     ...buttonStyles.root,
-    gap: '$xxs',
+    gap: '$xs',
     borderRadius: '$lg',
     fontFamily: '$base',
     fontSize: '$base',

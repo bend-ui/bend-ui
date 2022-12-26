@@ -1,28 +1,18 @@
-import { useEffect } from 'react';
 import { createContext } from '@particles/primitives';
-
-const changeTheme = (theme) => {
-  const el = document.documentElement;
-
-  el.classList.add(theme.className);
-};
+import { Theme, theme } from '@particles/theme';
 
 export const [ThemeContextProvider, useTheme] = createContext('Theme', {
-  theme: {},
+  theme: { ...theme, components: {} },
 });
 
 export interface ThemeProps {
-  theme: any;
-  children: React.ReactNode;
+  children?: React.ReactNode;
+  theme?: Theme;
 }
 
 export const ThemeProvider = (props: ThemeProps) => {
   const { children, theme } = props;
   const context = { theme };
-
-  useEffect(() => {
-    changeTheme(theme);
-  }, [theme]);
 
   return (
     <ThemeContextProvider value={context}>{children}</ThemeContextProvider>

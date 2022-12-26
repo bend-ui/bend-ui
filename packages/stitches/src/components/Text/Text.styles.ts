@@ -14,6 +14,7 @@ export interface TextStylesParams {
 export default createStyles((params: TextStylesParams) => ({
   root: {
     margin: '$0',
+    color: '$text',
     variants: {
       variant: {
         ...textStyles,

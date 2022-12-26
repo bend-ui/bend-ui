@@ -1,14 +1,30 @@
-import { Box } from "../Box"
+import { createComponent, forwardRef } from '@particles/primitives';
+import { useDefaultProps } from '../../styles';
+import { Box } from '../Box';
 
 export interface RatingProps {
-  children?: React.ReactNode
+  count?: number;
+  defaultValue?: number;
+  value?: number;
 }
 
-const Rating = (props: RatingProps) => {
-  const { children } = props;
+const Rating = forwardRef<RatingProps, 'div'>((props, ref) => {
+  const { as = 'div', count = 5 } = useDefaultProps('Rating', props);
   return (
-    <Box>{children}</Box>
-  )
-}
+    <Box as={as} ref={ref}>
+      {[...Array(count).fill(true)].map((item, index) => (
+        <>
+          <input
+            type="radio"
+            name={`particles-rating`}
+            id={`particles-rating-${index}`}
+            value={index}
+          />
+          <label htmlFor={`particles-rating-${index}`}>{index}</label>
+        </>
+      ))}
+    </Box>
+  );
+});
 
-export default Object.assign(Rating, {})
+export default createComponent(Rating, {});

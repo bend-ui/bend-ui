@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { forwardRef } from '@particles/primitives';
+import { createComponent, forwardRef } from '@particles/primitives';
 import { Box } from '../Box';
 import useStyles from './Center.styles';
 
@@ -13,4 +13,4 @@ const Center = forwardRef((props, ref) => {
   );
 });
 
-export default Center;
+export default createComponent(Center);

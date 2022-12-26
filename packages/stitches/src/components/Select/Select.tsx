@@ -1,7 +1,11 @@
 import { Children, cloneElement, isValidElement } from 'react';
 import clsx from 'clsx';
-import { useDisclosure, useSelect } from '@particles/primitives';
-import { SXProp } from '../../styles';
+import {
+  createComponent,
+  useDisclosure,
+  useSelect,
+} from '@particles/primitives';
+import { DefaultComponentProps, useDefaultProps } from '../../styles';
 import { Box } from '../Box';
 import { Panel } from '../Panel';
 import useStyles from './Select.styles';
@@ -11,10 +15,10 @@ export type SelectProps = {
   children: React.ReactNode;
   placeholder: string;
   onChange?(value: string): void;
-} & SXProp;
+} & DefaultComponentProps;
 
 const Select = (props: SelectProps) => {
-  const { children, placeholder } = props;
+  const { children, placeholder, value } = useDefaultProps('Select', props);
   const { styles } = useStyles();
   const { isOpen, toggle } = useDisclosure();
   const { getTriggerProps, getListboxProps, getOptionProps } = useSelect({
@@ -25,6 +29,7 @@ const Select = (props: SelectProps) => {
   return (
     <>
       <Box as="button" className={clsx(styles.trigger)} {...getTriggerProps()}>
+        <input type="hidden" name="" value={value} />
         {placeholder}
         <svg
           stroke="currentColor"
@@ -74,4 +79,4 @@ const OptionGroup = (props: SelectOptionGroup) => {
 
 OptionGroup.displayName = 'Select.OptionGroup';
 
-export default Object.assign(Select, { Option, OptionGroup });
+export default createComponent(Select, { Option, OptionGroup });

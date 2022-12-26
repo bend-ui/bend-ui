@@ -11,7 +11,7 @@ import {
   useHover,
   useInteractions,
   useRole,
-} from '@floating-ui/react-dom-interactions';
+} from '@floating-ui/react';
 
 export type TooltipPlacement = Placement;
 

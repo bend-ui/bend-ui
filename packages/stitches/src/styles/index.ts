@@ -2,15 +2,11 @@ import { createStitches } from '@stitches/react';
 import { theme } from '@particles/theme';
 import type * as Stitches from '@stitches/react';
 
+const { fns, mediaQueries, ...restTheme } = theme;
+
 export const { styled, css, config, globalCss, createTheme } = createStitches({
-  theme,
-  media: {
-    'min-mobile': '(min-width: 0)',
-    'min-tablet': '(min-width: 480px)',
-    'min-desktop': '(min-width: 768px)',
-    'min-widescreen': '(min-width: 1024px)',
-    'min-fullHD': '(min-width: 1200px)',
-  },
+  theme: restTheme,
+  media: mediaQueries,
   utils: {
     p: (value: Stitches.PropertyValue<'padding'>) => ({
       padding: value,
@@ -159,7 +155,7 @@ export type VariantProps<T> = Stitches.VariantProps<T>;
 export type CSSProperties = Stitches.CSSProperties;
 export type ScaleValue<T> = Stitches.ScaleValue<T>;
 
-export type SXProp = {
+export type DefaultComponentProps = {
   sx?: CSS;
 };
 

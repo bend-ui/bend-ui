@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Button } from '../Button';
-import { CardHeader, CardHeaderProps } from './Card';
+import { CardHeader, CardHeaderProps } from './CardHeader';
 import { Card } from './';
 
 const CardHeaderMock: React.FC<CardHeaderProps> = (props) => (

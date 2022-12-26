@@ -1,12 +1,17 @@
+import { createComponent, forwardRef } from '@particles/primitives';
 import * as Styled from './Container.styles';
 
 type ContainerProps = {
   children: React.ReactNode;
 };
 
-const Container = (props: ContainerProps) => {
+const Container = forwardRef<ContainerProps, 'div'>((props, ref) => {
   const { children, ...rest } = props;
-  return <Styled.Container {...rest}>{children}</Styled.Container>;
-};
+  return (
+    <Styled.Container ref={ref} {...rest}>
+      {children}
+    </Styled.Container>
+  );
+});
 
-export default Container;
+export default createComponent(Container);

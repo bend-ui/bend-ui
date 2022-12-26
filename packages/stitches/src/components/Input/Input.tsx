@@ -1,13 +1,19 @@
 import { forwardRef } from '@particles/primitives';
 import clsx from 'clsx';
-import { SXProp } from '../../styles';
+import { ReactNode } from 'react';
+import { DefaultComponentProps, useDefaultProps } from '../../styles';
 import { Box } from '../Box';
 import useStyles, { InputStylesParams } from './Input.styles';
 
-export type InputProps = InputStylesParams & {
-  icon?: React.ReactElement;
-  iconEnd?: React.ReactElement;
-} & SXProp;
+export type InputProps = DefaultComponentProps &
+  InputStylesParams & {
+    icon?: React.ReactElement;
+    iconEnd?: React.ReactElement;
+    labelStart?: string;
+    labelEnd?: string;
+    contentStart?: ReactNode;
+    contentEnd?: ReactNode;
+  };
 
 const InvalidIcon = () => (
   <svg
@@ -27,18 +33,43 @@ const InvalidIcon = () => (
   </svg>
 );
 
-export const Input = forwardRef((props, ref) => {
-  const { as = 'input', icon, iconEnd, isInvalid, ...rest } = props;
-  const { styles } = useStyles({ withIcon: !!icon || isInvalid, isInvalid });
+export const Input = forwardRef<InputProps, 'input'>((props, ref) => {
+  const {
+    as = 'input',
+    icon,
+    iconEnd,
+    isInvalid,
+    variant,
+    size,
+    isRounded,
+    labelStart,
+    labelEnd,
+    contentStart,
+    contentEnd,
+    ...rest
+  } = useDefaultProps('Input', props);
+
+  const { styles } = useStyles({
+    withIcon: !!icon || isInvalid,
+    isInvalid,
+    variant,
+    size,
+    isRounded,
+  });
+
   return (
     <Box className={clsx(styles['wrapper'])}>
       {!!icon && <Box className={clsx(styles['icon'])}>{icon}</Box>}
+      {!!labelStart && <>{labelStart}</>}
+      {!!contentStart && <>{contentStart}</>}
       <Box ref={ref} as={as} className={clsx(styles['root'])} {...rest}></Box>
       {isInvalid && (
         <Box className={clsx(styles['icon'])}>
           <InvalidIcon />
         </Box>
       )}
+      {!!contentEnd && <>{contentEnd}</>}
+      {!!labelEnd && <>{labelEnd}</>}
       {iconEnd}
     </Box>
   );

@@ -1,8 +1,4 @@
-import {
-  useClick,
-  useFloating,
-  useInteractions,
-} from '@floating-ui/react-dom-interactions';
+import { useClick, useFloating, useInteractions } from '@floating-ui/react';
 import { HTMLProps, useState } from 'react';
 
 export const useMenu = () => {
@@ -27,10 +23,10 @@ export const useMenu = () => {
         position: strategy,
         top: y ?? '',
         left: x ?? '',
-        ...props?.style
+        ...props?.style,
       },
       role: 'menu',
-    })
+    }),
   });
 
   const getItemProps = () => ({ role: 'menuitem' });

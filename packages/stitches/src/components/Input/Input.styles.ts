@@ -1,7 +1,10 @@
+import { theme } from '@particles/theme';
 import { createStyles } from '../../styles';
 
 export interface InputStylesParams {
-  variant?: 'solid' | 'outline';
+  variant?: 'solid' | 'outline' | 'underline';
+  size?: 'sm' | 'md' | 'lg';
+  isRounded?: boolean;
   isInvalid?: boolean;
   withIcon?: boolean;
 }
@@ -26,11 +29,18 @@ export default createStyles((params: InputStylesParams) => ({
     borderRadius: '$md',
     boxShadow: '$sm',
     outline: 'none',
-    '&:focus': {
-      borderColor: '$blue600',
-      focusRing: '$focusRing',
+    '&:focus, &:focus-within': {
+      outline: 'none',
+      borderColor: '$primary',
+      boxShadow: '$focusRing',
     },
+    ...theme.fns.focusStyles(),
     variants: {
+      isRounded: {
+        true: {
+          borderRadius: '$full',
+        },
+      },
       withIcon: {
         true: {
           pl: '$xxl',

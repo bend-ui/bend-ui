@@ -13,7 +13,7 @@ const IconButton = forwardRef<IconButtonProps, 'button'>((props, ref) => {
   const { styles } = useStyles({ size });
 
   return (
-    <Button ref={ref} className={clsx(className, styles.root)} {...rest}>
+    <Button ref={ref} className={clsx(styles.root, className)} {...rest}>
       {element}
     </Button>
   );
