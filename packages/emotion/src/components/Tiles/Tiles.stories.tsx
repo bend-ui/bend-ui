@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Container } from '../Container';
-import { Tiles } from './Tiles';
+import { Tiles } from '.';
 
 export default {
   title: 'Components/Layout/Tiles',

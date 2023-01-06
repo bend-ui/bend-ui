@@ -1,6 +1,7 @@
 import { withPerformance } from 'storybook-addon-performance';
 import { withThemeProvider } from './decorators/withThemeProvider';
 import { DocsContainer } from './DocsContainer';
+import { themeDark, themeLight } from './themes';
 
 export const parameters = {
   darkMode: {
@@ -9,6 +10,8 @@ export const parameters = {
     lightClass: 'light',
     stylePreview: true,
     classTarget: 'html',
+    dark: themeDark,
+    light: themeLight,
   },
   docs: {
     container: DocsContainer,

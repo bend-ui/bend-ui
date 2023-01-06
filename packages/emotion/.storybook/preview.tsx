@@ -9,6 +9,7 @@ import {
   ToastsContainer,
 } from '../src/components/ToastProvider/ToastProvider';
 import { ParticlesProvider } from '../src/theme/ParticlesProvider';
+import { themeDark, themeLight } from './themes';
 
 export const globalTypes = {
   theme: {
@@ -101,8 +102,8 @@ export const argTypes = {
 export const parameters = {
   controls: { sort: 'requiredFirst', exclude: ['sx', 'as'] },
   darkMode: {
-    dark: { ...themes.dark },
-    light: { ...themes.normal },
+    dark: themeDark,
+    light: themeLight,
   },
   docs: {
     container: Container,

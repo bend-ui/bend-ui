@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { withPerformance } from 'storybook-addon-performance';
 import { darkTheme, globalStyles, ThemeProvider } from '../src/styles';
 import { modernTheme } from '../src/themes';
