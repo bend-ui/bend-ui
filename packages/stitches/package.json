@@ -3,11 +3,11 @@
   "version": "0.0.1",
   "license": "MIT",
   "dependencies": {
-    "@stitches/react": "^1.2.8",
-    "clsx": "^1.2.1",
     "@capsizecss/core": "^3.0.0",
     "@capsizecss/metrics": "^0.4.0",
-    "@floating-ui/react": "^0.14.0"
+    "@floating-ui/react": "^0.17.0",
+    "@stitches/react": "^1.2.8",
+    "clsx": "^1.2.1"
   },
   "peerDependencies": {
     "react": ">= 16"

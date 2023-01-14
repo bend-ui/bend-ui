@@ -181,24 +181,24 @@ importers:
 
   packages/emotion:
     specifiers:
-      '@floating-ui/react': ^0.14.0
+      '@floating-ui/react': ^0.17.0
       clsx: 1.2.1
       system-props: ^0.22.0
       transition-hook: ^1.5.2
     dependencies:
-      '@floating-ui/react': 0.14.0
+      '@floating-ui/react': 0.17.0
       clsx: 1.2.1
       system-props: 0.22.0
       transition-hook: 1.5.2
 
   packages/primitives:
     specifiers:
-      '@floating-ui/react': ^0.14.0
+      '@floating-ui/react': ^0.17.0
       clsx: 1.2.1
       csstype: ^3.1.1
       tailwindcss: ^3.2.4
     dependencies:
-      '@floating-ui/react': 0.14.0
+      '@floating-ui/react': 0.17.0
       csstype: 3.1.1
     devDependencies:
       clsx: 1.2.1
@@ -208,13 +208,13 @@ importers:
     specifiers:
       '@capsizecss/core': ^3.0.0
       '@capsizecss/metrics': ^0.4.0
-      '@floating-ui/react': ^0.14.0
+      '@floating-ui/react': ^0.17.0
       '@stitches/react': ^1.2.8
       clsx: ^1.2.1
     dependencies:
       '@capsizecss/core': 3.0.0
       '@capsizecss/metrics': 0.4.0
-      '@floating-ui/react': 0.14.0
+      '@floating-ui/react': 0.17.0
       '@stitches/react': 1.2.8
       clsx: 1.2.1
 
@@ -3143,6 +3143,19 @@ packages:
 
   /@floating-ui/react/0.14.0:
     resolution: {integrity: sha512-IGzsoBR6gVRSF+EWjkUNQr/wThi/ypSJN8y/QZCt2MzddYvvibH4Wcw2VMXcOgwCMmMqXZGk9sQSMSBoixzsPg==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      '@floating-ui/react-dom': 1.2.0
+      aria-hidden: 1.2.2
+      tabbable: 6.0.1
+    transitivePeerDependencies:
+      - '@types/react'
+    dev: false
+
+  /@floating-ui/react/0.17.0:
+    resolution: {integrity: sha512-LYlTmiB1O2TmeNub1agGYJrO7Qkw1B0Q53aElN5dgZDO5v3yzYJmrGm/xmfD+0T03yEECzPKdwlSFCEPWKMLEQ==}
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
