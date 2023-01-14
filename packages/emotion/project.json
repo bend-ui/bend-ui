@@ -1,4 +1,5 @@
 {
+  "name": "packages-emotion",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/emotion/src",
   "projectType": "library",
@@ -24,9 +25,7 @@
       "options": {
         "uiFramework": "@storybook/react",
         "port": 4401,
-        "config": {
-          "configFolder": "packages/emotion/.storybook"
-        }
+        "configDir": "packages/emotion/.storybook"
       },
       "configurations": {
         "ci": {
@@ -36,13 +35,11 @@
     },
     "build-storybook": {
       "executor": "@nrwl/storybook:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": ["{options.outputDir}"],
       "options": {
         "uiFramework": "@storybook/react",
-        "outputPath": "dist/storybook/emotion",
-        "config": {
-          "configFolder": "packages/emotion/.storybook"
-        }
+        "configDir": "packages/emotion/.storybook",
+        "outputDir": "dist/storybook/emotion"
       },
       "configurations": {
         "ci": {
@@ -50,6 +47,5 @@
         }
       }
     }
-  },
-  "name": "packages-emotion"
+  }
 }

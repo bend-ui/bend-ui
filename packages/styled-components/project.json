@@ -1,4 +1,5 @@
 {
+  "name": "packages-styled-components",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/styled-components/src",
   "projectType": "library",
@@ -24,9 +25,7 @@
       "options": {
         "uiFramework": "@storybook/react",
         "port": 4402,
-        "config": {
-          "configFolder": "packages/styled-components/.storybook"
-        }
+        "configDir": "packages/styled-components/.storybook"
       },
       "configurations": {
         "ci": {
@@ -36,13 +35,11 @@
     },
     "build-storybook": {
       "executor": "@nrwl/storybook:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": ["{options.outputDir}"],
       "options": {
         "uiFramework": "@storybook/react",
-        "outputPath": "dist/storybook/styled-components",
-        "config": {
-          "configFolder": "packages/styled-components/.storybook"
-        }
+        "configDir": "packages/styled-components/.storybook",
+        "outputDir": "dist/storybook/styled-components"
       },
       "configurations": {
         "ci": {
@@ -50,6 +47,5 @@
         }
       }
     }
-  },
-  "name": "packages-styled-components"
+  }
 }

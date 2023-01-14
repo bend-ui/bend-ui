@@ -25,11 +25,11 @@ export const useModal = (props: UseModalProps) => {
     onOpenChange: onClose,
   });
 
-  const { getFloatingProps } = useInteractions([
+  const { getFloatingProps, getReferenceProps } = useInteractions([
     useClick(context),
     useRole(context),
     useDismiss(context),
   ]);
 
-  return { floating, getFloatingProps };
+  return { floating, getFloatingProps, getReferenceProps };
 };
