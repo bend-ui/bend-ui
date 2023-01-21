@@ -24,8 +24,7 @@
       "executor": "@nrwl/storybook:storybook",
       "options": {
         "uiFramework": "@storybook/react",
-        "port": 4401,
-        "configDir": "packages/emotion/.storybook"
+        "port": 4401
       },
       "configurations": {
         "ci": {
@@ -37,9 +36,7 @@
       "executor": "@nrwl/storybook:build",
       "outputs": ["{options.outputDir}"],
       "options": {
-        "uiFramework": "@storybook/react",
-        "configDir": "packages/emotion/.storybook",
-        "outputDir": "dist/storybook/emotion"
+        "uiFramework": "@storybook/react"
       },
       "configurations": {
         "ci": {

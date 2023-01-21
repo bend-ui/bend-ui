@@ -1,15 +1,16 @@
-import React, { useLayoutEffect } from 'react';
+import { FC, ReactNode, RefObject, useLayoutEffect } from 'react';
 import { Portal } from '@particles/primitives';
-import { Placement, shift, useFloating } from '@floating-ui/react-dom';
+import { Placement, shift, useFloating } from '@floating-ui/react';
 
 import { system } from '../../system';
 
 export interface PopperProps {
-  triggerRef: React.RefObject<any>;
+  children?: ReactNode;
+  triggerRef: RefObject<any>;
   placement?: Placement;
 }
 
-export const Popper: React.FC<PopperProps> = (props) => {
+export const Popper: FC<PopperProps> = (props) => {
   const { children, triggerRef, placement = 'bottom' } = props;
 
   const { x, y, reference, floating, strategy } = useFloating({

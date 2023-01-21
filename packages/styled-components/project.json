@@ -24,8 +24,7 @@
       "executor": "@nrwl/storybook:storybook",
       "options": {
         "uiFramework": "@storybook/react",
-        "port": 4402,
-        "configDir": "packages/styled-components/.storybook"
+        "port": 4402
       },
       "configurations": {
         "ci": {
@@ -37,9 +36,7 @@
       "executor": "@nrwl/storybook:build",
       "outputs": ["{options.outputDir}"],
       "options": {
-        "uiFramework": "@storybook/react",
-        "configDir": "packages/styled-components/.storybook",
-        "outputDir": "dist/storybook/styled-components"
+        "uiFramework": "@storybook/react"
       },
       "configurations": {
         "ci": {

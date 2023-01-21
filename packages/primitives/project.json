@@ -43,8 +43,7 @@
       "executor": "@nrwl/storybook:storybook",
       "options": {
         "uiFramework": "@storybook/react",
-        "port": 4400,
-        "configDir": "packages/primitives/.storybook"
+        "port": 4400
       },
       "configurations": {
         "ci": {
@@ -56,9 +55,7 @@
       "executor": "@nrwl/storybook:build",
       "outputs": ["{options.outputDir}"],
       "options": {
-        "uiFramework": "@storybook/react",
-        "configDir": "packages/primitives/.storybook",
-        "outputDir": "dist/storybook/primitives"
+        "uiFramework": "@storybook/react"
       },
       "configurations": {
         "ci": {

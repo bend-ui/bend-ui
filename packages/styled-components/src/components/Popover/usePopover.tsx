@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from 'react';
-import { shift, useFloating } from '@floating-ui/react-dom';
+import { shift, useFloating } from '@floating-ui/react';
 import { useDisclosure } from '@particles/primitives';
 
 export const usePopover = (props) => {
