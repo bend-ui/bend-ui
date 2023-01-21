@@ -1,6 +1,6 @@
 {
   "extends": "nx/presets/npm.json",
-  "npmScope": "ds",
+  "npmScope": "particles",
   "affected": {
     "defaultBase": "main"
   },
