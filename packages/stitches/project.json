@@ -44,7 +44,8 @@
       "executor": "@nrwl/storybook:storybook",
       "options": {
         "uiFramework": "@storybook/react",
-        "port": 4403
+        "port": 4403,
+        "configDir": "packages/stitches/.storybook"
       },
       "configurations": {
         "ci": {
@@ -56,7 +57,9 @@
       "executor": "@nrwl/storybook:build",
       "outputs": ["{options.outputDir}"],
       "options": {
-        "uiFramework": "@storybook/react"
+        "uiFramework": "@storybook/react",
+        "outputDir": "dist/storybook/stitches",
+        "configDir": "packages/stitches/.storybook"
       },
       "configurations": {
         "ci": {

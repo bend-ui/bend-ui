@@ -11,7 +11,7 @@
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": [],
+        "cacheableOperations": ["build-storybook"],
         "accessToken": "NDU1YmQ4ODEtZmY4MS00Mzk4LTgxZTAtMTVhYWY2MjRiMDgyfHJlYWQtd3JpdGU="
       }
     }
