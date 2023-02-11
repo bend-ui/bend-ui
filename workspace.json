@@ -5,8 +5,10 @@
     "dashboard-stitches": "apps/dashboard-stitches",
     "emotion": "packages/emotion",
     "primitives": "packages/primitives",
+    "react-utils": "packages/react-utils",
     "stitches": "packages/stitches",
     "styled-components": "packages/styled-components",
+    "tailwind": "packages/tailwind",
     "theme": "packages/theme",
     "vanilla-extract": "packages/vanilla-extract"
   },

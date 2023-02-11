@@ -1,12 +1,4 @@
 {
-  "extends": "nx/presets/npm.json",
-  "npmScope": "particles",
-  "affected": {
-    "defaultBase": "main"
-  },
-  "cli": {
-    "defaultCollection": "@nrwl/react"
-  },
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/nx-cloud",
@@ -16,10 +8,21 @@
       }
     }
   },
+  "extends": "nx/presets/npm.json",
+  "npmScope": "particles",
+  "affected": {
+    "defaultBase": "main"
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/react"
+  },
   "generators": {
     "@nrwl/react": {
       "application": {
         "babel": true
+      },
+      "library": {
+        "unitTestRunner": "vitest"
       }
     },
     "@nrwl/next": {

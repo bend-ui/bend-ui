@@ -1,4 +1,5 @@
-/* eslint-disable */
+import type { Config } from 'jest';
+
 export default {
   displayName: 'styled-components',
 
@@ -8,4 +9,4 @@ export default {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageDirectory: '../../coverage/packages/styled-components',
   preset: '../../jest.preset.js',
-};
+} as Config;

@@ -29,6 +29,14 @@
       "path": "packages/vanilla-extract"
     },
     {
+      "name": "📦 @particles/tailwind",
+      "path": "packages/tailwind"
+    },
+    {
+      "name": "🛠️ @particles/react-utils",
+      "path": "packages/react-utils"
+    },
+    {
       "name": "🧪 Dashboard (Emotion)",
       "path": "apps/dashboard-emotion"
     },
@@ -50,7 +58,9 @@
       "📦 @particles/theme",
       "📦 @particles/vanilla-extract",
       "🧪 Dashboard (Emotion)",
-      "🧪 Dashboard (Stitches)"
+      "🧪 Dashboard (Stitches)",
+      "🛠️ @particles/react-utils",
+      "📦 @particles/tailwind"
     ]
   }
 }
