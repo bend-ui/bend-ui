@@ -16,9 +16,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@particles/react-utils": ["packages/react-utils/src/index.ts"],
       "@particles/emotion": ["packages/emotion/src/index.ts"],
       "@particles/primitives": ["packages/primitives/src/index.ts"],
+      "@particles/react-utils": ["packages/react-utils/src/index.ts"],
       "@particles/stitches": ["packages/stitches/src/index.ts"],
       "@particles/styled-components": [
         "packages/styled-components/src/index.ts"
