@@ -2,10 +2,7 @@
   "name": "@particles/primitives",
   "version": "0.0.1",
   "scripts": {
-    "test": "echo 'no test'"
-  },
-  "jest": {
-    "testEnvironment": "node"
+    "generate": "pnpm dlx generate-react-cli"
   },
   "dependencies": {
     "@floating-ui/react": "^0.17.0",
