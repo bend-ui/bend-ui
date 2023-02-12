@@ -1,15 +1,18 @@
-import React from 'react';
+import {
+  createContext as createReactContext,
+  useContext as useReactContext,
+} from 'react';
 
 export const createContext = <T extends object>(
   name: string,
   defaultContext?: T
 ) => {
-  const Context = React.createContext<T | undefined>(defaultContext);
+  const Context = createReactContext<T | undefined>(defaultContext);
 
   Context.displayName = name;
 
   const useContext = () => {
-    const context = React.useContext(Context);
+    const context = useReactContext(Context);
     return context;
   };
 
