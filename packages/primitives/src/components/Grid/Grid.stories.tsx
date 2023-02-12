@@ -6,7 +6,7 @@ export default {
   title: 'Layout/Grid',
 } as Meta;
 
-export const Default = () => {
+export const Base = () => {
   const { getGridStyles, getGridColumnsStyles } = useGrid();
   return (
     <div style={{ ...getGridStyles(), gap: '16px' }}>

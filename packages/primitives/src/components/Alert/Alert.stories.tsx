@@ -1,24 +1,19 @@
-import { Meta } from '@storybook/react';
+import React from 'react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Alert, useAlert } from '.';
 
 export default {
   title: 'Components/Alert',
   component: Alert,
-} as Meta;
+} as ComponentMeta<typeof Alert>;
 
-export const Base = () => {
-  return <Alert>Alert content</Alert>;
+type Story = ComponentStory<typeof Alert>;
+
+export const Base: Story = (args) => {
+  return <Alert.Root {...args}>Alert content</Alert.Root>;
 };
 
-export const Hook = () => {
+export const Hook: Story = () => {
   const alertProps = useAlert();
   return <div {...alertProps}>Alert content</div>;
-};
-
-export const Styled = () => {
-  return (
-    <Alert className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800">
-      Alert content
-    </Alert>
-  );
 };

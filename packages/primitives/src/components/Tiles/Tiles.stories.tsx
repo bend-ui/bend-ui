@@ -1,12 +1,16 @@
-import React from 'react';
-import { Meta } from '@storybook/react';
-import { useTiles } from './useTiles';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Tiles, useTiles } from './';
 
 export default {
   title: 'Layout/Tiles',
-} as Meta;
+  component: Tiles,
+} as ComponentMeta<typeof Tiles>;
 
-export const Default = () => {
+type Story = ComponentStory<typeof Tiles>;
+
+export const Base: Story = (args) => <Tiles.Root {...args}></Tiles.Root>;
+
+export const Hook = () => {
   const { getTilesStyles } = useTiles({ cols: 3 });
   return (
     <div style={{ ...getTilesStyles, gap: '16px' }}>

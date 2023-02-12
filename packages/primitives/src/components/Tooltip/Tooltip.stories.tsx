@@ -1,4 +1,3 @@
-import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import Tooltip from './Tooltip';
 import { useTooltip } from './useTooltip';
@@ -10,7 +9,9 @@ export default {
   },
 } as ComponentMeta<typeof Tooltip>;
 
-export const Hook: ComponentStory<typeof Tooltip> = (args) => {
+type Story = ComponentStory<typeof Tooltip>;
+
+export const Hook: Story = (args) => {
   const { isOpen, getTriggerProps, getTooltipProps } = useTooltip(args);
   return (
     <>

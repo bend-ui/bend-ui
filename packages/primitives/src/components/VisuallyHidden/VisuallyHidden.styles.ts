@@ -1,4 +1,6 @@
-export const visuallyHiddenStyle: React.CSSProperties = {
+import { CSSProperties } from 'react';
+
+export const visuallyHiddenStyle: CSSProperties = {
   border: '0px',
   clip: 'rect(0px, 0px, 0px, 0px)',
   height: '1px',

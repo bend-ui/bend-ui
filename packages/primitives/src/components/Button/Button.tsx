@@ -1,10 +1,12 @@
+import { ReactNode } from 'react';
 import { createComponent, forwardRef } from '../../utils';
+import { Icon } from './ButtonIcon';
 
-export type ButtonProps = {
-  children?: React.ReactNode;
-};
+export interface ButtonRootProps {
+  children?: ReactNode;
+}
 
-const Button = forwardRef<ButtonProps, 'button'>((props, ref) => {
+const Root = forwardRef<ButtonRootProps, 'button'>((props, ref) => {
   const { children, as: Component = 'button', ...rest } = props;
 
   return (
@@ -14,4 +16,4 @@ const Button = forwardRef<ButtonProps, 'button'>((props, ref) => {
   );
 });
 
-export default createComponent(Button);
+export default createComponent(Root, { Root, Icon }, 'Button');

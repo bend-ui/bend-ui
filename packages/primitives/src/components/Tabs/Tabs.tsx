@@ -1,4 +1,5 @@
 import React from 'react';
+import { createComponent } from '../../utils';
 import { forwardRef } from '../../utils/forwardRef';
 import {
   TabsProvider,
@@ -6,6 +7,7 @@ import {
   useTabList,
   useTabPanel,
   useTabs,
+  UseTabsProps,
 } from './useTabs';
 
 export type TabsListProps = {
@@ -52,13 +54,13 @@ const Panel = forwardRef<TabsPanelProps, 'div'>((props, ref) => {
   );
 });
 
-export type TabsProps = {
+export type TabsProps = UseTabsProps & {
   children?: React.ReactNode;
 };
 
-const Tabs = forwardRef<TabsProps, 'div'>((props, ref) => {
+const Root = forwardRef<TabsProps, 'div'>((props, ref) => {
   const { children, ...rest } = props;
-  const context = useTabs();
+  const context = useTabs(props);
   return (
     <TabsProvider value={context}>
       <div ref={ref} {...rest}>
@@ -68,4 +70,4 @@ const Tabs = forwardRef<TabsProps, 'div'>((props, ref) => {
   );
 });
 
-export default Object.assign(Tabs, { List, Tab, Panel });
+export default createComponent(Root, { Root, List, Tab, Panel }, 'Tabs');

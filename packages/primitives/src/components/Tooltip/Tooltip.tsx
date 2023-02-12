@@ -1,19 +1,22 @@
-import React from 'react';
+import { ReactNode } from 'react';
+import { createComponent, forwardRef } from '../../utils';
 import { UseTooltipProps } from './useTooltip';
 
 export interface TooltipProps extends UseTooltipProps {
-  content?: React.ReactNode;
-  children?: React.ReactNode;
+  content?: ReactNode;
+  children?: ReactNode;
 }
 
-const Tooltip = (props: TooltipProps) => {
-  const { children, content, ...rest } = props;
+const Root = forwardRef<TooltipProps, 'span'>((props, ref) => {
+  const { children, as: Component = 'span', content, ...rest } = props;
   return (
     <>
       {children}
-      <span {...rest}>{content}</span>
+      <Component ref={ref} {...rest}>
+        {content}
+      </Component>
     </>
   );
-};
+});
 
-export default Tooltip;
+export default createComponent(Root, { Root }, 'Tooltip');

@@ -1,6 +1,6 @@
 import { FloatingFocusManager } from '@floating-ui/react';
 import { Children, cloneElement, isValidElement, ReactNode } from 'react';
-import { forwardRef } from '../../utils';
+import { createComponent, forwardRef } from '../../utils';
 import { PopoverProvider, usePopoverContext } from './PopoverContext';
 import { usePopover, UsePopoverProps } from './usePopover';
 
@@ -40,10 +40,10 @@ type PopoverProps = {
   children?: ReactNode;
 } & UsePopoverProps;
 
-const Popover = (props: PopoverProps) => {
+const Root = (props: PopoverProps) => {
   const { children, ...rest } = props;
   const context = usePopover(rest);
   return <PopoverProvider value={context}>{children}</PopoverProvider>;
 };
 
-export default Object.assign(Popover, { Trigger, Panel });
+export default createComponent(Root, { Root, Trigger, Panel }, 'Popover');

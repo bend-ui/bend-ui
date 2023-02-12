@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
-import { Meta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { useDisclosure } from '../../hooks';
 import { useSelect } from './useSelect';
+import { Select } from '.';
 
 export default {
   title: 'Forms/Select',
-} as Meta;
+  component: Select,
+} as ComponentMeta<typeof Select>;
 
-export const Base = () => {
+type Story = ComponentStory<typeof Select>;
+
+export const Base: Story = (args) => <Select.Root {...args}></Select.Root>;
+
+export const Hook = () => {
   const options = [
     { value: 'react', label: 'React' },
     { value: 'ng', label: 'Angular' },
@@ -17,8 +23,10 @@ export const Base = () => {
 
   const { isOpen, toggle } = useDisclosure();
 
-  const { getTriggerProps, getListboxProps, getOptionProps } =
-    useSelect({ isOpen, onOpenChange: toggle });
+  const { getTriggerProps, getListboxProps, getOptionProps } = useSelect({
+    isOpen,
+    onOpenChange: toggle,
+  });
 
   const [value, setValue] = useState('');
 

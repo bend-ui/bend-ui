@@ -1,10 +1,10 @@
 import { createContext } from '../../utils';
 
+type ContextType = ReturnType<typeof useFormControl>;
+
 export const [FormControlProvider, useFormControlContext] =
-  createContext('FormControlContext');
+  createContext<ContextType>('FormControlContext');
 
 export const useFormControl = () => {
-  const context = useFormControlContext();
-
-  return { context };
+  return {};
 };

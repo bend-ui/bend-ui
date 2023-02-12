@@ -1,21 +1,37 @@
-import { ComponentPropsWithoutRef, forwardRef } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
+import { createComponent, forwardRef } from '../../utils';
 
 type MediaRootProps = ComponentPropsWithoutRef<'div'>;
 
-const Root = forwardRef<HTMLDivElement, MediaRootProps>((props, ref) => {
-  return <div ref={ref} {...props} />;
+const Root = forwardRef<MediaRootProps, 'div'>((props, ref) => {
+  const { children, as: Component = 'div', ...rest } = props;
+  return (
+    <Component ref={ref} {...rest}>
+      {children}
+    </Component>
+  );
 });
 
 type MediaImageProps = ComponentPropsWithoutRef<'div'>;
 
-const Image = forwardRef<HTMLDivElement, MediaImageProps>((props, ref) => {
-  return <div ref={ref} {...props} />;
+const Image = forwardRef<MediaImageProps, 'div'>((props, ref) => {
+  const { children, as: Component = 'div', ...rest } = props;
+  return (
+    <Component ref={ref} {...rest}>
+      {children}
+    </Component>
+  );
 });
 
 type MediaBodyProps = ComponentPropsWithoutRef<'div'>;
 
-const Body = forwardRef<HTMLDivElement, MediaBodyProps>((props, ref) => {
-  return <div ref={ref} {...props} />;
+const Body = forwardRef<MediaBodyProps, 'div'>((props, ref) => {
+  const { children, as: Component = 'div', ...rest } = props;
+  return (
+    <Component ref={ref} {...rest}>
+      {children}
+    </Component>
+  );
 });
 
-export const Media = Object.assign(Root, { Image, Body });
+export default createComponent(Root, { Root, Image, Body }, 'Media');

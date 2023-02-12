@@ -1,15 +1,20 @@
-import React from 'react';
-import { Meta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { FormControl } from './';
 
-export default { title: 'Components/FormControl' } as Meta;
+export default {
+  title: 'Forms/FormControl',
+  component: FormControl,
+} as ComponentMeta<typeof FormControl>;
 
-export const Base = () => {
+type Story = ComponentStory<typeof FormControl>;
+
+export const Base: Story = (args) => {
   return (
-    <fieldset style={{ display: 'flex', flexDirection: 'column' }}>
+    <FormControl.Root {...args}>
       <label htmlFor="emailField">Email address</label>
       <input type="text" name="" id="emailField" />
       <div>Help text</div>
       <div>Error message</div>
-    </fieldset>
+    </FormControl.Root>
   );
 };

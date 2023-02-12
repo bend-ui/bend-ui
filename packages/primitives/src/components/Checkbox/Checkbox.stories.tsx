@@ -1,11 +1,16 @@
-import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Checkbox } from './Checkbox';
+import { Checkbox } from './';
 
 export default {
+  title: 'Forms/Checkbox',
   component: Checkbox,
 } as ComponentMeta<typeof Checkbox>;
 
-export const Default: ComponentStory<typeof Checkbox> = (args) => (
-  <Checkbox {...args} />
+type Story = ComponentStory<typeof Checkbox>;
+
+export const Base: Story = (args) => (
+  <Checkbox.Root {...args}>
+    <Checkbox.Indicator></Checkbox.Indicator>
+    <Checkbox.Label>Select me</Checkbox.Label>
+  </Checkbox.Root>
 );

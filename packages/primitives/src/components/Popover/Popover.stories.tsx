@@ -1,13 +1,16 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Popover } from './';
 
 export default {
+  title: 'Overlays/Popover',
   component: Popover,
 } as ComponentMeta<typeof Popover>;
 
-export const Default: ComponentStory<typeof Popover> = (args) => (
-  <Popover {...args}>
+type Story = ComponentStory<typeof Popover>;
+
+export const Base: Story = (args) => (
+  <Popover.Root {...args}>
     <Popover.Trigger>
       <button>Open</button>
     </Popover.Trigger>
@@ -17,14 +20,14 @@ export const Default: ComponentStory<typeof Popover> = (args) => (
       voluptatum enim similique vel dolor voluptatibus atque! Assumenda, minima
       officiis!
     </Popover.Panel>
-  </Popover>
+  </Popover.Root>
 );
 
 export const WithDefaultInitialFocus: ComponentStory<typeof Popover> = (
   args
 ) => {
   return (
-    <Popover {...args}>
+    <Popover.Root {...args}>
       <Popover.Trigger>
         <button>Open</button>
       </Popover.Trigger>
@@ -32,7 +35,7 @@ export const WithDefaultInitialFocus: ComponentStory<typeof Popover> = (
         <input type="text" />
         <button>Continue</button>
       </Popover.Panel>
-    </Popover>
+    </Popover.Root>
   );
 };
 
@@ -40,7 +43,7 @@ export const WithInitialFocus: ComponentStory<typeof Popover> = (args) => {
   const inputRef = useRef<HTMLInputElement>();
   const buttonRef = useRef<HTMLButtonElement>();
   return (
-    <Popover {...args} initialFocusRef={buttonRef}>
+    <Popover.Root {...args} initialFocusRef={buttonRef}>
       <Popover.Trigger>
         <button>Open</button>
       </Popover.Trigger>
@@ -48,6 +51,6 @@ export const WithInitialFocus: ComponentStory<typeof Popover> = (args) => {
         <input ref={inputRef} type="text" />
         <button ref={buttonRef}>Continue</button>
       </Popover.Panel>
-    </Popover>
+    </Popover.Root>
   );
 };

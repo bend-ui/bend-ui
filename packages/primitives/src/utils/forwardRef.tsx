@@ -1,4 +1,4 @@
-import React from 'react';
+import { forwardRef as reactForwardRef } from 'react';
 
 /* -------------------------------------------------------------------------------------------------
  * We copied the code from https://radix-ui.com/primitives/docs/utilities/polymorphic
@@ -76,7 +76,7 @@ export function forwardRef<Props, Component>(
     >
   >
 ) {
-  return React.forwardRef(component) as unknown as ForwardRefComponent<
+  return reactForwardRef(component) as unknown as ForwardRefComponent<
     Component,
     Props
   >;

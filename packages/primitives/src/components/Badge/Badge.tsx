@@ -1,22 +1,32 @@
-import React from 'react';
-import { forwardRef } from '../../utils';
+import { ReactNode } from 'react';
+import { createComponent, forwardRef } from '../../utils';
 
-type BadgeComponents = {
-  Root: React.ElementType;
-  Inner: React.ElementType;
-};
-
-interface BadgeProps {
-  components?: BadgeComponents;
+interface BadgeRootProps {
+  children?: ReactNode;
 }
 
-export const Badge = forwardRef<BadgeProps, 'div'>((props, ref) => {
-  const { children, components, ...rest } = props;
-  const Root = components?.Root || 'div';
-  const Inner = components?.Inner || 'span';
+const Root = forwardRef<BadgeRootProps, 'div'>((props, ref) => {
+  const { children, as: Component = 'div', ...rest } = props;
+
   return (
-    <Root ref={ref} {...rest}>
-      <Inner>{children}</Inner>
-    </Root>
+    <Component ref={ref} {...rest}>
+      {children}
+    </Component>
   );
 });
+
+interface BadgeInnerProps {
+  children?: ReactNode;
+}
+
+const Inner = forwardRef<BadgeInnerProps, 'span'>((props, ref) => {
+  const { children, as: Component = 'span', ...rest } = props;
+
+  return (
+    <Component ref={ref} {...rest}>
+      {children}
+    </Component>
+  );
+});
+
+export default createComponent(Root, { Root, Inner }, 'Badge');

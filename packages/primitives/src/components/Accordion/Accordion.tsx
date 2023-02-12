@@ -1,20 +1,25 @@
+import { createComponent } from '../../utils';
 import { useAccordion, useAccordionItem } from './useAccordion';
 
 export interface AccordionProps {
   children?: React.ReactNode;
 }
 
-const Accordion = (props: AccordionProps) => {
+const Root = (props: AccordionProps) => {
   const { children, ...rest } = props;
   const { ...accordionProps } = useAccordion();
-  return <div {...rest}>{children}</div>;
+  return (
+    <div {...accordionProps} {...rest}>
+      {children}
+    </div>
+  );
 };
 
 export interface AccordionItemProps {
   children?: React.ReactNode;
 }
 
-const AccordionItem = (props: AccordionItemProps) => {
+const Item = (props: AccordionItemProps) => {
   const { children } = props;
   const { getTriggerProps, getPanelProps } = useAccordionItem({});
   return (
@@ -27,4 +32,4 @@ const AccordionItem = (props: AccordionItemProps) => {
   );
 };
 
-export default Object.assign(Accordion, { Item: AccordionItem });
+export default createComponent(Root, { Root, Item }, 'Accordion');

@@ -1,12 +1,19 @@
-import React from 'react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { useDisclosure } from '../../hooks';
-import { useDropdown } from './useDropdown';
+import { Dropdown, useDropdown } from './';
 
 export default {
   title: 'Components/Dropdown',
-};
+  component: Dropdown,
+} as ComponentMeta<typeof Dropdown>;
 
-export const Base = () => {
+type Story = ComponentStory<typeof Dropdown>;
+
+export const Base: Story = (args) => (
+  <Dropdown.Root {...args}>Dropdown</Dropdown.Root>
+);
+
+export const Hook = () => {
   const { isOpen, toggle } = useDisclosure();
   const { getReferenceProps, getDropdownProps, getItemProps } = useDropdown({
     isOpen,

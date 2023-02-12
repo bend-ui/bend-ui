@@ -7,12 +7,12 @@ export const [TabsProvider, useTabsContext] = createContext<{
 }>('TabsContext');
 
 export interface UseTabsProps {
-  defaultTab?: string;
+  defaultValue?: string;
 }
 
 export const useTabs = (props: UseTabsProps = {}) => {
-  const { defaultTab } = props;
-  const [activeTab, setActiveTab] = useState(defaultTab);
+  const { defaultValue } = props;
+  const [activeTab, setActiveTab] = useState(defaultValue);
 
   const context = {
     activeTab,
@@ -28,13 +28,15 @@ export const useTabList = () => {
   return { getTablistProps };
 };
 
-export const useTab = (value) => {
+export const useTab = (value: string) => {
   const { activeTab, setActiveTab } = useTabsContext();
+  const isActive = activeTab === value;
   const getTabProps = () => ({
     role: 'tab',
     'aria-controls': value,
-    'aria-selected': activeTab === value,
+    'aria-selected': isActive,
     onClick: () => setActiveTab?.(value),
+    'data-state': isActive ? 'active' : 'inactive',
   });
 
   return { getTabProps };
@@ -42,13 +44,13 @@ export const useTab = (value) => {
 
 export const useTabPanel = (value) => {
   const { activeTab } = useTabsContext();
+  const isActive = activeTab === value;
 
-  const getTabpanelProps = () => ({
+  const getTabPanelProps = () => ({
     role: 'tabpanel',
     'aria-labelledby': value,
-    style: {
-      display: activeTab === value ? undefined : 'none',
-    },
+    'data-state': isActive ? 'active' : 'inactive',
+    hidden: isActive ? false : true,
   });
-  return { getTabpanelProps };
+  return { getTabpanelProps: getTabPanelProps };
 };

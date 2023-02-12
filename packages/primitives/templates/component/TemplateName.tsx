@@ -14,4 +14,4 @@ const Root = forwardRef<TemplateNameRootProps, 'div'>((props, ref) => {
   );
 });
 
-export default createComponent(Root, { Root });
+export default createComponent(Root, { Root }, 'TemplateName');

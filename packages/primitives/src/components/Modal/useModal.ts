@@ -8,7 +8,10 @@ import {
 import { useLockBodyScroll } from '../../hooks';
 import { createContext } from '../../utils';
 
-export const [ModalProvider, useModalContext] = createContext('ModalContext');
+type ContextType = ReturnType<typeof useModal>;
+
+export const [ModalProvider, useModalContext] =
+  createContext<ContextType>('ModalContext');
 
 export interface UseModalProps {
   isOpen: boolean;
@@ -20,16 +23,16 @@ export const useModal = (props: UseModalProps) => {
 
   useLockBodyScroll();
 
-  const { floating, context } = useFloating({
+  const data = useFloating({
     open: isOpen,
     onOpenChange: onClose,
   });
 
-  const { getFloatingProps, getReferenceProps } = useInteractions([
-    useClick(context),
-    useRole(context),
-    useDismiss(context),
+  const interactions = useInteractions([
+    useClick(data.context),
+    useRole(data.context),
+    useDismiss(data.context),
   ]);
 
-  return { floating, getFloatingProps, getReferenceProps };
+  return { isOpen, onClose, ...data, ...interactions };
 };

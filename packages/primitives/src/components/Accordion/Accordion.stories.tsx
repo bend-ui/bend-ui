@@ -7,9 +7,11 @@ export default {
   component: Accordion,
 } as ComponentMeta<typeof Accordion>;
 
-export const Base: ComponentStory<typeof Accordion> = (args) => {
+type Story = ComponentStory<typeof Accordion>;
+
+export const Base: Story = (args) => {
   return (
-    <Accordion {...args}>
+    <Accordion.Root {...args}>
       <Accordion.Item>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque
@@ -34,6 +36,6 @@ export const Base: ComponentStory<typeof Accordion> = (args) => {
           dolores animi.
         </p>
       </Accordion.Item>
-    </Accordion>
+    </Accordion.Root>
   );
 };

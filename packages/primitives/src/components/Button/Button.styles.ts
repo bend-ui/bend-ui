@@ -13,3 +13,17 @@ export const buttonStyles: { root: CSSProperties } = {
     textDecoration: 'none',
   },
 };
+
+export const twStyles = {
+  root: [
+    'inline-flex',
+    'items-center',
+    'justify-center',
+    'gap-[1ch]',
+    'whitespace-nowrap',
+    'select-none',
+    'bg-[unset]',
+    'no-underline',
+    'border-[unset]',
+  ],
+};

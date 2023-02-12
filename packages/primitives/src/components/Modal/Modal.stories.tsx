@@ -1,51 +1,56 @@
-import React from 'react';
-import { Meta } from '@storybook/react';
-import { FloatingOverlay } from '@floating-ui/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { useDisclosure } from '../../hooks';
-import { Portal } from '../Portal';
-import { useModal } from './useModal';
+import { Modal } from './';
 
 export default {
   title: 'Components/Modal',
-} as Meta;
+  component: Modal,
+} as ComponentMeta<typeof Modal>;
 
-export const Base = () => {
+type Story = ComponentStory<typeof Modal>;
+
+export const Base: Story = (args) => {
   const { isOpen, toggle } = useDisclosure();
-
-  const { getReferenceProps, reference, getFloatingProps, floating } = useModal(
-    { isOpen }
-  );
 
   return (
     <div>
-      <button {...getReferenceProps({ ref: reference, onClick: toggle })}>
-        Open modal
-      </button>
-      <Portal>
-        {isOpen && (
-          <FloatingOverlay
-            style={{
-              display: 'grid',
-              placeItems: 'center',
-              background: 'rgba(25, 25, 25, 0.8)',
-            }}
-          >
-            <div {...getFloatingProps({ ref: floating })}>
-              <h3>Join our Newsletter</h3>
+      <button onClick={toggle}>Open modal</button>
+
+      <Modal.Root {...args} isOpen={isOpen} onClose={toggle}>
+        <Modal.Dialog>
+          <Modal.Content>
+            {/* Modal Header */}
+            <div>
+              <h3>Terms of Service</h3>
+              <Modal.Dismiss />
+            </div>
+            {/* Modal body */}
+            <div>
               <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Suscipit asperiores molestiae ex.
+                With less than a month to go before the European Union enacts
+                new consumer privacy laws for its citizens, companies around the
+                world are updating their terms of service agreements to comply.
               </p>
-              <input aria-label="Email" type="email" placeholder="Email" />
-              <button>Subscribe</button>
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi
-                molestias hic voluptatibus.
+                The European Union’s General Data Protection Regulation
+                (G.D.P.R.) goes into effect on May 25 and is meant to ensure a
+                common set of data rights in the European Union. It requires
+                organizations to notify users as soon as possible of high-risk
+                data breaches that could personally affect them.
               </p>
             </div>
-          </FloatingOverlay>
-        )}
-      </Portal>
+            {/* Modal footer */}
+            <div>
+              <button type="button" onClick={toggle}>
+                I accept
+              </button>
+              <button type="button" onClick={toggle}>
+                Decline
+              </button>
+            </div>
+          </Modal.Content>
+        </Modal.Dialog>
+      </Modal.Root>
     </div>
   );
 };
