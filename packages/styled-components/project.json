@@ -1,5 +1,5 @@
 {
-  "name": "packages-styled-components",
+  "name": "styled-components",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/styled-components/src",
   "projectType": "library",

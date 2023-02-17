@@ -1,5 +1,5 @@
 {
-  "name": "packages-emotion",
+  "name": "emotion",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/emotion/src",
   "projectType": "library",

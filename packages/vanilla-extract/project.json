@@ -1,5 +1,5 @@
 {
-  "name": "packages-vanilla-extract",
+  "name": "vanilla-extract",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/vanilla-extract/src",
   "projectType": "library",

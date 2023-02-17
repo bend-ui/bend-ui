@@ -1,14 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  stories: [],
   addons: [
-    {
-      name: '@storybook/addon-essentials',
-      options: {
-        backgrounds: false,
-      },
-    },
     '@storybook/addon-docs',
     'storybook-dark-mode',
     'storybook-addon-performance/register',
