@@ -1,17 +1,18 @@
+import { Ref } from 'react';
 import { createComponent, forwardRef } from '../../utils';
 
-export type CheckboxProps = React.ComponentPropsWithoutRef<'input'>;
+export type CheckboxProps = {
+  wrapperProps?: Record<any, any>;
+  wrapperRef?: Ref<HTMLLabelElement>;
+};
 
 const Root = forwardRef<CheckboxProps, 'input'>((props, ref) => {
-  const { children, value, ...rest } = props;
+  const { children, value, wrapperProps, wrapperRef, className, id, ...rest } =
+    props;
 
-  // TODO: use warn function
-  if (rest.checked === undefined) {
-    console.warn('You have forget to use {...inputProps} on the element');
-  }
   return (
-    <label>
-      <input id="aCheckbox" ref={ref} type="checkbox" value={value} {...rest} />
+    <label ref={wrapperRef} className={className} {...wrapperRef}>
+      <input ref={ref} id={id} type="checkbox" value={value} hidden {...rest} />
       {children}
     </label>
   );

@@ -7,7 +7,7 @@ import {
   useRole,
 } from '@floating-ui/react';
 
-type UseDropdownProps = {
+export type UseDropdownProps = {
   isOpen: boolean;
   onOpenChange(isOpen?: boolean): void;
 };
@@ -39,6 +39,8 @@ export const useDropdown = (props: UseDropdownProps) => {
   });
 
   return {
+    isOpen,
+    onOpenChange,
     reference,
     floating,
     getDropdownProps,

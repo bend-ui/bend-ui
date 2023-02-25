@@ -1,20 +1,39 @@
-import { ReactNode } from 'react';
+import { cloneElement, ReactNode } from 'react';
+import { getValidChild } from '@particles/react-utils';
 import { createComponent, forwardRef } from '../../utils';
-import { UseTooltipProps } from './useTooltip';
+import { useTooltip, UseTooltipProps } from './useTooltip';
 
 export interface TooltipProps extends UseTooltipProps {
-  content?: ReactNode;
-  children?: ReactNode;
+  children: ReactNode;
+  content: ReactNode;
 }
 
-const Root = forwardRef<TooltipProps, 'span'>((props, ref) => {
-  const { children, as: Component = 'span', content, ...rest } = props;
+const Root = forwardRef<TooltipProps, 'div'>((props, ref) => {
+  const { children, as: Component = 'div', content, ...rest } = props;
+  const { isOpen, getTooltipProps, getTriggerProps } = useTooltip();
+
+  const child = getValidChild(children);
+
   return (
     <>
-      {children}
-      <Component ref={ref} {...rest}>
-        {content}
-      </Component>
+      {cloneElement(child, {
+        ...getTriggerProps(),
+      })}
+      {isOpen && (
+        <Component
+          ref={ref}
+          {...getTooltipProps(
+            {
+              ...rest,
+              'data-state': isOpen ? 'open' : 'close',
+              hidden: !isOpen,
+            },
+            ref
+          )}
+        >
+          {content}
+        </Component>
+      )}
     </>
   );
 });

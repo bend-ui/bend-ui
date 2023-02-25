@@ -1,25 +1,27 @@
-/* eslint-disable @typescript-eslint/ban-types */
-export const createComponent = <
+export function createComponent<
   Component,
-  SubComponents extends object = {},
-  Name extends string = string
+  CompoundComponents extends Record<string, React.ComponentType>
 >(
   component: Component,
-  subComponents?: SubComponents,
-  name?: Name
-) => {
-  const displayName = name ? `${name}.` : '';
+  compoundComponents?: CompoundComponents,
+  displayName?: string
+) {
+  const namedComponents = {};
+  if (compoundComponents) {
+    for (const [componentName, component] of Object.entries(
+      compoundComponents
+    )) {
+      if (displayName) {
+        component.displayName = `${displayName}.${componentName}`;
+      } else {
+        component.displayName = `${displayName}.${componentName}`;
+      }
+      namedComponents[componentName] = component;
+    }
+  }
 
-  // TODO: Add utility to append displayName
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  /* @ts-ignore */
-  // component.displayName = name ?? 'ComponentWithNoName';
-
-  // Assign a displayName for each sub-components
-  Object.keys(subComponents).forEach(
-    (component) =>
-      (subComponents[component].displayName = displayName + component)
-  );
-
-  return Object.assign(component, subComponents);
-};
+  return Object.assign(component, {
+    ...(namedComponents as CompoundComponents),
+    displayName,
+  });
+}

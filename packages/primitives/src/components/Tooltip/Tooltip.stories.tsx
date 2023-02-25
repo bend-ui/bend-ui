@@ -11,16 +11,24 @@ export default {
 
 type Story = ComponentStory<typeof Tooltip>;
 
+export const Primitive: Story = (args) => {
+  return (
+    <Tooltip.Root {...args}>
+      <button>Hover me</button>
+    </Tooltip.Root>
+  );
+};
+
+Primitive.args = {
+  content: 'Tooltip content',
+};
+
 export const Hook: Story = (args) => {
   const { isOpen, getTriggerProps, getTooltipProps } = useTooltip(args);
   return (
     <>
       <button {...getTriggerProps()}>Hover me</button>
-      {isOpen && (
-        <span data-component="tooltip" {...getTooltipProps()}>
-          Tooltip content
-        </span>
-      )}
+      {isOpen && <span {...getTooltipProps()}>Tooltip content</span>}
     </>
   );
 };

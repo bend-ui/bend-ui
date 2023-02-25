@@ -9,14 +9,10 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --color-bg-primary: theme(colors.gray.100);
-  --color-text-primary: rgb(50, 50, 50);
-}
-
-.dark-mode {
-  --color-bg-primary: theme(colors.gray.800);
-  --color-text-primary: rgb(200, 200, 200);
+@layer base {
+  body {
+    @apply text-black dark:text-white;
+  }
 }
 
 /* Basic components styles */
