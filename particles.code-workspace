@@ -43,6 +43,10 @@
     {
       "name": "🧪 Dashboard (Stitches)",
       "path": "apps/dashboard-stitches"
+    },
+    {
+      "name": "🧪 Dashboard (Tailwind)",
+      "path": "apps/dashboard-tailwind"
     }
   ],
   "settings": {
