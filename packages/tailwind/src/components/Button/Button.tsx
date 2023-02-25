@@ -1,39 +1,37 @@
 import { ReactNode } from 'react';
-import { cva, type VariantProps } from 'cva';
-import { twMerge } from 'tailwind-merge';
 import {
   Button as ButtonPrimitive,
   ButtonProps as ButtonPrimitiveProps,
   forwardRef,
 } from '@particles/primitives';
 import { TbLoader } from 'react-icons/tb';
+import { createStyles } from '../../styles';
 
 const tokens = {
   colors: {
     primary: 'bg-indigo-500',
     'on-primary': 'text-white',
-    secondary: 'bg-slate-700 dark:bg-slate-50',
-    'on-secondary': 'text-white dark:text-slate-900',
-    'secondary-emphasis': 'hover:bg-slate-900 dark:hover:bg-slate-200',
+    secondary: 'bg-white dark:bg-shark-900',
+    'on-secondary': 'text-shark-900 dark:text-shark-50',
+    'secondary-emphasis': 'hover:bg-shark-50 dark:hover:bg-shark-800',
   },
 };
 
-const buttonStyles = cva(
-  [
-    'font-semibold',
-    'border',
-    'rounded-md',
-    'flex',
-    'items-center',
-    'disabled:opacity-50',
-    'disabled:pointer-events-none',
-    'focus:outline-none',
-    'focus:ring-2',
-    'focus:ring-slate-400',
-    'focus:ring-offset-2',
-    'dark:focus:ring-slate-400',
-  ],
-  {
+const useStyles = createStyles({
+  root: {
+    base: [
+      'font-semibold',
+      'border',
+      'rounded-lg',
+      'flex',
+      'items-center',
+      'disabled:opacity-50',
+      'disabled:pointer-events-none',
+      'focus:outline-none',
+      'focus-visible:ring',
+      'focus-visible:ring-indigo-300',
+      'drop-shadow',
+    ],
     variants: {
       palette: {
         primary: [
@@ -43,9 +41,9 @@ const buttonStyles = cva(
           'hover:bg-indigo-600',
         ],
         secondary: [
-          'bg-neutral',
+          'bg-shark',
           tokens.colors['on-secondary'],
-          'border-slate-300',
+          'border-shark-300',
           tokens.colors['secondary-emphasis'],
         ],
         danger: [
@@ -64,14 +62,14 @@ const buttonStyles = cva(
       palette: 'primary',
       size: 'medium',
     },
-  }
-);
+  },
+});
 
-export interface ButtonProps
-  extends ButtonPrimitiveProps,
-    VariantProps<typeof buttonStyles> {
+export interface ButtonProps extends ButtonPrimitiveProps {
   // The children of the Button
   children?: ReactNode;
+  palette?: 'primary' | 'secondary' | 'danger';
+  size?: 'small' | 'medium';
   // Icon to place at the start of the Button
   icon?: ReactNode;
   // Icon to place at the end of the Button
@@ -79,6 +77,9 @@ export interface ButtonProps
   // Loading state
   isLoading?: boolean;
   loadingLabel?: string;
+  classNames?: {
+    root: string;
+  };
 }
 
 export const Button = forwardRef<ButtonProps, 'button'>((props, ref) => {
@@ -91,12 +92,17 @@ export const Button = forwardRef<ButtonProps, 'button'>((props, ref) => {
     isLoading,
     loadingLabel,
     disabled,
+    className,
+    classNames,
     ...rest
   } = props;
+
+  const { classes, cn } = useStyles({ palette, size }, { classNames });
+
   return (
-    <ButtonPrimitive
+    <ButtonPrimitive.Root
       ref={ref}
-      className={twMerge(buttonStyles({ palette, size }))}
+      className={cn(classes.root, className)}
       disabled={disabled || isLoading}
       {...rest}
     >
@@ -122,7 +128,7 @@ export const Button = forwardRef<ButtonProps, 'button'>((props, ref) => {
           )}
         </>
       )}
-    </ButtonPrimitive>
+    </ButtonPrimitive.Root>
   );
 });
 

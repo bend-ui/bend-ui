@@ -44,3 +44,17 @@ AsLink.args = {
   as: 'a',
   href: '/',
 };
+
+export const WithClassName = Template.bind({});
+WithClassName.args = {
+  children: 'Button',
+  className: 'bg-yellow-500 hover:bg-yellow-700',
+};
+
+export const WithClassNames = Template.bind({});
+WithClassNames.args = {
+  children: 'Button',
+  classNames: {
+    root: 'bg-yellow-500 hover:bg-yellow-700',
+  },
+};

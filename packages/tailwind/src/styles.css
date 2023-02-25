@@ -1,3 +1,20 @@
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* Globals */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-zinc-900 dark:text-zinc-50 bg-canvas;
+  }
+
+  hr {
+    @apply border-surface-accent;
+  }
+}
