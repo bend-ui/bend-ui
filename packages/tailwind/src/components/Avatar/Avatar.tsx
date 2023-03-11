@@ -1,10 +1,10 @@
-import { ReactNode } from 'react';
 import {
   Avatar as AvatarPrimitive,
   createComponent,
   forwardRef,
 } from '@particles/primitives';
 import { createStyles } from '../../styles';
+import type { ReactNode } from 'react';
 
 export type AvatarProps = {
   src: string;
@@ -36,10 +36,7 @@ const Avatar = forwardRef<AvatarProps, 'div'>((props, ref) => {
   const { classes, cn } = useStyles({ size });
   return (
     <AvatarPrimitive.Root ref={ref} className={cn(classes.root, className)}>
-      <AvatarPrimitive.Image
-        src={src}
-        className={classes.image}
-      ></AvatarPrimitive.Image>
+      <AvatarPrimitive.Image src={src} className={classes.image} />
       {fallback && (
         <AvatarPrimitive.Fallback className={classes.fallback}>
           {fallback}

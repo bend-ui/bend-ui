@@ -1,5 +1,6 @@
-import { cva, CxOptions } from 'cva';
+import { cva } from 'cva';
 import { cn } from './cn';
+import type { CxOptions } from 'cva';
 
 type ClassesObject = {
   base: CxOptions;

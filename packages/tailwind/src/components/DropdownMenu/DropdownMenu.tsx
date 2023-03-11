@@ -3,7 +3,6 @@ import {
   Dropdown as DropdownPrimitive,
   forwardRef,
 } from '@particles/primitives';
-import { ReactNode } from 'react';
 import {
   TbBookmark,
   TbLockOpen,
@@ -12,6 +11,7 @@ import {
 } from 'react-icons/tb';
 import { createStyles } from '../../styles';
 import { Button } from '../Button';
+import type { ReactNode } from 'react';
 
 export type DropdownMenuProps = {
   children?: ReactNode;

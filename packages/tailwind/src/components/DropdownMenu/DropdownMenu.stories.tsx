@@ -1,5 +1,5 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { DropdownMenu } from './';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default { component: DropdownMenu } as ComponentMeta<
   typeof DropdownMenu

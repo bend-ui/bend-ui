@@ -3,8 +3,14 @@ import React from 'react';
 import { useDarkMode } from 'storybook-dark-mode';
 import { DocsContainer } from '@storybook/addon-docs';
 import { themeDark, themeLight } from './themes';
+import type { DocsContainerProps } from '@storybook/addon-docs';
+import type { ReactNode } from 'react';
 
-const Container = ({ children, context }) => {
+type ContainerProps = DocsContainerProps & {
+  children?: ReactNode;
+};
+
+const Container = ({ children, context }: ContainerProps) => {
   const dark = useDarkMode();
 
   return (
@@ -12,7 +18,7 @@ const Container = ({ children, context }) => {
       context={{
         ...context,
         storyById: (id) => {
-          const storyContext = context.storyById(id);
+          const storyContext = context?.storyById(id);
           return {
             ...storyContext,
             parameters: {

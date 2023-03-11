@@ -1,8 +1,8 @@
-import { ComponentStory, Meta } from '@storybook/react';
 import { useState } from 'react';
 import { Button } from '../Button';
 import { Input } from '../Input';
 import { Modal } from './';
+import type { ComponentStory, Meta } from '@storybook/react';
 
 export default {
   component: Modal,

@@ -4,26 +4,23 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 const Story: ComponentMeta<typeof Button> = {
   component: Button,
-  title: 'Button',
 };
 export default Story;
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+const Template: ComponentStory<typeof Button> = (args) => (
+  <Button {...args}>Button</Button>
+);
 
 export const Primary = Template.bind({});
-Primary.args = {
-  children: 'Button',
-};
+Primary.args = {};
 
 export const WithIcon = Template.bind({});
 WithIcon.args = {
-  children: 'Button',
   icon: <TbRefresh />,
 };
 
 export const WithIconEnd = Template.bind({});
 WithIconEnd.args = {
-  children: 'Button',
   iconEnd: <TbRefresh />,
 };
 
@@ -40,21 +37,25 @@ Loading.args = {
 
 export const AsLink = Template.bind({});
 AsLink.args = {
-  children: 'Button',
   as: 'a',
   href: '/',
 };
 
 export const WithClassName = Template.bind({});
 WithClassName.args = {
-  children: 'Button',
   className: 'bg-yellow-500 hover:bg-yellow-700',
 };
 
 export const WithClassNames = Template.bind({});
 WithClassNames.args = {
-  children: 'Button',
   classNames: {
     root: 'bg-yellow-500 hover:bg-yellow-700',
+  },
+};
+
+export const Variants = Template.bind({});
+Variants.parameters = {
+  variants: {
+    enable: true,
   },
 };

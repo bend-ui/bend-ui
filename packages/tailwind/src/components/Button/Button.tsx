@@ -1,11 +1,8 @@
-import { ReactNode } from 'react';
-import {
-  Button as ButtonPrimitive,
-  ButtonProps as ButtonPrimitiveProps,
-  forwardRef,
-} from '@particles/primitives';
+import { Button as ButtonPrimitive, forwardRef } from '@particles/primitives';
 import { TbLoader } from 'react-icons/tb';
+import type { ButtonProps as ButtonPrimitiveProps } from '@particles/primitives';
 import { createStyles } from '../../styles';
+import type { ReactNode } from 'react';
 
 const tokens = {
   colors: {
@@ -20,28 +17,29 @@ const tokens = {
 const useStyles = createStyles({
   root: {
     base: [
+      'flex',
+      'items-center',
       'font-semibold',
       'border',
       'rounded-lg',
-      'flex',
-      'items-center',
       'disabled:opacity-50',
       'disabled:pointer-events-none',
       'focus:outline-none',
       'focus-visible:ring',
       'focus-visible:ring-indigo-300',
       'drop-shadow',
+      'whitespace-nowrap',
     ],
     variants: {
       palette: {
         primary: [
-          'bg-primary',
+          'bg-indigo-500',
           tokens.colors['on-primary'],
           'border-transparent',
           'hover:bg-indigo-600',
         ],
         secondary: [
-          'bg-shark',
+          'bg-shark-500',
           tokens.colors['on-secondary'],
           'border-shark-300',
           tokens.colors['secondary-emphasis'],

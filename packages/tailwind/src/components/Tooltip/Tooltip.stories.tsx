@@ -1,6 +1,6 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import Button from '../Button/Button';
 import { Tooltip } from './';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   title: 'Tooltip',

@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import {
   createComponent,
   forwardRef,
@@ -6,6 +5,7 @@ import {
 } from '@particles/primitives';
 import { twMerge } from 'tailwind-merge';
 import { createStyles } from '../../styles';
+import type { ReactNode } from 'react';
 
 export interface TooltipProps {
   children: ReactNode;

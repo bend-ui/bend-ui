@@ -2,10 +2,10 @@ import {
   createComponent,
   forwardRef,
   Modal as ModalPrimitive,
-  ModalRootProps,
 } from '@particles/primitives';
-import { ReactNode } from 'react';
+import type { ModalRootProps } from '@particles/primitives';
 import { createStyles } from '../../styles';
+import type { ReactNode } from 'react';
 
 export type ModalProps = ModalRootProps & {
   children?: ReactNode;
@@ -74,7 +74,7 @@ const Modal = forwardRef<ModalProps, 'div'>((props, ref) => {
                 <ModalPrimitive.Description className="text-lg font-light">
                   Enter your email and choose a password to setup your account
                 </ModalPrimitive.Description>
-                <ModalPrimitive.Dismiss></ModalPrimitive.Dismiss>
+                <ModalPrimitive.Dismiss />
               </div>
               <div className={classes.body}>{children}</div>
               <div className={classes.footer}>Footer</div>

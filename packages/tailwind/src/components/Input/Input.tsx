@@ -1,6 +1,6 @@
 import { createComponent, forwardRef } from '@particles/primitives';
-import { ReactNode } from 'react';
 import { createStyles } from '../../styles';
+import type { ReactNode } from 'react';
 
 export type InputProps = {
   children?: never;
@@ -15,6 +15,7 @@ const useStyles = createStyles({
   },
   input: {
     base: [
+      'flex-1',
       'border',
       'border-surface-accent',
       'text-sm',
@@ -52,6 +53,7 @@ const useStyles = createStyles({
 const Input = forwardRef<InputProps, 'input'>((props, ref) => {
   const {
     as: Component = 'input',
+    className,
     type = 'text',
     size = 'md',
     icon,
@@ -60,7 +62,7 @@ const Input = forwardRef<InputProps, 'input'>((props, ref) => {
   } = props;
   const { classes, cn } = useStyles({ size, withIcon: !!icon });
   return (
-    <div className={classes.root}>
+    <div className={cn(classes.root, className)}>
       {icon && <span className={classes.icon}>{icon}</span>}
       <Component
         ref={ref}

@@ -7,6 +7,15 @@ import { twMerge } from 'tailwind-merge';
 import { createStyles } from '../../styles';
 
 const useStyles = createStyles({
+  root: {
+    base: [
+      'overflow-hidden',
+      'rounded-lg',
+      'border',
+      'border-gray-200',
+      'shadow-md',
+    ],
+  },
   list: {
     base: [
       'flex',
@@ -38,9 +47,15 @@ const useStyles = createStyles({
 });
 
 const Tabs = forwardRef((props, ref) => {
+  const { children, ...rest } = props;
   const { classes } = useStyles();
   return (
-    <Primitive.Root ref={ref} defaultValue="tab1">
+    <Primitive.Root
+      ref={ref}
+      className={classes.root}
+      defaultValue="tab1"
+      {...rest}
+    >
       <Primitive.List className={twMerge(classes.list)}>
         <Primitive.Tab value="tab1" className={classes.tab}>
           Tab 1

@@ -28,6 +28,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        transparent: 'transparent',
+        current: 'currentColor',
         primary: 'var(--particles-colors-primary)',
         secondary: 'var(--particles-colors-secondary)',
         canvas: 'var(--particles-colors-canvas)',

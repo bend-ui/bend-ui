@@ -3,8 +3,8 @@ import {
   createComponent,
   forwardRef,
 } from '@particles/primitives';
-import { ReactNode } from 'react';
 import { createStyles } from '../../styles';
+import type { ReactNode } from 'react';
 
 export type CheckboxProps = {
   children?: never;
@@ -21,15 +21,15 @@ const useStyles = createStyles({
       'w-4',
       'h-4',
       'text-white',
-      'bg-shark-100',
-      'border-shark-300',
+      'bg-neutral-100',
+      'border-neutral-300',
       'rounded',
       'focus:ring-indigo-500',
       'dark:focus:ring-indigo-600',
-      'dark:ring-offset-shark-800',
+      'dark:ring-offset-neutral-800',
       'focus:ring-2',
-      'dark:bg-shark-700',
-      'dark:border-shark-600',
+      'dark:bg-neutral-700',
+      'dark:border-neutral-600',
     ],
   },
   label: {
