@@ -9,8 +9,9 @@
     "plugin:import/typescript",
     "plugin:react/jsx-runtime"
   ],
-  "plugins": ["@nrwl/nx"],
+  "plugins": ["@nrwl/nx", "autofix"],
   "rules": {
+    "arrow-body-style": ["error", "as-needed"],
     "import/no-unresolved": "error",
     "import/no-named-as-default": "off",
     "import/default": "off",
@@ -48,6 +49,12 @@
       {
         "component": true,
         "html": true
+      }
+    ],
+    "@typescript-eslint/consistent-type-imports": [
+      "error",
+      {
+        "prefer": "type-imports"
       }
     ]
   },
