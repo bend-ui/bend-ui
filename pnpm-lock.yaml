@@ -79,7 +79,7 @@ importers:
       eslint-plugin-autofix: ^1.1.0
       eslint-plugin-import: ^2.27.5
       eslint-plugin-jsx-a11y: 6.7.1
-      eslint-plugin-react: 7.32.1
+      eslint-plugin-react: 7.32.2
       eslint-plugin-react-hooks: 4.6.0
       eslint-plugin-storybook: ^0.6.8
       eslint-plugin-tailwindcss: ^3.9.0
@@ -211,7 +211,7 @@ importers:
       eslint-plugin-autofix: 1.1.0_eslint@8.32.0
       eslint-plugin-import: 2.27.5_bzolr7xl6xcwr64wsu2tr4eimm
       eslint-plugin-jsx-a11y: 6.7.1_eslint@8.32.0
-      eslint-plugin-react: 7.32.1_eslint@8.32.0
+      eslint-plugin-react: 7.32.2_eslint@8.32.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.32.0
       eslint-plugin-storybook: 0.6.10_et5x32uxl7z5ldub3ye5rhlyqm
       eslint-plugin-tailwindcss: 3.9.0_tailwindcss@3.2.7
@@ -4549,7 +4549,7 @@ packages:
       p-reduce: 2.1.0
       pacote: 13.6.1
       pify: 5.0.0
-      semver: 7.3.4
+      semver: 7.3.8
       slash: 3.0.0
       validate-npm-package-license: 3.0.4
       validate-npm-package-name: 4.0.0
@@ -13147,7 +13147,7 @@ packages:
       eslint-import-resolver-typescript: 3.5.3_ps7hf4l2dvbuxvtusmrfhmzsba
       eslint-plugin-import: 2.27.5_bzolr7xl6xcwr64wsu2tr4eimm
       eslint-plugin-jsx-a11y: 6.7.1_eslint@8.32.0
-      eslint-plugin-react: 7.32.1_eslint@8.32.0
+      eslint-plugin-react: 7.32.2_eslint@8.32.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.32.0
       typescript: 4.9.5
     transitivePeerDependencies:
@@ -13305,8 +13305,8 @@ packages:
       eslint: 8.32.0
     dev: true
 
-  /eslint-plugin-react/7.32.1_eslint@8.32.0:
-    resolution: {integrity: sha512-vOjdgyd0ZHBXNsmvU+785xY8Bfe57EFbTYYk8XrROzWpr9QBvpjITvAXt9xqcE6+8cjR/g1+mfumPToxsl1www==}
+  /eslint-plugin-react/7.32.2_eslint@8.32.0:
+    resolution: {integrity: sha512-t2fBMa+XzonrrNkyVirzKlvn5RXzzPwRHtMvLAtVZrt8oxgnTQaYbU6SXTOO1mwQgp1y5+toMSKInnzGr0Knqg==}
     engines: {node: '>=4'}
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
@@ -14652,7 +14652,7 @@ packages:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 3.0.5
+      minimatch: 3.1.2
       once: 1.4.0
       path-is-absolute: 1.0.1
 
@@ -16178,7 +16178,7 @@ packages:
       async: 3.2.4
       chalk: 4.1.2
       filelist: 1.0.4
-      minimatch: 3.0.5
+      minimatch: 3.1.2
 
   /javascript-stringify/2.1.0:
     resolution: {integrity: sha512-JVAfqNPTvNq3sB/VHQJAFxN/sPgKnsKrCwyRt15zwNCdrMMJDdcEOdubuy+DuJYYdm0ox1J4uzEuYKkN+9yhVg==}
@@ -18538,7 +18538,7 @@ packages:
       array-differ: 3.0.0
       array-union: 2.1.0
       arrify: 2.0.1
-      minimatch: 3.0.5
+      minimatch: 3.1.2
     dev: true
 
   /multipipe/1.0.2:
