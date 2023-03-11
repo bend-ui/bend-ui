@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Button, ButtonGroup, Center, Stack, Text } from '@particles/stitches';
+import { Button, ButtonGroup, Center, Stack } from '@particles/stitches';
 
 export function Index() {
   return (

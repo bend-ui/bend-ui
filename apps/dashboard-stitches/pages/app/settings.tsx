@@ -125,7 +125,7 @@ export default function Settings() {
                 <Table.Column>Amount</Table.Column>
                 <Table.Column>Date</Table.Column>
                 <Table.Column>Status</Table.Column>
-                <Table.Column></Table.Column>
+                <Table.Column />
               </Table.Header>
               <Table.Body>
                 <Table.Row>

@@ -20,7 +20,7 @@ import { Logo, NavLink } from '../../../components';
 export const Layout = (props) => {
   return (
     <AppShell>
-      <AppShell.Header></AppShell.Header>
+      <AppShell.Header />
       <AppShell.Sidebar>
         <Stack>
           <Link href="/">

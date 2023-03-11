@@ -63,7 +63,7 @@ export default function TeamTab() {
             <Table.Heading>Status</Table.Heading>
             <Table.Heading>Email address</Table.Heading>
             <Table.Heading>Teams</Table.Heading>
-            <Table.Heading></Table.Heading>
+            <Table.Heading />
           </Table.Row>
         </thead>
         <tbody>
@@ -95,10 +95,10 @@ export default function TeamTab() {
               <Badge>Design</Badge>
               <Badge>Product</Badge>
             </Table.Cell>
-            <Table.Cell></Table.Cell>
+            <Table.Cell />
           </Table.Row>
           <Table.Row>
-            <Table.Cell></Table.Cell>
+            <Table.Cell />
             <Table.Cell>
               <Badge>Active</Badge>
             </Table.Cell>
@@ -107,20 +107,20 @@ export default function TeamTab() {
               <Badge>Design</Badge>
               <Badge>Software Engineering</Badge>
             </Table.Cell>
-            <Table.Cell></Table.Cell>
+            <Table.Cell />
           </Table.Row>
           <Table.Row>
-            <Table.Cell></Table.Cell>
+            <Table.Cell />
             <Table.Cell>
               <Badge>Offline</Badge>
             </Table.Cell>
-            <Table.Cell></Table.Cell>
-            <Table.Cell></Table.Cell>
-            <Table.Cell></Table.Cell>
+            <Table.Cell />
+            <Table.Cell />
+            <Table.Cell />
           </Table.Row>
         </tbody>
       </Table>
-      <Pagination></Pagination>
+      <Pagination />
     </Card>
   );
 }

@@ -66,7 +66,7 @@ export default function Settings() {
                 </div>
                 <div>
                   <label htmlFor="">Country</label>
-                  <Select></Select>
+                  <Select />
                 </div>
               </Stack>
             </form>

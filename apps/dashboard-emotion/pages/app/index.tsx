@@ -74,7 +74,7 @@ export default function Application() {
                     <Table.Heading>Delivery date</Table.Heading>
                     <Table.Heading>Status</Table.Heading>
                     <Table.Heading>Executed by</Table.Heading>
-                    <Table.Heading></Table.Heading>
+                    <Table.Heading />
                   </Table.Row>
                 </thead>
                 <tbody>
