@@ -1,7 +1,6 @@
 import '@fontsource/inter';
 import { createTheme, theme as defaultTheme } from '@particles/theme';
 import { DocsContainer } from '@storybook/addon-docs';
-import { DecoratorFn } from '@storybook/react';
 import { themes } from '@storybook/theming';
 import { useDarkMode } from 'storybook-dark-mode';
 import {
@@ -10,6 +9,9 @@ import {
 } from '../src/components/ToastProvider/ToastProvider';
 import { ParticlesProvider } from '../src/theme/ParticlesProvider';
 import { themeDark, themeLight } from './themes';
+import type { ReactNode } from 'react';
+import type { DocsContainerProps } from '@storybook/addon-docs';
+import type { DecoratorFn } from '@storybook/react';
 
 export const globalTypes = {
   theme: {
@@ -31,8 +33,8 @@ const modernTheme = createTheme({
   },
 });
 
-const getTheme = (themeName) => {
-  return {
+const getTheme = (themeName) =>
+  ({
     default: { theme: defaultTheme, defaultProps: {} },
     modern: {
       theme: modernTheme,
@@ -42,10 +44,13 @@ const getTheme = (themeName) => {
         },
       },
     },
-  }[themeName];
+  }[themeName]);
+
+type ContainerProps = DocsContainerProps & {
+  children?: ReactNode;
 };
 
-const Container = ({ children, context }) => {
+const Container = ({ children, context }: ContainerProps) => {
   const isDark = useDarkMode();
 
   return (
