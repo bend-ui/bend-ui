@@ -1,9 +1,9 @@
-// import { useEffect, useState } from 'react';
-import { InferGetStaticPropsType } from 'next';
-import { Avatar, Button, Input } from '@particles/tailwind';
 import { Layout } from '../../components';
+import { MessageList } from './MessageList';
+import { MessageView } from './MessageView';
+import type { InferGetStaticPropsType } from 'next';
 
-const users = [
+export const users = [
   {
     id: 1,
     username: 'phoenix',
@@ -35,7 +35,7 @@ const data = [
       {
         from: 1,
         body: "Hey Olivia, I've finished with the requirements doc! I made some notes in the gdoc as well for Phoenix to look over.",
-        timestamp: '',
+        timestamp: '1701648720000',
       },
     ],
   },
@@ -46,7 +46,7 @@ const data = [
       {
         from: 2,
         body: "Sure thing, I'll have a look today. They're looking great!",
-        timestamp: '',
+        timestamp: '1701648900000',
       },
     ],
   },
@@ -58,75 +58,9 @@ export default function MessagesPage(
   const { data } = props;
   return (
     <Layout>
-      <div className="flex flex-row w-full h-full">
-        <div className="flex flex-col p-3 overflow-hidden border-r border-neutral-200">
-          {/* header */}
-          <div className="sticky">
-            <div>
-              <div className="font-bold">Messages 40</div>
-              <div>
-                <Button>edit</Button>
-              </div>
-            </div>
-            <div>
-              <Input type="search" name="" id="" placeholder="Search" />
-            </div>
-          </div>
-          {/* Message list */}
-          <div className="overflow-auto flex-1 h-full">
-            {/* Message preview */}
-            {data.map((message) => (
-              <div key={message.id} className="border-b border-neutral-200">
-                <div>
-                  <Avatar
-                    src={
-                      users.find((user) => user.id === message.messages[0].from)
-                        .avatar
-                    }
-                  ></Avatar>
-                  {
-                    users.find((user) => user.id === message.messages[0].from)
-                      .name
-                  }{' '}
-                  @
-                  {
-                    users.find((user) => user.id === message.messages[0].from)
-                      .username
-                  }{' '}
-                  timestamp
-                </div>
-                <div>{message.messages[0].body}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="flex-1">
-          {/* Header */}
-          <div className="border-b border-neutral-200">
-            <div>Avatar + name + status</div>
-            <div>
-              <button>Call</button>
-              <button>Archive</button>
-              <button>View profile</button>
-              <button>more</button>
-            </div>
-          </div>
-          {/* Message feed */}
-          <div></div>
-          {/* Message box */}
-          <div>
-            <textarea
-              name=""
-              id=""
-              cols={30}
-              rows={10}
-              placeholder="Send a message"
-            ></textarea>
-            <button>Emoji</button>
-            <button>More</button>
-            <button>Send</button>
-          </div>
-        </div>
+      <div className="flex h-full w-full flex-row">
+        <MessageList data={data} />
+        <MessageView />
       </div>
     </Layout>
   );

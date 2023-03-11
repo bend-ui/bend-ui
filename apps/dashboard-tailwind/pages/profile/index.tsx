@@ -1,7 +1,7 @@
-import { InferGetStaticPropsType } from 'next';
 import Link from 'next/link';
 import { Avatar, Button } from '@particles/tailwind';
 import { Layout } from '../../components';
+import type { InferGetStaticPropsType } from 'next';
 
 const data = {
   name: 'Olivia Rhye',
@@ -25,16 +25,16 @@ export default function ProfilePage(
   const { data } = props;
   return (
     <Layout>
-      <div className="w-full h-40 bg-gradient-to-r from-violet-500 to-fuchsia-500">
+      <div className="h-40 w-full bg-gradient-to-r from-violet-500 to-fuchsia-500">
         {/* Banner */}
       </div>
-      <div className="px-8 max-w-6xl mx-auto">
-        <div className="flex -mt-8">
+      <div className="mx-auto max-w-6xl px-8">
+        <div className="-mt-8 flex">
           {/* Profile header */}
           <div className="flex items-center gap-4">
-            <div className="flex-0">
+            <div>
               <Avatar
-                className="shadow-md border-4 border-white w-40 h-40"
+                className="h-40 w-40 border-4 border-white shadow-md"
                 src={data.avatar}
               />
             </div>
@@ -43,7 +43,7 @@ export default function ProfilePage(
               <p className="text-base">{data.intro}</p>
             </div>
           </div>
-          <div className="flex gap-2 items-center ml-auto">
+          <div className="ml-auto flex items-center gap-2">
             <Button>More</Button>
             <Button>View portfolio</Button>
             <Button>Follow</Button>
