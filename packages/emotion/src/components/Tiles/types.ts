@@ -1,4 +1,4 @@
-import { DefaultComponentProps } from '../../types';
+import type { DefaultComponentProps } from '../../types';
 
 export interface TilesProps extends DefaultComponentProps {
   columns?: number;

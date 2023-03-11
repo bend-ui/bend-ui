@@ -1,6 +1,6 @@
 import { forwardRef } from '@particles/primitives';
 import { useDefaultProps } from '../../theme';
-import { DefaultComponentProps } from '../../types';
+import type { DefaultComponentProps } from '../../types';
 
 type ChipProps = DefaultComponentProps;
 

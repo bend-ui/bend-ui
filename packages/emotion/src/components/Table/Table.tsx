@@ -1,8 +1,8 @@
 import { createComponent, forwardRef } from '@particles/primitives';
 import { useDefaultProps } from '../../theme';
-import { DefaultComponentProps } from '../../types';
 import { Box } from '../Box';
 import useStyles from './Table.styles';
+import type { DefaultComponentProps } from '../../types';
 
 type TableRowProps = DefaultComponentProps;
 

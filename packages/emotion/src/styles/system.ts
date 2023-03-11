@@ -9,9 +9,9 @@ import {
   position,
   shadow,
   space,
-  CSSObject as SystemPropsCSSObject,
   typography,
 } from 'system-props';
+import type { CSSObject as SystemPropsCSSObject } from 'system-props';
 
 type VariantsObject = {
   variants?: {

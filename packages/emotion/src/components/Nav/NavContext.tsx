@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import { NavProps } from './Nav';
+import type { NavProps } from './Nav';
 
 export type NavContextProps = NavProps;
 

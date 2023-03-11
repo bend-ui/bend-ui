@@ -1,8 +1,8 @@
 import { createComponent, forwardRef } from '@particles/primitives';
-import { DefaultComponentProps } from '../../types';
 import { useDefaultProps } from '../../theme';
 import { Box } from '../Box';
 import useStyles from './Badge.styles';
+import type { DefaultComponentProps } from '../../types';
 
 export type BadgeProps = DefaultComponentProps & {
   variant?: 'solid' | 'outline' | 'subtle';

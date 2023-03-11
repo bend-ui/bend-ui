@@ -1,5 +1,5 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { SplitLayout } from '.';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   title: 'Components/Layout/SplitLayout',
@@ -10,5 +10,5 @@ export default {
 } as ComponentMeta<typeof SplitLayout>;
 
 export const Base: ComponentStory<typeof SplitLayout> = (args) => (
-  <SplitLayout {...args}></SplitLayout>
+  <SplitLayout {...args} />
 );

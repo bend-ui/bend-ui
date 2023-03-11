@@ -1,12 +1,12 @@
 import clsx from 'clsx';
 import { TbChevronDown } from 'react-icons/tb';
 import { forwardRef } from '@particles/primitives';
-import { DefaultComponentProps } from '../../types';
 import { Box } from '../Box';
 import { Group } from '../Group';
 import { Badge } from '../Badge';
 import { useNavContext } from './NavContext';
 import useStyles from './Nav.styles';
+import type { DefaultComponentProps } from '../../types';
 
 export type NavLinkProps = DefaultComponentProps & {
   icon?: React.ReactNode;

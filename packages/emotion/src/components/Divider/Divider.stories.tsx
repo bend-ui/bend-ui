@@ -1,7 +1,7 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { TbAlertTriangle } from 'react-icons/tb';
 import { Stack } from '../Stack';
 import { Divider } from '.';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   component: Divider,

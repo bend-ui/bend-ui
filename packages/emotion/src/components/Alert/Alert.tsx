@@ -1,11 +1,11 @@
 import clsx from 'clsx';
 import { createComponent, forwardRef, useAlert } from '@particles/primitives';
-import { DefaultComponentProps } from '../../types';
 import { useDefaultProps } from '../../theme';
 import { Media } from '../Media';
 import { Box } from '../Box';
 import { AlertTitle } from './AlertTitle';
 import useStyles from './Alert.styles';
+import type { DefaultComponentProps } from '../../types';
 
 export type AlertProps = DefaultComponentProps & {
   palette?: 'neutral' | 'danger' | 'warning' | 'success' | 'info';

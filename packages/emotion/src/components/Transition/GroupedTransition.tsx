@@ -1,8 +1,8 @@
-import { CSSProperties } from 'react';
 import { useTransition } from 'transition-hook';
 import { createComponent } from '@particles/primitives';
 import { getTransitionStyles } from './getTransitionStyles';
-import { ParticlesTransition } from './transitions';
+import type { CSSProperties } from 'react';
+import type { ParticlesTransition } from './transitions';
 
 type TransitionParams = {
   duration?: number;

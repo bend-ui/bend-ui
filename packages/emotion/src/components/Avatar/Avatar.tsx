@@ -1,8 +1,8 @@
 import { createComponent, forwardRef } from '@particles/primitives';
-import { DefaultComponentProps } from '../../types';
 import { useDefaultProps } from '../../theme';
 import { Box } from '../Box';
 import useStyles from './Avatar.styles';
+import type { DefaultComponentProps } from '../../types';
 
 export type AvatarProps = DefaultComponentProps & {
   src: HTMLImageElement['src'];

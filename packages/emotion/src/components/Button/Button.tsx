@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import { createComponent, forwardRef } from '@particles/primitives';
 import { useDefaultProps } from '../../theme';
-import { DefaultComponentProps } from '../../types';
 import { Box } from '../Box';
 import { useButtonGroup } from './ButtonGroup/ButtonGroupProvider';
 import useStyles from './Button.styles';
+import type { DefaultComponentProps } from '../../types';
 
 export type ButtonProps = DefaultComponentProps & {
   palette?: 'primary' | 'danger' | 'warning' | 'neutral';

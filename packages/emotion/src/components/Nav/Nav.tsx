@@ -1,12 +1,12 @@
 import clsx from 'clsx';
 import { createComponent, forwardRef } from '@particles/primitives';
-import { DefaultComponentProps } from '../../types';
 import { NavContext } from './NavContext';
 import { NavDropdownItem } from './NavDropdownItem';
 import { NavDropdownToggle } from './NavDropdownToggle';
 import { NavDropdown } from './NavDropdown';
 import { NavLink } from './NavLink';
 import useStyles from './Nav.styles';
+import type { DefaultComponentProps } from '../../types';
 
 export type NavProps = DefaultComponentProps & {
   orientation?: 'horizontal' | 'vertical';

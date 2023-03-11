@@ -1,14 +1,12 @@
 import { createComponent, forwardRef, useMenu } from '@particles/primitives';
 import { useDefaultProps } from '../../theme';
-import { DefaultComponentProps } from '../../types';
 import { Box } from '../Box';
 import useStyles from './Menu.styles';
+import type { DefaultComponentProps } from '../../types';
 
 export type MenuDividerProps = DefaultComponentProps;
 
-const Divider = () => {
-  return <hr />;
-};
+const Divider = () => <hr />;
 
 export type MenuHeadingProps = DefaultComponentProps;
 

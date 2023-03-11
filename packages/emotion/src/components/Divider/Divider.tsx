@@ -1,9 +1,9 @@
 import { Children } from 'react';
 import { createComponent, forwardRef, useDivider } from '@particles/primitives';
 import { useDefaultProps } from '../../theme';
-import { DefaultComponentProps } from '../../types';
 import { Box } from '../Box';
 import useStyles from './Divider.styles';
+import type { DefaultComponentProps } from '../../types';
 
 type DividerProps = DefaultComponentProps & {
   labelPosition?: 'start' | 'center' | 'end';

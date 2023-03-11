@@ -1,14 +1,14 @@
-import { Dispatch, SetStateAction } from 'react';
 import {
   createComponent,
   forwardRef,
   TabsProvider,
 } from '@particles/primitives';
 import { useDefaultProps } from '../../theme';
-import { DefaultComponentProps } from '../../types';
 import { TabsList } from './TabsList';
 import { TabsPane } from './TabsPane';
 import { TabsTab } from './TabsTab';
+import type { DefaultComponentProps } from '../../types';
+import type { Dispatch, SetStateAction } from 'react';
 
 export type TabsProps = DefaultComponentProps & {
   activeTab?: any;

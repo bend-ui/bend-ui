@@ -1,5 +1,5 @@
 import { createStyles } from '../../styles';
-import { TilesColProps } from './types';
+import type { TilesColProps } from './types';
 
 export default createStyles(({ span, offset }: TilesColProps) => ({
   col: {

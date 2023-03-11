@@ -1,8 +1,9 @@
 import clsx from 'clsx';
 import { createComponent, forwardRef } from '@particles/primitives';
 import { useDefaultProps } from '../../theme';
-import Button, { ButtonProps } from './Button';
+import Button from './Button';
 import useStyles from './IconButton.styles';
+import type { ButtonProps } from './Button';
 
 export type IconButtonProps = Omit<ButtonProps, 'isFull' | 'iconEnd'> & {
   children: never;

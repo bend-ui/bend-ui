@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import { createComponent, forwardRef } from '@particles/primitives';
 import { useDefaultProps } from '../../theme';
-import { DefaultComponentProps } from '../../types';
 import { Box } from '../Box';
 import useStyles from './Container.styles';
+import type { DefaultComponentProps } from '../../types';
 
 export type ContainerProps = DefaultComponentProps;
 

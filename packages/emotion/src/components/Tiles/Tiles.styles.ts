@@ -1,5 +1,5 @@
 import { createStyles } from '../../styles';
-import { TilesProps } from './types';
+import type { TilesProps } from './types';
 
 export default createStyles(({ columns }: TilesProps) => ({
   root: {

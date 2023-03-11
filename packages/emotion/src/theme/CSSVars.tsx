@@ -1,4 +1,5 @@
-import { CSSObject, Global } from '@emotion/react';
+import { Global } from '@emotion/react';
+import type { CSSObject } from '@emotion/react';
 
 const assignVariables = (
   variables: Record<any, any>,

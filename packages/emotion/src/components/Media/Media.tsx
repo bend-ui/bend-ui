@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import { createComponent, forwardRef } from '@particles/primitives';
 import { useDefaultProps } from '../../theme';
-import { DefaultComponentProps } from '../../types';
 import useStyles from './Media.styles';
 import { MediaContent } from './MediaContent';
 import { MediaImage } from './MediaImage';
+import type { DefaultComponentProps } from '../../types';
 
 export type MediaProps = DefaultComponentProps;
 

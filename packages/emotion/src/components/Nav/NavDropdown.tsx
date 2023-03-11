@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { forwardRef } from '@particles/primitives';
-import { DefaultComponentProps } from '../../types';
 import useStyles from './Nav.styles';
+import type { DefaultComponentProps } from '../../types';
 
 export type NavDropdownProps = DefaultComponentProps;
 

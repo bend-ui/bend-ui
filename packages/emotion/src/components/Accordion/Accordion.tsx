@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import { createComponent, forwardRef } from '@particles/primitives';
 import { useDefaultProps } from '../../theme';
-import { DefaultComponentProps } from '../../types';
 import { Box } from '../Box';
 import useStyles from './Accordion.styles';
 import { AccordionItem } from './AccordionItem';
+import type { DefaultComponentProps } from '../../types';
 
 export type AccordionProps = DefaultComponentProps;
 

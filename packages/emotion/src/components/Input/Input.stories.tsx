@@ -1,7 +1,7 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { TbBolt, TbChevronDown } from 'react-icons/tb';
 import { Button } from '../Button';
 import { Input } from '.';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   title: 'Components/Forms/Input',

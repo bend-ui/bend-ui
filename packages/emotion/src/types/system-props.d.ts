@@ -1,4 +1,4 @@
-import { Theme as DefaultTheme } from '@particles/theme';
+import type { Theme as DefaultTheme } from '@particles/theme';
 import '@emotion/react';
 import 'system-props';
 

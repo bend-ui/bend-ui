@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 
 export default {
   title: 'Patterns/Application/Activity Feeds',
@@ -7,6 +7,4 @@ export default {
   },
 } as Meta;
 
-export const Base = () => {
-  return <div>Activity Feeds</div>;
-};
+export const Base = () => <div>Activity Feeds</div>;

@@ -1,7 +1,7 @@
 import { forwardRef, useTab } from '@particles/primitives';
 import { useDefaultProps } from '../../theme';
-import { DefaultComponentProps } from '../../types';
 import { Nav } from '../Nav';
+import type { DefaultComponentProps } from '../../types';
 
 export type TabsTabProps = DefaultComponentProps & {
   value: string;

@@ -1,7 +1,7 @@
 import { createComponent, forwardRef } from '@particles/primitives';
-import { DefaultComponentProps } from '../../types';
 import { useDefaultProps } from '../../theme';
 import useStyles from './Card.styles';
+import type { DefaultComponentProps } from '../../types';
 
 export type CardProps = DefaultComponentProps;
 

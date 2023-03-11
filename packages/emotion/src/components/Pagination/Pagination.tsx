@@ -1,10 +1,10 @@
 import { forwardRef } from '@particles/primitives';
 import { useDefaultProps } from '../../theme';
-import { DefaultComponentProps } from '../../types';
 import { Box } from '../Box';
 import { Button, ButtonGroup } from '../Button';
 import { Level } from '../Level';
 import { Text } from '../Text';
+import type { DefaultComponentProps } from '../../types';
 
 type PaginationProps = DefaultComponentProps;
 

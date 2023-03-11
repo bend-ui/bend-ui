@@ -1,8 +1,8 @@
 import { createComponent, forwardRef } from '@particles/primitives';
 import { useDefaultProps } from '../../theme';
-import { DefaultComponentProps } from '../../types';
 import { Box } from '../Box';
 import useStyles from './Progress.styles';
+import type { DefaultComponentProps } from '../../types';
 
 type ProgressProps = DefaultComponentProps & { value: number };
 
@@ -24,7 +24,7 @@ const Progress = forwardRef<ProgressProps, 'div'>((props, ref) => {
         aria-valuenow={value}
         aria-label={ariaLabel}
         style={{ width: `${value}%` }}
-      ></div>
+      />
     </Box>
   );
 });

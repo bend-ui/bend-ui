@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
 import { forwardRef } from '@particles/primitives';
 import { useDefaultProps } from '../../../theme';
-import { DefaultComponentProps } from '../../../types';
 import { Group } from '../../Group';
-import { ButtonProps } from '../Button';
 import { ButtonGroupProvider } from './ButtonGroupProvider';
+import type { DefaultComponentProps } from '../../../types';
+import type { ButtonProps } from '../Button';
 
 export type ButtonGroupProps = DefaultComponentProps &
   Pick<ButtonProps, 'size' | 'isRounded' | 'palette' | 'variant'>;

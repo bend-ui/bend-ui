@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import { createComponent, forwardRef } from '@particles/primitives';
-import { DefaultComponentProps } from '../../types';
 import { Box } from '../Box';
 import { useDefaultProps } from '../../theme';
 import useStyles from './Breadcrumb.styles';
+import type { DefaultComponentProps } from '../../types';
 
 export type BreadcrumbProps = DefaultComponentProps;
 

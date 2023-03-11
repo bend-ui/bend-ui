@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { useState } from 'react';
 import { Box } from '../Box';
 import { Button } from '../Button';
 import { Transition } from '.';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   title: 'Components/Miscellaneous/Transition',

@@ -1,7 +1,7 @@
-import { CSSProperties } from 'react';
 import { useTransition } from 'transition-hook';
 import { createComponent } from '@particles/primitives';
 import { getTransitionStyles } from './getTransitionStyles';
+import type { CSSProperties } from 'react';
 import type { ParticlesTransition } from './transitions';
 
 export type TransitionProps = {

@@ -2,7 +2,8 @@ import { useTheme } from '@emotion/react';
 import deepmerge from 'deepmerge';
 
 import createEmotion from '@emotion/css/create-instance';
-import { css, CSSObject } from './system';
+import { css } from './system';
+import type { CSSObject } from './system';
 
 export const {
   flush,

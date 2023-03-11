@@ -1,6 +1,6 @@
 import { forwardRef } from '@particles/primitives';
-import { DefaultComponentProps } from '../../types';
 import { Box } from '../Box';
+import type { DefaultComponentProps } from '../../types';
 
 export type AccordionItemProps = DefaultComponentProps;
 

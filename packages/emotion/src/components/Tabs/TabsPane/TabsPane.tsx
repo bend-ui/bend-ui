@@ -1,7 +1,7 @@
 import { forwardRef, useTabPanel } from '@particles/primitives';
 import { useDefaultProps } from '../../../theme';
-import { DefaultComponentProps } from '../../../types';
 import useStyles from './TabsPane.styles';
+import type { DefaultComponentProps } from '../../../types';
 
 export type TabsPaneProps = DefaultComponentProps & {
   value: string;

@@ -1,8 +1,8 @@
 import { cx } from '@emotion/css';
 import { forwardRef } from '@particles/primitives';
 import { useDefaultProps } from '../../theme';
-import { TilesColProps } from './types';
 import useStyles from './Col.styles';
+import type { TilesColProps } from './types';
 
 export const Col = forwardRef<TilesColProps, 'div'>((props, ref) => {
   const {

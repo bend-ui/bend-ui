@@ -1,5 +1,5 @@
 import { css } from '@emotion/css';
-import { GridColProps } from './types';
+import type { GridColProps } from './types';
 
 export const root = css({
   display: 'grid',

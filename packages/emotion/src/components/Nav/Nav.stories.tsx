@@ -1,7 +1,7 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { TbChartAreaLine, TbHome2, TbStack2 } from 'react-icons/tb';
 
 import { Nav } from '.';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   title: 'Components/Navigation/Nav',

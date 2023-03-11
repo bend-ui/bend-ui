@@ -4,12 +4,12 @@ import {
   forwardRef,
   Portal,
   useModal,
-  UseModalProps,
 } from '@particles/primitives';
+import type { UseModalProps } from '@particles/primitives';
 import { useDefaultProps } from '../../theme';
-import { DefaultComponentProps } from '../../types';
 import { GroupedTransition } from '../Transition';
 import useStyles from './Modal.styles';
+import type { DefaultComponentProps } from '../../types';
 
 export type ModalProps = DefaultComponentProps & UseModalProps;
 

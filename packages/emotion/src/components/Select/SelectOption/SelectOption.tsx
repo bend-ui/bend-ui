@@ -1,7 +1,7 @@
 import { forwardRef } from '@particles/primitives';
-import { DefaultComponentProps } from '../../../types';
 import { useDefaultProps } from '../../../theme';
 import { useSelectContext } from '../SelectContext';
+import type { DefaultComponentProps } from '../../../types';
 
 type SelectOptionProps = DefaultComponentProps;
 

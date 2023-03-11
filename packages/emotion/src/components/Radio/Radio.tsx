@@ -2,9 +2,9 @@ import { useId } from 'react';
 import { TbCheck } from 'react-icons/tb';
 import { createComponent, forwardRef } from '@particles/primitives';
 import { useDefaultProps } from '../../theme';
-import { DefaultComponentProps } from '../../types';
 import { Box } from '../Box';
 import useStyles from './Radio.styles';
+import type { DefaultComponentProps } from '../../types';
 
 export type RadioProps = DefaultComponentProps & {
   label?: React.ReactNode;

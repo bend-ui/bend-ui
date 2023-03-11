@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { forwardRef } from '@particles/primitives';
-import { DefaultComponentProps } from '../../types';
 import { Box } from '../Box';
 import useStyles from './Nav.styles';
+import type { DefaultComponentProps } from '../../types';
 
 export type NavDropdownToggleProps = DefaultComponentProps & {
   icon?: React.ReactNode;

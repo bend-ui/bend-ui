@@ -6,11 +6,12 @@ import {
   useSelect,
 } from '@particles/primitives';
 import { useDefaultProps } from '../../theme';
-import { DefaultComponentProps } from '../../types';
-import { Input, InputProps } from '../Input';
+import { Input } from '../Input';
 import { Box } from '../Box';
 import { SelectProvider } from './SelectContext';
 import { SelectOption } from './SelectOption/SelectOption';
+import type { InputProps } from '../Input';
+import type { DefaultComponentProps } from '../../types';
 
 type SelectProps = DefaultComponentProps &
   InputProps & { children?: React.ReactNode };

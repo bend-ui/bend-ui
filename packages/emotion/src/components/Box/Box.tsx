@@ -1,8 +1,8 @@
-import { CSSObject } from '@emotion/react';
 import styled from '@emotion/styled';
 import { createSystem, css, space } from 'system-props';
 import { forwardRef } from '@particles/primitives';
-import { DefaultComponentProps } from '../../types';
+import type { CSSObject } from '@emotion/react';
+import type { DefaultComponentProps } from '../../types';
 
 export interface BoxProps extends DefaultComponentProps {
   children?: React.ReactNode;

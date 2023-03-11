@@ -1,5 +1,5 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Toast } from '.';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   title: 'Components/Feedback/Toast',
@@ -10,6 +10,4 @@ export default {
   },
 } as ComponentMeta<typeof Toast>;
 
-export const Base: ComponentStory<typeof Toast> = (args) => (
-  <Toast {...args}></Toast>
-);
+export const Base: ComponentStory<typeof Toast> = (args) => <Toast {...args} />;

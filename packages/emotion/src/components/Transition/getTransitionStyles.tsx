@@ -1,5 +1,6 @@
-import { CSSProperties } from 'react';
-import { ParticlesTransition, transitions } from './transitions';
+import { transitions } from './transitions';
+import type { CSSProperties } from 'react';
+import type { ParticlesTransition } from './transitions';
 
 export const getTransitionStyles = (
   transition: ParticlesTransition,

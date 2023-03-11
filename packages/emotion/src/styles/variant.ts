@@ -1,3 +1,1 @@
-export const variant = () => {
-  return {};
-};
+export const variant = () => ({});

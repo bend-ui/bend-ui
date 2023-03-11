@@ -1,16 +1,12 @@
 import { Children, cloneElement, isValidElement } from 'react';
 import { isForwardRef } from 'react-is';
-import {
-  createComponent,
-  Portal,
-  useTooltip,
-  UseTooltipProps,
-} from '@particles/primitives';
+import { createComponent, Portal, useTooltip } from '@particles/primitives';
+import type { UseTooltipProps } from '@particles/primitives';
 import { useDefaultProps } from '../../theme';
-import { DefaultComponentProps } from '../../types';
 import { Box } from '../Box';
 import { Transition } from '../Transition';
 import useStyles from './Tooltip.styles';
+import type { DefaultComponentProps } from '../../types';
 
 export type TooltipProps = DefaultComponentProps &
   UseTooltipProps & {

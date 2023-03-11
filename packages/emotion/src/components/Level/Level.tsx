@@ -1,8 +1,8 @@
 import { createComponent, forwardRef } from '@particles/primitives';
 import { useDefaultProps } from '../../theme';
-import { DefaultComponentProps } from '../../types';
 import { Box } from '../Box';
 import useStyles from './Level.styles';
+import type { DefaultComponentProps } from '../../types';
 
 export type LevelProps = DefaultComponentProps & { children?: React.ReactNode };
 
