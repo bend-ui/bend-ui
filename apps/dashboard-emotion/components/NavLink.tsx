@@ -1,6 +1,7 @@
-import Link, { LinkProps } from 'next/link';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { forwardRef } from '@particles/primitives';
+import type { LinkProps } from 'next/link';
 
 export const NavLink = forwardRef<LinkProps, 'a'>((props, ref) => {
   const { children, href, passHref = true, ...rest } = props;
