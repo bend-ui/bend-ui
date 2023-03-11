@@ -32,7 +32,7 @@
       }
     }
   },
-  "defaultProject": "dashboard",
+  "defaultProject": "dashboard-tailwind",
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {
     "test": {

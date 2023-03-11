@@ -13,6 +13,10 @@
       "path": "packages/emotion"
     },
     {
+      "name": "📦 @particles/macaron",
+      "path": "packages/macaron"
+    },
+    {
       "name": "📦 @particles/stitches",
       "path": "packages/stitches"
     },
@@ -64,7 +68,9 @@
       "🧪 Dashboard (Emotion)",
       "🧪 Dashboard (Stitches)",
       "🛠️ @particles/react-utils",
-      "📦 @particles/tailwind"
+      "📦 @particles/tailwind",
+      "📦 @particles/macaron",
+      "🧪 Dashboard (Tailwind)"
     ]
   }
 }
