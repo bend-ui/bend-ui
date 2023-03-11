@@ -1,6 +1,7 @@
-import Link, { LinkProps } from 'next/link';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { ReactNode } from 'react';
+import type { LinkProps } from 'next/link';
+import type { ReactNode } from 'react';
 
 type NavLinkProps = LinkProps & {
   children?: ReactNode;
