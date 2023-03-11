@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
 import { createComponent, forwardRef } from '../../utils';
+import type { ReactNode } from 'react';
 
 export type AlertProps = {
   children?: ReactNode;

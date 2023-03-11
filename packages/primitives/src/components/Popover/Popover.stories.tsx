@@ -1,6 +1,6 @@
 import { useRef } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Popover } from './';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   title: 'Overlays/Popover',
@@ -25,19 +25,17 @@ export const Base: Story = (args) => (
 
 export const WithDefaultInitialFocus: ComponentStory<typeof Popover> = (
   args
-) => {
-  return (
-    <Popover.Root {...args}>
-      <Popover.Trigger>
-        <button>Open</button>
-      </Popover.Trigger>
-      <Popover.Panel>
-        <input type="text" />
-        <button>Continue</button>
-      </Popover.Panel>
-    </Popover.Root>
-  );
-};
+) => (
+  <Popover.Root {...args}>
+    <Popover.Trigger>
+      <button>Open</button>
+    </Popover.Trigger>
+    <Popover.Panel>
+      <input type="text" />
+      <button>Continue</button>
+    </Popover.Panel>
+  </Popover.Root>
+);
 
 export const WithInitialFocus: ComponentStory<typeof Popover> = (args) => {
   const inputRef = useRef<HTMLInputElement>();

@@ -1,8 +1,8 @@
-import { ReactNode } from 'react';
 import { useDisclosure } from '../../hooks';
 import { createComponent, forwardRef } from '../../utils';
 import { DropdownContextProvider, useDropdownContext } from './DropdownContext';
 import { useDropdown } from './useDropdown';
+import type { ReactNode } from 'react';
 
 export type DropdownRootProps = {
   children?: ReactNode;

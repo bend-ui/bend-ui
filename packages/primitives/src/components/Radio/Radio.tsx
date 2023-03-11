@@ -1,5 +1,6 @@
-import { ChangeEvent, ReactNode, useState } from 'react';
+import { useState } from 'react';
 import { createComponent, forwardRef } from '../../utils';
+import type { ChangeEvent, ReactNode } from 'react';
 
 export type RadioRootProps = {
   children?: ReactNode;

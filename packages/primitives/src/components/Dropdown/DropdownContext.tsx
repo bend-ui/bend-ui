@@ -1,5 +1,5 @@
 import { createContext } from '../../utils';
-import { useDropdown } from './useDropdown';
+import type { useDropdown } from './useDropdown';
 
 export type DropdownContextParams = ReturnType<typeof useDropdown>;
 

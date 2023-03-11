@@ -1,7 +1,7 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import clsx from 'clsx';
 import { breadcrumbsClasses, breadcrumbsStyles } from './Breadcrumbs.styles';
 import { Breadcrumbs } from './';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   title: 'Components/Breadcrumbs',

@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
 import { createContext } from '../../utils';
+import type { ReactNode } from 'react';
 
 type ContextType = {
   separator: ReactNode;

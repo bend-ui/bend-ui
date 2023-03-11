@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
 import { createComponent, forwardRef } from '../../utils';
 import { Icon } from './ButtonIcon';
+import type { ReactNode } from 'react';
 
 export interface ButtonRootProps {
   children?: ReactNode;

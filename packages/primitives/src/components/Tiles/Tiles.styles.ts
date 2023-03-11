@@ -1,4 +1,4 @@
-import { UseTilesProps } from './useTiles';
+import type { UseTilesProps } from './useTiles';
 
 export const tilesStyles = (props: UseTilesProps) => {
   const { cols = 'auto' } = props;

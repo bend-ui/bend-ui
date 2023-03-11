@@ -1,5 +1,5 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Radio } from './';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   title: 'Forms/Radio',
@@ -8,11 +8,9 @@ export default {
 
 type Story = ComponentStory<typeof Radio>;
 
-export const Base: Story = (args) => {
-  return (
-    <Radio.Root {...args}>
-      <Radio.Control />
-      <Radio.Label>Radio</Radio.Label>
-    </Radio.Root>
-  );
-};
+export const Base: Story = (args) => (
+  <Radio.Root {...args}>
+    <Radio.Control />
+    <Radio.Label>Radio</Radio.Label>
+  </Radio.Root>
+);

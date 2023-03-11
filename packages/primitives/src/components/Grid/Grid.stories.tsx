@@ -1,6 +1,6 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
 import { useGrid } from './useGrid';
+import type { Meta } from '@storybook/react';
 
 export default {
   title: 'Layout/Grid',

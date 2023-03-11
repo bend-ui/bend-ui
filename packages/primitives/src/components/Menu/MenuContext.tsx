@@ -1,5 +1,5 @@
 import { createContext } from '../../utils';
-import { UseMenuReturn } from './useMenu';
+import type { UseMenuReturn } from './useMenu';
 
 type MenuContextProps = UseMenuReturn;
 

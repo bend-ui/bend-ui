@@ -1,10 +1,10 @@
-import { ReactNode } from 'react';
 import { getValidChildren } from '@particles/react-utils';
 import { createComponent, forwardRef } from '../../utils';
 import {
   BreadcrumbsContextProvider,
   useBreadcrumbsContext,
 } from './Breadcrumbs.context';
+import type { ReactNode } from 'react';
 
 export type BreadcrumbsRootProps = {
   children?: ReactNode;
@@ -59,7 +59,7 @@ const Link = forwardRef<BreadcrumbsLinkProps, 'a'>((props, ref) => {
   return (
     <Component ref={ref} {...rest}>
       {children}
-      <Separator></Separator>
+      <Separator />
     </Component>
   );
 });

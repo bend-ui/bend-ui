@@ -3,7 +3,6 @@ import {
   autoUpdate,
   flip,
   offset,
-  Placement,
   shift,
   useDismiss,
   useFloating,
@@ -13,6 +12,7 @@ import {
   useRole,
 } from '@floating-ui/react';
 import { mergeRefs } from '../../utils';
+import type { Placement } from '@floating-ui/react';
 
 export interface UseTooltipProps {
   placement?: Placement;

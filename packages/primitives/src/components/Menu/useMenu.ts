@@ -1,12 +1,12 @@
 import {
   autoUpdate,
-  Placement,
   useClick,
   useDismiss,
   useFloating,
   useInteractions,
 } from '@floating-ui/react';
 import { useDisclosure } from '../../hooks';
+import type { Placement } from '@floating-ui/react';
 
 export type UseMenuProps = { placement?: Placement };
 

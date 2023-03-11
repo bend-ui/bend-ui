@@ -1,7 +1,6 @@
 import {
   flip,
   offset,
-  Placement,
   shift,
   useClick,
   useDismiss,
@@ -10,6 +9,7 @@ import {
   useRole,
 } from '@floating-ui/react';
 import { useDisclosure } from '../../hooks';
+import type { Placement } from '@floating-ui/react';
 
 export type UsePopoverProps = {
   isOpen?: boolean;

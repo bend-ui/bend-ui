@@ -1,5 +1,5 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { FormControl } from './';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   title: 'Forms/FormControl',
@@ -8,13 +8,11 @@ export default {
 
 type Story = ComponentStory<typeof FormControl>;
 
-export const Base: Story = (args) => {
-  return (
-    <FormControl.Root {...args}>
-      <label htmlFor="emailField">Email address</label>
-      <input type="text" name="" id="emailField" />
-      <div>Help text</div>
-      <div>Error message</div>
-    </FormControl.Root>
-  );
-};
+export const Base: Story = (args) => (
+  <FormControl.Root {...args}>
+    <label htmlFor="emailField">Email address</label>
+    <input type="text" name="" id="emailField" />
+    <div>Help text</div>
+    <div>Error message</div>
+  </FormControl.Root>
+);

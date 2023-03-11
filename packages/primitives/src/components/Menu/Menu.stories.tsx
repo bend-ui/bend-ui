@@ -1,7 +1,7 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import clsx from 'clsx';
 import { twStyles } from './Menu.styles';
 import { Menu } from '.';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   title: 'Overlays/Menu',

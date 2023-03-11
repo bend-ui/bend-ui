@@ -1,5 +1,5 @@
-import { Ref } from 'react';
 import { createComponent, forwardRef } from '../../utils';
+import type { Ref } from 'react';
 
 export type CheckboxProps = {
   wrapperProps?: Record<any, any>;
@@ -20,14 +20,14 @@ const Root = forwardRef<CheckboxProps, 'input'>((props, ref) => {
 
 export type CheckboxIndicatorProps = React.ComponentPropsWithoutRef<'button'>;
 
-const Indicator = forwardRef<CheckboxIndicatorProps, 'button'>((props, ref) => {
-  return <button ref={ref} {...props} />;
-});
+const Indicator = forwardRef<CheckboxIndicatorProps, 'button'>((props, ref) => (
+  <button ref={ref} {...props} />
+));
 
 export type CheckboxLabelProps = React.ComponentPropsWithoutRef<'label'>;
 
-const Label = forwardRef<CheckboxLabelProps, 'span'>((props, ref) => {
-  return <span ref={ref} htmlFor="aCheckbox" {...props} />;
-});
+const Label = forwardRef<CheckboxLabelProps, 'span'>((props, ref) => (
+  <span ref={ref} htmlFor="aCheckbox" {...props} />
+));
 
 export default createComponent(Root, { Root, Indicator, Label }, 'Checkbox');

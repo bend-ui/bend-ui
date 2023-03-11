@@ -1,7 +1,9 @@
-import { cloneElement, ReactNode } from 'react';
+import { cloneElement } from 'react';
 import { getValidChild } from '@particles/react-utils';
 import { createComponent, forwardRef } from '../../utils';
-import { useTooltip, UseTooltipProps } from './useTooltip';
+import { useTooltip } from './useTooltip';
+import type { UseTooltipProps } from './useTooltip';
+import type { ReactNode } from 'react';
 
 export interface TooltipProps extends UseTooltipProps {
   children: ReactNode;

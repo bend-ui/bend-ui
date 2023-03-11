@@ -3,6 +3,14 @@ import {
   useContext as useReactContext,
 } from 'react';
 
+/**
+ * Utility to create a context
+ *
+ * @param name
+ * @param defaultContext
+ * @returns Provider and useContext
+ */
+
 export const createContext = <T extends object>(
   name: string,
   defaultContext?: T

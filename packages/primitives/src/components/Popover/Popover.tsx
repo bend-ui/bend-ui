@@ -1,8 +1,10 @@
 import { FloatingFocusManager } from '@floating-ui/react';
-import { Children, cloneElement, isValidElement, ReactNode } from 'react';
+import { Children, cloneElement, isValidElement } from 'react';
 import { createComponent, forwardRef } from '../../utils';
 import { PopoverProvider, usePopoverContext } from './PopoverContext';
-import { usePopover, UsePopoverProps } from './usePopover';
+import { usePopover } from './usePopover';
+import type { UsePopoverProps } from './usePopover';
+import type { ReactNode } from 'react';
 
 type PopoverTriggerProps = {
   children?: ReactNode;

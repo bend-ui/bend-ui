@@ -1,8 +1,8 @@
-import { ReactNode } from 'react';
 import { useMergeRefs } from '@floating-ui/react';
 import { forwardRef } from '../../utils';
 import { Portal } from '../Portal';
 import { useMenuContext } from './MenuContext';
+import type { ReactNode } from 'react';
 
 export type MenuListProps = { children?: ReactNode };
 

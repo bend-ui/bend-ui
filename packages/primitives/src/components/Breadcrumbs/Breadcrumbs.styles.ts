@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react';
+import type { CSSProperties } from 'react';
 
 type BaseStyles<Key extends string> = Record<Key, CSSProperties>;
 

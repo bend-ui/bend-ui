@@ -1,3 +1,1 @@
-export const useHover = () => {
-  return;
-};
+export const useHover = () => null;

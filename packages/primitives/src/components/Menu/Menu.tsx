@@ -1,10 +1,11 @@
-import { ReactNode } from 'react';
 import { createComponent } from '../../utils';
 import { MenuButton } from './MenuButton';
 import { MenuProvider } from './MenuContext';
 import { MenuItem } from './MenuItem';
 import { MenuList } from './MenuList';
-import { useMenu, UseMenuProps } from './useMenu';
+import { useMenu } from './useMenu';
+import type { UseMenuProps } from './useMenu';
+import type { ReactNode } from 'react';
 
 export type MenuProps = UseMenuProps & { children?: ReactNode };
 

@@ -8,3 +8,4 @@ export * from './useLockBodyScroll';
 export * from './useMediaQuery';
 export * from './useSafeLayoutEffect';
 export * from './useToggle';
+export * from './useControlled';

@@ -16,3 +16,4 @@ export * from './Tabs';
 export * from './Tiles';
 export * from './Tooltip';
 export * from './VisuallyHidden';
+export * from './Switch';

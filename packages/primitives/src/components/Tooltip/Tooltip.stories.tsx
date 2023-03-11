@@ -1,6 +1,6 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import Tooltip from './Tooltip';
 import { useTooltip } from './useTooltip';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   title: 'Components/Tooltip',
@@ -11,13 +11,11 @@ export default {
 
 type Story = ComponentStory<typeof Tooltip>;
 
-export const Primitive: Story = (args) => {
-  return (
-    <Tooltip.Root {...args}>
-      <button>Hover me</button>
-    </Tooltip.Root>
-  );
-};
+export const Primitive: Story = (args) => (
+  <Tooltip.Root {...args}>
+    <button>Hover me</button>
+  </Tooltip.Root>
+);
 
 Primitive.args = {
   content: 'Tooltip content',

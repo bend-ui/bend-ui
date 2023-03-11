@@ -1,9 +1,9 @@
-import { ReactNode } from 'react';
 import clsx from 'clsx';
 import { useMergeRefs } from '@floating-ui/react';
 import { Button, twStyles } from '../Button';
 import { forwardRef } from '../../utils';
 import { useMenuContext } from './MenuContext';
+import type { ReactNode } from 'react';
 
 type MenuButtonProps = { children?: ReactNode };
 

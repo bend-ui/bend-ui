@@ -1,6 +1,6 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { TextField } from '.';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   title: 'Forms/TextField',
@@ -11,6 +11,6 @@ type Story = ComponentStory<typeof TextField>;
 
 export const Base: Story = (args) => (
   <TextField.Root {...args}>
-    <TextField.Input></TextField.Input>
+    <TextField.Input />
   </TextField.Root>
 );

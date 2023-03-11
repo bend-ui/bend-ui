@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
 import { forwardRef } from '../../utils';
+import type { ReactNode } from 'react';
 
 export type ButtonIconProps = {
   children?: ReactNode;

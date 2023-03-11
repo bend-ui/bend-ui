@@ -7,8 +7,8 @@ import {
   useTabList,
   useTabPanel,
   useTabs,
-  UseTabsProps,
 } from './useTabs';
+import type { UseTabsProps } from './useTabs';
 
 export type TabsListProps = {
   children?: React.ReactNode;

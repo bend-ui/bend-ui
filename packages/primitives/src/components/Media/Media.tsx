@@ -1,5 +1,5 @@
-import { ComponentPropsWithoutRef } from 'react';
 import { createComponent, forwardRef } from '../../utils';
+import type { ComponentPropsWithoutRef } from 'react';
 
 type MediaRootProps = ComponentPropsWithoutRef<'div'>;
 

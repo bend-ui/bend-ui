@@ -4,8 +4,14 @@ import { createElement } from 'react';
 import { DocsContainer } from '@storybook/addon-docs';
 import { themes } from '@storybook/theming';
 import { themeDark, themeLight } from './themes';
+import type { ReactNode } from 'react';
+import type { DocsContainerProps } from '@storybook/addon-docs';
 
-const Container = (props) => {
+type ContainerProps = DocsContainerProps & {
+  children?: ReactNode;
+};
+
+const Container = (props: ContainerProps) => {
   const isDark = useDarkMode();
 
   const { id: storyId, storyById } = props.context;

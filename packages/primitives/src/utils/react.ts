@@ -1,10 +1,6 @@
-import {
-  Children,
-  JSXElementConstructor,
-  ReactElement,
-  ReactNode,
-} from 'react';
+import { Children } from 'react';
 import { isFragment } from 'react-is';
+import type { JSXElementConstructor, ReactElement, ReactNode } from 'react';
 
 type Props = Record<string, any>;
 
