@@ -2,7 +2,6 @@ import {
   autoUpdate,
   flip,
   offset,
-  Placement,
   shift,
   useClick,
   useDismiss,
@@ -10,6 +9,7 @@ import {
   useInteractions,
 } from '@floating-ui/react';
 import { useEffect, useState } from 'react';
+import type { Placement } from '@floating-ui/react';
 
 export type PopoverPlacement = Placement;
 

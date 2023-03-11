@@ -6,12 +6,15 @@ import {
   Portal,
   runIfFn,
 } from '@particles/primitives';
-import { DefaultComponentProps } from '../../styles';
-import { Button, ButtonProps } from '../Button';
+import { Button } from '../Button';
 import { Transition } from '../Transition';
-import { Panel, PanelProps } from '../Panel';
+import { Panel } from '../Panel';
 import useStyles from './Popover.styles';
-import { PopoverPlacement, usePopover } from './usePopover';
+import { usePopover } from './usePopover';
+import type { PopoverPlacement } from './usePopover';
+import type { PanelProps } from '../Panel';
+import type { ButtonProps } from '../Button';
+import type { DefaultComponentProps } from '../../styles';
 
 type PopoverPanelProps = {
   children?:

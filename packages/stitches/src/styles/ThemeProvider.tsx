@@ -1,5 +1,6 @@
 import { createContext } from '@particles/primitives';
-import { Theme, theme } from '@particles/theme';
+import { theme } from '@particles/theme';
+import type { Theme } from '@particles/theme';
 
 export const [ThemeContextProvider, useTheme] = createContext('Theme', {
   theme: { ...theme, components: {} },

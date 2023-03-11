@@ -1,7 +1,7 @@
 import { forwardRef } from '@particles/primitives';
-import { DefaultComponentProps } from '../../../styles';
 import { Group } from '../../Group';
-import { ButtonProps } from '../Button';
+import type { DefaultComponentProps } from '../../../styles';
+import type { ButtonProps } from '../Button';
 
 export type ButtonGroupProps = ButtonProps & DefaultComponentProps;
 

@@ -5,7 +5,8 @@ import { useDefaultProps } from '../../styles';
 import { DismissButton } from '../Button';
 import { Heading } from '../Heading';
 import { Media } from '../Media';
-import useStyles, { AlertStylesParams } from './Alert.styles';
+import useStyles from './Alert.styles';
+import type { AlertStylesParams } from './Alert.styles';
 
 export type AlertProps = AlertStylesParams;
 

@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
 import { forwardRef } from '@particles/primitives';
+import type { ReactNode } from 'react';
 
 type DropdownProps = { children?: ReactNode };
 

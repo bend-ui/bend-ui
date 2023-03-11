@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { createComponent, forwardRef } from '@particles/primitives';
-import { DefaultComponentProps } from '../../../styles';
 import { Box } from '../../Box';
 import useStyles from './UnstyledButton.styles';
+import type { DefaultComponentProps } from '../../../styles';
 
 export type UnstyledButtonProps = DefaultComponentProps;
 

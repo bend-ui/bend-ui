@@ -1,3 +1,1 @@
-export const usePagination = () => {
-  return {};
-};
+export const usePagination = () => ({});

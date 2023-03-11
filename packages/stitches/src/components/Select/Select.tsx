@@ -5,11 +5,12 @@ import {
   useDisclosure,
   useSelect,
 } from '@particles/primitives';
-import { DefaultComponentProps, useDefaultProps } from '../../styles';
+import { useDefaultProps } from '../../styles';
 import { Box } from '../Box';
 import { Panel } from '../Panel';
 import useStyles from './Select.styles';
 import { Option } from './SelectOption';
+import type { DefaultComponentProps } from '../../styles';
 
 export type SelectProps = {
   children: React.ReactNode;
@@ -42,7 +43,7 @@ const Select = (props: SelectProps) => {
           width="1em"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <polyline points="6 9 12 15 18 9"></polyline>
+          <polyline points="6 9 12 15 18 9" />
         </svg>
       </Box>
       {isOpen && (

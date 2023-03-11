@@ -1,5 +1,6 @@
-import { CSSProperties } from 'react';
-import { Transitions, transitions } from './transitions';
+import { transitions } from './transitions';
+import type { CSSProperties } from 'react';
+import type { Transitions } from './transitions';
 
 export const transitionStates = {
   entering: 'in',

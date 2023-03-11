@@ -1,9 +1,14 @@
-import * as React from 'react';
 import { DocsContainer as BaseContainer } from '@storybook/addon-docs';
 import { useDarkMode } from 'storybook-dark-mode';
 import { themeDark, themeLight } from './themes';
+import type { ReactNode } from 'react';
+import type { DocsContainerProps } from '@storybook/addon-docs';
 
-export const DocsContainer = ({ children, context }) => {
+type ContainerProps = DocsContainerProps & {
+  children?: ReactNode;
+};
+
+export const DocsContainer = ({ children, context }: ContainerProps) => {
   const dark = useDarkMode();
 
   return (
@@ -17,7 +22,7 @@ export const DocsContainer = ({ children, context }) => {
             parameters: {
               ...storyContext?.parameters,
               docs: {
-                ...storyContext?.parameters?.docs,
+                ...storyContext?.parameters?.['docs'],
                 theme: dark ? themeDark : themeLight,
               },
             },

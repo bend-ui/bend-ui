@@ -1,7 +1,8 @@
 import { forwardRef } from '@particles/primitives';
 import clsx from 'clsx';
-import { DefaultComponentProps } from '../../styles';
-import useStyles, { ButtonStylesParams } from './Button.styles';
+import useStyles from './Button.styles';
+import type { DefaultComponentProps } from '../../styles';
+import type { ButtonStylesParams } from './Button.styles';
 
 export type ButtonProps = {
   children?: React.ReactNode;

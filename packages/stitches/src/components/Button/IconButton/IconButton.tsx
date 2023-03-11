@@ -1,7 +1,8 @@
 import { forwardRef } from '@particles/primitives';
 import clsx from 'clsx';
-import Button, { ButtonProps } from '../Button';
+import Button from '../Button';
 import useStyles from './IconButton.styles';
+import type { ButtonProps } from '../Button';
 
 type IconButtonProps = ButtonProps;
 

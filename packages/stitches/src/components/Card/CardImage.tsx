@@ -1,17 +1,18 @@
 import { forwardRef } from '@particles/primitives';
-import { DefaultComponentProps, useTheme } from '../../styles';
+import { useTheme } from '../../styles';
 import useStyles from './Card.styles';
+import type { DefaultComponentProps } from '../../styles';
 
 export type CardImageProps = DefaultComponentProps;
 
 export const CardImage = forwardRef<CardImageProps, 'img'>((props, ref) => {
-  const { children, as = 'img', ...rest } = props;
+  const { children, as: Component = 'img', ...rest } = props;
   const { theme } = useTheme();
   const { styles } = useStyles({}, { name: 'Card', theme });
   return (
-    <div as={as} ref={ref} className={styles['Image']} {...rest}>
+    <Component ref={ref} className={styles['Image']} {...rest}>
       {children}
-    </div>
+    </Component>
   );
 });
 CardImage.displayName = 'Card.Image';

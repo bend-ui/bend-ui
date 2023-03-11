@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { forwardRef } from '@particles/primitives';
-import { css, DefaultComponentProps } from '../../styles';
+import { css } from '../../styles';
+import type { DefaultComponentProps } from '../../styles';
 
 type BoxProps = DefaultComponentProps;
 

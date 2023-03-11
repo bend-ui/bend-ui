@@ -1,5 +1,5 @@
-import { CSS } from '../../styles';
 import { createStyles } from '../../styles/createStyles';
+import type { CSS } from '../../styles';
 
 const root: CSS = {
   color: '$on-surface',
@@ -9,8 +9,6 @@ const root: CSS = {
   boxShadow: '$md',
 };
 
-export default createStyles(() => {
-  return {
-    root,
-  };
-});
+export default createStyles(() => ({
+  root,
+}));

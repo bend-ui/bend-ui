@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { forwardRef, Level as LevelPrimitive } from '@particles/primitives';
-import { DefaultComponentProps } from '../../styles';
 import useStyles from './Level.styles';
+import type { DefaultComponentProps } from '../../styles';
 
 type LevelProps = DefaultComponentProps;
 

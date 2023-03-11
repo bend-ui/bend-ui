@@ -1,12 +1,12 @@
 import clsx from 'clsx';
 import { forwardRef } from '@particles/primitives';
-import { DefaultComponentProps } from '../../styles';
 import { Media } from '../Media';
 import { Text } from '../Text';
 import { Box } from '../Box';
 import { Group } from '../Group';
 import { useCheckbox } from './useCheckbox';
 import useStyles from './Checkbox.styles';
+import type { DefaultComponentProps } from '../../styles';
 
 export type CheckboxProps = {
   children?: React.ReactNode;
@@ -42,7 +42,7 @@ const Checkbox = forwardRef<CheckboxProps, 'input'>((props, ref) => {
             fillRule="evenodd"
             d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
             clipRule="evenodd"
-          ></path>
+          />
         </svg>
       </span>
       <label htmlFor="checkbox-id">

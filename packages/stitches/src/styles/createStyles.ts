@@ -1,4 +1,5 @@
-import { css, CSS, useTheme } from './';
+import { css, useTheme } from './';
+import type { CSS } from './';
 
 export interface UseStylesOptions<Key extends string> {
   classNames?: Partial<Record<Key, string>>;

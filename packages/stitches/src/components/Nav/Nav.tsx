@@ -1,9 +1,11 @@
 import clsx from 'clsx';
 import { createContext, forwardRef } from '@particles/primitives';
-import { DefaultComponentProps } from '../../styles';
 import { Box } from '../Box';
-import { Group, GroupProps } from '../Group';
-import useStyles, { NavStylesParams } from './Nav.styles';
+import { Group } from '../Group';
+import useStyles from './Nav.styles';
+import type { DefaultComponentProps } from '../../styles';
+import type { GroupProps } from '../Group';
+import type { NavStylesParams } from './Nav.styles';
 
 const [NavContextProvider, useNavContext] = createContext('Nav', {
   variant: null,

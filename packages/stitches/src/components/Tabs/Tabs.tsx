@@ -7,11 +7,11 @@ import {
   useTabs,
 } from '@particles/primitives';
 import clsx from 'clsx';
-import { DefaultComponentProps } from '../../styles';
 import { Box } from '../Box';
 import { Nav } from '../Nav';
-import { NavProps } from '../Nav/Nav';
 import useStyles from './Tabs.styles';
+import type { NavProps } from '../Nav/Nav';
+import type { DefaultComponentProps } from '../../styles';
 
 type TabsProps = NavProps & DefaultComponentProps;
 

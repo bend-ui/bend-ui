@@ -1,8 +1,9 @@
 import { forwardRef } from '@particles/primitives';
-import { ReactNode, useEffect, useState } from 'react';
-import { DefaultComponentProps } from '../../styles';
+import { useEffect, useState } from 'react';
 import { Box } from '../Box';
 import useStyles from './Progress.styles';
+import type { DefaultComponentProps } from '../../styles';
+import type { ReactNode } from 'react';
 
 export type ProgressProps = DefaultComponentProps & {
   children?: ReactNode;
@@ -32,7 +33,7 @@ const Progress = forwardRef<ProgressProps, 'div'>((props, ref) => {
         aria-valuenow={constrainedValue}
         aria-valuemin={100}
         aria-valuemax={100}
-      ></div>
+      />
     </Box>
   );
 });

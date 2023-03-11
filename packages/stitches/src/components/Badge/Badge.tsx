@@ -1,8 +1,9 @@
 import clsx from 'clsx';
 import { forwardRef } from '@particles/primitives';
-import { DefaultComponentProps } from '../../styles';
 import { Box } from '../Box';
-import useStyles, { BadgeStylesParams } from './Badge.styles';
+import useStyles from './Badge.styles';
+import type { DefaultComponentProps } from '../../styles';
+import type { BadgeStylesParams } from './Badge.styles';
 
 export type BadgeProps = {
   icon?: React.ReactElement;

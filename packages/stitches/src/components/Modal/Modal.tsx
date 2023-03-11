@@ -1,13 +1,14 @@
 import { FloatingFocusManager } from '@floating-ui/react';
 import clsx from 'clsx';
 import { Portal } from '@particles/primitives';
-import { DefaultComponentProps } from '../../styles';
 import { Box } from '../Box';
 import { Panel } from '../Panel';
 import { Transition } from '../Transition';
 import useStyles from './Modal.styles';
 import { ModalHeader } from './ModalHeader';
-import { useModal, UseModalProps } from './useModal';
+import { useModal } from './useModal';
+import type { UseModalProps } from './useModal';
+import type { DefaultComponentProps } from '../../styles';
 
 export type ModalProps = {
   children: React.ReactNode;

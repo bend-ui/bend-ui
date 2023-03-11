@@ -1,4 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { FiBell, FiMenu, FiPlus, FiSearch } from 'react-icons/fi';
 import { Avatar } from '../Avatar';
 import { Button, IconButton } from '../Button';
@@ -7,6 +6,7 @@ import { Input } from '../Input';
 import { Level } from '../Level';
 import { DropdownMenu } from '../Menu';
 import { NavBar } from './';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   title: 'Components/NavBar',
@@ -20,16 +20,20 @@ export const Default: ComponentStory<typeof NavBar> = (args) => (
 export const Simple = () => (
   <Level>
     <Flex>
-      <IconButton><FiMenu /></IconButton>
+      <IconButton>
+        <FiMenu />
+      </IconButton>
       <Flex>Logo</Flex>
       <Input icon={<FiSearch />} placeholder="Search" />
     </Flex>
     <Flex>
       <Button icon={<FiPlus />}>New</Button>
-      <IconButton><FiBell /></IconButton>
+      <IconButton>
+        <FiBell />
+      </IconButton>
       <DropdownMenu>
         <DropdownMenu.Trigger>
-          <Avatar src='https://randomuser.me/api/portraits/women/44.jpg' />
+          <Avatar src="https://randomuser.me/api/portraits/women/44.jpg" />
         </DropdownMenu.Trigger>
         <DropdownMenu.List>
           <DropdownMenu.Item>Profile</DropdownMenu.Item>
@@ -40,4 +44,4 @@ export const Simple = () => (
       </DropdownMenu>
     </Flex>
   </Level>
-)
+);

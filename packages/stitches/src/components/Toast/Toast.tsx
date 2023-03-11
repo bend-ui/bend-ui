@@ -1,12 +1,12 @@
 import { forwardRef } from '@particles/primitives';
 import clsx from 'clsx';
-import { DefaultComponentProps } from '../../styles';
 import { DismissButton } from '../Button';
 import { Level } from '../Level';
 import { Panel } from '../Panel';
 import { Stack } from '../Stack';
 import { Text } from '../Text';
 import useStyles from './Toast.styles';
+import type { DefaultComponentProps } from '../../styles';
 
 export type ToastProps = {
   title: React.ReactNode;

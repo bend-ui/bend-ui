@@ -1,8 +1,8 @@
 import { useDisclosure } from '@particles/primitives';
-import { ComponentMeta } from '@storybook/react';
 import { Button } from '../Button';
 import { Panel } from '../Panel';
 import Transition from './Transition';
+import type { ComponentMeta } from '@storybook/react';
 
 export default {
   component: Transition,

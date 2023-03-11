@@ -1,5 +1,6 @@
 import { useClick, useFloating, useInteractions } from '@floating-ui/react';
-import { HTMLProps, useState } from 'react';
+import { useState } from 'react';
+import type { HTMLProps } from 'react';
 
 export const useMenu = () => {
   const [isOpen, setIsOpen] = useState(false);

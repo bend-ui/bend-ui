@@ -1,8 +1,10 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import React from 'react';
 import { TbBrandTelegram } from 'react-icons/tb';
 import { Group } from '../Group';
 
-import { Button, ButtonProps } from './';
+import { Button } from './';
+import type { ButtonProps } from './';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   title: 'Components/Button',
@@ -43,7 +45,7 @@ export const Sizes: ComponentStory<typeof Button> = (args) => {
   return (
     <Group>
       {buttonSizes.map((size) => (
-        <Button {...args} size={size}>
+        <Button key={size} {...args} size={size}>
           Button {size}
         </Button>
       ))}

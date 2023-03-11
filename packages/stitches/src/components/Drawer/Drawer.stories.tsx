@@ -1,7 +1,7 @@
 import { useDisclosure } from '@particles/primitives';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Button } from '../Button';
 import { Drawer } from '.';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   title: 'Components/Overlay/Drawer',

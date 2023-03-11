@@ -1,8 +1,8 @@
 import { forwardRef } from '@particles/primitives';
 import clsx from 'clsx';
-import { DefaultComponentProps } from '../../styles';
 import { Box } from '../Box';
 import useStyles from './Group.styles';
+import type { DefaultComponentProps } from '../../styles';
 
 export type GroupProps = {
   orientation?: 'vertical' | 'horizontal';

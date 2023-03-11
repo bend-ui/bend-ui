@@ -1,7 +1,7 @@
 import { forwardRef } from '@particles/primitives';
 import { useEffect, useRef } from 'react';
-import { DefaultComponentProps } from '../../styles';
 import { Box } from '../Box';
+import type { DefaultComponentProps } from '../../styles';
 
 const useAccordion = (props) => {
   const { ref } = props;

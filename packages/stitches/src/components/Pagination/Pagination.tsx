@@ -1,6 +1,6 @@
 import { forwardRef } from '@particles/primitives';
-import { DefaultComponentProps } from '../../styles';
 import { Box } from '../Box';
+import type { DefaultComponentProps } from '../../styles';
 
 export type PaginationProps = DefaultComponentProps;
 

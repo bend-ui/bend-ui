@@ -1,7 +1,9 @@
-import { CSSProperties } from 'react';
-import { getTransitionStyles, TransitionStates } from './getTransitionStyles';
-import { Transitions } from './transitions';
-import { useTransition, UseTransitionProps } from './useTransition';
+import { getTransitionStyles } from './getTransitionStyles';
+import { useTransition } from './useTransition';
+import type { CSSProperties } from 'react';
+import type { TransitionStates } from './getTransitionStyles';
+import type { Transitions } from './transitions';
+import type { UseTransitionProps } from './useTransition';
 
 export type TransitionProps<T extends string> = UseTransitionProps & {
   children(

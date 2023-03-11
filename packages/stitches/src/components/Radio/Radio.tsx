@@ -1,11 +1,11 @@
 import { createComponent, forwardRef } from '@particles/primitives';
 import clsx from 'clsx';
-import { DefaultComponentProps } from '../../styles';
 import { Group } from '../Group';
 import { Text } from '../Text';
 import { Box } from '../Box';
 import { useRadio } from './useRadio';
 import useStyles from './Radio.styles';
+import type { DefaultComponentProps } from '../../styles';
 
 export type RadioProps = {
   children?: React.ReactNode;
@@ -27,7 +27,7 @@ const Radio = forwardRef<RadioProps, 'input'>((props, ref) => {
         {...getInputProps()}
         {...rest}
       />
-      <span className={clsx(styles['control'])} {...getControlProps()}></span>
+      <span className={clsx(styles['control'])} {...getControlProps()} />
 
       <label htmlFor="radio-id">
         <Text className={clsx(styles.label)}>{children}</Text>

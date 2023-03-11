@@ -1,8 +1,8 @@
 import { forwardRef } from '@particles/primitives';
 import clsx from 'clsx';
-import { DefaultComponentProps, TextStyles } from '../../styles';
 import { Box } from '../Box';
 import useStyles from './Heading.styles';
+import type { DefaultComponentProps, TextStyles } from '../../styles';
 
 export type HeadingProps = {
   variant?: TextStyles;

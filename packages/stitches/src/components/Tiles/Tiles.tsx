@@ -1,7 +1,8 @@
 import { createComponent } from '@particles/primitives';
 import clsx from 'clsx';
 import { Box } from '../Box';
-import useStyles, { TilesStylesParams } from './Tiles.styles';
+import useStyles from './Tiles.styles';
+import type { TilesStylesParams } from './Tiles.styles';
 
 export interface TilesProps extends TilesStylesParams {
   children?: React.ReactNode;

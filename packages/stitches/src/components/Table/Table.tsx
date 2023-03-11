@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 import { forwardRef } from '@particles/primitives';
-import { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { Header } from './Header';
 import { Body } from './Body';
 import { Row } from './Row';
@@ -8,6 +7,7 @@ import { Column } from './Column';
 import { Cell } from './Cell';
 import { Footer } from './Footer';
 import useStyles from './Table.styles';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 export type TableProps = {
   children?: ReactNode;

@@ -37,9 +37,7 @@ const Themes = {
   modern: modernTheme,
 };
 
-const getTheme = (themeName) => {
-  return Themes[themeName];
-};
+const getTheme = (themeName) => Themes[themeName];
 
 const withThemeProvider = (Story, context) => {
   globalStyles();

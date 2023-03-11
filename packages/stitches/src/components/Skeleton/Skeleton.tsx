@@ -1,8 +1,9 @@
 import { createComponent, forwardRef } from '@particles/primitives';
 import clsx from 'clsx';
-import { DefaultComponentProps, useDefaultProps } from '../../styles';
+import { useDefaultProps } from '../../styles';
 import { Box } from '../Box';
 import useStyles from './Skeleton.styles';
+import type { DefaultComponentProps } from '../../styles';
 
 export type SkeletonProps = DefaultComponentProps & {
   children?: React.ReactNode;

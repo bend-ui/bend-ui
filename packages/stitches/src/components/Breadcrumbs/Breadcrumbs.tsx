@@ -1,7 +1,7 @@
 import { Children, cloneElement } from 'react';
 import { forwardRef } from '@particles/primitives';
-import { DefaultComponentProps } from '../../styles';
 import { Box } from '../Box';
+import type { DefaultComponentProps } from '../../styles';
 
 export type BreadcrumbsProps = {
   separator?: React.ReactElement;

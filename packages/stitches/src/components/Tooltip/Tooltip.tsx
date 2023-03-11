@@ -1,10 +1,11 @@
 import { cloneElement, isValidElement } from 'react';
 import clsx from 'clsx';
-import { DefaultComponentProps } from '../../styles';
 import { Box } from '../Box';
 import { Transition } from '../Transition';
 import useStyles from './Tooltip.styles';
-import { TooltipPlacement, useTooltip } from './useTooltip';
+import { useTooltip } from './useTooltip';
+import type { TooltipPlacement } from './useTooltip';
+import type { DefaultComponentProps } from '../../styles';
 
 export type TootipProps = {
   children: React.ReactNode;

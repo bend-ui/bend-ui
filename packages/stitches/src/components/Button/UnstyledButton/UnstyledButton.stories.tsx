@@ -1,9 +1,9 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Media } from '../../Media';
 import { Avatar } from '../../Avatar';
 import { Text } from '../../Text';
 import { UnstyledButton } from '.';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   title: 'Components/Button/UnstyledButton',

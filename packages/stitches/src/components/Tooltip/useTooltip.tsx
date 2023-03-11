@@ -3,7 +3,6 @@ import {
   autoUpdate,
   flip,
   offset,
-  Placement,
   shift,
   useDismiss,
   useFloating,
@@ -12,6 +11,7 @@ import {
   useInteractions,
   useRole,
 } from '@floating-ui/react';
+import type { Placement } from '@floating-ui/react';
 
 export type TooltipPlacement = Placement;
 

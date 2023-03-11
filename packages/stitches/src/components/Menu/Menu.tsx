@@ -1,18 +1,14 @@
-import {
-  Children,
-  cloneElement,
-  isValidElement,
-  PropsWithChildren,
-} from 'react';
+import { Children, cloneElement, isValidElement } from 'react';
 import { createContext, forwardRef } from '@particles/primitives';
 import clsx from 'clsx';
-import { DefaultComponentProps } from '../../styles';
 import { Box } from '../Box';
 import { Panel } from '../Panel';
 import { Divider } from '../Divider';
 import { Transition } from '../Transition';
 import useStyles from './Menu.styles';
 import { useMenu } from './useMenu';
+import type { DefaultComponentProps } from '../../styles';
+import type { PropsWithChildren } from 'react';
 
 interface DropdownMenuContextProps {
   isOpen: boolean;

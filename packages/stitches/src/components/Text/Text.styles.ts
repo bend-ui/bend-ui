@@ -1,9 +1,5 @@
-import {
-  createStyles,
-  CSSProperties,
-  TextStyles,
-  textStyles,
-} from '../../styles';
+import { createStyles, textStyles } from '../../styles';
+import type { CSSProperties, TextStyles } from '../../styles';
 
 export interface TextStylesParams {
   variant?: TextStyles;

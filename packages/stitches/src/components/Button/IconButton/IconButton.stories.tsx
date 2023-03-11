@@ -1,6 +1,6 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { FiEdit2 } from 'react-icons/fi';
 import { IconButton } from '.';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   title: 'Components/Button/IconButton',
@@ -8,7 +8,7 @@ export default {
 } as ComponentMeta<typeof IconButton>;
 
 export const Base: ComponentStory<typeof IconButton> = (args) => (
-  <IconButton {...args}></IconButton>
+  <IconButton {...args} />
 );
 
 Base.args = {

@@ -1,6 +1,6 @@
 import { forwardRef } from '@particles/primitives';
-import { ButtonProps } from '../Button';
 import { IconButton } from '../IconButton';
+import type { ButtonProps } from '../Button';
 
 type DismissButtonProps = ButtonProps;
 
@@ -20,8 +20,8 @@ const DismissButton = forwardRef<DismissButtonProps, 'button'>((props, ref) => {
         width="1em"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="6" x2="18" y2="18"></line>
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
       </svg>
     </IconButton>
   );

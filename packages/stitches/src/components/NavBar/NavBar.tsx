@@ -1,6 +1,6 @@
 import { forwardRef } from '@particles/primitives';
-import { DefaultComponentProps } from '../../styles';
 import { Level } from '../Level';
+import type { DefaultComponentProps } from '../../styles';
 
 export type NavBarProps = DefaultComponentProps;
 
