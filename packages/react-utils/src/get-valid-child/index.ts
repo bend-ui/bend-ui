@@ -1,5 +1,5 @@
-import { Children, ReactElement, ReactNode } from 'react';
+import { Children } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 
-export const getValidChild = (children: ReactNode) => {
-  return Children.only(children) as ReactElement;
-};
+export const getValidChild = (children: ReactNode) =>
+  Children.only(children) as ReactElement;
