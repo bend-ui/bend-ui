@@ -1,4 +1,3 @@
-import { CSSObject } from '@emotion/react';
 import merge from 'deepmerge';
 import {
   breakpoints,
@@ -13,6 +12,7 @@ import {
   sizes,
   spacing,
 } from './tokens';
+import type { CSSObject } from '@emotion/react';
 
 export const textStyles: Record<string, CSSObject> = {
   display: {
