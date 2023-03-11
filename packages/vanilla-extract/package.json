@@ -9,6 +9,6 @@
   },
   "devDependencies": {
     "@vanilla-extract/webpack-plugin": "^2.2.0",
-    "@vanilla-extract/esbuild-plugin": "2.2.0"
+    "@vanilla-extract/esbuild-plugin": "2.2.2"
   }
 }
