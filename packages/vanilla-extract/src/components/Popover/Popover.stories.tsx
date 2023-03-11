@@ -1,6 +1,6 @@
-import { ComponentMeta } from '@storybook/react';
 import { Button } from '../Button';
 import { Popover } from '.';
+import type { ComponentMeta } from '@storybook/react';
 export default {
   component: Popover,
 } as ComponentMeta<typeof Popover>;

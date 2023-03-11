@@ -1,7 +1,8 @@
 import { forwardRef } from '@particles/primitives';
 import clsx from 'clsx';
-import { Sprinkles, sprinkles } from '../../theme/sprinkles.css';
+import { sprinkles } from '../../theme/sprinkles.css';
 import * as styles from './Button.css';
+import type { Sprinkles } from '../../theme/sprinkles.css';
 
 export interface ButtonProps {
   children?: React.ReactNode;

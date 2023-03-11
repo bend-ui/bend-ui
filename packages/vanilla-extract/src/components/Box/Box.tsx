@@ -1,5 +1,6 @@
 import clsx from 'clsx';
-import { sprinkles, Sprinkles } from '../../theme/sprinkles.css';
+import { sprinkles } from '../../theme/sprinkles.css';
+import type { Sprinkles } from '../../theme/sprinkles.css';
 
 export interface BoxProps {
   children?: React.ReactNode;
