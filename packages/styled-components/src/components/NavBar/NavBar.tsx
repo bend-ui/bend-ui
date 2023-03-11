@@ -1,5 +1,5 @@
-import { SystemProps } from '../../system';
 import { Level } from '../Level';
+import type { SystemProps } from '../../system';
 
 type NavBarProps = SystemProps;
 

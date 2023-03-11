@@ -1,5 +1,5 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Switch } from './Switch';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   title: 'Forms/Switch',

@@ -1,5 +1,5 @@
 import 'system-props';
-import { Theme as DefaultTheme } from '@particles/theme';
+import type { Theme as DefaultTheme } from '@particles/theme';
 
 declare module 'system-props' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface

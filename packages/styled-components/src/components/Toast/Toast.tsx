@@ -1,6 +1,7 @@
-import { system, SystemProps } from '../../system';
+import { system } from '../../system';
 import { MediaObject } from '../MediaObject';
 import useStyles from './Toast.styles';
+import type { SystemProps } from '../../system';
 
 export type ToastTitleProps = SystemProps;
 

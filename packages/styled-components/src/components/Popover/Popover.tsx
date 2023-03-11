@@ -1,7 +1,8 @@
 import { createContext } from '@particles/primitives';
-import { Children, cloneElement, FC } from 'react';
+import { Children, cloneElement } from 'react';
 import { Panel } from '../Panel';
 import { usePopover } from './usePopover';
+import type { FC } from 'react';
 
 type PopoverContext = ReturnType<typeof usePopover>;
 

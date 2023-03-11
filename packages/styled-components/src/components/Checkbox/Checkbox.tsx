@@ -1,10 +1,10 @@
 import {
   Checkbox as CheckboxPrimitive,
-  CheckboxProps,
   forwardRef,
   useCheckbox,
 } from '@particles/primitives';
 import { FiCheck } from 'react-icons/fi';
+import type { CheckboxProps } from '@particles/primitives';
 import { system } from '../../system';
 import useStyles from './Checkbox.styles';
 

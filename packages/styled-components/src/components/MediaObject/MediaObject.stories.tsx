@@ -1,5 +1,5 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { MediaObject } from './MediaObject';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   title: 'Layout/MediaObject',

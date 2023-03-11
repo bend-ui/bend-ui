@@ -1,5 +1,5 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Image } from './Image';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   title: 'Data Display/Image',

@@ -1,5 +1,4 @@
 import {
-  AllSystemProps,
   background,
   border,
   color,
@@ -14,8 +13,9 @@ import {
   typography,
 } from 'system-props';
 import styled from 'styled-components';
-import { SystemProps } from '../../system';
 import { Component } from '../Component';
+import type { SystemProps } from '../../system';
+import type { AllSystemProps } from 'system-props';
 
 const system = createSystem();
 

@@ -1,5 +1,6 @@
-import { system, SystemProps } from '../../system';
+import { system } from '../../system';
 import useStyles from './Group.styles';
+import type { SystemProps } from '../../system';
 
 export type GroupProps = SystemProps;
 

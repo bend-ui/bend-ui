@@ -1,7 +1,7 @@
 import { theme } from '@particles/theme';
 
-import { DecoratorFn } from '@storybook/react';
 import { ParticlesProvider } from '../../src';
+import type { DecoratorFn } from '@storybook/react';
 
 const themes = {
   default: theme,
@@ -23,7 +23,7 @@ export const withThemeProvider: DecoratorFn = (Story, context) => {
   const theme = getTheme(context.globals['theme']);
   return (
     <ParticlesProvider theme={theme}>
-      <Story></Story>
+      <Story />
     </ParticlesProvider>
   );
 };

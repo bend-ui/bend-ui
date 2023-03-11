@@ -1,7 +1,8 @@
 import { useRef } from 'react';
 import { forwardRef } from '@particles/primitives';
-import { system, SystemProps } from '../../system';
+import { system } from '../../system';
 import useStyles from './Input.styles';
+import type { SystemProps } from '../../system';
 
 export type InputProps = {
   variant?: 'solid' | 'outline';

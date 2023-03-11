@@ -1,8 +1,10 @@
-import { FC, ReactNode, RefObject, useLayoutEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { Portal } from '@particles/primitives';
-import { Placement, shift, useFloating } from '@floating-ui/react';
+import { shift, useFloating } from '@floating-ui/react';
 
 import { system } from '../../system';
+import type { Placement } from '@floating-ui/react';
+import type { FC, ReactNode, RefObject } from 'react';
 
 export interface PopperProps {
   children?: ReactNode;

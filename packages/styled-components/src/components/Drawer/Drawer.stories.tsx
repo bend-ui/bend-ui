@@ -1,6 +1,6 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Drawer } from './Drawer';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   component: Drawer,

@@ -1,4 +1,5 @@
-import { theme as defaultTheme, Theme } from '@particles/theme';
+import { theme as defaultTheme } from '@particles/theme';
+import type { Theme } from '@particles/theme';
 import { CSSVars } from './CSSVars';
 import { GlobalStyles } from './GlobalStyles';
 import { ResetStyles } from './ResetStyles';

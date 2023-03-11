@@ -1,7 +1,7 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Box } from '../Box';
 import { Button } from '../Button';
 import { Group } from './Group';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   title: 'Layout/Group',

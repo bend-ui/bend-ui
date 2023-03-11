@@ -1,12 +1,9 @@
-import {
-  AlertProps as AlertPrimitiveProps,
-  forwardRef,
-  useAlert,
-} from '@particles/primitives';
+import { forwardRef, useAlert } from '@particles/primitives';
+import type { AlertProps as AlertPrimitiveProps } from '@particles/primitives';
 import { Box } from '../Box';
-import { SystemProps } from '../../system';
 import { MediaObject } from '../MediaObject';
 import useStyles from './Alert.styles';
+import type { SystemProps } from '../../system';
 
 interface AlertOptions extends SystemProps {
   icon?: React.ReactNode;

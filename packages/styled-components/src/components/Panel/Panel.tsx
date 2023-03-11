@@ -1,6 +1,7 @@
 import { forwardRef } from '@particles/primitives';
-import { system, SystemProps } from '../../system';
+import { system } from '../../system';
 import useStyles from './Panel.styles';
+import type { SystemProps } from '../../system';
 
 type PanelProps = SystemProps;
 

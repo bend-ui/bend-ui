@@ -1,6 +1,7 @@
 import { css, shouldForwardProp } from 'system-props';
-import styled, { CSSObject } from 'styled-components';
-import { SystemProps } from '../../system';
+import styled from 'styled-components';
+import type { CSSObject } from 'styled-components';
+import type { SystemProps } from '../../system';
 
 export type ComponentProps = SystemProps;
 

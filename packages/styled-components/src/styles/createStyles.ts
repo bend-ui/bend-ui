@@ -1,6 +1,6 @@
-import { CSSObject } from 'system-props';
 import { useTheme, useThemeStyles } from '../theme';
 import { isFunction } from '../utils';
+import type { CSSObject } from 'system-props';
 
 interface UseStylesOptions {
   overrides?: any;

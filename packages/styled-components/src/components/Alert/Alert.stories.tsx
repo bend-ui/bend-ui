@@ -1,15 +1,13 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { FiInfo } from 'react-icons/fi';
 import { Alert } from './Alert';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   component: Alert,
   title: 'Components/Alert',
 } as ComponentMeta<typeof Alert>;
 
-const Template: ComponentStory<typeof Alert> = (args) => (
-  <Alert {...args}></Alert>
-);
+const Template: ComponentStory<typeof Alert> = (args) => <Alert {...args} />;
 
 export const Base = Template.bind({});
 Base.args = {

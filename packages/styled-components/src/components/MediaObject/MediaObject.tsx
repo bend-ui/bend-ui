@@ -1,5 +1,6 @@
-import { system, SystemProps } from '../../system';
+import { system } from '../../system';
 import useStyles from './MediaObject.styles';
+import type { SystemProps } from '../../system';
 
 type MediaObjectImageProps = SystemProps;
 

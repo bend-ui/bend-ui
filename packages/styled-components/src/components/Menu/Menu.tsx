@@ -1,19 +1,15 @@
-import {
-  Children,
-  cloneElement,
-  isValidElement,
-  RefObject,
-  useRef,
-} from 'react';
+import { Children, cloneElement, isValidElement, useRef } from 'react';
 import {
   createContext,
   forwardRef,
   useDisclosure,
 } from '@particles/primitives';
-import { system, SystemProps } from '../../system';
+import { system } from '../../system';
 import { Panel } from '../Panel';
 import { Popper } from '../Popper';
 import useStyles from './Menu.styles';
+import type { SystemProps } from '../../system';
+import type { ReactNode, RefObject } from 'react';
 
 interface MenuContextProps {
   isOpen: boolean;
@@ -24,7 +20,11 @@ interface MenuContextProps {
 const [MenuContextProvider, useMenuContext] =
   createContext<MenuContextProps>('Menu');
 
-const Trigger: React.FC = (props) => {
+export type MenuTriggerProps = {
+  children?: ReactNode;
+};
+
+const Trigger = (props: MenuTriggerProps) => {
   const { children, ...rest } = props;
   const child = Children.only(children);
   const { triggerRef, toggle } = useMenuContext();

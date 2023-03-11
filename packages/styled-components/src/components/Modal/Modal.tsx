@@ -15,7 +15,7 @@ export const Root: React.FC<ModalProps> = (props) => {
     <ModalProvider value={context}>
       <Portal>
         <system.div styles={styles.wrapper}>
-          <system.div styles={styles.overlay}></system.div>
+          <system.div styles={styles.overlay} />
           <system.div styles={styles.root} {...rest}>
             {children}
           </system.div>

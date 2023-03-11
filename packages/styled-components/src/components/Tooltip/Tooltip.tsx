@@ -1,7 +1,8 @@
-import { Children, cloneElement, FC, ReactNode } from 'react';
+import { Children, cloneElement } from 'react';
 import { system } from '../../system';
 import { useTooltip } from './useTooltip';
 import useStyles from './Tooltip.styles';
+import type { FC, ReactNode } from 'react';
 
 interface TooltipProps {
   children?: ReactNode;

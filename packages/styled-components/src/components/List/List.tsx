@@ -1,4 +1,5 @@
-import { system, SystemProps } from '../../system';
+import { system } from '../../system';
+import type { SystemProps } from '../../system';
 
 type ListItemProps = SystemProps;
 

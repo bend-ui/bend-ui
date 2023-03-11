@@ -1,8 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Box } from '../Box';
 import { Button } from '../Button';
 import { Text } from '../Text';
 import { NavBar } from './NavBar';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   title: 'Data Display/NavBar',

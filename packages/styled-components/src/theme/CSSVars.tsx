@@ -1,5 +1,6 @@
-import { createGlobalStyle, CSSObject, ThemeProps } from 'styled-components';
-import { Theme } from '@particles/theme';
+import { createGlobalStyle } from 'styled-components';
+import type { Theme } from '@particles/theme';
+import type { CSSObject, ThemeProps } from 'styled-components';
 
 type CSSVarsProps = ThemeProps<Theme>;
 

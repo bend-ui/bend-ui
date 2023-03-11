@@ -1,5 +1,5 @@
-import { CSSObject } from 'system-props';
 import { createStyles } from '../../styles';
+import type { CSSObject } from 'system-props';
 
 const wrapperStyles: CSSObject = {
   // position: 'absolute',

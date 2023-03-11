@@ -1,7 +1,7 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Box } from '../Box';
 import { Tiles } from './Tiles';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   component: Tiles,

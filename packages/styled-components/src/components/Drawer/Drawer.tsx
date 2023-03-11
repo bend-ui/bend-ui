@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
 import { system } from '../../system';
 import useStyles from './Drawer.styles';
+import type { ReactNode } from 'react';
 
 export type DrawerProps = {
   children?: ReactNode;
@@ -11,7 +11,7 @@ export const Root = (props: DrawerProps) => {
   const { styles } = useStyles();
   return (
     <system.div sx={styles.wrapper} {...rest}>
-      <system.div sx={styles.overlay}></system.div>
+      <system.div sx={styles.overlay} />
       <system.div sx={styles.root}>{children}</system.div>
     </system.div>
   );

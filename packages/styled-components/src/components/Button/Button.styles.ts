@@ -1,6 +1,6 @@
-import { CSSObject } from 'system-props';
 import { createStyles, variant } from '../../styles';
-import { ButtonProps } from './Button';
+import type { CSSObject } from 'system-props';
+import type { ButtonProps } from './Button';
 
 const buttonStyles = (props: ButtonProps): CSSObject => {
   const { palette } = props;
@@ -57,9 +57,7 @@ const buttonStyles = (props: ButtonProps): CSSObject => {
 
 const buttonLoadingStyles = {};
 
-export default createStyles((props: ButtonProps) => {
-  return {
-    root: buttonStyles(props),
-    loading: buttonLoadingStyles,
-  };
-});
+export default createStyles((props: ButtonProps) => ({
+  root: buttonStyles(props),
+  loading: buttonLoadingStyles,
+}));

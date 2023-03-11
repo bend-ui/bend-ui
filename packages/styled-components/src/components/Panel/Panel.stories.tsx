@@ -1,5 +1,5 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Panel } from './Panel';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   component: Panel,
