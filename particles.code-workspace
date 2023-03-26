@@ -13,10 +13,6 @@
       "path": "packages/emotion"
     },
     {
-      "name": "📦 @particles/macaron",
-      "path": "packages/macaron"
-    },
-    {
       "name": "📦 @particles/stitches",
       "path": "packages/stitches"
     },
