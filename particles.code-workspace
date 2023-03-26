@@ -60,18 +60,17 @@
     },
     "typescript.tsdk": "✨ particles/✨ ds/node_modules/typescript/lib",
     "jest.disabledWorkspaceFolders": [
+      "📦 @particles/primitives",
       "📦 @particles/emotion",
       "📦 @particles/stitches",
       "📦 @particles/styled-components",
       "📦 @particles/theme",
       "📦 @particles/vanilla-extract",
+      "📦 @particles/tailwind",
+      "🛠️ @particles/react-utils",
       "🧪 Dashboard (Emotion)",
       "🧪 Dashboard (Stitches)",
-      "🛠️ @particles/react-utils",
-      "📦 @particles/tailwind",
-      "📦 @particles/macaron",
-      "🧪 Dashboard (Tailwind)",
-      "📦 @particles/primitives"
+      "🧪 Dashboard (Tailwind)"
     ]
   }
 }
