@@ -253,9 +253,6 @@ importers:
       webpack: 5.75.0_@swc+core@1.2.173
       webpack-merge: 5.8.0
 
-  packages/cool:
-    specifiers: {}
-
   packages/emotion:
     specifiers:
       '@emotion/cache': ^11.10.5
@@ -271,9 +268,6 @@ importers:
       deepmerge: 4.2.2
       system-props: 0.22.0
       transition-hook: 1.5.2
-
-  packages/macaron:
-    specifiers: {}
 
   packages/primitives:
     specifiers:
