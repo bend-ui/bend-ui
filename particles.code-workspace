@@ -70,7 +70,8 @@
       "🛠️ @particles/react-utils",
       "📦 @particles/tailwind",
       "📦 @particles/macaron",
-      "🧪 Dashboard (Tailwind)"
+      "🧪 Dashboard (Tailwind)",
+      "📦 @particles/primitives"
     ]
   }
 }
