@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   TabsProvider,
   useTab,
@@ -8,6 +7,7 @@ import {
 } from '@particles/primitives';
 import { system } from '../../system';
 import useStyles from './Tabs.styles';
+import type React from 'react';
 import type { SystemProps } from '../../system';
 
 export type TabsListProps = SystemProps;

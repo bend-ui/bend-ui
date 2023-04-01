@@ -1,4 +1,3 @@
-import React from 'react';
 import { createComponent } from '../../utils';
 import { forwardRef } from '../../utils/forwardRef';
 import {
@@ -8,6 +7,7 @@ import {
   useTabPanel,
   useTabs,
 } from './useTabs';
+import type React from 'react';
 import type { UseTabsProps } from './useTabs';
 
 export type TabsListProps = {

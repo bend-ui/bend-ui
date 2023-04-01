@@ -1,5 +1,5 @@
-import React from 'react';
 import { createComponent, forwardRef } from '../../utils/';
+import type React from 'react';
 
 export type LevelRootProps = {
   children?: React.ReactNode;

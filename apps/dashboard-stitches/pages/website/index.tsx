@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   FiArrowRight,
   FiBarChart2,
@@ -21,6 +20,7 @@ import {
   Tiles,
 } from '@particles/stitches';
 import { Layout } from './components/Layout';
+import type React from 'react';
 
 const FeatureCard: React.FC<{
   children: React.ReactNode;

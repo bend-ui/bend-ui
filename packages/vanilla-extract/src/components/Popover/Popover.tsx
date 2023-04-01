@@ -1,10 +1,10 @@
-import React from 'react';
 import {
   filterChildrenByType,
   Popover as PopoverPrimitive,
 } from '@particles/primitives';
 import clsx from 'clsx';
 import * as styles from './Popover.css';
+import type React from 'react';
 import type { ReactNode } from 'react';
 
 export type PopoverTriggerProps = {

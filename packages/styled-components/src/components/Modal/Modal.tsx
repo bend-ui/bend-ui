@@ -1,7 +1,7 @@
-import React from 'react';
 import { ModalProvider, Portal, useModal } from '@particles/primitives';
 import { system } from '../../system';
 import useStyles from './Modal.styles';
+import type React from 'react';
 
 export interface ModalProps {
   isOpen: boolean;
