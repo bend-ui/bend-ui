@@ -10,5 +10,9 @@
   "devDependencies": {
     "@vanilla-extract/webpack-plugin": "^2.2.0",
     "@vanilla-extract/esbuild-plugin": "2.2.2"
+  },
+  "peerDependencies": {
+    "react": ">=16.8",
+    "react-dom": ">=16.8"
   }
 }

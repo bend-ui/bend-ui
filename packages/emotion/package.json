@@ -11,6 +11,8 @@
   },
   "peerDependencies": {
     "@emotion/css": ">=11",
-    "@emotion/react": ">=11"
+    "@emotion/react": ">=11",
+    "react": ">=16.8",
+    "react-dom": ">=16.8"
   }
 }
