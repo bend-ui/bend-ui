@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "dependencies": {
     "@emotion/cache": "^11.10.5",
-    "@floating-ui/react": "^0.17.0",
+    "@floating-ui/react": "^0.22.2",
     "clsx": "1.2.1",
-    "deepmerge": "^4.2.2",
+    "deepmerge": "^4.3.1",
     "system-props": "^0.22.0",
     "transition-hook": "^1.5.2"
   },

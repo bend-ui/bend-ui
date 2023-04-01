@@ -7,7 +7,7 @@
     "test": "echo 'no test'"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.14.0",
+    "@floating-ui/react": "^0.22.2",
     "system-props": "^0.22.0"
   },
   "peerDependencies": {
