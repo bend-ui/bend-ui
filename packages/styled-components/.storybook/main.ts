@@ -7,7 +7,8 @@ const config: StorybookConfig = {
     '@storybook/addon-essentials',
     '@nrwl/react/plugins/storybook',
     'storybook-dark-mode',
-    'storybook-addon-performance/register',
+    '@storybook/addon-a11y',
+    'storybook-addon-performance',
   ],
 };
 
