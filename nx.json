@@ -1,15 +1,26 @@
 {
+  "plugins": ["@nxtensions/astro"],
+  "npmScope": "particles",
+  "targetDefaults": {
+    "test": {
+      "inputs": ["default", "^default", "{workspaceRoot}/jest.preset.js"]
+    },
+    "lint": {
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
+    },
+    "build-storybook": {
+      "inputs": ["default", "^default", "{workspaceRoot}/.storybook/**/*"]
+    }
+  },
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": ["build-storybook"],
+        "cacheableOperations": ["build-storybook", "check"],
         "accessToken": "NDU1YmQ4ODEtZmY4MS00Mzk4LTgxZTAtMTVhYWY2MjRiMDgyfHJlYWQtd3JpdGU="
       }
     }
   },
-  "extends": "nx/presets/npm.json",
-  "npmScope": "particles",
   "affected": {
     "defaultBase": "main"
   },
@@ -33,17 +44,5 @@
     }
   },
   "defaultProject": "dashboard-tailwind",
-  "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "targetDefaults": {
-    "test": {
-      "inputs": ["default", "^default", "{workspaceRoot}/jest.preset.js"]
-    },
-    "lint": {
-      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
-    },
-    "build-storybook": {
-      "inputs": ["default", "^default", "{workspaceRoot}/.storybook/**/*"]
-    }
-  },
-  "defaultBase": "main"
+  "extends": "nx/presets/npm.json"
 }
