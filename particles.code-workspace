@@ -37,6 +37,10 @@
       "path": "packages/react-utils"
     },
     {
+      "name": "📚 Website",
+      "path": "apps/website"
+    },
+    {
       "name": "🧪 Dashboard (Emotion)",
       "path": "apps/dashboard-emotion"
     },
@@ -66,7 +70,8 @@
       "🛠️ @particles/react-utils",
       "🧪 Dashboard (Emotion)",
       "🧪 Dashboard (Stitches)",
-      "🧪 Dashboard (Tailwind)"
+      "🧪 Dashboard (Tailwind)",
+      "📚 Website"
     ]
   }
 }
