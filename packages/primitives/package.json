@@ -5,8 +5,8 @@
     "generate": "pnpm dlx generate-react-cli"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.22.2",
-    "csstype": "^3.1.1"
+    "@floating-ui/react": "^0.23.0",
+    "csstype": "^3.1.2"
   },
   "devDependencies": {
     "clsx": "1.2.1"

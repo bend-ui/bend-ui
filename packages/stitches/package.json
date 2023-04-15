@@ -5,7 +5,7 @@
   "dependencies": {
     "@capsizecss/core": "^3.1.0",
     "@capsizecss/metrics": "^1.1.1",
-    "@floating-ui/react": "^0.22.2",
+    "@floating-ui/react": "^0.23.0",
     "@stitches/react": "^1.2.8",
     "clsx": "^1.2.1"
   },
