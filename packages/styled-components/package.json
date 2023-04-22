@@ -7,12 +7,12 @@
     "test": "echo 'no test'"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.23.0",
+    "@floating-ui/react": "^0.23.1",
     "system-props": "^0.22.0"
   },
   "peerDependencies": {
-    "styled-components": ">=5",
     "react": ">=16.8",
-    "react-dom": ">=16.8"
+    "react-dom": ">=16.8",
+    "styled-components": ">=5"
   }
 }
