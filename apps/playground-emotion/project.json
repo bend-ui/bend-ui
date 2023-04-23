@@ -1,6 +1,7 @@
 {
+  "name": "playground-emotion",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/dashboard-emotion",
+  "sourceRoot": "apps/playground-emotion",
   "projectType": "application",
   "targets": {
     "build": {
@@ -8,29 +9,29 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "root": "apps/dashboard-emotion",
-        "outputPath": "dist/apps/dashboard-emotion"
+        "root": "apps/playground-emotion",
+        "outputPath": "dist/apps/playground-emotion"
       },
       "configurations": {
         "production": {},
         "development": {
-          "outputPath": "apps/dashboard-emotion"
+          "outputPath": "apps/playground-emotion"
         }
       }
     },
     "serve": {
       "executor": "@nrwl/next:server",
       "options": {
-        "buildTarget": "dashboard-emotion:build",
+        "buildTarget": "playground-emotion:build",
         "dev": true
       },
       "configurations": {
         "production": {
-          "buildTarget": "dashboard-emotion:build:production",
+          "buildTarget": "playground-emotion:build:production",
           "dev": false
         },
         "development": {
-          "buildTarget": "dashboard-emotion:build:development",
+          "buildTarget": "playground-emotion:build:development",
           "dev": true
         }
       },
@@ -39,14 +40,14 @@
     "export": {
       "executor": "@nrwl/next:export",
       "options": {
-        "buildTarget": "dashboard-emotion:build:production"
+        "buildTarget": "playground-emotion:build:production"
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/apps/dashboard-emotion"],
+      "outputs": ["{workspaceRoot}/coverage/apps/playground-emotion"],
       "options": {
-        "jestConfig": "apps/dashboard-emotion/jest.config.ts",
+        "jestConfig": "apps/playground-emotion/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -54,10 +55,9 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/dashboard-emotion/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/playground-emotion/**/*.{ts,tsx,js,jsx}"]
       }
     }
   },
-  "tags": [],
-  "name": "dashboard-emotion"
+  "tags": []
 }

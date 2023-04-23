@@ -1,4 +1,13 @@
 {
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/nx-cloud",
+      "options": {
+        "cacheableOperations": ["build-storybook", "check"],
+        "accessToken": "NDU1YmQ4ODEtZmY4MS00Mzk4LTgxZTAtMTVhYWY2MjRiMDgyfHJlYWQtd3JpdGU="
+      }
+    }
+  },
   "plugins": ["@nxtensions/astro"],
   "npmScope": "particles",
   "targetDefaults": {
@@ -10,15 +19,6 @@
     },
     "build-storybook": {
       "inputs": ["default", "^default", "{workspaceRoot}/.storybook/**/*"]
-    }
-  },
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "@nrwl/nx-cloud",
-      "options": {
-        "cacheableOperations": ["build-storybook", "check"],
-        "accessToken": "NDU1YmQ4ODEtZmY4MS00Mzk4LTgxZTAtMTVhYWY2MjRiMDgyfHJlYWQtd3JpdGU="
-      }
     }
   },
   "affected": {
@@ -43,6 +43,6 @@
       }
     }
   },
-  "defaultProject": "dashboard-tailwind",
+  "defaultProject": "playground-tailwind",
   "extends": "nx/presets/npm.json"
 }

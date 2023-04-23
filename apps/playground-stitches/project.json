@@ -1,6 +1,7 @@
 {
+  "name": "playground-stitches",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/dashboard-stitches",
+  "sourceRoot": "apps/playground-stitches",
   "projectType": "application",
   "targets": {
     "build": {
@@ -8,29 +9,29 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "root": "apps/dashboard-stitches",
-        "outputPath": "dist/apps/dashboard-stitches"
+        "root": "apps/playground-stitches",
+        "outputPath": "dist/apps/playground-stitches"
       },
       "configurations": {
         "production": {},
         "development": {
-          "outputPath": "apps/dashboard-stitches"
+          "outputPath": "apps/playground-stitches"
         }
       }
     },
     "serve": {
       "executor": "@nrwl/next:server",
       "options": {
-        "buildTarget": "dashboard-stitches:build",
+        "buildTarget": "playground-stitches:build",
         "dev": true
       },
       "configurations": {
         "production": {
-          "buildTarget": "dashboard-stitches:build:production",
+          "buildTarget": "playground-stitches:build:production",
           "dev": false
         },
         "development": {
-          "buildTarget": "dashboard-stitches:build:development",
+          "buildTarget": "playground-stitches:build:development",
           "dev": true
         }
       },
@@ -39,14 +40,14 @@
     "export": {
       "executor": "@nrwl/next:export",
       "options": {
-        "buildTarget": "dashboard-stitches:build:production"
+        "buildTarget": "playground-stitches:build:production"
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/apps/dashboard-stitches"],
+      "outputs": ["{workspaceRoot}/coverage/apps/playground-stitches"],
       "options": {
-        "jestConfig": "apps/dashboard-stitches/jest.config.ts",
+        "jestConfig": "apps/playground-stitches/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -54,10 +55,9 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/dashboard-stitches/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/playground-stitches/**/*.{ts,tsx,js,jsx}"]
       }
     }
   },
-  "tags": ["example"],
-  "name": "dashboard-stitches"
+  "tags": ["example"]
 }

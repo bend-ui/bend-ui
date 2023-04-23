@@ -1,12 +1,12 @@
 /* eslint-disable */
 export default {
-  displayName: 'dashboard-emotion',
+  displayName: 'playground-emotion',
 
   transform: {
     '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': '@nrwl/react/plugins/jest',
     '^.+\\.[tj]sx?$': ['babel-jest', { presets: ['@nrwl/next/babel'] }],
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/apps/dashboard-emotion',
+  coverageDirectory: '../../coverage/apps/playground-emotion',
   preset: '../../jest.preset.js',
 };

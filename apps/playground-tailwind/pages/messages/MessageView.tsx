@@ -126,7 +126,7 @@ export function MessageView() {
           rows={5}
           placeholder="Send a message"
           className="w-full rounded-2xl border border-neutral-300 p-4"
-         />
+        />
         <ButtonGroup>
           <Button palette="secondary">
             <TbMoodSmile />
