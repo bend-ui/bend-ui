@@ -41,16 +41,16 @@
       "path": "apps/website"
     },
     {
-      "name": "🧪 Dashboard (Emotion)",
-      "path": "apps/dashboard-emotion"
+      "name": "🧪 Playground (Emotion)",
+      "path": "apps/playground-emotion"
     },
     {
-      "name": "🧪 Dashboard (Stitches)",
-      "path": "apps/dashboard-stitches"
+      "name": "🧪 Playground (Stitches)",
+      "path": "apps/playground-stitches"
     },
     {
-      "name": "🧪 Dashboard (Tailwind)",
-      "path": "apps/dashboard-tailwind"
+      "name": "🧪 Playground (Tailwind)",
+      "path": "apps/playground-tailwind"
     }
   ],
   "settings": {
@@ -68,9 +68,9 @@
       "📦 @particles/vanilla-extract",
       "📦 @particles/tailwind",
       "🛠️ @particles/react-utils",
-      "🧪 Dashboard (Emotion)",
-      "🧪 Dashboard (Stitches)",
-      "🧪 Dashboard (Tailwind)",
+      "🧪 Playground (Emotion)",
+      "🧪 Playground (Stitches)",
+      "🧪 Playground (Tailwind)",
       "📚 Website"
     ]
   }
