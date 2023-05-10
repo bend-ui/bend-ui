@@ -2,8 +2,8 @@
   "name": "@particles/emotion",
   "version": "0.0.1",
   "dependencies": {
-    "@emotion/cache": "^11.10.7",
-    "@floating-ui/react": "^0.23.1",
+    "@emotion/cache": "^11.11.0",
+    "@floating-ui/react": "^0.24.0",
     "clsx": "1.2.1",
     "deepmerge": "^4.3.1",
     "system-props": "^0.22.0",
