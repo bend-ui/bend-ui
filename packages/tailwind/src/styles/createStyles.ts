@@ -1,6 +1,6 @@
-import { cva } from 'cva';
+import { cva } from 'class-variance-authority';
 import { cn } from './cn';
-import type { CxOptions } from 'cva';
+import type { CxOptions } from 'class-variance-authority';
 
 type ClassesObject = {
   base: CxOptions;

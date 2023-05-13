@@ -16,7 +16,7 @@ export const Layout = (props: LayoutProps) => {
             <li>
               <Link
                 href="/messages"
-                className="flex items-center rounded-lg py-2 px-3 text-lg font-medium text-neutral-800 hover:bg-neutral-100"
+                className="flex items-center rounded-lg px-3 py-2 text-lg font-medium text-neutral-800 hover:bg-neutral-100"
               >
                 <TbHome className="mr-3" />
                 Messages
@@ -25,7 +25,7 @@ export const Layout = (props: LayoutProps) => {
             <li>
               <Link
                 href="/profile"
-                className="flex items-center rounded-lg py-2 px-3 text-lg font-medium text-neutral-800 hover:bg-neutral-100"
+                className="flex items-center rounded-lg px-3 py-2 text-lg font-medium text-neutral-800 hover:bg-neutral-100"
               >
                 <TbUser className="mr-3" />
                 Profile
@@ -34,7 +34,7 @@ export const Layout = (props: LayoutProps) => {
             <li>
               <Link
                 href="/customers"
-                className="flex items-center rounded-lg py-2 px-3 text-lg font-medium text-neutral-800 hover:bg-neutral-100"
+                className="flex items-center rounded-lg px-3 py-2 text-lg font-medium text-neutral-800 hover:bg-neutral-100"
               >
                 <TbUser className="mr-3" />
                 Customers
