@@ -1,4 +1,4 @@
-import { MediaObject } from './MediaObject';
+import { MediaObject } from './';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {

@@ -6,7 +6,7 @@ import viteTsConfigPaths from 'vite-tsconfig-paths';
 import dts from 'vite-plugin-dts';
 
 export default defineConfig({
-  cacheDir: '../../node_modules/.vite/tailwind',
+  cacheDir: '../../node_modules/.vite/emotion',
 
   plugins: [
     dts({

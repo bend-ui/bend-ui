@@ -9,7 +9,7 @@
     "plugin:import/typescript",
     "plugin:react/jsx-runtime"
   ],
-  "plugins": ["@nrwl/nx", "autofix"],
+  "plugins": ["@nx", "autofix"],
   "rules": {
     "arrow-body-style": ["error", "as-needed"],
     "import/no-unresolved": "error",
@@ -76,7 +76,7 @@
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
-        "@nrwl/nx/enforce-module-boundaries": [
+        "@nx/enforce-module-boundaries": [
           "error",
           {
             "enforceBuildableLibDependency": true,
@@ -93,12 +93,12 @@
     },
     {
       "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nrwl/nx/typescript"],
+      "extends": ["plugin:@nx/typescript"],
       "rules": {}
     },
     {
       "files": ["*.js", "*.jsx"],
-      "extends": ["plugin:@nrwl/nx/javascript"],
+      "extends": ["plugin:@nx/javascript"],
       "rules": {}
     }
   ]
