@@ -1,16 +1,10 @@
 import { createComponent, forwardRef } from '@particles/primitives';
-import { createStyles } from '../../styles';
+import useStyles from './Level.styles';
 import type { ReactNode } from 'react';
 
 export type LevelProps = {
   children?: ReactNode;
 };
-
-const useStyles = createStyles({
-  root: {
-    base: ['flex', 'justify-between', 'items-center'],
-  },
-});
 
 const Level = forwardRef<LevelProps, 'div'>((props, ref) => {
   const { children, className, ...rest } = props;
