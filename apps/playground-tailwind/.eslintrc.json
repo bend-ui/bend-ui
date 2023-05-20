@@ -7,6 +7,11 @@
     "plugin:tailwindcss/recommended"
   ],
   "ignorePatterns": ["!**/*", ".next/**/*"],
+  "settings": {
+    "tailwindcss": {
+      "config": "tailwind.config.ts"
+    }
+  },
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
