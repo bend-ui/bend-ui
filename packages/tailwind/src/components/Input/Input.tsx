@@ -28,7 +28,7 @@ const useStyles = createStyles({
       'ring-offset-1',
       'ring-offset-indigo-500',
       'focus:border-transparent',
-      'drop-shadow',
+      'shadow-sm',
     ],
     variants: {
       withIcon: {
