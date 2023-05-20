@@ -6,3 +6,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: theme(colors.indigo.500);
+    --primary-fg: theme(colors.gray.100);
+
+    --canvas: theme(colors.gray.100);
+    --canvas-fg: theme(colors.gray.900);
+
+    --surface: theme(colors.gray.50);
+    --surface-fg: theme(colors.gray.900);
+
+    --border: theme(colors.gray.200);
+  }
+
+  .dark {
+    --canvas: theme(colors.gray.900);
+    --canvas-fg: theme(colors.gray.100);
+
+    --surface: theme(colors.gray.800);
+    --surface-fg: theme(colors.gray.100);
+
+    --border: theme(colors.gray.700);
+  }
+
+  body {
+    color: var(--canvas-fg);
+    background-color: var(--canvas);
+  }
+}
