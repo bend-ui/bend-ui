@@ -6,7 +6,6 @@ import type { ReactNode } from 'react';
 
 const tokens = {
   colors: {
-    primary: 'bg-indigo-500',
     'on-primary': 'text-white',
     secondary: 'bg-white dark:bg-shark-900',
     'on-secondary': 'text-shark-900 dark:text-shark-50',
@@ -17,7 +16,7 @@ const tokens = {
 const useStyles = createStyles({
   root: {
     base: [
-      'flex',
+      'inline-flex',
       'items-center',
       'font-semibold',
       'border',
@@ -27,28 +26,24 @@ const useStyles = createStyles({
       'focus:outline-none',
       'focus-visible:ring',
       'focus-visible:ring-indigo-300',
-      'drop-shadow',
+      'shadow-sm',
       'whitespace-nowrap',
     ],
     variants: {
       palette: {
         primary: [
-          'bg-indigo-500',
-          tokens.colors['on-primary'],
-          'border-transparent',
-          'hover:bg-indigo-600',
+          'text-primary-fg bg-primary border-transparent',
+          'hover:bg-primary-hover',
         ],
         secondary: [
-          'bg-shark-500',
+          'bg-gray-50',
           tokens.colors['on-secondary'],
-          'border-shark-300',
+          'border-gray-300',
           tokens.colors['secondary-emphasis'],
         ],
         danger: [
-          'bg-red-500',
-          'text-white',
-          'border-transparent',
-          'hover:bg-red-600',
+          'text-danger-fg bg-danger border-transparent',
+          'hover:bg-danger-hover',
         ],
       },
       size: {
