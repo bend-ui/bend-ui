@@ -1,18 +1,12 @@
 import { Template } from '.';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof Template> = {
   component: Template,
-} as ComponentMeta<typeof Template>;
+};
 
-type Story = ComponentStory<typeof Template>;
+export default meta;
 
-export const Base: Story = (args) => (
-  <Template {...args}>
-    <p>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea, iusto
-      quidem! Aut, sunt. Deserunt hic facilis sed earum atque quidem aliquam et,
-      voluptates iste. Repellat quaerat quis facilis molestias dolore?
-    </p>
-  </Template>
-);
+type Story = StoryObj<typeof Template>;
+
+export const Base: Story = {};
