@@ -12,8 +12,9 @@ const useStyles = createStyles({
       'overflow-hidden',
       'rounded-lg',
       'border',
-      'border-gray-200',
-      'shadow-md',
+      'border-border',
+      'shadow-sm',
+      'bg-surface',
     ],
   },
 });
