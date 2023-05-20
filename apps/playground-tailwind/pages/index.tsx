@@ -2,9 +2,15 @@ import Link from 'next/link';
 import { Card } from '@particles/tailwind';
 
 export function Index() {
-  const items = ['landing-page', 'messages', 'profile', 'customers'];
+  const items = [
+    'landing-page',
+    'messages',
+    'profile',
+    'customers',
+    'design-tokens',
+  ];
   return (
-    <div className="flex h-screen w-full items-center justify-center">
+    <div className="flex h-screen w-full items-center justify-center gap-2">
       {items.map((item) => (
         <Card className="flex" key={item}>
           <Link className="p-4" href={item}>
