@@ -3,17 +3,24 @@ import {
   Dropdown as DropdownPrimitive,
   forwardRef,
 } from '@particles/primitives';
-import {
-  TbBookmark,
-  TbLockOpen,
-  TbSettings,
-  TbUserCircle,
-} from 'react-icons/tb';
+
 import { createStyles } from '../../styles';
 import { Button } from '../Button';
 import type { ReactNode } from 'react';
 
 export type DropdownMenuProps = {
+  children?: ReactNode;
+};
+
+export type DropdownMenuTargetProps = {
+  children?: ReactNode;
+};
+
+export type DropdownMenuMenuProps = {
+  children?: ReactNode;
+};
+
+export type DropdownMenuMenuItemProps = {
   children?: ReactNode;
 };
 
@@ -45,33 +52,46 @@ const useStyles = createStyles({
   },
 });
 
-const DropdownMenu = forwardRef<DropdownMenuProps, 'div'>((props, ref) => {
+const Target = forwardRef<DropdownMenuTargetProps, 'button'>((props, ref) => {
   const { children, ...rest } = props;
-  const { classes } = useStyles();
   return (
-    <DropdownPrimitive.Root ref={ref} {...rest}>
-      <DropdownPrimitive.Target as={Button}>Open</DropdownPrimitive.Target>
-      <DropdownPrimitive.Menu className={classes.menu}>
-        <DropdownPrimitive.MenuItem className={classes.menuitem}>
-          <TbBookmark />
-          Bookmarks
-        </DropdownPrimitive.MenuItem>
-        <DropdownPrimitive.MenuItem className={classes.menuitem}>
-          <TbUserCircle />
-          Edit Profile
-        </DropdownPrimitive.MenuItem>
-        <DropdownPrimitive.MenuItem className={classes.menuitem}>
-          <TbSettings />
-          Account Settings
-        </DropdownPrimitive.MenuItem>
-        <hr className="my-2" />
-        <DropdownPrimitive.MenuItem className={classes.menuitem}>
-          <TbLockOpen />
-          Sign Out
-        </DropdownPrimitive.MenuItem>
-      </DropdownPrimitive.Menu>
-    </DropdownPrimitive.Root>
+    <DropdownPrimitive.Target ref={ref} as="button" {...rest}>
+      {children}
+    </DropdownPrimitive.Target>
   );
 });
 
-export default createComponent(DropdownMenu, {}, 'DropdownMenu');
+const Menu = forwardRef<DropdownMenuMenuProps, 'div'>((props, ref) => {
+  const { children, ...rest } = props;
+  const { classes } = useStyles();
+
+  return (
+    <DropdownPrimitive.Menu ref={ref} className={classes.menuitem} {...rest}>
+      {children}
+    </DropdownPrimitive.Menu>
+  );
+});
+
+const MenuItem = forwardRef<DropdownMenuMenuItemProps, 'button'>(
+  (props, ref) => {
+    const { children, ...rest } = props;
+    const { classes } = useStyles();
+
+    return (
+      <DropdownPrimitive.MenuItem ref={ref} className={classes.menu} {...rest}>
+        {children}
+      </DropdownPrimitive.MenuItem>
+    );
+  }
+);
+
+const DropdownMenu = (props: DropdownMenuProps) => {
+  const { children, ...rest } = props;
+  return <DropdownPrimitive.Root {...rest}>{children}</DropdownPrimitive.Root>;
+};
+
+export default createComponent(
+  DropdownMenu,
+  { Target, Menu, MenuItem },
+  'DropdownMenu'
+);
