@@ -8,8 +8,8 @@ export type DropdownRootProps = {
   children?: ReactNode;
 };
 
-const Root = forwardRef<DropdownRootProps, 'div'>((props, ref) => {
-  const { children, as: Component = 'div', ...rest } = props;
+const Root = (props: DropdownRootProps) => {
+  const { children } = props;
 
   const { isOpen, toggle } = useDisclosure();
 
@@ -20,12 +20,10 @@ const Root = forwardRef<DropdownRootProps, 'div'>((props, ref) => {
 
   return (
     <DropdownContextProvider value={context}>
-      <Component ref={ref} {...rest}>
-        {children}
-      </Component>
+      {children}
     </DropdownContextProvider>
   );
-});
+};
 
 export type DropdownTargetProps = {
   children?: ReactNode;

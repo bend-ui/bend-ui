@@ -1,3 +1,4 @@
+import { useRef, useState } from 'react';
 import {
   useClick,
   useDismiss,
@@ -14,22 +15,31 @@ export type UseDropdownProps = {
 
 export const useDropdown = (props: UseDropdownProps) => {
   const { isOpen, onOpenChange } = props;
-  const { x, y, reference, floating, strategy, context } = useFloating({
+
+  const { x, y, refs, strategy, context } = useFloating({
     open: isOpen,
     onOpenChange,
   });
+
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const listRef = useRef<HTMLElement[]>([]);
 
   const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions(
     [
       useClick(context),
       useRole(context, { role: 'menu' }),
       useDismiss(context),
-      useListNavigation(context),
+      useListNavigation(context, {
+        listRef,
+        activeIndex,
+        onNavigate: setActiveIndex,
+      }),
     ]
   );
 
   const getDropdownProps = () => ({
-    ...getFloatingProps({ ref: floating }),
+    ...getFloatingProps({ ref: refs.setFloating }),
     style: {
       position: strategy,
       top: y ?? '',
@@ -41,8 +51,8 @@ export const useDropdown = (props: UseDropdownProps) => {
   return {
     isOpen,
     onOpenChange,
-    reference,
-    floating,
+    reference: refs.setReference,
+    floating: refs.setFloating,
     getDropdownProps,
     getReferenceProps,
     getItemProps,
