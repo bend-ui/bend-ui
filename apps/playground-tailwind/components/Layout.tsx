@@ -10,7 +10,9 @@ export const Layout = (props: LayoutProps) => {
     <div className="flex h-screen w-screen flex-row">
       {/* Sidebar */}
       <aside className="flex min-w-[300px] flex-col gap-4 border-r border-neutral-200 py-4">
-        <div className="px-6 text-lg font-bold">Particles UI</div>
+        <div className="px-6 text-lg font-bold">
+          <Link href="/">Particles UI</Link>
+        </div>
         <nav className="px-4">
           <ul className="flex flex-col">
             <li>
