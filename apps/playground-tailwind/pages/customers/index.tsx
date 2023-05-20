@@ -10,6 +10,7 @@ import {
   Button,
   ButtonGroup,
   Checkbox,
+  Chip,
   Input,
   Level,
   Media,
@@ -69,9 +70,9 @@ export default function CustomersPage() {
         </div>
         <Level className="py-4">
           <div>
-            <span>Chip</span>
-            <span>Chip</span>
-            <span>Chip</span>
+            <Chip>Chip</Chip>
+            <Chip>Chip</Chip>
+            <Chip>Chip</Chip>
           </div>
           <div>
             <Input icon={<TbSearch />} placeholder="Search" />
@@ -108,7 +109,7 @@ export default function CustomersPage() {
               </Table.Col>
               <Table.Col>The finest web browser</Table.Col>
               <Table.Col>
-                <Avatar src="" />
+                <Avatar src="images/user-3.jpg" />
               </Table.Col>
               <Table.Col>
                 <div>Progress bar</div>

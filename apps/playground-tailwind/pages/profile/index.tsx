@@ -6,7 +6,7 @@ import type { InferGetStaticPropsType } from 'next';
 const data = {
   name: 'Olivia Rhye',
   username: 'olivia',
-  avatar: 'https://api.lorem.space/image/face?w=160&h=160&hash=225E6693',
+  avatar: 'images/user-2.jpg',
   isVerified: true,
   intro: "I'm a Product Designer based in Melbourne.",
   experience:
