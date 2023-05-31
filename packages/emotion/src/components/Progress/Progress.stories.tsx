@@ -1,15 +1,13 @@
 import { Progress } from './';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Components/Feedback/Progress',
   component: Progress,
-} as ComponentMeta<typeof Progress>;
+} as Meta<typeof Progress>;
 
-export const Usage: ComponentStory<typeof Progress> = (args) => (
-  <Progress {...args} />
-);
-
-Usage.args = {
-  value: 50,
+export const Usage: StoryObj<typeof Progress> = {
+  args: {
+    value: 50,
+  },
 };

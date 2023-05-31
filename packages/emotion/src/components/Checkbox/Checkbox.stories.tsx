@@ -1,5 +1,5 @@
 import { Checkbox } from '.';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   component: Checkbox,
@@ -9,12 +9,10 @@ export default {
       type: 'string',
     },
   },
-} as ComponentMeta<typeof Checkbox>;
+} as Meta<typeof Checkbox>;
 
-export const Usage: ComponentStory<typeof Checkbox> = (args) => (
-  <Checkbox {...args} />
-);
-
-Usage.args = {
-  label: 'Label',
+export const Usage: StoryObj<typeof Checkbox> = {
+  args: {
+    label: 'Label',
+  },
 };

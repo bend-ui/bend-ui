@@ -1,15 +1,17 @@
 import { Text } from '.';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Components/Typography/Text',
   component: Text,
-} as ComponentMeta<typeof Text>;
+} as Meta<typeof Text>;
 
-export const Base: ComponentStory<typeof Text> = (args) => (
-  <Text {...args}>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, facere cumque!
-    Voluptatum neque corporis placeat sequi officia provident sapiente sit fuga
-    ut tempora itaque natus, iure culpa earum recusandae maxime.
-  </Text>
-);
+export const Base: StoryObj<typeof Text> = {
+  render: (args) => (
+    <Text {...args}>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, facere
+      cumque! Voluptatum neque corporis placeat sequi officia provident sapiente
+      sit fuga ut tempora itaque natus, iure culpa earum recusandae maxime.
+    </Text>
+  ),
+};

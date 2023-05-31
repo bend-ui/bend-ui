@@ -1,15 +1,13 @@
 import { Avatar } from '.';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Components/Data Display/Avatar',
   component: Avatar,
-} as ComponentMeta<typeof Avatar>;
+} as Meta<typeof Avatar>;
 
-export const Base: ComponentStory<typeof Avatar> = (args) => (
-  <Avatar {...args} />
-);
-
-Base.args = {
-  src: 'https://picsum.photos/200',
+export const Base: StoryObj<typeof Avatar> = {
+  args: {
+    src: 'https://picsum.photos/200',
+  },
 };

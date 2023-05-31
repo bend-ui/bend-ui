@@ -1,6 +1,6 @@
 import { TbBell } from 'react-icons/tb';
 import { IconButton } from './';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Components/Actions/IconButton',
@@ -8,27 +8,25 @@ export default {
   args: {
     icon: <TbBell />,
   },
-} as ComponentMeta<typeof IconButton>;
+} as Meta<typeof IconButton>;
 
-export const Base: ComponentStory<typeof IconButton> = (args) => (
-  <IconButton {...args} />
-);
+export const Base: StoryObj<typeof IconButton> = {};
 
-export const Outline = Base.bind({});
-
-Outline.args = {
-  variant: 'outline',
+export const Outline = {
+  args: {
+    variant: 'outline',
+  },
 };
 
-export const Danger = Base.bind({});
-
-Danger.args = {
-  palette: 'danger',
+export const Danger = {
+  args: {
+    palette: 'danger',
+  },
 };
 
-export const Link = Base.bind({});
-
-Link.args = {
-  as: 'a',
-  href: '/',
+export const Link = {
+  args: {
+    as: 'a',
+    href: '/',
+  },
 };

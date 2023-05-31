@@ -1,5 +1,5 @@
 import { Toast } from '.';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Components/Feedback/Toast',
@@ -8,6 +8,6 @@ export default {
     children:
       'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit harum fugit impedit voluptatem, tenetur voluptatum similique deserunt iusto vel quisquam quo minus amet assumenda aliquam accusantium corporis recusandae, minima velit!',
   },
-} as ComponentMeta<typeof Toast>;
+} as Meta<typeof Toast>;
 
-export const Base: ComponentStory<typeof Toast> = (args) => <Toast {...args} />;
+export const Base: StoryObj<typeof Toast> = {};

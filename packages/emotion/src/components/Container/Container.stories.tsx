@@ -1,11 +1,11 @@
 import { Container } from '.';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Components/Layout/Container',
   component: Container,
-} as ComponentMeta<typeof Container>;
+} as Meta<typeof Container>;
 
-export const Base: ComponentStory<typeof Container> = (args) => (
-  <Container {...args}>Content</Container>
-);
+export const Base: StoryObj<typeof Container> = {
+  render: (args) => <Container {...args}>Content</Container>,
+};

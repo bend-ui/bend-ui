@@ -1,13 +1,13 @@
 import { Button } from '../Button';
 import { ToastProvider, useToast } from '.';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 
 export default {
   title: 'ToastProvider',
   component: ToastProvider,
-} as ComponentMeta<typeof ToastProvider>;
+} as Meta<typeof ToastProvider>;
 
-export const Usage: ComponentStory<typeof ToastProvider> = () => {
+export const Usage: StoryFn<typeof ToastProvider> = () => {
   const { addToast, dismissToast } = useToast();
 
   return (

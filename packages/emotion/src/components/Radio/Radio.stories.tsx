@@ -1,5 +1,5 @@
 import { Radio } from '.';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   component: Radio,
@@ -9,12 +9,10 @@ export default {
       type: 'string',
     },
   },
-} as ComponentMeta<typeof Radio>;
+} as Meta<typeof Radio>;
 
-export const Usage: ComponentStory<typeof Radio> = (args) => (
-  <Radio {...args} />
-);
-
-Usage.args = {
-  label: 'Label',
+export const Usage: StoryObj<typeof Radio> = {
+  args: {
+    label: 'Label',
+  },
 };

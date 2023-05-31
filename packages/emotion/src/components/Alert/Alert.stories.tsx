@@ -1,17 +1,19 @@
 import { Alert } from '.';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Components/Feedback/Alert',
   component: Alert,
-} as ComponentMeta<typeof Alert>;
+} as Meta<typeof Alert>;
 
-export const Usage: ComponentStory<typeof Alert> = (args) => (
-  <Alert {...args}>We’ve just released a new feature</Alert>
-);
+export const Usage: StoryObj<typeof Alert> = {
+  render: (args) => <Alert {...args}>We’ve just released a new feature</Alert>,
+};
 
-export const WithTitle: ComponentStory<typeof Alert> = (args) => (
-  <Alert {...args}>
-    <Alert.Title>Allo</Alert.Title>We’ve just released a new feature
-  </Alert>
-);
+export const WithTitle: StoryObj<typeof Alert> = {
+  render: (args) => (
+    <Alert {...args}>
+      <Alert.Title>Allo</Alert.Title>We’ve just released a new feature
+    </Alert>
+  ),
+};

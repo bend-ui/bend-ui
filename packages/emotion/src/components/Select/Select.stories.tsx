@@ -1,20 +1,22 @@
 import { Select } from '.';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Components/Forms/Select',
   component: Select,
-} as ComponentMeta<typeof Select>;
+} as Meta<typeof Select>;
 
-export const Usage: ComponentStory<typeof Select> = (args) => (
-  <Select {...args}>
-    <Select.Option>Hulk Hogan</Select.Option>
-    <Select.Option>Undertaker</Select.Option>
-    <Select.Option>Stone Cold Steve Austin</Select.Option>
-    <Select.Option>The Rock</Select.Option>
-  </Select>
-);
+export const Usage: StoryObj<typeof Select> = {
+  render: (args) => (
+    <Select {...args}>
+      <Select.Option>Hulk Hogan</Select.Option>
+      <Select.Option>Undertaker</Select.Option>
+      <Select.Option>Stone Cold Steve Austin</Select.Option>
+      <Select.Option>The Rock</Select.Option>
+    </Select>
+  ),
 
-Usage.args = {
-  placeholder: 'Select an option',
+  args: {
+    placeholder: 'Select an option',
+  },
 };

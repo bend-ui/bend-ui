@@ -1,5 +1,5 @@
 import { SplitLayout } from '.';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Components/Layout/SplitLayout',
@@ -7,8 +7,6 @@ export default {
   parameters: {
     layout: 'fullscreen',
   },
-} as ComponentMeta<typeof SplitLayout>;
+} as Meta<typeof SplitLayout>;
 
-export const Base: ComponentStory<typeof SplitLayout> = (args) => (
-  <SplitLayout {...args} />
-);
+export const Base: StoryObj<typeof SplitLayout> = {};

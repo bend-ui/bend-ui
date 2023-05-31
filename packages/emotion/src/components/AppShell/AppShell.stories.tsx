@@ -1,5 +1,5 @@
 import { AppShell } from '.';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Components/Layout/AppShell',
@@ -7,27 +7,33 @@ export default {
   parameters: {
     layout: 'fullscreen',
   },
-} as ComponentMeta<typeof AppShell>;
+} as Meta<typeof AppShell>;
 
-export const Base: ComponentStory<typeof AppShell> = (args) => (
-  <AppShell {...args}>
-    <AppShell.NotificationBar>Notification Bar</AppShell.NotificationBar>
-    <AppShell.Header>Header</AppShell.Header>
-    <AppShell.Sidebar>Sidebar</AppShell.Sidebar>
-    <AppShell.Main>Main</AppShell.Main>
-    <AppShell.Footer>Footer</AppShell.Footer>
-  </AppShell>
-);
-
-export const Alt = Base.bind({});
-
-Alt.args = {
-  layout: 'alt',
+export const Base: StoryObj<typeof AppShell> = {
+  render: (args) => (
+    <AppShell {...args}>
+      <AppShell.NotificationBar>Notification Bar</AppShell.NotificationBar>
+      <AppShell.Header>Header</AppShell.Header>
+      <AppShell.Sidebar>Sidebar</AppShell.Sidebar>
+      <AppShell.Main>Main</AppShell.Main>
+      <AppShell.Footer>Footer</AppShell.Footer>
+    </AppShell>
+  ),
 };
 
-export const Simple: ComponentStory<typeof AppShell> = (args) => (
-  <AppShell {...args}>
-    <AppShell.Header>Header</AppShell.Header>
-    <AppShell.Main>Main</AppShell.Main>
-  </AppShell>
-);
+export const Alt = {
+  render: Base,
+
+  args: {
+    layout: 'alt',
+  },
+};
+
+export const Simple: StoryObj<typeof AppShell> = {
+  render: (args) => (
+    <AppShell {...args}>
+      <AppShell.Header>Header</AppShell.Header>
+      <AppShell.Main>Main</AppShell.Main>
+    </AppShell>
+  ),
+};

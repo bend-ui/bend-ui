@@ -1,22 +1,22 @@
 import { TbAlertTriangle } from 'react-icons/tb';
 import { Stack } from '../Stack';
 import { Divider } from '.';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   component: Divider,
   title: 'Components/Layout/Divider',
-} as ComponentMeta<typeof Divider>;
+} as Meta<typeof Divider>;
 
-export const Usage: ComponentStory<typeof Divider> = (args) => (
-  <Divider {...args} />
-);
+export const Usage: StoryObj<typeof Divider> = {};
 
-export const WithContent: ComponentStory<typeof Divider> = (args) => (
-  <Stack>
-    <Divider {...args}>Label</Divider>
-    <Divider {...args}>
-      <TbAlertTriangle />
-    </Divider>
-  </Stack>
-);
+export const WithContent: StoryObj<typeof Divider> = {
+  render: (args) => (
+    <Stack>
+      <Divider {...args}>Label</Divider>
+      <Divider {...args}>
+        <TbAlertTriangle />
+      </Divider>
+    </Stack>
+  ),
+};

@@ -1,12 +1,12 @@
 import { Menu } from '.';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 
 export default {
   title: 'Components/Navigation/Menu',
   component: Menu,
-} as ComponentMeta<typeof Menu>;
+} as Meta<typeof Menu>;
 
-export const Base: ComponentStory<typeof Menu> = () => (
+export const Base: StoryFn<typeof Menu> = () => (
   <Menu>
     <Menu.Button>Menu</Menu.Button>
     <Menu.Dropdown>
