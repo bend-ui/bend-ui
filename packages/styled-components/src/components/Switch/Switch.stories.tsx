@@ -1,11 +1,9 @@
 import { Switch } from './Switch';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Forms/Switch',
   component: Switch,
-} as ComponentMeta<typeof Switch>;
+} as Meta<typeof Switch>;
 
-export const Base: ComponentStory<typeof Switch> = (args) => (
-  <Switch {...args} />
-);
+export const Base: StoryObj<typeof Switch> = {};

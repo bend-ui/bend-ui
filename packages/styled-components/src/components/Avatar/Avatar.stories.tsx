@@ -1,11 +1,9 @@
 import { Avatar } from './Avatar';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Data Display/Avatar',
   component: Avatar,
-} as ComponentMeta<typeof Avatar>;
+} as Meta<typeof Avatar>;
 
-export const Base: ComponentStory<typeof Avatar> = (args) => (
-  <Avatar {...args} />
-);
+export const Base: StoryObj<typeof Avatar> = {};

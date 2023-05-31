@@ -1,14 +1,14 @@
 import React from 'react';
 import { Box } from '../Box';
 import { Tiles } from './Tiles';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 export default {
   component: Tiles,
   title: 'Components/Tiles',
-} as ComponentMeta<typeof Tiles>;
+} as Meta<typeof Tiles>;
 
-const Template: ComponentStory<typeof Tiles> = (args) => (
+const Template: StoryFn<typeof Tiles> = (args) => (
   <Tiles {...args}>
     <Box color="$neutral50" backgroundColor="$purple500" padding="$md">
       item
@@ -31,5 +31,7 @@ const Template: ComponentStory<typeof Tiles> = (args) => (
   </Tiles>
 );
 
-export const Primary = Template.bind({});
-Primary.args = {};
+export const Primary = {
+  render: Template,
+  args: {},
+};

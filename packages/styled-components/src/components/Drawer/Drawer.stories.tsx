@@ -1,13 +1,13 @@
 import React from 'react';
 import { Drawer } from './Drawer';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 export default {
   component: Drawer,
   title: 'Components/Drawer',
-} as ComponentMeta<typeof Drawer>;
+} as Meta<typeof Drawer>;
 
-const Template: ComponentStory<typeof Drawer> = (args) => (
+const Template: StoryFn<typeof Drawer> = (args) => (
   <Drawer {...args}>
     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores adipisci
     quo temporibus libero at! Soluta quaerat voluptate minima impedit, doloribus
@@ -15,5 +15,7 @@ const Template: ComponentStory<typeof Drawer> = (args) => (
   </Drawer>
 );
 
-export const Primary = Template.bind({});
-Primary.args = {};
+export const Primary = {
+  render: Template,
+  args: {},
+};

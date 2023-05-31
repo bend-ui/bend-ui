@@ -1,16 +1,18 @@
 import { Box } from '../Box';
 import { Stack } from './Stack';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Layout/Stack',
   component: Stack,
-} as ComponentMeta<typeof Stack>;
+} as Meta<typeof Stack>;
 
-export const Base: ComponentStory<typeof Stack> = (args) => (
-  <Stack {...args}>
-    <Box>Item</Box>
-    <Box>Item</Box>
-    <Box>Item</Box>
-  </Stack>
-);
+export const Base: StoryObj<typeof Stack> = {
+  render: (args) => (
+    <Stack {...args}>
+      <Box>Item</Box>
+      <Box>Item</Box>
+      <Box>Item</Box>
+    </Stack>
+  ),
+};

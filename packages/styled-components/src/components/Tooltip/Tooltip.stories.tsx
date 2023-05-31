@@ -1,19 +1,21 @@
 import React from 'react';
 import { Button } from '..';
 import { Tooltip } from './Tooltip';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Components/Tooltip',
   component: Tooltip,
-} as ComponentMeta<typeof Tooltip>;
+} as Meta<typeof Tooltip>;
 
-export const Base: ComponentStory<typeof Tooltip> = (args) => (
-  <Tooltip {...args}>
-    <Button>Button</Button>
-  </Tooltip>
-);
+export const Base: StoryObj<typeof Tooltip> = {
+  render: (args) => (
+    <Tooltip {...args}>
+      <Button>Button</Button>
+    </Tooltip>
+  ),
 
-Base.args = {
-  label: 'A tooltip',
+  args: {
+    label: 'A tooltip',
+  },
 };

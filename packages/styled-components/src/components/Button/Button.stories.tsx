@@ -1,34 +1,40 @@
 import { Button } from './';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Components/Button',
   component: Button,
-} as ComponentMeta<typeof Button>;
+} as Meta<typeof Button>;
 
-export const Base: ComponentStory<typeof Button> = (args) => (
-  <Button {...args}>Button</Button>
-);
-
-export const Outline = Base.bind({});
-
-Outline.args = {
-  variant: 'outline',
+export const Base: StoryObj<typeof Button> = {
+  render: (args) => <Button {...args}>Button</Button>,
 };
 
-export const AsComponent = Base.bind({});
+export const Outline = {
+  render: Base,
 
-AsComponent.args = {
-  as: 'a',
-  href: '/',
+  args: {
+    variant: 'outline',
+  },
 };
 
-export const WithOverrides = Base.bind({});
+export const AsComponent = {
+  render: Base,
 
-WithOverrides.args = {
-  sx: {
-    root: {
-      backgroundColor: '$danger',
+  args: {
+    as: 'a',
+    href: '/',
+  },
+};
+
+export const WithOverrides = {
+  render: Base,
+
+  args: {
+    sx: {
+      root: {
+        backgroundColor: '$danger',
+      },
     },
   },
 };

@@ -1,11 +1,9 @@
 import { Breadcrumbs } from './Breadcrumbs';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Navigation/Breadcrumbs',
   component: Breadcrumbs,
-} as ComponentMeta<typeof Breadcrumbs>;
+} as Meta<typeof Breadcrumbs>;
 
-export const Base: ComponentStory<typeof Breadcrumbs> = (args) => (
-  <Breadcrumbs {...args} />
-);
+export const Base: StoryObj<typeof Breadcrumbs> = {};

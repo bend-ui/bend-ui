@@ -1,11 +1,9 @@
 import { MediaObject } from './';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Layout/MediaObject',
   component: MediaObject,
-} as ComponentMeta<typeof MediaObject>;
+} as Meta<typeof MediaObject>;
 
-export const Base: ComponentStory<typeof MediaObject> = (args) => (
-  <MediaObject {...args} />
-);
+export const Base: StoryObj<typeof MediaObject> = {};

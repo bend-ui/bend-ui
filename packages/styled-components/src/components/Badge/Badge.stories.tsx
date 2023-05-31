@@ -1,18 +1,20 @@
 import { Badge } from './Badge';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Components/Badge',
   component: Badge,
-} as ComponentMeta<typeof Badge>;
+} as Meta<typeof Badge>;
 
-export const Base: ComponentStory<typeof Badge> = (args) => (
-  <Badge {...args}>1</Badge>
-);
+export const Base: StoryObj<typeof Badge> = {
+  render: (args) => <Badge {...args}>1</Badge>,
+};
 
-export const AsComponent = Base.bind({});
+export const AsComponent = {
+  render: Base,
 
-AsComponent.args = {
-  as: 'a',
-  href: '/',
+  args: {
+    as: 'a',
+    href: '/',
+  },
 };

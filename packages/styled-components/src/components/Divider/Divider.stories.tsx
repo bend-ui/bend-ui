@@ -1,11 +1,9 @@
 import { Divider } from './Divider';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Data Display/Divider',
   component: Divider,
-} as ComponentMeta<typeof Divider>;
+} as Meta<typeof Divider>;
 
-export const Base: ComponentStory<typeof Divider> = (args) => (
-  <Divider {...args} />
-);
+export const Base: StoryObj<typeof Divider> = {};

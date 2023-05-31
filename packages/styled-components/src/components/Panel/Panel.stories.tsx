@@ -1,12 +1,12 @@
 import { Panel } from './Panel';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 export default {
   component: Panel,
   title: 'Components/Panel',
-} as ComponentMeta<typeof Panel>;
+} as Meta<typeof Panel>;
 
-const Template: ComponentStory<typeof Panel> = (args) => (
+const Template: StoryFn<typeof Panel> = (args) => (
   <Panel {...args}>
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet omnis ipsam
     quae sapiente, fugit maiores molestiae itaque alias? Natus dolore pariatur
@@ -14,5 +14,7 @@ const Template: ComponentStory<typeof Panel> = (args) => (
   </Panel>
 );
 
-export const Primary = Template.bind({});
-Primary.args = {};
+export const Primary = {
+  render: Template,
+  args: {},
+};

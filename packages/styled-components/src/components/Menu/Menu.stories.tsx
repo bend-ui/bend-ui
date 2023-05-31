@@ -5,7 +5,7 @@ import { Button } from '../Button';
 
 import { Menu } from './';
 import type { MenuProps } from './Menu';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Components/Menu',
@@ -15,9 +15,9 @@ export default {
     'Menu.List': Menu.List,
     'Menu.Item': Menu.Item,
   },
-} as ComponentMeta<typeof Menu>;
+} as Meta<typeof Menu>;
 
-const Template: ComponentStory<typeof Menu> = (args: MenuProps) => (
+const Template: StoryFn<typeof Menu> = (args: MenuProps) => (
   <Menu {...args}>
     <Menu.Trigger>
       <Button>Open</Button>
@@ -33,5 +33,7 @@ const Template: ComponentStory<typeof Menu> = (args: MenuProps) => (
   </Menu>
 );
 
-export const Base = Template.bind({});
-Base.args = {};
+export const Base = {
+  render: Template,
+  args: {},
+};

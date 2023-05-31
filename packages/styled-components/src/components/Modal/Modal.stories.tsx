@@ -1,6 +1,6 @@
 import { Lorem } from '../../../.storybook/components';
 import { Modal } from './';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 export default {
   component: Modal,
@@ -13,9 +13,9 @@ export default {
       </>
     ),
   ],
-} as ComponentMeta<typeof Modal>;
+} as Meta<typeof Modal>;
 
-const Template: ComponentStory<typeof Modal> = (args) => (
+const Template: StoryFn<typeof Modal> = (args) => (
   <Modal {...args}>
     <Modal.Header>
       The header
@@ -28,5 +28,7 @@ const Template: ComponentStory<typeof Modal> = (args) => (
   </Modal>
 );
 
-export const Base = Template.bind({});
-Base.args = {};
+export const Base = {
+  render: Template,
+  args: {},
+};
