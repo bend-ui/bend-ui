@@ -1,5 +1,5 @@
 import { Box } from './Box';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 export default {
   component: Box,
@@ -7,15 +7,16 @@ export default {
   args: {
     children: 'Box',
   },
-} as ComponentMeta<typeof Box>;
+} as Meta<typeof Box>;
 
-const Template: ComponentStory<typeof Box> = (args) => <Box {...args} />;
+type Story = StoryObj<typeof Box>;
 
-export const Primary = Template.bind({});
-Primary.args = {
-  sx: {
-    paddingY: 'xl',
-    paddingX: 'sm',
-    background: 'blue200',
+export const Primary: Story = {
+  args: {
+    sx: {
+      paddingY: 'xl',
+      paddingX: 'sm',
+      background: 'blue200',
+    },
   },
 };

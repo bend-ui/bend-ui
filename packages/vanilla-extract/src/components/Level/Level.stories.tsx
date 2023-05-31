@@ -1,15 +1,19 @@
 import { Box } from '../Box';
 import { Level } from '.';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 export default {
   title: 'Layout/Level',
   component: Level,
-} as ComponentMeta<typeof Level>;
+} as Meta<typeof Level>;
 
-export const Base: ComponentStory<typeof Level> = (args) => (
-  <Level {...args}>
-    <Box>Content</Box>
-    <Box>Content</Box>
-  </Level>
-);
+type Story = StoryObj<typeof Level>;
+
+export const Base: Story = {
+  render: (args) => (
+    <Level {...args}>
+      <Box>Content</Box>
+      <Box>Content</Box>
+    </Level>
+  ),
+};
