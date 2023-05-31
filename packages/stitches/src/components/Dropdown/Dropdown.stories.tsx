@@ -1,11 +1,11 @@
 import React from 'react';
 import { Dropdown } from '.';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Dropdown',
-} as ComponentMeta<typeof Dropdown>;
+} as Meta<typeof Dropdown>;
 
-export const Base: ComponentStory<typeof Dropdown> = (args) => (
-  <Dropdown {...args} />
-);
+export const Base: StoryObj<typeof Dropdown> = {
+  render: (args) => <Dropdown {...args} />,
+};

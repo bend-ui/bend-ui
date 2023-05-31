@@ -1,11 +1,11 @@
 import { Box } from '../Box';
 import { Toast } from './';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Components/Toast',
   component: Toast,
-} as ComponentMeta<typeof Toast>;
+} as Meta<typeof Toast>;
 
 const containerStyles = {
   position: 'fixed',
@@ -20,22 +20,26 @@ const containerStyles = {
   pointerEvents: 'none',
 };
 
-export const Default: ComponentStory<typeof Toast> = (args) => (
-  <Toast title="We've just released a new update!" {...args}>
-    Check out the all new dashboard view. Pages and exports now load faster.
-  </Toast>
-);
+export const Default: StoryObj<typeof Toast> = {
+  render: (args) => (
+    <Toast title="We've just released a new update!" {...args}>
+      Check out the all new dashboard view. Pages and exports now load faster.
+    </Toast>
+  ),
+};
 
-export const Group: ComponentStory<typeof Toast> = (args) => (
-  <Box as="section" sx={containerStyles}>
-    <Toast title="We've just released a new update!" {...args}>
-      Check out the all new dashboard view. Pages and exports now load faster.
-    </Toast>
-    <Toast title="We've just released a new update!" {...args}>
-      Check out the all new dashboard view. Pages and exports now load faster.
-    </Toast>
-    <Toast title="We've just released a new update!" {...args}>
-      Check out the all new dashboard view. Pages and exports now load faster.
-    </Toast>
-  </Box>
-);
+export const Group: StoryObj<typeof Toast> = {
+  render: (args) => (
+    <Box as="section" sx={containerStyles}>
+      <Toast title="We've just released a new update!" {...args}>
+        Check out the all new dashboard view. Pages and exports now load faster.
+      </Toast>
+      <Toast title="We've just released a new update!" {...args}>
+        Check out the all new dashboard view. Pages and exports now load faster.
+      </Toast>
+      <Toast title="We've just released a new update!" {...args}>
+        Check out the all new dashboard view. Pages and exports now load faster.
+      </Toast>
+    </Box>
+  ),
+};

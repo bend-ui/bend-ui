@@ -1,11 +1,11 @@
 import { Badge } from './';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Components/Badge',
   component: Badge,
-} as ComponentMeta<typeof Badge>;
+} as Meta<typeof Badge>;
 
-export const Default: ComponentStory<typeof Badge> = (args) => (
-  <Badge {...args}>Badge</Badge>
-);
+export const Default: StoryObj<typeof Badge> = {
+  render: (args) => <Badge {...args}>Badge</Badge>,
+};

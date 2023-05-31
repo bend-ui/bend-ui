@@ -1,17 +1,19 @@
 import { Checkbox } from './';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Components/Forms/Checkbox',
   component: Checkbox,
-} as ComponentMeta<typeof Checkbox>;
+} as Meta<typeof Checkbox>;
 
-export const Default: ComponentStory<typeof Checkbox> = (args) => (
-  <Checkbox {...args}>Remember me</Checkbox>
-);
+export const Default: StoryObj<typeof Checkbox> = {
+  render: (args) => <Checkbox {...args}>Remember me</Checkbox>,
+};
 
-export const WithDescription = Default.bind({});
+export const WithDescription = {
+  render: Default,
 
-WithDescription.args = {
-  description: 'Save my login details for next time.',
+  args: {
+    description: 'Save my login details for next time.',
+  },
 };

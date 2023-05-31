@@ -2,7 +2,7 @@ import { Button } from '../Button';
 import { CardHeader } from './CardHeader';
 import { Card } from './';
 import type { CardHeaderProps } from './CardHeader';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 const CardHeaderMock: React.FC<CardHeaderProps> = (props) => (
   <CardHeader {...props} />
@@ -15,9 +15,9 @@ export default {
     'Card.Header': CardHeaderMock,
     Button,
   },
-} as ComponentMeta<typeof Card>;
+} as Meta<typeof Card>;
 
-const Template: ComponentStory<typeof Card> = (args) => (
+const Template: StoryFn<typeof Card> = (args) => (
   <Card {...args}>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni dolores
@@ -28,25 +28,30 @@ const Template: ComponentStory<typeof Card> = (args) => (
   </Card>
 );
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
+  args: {},
+};
 
-Base.args = {};
+export const WithHeader: StoryObj<typeof Card> = {
+  render: (args) => (
+    <Card {...args}>
+      <Card.Header>Header</Card.Header>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni dolores
+        repudiandae perspiciatis laborum, possimus reiciendis fuga dignissimos
+        nobis! Fuga asperiores dolorem libero recusandae adipisci voluptas a
+        itaque dolorum? Sint, ea.
+      </p>
+    </Card>
+  ),
+};
 
-export const WithHeader: ComponentStory<typeof Card> = (args) => (
-  <Card {...args}>
-    <Card.Header>Header</Card.Header>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni dolores
-      repudiandae perspiciatis laborum, possimus reiciendis fuga dignissimos
-      nobis! Fuga asperiores dolorem libero recusandae adipisci voluptas a
-      itaque dolorum? Sint, ea.
-    </p>
-  </Card>
-);
+export const AsComponent = {
+  render: Template,
 
-export const AsComponent = Template.bind({});
-
-AsComponent.args = {
-  as: 'a',
-  href: '/',
+  args: {
+    as: 'a',
+    href: '/',
+  },
 };

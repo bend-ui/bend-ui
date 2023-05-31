@@ -1,11 +1,13 @@
 import { Heading } from './';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Components/Typography/Heading',
   component: Heading,
-} as ComponentMeta<typeof Heading>;
+} as Meta<typeof Heading>;
 
-export const Default: ComponentStory<typeof Heading> = (args) => (
-  <Heading {...args}>Cutting-edge features for advanced analytics</Heading>
-);
+export const Default: StoryObj<typeof Heading> = {
+  render: (args) => (
+    <Heading {...args}>Cutting-edge features for advanced analytics</Heading>
+  ),
+};

@@ -1,17 +1,19 @@
 import { Radio } from './';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Components/Forms/Radio',
   component: Radio,
-} as ComponentMeta<typeof Radio>;
+} as Meta<typeof Radio>;
 
-export const Default: ComponentStory<typeof Radio> = (args) => (
-  <Radio {...args}>Remember me</Radio>
-);
+export const Default: StoryObj<typeof Radio> = {
+  render: (args) => <Radio {...args}>Remember me</Radio>,
+};
 
-export const WithDescription = Default.bind({});
+export const WithDescription = {
+  render: Default,
 
-WithDescription.args = {
-  description: 'Save my login details for next time.',
+  args: {
+    description: 'Save my login details for next time.',
+  },
 };

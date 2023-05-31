@@ -1,11 +1,9 @@
 import { Carousel } from './';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Components/Carousel',
   component: Carousel,
-} as ComponentMeta<typeof Carousel>;
+} as Meta<typeof Carousel>;
 
-export const Default: ComponentStory<typeof Carousel> = (args) => (
-  <Carousel {...args} />
-);
+export const Default: StoryObj<typeof Carousel> = {};

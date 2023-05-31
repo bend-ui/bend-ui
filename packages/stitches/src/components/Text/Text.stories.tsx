@@ -2,20 +2,22 @@ import React from 'react';
 import { Heading } from '../Heading';
 import { Stack } from '../Stack';
 import { Text } from './';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryFn, StoryObj, Meta } from '@storybook/react';
 
 export default {
   title: 'Components/Typography/Text',
   component: Text,
-} as ComponentMeta<typeof Text>;
+} as Meta<typeof Text>;
 
-export const Default: ComponentStory<typeof Text> = (args) => (
-  <Text {...args}>
-    Whatcha gonna do when Hulkamania runs wild on you! Rest...in...peace.
-  </Text>
-);
+export const Default: StoryObj<typeof Text> = {
+  render: (args) => (
+    <Text {...args}>
+      Whatcha gonna do when Hulkamania runs wild on you! Rest...in...peace.
+    </Text>
+  ),
+};
 
-export const KitchenSink: ComponentStory<typeof Text> = () => (
+export const KitchenSink: StoryFn<typeof Text> = () => (
   <Stack>
     <Heading variant="display">To be the man, you gotta beat the man</Heading>
     <Heading variant="title">Who&apos;s next?!</Heading>

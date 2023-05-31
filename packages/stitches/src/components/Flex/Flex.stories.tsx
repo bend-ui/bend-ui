@@ -1,11 +1,9 @@
 import { Flex } from './';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Layout/Flex',
   component: Flex,
-} as ComponentMeta<typeof Flex>;
+} as Meta<typeof Flex>;
 
-export const Default: ComponentStory<typeof Flex> = (args) => (
-  <Flex {...args} />
-);
+export const Default: StoryObj<typeof Flex> = {};

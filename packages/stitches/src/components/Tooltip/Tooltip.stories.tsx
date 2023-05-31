@@ -1,17 +1,19 @@
 import { Button } from '../Button';
 import { Tooltip } from './';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 export default {
   title: 'Components/Tooltip',
   component: Tooltip,
-} as ComponentMeta<typeof Tooltip>;
+} as Meta<typeof Tooltip>;
 
-export const Default: ComponentStory<typeof Tooltip> = (args) => (
-  <Tooltip {...args}>
-    <Button>Button</Button>
-  </Tooltip>
-);
+export const Default: StoryObj<typeof Tooltip> = {
+  render: (args) => (
+    <Tooltip {...args}>
+      <Button>Button</Button>
+    </Tooltip>
+  ),
 
-Default.args = {
-  label: "I'm a tooltip",
+  args: {
+    label: "I'm a tooltip",
+  },
 };

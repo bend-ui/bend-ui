@@ -6,16 +6,14 @@ import { Input } from '../Input';
 import { Level } from '../Level';
 import { DropdownMenu } from '../Menu';
 import { NavBar } from './';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Components/NavBar',
   component: NavBar,
-} as ComponentMeta<typeof NavBar>;
+} as Meta<typeof NavBar>;
 
-export const Default: ComponentStory<typeof NavBar> = (args) => (
-  <NavBar {...args} />
-);
+export const Default: StoryObj<typeof NavBar> = {};
 
 export const Simple = () => (
   <Level>

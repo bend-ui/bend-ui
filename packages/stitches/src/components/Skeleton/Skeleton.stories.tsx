@@ -1,11 +1,9 @@
 import { Skeleton } from '.';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Components/Skeleton',
   component: Skeleton,
-} as ComponentMeta<typeof Skeleton>;
+} as Meta<typeof Skeleton>;
 
-export const Default: ComponentStory<typeof Skeleton> = (args) => (
-  <Skeleton {...args} />
-);
+export const Default: StoryObj<typeof Skeleton> = {};

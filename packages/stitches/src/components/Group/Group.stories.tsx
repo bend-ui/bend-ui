@@ -1,14 +1,16 @@
 import { Group } from '.';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Layout/Group',
   component: Group,
-} as ComponentMeta<typeof Group>;
+} as Meta<typeof Group>;
 
-export const Default: ComponentStory<typeof Group> = (args) => (
-  <Group {...args}>
-    <div>Hello World</div>
-    <div>Foo Bar</div>
-  </Group>
-);
+export const Default: StoryObj<typeof Group> = {
+  render: (args) => (
+    <Group {...args}>
+      <div>Hello World</div>
+      <div>Foo Bar</div>
+    </Group>
+  ),
+};

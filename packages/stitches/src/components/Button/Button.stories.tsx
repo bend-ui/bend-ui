@@ -4,51 +4,61 @@ import { Group } from '../Group';
 
 import { Button } from './';
 import type { ButtonProps } from './';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryObj, Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Components/Button',
   component: Button,
-} as ComponentMeta<typeof Button>;
+} as Meta<typeof Button>;
 
-export const Base: ComponentStory<typeof Button> = (args) => (
-  <Button {...args}>Button</Button>
-);
-
-export const Secondary = Base.bind({});
-
-Secondary.args = {
-  palette: 'secondary',
+export const Base: StoryObj<typeof Button> = {
+  render: (args) => <Button {...args}>Button</Button>,
 };
 
-export const Danger = Base.bind({});
+export const Secondary = {
+  render: Base,
 
-Danger.args = {
-  palette: 'danger',
+  args: {
+    palette: 'secondary',
+  },
 };
 
-export const WithIcon = Base.bind({});
+export const Danger = {
+  render: Base,
 
-WithIcon.args = {
-  icon: <TbBrandTelegram />,
+  args: {
+    palette: 'danger',
+  },
 };
 
-export const As = Base.bind({});
+export const WithIcon = {
+  render: Base,
 
-As.args = {
-  as: 'a',
-  href: '/',
+  args: {
+    icon: <TbBrandTelegram />,
+  },
 };
 
-export const Sizes: ComponentStory<typeof Button> = (args) => {
-  const buttonSizes: Array<ButtonProps['size']> = ['sm', 'md', 'lg'];
-  return (
-    <Group>
-      {buttonSizes.map((size) => (
-        <Button key={size} {...args} size={size}>
-          Button {size}
-        </Button>
-      ))}
-    </Group>
-  );
+export const As = {
+  render: Base,
+
+  args: {
+    as: 'a',
+    href: '/',
+  },
+};
+
+export const Sizes: StoryObj<typeof Button> = {
+  render: (args) => {
+    const buttonSizes: Array<ButtonProps['size']> = ['sm', 'md', 'lg'];
+    return (
+      <Group>
+        {buttonSizes.map((size) => (
+          <Button key={size} {...args} size={size}>
+            Button {size}
+          </Button>
+        ))}
+      </Group>
+    );
+  },
 };

@@ -1,7 +1,7 @@
 import { Box } from '../Box';
 import { Text } from '../Text';
 import { Center } from './';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 
 export default {
   title: 'Layout/Center',
@@ -9,9 +9,9 @@ export default {
   parameters: {
     layout: 'fullscreen',
   },
-} as ComponentMeta<typeof Center>;
+} as Meta<typeof Center>;
 
-export const Base: ComponentStory<typeof Center> = () => (
+export const Base: StoryFn<typeof Center> = () => (
   <Center>
     <Box sx={{ backgroundColor: '$surface', p: '$lg' }}>
       <Text>

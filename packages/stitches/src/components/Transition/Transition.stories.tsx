@@ -2,11 +2,11 @@ import { useDisclosure } from '@particles/primitives';
 import { Button } from '../Button';
 import { Panel } from '../Panel';
 import Transition from './Transition';
-import type { ComponentMeta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 
 export default {
   component: Transition,
-} as ComponentMeta<typeof Transition>;
+} as Meta<typeof Transition>;
 
 export const Default = () => {
   const { isOpen, toggle } = useDisclosure();
