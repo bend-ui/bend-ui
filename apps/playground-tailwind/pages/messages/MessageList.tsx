@@ -6,7 +6,7 @@ interface MessageListProps {
   data: any;
 }
 
-export function MessageList(props: MessageListProps) {
+function MessageList(props: MessageListProps) {
   const { data } = props;
   return (
     <div className="flex min-w-[20%] max-w-lg flex-col overflow-hidden border-r border-neutral-200">
@@ -75,3 +75,5 @@ export function MessageList(props: MessageListProps) {
     </div>
   );
 }
+
+export default MessageList;

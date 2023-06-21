@@ -6,10 +6,11 @@
   "targets": {
     "build": {
       "executor": "@nx/next:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "defaultConfiguration": "production",
       "options": {
-        "root": "apps/playground-tailwind",
         "outputPath": "dist/apps/playground-tailwind"
       },
       "configurations": {
@@ -46,7 +47,9 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/playground-tailwind/jest.config.ts",
         "passWithNoTests": true
@@ -60,9 +63,13 @@
     },
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/playground-tailwind/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": [
+          "apps/playground-tailwind/**/*.{ts,tsx,js,jsx}"
+        ]
       }
     }
   },

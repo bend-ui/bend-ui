@@ -52,7 +52,7 @@ const data = {
   ],
 };
 
-export function MessageView() {
+function MessageView() {
   const currentUser = 3;
 
   return (
@@ -138,3 +138,5 @@ export function MessageView() {
     </div>
   );
 }
+
+export default MessageView;
