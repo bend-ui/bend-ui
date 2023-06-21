@@ -2,14 +2,14 @@
   "name": "@particles/vanilla-extract",
   "version": "0.0.1",
   "dependencies": {
-    "@vanilla-extract/css": "^1.11.0",
+    "@vanilla-extract/css": "^1.11.1",
     "@vanilla-extract/recipes": "^0.4.0",
     "@vanilla-extract/sprinkles": "^1.6.0",
     "clsx": "^1.2.1"
   },
   "devDependencies": {
-    "@vanilla-extract/webpack-plugin": "^2.2.0",
-    "@vanilla-extract/esbuild-plugin": "2.2.2"
+    "@vanilla-extract/esbuild-plugin": "2.2.2",
+    "@vanilla-extract/webpack-plugin": "^2.2.0"
   },
   "peerDependencies": {
     "react": ">=16.8",
