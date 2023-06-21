@@ -30,7 +30,10 @@ export type MergeWithAs<
     as?: AsComponent;
   };
 
-export type ComponentWithAs<Component extends As, Props extends object = {}> = {
+export interface ComponentWithAs<
+  Component extends As,
+  Props extends object = {}
+> {
   <AsComponent extends As = Component>(
     props: MergeWithAs<
       React.ComponentProps<Component>,
@@ -45,7 +48,7 @@ export type ComponentWithAs<Component extends As, Props extends object = {}> = {
   contextTypes?: React.ValidationMap<any>;
   defaultProps?: Partial<any>;
   id?: string;
-};
+}
 
 export function forwardRef<Props extends object, Component extends As>(
   component: React.ForwardRefRenderFunction<

@@ -1,11 +1,12 @@
-import { useControlled } from '../../hooks';
+import { useControlled, useId } from '../../hooks';
 
-export type UseSwitchProps = {
+export interface UseSwitchProps {
   defaultChecked?: boolean;
   isChecked?: boolean;
   onCheckedChange?(isChecked: boolean): void;
   isDisabled?: boolean;
-};
+  id?: string;
+}
 
 export type SwitchState = 'checked' | 'unchecked';
 
@@ -15,7 +16,10 @@ export const useSwitch = (props: UseSwitchProps = {}) => {
     isChecked: isCheckedProp,
     onCheckedChange,
     isDisabled,
+    id,
   } = props;
+
+  const uuid = useId(id);
 
   const [isChecked, setChecked] = useControlled({
     value: isCheckedProp,
@@ -25,12 +29,20 @@ export const useSwitch = (props: UseSwitchProps = {}) => {
 
   const state: SwitchState = isChecked ? 'checked' : 'unchecked';
 
+  const getLabelProps = () => ({
+    'aria-checked': isChecked,
+    'data-state': state,
+    htmlFor: uuid,
+  });
+
   return {
     defaultChecked,
     isChecked,
     onCheckedChange: (isChecked: boolean) => setChecked(isChecked),
     isDisabled,
     state,
+    id: uuid,
+    getLabelProps,
   };
 };
 

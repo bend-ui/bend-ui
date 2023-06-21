@@ -9,3 +9,9 @@ export const tilesStyles = (props: UseTilesProps) => {
     }, minmax(0, 1fr))`,
   };
 };
+
+export const tilesTwStyles = ({ cols = 4, gap = 4 }: UseTilesProps) => [
+  'grid',
+  `grid-cols-${cols}`,
+  `gap-${gap}`,
+];

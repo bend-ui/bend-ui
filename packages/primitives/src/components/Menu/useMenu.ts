@@ -8,7 +8,9 @@ import {
 import { useDisclosure } from '../../hooks';
 import type { Placement } from '@floating-ui/react';
 
-export type UseMenuProps = { placement?: Placement };
+export interface UseMenuProps {
+  placement?: Placement;
+}
 
 export const useMenu = (props) => {
   const { placement } = props;

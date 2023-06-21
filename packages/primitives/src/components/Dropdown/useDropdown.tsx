@@ -7,18 +7,22 @@ import {
   useListNavigation,
   useRole,
 } from '@floating-ui/react';
+import { mergeRefs } from '../../utils';
+import { useDisclosure } from '../../hooks';
+import type { Placement } from '@floating-ui/react';
 
-export type UseDropdownProps = {
-  isOpen: boolean;
-  onOpenChange(isOpen?: boolean): void;
-};
+export interface UseDropdownProps {
+  placement?: Placement;
+}
 
-export const useDropdown = (props: UseDropdownProps) => {
-  const { isOpen, onOpenChange } = props;
+export const useDropdown = (props?: UseDropdownProps) => {
+  const { placement = 'bottom-start' } = props;
+  const { isOpen, toggle } = useDisclosure();
 
-  const { x, y, refs, strategy, context } = useFloating({
+  const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
-    onOpenChange,
+    onOpenChange: toggle,
+    placement,
   });
 
   const [activeIndex, setActiveIndex] = useState(null);
@@ -38,23 +42,32 @@ export const useDropdown = (props: UseDropdownProps) => {
     ]
   );
 
-  const getDropdownProps = () => ({
-    ...getFloatingProps({ ref: refs.setFloating }),
+  const getTargetProps = (props = {}, forwardedRef = null) => ({
+    ...props,
+    ...getReferenceProps(),
+    ref: mergeRefs([forwardedRef, refs.setReference]),
+  });
+
+  const getMenuProps = (props = {}, forwardedRef = null) => ({
+    ...props,
+    ...getFloatingProps(),
+    ref: mergeRefs([forwardedRef, refs.setFloating]),
     style: {
-      position: strategy,
-      top: y ?? '',
-      left: x ?? '',
-      overflow: 'auto',
+      // ...props.style,
+      ...floatingStyles,
     },
+  });
+
+  const getMenuItemProps = (props = {}, forwardedRef = null) => ({
+    ...props,
+    ...getItemProps(),
+    ref: mergeRefs([forwardedRef]),
   });
 
   return {
     isOpen,
-    onOpenChange,
-    reference: refs.setReference,
-    floating: refs.setFloating,
-    getDropdownProps,
-    getReferenceProps,
-    getItemProps,
+    getTargetProps,
+    getMenuProps,
+    getMenuItemProps,
   };
 };

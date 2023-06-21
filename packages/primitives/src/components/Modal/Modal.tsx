@@ -14,9 +14,9 @@ const Root = (props: ModalRootProps) => {
   return <ModalProvider value={ctx}>{children}</ModalProvider>;
 };
 
-export type ModalPortalProps = {
+export interface ModalPortalProps {
   children?: ReactNode;
-};
+}
 
 const ModalPortal = (props: ModalPortalProps) => {
   const { children, ...rest } = props;
@@ -24,13 +24,15 @@ const ModalPortal = (props: ModalPortalProps) => {
   return ctx.isOpen ? <Portal {...rest}>{children}</Portal> : null;
 };
 
-export type ModalDialogProps = {
+export interface ModalDialogProps {
   children?: ReactNode;
-};
+}
 
 const Dialog = forwardRef<ModalDialogProps, 'div'>((props, ref) => {
   const { children, as: Component = 'div', ...rest } = props;
   const ctx = useModalContext();
+
+  if (!ctx.isOpen) return null;
 
   return (
     <Component ref={ref} {...ctx.getFloatingProps()} {...rest}>
@@ -39,9 +41,9 @@ const Dialog = forwardRef<ModalDialogProps, 'div'>((props, ref) => {
   );
 });
 
-export type ModalBackdropProps = {
+export interface ModalBackdropProps {
   children?: ReactNode;
-};
+}
 
 const Backdrop = forwardRef<ModalBackdropProps, 'div'>((props, ref) => {
   const { children, as: Component = 'div', ...rest } = props;
@@ -53,9 +55,9 @@ const Backdrop = forwardRef<ModalBackdropProps, 'div'>((props, ref) => {
   );
 });
 
-export type ModalContentProps = {
+export interface ModalContentProps {
   children?: ReactNode;
-};
+}
 
 const Content = forwardRef<ModalContentProps, 'div'>((props, ref) => {
   const { children, as: Component = 'div', ...rest } = props;
@@ -67,9 +69,9 @@ const Content = forwardRef<ModalContentProps, 'div'>((props, ref) => {
   );
 });
 
-export type ModalTitleProps = {
+export interface ModalTitleProps {
   children?: ReactNode;
-};
+}
 
 const Title = forwardRef<ModalTitleProps, 'div'>((props, ref) => {
   const { children, as: Component = 'div', ...rest } = props;
@@ -81,9 +83,9 @@ const Title = forwardRef<ModalTitleProps, 'div'>((props, ref) => {
   );
 });
 
-export type ModalDescriptionProps = {
+export interface ModalDescriptionProps {
   children?: ReactNode;
-};
+}
 
 const Description = forwardRef<ModalDescriptionProps, 'div'>((props, ref) => {
   const { children, as: Component = 'div', ...rest } = props;

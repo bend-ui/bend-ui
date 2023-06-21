@@ -1,13 +1,15 @@
 import { TemplateName } from './';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 export default {
   title: 'TemplateName',
   component: TemplateName,
-} as ComponentMeta<typeof TemplateName>;
+} as Meta<typeof TemplateName>;
 
-type Story = ComponentStory<typeof TemplateName>;
+type Story = StoryObj<typeof TemplateName>;
 
-export const Base: Story = (args) => (
-  <TemplateName.Root {...args}>TemplateName</TemplateName.Root>
-);
+export const Base: Story = {
+  render: (args) => (
+    <TemplateName.Root {...args}>TemplateName</TemplateName.Root>
+  ),
+};

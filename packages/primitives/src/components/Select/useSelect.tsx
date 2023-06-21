@@ -7,17 +7,19 @@ import {
   useFloating,
   useInteractions,
   useListNavigation,
+  useRole,
 } from '@floating-ui/react';
 
-export type UseSelectProps = {
+export interface UseSelectProps {
   isOpen: boolean;
   onOpenChange(isOpen?: boolean): void;
   offset?: number;
-};
+}
 
 export const useSelect = (props: UseSelectProps) => {
   const { isOpen, onOpenChange, offset: offsetProp } = props;
-  const { x, y, reference, floating, strategy, context } = useFloating({
+
+  const { x, y, refs, strategy, context } = useFloating({
     open: isOpen,
     onOpenChange,
     whileElementsMounted: autoUpdate,
@@ -36,18 +38,21 @@ export const useSelect = (props: UseSelectProps) => {
   const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions(
     [
       useClick(context),
-      // useRole(context, { role: 'listbox' }),
+      useRole(context, { role: 'listbox' }),
       useDismiss(context),
-      useListNavigation(context),
+      // useListNavigation(context, {
+      //   listRef: null,
+      //   activeIndex: 1,
+      // }),
     ]
   );
 
-  const getTriggerProps = () => ({
-    ...getReferenceProps({ ref: reference }),
+  const getTargetProps = () => ({
+    ...getReferenceProps({ ref: refs.setReference }),
   });
 
   const getListboxProps = () => ({
-    ...getFloatingProps({ ref: floating }),
+    ...getFloatingProps({ ref: refs.setFloating }),
     style: {
       position: strategy,
       top: y ?? '',
@@ -66,11 +71,12 @@ export const useSelect = (props: UseSelectProps) => {
   });
 
   return {
-    reference,
-    floating,
-    getTriggerProps,
+    reference: refs.setReference,
+    floating: refs.setFloating,
+    getTargetProps,
     getListboxProps,
     getOptionProps,
     getGroupProps,
+    isOpen,
   };
 };

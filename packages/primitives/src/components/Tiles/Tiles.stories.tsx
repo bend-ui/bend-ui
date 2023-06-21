@@ -1,14 +1,16 @@
 import { Tiles, useTiles } from './';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Layout/Tiles',
   component: Tiles,
-} as ComponentMeta<typeof Tiles>;
+} as Meta<typeof Tiles>;
 
-type Story = ComponentStory<typeof Tiles>;
+type Story = StoryFn<typeof Tiles>;
 
-export const Base: Story = (args) => <Tiles.Root {...args} />;
+export const Base: Story = {
+  render: (args) => <Tiles.Root {...args} />,
+};
 
 export const Hook = () => {
   const { getTilesStyles } = useTiles({ cols: 3 });

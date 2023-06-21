@@ -1,68 +1,77 @@
-import { useState } from 'react';
-import { createComponent, forwardRef } from '../../utils';
-import type { ChangeEvent, ReactNode } from 'react';
+import { createComponent, createContext, forwardRef } from '../../utils';
+import { useRadio } from './useRadio';
+import type { ReactNode } from 'react';
 
-export type RadioRootProps = {
+export type RadioContextProps = ReturnType<typeof useRadio>;
+
+export const [RadioContextProvider, useRadioContext] =
+  createContext<RadioContextProps>('Radio');
+
+export interface RadioRootProps {
   children?: ReactNode;
   isDisabled?: boolean;
-};
+}
 
-export const Root = forwardRef<RadioRootProps, 'input'>((props, ref) => {
-  const { children, onChange, defaultChecked, isDisabled, ...rest } = props;
+export const Root = forwardRef<RadioRootProps, 'div'>((props, ref) => {
+  const {
+    children,
+    as: Component = 'div',
+    id,
+    onChange,
+    defaultChecked,
+    isDisabled,
+    ...rest
+  } = props;
 
-  const [state, setState] = useState<'checked' | 'unchecked'>(
-    defaultChecked ? 'checked' : 'unchecked'
-  );
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setState(event.currentTarget.checked ? 'checked' : 'unchecked');
-    onChange?.(event);
-  };
+  const context = useRadio({ id, defaultChecked, isDisabled });
 
   return (
-    <label
-      data-state={state}
-      data-disabled={isDisabled}
-      aria-checked={state === 'checked'}
-      aria-disabled={isDisabled}
-    >
-      <input
-        ref={ref}
-        type="radio"
-        onChange={handleChange}
-        defaultChecked={defaultChecked}
-        disabled={isDisabled}
-        {...rest}
-      />
-      {children}
-    </label>
+    <RadioContextProvider value={context}>
+      <Component ref={ref} {...rest}>
+        {children}
+      </Component>
+    </RadioContextProvider>
   );
 });
 
-type RadioControlProps = {
+export interface RadioInputProps {
+  children?: never;
+}
+
+const Input = forwardRef<RadioInputProps, 'input'>((props, ref) => {
+  const { ...rest } = props;
+  const { getInputProps } = useRadioContext();
+
+  return <input ref={ref} type="radio" {...getInputProps()} {...rest} />;
+});
+
+export interface RadioControlProps {
   children?: ReactNode;
-};
+}
 
 const Control = forwardRef<RadioControlProps, 'div'>((props, ref) => {
   const { children, as: Component = 'div', ...rest } = props;
+  const { getControlProps } = useRadioContext();
   return (
-    <Component ref={ref} role="presentation" {...rest}>
+    <Component ref={ref} {...getControlProps()} {...rest}>
       {children}
     </Component>
   );
 });
 
-type RadioLabelProps = {
+export interface RadioLabelProps {
   children?: ReactNode;
-};
+}
 
-const Label = forwardRef<RadioLabelProps, 'span'>((props, ref) => {
-  const { children, as: Component = 'span', ...rest } = props;
+const Label = forwardRef<RadioLabelProps, 'label'>((props, ref) => {
+  const { children, as: Component = 'label', ...rest } = props;
+  const { getLabelProps } = useRadioContext();
+
   return (
-    <Component ref={ref} {...rest}>
+    <Component ref={ref} {...getLabelProps()} {...rest}>
       {children}
     </Component>
   );
 });
 
-export default createComponent(Root, { Root, Control, Label }, 'Radio');
+export default createComponent(Root, { Root, Input, Control, Label }, 'Radio');

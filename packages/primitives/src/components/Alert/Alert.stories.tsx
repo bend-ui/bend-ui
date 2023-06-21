@@ -1,19 +1,19 @@
 import React from 'react';
 import { Alert, useAlert } from '.';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Components/Alert',
   component: Alert,
-} as ComponentMeta<typeof Alert>;
+} as Meta<typeof Alert>;
 
-type Story = ComponentStory<typeof Alert>;
+type Story = StoryFn<typeof Alert>;
 
-export const Base: Story = (args) => (
-  <Alert.Root {...args}>Alert content</Alert.Root>
-);
+export const Base: Story = {
+  render: (args) => <Alert.Root {...args}>Alert content</Alert.Root>,
+};
 
 export const Hook: Story = () => {
-  const alertProps = useAlert();
-  return <div {...alertProps}>Alert content</div>;
+  const { getAlertProps } = useAlert();
+  return <div {...getAlertProps()}>Alert content</div>;
 };

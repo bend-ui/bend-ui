@@ -1,9 +1,9 @@
 import { createComponent, forwardRef } from '../../utils';
 import type { ReactNode } from 'react';
 
-export type TextFieldRootProps = {
+export interface TextFieldRootProps {
   children?: ReactNode;
-};
+}
 
 const Root = forwardRef<TextFieldRootProps, 'div'>((props, ref) => {
   const { children, as: Component = 'div', ...rest } = props;
@@ -14,10 +14,10 @@ const Root = forwardRef<TextFieldRootProps, 'div'>((props, ref) => {
   );
 });
 
-export type TextFieldInputProps = {
+export interface TextFieldInputProps {
   isDisabled?: boolean;
   isInvalid?: boolean;
-};
+}
 
 const Input = forwardRef<TextFieldInputProps, 'input'>((props, ref) => {
   const { as: Component = 'input', ...rest } = props;

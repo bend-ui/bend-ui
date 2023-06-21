@@ -1,27 +1,26 @@
 import { FloatingFocusManager } from '@floating-ui/react';
-import { Children, cloneElement, isValidElement } from 'react';
+import { cloneElement } from 'react';
+import { getValidChild } from '@particles/react-utils';
 import { createComponent, forwardRef } from '../../utils';
 import { PopoverProvider, usePopoverContext } from './PopoverContext';
 import { usePopover } from './usePopover';
 import type { UsePopoverProps } from './usePopover';
 import type { ReactNode } from 'react';
 
-type PopoverTriggerProps = {
+interface PopoverTriggerProps {
   children?: ReactNode;
-};
+}
 
-const Trigger = (props: PopoverTriggerProps) => {
-  const { children } = props;
+const Trigger = forwardRef<PopoverTriggerProps, 'button'>((props, ref) => {
+  const { children, ...rest } = props;
+  const child = getValidChild(children);
+  const context = usePopoverContext();
+  return cloneElement(child, context.getTriggerProps(rest, ref));
+});
 
-  const child = Children.only(children);
-  const { getTriggerProps } = usePopoverContext();
-
-  return isValidElement(child) && cloneElement(child, { ...getTriggerProps() });
-};
-
-type PopoverPanelProps = {
+interface PopoverPanelProps {
   children?: ReactNode;
-};
+}
 
 const Panel = forwardRef<PopoverPanelProps, 'div'>((props, ref) => {
   const { children, ...rest } = props;
@@ -30,9 +29,7 @@ const Panel = forwardRef<PopoverPanelProps, 'div'>((props, ref) => {
   return (
     isOpen && (
       <FloatingFocusManager context={context} initialFocus={initialFocusRef}>
-        <div ref={ref} {...getPopoverProps()} {...rest}>
-          {children}
-        </div>
+        <div {...getPopoverProps(rest, ref)}>{children}</div>
       </FloatingFocusManager>
     )
   );

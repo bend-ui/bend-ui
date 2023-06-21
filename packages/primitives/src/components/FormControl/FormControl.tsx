@@ -1,9 +1,9 @@
 import { createComponent, forwardRef } from '../../utils';
 import type { ReactNode } from 'react';
 
-export type FormControlRootProps = {
+export interface FormControlRootProps {
   children?: ReactNode;
-};
+}
 
 const Root = forwardRef<FormControlRootProps, 'div'>((props, ref) => {
   const { children, as: Component = 'div', ...rest } = props;

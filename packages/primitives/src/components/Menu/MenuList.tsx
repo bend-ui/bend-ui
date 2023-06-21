@@ -4,7 +4,9 @@ import { Portal } from '../Portal';
 import { useMenuContext } from './MenuContext';
 import type { ReactNode } from 'react';
 
-export type MenuListProps = { children?: ReactNode };
+export interface MenuListProps {
+  children?: ReactNode;
+}
 
 export const MenuList = forwardRef<MenuListProps, 'div'>((props, ref) => {
   const { children, ...rest } = props;

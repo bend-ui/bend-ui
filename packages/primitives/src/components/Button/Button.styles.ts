@@ -14,9 +14,10 @@ export const buttonStyles: { root: CSSProperties } = {
   },
 };
 
-export const twStyles = {
+export const twButtonStyles = {
   root: [
     'inline-flex',
+    'flex-row',
     'items-center',
     'justify-center',
     'gap-[1ch]',

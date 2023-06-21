@@ -6,10 +6,10 @@ import {
 } from './Breadcrumbs.context';
 import type { ReactNode } from 'react';
 
-export type BreadcrumbsRootProps = {
+export interface BreadcrumbsRootProps {
   children?: ReactNode;
   separator?: ReactNode;
-};
+}
 
 const Root = forwardRef<BreadcrumbsRootProps, 'nav'>((props, ref) => {
   const { children, as: Component = 'nav', separator = '/', ...rest } = props;
@@ -23,9 +23,9 @@ const Root = forwardRef<BreadcrumbsRootProps, 'nav'>((props, ref) => {
   );
 });
 
-export type BreadcrumbsListProps = {
+export interface BreadcrumbsListProps {
   children?: ReactNode;
-};
+}
 
 const List = forwardRef<BreadcrumbsListProps, 'ol'>((props, ref) => {
   const { children, as: Component = 'ol', ...rest } = props;
@@ -37,9 +37,9 @@ const List = forwardRef<BreadcrumbsListProps, 'ol'>((props, ref) => {
   );
 });
 
-export type BreadcrumbsItemProps = {
+export interface BreadcrumbsItemProps {
   children?: ReactNode;
-};
+}
 
 const Item = forwardRef<BreadcrumbsItemProps, 'li'>((props, ref) => {
   const { children, as: Component = 'li', ...rest } = props;
@@ -50,9 +50,9 @@ const Item = forwardRef<BreadcrumbsItemProps, 'li'>((props, ref) => {
   );
 });
 
-export type BreadcrumbsLinkProps = {
+export interface BreadcrumbsLinkProps {
   children?: ReactNode;
-};
+}
 
 const Link = forwardRef<BreadcrumbsLinkProps, 'a'>((props, ref) => {
   const { children, as: Component = 'a', ...rest } = props;
@@ -64,9 +64,9 @@ const Link = forwardRef<BreadcrumbsLinkProps, 'a'>((props, ref) => {
   );
 });
 
-export type BreadcrumbsSeparatorProps = {
+export interface BreadcrumbsSeparatorProps {
   children?: never;
-};
+}
 
 const Separator = forwardRef<BreadcrumbsSeparatorProps, 'span'>(
   (props, ref) => {

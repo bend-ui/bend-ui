@@ -1,5 +1,6 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import {
+  arrow,
   autoUpdate,
   flip,
   offset,
@@ -11,52 +12,100 @@ import {
   useInteractions,
   useRole,
 } from '@floating-ui/react';
-import { mergeRefs } from '../../utils';
-import type { Placement } from '@floating-ui/react';
+import { createContext, mergeRefs } from '../../utils';
+import type { HTMLProps, Ref } from 'react';
+import type { FloatingContext, Placement } from '@floating-ui/react';
 
 export interface UseTooltipProps {
   placement?: Placement;
 }
+
+export type PropGetter<T = HTMLElement> = (
+  props?: HTMLProps<T> & {
+    'data-state'?: 'open' | 'close';
+    [key: string]: unknown;
+  },
+  _ref?: Ref<T>
+) => Record<string, unknown>;
+
+export type ArrowPropGetter = (
+  props?: HTMLProps<SVGSVGElement> & {
+    'data-state'?: 'open' | 'close';
+    [key: string]: unknown;
+  },
+  _ref?: Ref<SVGSVGElement>
+) => { ref: (instance: SVGSVGElement) => void; context: FloatingContext };
 
 export const useTooltip = (props: UseTooltipProps = {}) => {
   const { placement = 'top' } = props;
 
   const [isOpen, setOpen] = useState(false);
 
-  const { x, y, reference, floating, strategy, context } = useFloating({
+  const arrowRef = useRef(null);
+
+  const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
     onOpenChange: setOpen,
     placement,
-    middleware: [offset(4), flip(), shift({ padding: 8 })],
+    middleware: [
+      offset(4),
+      flip(),
+      shift({ padding: 8 }),
+      arrow({ element: arrowRef }),
+    ],
     whileElementsMounted: autoUpdate,
   });
 
+  const hover = useHover(context, { move: false });
+  const focus = useFocus(context);
+  const dismiss = useDismiss(context);
+  const role = useRole(context, { role: 'tooltip' });
+
   const { getReferenceProps, getFloatingProps } = useInteractions([
-    useHover(context),
-    useFocus(context),
-    useRole(context, { role: 'tooltip' }),
-    useDismiss(context),
+    hover,
+    focus,
+    dismiss,
+    role,
   ]);
 
-  const getTriggerProps = useCallback(
-    (props = {}, _ref = null) => ({
-      ...getReferenceProps({ ref: mergeRefs([reference, _ref]), ...props }),
+  const getTriggerProps: PropGetter = useCallback(
+    (props = {}, forwardedRef = null) => ({
+      ...props,
+      ...getReferenceProps(),
+      ref: mergeRefs([refs.setReference, forwardedRef]),
+      'data-state': isOpen ? 'open' : 'close',
     }),
-    [reference, getReferenceProps]
+    [getReferenceProps, isOpen, refs.setReference]
   );
 
-  const getTooltipProps = (props = {}, _ref = null) => ({
-    ...getFloatingProps({
-      ref: mergeRefs([floating, _ref]),
+  const getTooltipProps: PropGetter = useCallback(
+    (props = {}, forwardedRef = null) => ({
+      ref: mergeRefs([refs.setFloating, forwardedRef]),
       ...props,
+      ...getFloatingProps(),
+      'data-state': isOpen ? 'open' : 'close',
+      hidden: !isOpen,
       style: {
-        ...(props as any).style,
-        position: strategy,
-        top: y ?? '',
-        left: x ?? '',
+        ...props.style,
+        ...floatingStyles,
       },
     }),
+    [floatingStyles, getFloatingProps, isOpen, refs.setFloating]
+  );
+
+  const getArrowProps: ArrowPropGetter = (
+    props = { context: {} },
+    forwardedRef = null
+  ) => ({
+    ...props,
+    ref: mergeRefs([forwardedRef, arrowRef]),
+    context,
   });
 
-  return { isOpen, getTriggerProps, getTooltipProps };
+  return { isOpen, getTriggerProps, getTooltipProps, getArrowProps };
 };
+
+export type TooltipContext = ReturnType<typeof useTooltip>;
+
+export const [TooltipContextProvider, useTooltipContext] =
+  createContext<TooltipContext>('Tooltip');

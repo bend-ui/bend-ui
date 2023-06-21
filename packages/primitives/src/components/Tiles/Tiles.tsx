@@ -1,7 +1,9 @@
 import { createComponent, forwardRef } from '../../utils';
 import type { ReactNode } from 'react';
 
-export type TilesProps = { children?: ReactNode };
+export interface TilesProps {
+  children?: ReactNode;
+}
 
 const Root = forwardRef<TilesProps, 'div'>((props, ref) => {
   const { children, as: Component = 'div', ...rest } = props;

@@ -1,9 +1,9 @@
 import { createComponent, forwardRef } from '../../src/utils';
 import type { ReactNode } from 'react';
 
-export type TemplateNameRootProps = {
+export interface TemplateNameRootProps {
   children?: ReactNode;
-};
+}
 
 const Root = forwardRef<TemplateNameRootProps, 'div'>((props, ref) => {
   const { children, as: Component = 'div', ...rest } = props;

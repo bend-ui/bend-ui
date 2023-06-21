@@ -4,8 +4,8 @@ const { join } = require('path');
 const colors = require('tailwindcss/colors');
 
 module.exports = {
-  content: [join(__dirname, './src/**/*.{js,ts,jsx,tsx}')],
-  darkMode: ['class', '.dark-mode'],
+  content: [join(__dirname, './**/*.{js,ts,jsx,tsx}')],
+  darkMode: ['class', '.dark'],
   theme: {
     extend: {
       colors: {

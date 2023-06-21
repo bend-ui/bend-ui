@@ -10,9 +10,9 @@ import {
 import type React from 'react';
 import type { UseTabsProps } from './useTabs';
 
-export type TabsListProps = {
+export interface TabsListProps {
   children?: React.ReactNode;
-};
+}
 
 const List = forwardRef<TabsListProps, 'div'>((props, ref) => {
   const { children, ...rest } = props;
@@ -24,10 +24,10 @@ const List = forwardRef<TabsListProps, 'div'>((props, ref) => {
   );
 });
 
-export type TabsTabProps = {
+export interface TabsTabProps {
   children?: React.ReactNode;
   value: string;
-};
+}
 
 const Tab = forwardRef<TabsTabProps, 'button'>((props, ref) => {
   const { children, value, ...rest } = props;
@@ -39,10 +39,10 @@ const Tab = forwardRef<TabsTabProps, 'button'>((props, ref) => {
   );
 });
 
-export type TabsPanelProps = {
+export interface TabsPanelProps {
   children?: React.ReactNode;
   value: string;
-};
+}
 
 const Panel = forwardRef<TabsPanelProps, 'div'>((props, ref) => {
   const { children, value, ...rest } = props;

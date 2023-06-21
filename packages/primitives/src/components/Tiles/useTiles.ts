@@ -2,6 +2,7 @@ import { tilesStyles } from './Tiles.styles';
 
 export interface UseTilesProps {
   cols?: 'auto' | number;
+  gap?: number;
 }
 
 export const useTiles = (props: UseTilesProps) => {

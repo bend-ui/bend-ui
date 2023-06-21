@@ -1,12 +1,19 @@
 import { createComponent, forwardRef } from '../../utils';
+import { useAlert } from './useAlert';
 import type { ReactNode } from 'react';
 
-export type AlertProps = {
+export interface AlertProps {
   children?: ReactNode;
-};
+}
 
-const Root = forwardRef<AlertProps, 'div'>((props, ref) => (
-  <div ref={ref} role="alert" {...props} />
-));
+const Root = forwardRef<AlertProps, 'div'>((props, ref) => {
+  const { children, as: Component = 'div', ...rest } = props;
+  const { getAlertProps } = useAlert();
+  return (
+    <Component ref={ref} {...getAlertProps()} {...rest}>
+      {children}
+    </Component>
+  );
+});
 
 export default createComponent(Root, { Root }, 'Alert');

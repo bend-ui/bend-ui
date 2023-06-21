@@ -9,16 +9,17 @@ import {
   useRole,
 } from '@floating-ui/react';
 import { useDisclosure } from '../../hooks';
+import { mergeRefs } from '../../utils';
 import type { Placement } from '@floating-ui/react';
 
-export type UsePopoverProps = {
+export interface UsePopoverProps {
   isOpen?: boolean;
   placement?: Placement;
   closeOnBlur?: boolean;
   closeOnEscape?: boolean;
   isLazy?: boolean;
   initialFocusRef?: number | React.MutableRefObject<HTMLElement | null>;
-};
+}
 
 export const usePopover = (props: UsePopoverProps = {}) => {
   const {
@@ -29,7 +30,7 @@ export const usePopover = (props: UsePopoverProps = {}) => {
   } = props;
   const { isOpen, toggle } = useDisclosure();
 
-  const { x, y, reference, floating, strategy, context } = useFloating({
+  const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
     onOpenChange: toggle,
     placement,
@@ -45,19 +46,20 @@ export const usePopover = (props: UsePopoverProps = {}) => {
     }),
   ]);
 
-  const getTriggerProps = () => ({
-    ...getReferenceProps({ ref: reference }),
+  const getTriggerProps = (props = {}, forwardedRef = null) => ({
+    ...props,
+    ...getReferenceProps(),
+    ref: mergeRefs([forwardedRef, refs.setReference]),
   });
 
-  const getPopoverProps = () => ({
-    ...getFloatingProps({
-      ref: floating,
-      style: {
-        position: strategy,
-        top: y ?? 0,
-        left: x ?? 0,
-      },
-    }),
+  const getPopoverProps = (props = {}, forwardedRef = null) => ({
+    ...props,
+    ...getFloatingProps(),
+    ref: mergeRefs([forwardedRef, refs.setFloating]),
+    style: {
+      // ...props.style,
+      ...floatingStyles,
+    },
   });
 
   return {

@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-export type UseControlledProps<T> = {
+export interface UseControlledProps<T> {
   value?: T;
   defaultValue?: T;
   onChange?(value: T): void;
-};
+}
 
 export const useControlled = <T>(props: UseControlledProps<T>) => {
   const { value, defaultValue, onChange } = props;

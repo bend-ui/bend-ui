@@ -1,3 +1,5 @@
 export const useAlert = () => ({
-  role: 'alert',
+  getAlertProps: () => ({
+    role: 'alert',
+  }),
 });

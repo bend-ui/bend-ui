@@ -6,8 +6,8 @@ import {
 /**
  * Utility to create a context
  *
- * @param name
- * @param defaultContext
+ * @param name The name of the context
+ * @param defaultContext The default value of the context
  * @returns Provider and useContext
  */
 
