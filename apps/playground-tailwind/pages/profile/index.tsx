@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { TbDotsVertical } from 'react-icons/tb';
 import { Avatar, Button } from '@particles/tailwind';
 import { Layout } from '../../components';
 import type { InferGetStaticPropsType } from 'next';
@@ -44,7 +45,11 @@ export default function ProfilePage(
             </div>
           </div>
           <div className="ml-auto flex items-center gap-2">
-            <Button>More</Button>
+            <Button
+              palette="secondary"
+              icon={<TbDotsVertical />}
+              label="More"
+            />
             <Button>View portfolio</Button>
             <Button>Follow</Button>
           </div>

@@ -2,9 +2,9 @@ import { TbEdit, TbSearch } from 'react-icons/tb';
 import { Avatar, Button, Input, Level, Media } from '@particles/tailwind';
 import { users } from './index';
 
-type MessageListProps = {
+interface MessageListProps {
   data: any;
-};
+}
 
 export function MessageList(props: MessageListProps) {
   const { data } = props;
@@ -20,9 +20,7 @@ export function MessageList(props: MessageListProps) {
             </span>
           </div>
           <div>
-            <Button palette="secondary">
-              <TbEdit />
-            </Button>
+            <Button palette="secondary" icon={<TbEdit />} label="Edit" />
           </div>
         </Level>
         <div className="w-full">

@@ -7,6 +7,7 @@ export function Index() {
     'messages',
     'profile',
     'customers',
+    'music-player',
     'design-tokens',
   ];
   return (

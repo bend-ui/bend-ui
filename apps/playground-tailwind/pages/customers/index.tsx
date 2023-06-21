@@ -34,9 +34,11 @@ export default function CustomersPage() {
           <div className="rounded-md border border-neutral-200 p-3 shadow">
             <Level>
               <span>Text</span>
-              <Button palette="secondary">
-                <TbDotsVertical />
-              </Button>
+              <Button
+                palette="secondary"
+                icon={<TbDotsVertical />}
+                label="More"
+              />
             </Level>
             <Level>
               <span>Number</span>
@@ -46,9 +48,11 @@ export default function CustomersPage() {
           <div className="rounded-md border border-neutral-200 p-3 shadow">
             <Level>
               <span>Text</span>
-              <Button palette="secondary">
-                <TbDotsVertical />
-              </Button>
+              <Button
+                palette="secondary"
+                icon={<TbDotsVertical />}
+                label="More"
+              />
             </Level>
             <Level>
               <span>Number</span>
@@ -58,9 +62,11 @@ export default function CustomersPage() {
           <div className="rounded-md border border-neutral-200 p-3 shadow">
             <Level>
               <span>Text</span>
-              <Button palette="secondary">
-                <TbDotsVertical />
-              </Button>
+              <Button
+                palette="secondary"
+                icon={<TbDotsVertical />}
+                label="More"
+              />
             </Level>
             <Level>
               <span>Number</span>

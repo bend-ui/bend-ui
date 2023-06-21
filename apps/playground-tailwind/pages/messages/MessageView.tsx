@@ -84,9 +84,7 @@ export function MessageView() {
           <Button>Call</Button>
           <Button palette="secondary">Archive</Button>
           <Button>View profile</Button>
-          <Button palette="secondary">
-            <TbDotsVertical />
-          </Button>
+          <Button icon={<TbDotsVertical />} palette="secondary" label="More" />
         </ButtonGroup>
       </div>
       {/* Message feed */}
@@ -101,7 +99,7 @@ export function MessageView() {
                 </Media.Image>
                 <Media.Body>
                   <Level className="mb-1">
-                    <div className="text-md font-medium leading-loose text-neutral-700">
+                    <div className="text-base font-medium leading-loose text-neutral-700">
                       {user.name}
                     </div>
                     <div className="text-sm text-neutral-500">

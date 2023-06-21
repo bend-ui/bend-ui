@@ -1,5 +1,6 @@
 import { join } from 'path';
 import { createGlobPatternsForDependencies } from '@nx/react/tailwind';
+import plugin from './plugin';
 import type { Config } from 'tailwindcss';
 
 export default {
@@ -36,5 +37,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [plugin],
 } satisfies Config;

@@ -2,7 +2,9 @@ import Link from 'next/link';
 import { TbHome, TbUser } from 'react-icons/tb';
 import type { ReactNode } from 'react';
 
-type LayoutProps = { children?: ReactNode };
+interface LayoutProps {
+  children?: ReactNode;
+}
 
 export const Layout = (props: LayoutProps) => {
   const { children } = props;
