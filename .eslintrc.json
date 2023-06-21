@@ -56,7 +56,8 @@
       {
         "prefer": "type-imports"
       }
-    ]
+    ],
+    "@typescript-eslint/consistent-type-definitions": ["error", "interface"]
   },
   "settings": {
     "import/parsers": {
@@ -100,6 +101,12 @@
       "files": ["*.js", "*.jsx"],
       "extends": ["plugin:@nx/javascript"],
       "rules": {}
+    },
+    {
+      "files": ["**/*.stories.tsx"],
+      "rules": {
+        "react-hooks/rules-of-hooks": "off"
+      }
     }
   ]
 }

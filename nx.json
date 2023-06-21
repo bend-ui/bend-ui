@@ -8,7 +8,6 @@
       }
     }
   },
-  "plugins": ["@nxtensions/astro"],
   "npmScope": "particles",
   "targetDefaults": {
     "test": {

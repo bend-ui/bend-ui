@@ -4,6 +4,7 @@
 /dist
 /tmp
 /out-tsc
+.contentlayer
 
 # dependencies
 node_modules
@@ -43,4 +44,3 @@ Thumbs.db
 
 # NX
 migrations.json
-.astro
