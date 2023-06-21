@@ -355,11 +355,11 @@ importers:
         specifier: ^3.3.0
         version: 3.3.1(webpack@5.77.0)
       stylus:
-        specifier: ^0.55.0
-        version: 0.55.0
+        specifier: ^0.59.0
+        version: 0.59.0
       stylus-loader:
         specifier: ^7.1.0
-        version: 7.1.0(stylus@0.55.0)(webpack@5.77.0)
+        version: 7.1.0(stylus@0.59.0)(webpack@5.77.0)
       tailwindcss:
         specifier: 3.3.2
         version: 3.3.2(ts-node@10.9.1)
@@ -383,7 +383,7 @@ importers:
         version: 4.1.1(webpack@5.77.0)
       vite:
         specifier: 4.3.5
-        version: 4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.55.0)
+        version: 4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.59.0)
       vite-plugin-dts:
         specifier: ~2.1.0
         version: 2.1.0(@types/node@18.15.11)(rollup@2.79.1)(vite@4.3.5)
@@ -395,7 +395,7 @@ importers:
         version: 4.2.0(typescript@5.0.4)(vite@4.3.5)
       vitest:
         specifier: 0.31.0
-        version: 0.31.0(@vitest/ui@0.31.0)(jsdom@20.0.3)(less@4.1.3)(sass@1.63.5)(stylus@0.55.0)
+        version: 0.31.0(@vitest/ui@0.31.0)(jsdom@20.0.3)(less@4.1.3)(sass@1.63.5)(stylus@0.59.0)
       webpack:
         specifier: ^5.77.0
         version: 5.77.0(@swc/core@1.2.173)(esbuild@0.18.6)
@@ -413,7 +413,7 @@ importers:
         version: 11.10.6
       '@emotion/react':
         specifier: '>=11'
-        version: 11.10.6(@types/react@18.2.6)(react@17.0.2)
+        version: 11.10.6(@types/react@18.2.13)(react@17.0.2)
       '@floating-ui/react':
         specifier: ^0.24.3
         version: 0.24.3(react-dom@17.0.2)(react@17.0.2)
@@ -530,12 +530,16 @@ importers:
     devDependencies:
       '@vanilla-extract/esbuild-plugin':
         specifier: 2.2.2
-        version: 2.2.2(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.55.0)
+        version: 2.2.2(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.59.0)
       '@vanilla-extract/webpack-plugin':
         specifier: ^2.2.0
         version: 2.2.0(webpack@5.88.0)
 
 packages:
+
+  /@adobe/css-tools@4.2.0:
+    resolution: {integrity: sha512-E09FiIft46CmH5Qnjb0wsW54/YQd69LsxeKUOWawmws1XWvyFGURnAChH0mlr7YPFR1ofwvUQfcL0J3lMxXqPA==}
+    dev: true
 
   /@alloc/quick-lru@5.2.0:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
@@ -2848,7 +2852,7 @@ packages:
   /@emotion/memoize@0.8.1:
     resolution: {integrity: sha512-W2P2c/VRW1/1tLox0mVUalvnWXxavmv/Oum2aPsRcoDJuob75FC3Y8FbpfLwUegRcxINtGUMPq0tFCvYNTBXNA==}
 
-  /@emotion/react@11.10.6(@types/react@18.2.6)(react@17.0.2):
+  /@emotion/react@11.10.6(@types/react@18.2.13)(react@17.0.2):
     resolution: {integrity: sha512-6HT8jBmcSkfzO7mc+N1L9uwvOnlcGoix8Zn7srt+9ga0MjREo6lRpuVX0kzo6Jp6oTqDhREOFsygN6Ew4fEQbw==}
     peerDependencies:
       '@types/react': '*'
@@ -2864,7 +2868,7 @@ packages:
       '@emotion/use-insertion-effect-with-fallbacks': 1.0.0(react@17.0.2)
       '@emotion/utils': 1.2.0
       '@emotion/weak-memoize': 0.3.0
-      '@types/react': 18.2.6
+      '@types/react': 18.2.13
       hoist-non-react-statics: 3.3.2
       react: 17.0.2
     dev: false
@@ -4240,7 +4244,7 @@ packages:
       magic-string: 0.27.0
       react-docgen-typescript: 2.2.2(typescript@5.0.4)
       typescript: 5.0.4
-      vite: 4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.55.0)
+      vite: 4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.59.0)
     dev: true
 
   /@jridgewell/gen-mapping@0.1.1:
@@ -5289,8 +5293,8 @@ packages:
       '@swc/helpers': 0.5.1
       dotenv: 10.0.0
       enquirer: 2.3.6
-      vite: 4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.55.0)
-      vitest: 0.31.0(@vitest/ui@0.31.0)(jsdom@20.0.3)(less@4.1.3)(sass@1.63.5)(stylus@0.55.0)
+      vite: 4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.59.0)
+      vitest: 0.31.0(@vitest/ui@0.31.0)(jsdom@20.0.3)(less@4.1.3)(sass@1.63.5)(stylus@0.59.0)
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -6515,7 +6519,7 @@ packages:
       remark-slug: 6.1.0
       rollup: 3.21.7
       typescript: 5.0.4
-      vite: 4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.55.0)
+      vite: 4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.59.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -6651,7 +6655,7 @@ packages:
       '@babel/core': 7.21.4
       '@babel/preset-env': 7.21.5(@babel/core@7.21.4)
       '@babel/types': 7.21.5
-      '@storybook/csf': 0.1.0
+      '@storybook/csf': 0.1.1
       '@storybook/csf-tools': 7.0.11
       '@storybook/node-logger': 7.0.11
       '@storybook/types': 7.0.11
@@ -6690,7 +6694,7 @@ packages:
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       '@storybook/client-logger': 7.0.11
-      '@storybook/csf': 0.1.0
+      '@storybook/csf': 0.1.1
       '@storybook/global': 5.0.0
       '@storybook/theming': 7.0.11(react-dom@18.2.0)(react@18.2.0)
       '@storybook/types': 7.0.11
@@ -6915,7 +6919,7 @@ packages:
       '@storybook/channels': 7.0.11
       '@storybook/client-logger': 7.0.11
       '@storybook/core-events': 7.0.11
-      '@storybook/csf': 0.1.0
+      '@storybook/csf': 0.1.1
       '@storybook/global': 5.0.0
       '@storybook/router': 7.0.11(react-dom@18.2.0)(react@18.2.0)
       '@storybook/theming': 7.0.11(react-dom@18.2.0)(react@18.2.0)
@@ -6959,7 +6963,7 @@ packages:
       '@storybook/channels': 7.0.11
       '@storybook/client-logger': 7.0.11
       '@storybook/core-events': 7.0.11
-      '@storybook/csf': 0.1.0
+      '@storybook/csf': 0.1.1
       '@storybook/global': 5.0.0
       '@storybook/types': 7.0.11
       '@types/qs': 6.9.7
@@ -7024,7 +7028,7 @@ packages:
       react: 18.2.0
       react-docgen: 6.0.0-alpha.3
       react-dom: 18.2.0(react@18.2.0)
-      vite: 4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.55.0)
+      vite: 4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.59.0)
     transitivePeerDependencies:
       - '@preact/preset-vite'
       - supports-color
@@ -8026,14 +8030,6 @@ packages:
       '@types/scheduler': 0.16.3
       csstype: 3.1.2
 
-  /@types/react@18.2.6:
-    resolution: {integrity: sha512-wRZClXn//zxCFW+ye/D2qY65UsYP1Fpex2YXorHc8awoNamkMZSvBxwxdYVInsHOZZd2Ppq8isnSzJL5Mpf8OA==}
-    dependencies:
-      '@types/prop-types': 15.7.5
-      '@types/scheduler': 0.16.3
-      csstype: 3.1.2
-    dev: false
-
   /@types/resolve@1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
@@ -8392,10 +8388,10 @@ packages:
       media-query-parser: 2.0.2
       outdent: 0.8.0
 
-  /@vanilla-extract/esbuild-plugin@2.2.2(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.55.0):
+  /@vanilla-extract/esbuild-plugin@2.2.2(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.59.0):
     resolution: {integrity: sha512-P2tlhBpAnoA4fx0xaYm8mcKBzorcyLC0O/c7ZpJL3aIKh6kdxdjDhOoWEXC2NuGJepEFsv0dXGJ99l424NvTKA==}
     dependencies:
-      '@vanilla-extract/integration': 6.2.1(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.55.0)
+      '@vanilla-extract/integration': 6.2.1(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.59.0)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -8423,7 +8419,7 @@ packages:
       - supports-color
     dev: true
 
-  /@vanilla-extract/integration@6.2.1(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.55.0):
+  /@vanilla-extract/integration@6.2.1(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.59.0):
     resolution: {integrity: sha512-+xYJz07G7TFAMZGrOqArOsURG+xcYvqctujEkANjw2McCBvGEK505RxQqOuNiA9Mi9hgGdNp2JedSa94f3eoLg==}
     dependencies:
       '@babel/core': 7.21.4
@@ -8437,8 +8433,8 @@ packages:
       lodash: 4.17.21
       mlly: 1.1.1
       outdent: 0.8.0
-      vite: 4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.55.0)
-      vite-node: 0.28.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.55.0)
+      vite: 4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.59.0)
+      vite-node: 0.28.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.59.0)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -8493,7 +8489,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.19.6(@babel/core@7.21.4)
       magic-string: 0.27.0
       react-refresh: 0.14.0
-      vite: 4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.55.0)
+      vite: 4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.59.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -8508,7 +8504,7 @@ packages:
       magic-string: 0.30.0
       picocolors: 1.0.0
       std-env: 3.3.3
-      vitest: 0.31.0(@vitest/ui@0.31.0)(jsdom@20.0.3)(less@4.1.3)(sass@1.63.5)(stylus@0.55.0)
+      vitest: 0.31.0(@vitest/ui@0.31.0)(jsdom@20.0.3)(less@4.1.3)(sass@1.63.5)(stylus@0.59.0)
     dev: true
 
   /@vitest/expect@0.31.0:
@@ -8554,7 +8550,7 @@ packages:
       pathe: 1.1.0
       picocolors: 1.0.0
       sirv: 2.0.2
-      vitest: 0.31.0(@vitest/ui@0.31.0)(jsdom@20.0.3)(less@4.1.3)(sass@1.63.5)(stylus@0.55.0)
+      vitest: 0.31.0(@vitest/ui@0.31.0)(jsdom@20.0.3)(less@4.1.3)(sass@1.63.5)(stylus@0.59.0)
     dev: true
 
   /@vitest/utils@0.31.0:
@@ -21341,20 +21337,6 @@ packages:
   /stylis@4.2.0:
     resolution: {integrity: sha512-Orov6g6BB1sDfYgzWfTHDOxamtX1bE/zo104Dh9e6fqJ3PooipYyfJ0pUmrZO2wAvO8YbEyeFrkV91XTsGMSrw==}
 
-  /stylus-loader@7.1.0(stylus@0.55.0)(webpack@5.77.0):
-    resolution: {integrity: sha512-gNUEjjozR+oZ8cuC/Fx4LVXqZOgDKvpW9t2hpXHcxjfPYqSjQftaGwZUK+wL9B0QJ26uS6p1EmoWHmvld1dF7g==}
-    engines: {node: '>= 14.15.0'}
-    peerDependencies:
-      stylus: '>=0.52.4'
-      webpack: ^5.0.0
-    dependencies:
-      fast-glob: 3.2.12
-      klona: 2.0.5
-      normalize-path: 3.0.0
-      stylus: 0.55.0
-      webpack: 5.77.0(@swc/core@1.2.173)(esbuild@0.18.6)
-    dev: true
-
   /stylus-loader@7.1.0(stylus@0.55.0)(webpack@5.82.1):
     resolution: {integrity: sha512-gNUEjjozR+oZ8cuC/Fx4LVXqZOgDKvpW9t2hpXHcxjfPYqSjQftaGwZUK+wL9B0QJ26uS6p1EmoWHmvld1dF7g==}
     engines: {node: '>= 14.15.0'}
@@ -21369,6 +21351,20 @@ packages:
       webpack: 5.82.1(@swc/core@1.2.173)(esbuild@0.18.6)
     dev: true
 
+  /stylus-loader@7.1.0(stylus@0.59.0)(webpack@5.77.0):
+    resolution: {integrity: sha512-gNUEjjozR+oZ8cuC/Fx4LVXqZOgDKvpW9t2hpXHcxjfPYqSjQftaGwZUK+wL9B0QJ26uS6p1EmoWHmvld1dF7g==}
+    engines: {node: '>= 14.15.0'}
+    peerDependencies:
+      stylus: '>=0.52.4'
+      webpack: ^5.0.0
+    dependencies:
+      fast-glob: 3.2.12
+      klona: 2.0.5
+      normalize-path: 3.0.0
+      stylus: 0.59.0
+      webpack: 5.77.0(@swc/core@1.2.173)(esbuild@0.18.6)
+    dev: true
+
   /stylus@0.55.0:
     resolution: {integrity: sha512-MuzIIVRSbc8XxHH7FjkvWqkIcr1BvoMZoR/oFuAJDlh7VSaNJzrB4uJ38GRQa+mWjLXODAMzeDe0xi9GYbGwnw==}
     hasBin: true
@@ -21380,6 +21376,19 @@ packages:
       safer-buffer: 2.1.2
       sax: 1.2.4
       semver: 6.3.0
+      source-map: 0.7.4
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /stylus@0.59.0:
+    resolution: {integrity: sha512-lQ9w/XIOH5ZHVNuNbWW8D822r+/wBSO/d6XvtyHLF7LW4KaCIDeVbvn5DF8fGCJAUCwVhVi/h6J0NUcnylUEjg==}
+    hasBin: true
+    dependencies:
+      '@adobe/css-tools': 4.2.0
+      debug: 4.3.4(supports-color@5.5.0)
+      glob: 7.2.3
+      sax: 1.2.4
       source-map: 0.7.4
     transitivePeerDependencies:
       - supports-color
@@ -22633,7 +22642,7 @@ packages:
       unist-util-stringify-position: 3.0.3
       vfile-message: 3.1.4
 
-  /vite-node@0.28.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.55.0):
+  /vite-node@0.28.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.59.0):
     resolution: {integrity: sha512-LmXb9saMGlrMZbXTvOveJKwMTBTNUH66c8rJnQ0ZPNX+myPEol64+szRzXtV5ORb0Hb/91yq+/D3oERoyAt6LA==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
@@ -22645,7 +22654,7 @@ packages:
       picocolors: 1.0.0
       source-map: 0.6.1
       source-map-support: 0.5.21
-      vite: 4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.55.0)
+      vite: 4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.59.0)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -22656,7 +22665,7 @@ packages:
       - terser
     dev: true
 
-  /vite-node@0.31.0(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.55.0):
+  /vite-node@0.31.0(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.59.0):
     resolution: {integrity: sha512-8x1x1LNuPvE2vIvkSB7c1mApX5oqlgsxzHQesYF7l5n1gKrEmrClIiZuOFbFDQcjLsmcWSwwmrWrcGWm9Fxc/g==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -22666,7 +22675,7 @@ packages:
       mlly: 1.2.1
       pathe: 1.1.0
       picocolors: 1.0.0
-      vite: 4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.55.0)
+      vite: 4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.59.0)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -22693,7 +22702,7 @@ packages:
       kolorist: 1.7.0
       magic-string: 0.29.0
       ts-morph: 17.0.1
-      vite: 4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.55.0)
+      vite: 4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.59.0)
     transitivePeerDependencies:
       - '@types/node'
       - rollup
@@ -22710,7 +22719,7 @@ packages:
       '@types/eslint': 8.4.10
       eslint: 8.43.0
       rollup: 2.79.1
-      vite: 4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.55.0)
+      vite: 4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.59.0)
     dev: true
 
   /vite-tsconfig-paths@4.2.0(typescript@5.0.4)(vite@4.3.5):
@@ -22724,13 +22733,13 @@ packages:
       debug: 4.3.4(supports-color@5.5.0)
       globrex: 0.1.2
       tsconfck: 2.1.1(typescript@5.0.4)
-      vite: 4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.55.0)
+      vite: 4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.59.0)
     transitivePeerDependencies:
       - supports-color
       - typescript
     dev: true
 
-  /vite@4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.55.0):
+  /vite@4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.59.0):
     resolution: {integrity: sha512-0gEnL9wiRFxgz40o/i/eTBwm+NEbpUeTWhzKrZDSdKm6nplj+z4lKz8ANDgildxHm47Vg8EUia0aicKbawUVVA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -22761,12 +22770,12 @@ packages:
       postcss: 8.4.23
       rollup: 3.21.7
       sass: 1.63.5
-      stylus: 0.55.0
+      stylus: 0.59.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
 
-  /vitest@0.31.0(@vitest/ui@0.31.0)(jsdom@20.0.3)(less@4.1.3)(sass@1.63.5)(stylus@0.55.0):
+  /vitest@0.31.0(@vitest/ui@0.31.0)(jsdom@20.0.3)(less@4.1.3)(sass@1.63.5)(stylus@0.59.0):
     resolution: {integrity: sha512-JwWJS9p3GU9GxkG7eBSmr4Q4x4bvVBSswaCFf1PBNHiPx00obfhHRJfgHcnI0ffn+NMlIh9QGvG75FlaIBdKGA==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -22821,8 +22830,8 @@ packages:
       strip-literal: 1.0.1
       tinybench: 2.5.0
       tinypool: 0.5.0
-      vite: 4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.55.0)
-      vite-node: 0.31.0(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.55.0)
+      vite: 4.3.5(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.59.0)
+      vite-node: 0.31.0(@types/node@18.15.11)(less@4.1.3)(sass@1.63.5)(stylus@0.59.0)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
