@@ -1,29 +1,69 @@
 {
   "name": "website",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/website",
   "projectType": "application",
-  "sourceRoot": "apps/website/src",
   "targets": {
     "build": {
-      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
-      "executor": "@nxtensions/astro:build",
-      "options": {}
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/website",
+        "outputPath": "dist/apps/website"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "apps/website"
+        },
+        "production": {}
+      }
     },
-    "dev": {
-      "executor": "@nxtensions/astro:dev",
-      "options": {}
-    },
-    "preview": {
-      "dependsOn": [
-        {
-          "target": "build"
+    "serve": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "website:build",
+        "dev": true,
+        "port": 4200
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "website:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "website:build:production",
+          "dev": false
         }
-      ],
-      "executor": "@nxtensions/astro:preview",
-      "options": {}
+      }
     },
-    "check": {
-      "executor": "@nxtensions/astro:check"
+    "export": {
+      "executor": "@nx/next:export",
+      "options": {
+        "buildTarget": "website:build:production"
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/website/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/website/**/*.{ts,tsx,js,jsx}"]
+      }
     }
   },
   "tags": []
