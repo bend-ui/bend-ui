@@ -2,7 +2,7 @@ import { createComponent, forwardRef } from '@particles/primitives';
 import { createStyles } from '../../styles';
 import type { ReactNode } from 'react';
 
-export interface TemplateProps {
+export interface GridProps {
   children?: ReactNode;
 }
 
@@ -12,7 +12,7 @@ const useStyles = createStyles({
   },
 });
 
-const Template = forwardRef<TemplateProps, 'div'>((props, ref) => {
+const Grid = forwardRef<GridProps, 'div'>((props, ref) => {
   const { children, as: Component = 'div', className, ...rest } = props;
   const { classes, cn } = useStyles();
   return (
@@ -22,4 +22,4 @@ const Template = forwardRef<TemplateProps, 'div'>((props, ref) => {
   );
 });
 
-export default createComponent(Template, {}, 'Template');
+export default createComponent(Grid, {}, 'Grid');

@@ -2,9 +2,9 @@ import { createComponent, forwardRef } from '@particles/primitives';
 import { createStyles } from '../../styles';
 import type { ReactNode } from 'react';
 
-export type CardProps = {
+export interface CardProps {
   children?: ReactNode;
-};
+}
 
 const useStyles = createStyles({
   root: {
@@ -12,9 +12,10 @@ const useStyles = createStyles({
       'overflow-hidden',
       'rounded-lg',
       'border',
-      'border-border',
+      'border-surface-accent',
       'shadow-sm',
       'bg-surface',
+      'p-4',
     ],
   },
 });

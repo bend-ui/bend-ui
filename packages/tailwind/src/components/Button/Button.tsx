@@ -1,5 +1,11 @@
-import { Button as ButtonPrimitive, forwardRef } from '@particles/primitives';
+import {
+  Button as ButtonPrimitive,
+  forwardRef,
+  twButtonStyles,
+  useId,
+} from '@particles/primitives';
 import { TbLoader } from 'react-icons/tb';
+import { isValidElement } from 'react';
 import type { ButtonProps as ButtonPrimitiveProps } from '@particles/primitives';
 import { createStyles } from '../../styles';
 import type { ReactNode } from 'react';
@@ -16,8 +22,7 @@ const tokens = {
 const useStyles = createStyles({
   root: {
     base: [
-      'inline-flex',
-      'items-center',
+      ...twButtonStyles.root,
       'font-semibold',
       'border',
       'rounded-lg',
@@ -27,7 +32,6 @@ const useStyles = createStyles({
       'focus-visible:ring',
       'focus-visible:ring-indigo-300',
       'shadow-sm',
-      'whitespace-nowrap',
     ],
     variants: {
       palette: {
@@ -50,6 +54,9 @@ const useStyles = createStyles({
         small: ['text-sm', 'py-1', 'px-1'],
         medium: ['text-base', 'py-2', 'px-2'],
       },
+      isRounded: {
+        true: ['rounded-full'],
+      },
     },
     defaultVariants: {
       palette: 'primary',
@@ -61,13 +68,19 @@ const useStyles = createStyles({
 export interface ButtonProps extends ButtonPrimitiveProps {
   // The children of the Button
   children?: ReactNode;
+  /** The palette to apply to the Button */
   palette?: 'primary' | 'secondary' | 'danger';
-  size?: 'small' | 'medium';
-  // Icon to place at the start of the Button
+  /** The size to apply to the Button */
+  size?: 'sm' | 'md';
+  /** This will make the Button rounded */
+  isRounded?: boolean;
+  /** Icon to place at the start of the Button */
   icon?: ReactNode;
-  // Icon to place at the end of the Button
+  /** Icon to place at the end of the Button */
   iconEnd?: ReactNode;
-  // Loading state
+  /** A11y label when only an icon is used */
+  label?: ReactNode;
+  /** Loading state */
   isLoading?: boolean;
   loadingLabel?: string;
   classNames?: {
@@ -78,10 +91,13 @@ export interface ButtonProps extends ButtonPrimitiveProps {
 export const Button = forwardRef<ButtonProps, 'button'>((props, ref) => {
   const {
     children,
+    id,
     palette,
     size,
+    isRounded,
     icon,
     iconEnd,
+    label,
     isLoading,
     loadingLabel,
     disabled,
@@ -90,13 +106,24 @@ export const Button = forwardRef<ButtonProps, 'button'>((props, ref) => {
     ...rest
   } = props;
 
-  const { classes, cn } = useStyles({ palette, size }, { classNames });
+  const { classes, cn } = useStyles(
+    { palette, size, isRounded },
+    { classNames }
+  );
+
+  if (isValidElement(icon) && !children && !label) {
+    console.warn('Your button is not accessible, provide a label');
+  }
+
+  const uuid = useId(id);
 
   return (
     <ButtonPrimitive.Root
       ref={ref}
       className={cn(classes.root, className)}
       disabled={disabled || isLoading}
+      id={uuid}
+      aria-labelledby={label ? `button-label-${uuid}` : undefined}
       {...rest}
     >
       {isLoading ? (
@@ -108,18 +135,16 @@ export const Button = forwardRef<ButtonProps, 'button'>((props, ref) => {
         </>
       ) : (
         <>
-          {icon && (
-            <ButtonPrimitive.Icon className="pl-1 only:px-0">
-              {icon}
-            </ButtonPrimitive.Icon>
-          )}
+          {icon}
           {children && <span className="px-2">{children}</span>}
-          {iconEnd && (
-            <ButtonPrimitive.Icon className="pr-1 only:px-0">
-              {iconEnd}
-            </ButtonPrimitive.Icon>
-          )}
+          {iconEnd}
         </>
+      )}
+
+      {label && (
+        <span id={`button-label-${uuid}`} className="sr-only">
+          {label}
+        </span>
       )}
     </ButtonPrimitive.Root>
   );

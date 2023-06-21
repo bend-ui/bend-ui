@@ -1,61 +1,69 @@
 import { TbRefresh } from 'react-icons/tb';
 import { Button } from './Button';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-const Story: ComponentMeta<typeof Button> = {
+const meta: Meta<typeof Button> = {
   component: Button,
+  args: {
+    children: 'Button',
+  },
 };
-export default Story;
+export default meta;
 
-const Template: ComponentStory<typeof Button> = (args) => (
-  <Button {...args}>Button</Button>
-);
+type Story = StoryObj<typeof Button>;
 
-export const Primary = Template.bind({});
-Primary.args = {};
+export const Primary: Story = {};
 
-export const WithIcon = Template.bind({});
-WithIcon.args = {
-  icon: <TbRefresh />,
-};
-
-export const WithIconEnd = Template.bind({});
-WithIconEnd.args = {
-  iconEnd: <TbRefresh />,
-};
-
-export const IconOnly = Template.bind({});
-IconOnly.args = {
-  icon: <TbRefresh />,
-};
-
-export const Loading = Template.bind({});
-Loading.args = {
-  isLoading: true,
-  loadingLabel: 'Processing...',
-};
-
-export const AsLink = Template.bind({});
-AsLink.args = {
-  as: 'a',
-  href: '/',
-};
-
-export const WithClassName = Template.bind({});
-WithClassName.args = {
-  className: 'bg-yellow-500 hover:bg-yellow-700',
-};
-
-export const WithClassNames = Template.bind({});
-WithClassNames.args = {
-  classNames: {
-    root: 'bg-yellow-500 hover:bg-yellow-700',
+export const WithIcon: Story = {
+  args: {
+    icon: <TbRefresh />,
   },
 };
 
-export const Variants = Template.bind({});
-Variants.parameters = {
-  variants: {
-    enable: true,
+export const WithIconEnd: Story = {
+  args: {
+    iconEnd: <TbRefresh />,
+  },
+};
+
+export const IconOnly: Story = {
+  args: {
+    icon: <TbRefresh />,
+  },
+};
+
+export const Loading: Story = {
+  args: {
+    isLoading: true,
+    loadingLabel: 'Processing...',
+  },
+};
+
+export const AsLink: Story = {
+  args: {
+    as: 'a',
+    href: '/',
+  },
+};
+
+export const WithClassName: Story = {
+  args: {
+    className: 'bg-yellow-500 hover:bg-yellow-700',
+  },
+};
+
+export const WithClassNames: Story = {
+  args: {
+    classNames: {
+      root: 'bg-yellow-500 hover:bg-yellow-700',
+    },
+  },
+};
+
+export const Variants = {
+  parameters: {
+    variants: {
+      enable: true,
+    },
   },
 };

@@ -8,24 +8,10 @@ import { createStyles } from '../../styles';
 
 const useStyles = createStyles({
   root: {
-    base: [
-      'overflow-hidden',
-      'rounded-lg',
-      'border',
-      'border-gray-200',
-      'shadow-md',
-    ],
+    base: ['overflow-hidden'],
   },
   list: {
-    base: [
-      'flex',
-      'font-medium',
-      'text-shark-500',
-      'border-b',
-      'border-shark-200',
-      'dark:text-shark-400',
-      'dark:border-shark-700',
-    ],
+    base: ['flex', 'font-medium', 'border-b', 'border-surface'],
   },
   tab: {
     base: [
@@ -35,10 +21,8 @@ const useStyles = createStyles({
       'border-b-4',
       'border-transparent',
       'rounded-t-lg',
-      'hover:text-shark-600',
-      'hover:border-shark-300',
-      'dark:hover:text-shark-300',
-      'data-[state=active]:border-indigo-500',
+      'hover:border-surface-accent',
+      'data-[state=active]:border-primary',
     ],
   },
   panel: {

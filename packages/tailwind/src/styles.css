@@ -11,10 +11,11 @@
 
 @layer base {
   body {
-    @apply text-zinc-900 dark:text-zinc-50 bg-canvas;
+    color: theme('colors.text');
+    background-color: theme('colors.canvas');
   }
 
   hr {
-    @apply border-surface-accent;
+    border-color: theme('colors.surface-accent');
   }
 }

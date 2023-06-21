@@ -6,11 +6,14 @@ import {
 import { createStyles } from '../../styles';
 import type { ReactNode } from 'react';
 
-export type AvatarProps = {
+export interface AvatarProps {
+  /** The src of the image */
   src: string;
+  /** Fallback component to use when the image is not loading */
   fallback?: ReactNode;
+  /** The size of the Avatar */
   size?: 'sm' | 'md' | 'lg';
-};
+}
 
 const useStyles = createStyles({
   root: {

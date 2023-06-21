@@ -2,11 +2,13 @@ import { forwardRef } from '@particles/primitives';
 import { createStyles } from '../../styles';
 import type { ReactNode } from 'react';
 
-export type TableHeaderProps = { children?: ReactNode };
+export interface TableHeaderProps {
+  children?: ReactNode;
+}
 
 const useStyles = createStyles({
   root: {
-    base: ['px-6', 'py-4', 'font-medium', 'text-gray-900'],
+    base: ['px-6', 'py-4', 'font-medium'],
   },
 });
 

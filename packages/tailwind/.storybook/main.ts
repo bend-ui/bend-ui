@@ -1,7 +1,6 @@
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
-  core: {},
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
     '@storybook/addon-essentials',
@@ -10,6 +9,7 @@ const config: StorybookConfig = {
     '@storybook/addon-a11y',
     'storybook-addon-performance',
   ],
+  core: { builder: '@storybook/builder-vite' },
   framework: {
     name: '@storybook/react-vite',
     options: {
@@ -18,8 +18,11 @@ const config: StorybookConfig = {
       },
     },
   },
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
+  },
   docs: {
-    autodocs: true,
+    autodocs: false,
   },
 };
 

@@ -20,12 +20,12 @@ const DismissIcon = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export type ChipProps = {
+export interface ChipProps {
   children?: ReactNode;
   palette?: 'primary' | 'danger' | 'warning' | 'info';
   size?: 'sm' | 'md' | 'lg';
   onDismiss?(): void;
-};
+}
 
 const useStyles = createStyles({
   root: {

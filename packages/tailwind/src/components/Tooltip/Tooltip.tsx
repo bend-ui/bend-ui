@@ -24,28 +24,29 @@ const useStyles = createStyles({
       'text-white',
       'transition-opacity',
       'duration-300',
-      'bg-shark-900',
+      'bg-surface',
       'rounded-lg',
       'shadow-sm',
-      'dark:bg-shark-700',
       'data-[state=open]:animate-in',
       'data-[state=open]:fade-in-50',
       'data-[state=close]:opacity-0',
     ],
   },
+  arrow: {
+    base: ['fill-surface'],
+  },
 });
 
 const Tooltip = forwardRef<TooltipProps, 'div'>((props, ref) => {
-  const { children, content, ...rest } = props;
-  const { classes } = useStyles();
+  const { children, content, className, ...rest } = props;
+  const { classes, cn } = useStyles();
   return (
-    <Primitive.Root
-      ref={ref}
-      className={twMerge(classes.root)}
-      content={content}
-      {...rest}
-    >
-      {children}
+    <Primitive.Root ref={ref} {...rest}>
+      <Primitive.Trigger>{children}</Primitive.Trigger>
+      <Primitive.Content className={cn(classes.root, className)}>
+        {content}
+        <Primitive.Arrow className={classes.arrow} />
+      </Primitive.Content>
     </Primitive.Root>
   );
 });

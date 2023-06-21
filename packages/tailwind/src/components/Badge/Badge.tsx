@@ -2,7 +2,7 @@ import { createComponent, forwardRef } from '@particles/primitives';
 import { createStyles } from '../../styles';
 import type { ReactNode } from 'react';
 
-export type BadgeProps = {
+export interface BadgeProps {
   children?: ReactNode;
   /** The palette color for the Badge */
   palette?:
@@ -13,7 +13,7 @@ export type BadgeProps = {
     | 'warning'
     | 'success';
   withIndicator?: boolean;
-};
+}
 
 const useStyles = createStyles({
   root: {

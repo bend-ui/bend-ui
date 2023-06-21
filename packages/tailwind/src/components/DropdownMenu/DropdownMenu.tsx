@@ -3,26 +3,25 @@ import {
   Dropdown as DropdownPrimitive,
   forwardRef,
 } from '@particles/primitives';
-
 import { createStyles } from '../../styles';
 import { Button } from '../Button';
 import type { ReactNode } from 'react';
 
-export type DropdownMenuProps = {
+export interface DropdownMenuProps {
   children?: ReactNode;
-};
+}
 
-export type DropdownMenuTargetProps = {
+export interface DropdownMenuTargetProps {
   children?: ReactNode;
-};
+}
 
-export type DropdownMenuMenuProps = {
+export interface DropdownMenuMenuProps {
   children?: ReactNode;
-};
+}
 
-export type DropdownMenuMenuItemProps = {
+export interface DropdownMenuMenuItemProps {
   children?: ReactNode;
-};
+}
 
 const useStyles = createStyles({
   menu: {
@@ -55,7 +54,7 @@ const useStyles = createStyles({
 const Target = forwardRef<DropdownMenuTargetProps, 'button'>((props, ref) => {
   const { children, ...rest } = props;
   return (
-    <DropdownPrimitive.Target ref={ref} as="button" {...rest}>
+    <DropdownPrimitive.Target ref={ref} as={Button} {...rest}>
       {children}
     </DropdownPrimitive.Target>
   );
@@ -66,7 +65,7 @@ const Menu = forwardRef<DropdownMenuMenuProps, 'div'>((props, ref) => {
   const { classes } = useStyles();
 
   return (
-    <DropdownPrimitive.Menu ref={ref} className={classes.menuitem} {...rest}>
+    <DropdownPrimitive.Menu ref={ref} className={classes.menu} {...rest}>
       {children}
     </DropdownPrimitive.Menu>
   );
@@ -78,7 +77,11 @@ const MenuItem = forwardRef<DropdownMenuMenuItemProps, 'button'>(
     const { classes } = useStyles();
 
     return (
-      <DropdownPrimitive.MenuItem ref={ref} className={classes.menu} {...rest}>
+      <DropdownPrimitive.MenuItem
+        ref={ref}
+        className={classes.menuitem}
+        {...rest}
+      >
         {children}
       </DropdownPrimitive.MenuItem>
     );

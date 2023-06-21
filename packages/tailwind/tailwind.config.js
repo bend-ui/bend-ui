@@ -37,6 +37,7 @@ module.exports = {
         surface: 'var(--particles-colors-surface)',
         'surface-accent': 'var(--particles-colors-surface-accent)',
         'surface-subtle': 'var(--particles-colors-surface-subtle)',
+        text: 'var(--particles-colors-text)',
         shark: colors.shark,
       },
       variables: {
@@ -47,6 +48,7 @@ module.exports = {
             canvas: colors.zinc[50],
             surface: colors.white,
             'surface-accent': colors.zinc[100],
+            text: colors.zinc[900],
           },
         },
       },
@@ -60,6 +62,7 @@ module.exports = {
             surface: '#323741',
             'surface-accent': '#484D5A',
             'surface-subtle': '#2A2E35',
+            text: colors.zinc[50],
           },
         },
       },

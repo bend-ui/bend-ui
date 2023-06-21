@@ -1,19 +1,22 @@
 import { Avatar } from './';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-export default { component: Avatar } as ComponentMeta<typeof Avatar>;
+const meta: Meta<typeof Avatar> = { component: Avatar };
 
-type Story = ComponentStory<typeof Avatar>;
+export default meta;
 
-export const Base: Story = (args) => <Avatar {...args} />;
+type Story = StoryObj<typeof Avatar>;
 
-Base.args = {
-  src: 'https://i.pravatar.cc/300?u=a042581f4e29026704d',
+export const Base: Story = {
+  args: {
+    src: 'https://i.pravatar.cc/300?u=a042581f4e29026704d',
+  },
 };
 
-export const Variants = Base.bind({});
-Variants.parameters = {
-  variants: {
-    enable: true,
+export const Variants: Story = {
+  parameters: {
+    variants: {
+      enable: true,
+    },
   },
 };

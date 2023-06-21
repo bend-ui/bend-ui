@@ -14,9 +14,9 @@ const useStyles = createStyles({
   },
 });
 
-type MediaProps = {
+interface MediaProps {
   children?: ReactNode;
-};
+}
 
 const Media = forwardRef<MediaProps, 'div'>((props, ref) => {
   const { children, className, ...rest } = props;
@@ -28,9 +28,9 @@ const Media = forwardRef<MediaProps, 'div'>((props, ref) => {
   );
 });
 
-type MediaImageProps = {
+interface MediaImageProps {
   children?: ReactNode;
-};
+}
 
 const Image = forwardRef<MediaImageProps, 'div'>((props, ref) => {
   const { children, className, ...rest } = props;
@@ -42,9 +42,9 @@ const Image = forwardRef<MediaImageProps, 'div'>((props, ref) => {
   );
 });
 
-type MediaBodyProps = {
+interface MediaBodyProps {
   children?: ReactNode;
-};
+}
 
 const Body = forwardRef<MediaBodyProps, 'div'>((props, ref) => {
   const { children, className, ...rest } = props;

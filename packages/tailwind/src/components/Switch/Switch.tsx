@@ -2,7 +2,6 @@ import {
   createComponent,
   forwardRef,
   Switch as SwitchPrimitive,
-  SwitchProvider,
 } from '@particles/primitives';
 import type { UseSwitchProps } from '@particles/primitives';
 import { createStyles } from '../../styles';
@@ -18,7 +17,7 @@ export type SwitchProps = UseSwitchProps & {
 
 const useStyles = createStyles({
   root: {
-    base: ['inline-flex', 'gap-2'],
+    base: ['inline-flex', 'flex-row', 'gap-2'],
   },
   track: {
     base: [
@@ -64,7 +63,6 @@ const useStyles = createStyles({
 const Switch = forwardRef<SwitchProps, 'input'>((props, ref) => {
   const {
     children,
-    as = 'input',
     className,
     onLabel,
     offLabel,
@@ -77,23 +75,16 @@ const Switch = forwardRef<SwitchProps, 'input'>((props, ref) => {
   } = props;
   const { classes, cn } = useStyles();
   return (
-    <SwitchProvider
-      defaultChecked={defaultChecked}
-      isChecked={isChecked}
-      onCheckedChange={onCheckedChange}
-      isDisabled={isDisabled}
-    >
-      <SwitchPrimitive as="label" className={cn(classes.root, className)}>
-        <SwitchPrimitive.Input ref={ref} as={as} {...rest} />
-        {!!offLabel && <div>{offLabel}</div>}
-        <SwitchPrimitive.Track className={cn(classes.track)}>
-          <SwitchPrimitive.Thumb className={cn(classes.thumb)}>
-            {thumbIcon}
-          </SwitchPrimitive.Thumb>
-        </SwitchPrimitive.Track>
-        {!!onLabel && <div>{onLabel}</div>}
-      </SwitchPrimitive>
-    </SwitchProvider>
+    <SwitchPrimitive.Root className={cn(classes.root, className)}>
+      <SwitchPrimitive.Input ref={ref} {...rest} />
+      {!!offLabel && <div>{offLabel}</div>}
+      <SwitchPrimitive.Track className={cn(classes.track)}>
+        <SwitchPrimitive.Thumb className={cn(classes.thumb)}>
+          {thumbIcon}
+        </SwitchPrimitive.Thumb>
+      </SwitchPrimitive.Track>
+      {!!onLabel && <div>{onLabel}</div>}
+    </SwitchPrimitive.Root>
   );
 });
 

@@ -2,37 +2,45 @@ import { createComponent, forwardRef } from '@particles/primitives';
 import { createStyles } from '../../styles';
 import type { ReactNode } from 'react';
 
-export type InputProps = {
+export interface InputProps {
   children?: never;
   size?: 'sm' | 'md' | 'lg';
   icon?: ReactNode;
-  iconEnd?: ReactNode;
-};
+  sectionEnd?: ReactNode;
+  addonStart?: ReactNode;
+  addonEnd?: ReactNode;
+}
 
 const useStyles = createStyles({
   root: {
-    base: ['flex', 'relative'],
-  },
-  input: {
     base: [
-      'flex-1',
+      'flex',
+      'relative',
       'border',
       'border-surface-accent',
       'text-sm',
       'rounded-lg',
       'p-2',
       'bg-surface',
-      'focus:outline-none',
-      'focus:ring',
-      'focus:ring-indigo-500/30',
-      'ring-offset-1',
-      'ring-offset-indigo-500',
-      'focus:border-transparent',
       'shadow-sm',
+      'focus-within:ring focus-within:ring-indigo-500/30 ring-offset-1 ring-offset-indigo-500',
+    ],
+    variants: {
+      size: {
+        sm: 'h-8',
+        md: 'h-10',
+        lg: 'h-12',
+      },
+    },
+  },
+  input: {
+    base: [
+      'flex-1 bg-transparent border-none',
+      'focus:outline-none focus:border-transparent',
     ],
     variants: {
       withIcon: {
-        true: ['pl-9'],
+        true: ['pl-7'],
       },
     },
   },
@@ -57,12 +65,15 @@ const Input = forwardRef<InputProps, 'input'>((props, ref) => {
     type = 'text',
     size = 'md',
     icon,
-    iconEnd,
+    sectionEnd,
+    addonStart,
+    addonEnd,
     ...rest
   } = props;
   const { classes, cn } = useStyles({ size, withIcon: !!icon });
   return (
     <div className={cn(classes.root, className)}>
+      {addonStart}
       {icon && <span className={classes.icon}>{icon}</span>}
       <Component
         ref={ref}
@@ -70,7 +81,8 @@ const Input = forwardRef<InputProps, 'input'>((props, ref) => {
         type={type}
         {...rest}
       />
-      {iconEnd}
+      {sectionEnd}
+      {addonEnd}
     </div>
   );
 });

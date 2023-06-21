@@ -2,11 +2,18 @@ import { forwardRef } from '@particles/primitives';
 import { createStyles } from '../../styles';
 import type { ReactNode } from 'react';
 
-export type TableBodyProps = { children?: ReactNode };
+export interface TableBodyProps {
+  children?: ReactNode;
+}
 
 const useStyles = createStyles({
   root: {
-    base: ['divide-y', 'divide-gray-100', 'border-t', 'border-gray-100'],
+    base: [
+      'divide-y',
+      'divide-surface-accent',
+      'border-t',
+      'border-surface-accent',
+    ],
   },
 });
 

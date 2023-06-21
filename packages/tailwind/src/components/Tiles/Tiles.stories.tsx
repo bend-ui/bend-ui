@@ -1,21 +1,20 @@
-import { Card } from './';
-import type { Meta, StoryObj } from '@storybook/react';
+import { Tiles } from '.';
+import type { Meta, StoryFn } from '@storybook/react';
 
 export default {
-  component: Card,
-} as Meta<typeof Card>;
+  component: Tiles,
+} as Meta<typeof Tiles>;
 
-type Story = StoryObj<typeof Card>;
+type Story = StoryFn<typeof Tiles>;
 
 export const Base: Story = {
   render: (args) => (
-    <Card {...args}>
-      <h2>Card title</h2>
+    <Tiles {...args}>
       <p>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea, iusto
         quidem! Aut, sunt. Deserunt hic facilis sed earum atque quidem aliquam
         et, voluptates iste. Repellat quaerat quis facilis molestias dolore?
       </p>
-    </Card>
+    </Tiles>
   ),
 };

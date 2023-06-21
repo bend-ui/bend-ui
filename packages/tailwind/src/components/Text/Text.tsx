@@ -2,7 +2,7 @@ import { createComponent, forwardRef } from '@particles/primitives';
 import { createStyles } from '../../styles';
 import type { ReactNode } from 'react';
 
-export type TextProps = {
+export interface TextProps {
   children?: ReactNode;
   variant?:
     | 'display-xl'
@@ -14,7 +14,7 @@ export type TextProps = {
     | 'lead'
     | 'body'
     | 'body-sm';
-};
+}
 
 const useStyles = createStyles({
   root: {

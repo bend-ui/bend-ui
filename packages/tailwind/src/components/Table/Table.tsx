@@ -7,18 +7,13 @@ import { Row } from './TableRow';
 import { Col } from './TableCol';
 import type { ReactNode } from 'react';
 
-export type TableProps = { children?: ReactNode };
+export interface TableProps {
+  children?: ReactNode;
+}
 
 const useStyles = createStyles({
   root: {
-    base: [
-      'w-full',
-      'border-collapse',
-      'bg-white',
-      'text-left',
-      'text-sm',
-      'text-gray-500',
-    ],
+    base: ['w-full', 'border-collapse', 'bg-surface', 'text-left', 'text-sm'],
   },
 });
 

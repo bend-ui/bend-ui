@@ -1,8 +1,8 @@
 import { Tabs } from '.';
-import type { ComponentMeta, ComponentStoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-export default { component: Tabs } as ComponentMeta<typeof Tabs>;
+export default { component: Tabs } as Meta<typeof Tabs>;
 
-export const DefaultTabs: ComponentStoryObj<typeof Tabs> = {
+export const DefaultTabs: StoryObj<typeof Tabs> = {
   args: {},
 };

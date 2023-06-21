@@ -1,12 +1,18 @@
 import { createComponent, forwardRef } from '@particles/primitives';
-import useStyles from './Level.styles';
+import { createStyles } from '../../styles';
 import type { ReactNode } from 'react';
 
-export interface LevelProps {
+export interface StackProps {
   children?: ReactNode;
 }
 
-const Level = forwardRef<LevelProps, 'div'>((props, ref) => {
+const useStyles = createStyles({
+  root: {
+    base: ['flex', 'flex-col'],
+  },
+});
+
+const Stack = forwardRef<StackProps, 'div'>((props, ref) => {
   const { children, className, ...rest } = props;
   const { classes, cn } = useStyles();
   return (
@@ -16,4 +22,4 @@ const Level = forwardRef<LevelProps, 'div'>((props, ref) => {
   );
 });
 
-export default createComponent(Level, {}, 'Level');
+export default createComponent(Stack, {}, 'Stack');

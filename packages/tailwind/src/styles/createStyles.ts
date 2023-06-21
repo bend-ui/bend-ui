@@ -2,15 +2,15 @@ import { cva } from 'class-variance-authority';
 import { cn } from './cn';
 import type { CxOptions } from 'class-variance-authority';
 
-type ClassesObject = {
+interface ClassesObject {
   base: CxOptions;
   variants?: any;
   defaultVariants?: any;
-};
+}
 
-type UseStylesOptions<Key extends string> = {
+interface UseStylesOptions<Key extends string> {
   classNames?: Partial<Record<Key, string>>;
-};
+}
 
 export const createStyles = <Key extends string = string>(
   cssObject: Record<Key, ClassesObject>

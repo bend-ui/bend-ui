@@ -1,17 +1,21 @@
 import { Badge } from './';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 export default {
   component: Badge,
-} as ComponentMeta<typeof Badge>;
+  args: {
+    children: 'Badge',
+  },
+} as Meta<typeof Badge>;
 
-type Story = ComponentStory<typeof Badge>;
+type Story = StoryObj<typeof Badge>;
 
-export const Base: Story = (args) => <Badge {...args}>Badge</Badge>;
+export const Base: Story = {};
 
-export const Variants = Base.bind({});
-Variants.parameters = {
-  variants: {
-    enable: true,
+export const Variants = {
+  parameters: {
+    variants: {
+      enable: true,
+    },
   },
 };
