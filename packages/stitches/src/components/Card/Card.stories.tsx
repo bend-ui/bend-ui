@@ -2,7 +2,7 @@ import { Button } from '../Button';
 import { CardHeader } from './CardHeader';
 import { Card } from './';
 import type { CardHeaderProps } from './CardHeader';
-import type { StoryObj, Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 const CardHeaderMock: React.FC<CardHeaderProps> = (props) => (
   <CardHeader {...props} />

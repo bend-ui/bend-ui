@@ -1,10 +1,10 @@
 import { forwardRef, useModal } from '@particles/primitives';
 import * as styles from './Modal.css';
 
-export type ModalProps = {
+export interface ModalProps {
   children?: React.ReactNode;
   isOpen: boolean;
-};
+}
 
 const Modal = forwardRef<ModalProps, 'div'>((props, ref) => {
   const { children, isOpen, ...rest } = props;

@@ -7,18 +7,18 @@ import * as styles from './Popover.css';
 import type React from 'react';
 import type { ReactNode } from 'react';
 
-export type PopoverTriggerProps = {
+export interface PopoverTriggerProps {
   children?: ReactNode;
-};
+}
 
 const Trigger = (props: PopoverTriggerProps) => {
   const { children } = props;
   return <PopoverPrimitive.Trigger>{children}</PopoverPrimitive.Trigger>;
 };
 
-export type PopoverPanelProps = {
+export interface PopoverPanelProps {
   children?: ReactNode;
-};
+}
 const Panel = (props: PopoverPanelProps) => {
   const { children } = props;
   return (
@@ -28,9 +28,9 @@ const Panel = (props: PopoverPanelProps) => {
   );
 };
 
-type PopoverProps = {
+interface PopoverProps {
   children?: React.ReactNode;
-};
+}
 
 const Popover = (props: PopoverProps) => {
   const { children } = props;

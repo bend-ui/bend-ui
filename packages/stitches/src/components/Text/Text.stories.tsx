@@ -2,7 +2,7 @@ import React from 'react';
 import { Heading } from '../Heading';
 import { Stack } from '../Stack';
 import { Text } from './';
-import type { StoryFn, StoryObj, Meta } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 export default {
   title: 'Components/Typography/Text',

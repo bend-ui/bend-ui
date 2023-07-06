@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Button } from '../Button';
 import { Input } from '../Input';
 import { Modal } from './';
-import type { StoryObj, Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 export default {
   title: 'Components/Overlay/Modal',

@@ -2,7 +2,7 @@ import { Container } from '../Container';
 import { Box } from '../Box';
 import { Tiles } from './';
 import type { CSS } from '../../styles';
-import type { StoryObj, Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 export default {
   title: 'Layout/Tiles',

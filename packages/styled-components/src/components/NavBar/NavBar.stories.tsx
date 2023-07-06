@@ -2,7 +2,7 @@ import { Box } from '../Box';
 import { Button } from '../Button';
 import { Text } from '../Text';
 import { NavBar } from './NavBar';
-import type { StoryObj, Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 export default {
   title: 'Data Display/NavBar',

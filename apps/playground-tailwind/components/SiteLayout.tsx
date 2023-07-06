@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
 
-type SiteLayoutProps = {
+interface SiteLayoutProps {
   children?: ReactNode;
-};
+}
 
 export const SiteLayout = (props: SiteLayoutProps) => {
   const { children } = props;

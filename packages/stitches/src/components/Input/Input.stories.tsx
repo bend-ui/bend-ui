@@ -1,7 +1,7 @@
 import React from 'react';
 import { FiSearch } from 'react-icons/fi';
 import { Input } from './';
-import type { StoryObj, Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 export default {
   title: 'Components/Forms/Input',

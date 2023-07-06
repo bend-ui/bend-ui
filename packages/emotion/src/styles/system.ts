@@ -13,13 +13,13 @@ import {
 } from 'system-props';
 import type { CSSObject as SystemPropsCSSObject } from 'system-props';
 
-type VariantsObject = {
+interface VariantsObject {
   variants?: {
     [param: string]: {
       [value: string]: SystemPropsCSSObject;
     };
   };
-};
+}
 
 export type CSSObject = SystemPropsCSSObject | VariantsObject;
 

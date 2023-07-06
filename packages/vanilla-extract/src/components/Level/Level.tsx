@@ -2,9 +2,9 @@ import clsx from 'clsx';
 import { Level as LevelPrimitive } from '@particles/primitives';
 import * as styles from './Level.css';
 
-type LevelProps = {
+interface LevelProps {
   children?: React.ReactNode;
-};
+}
 
 const Level = (props: LevelProps) => {
   const { children } = props;

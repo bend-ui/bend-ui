@@ -3,7 +3,7 @@ import { Media } from '../../Media';
 import { Avatar } from '../../Avatar';
 import { Text } from '../../Text';
 import { UnstyledButton } from '.';
-import type { StoryObj, Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 export default {
   title: 'Components/Button/UnstyledButton',

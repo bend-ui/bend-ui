@@ -1,12 +1,12 @@
 import { useToastDispatchContext } from './ToastProvider';
 
-export type AddToastProps = {
+export interface AddToastProps {
   id?: string;
   title: string;
   content: string;
   onOpen?(): void;
   onClose?(): void;
-};
+}
 
 export const useToast = () => {
   const dispatch = useToastDispatchContext();

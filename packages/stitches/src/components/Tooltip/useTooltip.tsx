@@ -15,9 +15,9 @@ import type { Placement } from '@floating-ui/react';
 
 export type TooltipPlacement = Placement;
 
-export type UseTooltipProps = {
+export interface UseTooltipProps {
   placement?: TooltipPlacement;
-};
+}
 
 export const useTooltip = (props: UseTooltipProps) => {
   const { placement } = props;

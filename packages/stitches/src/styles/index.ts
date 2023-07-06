@@ -155,9 +155,9 @@ export type VariantProps<T> = Stitches.VariantProps<T>;
 export type CSSProperties = Stitches.CSSProperties;
 export type ScaleValue<T> = Stitches.ScaleValue<T>;
 
-export type DefaultComponentProps = {
+export interface DefaultComponentProps {
   sx?: CSS;
-};
+}
 
 export * from './createStyles';
 

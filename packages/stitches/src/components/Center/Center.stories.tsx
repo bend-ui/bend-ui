@@ -1,7 +1,7 @@
 import { Box } from '../Box';
 import { Text } from '../Text';
 import { Center } from './';
-import type { StoryFn, Meta } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Layout/Center',

@@ -1,9 +1,9 @@
 import { createComponent, forwardRef } from '@particles/primitives';
 import * as Styled from './Container.styles';
 
-type ContainerProps = {
+interface ContainerProps {
   children: React.ReactNode;
-};
+}
 
 const Container = forwardRef<ContainerProps, 'div'>((props, ref) => {
   const { children, ...rest } = props;

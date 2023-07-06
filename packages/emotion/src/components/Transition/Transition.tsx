@@ -4,12 +4,12 @@ import { getTransitionStyles } from './getTransitionStyles';
 import type { CSSProperties } from 'react';
 import type { ParticlesTransition } from './transitions';
 
-export type TransitionProps = {
+export interface TransitionProps {
   children?: (styles: CSSProperties) => React.ReactNode;
   isMounted: boolean;
   duration?: number;
   transition?: ParticlesTransition;
-};
+}
 
 const Transition = (props: TransitionProps) => {
   const { children, isMounted, duration = 300, transition = 'fade' } = props;

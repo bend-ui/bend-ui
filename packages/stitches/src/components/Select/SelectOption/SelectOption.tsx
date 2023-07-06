@@ -3,9 +3,9 @@ import { forwardRef } from '@particles/primitives';
 import { Box } from '../../Box';
 import useStyles from './SelectOption.styles';
 
-type SelectOption = {
+interface SelectOption {
   children: React.ReactNode;
-};
+}
 
 const Option = forwardRef<SelectOption, 'button'>((props, ref) => {
   const { children, as = 'button', ...rest } = props;

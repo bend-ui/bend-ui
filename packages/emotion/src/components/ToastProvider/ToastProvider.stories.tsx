@@ -1,6 +1,6 @@
 import { Button } from '../Button';
 import { ToastProvider, useToast } from '.';
-import type { StoryFn, Meta } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'ToastProvider',

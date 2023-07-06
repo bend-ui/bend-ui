@@ -1,6 +1,6 @@
 import { TbBell } from 'react-icons/tb';
 import { IconButton } from './';
-import type { StoryObj, Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 export default {
   title: 'Components/Actions/IconButton',

@@ -13,10 +13,10 @@ import type { Placement } from '@floating-ui/react';
 
 export type PopoverPlacement = Placement;
 
-export type UsePopoverProps = {
+export interface UsePopoverProps {
   isOpen?: boolean;
   placement?: PopoverPlacement;
-};
+}
 
 export const usePopover = (props: UsePopoverProps) => {
   const { placement } = props;

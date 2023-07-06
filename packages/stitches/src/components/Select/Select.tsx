@@ -69,9 +69,9 @@ const Select = (props: SelectProps) => {
 
 Select.displayName = 'Select';
 
-type SelectOptionGroup = {
+interface SelectOptionGroup {
   children: React.ReactNode;
-};
+}
 
 const OptionGroup = (props: SelectOptionGroup) => {
   const { children } = props;

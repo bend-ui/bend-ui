@@ -3,7 +3,7 @@ import { FiEdit, FiShare, FiTool, FiTrash } from 'react-icons/fi';
 import { Button } from '../Button';
 
 import { DropdownMenu } from './';
-import type { StoryObj, Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 export default {
   title: 'Components/Overlay/Menu',

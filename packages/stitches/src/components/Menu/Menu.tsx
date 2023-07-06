@@ -43,9 +43,9 @@ export const DropdownMenu = forwardRef<DropdownMenuProps, 'div'>(
 
 DropdownMenu.displayName = 'DropdownMenu';
 
-type DropdownMenuTrigger = {
+interface DropdownMenuTrigger {
   children: React.ReactNode;
-};
+}
 
 const Trigger = (props: DropdownMenuTrigger) => {
   const { children } = props;

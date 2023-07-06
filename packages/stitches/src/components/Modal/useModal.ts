@@ -7,10 +7,10 @@ import {
 import { useTransition } from '../Transition';
 import { getTransitionStyles } from '../Transition/getTransitionStyles';
 
-export type UseModalProps = {
+export interface UseModalProps {
   isOpen: boolean;
   onClose(): void;
-};
+}
 
 export const useModal = (props: UseModalProps) => {
   const { isOpen, onClose } = props;

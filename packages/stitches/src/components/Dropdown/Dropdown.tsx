@@ -1,7 +1,9 @@
 import { forwardRef } from '@particles/primitives';
 import type { ReactNode } from 'react';
 
-type DropdownProps = { children?: ReactNode };
+interface DropdownProps {
+  children?: ReactNode;
+}
 
 const Dropdown = forwardRef<DropdownProps, 'div'>((props, ref) => {
   const { children, ...rest } = props;

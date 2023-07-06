@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 
-export type UseTransitionProps = {
+export interface UseTransitionProps {
   isMounted: boolean;
   duration?: number;
-};
+}
 
 type TransitionState =
   | 'entering'

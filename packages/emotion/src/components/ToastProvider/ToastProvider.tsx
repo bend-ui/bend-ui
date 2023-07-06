@@ -59,9 +59,9 @@ export const ToastsContainer = () => {
   );
 };
 
-export type ToastProviderProps = {
+export interface ToastProviderProps {
   children?: React.ReactNode;
-};
+}
 
 export const ToastProvider = (props: ToastProviderProps) => {
   const { children } = props;

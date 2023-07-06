@@ -20,9 +20,9 @@ interface MenuContextProps {
 const [MenuContextProvider, useMenuContext] =
   createContext<MenuContextProps>('Menu');
 
-export type MenuTriggerProps = {
+export interface MenuTriggerProps {
   children?: ReactNode;
-};
+}
 
 const Trigger = (props: MenuTriggerProps) => {
   const { children, ...rest } = props;

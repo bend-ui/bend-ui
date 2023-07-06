@@ -2,9 +2,9 @@ import { system } from '../../system';
 import useStyles from './Drawer.styles';
 import type { ReactNode } from 'react';
 
-export type DrawerProps = {
+export interface DrawerProps {
   children?: ReactNode;
-};
+}
 
 export const Root = (props: DrawerProps) => {
   const { children, ...rest } = props;

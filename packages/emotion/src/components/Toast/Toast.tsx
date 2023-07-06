@@ -3,9 +3,9 @@ import { useDefaultProps } from '../../theme';
 import { Box } from '../Box';
 import useStyles from './Toast.styles';
 
-type ToastProps = {
+interface ToastProps {
   variant?: 'solid' | 'outline';
-};
+}
 
 const Toast = forwardRef<ToastProps, 'div'>((props, ref) => {
   const { children, as = 'div', ...rest } = useDefaultProps('Toast', props);

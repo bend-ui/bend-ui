@@ -20,11 +20,11 @@ export const {
   key: 'ds',
 });
 
-type UseStylesOptions = {
+interface UseStylesOptions {
   /** The name of the component */
   name: string;
   unstyled?: boolean;
-};
+}
 
 export const createStyles = <
   Key extends string = string,

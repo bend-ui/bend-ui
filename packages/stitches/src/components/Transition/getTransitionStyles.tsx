@@ -13,11 +13,11 @@ export const transitionStates = {
 
 export type TransitionStates = keyof typeof transitionStates;
 
-export type GetTransitionStylesProps = {
+export interface GetTransitionStylesProps {
   transition: Transitions;
   state: TransitionStates;
   duration: number;
-};
+}
 export const getTransitionStyles = (
   props: GetTransitionStylesProps
 ): CSSProperties => {

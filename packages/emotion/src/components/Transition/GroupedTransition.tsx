@@ -4,14 +4,14 @@ import { getTransitionStyles } from './getTransitionStyles';
 import type { CSSProperties } from 'react';
 import type { ParticlesTransition } from './transitions';
 
-type TransitionParams = {
+interface TransitionParams {
   duration?: number;
   transition?: ParticlesTransition;
-};
+}
 
-type GroupedTransitionsProps<T extends string = string> = {
+interface GroupedTransitionsProps<T extends string = string> {
   transitions: Record<T, TransitionParams>;
-};
+}
 
 export type TransitionProps<T extends string> = {
   children?: (styles: Record<T, CSSProperties>) => React.ReactNode;
