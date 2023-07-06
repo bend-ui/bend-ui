@@ -33,6 +33,10 @@
       "path": "packages/tailwind"
     },
     {
+      "name": "📦 @particles/panda",
+      "path": "packages/panda"
+    },
+    {
       "name": "🛠️ @particles/react-utils",
       "path": "packages/react-utils"
     },
@@ -67,6 +71,7 @@
       "📦 @particles/theme",
       "📦 @particles/vanilla-extract",
       "📦 @particles/tailwind",
+      "📦 @particles/panda",
       "🛠️ @particles/react-utils",
       "🧪 Playground (Emotion)",
       "🧪 Playground (Stitches)",

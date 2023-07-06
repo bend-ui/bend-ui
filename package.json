@@ -60,6 +60,7 @@
     "@nx/web": "16.3.2",
     "@nx/webpack": "16.3.2",
     "@nx/workspace": "16.3.2",
+    "@pandacss/dev": "^0.5.1",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
     "@rollup/plugin-url": "^7.0.0",
     "@storybook/addon-a11y": "^7.0.11",
