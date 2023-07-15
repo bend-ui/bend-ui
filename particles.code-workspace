@@ -68,11 +68,28 @@
       "📦 @particles/tailwind",
       "📦 @particles/panda",
       "🛠️ @particles/react-utils",
+      "📚 Website",
+      "🧪 Playground (Emotion)",
+      "🧪 Playground (Tailwind)",
+      "🧪 Playground (Panda)"
+    ],
+    "vitest.disabledWorkspaceFolders": [
+      "📦 @particles/primitives",
+      "📦 @particles/emotion",
+      "📦 @particles/styled-components",
+      "📦 @particles/theme",
+      "📦 @particles/vanilla-extract",
+      "📦 @particles/tailwind",
+      "📦 @particles/panda",
+      "🛠️ @particles/react-utils",
       "🛠️ @particles/cli",
       "🧪 Playground (Emotion)",
       "🧪 Playground (Tailwind)",
       "🧪 Playground (Panda)",
       "📚 Website"
     ]
+  },
+  "extensions": {
+    "recommendations": ["nrwl.angular-console"]
   }
 }
