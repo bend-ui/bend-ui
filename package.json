@@ -7,7 +7,9 @@
     "lint": "nx run-many --target=lint --all=true",
     "test": "nx run-many --target=test --all=true",
     "docgen": "tsx scripts/docgen.ts",
-    "prepare": "husky install"
+    "prepare": "run-s prepare:*",
+    "prepare:husky": "husky install",
+    "prepare:panda": "panda codegen"
   },
   "workspaces": [
     "packages/*"
@@ -17,12 +19,13 @@
     "@emotion/react": "11.11.1",
     "@emotion/server": "11.11.0",
     "@emotion/styled": "11.11.0",
+    "@floating-ui/react": "^0.24.6",
     "@fontsource/inter": "^5.0.4",
     "class-variance-authority": "^0.6.1",
     "contentlayer": "^0.3.4",
     "core-js": "^3.22.3",
     "gray-matter": "^4.0.3",
-    "next": "13.3.0",
+    "next": "13.4.1",
     "next-contentlayer": "^0.3.4",
     "next-mdx-remote": "^4.4.1",
     "react": "18.2.0",
@@ -48,6 +51,8 @@
     "@mertasan/tailwindcss-variables": "^2.6.1",
     "@nrwl/tao": "16.5.0",
     "@nx/cypress": "16.5.0",
+    "@nx/devkit": "^16.5.2",
+    "@nx/esbuild": "16.5.0",
     "@nx/eslint-plugin": "16.5.0",
     "@nx/jest": "16.5.0",
     "@nx/js": "16.5.0",
@@ -60,13 +65,14 @@
     "@nx/web": "16.5.0",
     "@nx/webpack": "16.5.0",
     "@nx/workspace": "16.5.0",
-    "@pandacss/dev": "^0.5.1",
+    "@pandacss/dev": "^0.6.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
     "@rollup/plugin-url": "^7.0.0",
     "@storybook/addon-a11y": "7.0.26",
     "@storybook/addon-docs": "7.0.26",
     "@storybook/addon-essentials": "7.0.26",
     "@storybook/addon-mdx-gfm": "7.0.26",
+    "@storybook/addon-styling": "^1.3.4",
     "@storybook/core-common": "^7.0.26",
     "@storybook/core-server": "7.0.26",
     "@storybook/react": "7.0.26",
@@ -98,6 +104,7 @@
     "colorette": "^2.0.20",
     "css-loader": "^6.8.1",
     "cypress": "12.16.0",
+    "esbuild": "^0.17.17",
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.8",
     "eslint-config-prettier": "8.8.0",
@@ -117,6 +124,7 @@
     "jsdom": "22.1.0",
     "lerna": "^7.1.1",
     "lint-staged": "^13.2.3",
+    "npm-run-all": "^4.1.5",
     "nx": "16.5.0",
     "nx-cloud": "16.0.5",
     "postcss": "8.4.24",
@@ -140,6 +148,7 @@
     "tsx": "^3.12.7",
     "typescript": "5.1.6",
     "url-loader": "^4.1.1",
+    "verdaccio": "^5.0.4",
     "vite": "4.3.9",
     "vite-plugin-dts": "2.3.0",
     "vite-plugin-eslint": "^1.8.1",
@@ -147,5 +156,8 @@
     "vitest": "0.32.4",
     "webpack": "5.88.1",
     "webpack-merge": "^5.8.0"
+  },
+  "nx": {
+    "includedScripts": []
   }
 }

@@ -1,7 +1,10 @@
 import path from 'path';
 import { defineConfig } from '@pandacss/dev';
+import { particlesPreset } from './src';
 
 export default defineConfig({
+  cwd: path.resolve(__dirname),
+
   // Whether to use css reset
   preflight: true,
 
@@ -11,15 +14,9 @@ export default defineConfig({
   // Files to exclude
   exclude: [],
 
-  // presets: [path.resolve(__dirname, './src/panda.preset.ts')],
-
-  // Useful for theme customization
-  theme: {
-    extend: {},
-  },
+  presets: ['@pandacss/dev/presets', particlesPreset],
 
   emitPackage: true,
-
-  // The output directory for your css system
-  outdir: 'styled-system',
+  outdir: '@particles/panda-system',
+  jsxFramework: 'react',
 });

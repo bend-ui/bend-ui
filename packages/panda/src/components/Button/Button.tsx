@@ -1,26 +1,59 @@
-import { buttonStyles } from '@particles/primitives';
-import { cva } from 'styled-system/css';
-import type { RecipeVariantProps } from 'styled-system/css';
+import { Button as ButtonPrimitive, forwardRef } from '@particles/primitives';
+import { cva, cx } from '@particles/panda-system/css';
+import type { RecipeVariantProps } from '@particles/panda-system/css';
 import type { ReactNode } from 'react';
 
-const styles = cva({
+export const styles = cva({
   base: {
-    ...buttonStyles.root,
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '1ch',
+    whiteSpace: 'nowrap',
+    userSelect: 'none',
+    border: 'unset',
+    backgroundColor: 'unset',
+    textDecoration: 'none',
     padding: '3',
     borderRadius: 'md',
   },
   variants: {
     palette: {
       primary: {
-        bg: 'blue.500',
+        color: 'fg.onPrimary',
+        bg: 'primary',
+        _hover: {
+          bg: 'primary.hover',
+        },
       },
       secondary: {
-        bg: 'orange.500',
+        color: 'fg.onSecondary',
+        bg: 'secondary',
+        _hover: {
+          bg: 'secondary.hover',
+        },
+      },
+    },
+    size: {
+      small: {
+        paddingInline: 1,
+        paddingBlock: 1,
+      },
+      medium: {
+        paddingInline: 2,
+        paddingBlock: 2,
+      },
+    },
+    isRounded: {
+      true: {
+        rounded: 'full',
       },
     },
   },
   defaultVariants: {
     palette: 'primary',
+    size: 'medium',
+    isRounded: false,
   },
 });
 
@@ -30,13 +63,17 @@ export type ButtonProps = ButtonVariants & {
   children?: ReactNode;
 };
 
-const Button = (props: ButtonProps) => {
-  const { children, palette, ...rest } = props;
+const Button = forwardRef<ButtonProps, 'button'>((props, ref) => {
+  const { children, className, palette, size, isRounded, ...rest } = props;
   return (
-    <button className={styles({ palette })} {...rest}>
+    <ButtonPrimitive.Root
+      ref={ref}
+      className={cx(styles({ palette, size, isRounded }), className)}
+      {...rest}
+    >
       {children}
-    </button>
+    </ButtonPrimitive.Root>
   );
-};
+});
 
 export default Button;

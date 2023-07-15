@@ -1,4 +1,5 @@
 export { default as Checkbox } from './Checkbox';
+
 export type {
   CheckboxContextProps,
   CheckboxProps,
@@ -6,4 +7,7 @@ export type {
   CheckboxControlProps,
   CheckboxInputProps,
 } from './Checkbox';
+
 export * from './useCheckbox';
+
+export * from './Checkbox.styles';

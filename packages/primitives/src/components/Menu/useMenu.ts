@@ -12,9 +12,9 @@ export interface UseMenuProps {
   placement?: Placement;
 }
 
-export const useMenu = (props) => {
-  const { placement } = props;
-  const { isOpen, toggle } = useDisclosure();
+export const useMenu = (props: UseMenuProps = {}) => {
+  const { placement = 'bottom' } = props;
+  const [isOpen, { toggle }] = useDisclosure();
   const { context, ...floatingProps } = useFloating({
     open: isOpen,
     onOpenChange: toggle,

@@ -17,7 +17,7 @@ export interface UseDropdownProps {
 
 export const useDropdown = (props?: UseDropdownProps) => {
   const { placement = 'bottom-start' } = props;
-  const { isOpen, toggle } = useDisclosure();
+  const [isOpen, { toggle }] = useDisclosure();
 
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
@@ -39,7 +39,7 @@ export const useDropdown = (props?: UseDropdownProps) => {
         activeIndex,
         onNavigate: setActiveIndex,
       }),
-    ]
+    ],
   );
 
   const getTargetProps = (props = {}, forwardedRef = null) => ({

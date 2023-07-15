@@ -20,8 +20,5 @@
       "path": "./tsconfig.storybook.json"
     }
   ],
-  "paths": {
-    "styled-system/*": ["./styled-system/*"]
-  },
   "extends": "../../tsconfig.base.json"
 }

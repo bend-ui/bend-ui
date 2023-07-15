@@ -1,18 +1,15 @@
 {
   "name": "@particles/primitives",
   "version": "0.0.1",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "require": "./index.js"
+    }
+  },
   "scripts": {
     "generate": "pnpm dlx generate-react-cli"
-  },
-  "dependencies": {
-    "@floating-ui/react": "^0.24.5",
-    "csstype": "^3.1.2"
-  },
-  "devDependencies": {
-    "clsx": "1.2.1"
-  },
-  "peerDependencies": {
-    "react": ">=16.8",
-    "react-dom": ">=16.8"
   }
 }

@@ -1,7 +1,7 @@
 import { Button } from './';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta = {
+const meta: Meta<typeof Button> = {
   component: Button,
   args: {
     children: 'Button',

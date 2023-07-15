@@ -13,10 +13,6 @@
       "path": "packages/emotion"
     },
     {
-      "name": "📦 @particles/stitches",
-      "path": "packages/stitches"
-    },
-    {
       "name": "📦 @particles/styled-components",
       "path": "packages/styled-components"
     },
@@ -49,12 +45,12 @@
       "path": "apps/playground-emotion"
     },
     {
-      "name": "🧪 Playground (Stitches)",
-      "path": "apps/playground-stitches"
-    },
-    {
       "name": "🧪 Playground (Tailwind)",
       "path": "apps/playground-tailwind"
+    },
+    {
+      "name": "🧪 Playground (Panda)",
+      "path": "apps/playground-panda"
     }
   ],
   "settings": {
@@ -66,16 +62,16 @@
     "jest.disabledWorkspaceFolders": [
       "📦 @particles/primitives",
       "📦 @particles/emotion",
-      "📦 @particles/stitches",
       "📦 @particles/styled-components",
       "📦 @particles/theme",
       "📦 @particles/vanilla-extract",
       "📦 @particles/tailwind",
       "📦 @particles/panda",
       "🛠️ @particles/react-utils",
+      "🛠️ @particles/cli",
       "🧪 Playground (Emotion)",
-      "🧪 Playground (Stitches)",
       "🧪 Playground (Tailwind)",
+      "🧪 Playground (Panda)",
       "📚 Website"
     ]
   }
