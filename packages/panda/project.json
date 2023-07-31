@@ -7,14 +7,20 @@
   "targets": {
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["packages/panda/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": [
+          "packages/panda/**/*.{ts,tsx,js,jsx}"
+        ]
       }
     },
     "build": {
       "executor": "@nx/vite:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/packages/panda"
@@ -30,7 +36,9 @@
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["coverage/packages/panda"],
+      "outputs": [
+        "{workspaceRoot}/coverage/packages/panda"
+      ],
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../coverage/packages/panda"
@@ -50,7 +58,9 @@
     },
     "build-storybook": {
       "executor": "@nx/storybook:build",
-      "outputs": ["{options.outputDir}"],
+      "outputs": [
+        "{options.outputDir}"
+      ],
       "options": {
         "outputDir": "dist/storybook/panda",
         "configDir": "packages/panda/.storybook"

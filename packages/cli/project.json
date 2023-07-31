@@ -39,7 +39,7 @@
     "test": {
       "executor": "@nx/vite:test",
       "outputs": [
-        "coverage/packages/cli"
+        "{workspaceRoot}/coverage/packages/cli"
       ],
       "options": {
         "passWithNoTests": true,

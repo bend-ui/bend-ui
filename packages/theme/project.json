@@ -6,29 +6,42 @@
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/packages/theme",
         "main": "packages/theme/src/index.ts",
         "tsConfig": "packages/theme/tsconfig.lib.json",
-        "assets": ["packages/theme/*.md"]
+        "assets": [
+          "packages/theme/*.md"
+        ],
+        "updateBuildableProjectDepsInPackageJson": true
       }
     },
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["packages/theme/**/*.ts"]
+        "lintFilePatterns": [
+          "packages/theme/**/*.ts"
+        ]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/packages/theme"],
+      "outputs": [
+        "{workspaceRoot}/coverage/packages/theme"
+      ],
       "options": {
         "jestConfig": "packages/theme/jest.config.ts",
         "passWithNoTests": true
       }
     }
   },
-  "tags": ["ui"]
+  "tags": [
+    "ui"
+  ]
 }

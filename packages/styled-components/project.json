@@ -7,14 +7,20 @@
   "targets": {
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["packages/styled-components/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": [
+          "packages/styled-components/**/*.{ts,tsx,js,jsx}"
+        ]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/packages/styled-components"],
+      "outputs": [
+        "{workspaceRoot}/coverage/packages/styled-components"
+      ],
       "options": {
         "jestConfig": "packages/styled-components/jest.config.ts",
         "passWithNoTests": true
@@ -34,7 +40,9 @@
     },
     "build-storybook": {
       "executor": "@nx/storybook:build",
-      "outputs": ["{options.outputDir}"],
+      "outputs": [
+        "{options.outputDir}"
+      ],
       "options": {
         "outputDir": "dist/storybook/styled-components",
         "configDir": "packages/styled-components/.storybook"
