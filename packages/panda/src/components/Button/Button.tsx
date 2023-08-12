@@ -1,7 +1,11 @@
-import { Button as ButtonPrimitive, forwardRef } from '@particles/primitives';
+import {
+  Button as ButtonPrimitive,
+  createPolymorphicComponent,
+} from '@particles/primitives';
 import { cva, cx } from '@particles/panda-system/css';
+import { forwardRef } from 'react';
 import type { RecipeVariantProps } from '@particles/panda-system/css';
-import type { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
 
 export const styles = cva({
   base: {
@@ -11,37 +15,47 @@ export const styles = cva({
     gap: '1ch',
     whiteSpace: 'nowrap',
     userSelect: 'none',
-    border: 'unset',
+    border: '1px solid transparent',
     backgroundColor: 'unset',
     textDecoration: 'none',
-    padding: '3',
     borderRadius: 'md',
   },
   variants: {
     palette: {
       primary: {
-        color: 'fg.onPrimary',
-        bg: 'primary',
-        _hover: {
-          bg: 'primary.hover',
-        },
+        colorPalette: 'primary',
       },
       secondary: {
-        color: 'fg.onSecondary',
-        bg: 'secondary',
+        colorPalette: 'neutral',
+      },
+    },
+    variant: {
+      solid: {
+        color: 'colorPalette.onPrimary',
+        bgColor: 'colorPalette.base',
+        borderColor: 'transparent',
         _hover: {
-          bg: 'secondary.hover',
+          bgColor: 'colorPalette.hover',
         },
+      },
+      outline: {
+        color: 'colorPalette.base',
+        borderColor: 'colorPalette.base',
+        bgColor: 'transparent',
       },
     },
     size: {
       small: {
-        paddingInline: 1,
-        paddingBlock: 1,
+        paddingInline: 'sm',
+        paddingBlock: 'sm',
       },
       medium: {
-        paddingInline: 2,
-        paddingBlock: 2,
+        paddingInline: 'md',
+        paddingBlock: 'md',
+      },
+      large: {
+        paddingInline: 'lg',
+        paddingBlock: 'lg',
       },
     },
     isRounded: {
@@ -52,6 +66,7 @@ export const styles = cva({
   },
   defaultVariants: {
     palette: 'primary',
+    variant: 'solid',
     size: 'medium',
     isRounded: false,
   },
@@ -59,16 +74,32 @@ export const styles = cva({
 
 export type ButtonVariants = RecipeVariantProps<typeof styles>;
 
-export type ButtonProps = ButtonVariants & {
-  children?: ReactNode;
-};
+export type ButtonProps = ComponentPropsWithoutRef<'button'> &
+  ButtonVariants & {
+    as?: ElementType;
+    children?: ReactNode;
+    /** Disable the button */
+    isDisabled?: boolean;
+    /** Set the button in a loading state */
+    isLoading?: boolean;
+  };
 
-const Button = forwardRef<ButtonProps, 'button'>((props, ref) => {
-  const { children, className, palette, size, isRounded, ...rest } = props;
+const Root = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+  const {
+    children,
+    as = 'button',
+    className,
+    palette,
+    variant,
+    size,
+    isRounded,
+    ...rest
+  } = props;
   return (
     <ButtonPrimitive.Root
       ref={ref}
-      className={cx(styles({ palette, size, isRounded }), className)}
+      as={as}
+      className={cx(styles({ palette, variant, size, isRounded }), className)}
       {...rest}
     >
       {children}
@@ -76,4 +107,6 @@ const Button = forwardRef<ButtonProps, 'button'>((props, ref) => {
   );
 });
 
-export default Button;
+Root.displayName = 'Button';
+
+export const Button = createPolymorphicComponent<'button', ButtonProps>(Root);

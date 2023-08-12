@@ -1,5 +1,6 @@
 import {
   Checkbox as CheckboxPrimitive,
+  createComponent,
   forwardRef,
 } from '@particles/primitives';
 import { cva, cx } from '@particles/panda-system/css';
@@ -40,7 +41,7 @@ export type CheckboxProps = CheckboxVariants & {
   children?: ReactNode;
 };
 
-const Checkbox = forwardRef<CheckboxProps, 'input'>((props, ref) => {
+const Component = forwardRef<'input', CheckboxProps>((props, ref) => {
   const { children, className, ...rest } = props;
   return (
     <CheckboxPrimitive.Root className={cx(styles.root(), className)}>
@@ -55,4 +56,4 @@ const Checkbox = forwardRef<CheckboxProps, 'input'>((props, ref) => {
   );
 });
 
-export default Checkbox;
+export const Checkbox = createComponent(Component, {});

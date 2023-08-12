@@ -1,31 +1,68 @@
-import { forwardRef } from '@particles/primitives';
+import { createComponent, forwardRef } from '@particles/primitives';
 import { cva, cx } from '@particles/panda-system/css';
 import type { RecipeVariantProps } from '@particles/panda-system/css';
+import type { ReactNode } from 'react';
 
-const styles = cva({
-  base: {},
-  variants: {
-    variant: {
-      solid: {
-        bg: 'surface',
-        rounded: 'md',
-        p: 2,
-      },
-      outline: {},
+const styles = {
+  root: cva({
+    base: {
+      position: 'relative',
+      display: 'flex',
+      height: '8',
     },
-  },
-  defaultVariants: {
-    variant: 'solid',
-  },
+  }),
+  input: cva({
+    base: {
+      'div ~ &': {
+        pl: '8',
+      },
+    },
+    variants: {
+      variant: {
+        solid: {
+          color: {
+            base: 'black',
+            _dark: 'white',
+          },
+          bg: 'surface',
+          rounded: 'md',
+          p: 2,
+        },
+        outline: {},
+      },
+    },
+    defaultVariants: {
+      variant: 'solid',
+    },
+  }),
+  icon: cva({
+    base: {
+      position: 'absolute',
+      width: '8',
+      height: '8',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  }),
+};
+
+export type InputVariants = RecipeVariantProps<typeof styles.input>;
+
+export type InputProps = InputVariants & {
+  icon?: ReactNode;
+};
+
+export const Root = forwardRef<'input', InputProps>((props, ref) => {
+  const { className, icon, ...rest } = props;
+  return (
+    <div className={styles.root()}>
+      {icon && <div className={styles.icon()}>{icon}</div>}
+      <input ref={ref} className={cx(styles.input(), className)} {...rest} />
+    </div>
+  );
 });
 
-export type InputVariants = RecipeVariantProps<typeof styles>;
+Root.displayName = 'Input';
 
-export type InputProps = InputVariants;
-
-const Input = forwardRef<InputProps, 'input'>((props, ref) => {
-  const { className, ...rest } = props;
-  return <input ref={ref} className={cx(styles(), className)} {...rest} />;
-});
-
-export default Input;
+export const Input = createComponent(Root);

@@ -39,7 +39,7 @@ export type CardSectionProps = CardSectionVariants & {
   children?: ReactNode;
 };
 
-const Section = forwardRef<CardSectionProps, 'div'>((props, ref) => {
+const Section = forwardRef<'div', CardSectionProps>((props, ref) => {
   const {
     children,
     className,
@@ -64,7 +64,7 @@ const Section = forwardRef<CardSectionProps, 'div'>((props, ref) => {
 
 export type CardHeaderProps = CardSectionProps;
 
-const Header = forwardRef<CardHeaderProps, 'div'>((props, ref) => {
+const Header = forwardRef<'div', CardHeaderProps>((props, ref) => {
   const {
     children,
     className,
@@ -86,7 +86,7 @@ const Header = forwardRef<CardHeaderProps, 'div'>((props, ref) => {
 
 export type CardFooterProps = CardSectionProps;
 
-const Footer = forwardRef<CardFooterProps, 'div'>((props, ref) => {
+const Footer = forwardRef<'div', CardFooterProps>((props, ref) => {
   const {
     children,
     className,
@@ -119,7 +119,7 @@ interface CardProps {
   children?: ReactNode;
 }
 
-const Card = forwardRef<CardProps, 'div'>((props, ref) => {
+const Root = forwardRef<'div', CardProps>((props, ref) => {
   const { children, className, as: Component = 'div', ...rest } = props;
   return (
     <Component ref={ref} className={cx(cardStyles(), className)} {...rest}>
@@ -128,4 +128,4 @@ const Card = forwardRef<CardProps, 'div'>((props, ref) => {
   );
 });
 
-export default createComponent(Card, { Section, Header, Footer }, 'Card');
+export const Card = createComponent(Root, { Section, Header, Footer });

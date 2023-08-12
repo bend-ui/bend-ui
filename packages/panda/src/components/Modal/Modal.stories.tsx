@@ -1,5 +1,6 @@
 import { useDisclosure } from '@particles/primitives';
 import { Button } from '../Button';
+import { Input } from '../Input';
 import { Modal } from './';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -18,7 +19,12 @@ export const Base: Story = {
       <>
         <Button onClick={handlers.open}>Open modal</Button>
         <Modal {...args} isOpen={isOpen} onClose={handlers.close}>
-          Hello World
+          Edit payment method
+          <Input />
+          <Input />
+          <Input />
+          <Button>Cancel</Button>
+          <Button>Save</Button>
         </Modal>
       </>
     );

@@ -6,17 +6,24 @@ const meta: Meta<typeof Button> = {
   args: {
     children: 'Button',
   },
-  tags: ['autodocs'],
 };
 
 export default meta;
 
 type Story = StoryObj<typeof Button>;
 
+/** The default button styles */
 export const Base: Story = {};
 
+/** Secondary styles for the button */
 export const Secondary: Story = {
   args: {
     palette: 'secondary',
+  },
+};
+
+export const Polymorphic: Story = {
+  args: {
+    as: 'a',
   },
 };

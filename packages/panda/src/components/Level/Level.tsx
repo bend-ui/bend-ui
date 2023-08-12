@@ -1,13 +1,16 @@
 import { cx } from '@particles/panda-system/css';
 import { level } from '@particles/panda-system/patterns';
-import { forwardRef } from '@particles/primitives';
-import type { ReactNode } from 'react';
+import { createPolymorphicComponent } from '@particles/primitives';
+import { forwardRef } from 'react';
+import type { ElementType, ReactNode } from 'react';
 
 export interface LevelProps {
+  as?: ElementType;
+  className: HTMLElement['className'];
   children?: ReactNode;
 }
 
-const Level = forwardRef<LevelProps, 'div'>((props, ref) => {
+const Level = forwardRef<HTMLDivElement, LevelProps>((props, ref) => {
   const { children, className, as: Component = 'div', ...rest } = props;
   return (
     <Component ref={ref} className={cx(level(), className)} {...rest}>
@@ -16,4 +19,6 @@ const Level = forwardRef<LevelProps, 'div'>((props, ref) => {
   );
 });
 
-export default Level;
+Level.displayName = 'Level';
+
+export default createPolymorphicComponent<'div', LevelProps>(Level);

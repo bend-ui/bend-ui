@@ -1,7 +1,8 @@
-import { forwardRef, Tooltip as TooltipPrimitive } from '@particles/primitives';
+import { Tooltip as TooltipPrimitive } from '@particles/primitives';
 import { cva, cx } from '@particles/panda-system/css';
+import { forwardRef } from 'react';
 import type { RecipeVariantProps } from '@particles/panda-system/css';
-import type { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 
 const styles = {
   root: cva({}),
@@ -9,25 +10,37 @@ const styles = {
   content: cva({
     base: {
       bg: 'surface',
+      py: '1',
+      px: '2',
+      rounded: 'sm',
+      fontSize: 'xs',
     },
   }),
 };
 
 export type TooltipVariants = RecipeVariantProps<typeof styles.root>;
 
-export type TooltipProps = TooltipVariants & {
-  children?: ReactNode;
-  content: string;
-};
+export type TooltipProps = ComponentPropsWithoutRef<'div'> &
+  TooltipVariants & {
+    /** The content of the tooltip */
+    content: string;
+  };
 
-const Tooltip = forwardRef<TooltipProps, 'div'>((props, ref) => {
-  const { children, className, content, ...rest } = props;
-  return (
-    <TooltipPrimitive.Root className={cx(className)} {...rest}>
-      <TooltipPrimitive.Trigger>{children}</TooltipPrimitive.Trigger>
-      <TooltipPrimitive.Content ref={ref}>{content}</TooltipPrimitive.Content>
-    </TooltipPrimitive.Root>
-  );
-});
+export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
+  (props, ref) => {
+    const { children, className, content, ...rest } = props;
+    return (
+      <TooltipPrimitive.Root {...rest}>
+        <TooltipPrimitive.Trigger>{children}</TooltipPrimitive.Trigger>
+        <TooltipPrimitive.Content
+          ref={ref}
+          className={cx(styles.content(), className)}
+        >
+          {content}
+        </TooltipPrimitive.Content>
+      </TooltipPrimitive.Root>
+    );
+  },
+);
 
-export default Tooltip;
+Tooltip.displayName = 'Tooltip';

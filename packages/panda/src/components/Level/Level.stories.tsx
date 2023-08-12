@@ -10,10 +10,12 @@ export default meta;
 type Story = StoryObj<typeof Level>;
 
 export const Base: Story = {
-  render: (args) => (
-    <Level {...args}>
-      <div>Element</div>
-      <div>Element</div>
-    </Level>
-  ),
+  args: {
+    children: (
+      <>
+        <div>Element</div>
+        <div>Element</div>
+      </>
+    ),
+  },
 };

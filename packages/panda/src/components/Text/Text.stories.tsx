@@ -1,0 +1,34 @@
+import { Text } from './';
+import type { Meta, StoryObj } from '@storybook/react';
+
+const meta: Meta<typeof Text> = {
+  component: Text,
+  args: {
+    children:
+      "I'm giving them the leads, Phyllis. Yeah, well, the acorn becomes the oak. Whoa!",
+  },
+};
+export default meta;
+
+type Story = StoryObj<typeof Text>;
+
+/** By default the `Text` component renders a span that inherit styles from its parent */
+export const Base: Story = {};
+
+export const Title: Story = {
+  args: {
+    variant: 'title',
+  },
+};
+
+export const Body: Story = {
+  args: {
+    variant: 'body',
+  },
+};
+
+export const Polymorphic: Story = {
+  args: {
+    as: 'h1',
+  },
+};
