@@ -1,23 +1,23 @@
 import { useDisclosure } from '../../hooks';
 import { Modal } from './';
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 export default {
   title: 'Components/Modal',
   component: Modal,
 } as Meta<typeof Modal>;
 
-type Story = StoryFn<typeof Modal>;
+type Story = StoryObj<typeof Modal>;
 
 export const Base: Story = {
   render: (args) => {
-    const { isOpen, toggle } = useDisclosure();
+    const [isOpen, { open, close }] = useDisclosure();
 
     return (
       <div>
-        <button onClick={toggle}>Open modal</button>
+        <button onClick={open}>Open modal</button>
 
-        <Modal.Root {...args} isOpen={isOpen} onClose={toggle}>
+        <Modal.Root {...args} isOpen={isOpen} onClose={close}>
           <Modal.Portal>
             <Modal.Backdrop />
             <Modal.Dialog>
@@ -46,10 +46,10 @@ export const Base: Story = {
                 </div>
                 {/* Modal footer */}
                 <div>
-                  <button type="button" onClick={toggle}>
+                  <button type="button" onClick={close}>
                     I accept
                   </button>
-                  <button type="button" onClick={toggle}>
+                  <button type="button" onClick={close}>
                     Decline
                   </button>
                 </div>

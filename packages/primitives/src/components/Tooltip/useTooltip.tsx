@@ -18,6 +18,7 @@ import type { FloatingContext, Placement } from '@floating-ui/react';
 
 export interface UseTooltipProps {
   placement?: Placement;
+  defaultIsOpen?: boolean;
 }
 
 export type PropGetter<T = HTMLElement> = (
@@ -25,7 +26,7 @@ export type PropGetter<T = HTMLElement> = (
     'data-state'?: 'open' | 'close';
     [key: string]: unknown;
   },
-  _ref?: Ref<T>
+  _ref?: Ref<T>,
 ) => Record<string, unknown>;
 
 export type ArrowPropGetter = (
@@ -33,13 +34,13 @@ export type ArrowPropGetter = (
     'data-state'?: 'open' | 'close';
     [key: string]: unknown;
   },
-  _ref?: Ref<SVGSVGElement>
+  _ref?: Ref<SVGSVGElement>,
 ) => { ref: (instance: SVGSVGElement) => void; context: FloatingContext };
 
 export const useTooltip = (props: UseTooltipProps = {}) => {
-  const { placement = 'top' } = props;
+  const { placement = 'top', defaultIsOpen } = props;
 
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(defaultIsOpen);
 
   const arrowRef = useRef(null);
 
@@ -75,7 +76,7 @@ export const useTooltip = (props: UseTooltipProps = {}) => {
       ref: mergeRefs([refs.setReference, forwardedRef]),
       'data-state': isOpen ? 'open' : 'close',
     }),
-    [getReferenceProps, isOpen, refs.setReference]
+    [getReferenceProps, isOpen, refs.setReference],
   );
 
   const getTooltipProps: PropGetter = useCallback(
@@ -90,12 +91,12 @@ export const useTooltip = (props: UseTooltipProps = {}) => {
         ...floatingStyles,
       },
     }),
-    [floatingStyles, getFloatingProps, isOpen, refs.setFloating]
+    [floatingStyles, getFloatingProps, isOpen, refs.setFloating],
   );
 
   const getArrowProps: ArrowPropGetter = (
     props = { context: {} },
-    forwardedRef = null
+    forwardedRef = null,
   ) => ({
     ...props,
     ref: mergeRefs([forwardedRef, arrowRef]),

@@ -6,7 +6,7 @@ export interface AvatarRootProps {
   children?: ReactNode;
 }
 
-const Root = forwardRef<AvatarRootProps, 'div'>((props, ref) => {
+const Root = forwardRef<'div', AvatarRootProps>((props, ref) => {
   const { children, as: Component = 'div', ...rest } = props;
   return (
     <Component ref={ref} {...rest}>
@@ -19,7 +19,7 @@ export interface AvatarImageProps {
   children?: never;
 }
 
-const Image = forwardRef<AvatarImageProps, 'img'>((props, ref) => {
+const Image = forwardRef<'img', AvatarImageProps>((props, ref) => {
   const { children, as: Component = 'img', src, ...rest } = props;
 
   const { status } = useImage({ src });
@@ -33,7 +33,7 @@ export interface AvatarFallbackProps {
   children?: ReactNode;
 }
 
-const Fallback = forwardRef<AvatarFallbackProps, 'span'>((props, ref) => {
+const Fallback = forwardRef<'span', AvatarFallbackProps>((props, ref) => {
   const { children, as: Component = 'span', ...rest } = props;
   return (
     <Component ref={ref} {...rest}>
@@ -42,4 +42,4 @@ const Fallback = forwardRef<AvatarFallbackProps, 'span'>((props, ref) => {
   );
 });
 
-export default createComponent(Root, { Root, Image, Fallback }, 'Avatar');
+export default createComponent(Root, { Root, Image, Fallback });

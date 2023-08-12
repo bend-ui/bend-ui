@@ -14,6 +14,8 @@ const Root = (props: ModalRootProps) => {
   return <ModalProvider value={ctx}>{children}</ModalProvider>;
 };
 
+Root.displayName = 'ModalPrimitive.Root';
+
 export interface ModalPortalProps {
   children?: ReactNode;
 }
@@ -21,31 +23,35 @@ export interface ModalPortalProps {
 const ModalPortal = (props: ModalPortalProps) => {
   const { children, ...rest } = props;
   const ctx = useModalContext();
-  return ctx.isOpen ? <Portal {...rest}>{children}</Portal> : null;
+  return ctx?.isOpen ? <Portal {...rest}>{children}</Portal> : null;
 };
+
+ModalPortal.displayName = 'ModalPrimitive.Portal';
 
 export interface ModalDialogProps {
   children?: ReactNode;
 }
 
-const Dialog = forwardRef<ModalDialogProps, 'div'>((props, ref) => {
+const Dialog = forwardRef<'div', ModalDialogProps>((props, ref) => {
   const { children, as: Component = 'div', ...rest } = props;
   const ctx = useModalContext();
 
-  if (!ctx.isOpen) return null;
+  if (!ctx?.isOpen) return null;
 
   return (
-    <Component ref={ref} {...ctx.getFloatingProps()} {...rest}>
+    <Component ref={ref} {...ctx?.getFloatingProps()} {...rest}>
       {children}
     </Component>
   );
 });
 
+Dialog.displayName = 'ModalPrimitive.Dialog';
+
 export interface ModalBackdropProps {
   children?: ReactNode;
 }
 
-const Backdrop = forwardRef<ModalBackdropProps, 'div'>((props, ref) => {
+const Backdrop = forwardRef<'div', ModalBackdropProps>((props, ref) => {
   const { children, as: Component = 'div', ...rest } = props;
 
   return (
@@ -59,7 +65,7 @@ export interface ModalContentProps {
   children?: ReactNode;
 }
 
-const Content = forwardRef<ModalContentProps, 'div'>((props, ref) => {
+const Content = forwardRef<'div', ModalContentProps>((props, ref) => {
   const { children, as: Component = 'div', ...rest } = props;
 
   return (
@@ -73,7 +79,7 @@ export interface ModalTitleProps {
   children?: ReactNode;
 }
 
-const Title = forwardRef<ModalTitleProps, 'div'>((props, ref) => {
+const Title = forwardRef<'div', ModalTitleProps>((props, ref) => {
   const { children, as: Component = 'div', ...rest } = props;
 
   return (
@@ -87,7 +93,7 @@ export interface ModalDescriptionProps {
   children?: ReactNode;
 }
 
-const Description = forwardRef<ModalDescriptionProps, 'div'>((props, ref) => {
+const Description = forwardRef<'div', ModalDescriptionProps>((props, ref) => {
   const { children, as: Component = 'div', ...rest } = props;
 
   return (
@@ -100,7 +106,7 @@ const Description = forwardRef<ModalDescriptionProps, 'div'>((props, ref) => {
 const Dismiss = () => {
   const ctx = useModalContext();
   return (
-    <button type="button" onClick={ctx.onClose}>
+    <button type="button" onClick={ctx?.onClose}>
       <svg
         aria-hidden="true"
         className="w-5 h-5"
@@ -119,17 +125,13 @@ const Dismiss = () => {
   );
 };
 
-export default createComponent(
+export default createComponent(Root, {
   Root,
-  {
-    Root,
-    Portal: ModalPortal,
-    Dialog,
-    Backdrop,
-    Content,
-    Dismiss,
-    Title,
-    Description,
-  },
-  'Modal'
-);
+  Portal: ModalPortal,
+  Dialog,
+  Backdrop,
+  Content,
+  Dismiss,
+  Title,
+  Description,
+});

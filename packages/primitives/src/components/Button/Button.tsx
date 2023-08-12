@@ -1,19 +1,33 @@
-import { createComponent, forwardRef } from '../../utils';
+import { forwardRef } from 'react';
+import { createPolymorphicComponent } from '../../utils';
 import { Icon } from './ButtonIcon';
-import type { ReactNode } from 'react';
+import type { ElementType, ReactNode } from 'react';
 
-export interface ButtonRootProps {
+export interface ButtonPrimitiveRootProps {
+  as?: ElementType;
+  className?: string;
   children?: ReactNode;
 }
 
-const Root = forwardRef<ButtonRootProps, 'button'>((props, ref) => {
-  const { children, as: Component = 'button', ...rest } = props;
+const Root = forwardRef<HTMLButtonElement, ButtonPrimitiveRootProps>(
+  (props, ref) => {
+    const { children, as: Component = 'button', ...rest } = props;
 
-  return (
-    <Component ref={ref} {...rest}>
-      {children}
-    </Component>
-  );
-});
+    return (
+      <Component ref={ref} {...rest}>
+        {children}
+      </Component>
+    );
+  },
+);
 
-export default createComponent(Root, { Root, Icon }, 'Button');
+Root.displayName = 'ButtonPrimitive.Root';
+
+export default createPolymorphicComponent<
+  'button',
+  ButtonPrimitiveRootProps,
+  {
+    Root: typeof Root;
+    Icon: typeof Icon;
+  }
+>(Root, { Root, Icon });

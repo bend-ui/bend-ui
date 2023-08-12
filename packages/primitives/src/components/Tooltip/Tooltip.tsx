@@ -10,22 +10,22 @@ import {
 import type { UseTooltipProps } from './useTooltip';
 import type { ReactNode } from 'react';
 
-export interface TooltipTriggerProps {
+interface TooltipTriggerProps {
   children?: ReactNode;
 }
 
-const Trigger = forwardRef<TooltipTriggerProps, 'div'>((props, ref) => {
+const Trigger = forwardRef<'div', TooltipTriggerProps>((props, ref) => {
   const { children, ...rest } = props;
   const { getTriggerProps } = useTooltipContext();
   const child = getValidChild(children);
   return cloneElement(child, getTriggerProps({ ...rest }, ref));
 });
 
-export interface TooltipContentProps {
+interface TooltipContentProps {
   children?: ReactNode;
 }
 
-const Content = forwardRef<TooltipContentProps, 'div'>((props, ref) => {
+const Content = forwardRef<'div', TooltipContentProps>((props, ref) => {
   const { children, ...rest } = props;
   const { isOpen, getTooltipProps } = useTooltipContext();
 
@@ -34,30 +34,32 @@ const Content = forwardRef<TooltipContentProps, 'div'>((props, ref) => {
   return <div {...getTooltipProps(rest, ref)}>{children}</div>;
 });
 
-export interface TooltipArrowProps {
+interface TooltipArrowProps {
   children?: never;
 }
 
-const Arrow = forwardRef<TooltipArrowProps, 'svg'>((props, ref) => {
+const Arrow = forwardRef<'svg', TooltipArrowProps>((props, ref) => {
   const { getArrowProps } = useTooltipContext();
   return <FloatingArrow {...getArrowProps(props, ref)} />;
 });
 
-export interface TooltipProps extends UseTooltipProps {
-  children: ReactNode;
+interface TooltipProps extends UseTooltipProps {
+  children?: ReactNode;
 }
 
 const Root = (props: TooltipProps) => {
-  const { children, placement } = props;
-  const tooltip = useTooltip({ placement });
+  const { children, ...rest } = props;
+  const tooltip = useTooltip(rest);
 
   return (
     <TooltipContextProvider value={tooltip}>{children}</TooltipContextProvider>
   );
 };
 
-export default createComponent(
-  Root,
-  { Root, Trigger, Content, Arrow },
-  'Tooltip'
-);
+export default createComponent(Root, { Root, Trigger, Content, Arrow });
+export type {
+  TooltipProps,
+  TooltipTriggerProps,
+  TooltipArrowProps,
+  TooltipContentProps,
+};
