@@ -1,6 +1,6 @@
 import { defineGlobalStyles, definePreset } from '@pandacss/dev';
 import { theme } from '@particles/theme';
-import { level, scrollable } from './patterns';
+import * as patterns from './patterns';
 
 const globalCss = defineGlobalStyles({
   'html, body': {
@@ -12,15 +12,12 @@ const globalCss = defineGlobalStyles({
 export const particlesPreset = definePreset({
   conditions: {
     extend: {
-      light: '[data-color-mode=light] &',
-      dark: '[data-color-mode=dark] &',
+      light: '[data-color-mode=light] &, .light &',
+      dark: '[data-color-mode=dark] &, .dark &',
     },
   },
   patterns: {
-    extend: {
-      scrollable,
-      level,
-    },
+    extend: patterns,
   },
   theme: {
     extend: {
@@ -63,6 +60,9 @@ export const particlesPreset = definePreset({
             DEFAULT: {
               value: theme.colors.primary,
             },
+            base: {
+              value: theme.colors.primary,
+            },
             subtle: {
               value: theme.colors['primary-subtle'],
             },
@@ -74,7 +74,35 @@ export const particlesPreset = definePreset({
             DEFAULT: {
               value: theme.colors.amber500,
             },
+            base: {
+              value: theme.colors.amber500,
+            },
+            subtle: {
+              value: theme.colors.amber300,
+            },
+            hover: {
+              value: theme.colors.amber700,
+            },
           },
+          neutral: {
+            DEFAULT: {
+              value: theme.colors.neutral,
+            },
+            base: {
+              value: theme.colors.neutral,
+            },
+            subtle: {
+              value: theme.colors['neutral-subtle'],
+            },
+            hover: {
+              value: theme.colors['neutral-hover'],
+            },
+          },
+        },
+        spacing: {
+          sm: { value: '{spacing.2}' },
+          md: { value: '{spacing.3}' },
+          lg: { value: '{spacing.5}' },
         },
       },
     },
