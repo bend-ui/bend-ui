@@ -9,7 +9,6 @@ const config: StorybookConfig = {
     '@storybook/addon-a11y',
     'storybook-addon-performance',
   ],
-  core: { builder: '@storybook/builder-vite' },
   framework: {
     name: '@storybook/react-vite',
     options: {
