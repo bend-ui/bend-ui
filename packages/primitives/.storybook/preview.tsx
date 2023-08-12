@@ -1,52 +1,37 @@
 import './styles.css';
-import React from 'react';
+import { createElement } from 'react';
 import { useDarkMode } from 'storybook-dark-mode';
 import { DocsContainer } from '@storybook/addon-docs';
 import { themeDark, themeLight } from './themes';
+
+import type { Preview } from '@storybook/react';
 import type { DocsContainerProps } from '@storybook/addon-docs';
-import type { ReactNode } from 'react';
 
-type ContainerProps = DocsContainerProps & {
-  children?: ReactNode;
+const Container = (props: DocsContainerProps) => {
+  const isDark = useDarkMode();
+  const currentProps = { ...props };
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  currentProps.theme = isDark ? themeDark : themeLight;
+
+  return createElement(DocsContainer, currentProps);
 };
 
-const Container = ({ children, context }: ContainerProps) => {
-  const dark = useDarkMode();
-
-  return (
-    <DocsContainer
-      context={{
-        ...context,
-        storyById: (id) => {
-          const storyContext = context?.storyById(id);
-          return {
-            ...storyContext,
-            parameters: {
-              ...storyContext?.parameters,
-              docs: {
-                ...storyContext?.parameters?.docs,
-                theme: dark ? themeDark : themeLight,
-              },
-            },
-          };
-        },
-      }}
-    >
-      {children}
-    </DocsContainer>
-  );
-};
-
-export const parameters = {
-  darkMode: {
-    darkClass: 'dark',
-    lightClass: 'light',
-    classTarget: 'html',
-    stylePreview: true,
-    dark: themeDark,
-    light: themeLight,
-  },
-  docs: {
-    container: Container,
+const preview: Preview = {
+  parameters: {
+    darkMode: {
+      darkClass: 'dark',
+      lightClass: 'light',
+      classTarget: 'html',
+      stylePreview: true,
+      dark: themeDark,
+      light: themeLight,
+    },
+    docs: {
+      container: Container,
+    },
   },
 };
+
+export default preview;
