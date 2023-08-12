@@ -1,7 +1,8 @@
 import { create } from '@storybook/theming';
 import { theme } from '@particles/theme';
+import type { ThemeVars } from '@storybook/theming';
 
-const common = {
+const common: Partial<ThemeVars> = {
   brandTitle: 'Particles - Panda',
   colorPrimary: theme.colors.indigo500,
   colorSecondary: theme.colors.indigo600,
@@ -27,12 +28,12 @@ export const themeDark = create({
   base: 'dark',
   ...common,
   appBg: theme.colors.shark900,
-  appContentBg: theme.colors.shark800,
-  appBorderColor: theme.colors.shark800,
+  appContentBg: theme.colors.shark900,
+  appBorderColor: theme.colors.shark700,
 
   textMutedColor: theme.colors.shark500,
 
-  barBg: theme.colors.shark700,
+  barBg: theme.colors.shark900,
   barSelectedColor: theme.colors.indigo500,
 
   inputBg: theme.colors.shark800,
