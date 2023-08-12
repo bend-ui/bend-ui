@@ -1,82 +1,96 @@
-import { forwardRef as reactForwardRef } from 'react';
-
-/* -------------------------------------------------------------------------------------------------
- * We copied the code from https://radix-ui.com/primitives/docs/utilities/polymorphic
- * because it causes problems with react-router when importing the types
- * ----------------------------------------------------------------------------------------------- */
-
-/* -------------------------------------------------------------------------------------------------
- * Utility types
- * ----------------------------------------------------------------------------------------------- */
-export type Merge<P1 = Record<string, any>, P2 = Record<string, any>> = Omit<
-  P1,
-  keyof P2
-> &
-  P2;
-
-type NarrowIntrinsic<E> = E extends keyof JSX.IntrinsicElements ? E : never;
-
-type ForwardRefExoticComponent<E, OwnProps> = React.ForwardRefExoticComponent<
-  Merge<
-    E extends React.ElementType ? React.ComponentPropsWithRef<E> : never,
-    OwnProps & { as?: E }
-  >
->;
-
-/* -------------------------------------------------------------------------------------------------
- * ForwardRefComponent
- * ----------------------------------------------------------------------------------------------- */
-
-export interface ForwardRefComponent<
-  IntrinsicElementString,
-  OwnProps = Record<string, any>
-  /**
-   * Extends original type to ensure built in React types play nice
-   * with polymorphic components still e.g. `React.ElementRef` etc.
-   */
-> extends ForwardRefExoticComponent<IntrinsicElementString, OwnProps> {
-  /**
-   * When `as` prop is passed, use this overload.
-   * Merges original own props (without DOM props) and the inferred props
-   * from `as` element with the own props taking precendence.
-   *
-   * We explicitly avoid `React.ElementType` and manually narrow the prop types
-   * so that events are typed when using JSX.IntrinsicElements.
-   */
-  <
-    As extends
-      | keyof JSX.IntrinsicElements
-      | React.ComponentType<any> = NarrowIntrinsic<IntrinsicElementString>
-  >(
-    props: As extends keyof JSX.IntrinsicElements
-      ? Merge<JSX.IntrinsicElements[As], OwnProps & { as: As }>
-      : As extends React.ComponentType<infer P>
-      ? Merge<P, OwnProps & { as: As }>
-      : never
-  ): React.ReactElement | null;
-}
+import {
+  type ComponentProps,
+  type ComponentPropsWithoutRef,
+  type ElementType,
+  forwardRef as forwardRefReact,
+  type ForwardRefRenderFunction,
+  type ValidationMap,
+  type WeakValidationMap,
+} from 'react';
 
 /**
- * All credits goes to Chakra UI
- * https://github.com/chakra-ui/chakra-ui/blob/461343d529a7c40d310b959f8bb51f9f1cc355a9/packages/system/src/forward-ref.tsx
+ * Extract the props of a React element or component
  */
+type PropsOf<T extends ElementType> = ComponentPropsWithoutRef<T> & {
+  as?: ElementType;
+};
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export function forwardRef<Props, Component>(
-  component: React.ForwardRefRenderFunction<
-    any,
-    Omit<
-      Merge<
-        Component extends React.ElementType
-          ? React.ComponentPropsWithRef<Component>
-          : never,
-        Props & { as?: Component }
-      >,
-      'color'
-    >
-  >
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type DistributiveOmit<T, K extends keyof any> = T extends any
+  ? Omit<T, K>
+  : never;
+
+/**
+ * Assign property types from right to left.
+ * Think `Object.assign` for types.
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+ */
+export type Assign<A, B> = DistributiveOmit<A, keyof B> & B;
+
+type MergeWithAs<
+  Default extends ElementType,
+  Component extends ElementType,
+  PermanentProps extends Record<never, never>,
+  DefaultProps extends Record<never, never>,
+  ComponentProps extends Record<never, never>,
+> =
+  /**
+   * The following code is copied from the library react-polymorphed by nasheomirro.
+   * Thank your for creating this TypeScript gold!
+   *
+   * doing this makes sure typescript infers events. Without the
+   * extends check typescript won't do an additional inference phase,
+   * but somehow we can trick typescript into doing so. Note that the check needs to be relating
+   * to the generic for this to work.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  any extends Component
+    ? /**
+       * Merge<ComponentProps, OwnProps & { as?: Component }> looks sufficient,
+       * but typescript won't be able to infer events on components that haven't
+       * explicitly provided a value for the As generic or haven't provided an `as` prop.
+       * We could do the same trick again like the above but discriminating unions should be
+       * enough as we don't have to compute the value for the default.
+       *
+       * Also note that Merging here is needed not just for the purpose of
+       * overriding props but also because somehow it is needed to get the props correctly,
+       * Merge does clone the first object so that might have something to do with it.
+       */
+      | Assign<DefaultProps, PermanentProps & { as?: Default | ElementType }>
+        | Assign<ComponentProps, PermanentProps & { as?: Component }>
+    : never;
+
+export interface ComponentWithAs<
+  Component extends ElementType,
+  Props extends Record<never, never> = Record<never, never>,
+> {
+  <AsComponent extends ElementType = Component>(
+    props: MergeWithAs<
+      Component,
+      AsComponent,
+      Props,
+      ComponentProps<Component>,
+      ComponentProps<AsComponent>
+    >,
+  ): JSX.Element;
+
+  displayName?: string;
+  propTypes?: WeakValidationMap<unknown>;
+  contextTypes?: ValidationMap<unknown>;
+  id?: string;
+}
+
+export function forwardRef<
+  Component extends ElementType,
+  Props extends Record<never, never> = Record<never, never>,
+>(
+  component: ForwardRefRenderFunction<
+    never,
+    Assign<PropsOf<Component>, Props> & { as?: ElementType }
+  >,
 ) {
-  return reactForwardRef(component) as unknown as ForwardRefComponent<
+  return forwardRefReact(component) as unknown as ComponentWithAs<
     Component,
     Props
   >;

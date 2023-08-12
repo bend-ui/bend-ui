@@ -1,27 +1,11 @@
-export function createComponent<
-  Component,
-  CompoundComponents extends Record<string, React.ComponentType>
->(
-  component: Component,
-  compoundComponents?: CompoundComponents,
-  displayName?: string
-) {
-  const namedComponents = {};
-  if (compoundComponents) {
-    for (const [componentName, component] of Object.entries(
-      compoundComponents
-    )) {
-      if (displayName) {
-        component.displayName = `${displayName}.${componentName}`;
-      } else {
-        component.displayName = `${displayName}.${componentName}`;
-      }
-      namedComponents[componentName] = component;
-    }
-  }
+import type { ComponentType } from 'react';
 
-  return Object.assign(component, {
-    ...(namedComponents as CompoundComponents),
-    displayName,
-  });
-}
+export type StaticComponents = Record<string, React.FC<any>>;
+
+export const createComponent = <
+  T extends ComponentType<any>,
+  CompoundComponents extends StaticComponents = Record<string, never>,
+>(
+  component: T,
+  compoundComponents?: CompoundComponents,
+): T & CompoundComponents => Object.assign(component, compoundComponents);

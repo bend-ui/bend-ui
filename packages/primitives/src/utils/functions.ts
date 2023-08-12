@@ -18,7 +18,7 @@ export type StringOrNumber = string | number;
 // Assertions
 
 export const isFunction = <T extends Function = Function>(
-  value: any
+  value: any,
 ): value is T => typeof value === 'function';
 
 // Helpers Functions
@@ -30,7 +30,7 @@ export const runIfFn = <T, U>(
 
 export const callAllHandlers =
   <T extends (event: any) => void>(...fns: T[]) =>
-  (event: FunctionArguments<T | undefined>[0]) => {
+  (event: FunctionArguments<T>[0]) => {
     fns.some((fn) => {
       fn?.(event);
       return event?.defaultPrevented;
@@ -39,7 +39,7 @@ export const callAllHandlers =
 
 export const callAll =
   <T extends AnyFunction>(...fns: T[]) =>
-  (arg: FunctionArguments<T | undefined>[0]) => {
+  (arg: FunctionArguments<T>[0]) => {
     fns.forEach((fn) => fn?.(arg));
   };
 
