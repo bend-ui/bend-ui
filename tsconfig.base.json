@@ -19,6 +19,15 @@
       "@particles/cli": ["packages/cli/src/index.ts"],
       "@particles/emotion": ["packages/emotion/src/index.ts"],
       "@particles/panda": ["packages/panda/src/index.ts"],
+      "@particles/panda-system/css": [
+        "node_modules/@particles/panda-system/css"
+      ],
+      "@particles/panda-system/patterns": [
+        "node_modules/@particles/panda-system/patterns"
+      ],
+      "@particles/panda-system/recipes": [
+        "node_modules/@particles/panda-system/recipes"
+      ],
       "@particles/primitives": ["packages/primitives/src/index.ts"],
       "@particles/react-utils": ["packages/react-utils/src/index.ts"],
       "@particles/styled-components": [
@@ -26,16 +35,7 @@
       ],
       "@particles/tailwind": ["packages/tailwind/src/index.ts"],
       "@particles/theme": ["packages/theme/src/index.ts"],
-      "@particles/vanilla-extract": ["packages/vanilla-extract/src/index.ts"],
-      "@particles/panda-system/css": [
-        "node_modules/@particles/panda-system/css"
-      ],
-      "@particles/panda-system/recipes": [
-        "node_modules/@particles/panda-system/recipes"
-      ],
-      "@particles/panda-system/patterns": [
-        "node_modules/@particles/panda-system/patterns"
-      ]
+      "@particles/vanilla-extract": ["packages/vanilla-extract/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
