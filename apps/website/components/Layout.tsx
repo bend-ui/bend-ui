@@ -8,13 +8,11 @@ interface Props {
 const Layout = (props: Props) => {
   const { children } = props;
   return (
-    <div className="flex h-screen flex-col">
-      <div className="mx-auto w-full max-w-6xl">
-        <Link href="/" className="font-bold">
-          Particles UI
-        </Link>
+    <div>
+      <div>
+        <Link href="/">Particles UI</Link>
       </div>
-      <main className="mx-auto w-full max-w-6xl">{children}</main>
+      <main>{children}</main>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import './index.css';
+import '@fontsource/inter';
 import { createElement } from 'react';
 import { useDarkMode } from 'storybook-dark-mode';
 import { DocsContainer } from '@storybook/addon-docs';

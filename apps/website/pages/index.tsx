@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Button, Card, Text } from '@particles/tailwind';
+import { Button, Card, Text } from '@particles/panda';
 import Layout from '../components/Layout';
 
 export function Index() {

@@ -10,6 +10,15 @@ export default defineConfig({
       __dirname,
       './apps/playground-panda/pages/**/*.{js,jsx,ts,tsx}',
     ),
+    path.resolve(
+      __dirname,
+      './apps/playground-panda-radix/pages/**/*.{js,jsx,ts,tsx}',
+    ),
+    path.resolve(
+      __dirname,
+      './apps/playground-panda-radix/components/**/*.{js,jsx,ts,tsx}',
+    ),
+    path.resolve(__dirname, './apps/website/pages/**/*.{js,jsx,ts,tsx}'),
     path.resolve(__dirname, './packages/panda/src/**/*.{js,jsx,ts,tsx}'),
   ],
 

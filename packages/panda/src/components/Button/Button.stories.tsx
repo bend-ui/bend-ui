@@ -1,3 +1,4 @@
+import { button } from '@particles/panda-system/recipes';
 import { Button } from './';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -15,11 +16,9 @@ type Story = StoryObj<typeof Button>;
 /** The default button styles */
 export const Base: Story = {};
 
-/** Secondary styles for the button */
-export const Secondary: Story = {
-  args: {
-    palette: 'secondary',
-  },
+/** Primary styles for the button */
+export const Primary: Story = {
+  args: button.raw({ palette: 'primary' }),
 };
 
 export const Polymorphic: Story = {

@@ -1,3 +1,4 @@
+import { text } from '@particles/panda-system/recipes';
 import { Text } from './';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -16,14 +17,12 @@ type Story = StoryObj<typeof Text>;
 export const Base: Story = {};
 
 export const Title: Story = {
-  args: {
-    variant: 'title',
-  },
+  args: text.raw({ variant: 'title' }),
 };
 
 export const Body: Story = {
   args: {
-    variant: 'body',
+    args: text.raw({ variant: 'body' }),
   },
 };
 

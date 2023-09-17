@@ -5,7 +5,7 @@ export interface ButtonIconProps {
   children?: ReactNode;
 }
 
-export const Icon = forwardRef<ButtonIconProps, 'div'>((props, ref) => {
+export const Icon = forwardRef<'div', ButtonIconProps>((props, ref) => {
   const { children, as: Component = 'div', ...rest } = props;
 
   return (

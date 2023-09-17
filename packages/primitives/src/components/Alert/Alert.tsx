@@ -6,7 +6,7 @@ export interface AlertProps {
   children?: ReactNode;
 }
 
-const Root = forwardRef<AlertProps, 'div'>((props, ref) => {
+const Root = forwardRef<'div', AlertProps>((props, ref) => {
   const { children, as: Component = 'div', ...rest } = props;
   const { getAlertProps } = useAlert();
   return (
@@ -16,4 +16,4 @@ const Root = forwardRef<AlertProps, 'div'>((props, ref) => {
   );
 });
 
-export default createComponent(Root, { Root }, 'Alert');
+export default createComponent(Root, { Root });

@@ -12,7 +12,7 @@ export interface CheckboxProps extends UseCheckboxProps {
   children?: ReactNode;
 }
 
-const Root = forwardRef<CheckboxProps, 'div'>((props, ref) => {
+const Root = forwardRef<'div', CheckboxProps>((props, ref) => {
   const {
     children,
     as: Component = 'div',
@@ -43,7 +43,7 @@ export interface CheckboxInputProps {
   children?: never;
 }
 
-const Input = forwardRef<CheckboxInputProps, 'input'>((props, ref) => {
+const Input = forwardRef<'input', CheckboxInputProps>((props, ref) => {
   const { value, id, ...rest } = props;
   const { getInputProps } = useCheckboxContext();
 
@@ -52,7 +52,7 @@ const Input = forwardRef<CheckboxInputProps, 'input'>((props, ref) => {
 
 export type CheckboxControlProps = React.ComponentPropsWithoutRef<'div'>;
 
-const Control = forwardRef<CheckboxControlProps, 'div'>((props, ref) => {
+const Control = forwardRef<'div', CheckboxControlProps>((props, ref) => {
   const { children, as: Component = 'div', ...rest } = props;
   const { getControlProps, isChecked } = useCheckboxContext();
   return (
@@ -64,7 +64,7 @@ const Control = forwardRef<CheckboxControlProps, 'div'>((props, ref) => {
 
 export type CheckboxLabelProps = React.ComponentPropsWithoutRef<'label'>;
 
-const Label = forwardRef<CheckboxLabelProps, 'label'>((props, ref) => {
+const Label = forwardRef<'label', CheckboxLabelProps>((props, ref) => {
   const { children, as: Component = 'label', ...rest } = props;
   const { getLabelProps } = useCheckboxContext();
   return (
@@ -74,8 +74,4 @@ const Label = forwardRef<CheckboxLabelProps, 'label'>((props, ref) => {
   );
 });
 
-export default createComponent(
-  Root,
-  { Root, Input, Control, Label },
-  'Checkbox'
-);
+export default createComponent(Root, { Root, Input, Control, Label });

@@ -5,7 +5,7 @@ interface BadgeRootProps {
   children?: ReactNode;
 }
 
-const Root = forwardRef<BadgeRootProps, 'div'>((props, ref) => {
+const Root = forwardRef<'div', BadgeRootProps>((props, ref) => {
   const { children, as: Component = 'div', ...rest } = props;
 
   return (
@@ -19,7 +19,7 @@ interface BadgeInnerProps {
   children?: ReactNode;
 }
 
-const Inner = forwardRef<BadgeInnerProps, 'span'>((props, ref) => {
+const Inner = forwardRef<'span', BadgeInnerProps>((props, ref) => {
   const { children, as: Component = 'span', ...rest } = props;
 
   return (
@@ -29,4 +29,4 @@ const Inner = forwardRef<BadgeInnerProps, 'span'>((props, ref) => {
   );
 });
 
-export default createComponent(Root, { Root, Inner }, 'Badge');
+export default createComponent(Root, { Root, Inner });

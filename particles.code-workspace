@@ -51,6 +51,10 @@
     {
       "name": "🧪 Playground (Panda)",
       "path": "apps/playground-panda"
+    },
+    {
+      "name": "🧪 Playground (Panda + Radix)",
+      "path": "apps/playground-panda-radix"
     }
   ],
   "settings": {
@@ -71,7 +75,8 @@
       "📚 Website",
       "🧪 Playground (Emotion)",
       "🧪 Playground (Tailwind)",
-      "🧪 Playground (Panda)"
+      "🧪 Playground (Panda)",
+      "🧪 Playground (Panda + Radix)"
     ],
     "vitest.disabledWorkspaceFolders": [
       "📦 @particles/primitives",

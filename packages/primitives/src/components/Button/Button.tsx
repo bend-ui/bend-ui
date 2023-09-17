@@ -23,11 +23,7 @@ const Root = forwardRef<HTMLButtonElement, ButtonPrimitiveRootProps>(
 
 Root.displayName = 'ButtonPrimitive.Root';
 
-export default createPolymorphicComponent<
-  'button',
-  ButtonPrimitiveRootProps,
-  {
-    Root: typeof Root;
-    Icon: typeof Icon;
-  }
->(Root, { Root, Icon });
+export default createPolymorphicComponent<'button', ButtonPrimitiveRootProps>(
+  Root,
+  { Root, Icon },
+);

@@ -1,66 +1,49 @@
-import { cva, cx } from '@particles/panda-system/css';
+import { css, cx } from '@particles/panda-system/css';
+import { card } from '@particles/panda-system/recipes';
+
 import { createComponent, forwardRef } from '@particles/primitives';
-import type { RecipeVariantProps } from '@particles/panda-system/css';
-import type { ReactNode } from 'react';
+import { type ReactNode, useCallback } from 'react';
+import type { CardVariantProps } from '@particles/panda-system/recipes';
 
-const cardSectionStyles = cva({
-  base: {
-    mx: '-4',
-    '&:first-child': {
-      mt: '-4',
-    },
-    '&:last-child': {
-      mb: '-4',
-    },
-  },
-  variants: {
-    withBorder: {
-      true: {
-        borderColor: 'primary',
-        '&:not(:first-child)': {
-          borderTopWidth: 1,
-        },
-        '&:not(:last-child)': {
-          borderBottomWidth: 1,
-        },
-      },
-    },
-    inheritPadding: {
-      true: {
-        p: '4',
-      },
-    },
-  },
-});
+const useComponent = (props: any) => {
+  const { css: cssProp = {}, className } = props;
 
-export type CardSectionVariants = RecipeVariantProps<typeof cardSectionStyles>;
+  const getComponentProps = useCallback(
+    (recipe?: string) => ({
+      className: cx(recipe, css(cssProp), className),
+    }),
+    [className, cssProp],
+  );
 
-export type CardSectionProps = CardSectionVariants & {
-  children?: ReactNode;
+  return { getComponentProps };
 };
+
+export interface CardSectionProps {
+  children?: ReactNode;
+  inheritPadding?: CardVariantProps['inheritPadding'];
+  withBorder?: CardVariantProps['withBorder'];
+}
 
 const Section = forwardRef<'div', CardSectionProps>((props, ref) => {
   const {
     children,
-    className,
     as: Component = 'div',
     withBorder,
     inheritPadding,
     ...rest
   } = props;
+
+  const { getComponentProps } = useComponent(rest);
+  const recipe = card({ withBorder, inheritPadding });
+
   return (
-    <Component
-      ref={ref}
-      className={cx(
-        cardSectionStyles({ withBorder, inheritPadding }),
-        className,
-      )}
-      {...rest}
-    >
+    <Component ref={ref} {...getComponentProps(recipe.section)} {...rest}>
       {children}
     </Component>
   );
 });
+
+Section.displayName = 'Card.Section';
 
 export type CardHeaderProps = CardSectionProps;
 
@@ -72,9 +55,13 @@ const Header = forwardRef<'div', CardHeaderProps>((props, ref) => {
     inheritPadding = true,
     ...rest
   } = props;
+  const { getComponentProps } = useComponent(rest);
+  const recipe = card();
+
   return (
     <Section
       ref={ref}
+      {...getComponentProps(recipe.header)}
       withBorder={withBorder}
       inheritPadding={inheritPadding}
       {...rest}
@@ -84,19 +71,18 @@ const Header = forwardRef<'div', CardHeaderProps>((props, ref) => {
   );
 });
 
+Header.displayName = 'Card.Header';
+
 export type CardFooterProps = CardSectionProps;
 
 const Footer = forwardRef<'div', CardFooterProps>((props, ref) => {
-  const {
-    children,
-    className,
-    withBorder = true,
-    inheritPadding = true,
-    ...rest
-  } = props;
+  const { children, withBorder = true, inheritPadding = true, ...rest } = props;
+  const { getComponentProps } = useComponent(rest);
+  const recipe = card();
   return (
     <Section
       ref={ref}
+      {...getComponentProps(recipe.footer)}
       withBorder={withBorder}
       inheritPadding={inheritPadding}
       {...rest}
@@ -106,26 +92,24 @@ const Footer = forwardRef<'div', CardFooterProps>((props, ref) => {
   );
 });
 
-const cardStyles = cva({
-  base: {
-    color: 'fg.onSurface',
-    bg: 'surface',
-    p: 4,
-    rounded: 'md',
-  },
-});
+Footer.displayName = 'Card.Footer';
 
 interface CardProps {
   children?: ReactNode;
 }
 
 const Root = forwardRef<'div', CardProps>((props, ref) => {
-  const { children, className, as: Component = 'div', ...rest } = props;
+  const { children, as: Component = 'div', ...rest } = props;
+  const { getComponentProps } = useComponent(rest);
+  const recipe = card();
+
   return (
-    <Component ref={ref} className={cx(cardStyles(), className)} {...rest}>
+    <Component ref={ref} {...getComponentProps(recipe.root)} {...rest}>
       {children}
     </Component>
   );
 });
+
+Root.displayName = 'Card';
 
 export const Card = createComponent(Root, { Section, Header, Footer });
