@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-import * as fs from 'fs';
-import * as path from 'path';
 import { program } from 'commander';
 import { add } from './commands/add';
 

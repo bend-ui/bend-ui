@@ -1,3 +1,5 @@
+import path from 'path';
+import fs from 'fs';
 import { Command } from 'commander';
 import prompts from 'prompts';
 
@@ -6,15 +8,36 @@ export const add = new Command()
   .description('Add components to your project')
   .action(async () => {
     const response = await prompts([
+      // {
+      //   type: 'select',
+      //   name: 'component-type',
+      //   message: 'What do you want to do?',
+      //   choices: [
+      //     {
+      //       title: 'Create new component',
+      //       value: 'new',
+      //     },
+      //     {
+      //       title: 'Component from template',
+      //       value: 'template',
+      //     },
+      //   ],
+      //   initial: 'new',
+      // },
+      // {
+      //   type: (prev) => (prev === 'template' ? 'autocomplete' : null),
+      //   name: 'component',
+      //   message: 'Name of the component:',
+      //   choices: [
+      //     { title: 'Button', value: 'button' },
+      //     { title: 'Tabs', value: 'tabs' },
+      //     { title: 'Card', value: 'card' },
+      //   ],
+      // },
       {
-        type: 'autocomplete',
-        name: 'component',
+        type: 'text',
+        name: 'componentName',
         message: 'Name of the component:',
-        choices: [
-          { title: 'Button', value: 'button' },
-          { title: 'Tabs', value: 'tabs' },
-          { title: 'Card', value: 'card' },
-        ],
       },
       {
         type: 'toggle',
@@ -26,5 +49,31 @@ export const add = new Command()
       },
     ]);
 
-    console.log(response);
+    const componentPath = path.join(
+      process.cwd(),
+      `src/components/${response.componentName}`,
+    );
+
+    // Check if the component directory already exists
+    if (fs.existsSync(componentPath)) {
+      console.error(`Component '${response.componentName}' already exists.`);
+      process.exit(1);
+    }
+
+    // Create the component directory
+    fs.mkdirSync(componentPath);
+
+    const templatePath = path.join(__dirname, '../templates/component.tsx');
+    const componentContent = fs.readFileSync(templatePath, 'utf-8');
+    const finalComponentContent = componentContent.replace(
+      /{componentName}/g,
+      response.componentName,
+    );
+
+    fs.writeFileSync(
+      path.join(componentPath, `${response.componentName}.tsx`),
+      finalComponentContent,
+    );
+
+    console.log(`Component '${response.componentName}' created successfully.`);
   });
