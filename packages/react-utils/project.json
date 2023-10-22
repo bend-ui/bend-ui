@@ -3,26 +3,18 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/react-utils/src",
   "projectType": "library",
-  "tags": [
-    "utils"
-  ],
+  "tags": ["utils"],
   "targets": {
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "packages/react-utils/**/*.{ts,tsx,js,jsx}"
-        ]
+        "lintFilePatterns": ["packages/react-utils/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "build": {
       "executor": "@nx/vite:build",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/packages/react-utils"
@@ -38,9 +30,7 @@
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": [
-        "{workspaceRoot}/coverage/packages/react-utils"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/packages/react-utils"],
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../coverage/packages/react-utils"

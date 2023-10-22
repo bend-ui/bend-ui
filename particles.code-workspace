@@ -50,24 +50,7 @@
     }
   ],
   "settings": {
-    "jest.autoRun": "off",
-    "jest.testExplorer": {
-      "enabled": false
-    },
     "typescript.tsdk": "✨ particles/node_modules/typescript/lib",
-    "jest.disabledWorkspaceFolders": [
-      "📦 @particles/primitives",
-      "📦 @particles/tailwind",
-      "📦 @particles/panda",
-      "📦 @particles/panda-radix",
-      "🛠️ @particles/react-utils",
-      "📚 Website",
-      "🧪 Playground (Tailwind)",
-      "🧪 Playground (Panda)",
-      "🧪 Playground (Panda + Radix)",
-      "🛠️ @particles/cli",
-      "📦 @particles/theme"
-    ],
     "vitest.disabledWorkspaceFolders": [
       "📦 @particles/primitives",
       "📦 @particles/tailwind",
@@ -79,5 +62,7 @@
       "📚 Website"
     ]
   },
-  "extensions": {}
+  "extensions": {
+    "recommendations": ["firsttris.vscode-jest-runner"]
+  }
 }

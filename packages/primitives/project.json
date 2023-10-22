@@ -3,23 +3,17 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/primitives/src",
   "projectType": "library",
-  "tags": [
-    "ui"
-  ],
+  "tags": ["ui"],
   "targets": {
     "build": {
       "executor": "@nx/rollup:rollup",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/primitives",
         "tsConfig": "packages/primitives/tsconfig.lib.json",
         "project": "packages/primitives/package.json",
         "entryFile": "packages/primitives/src/index.ts",
-        "external": [
-          "react/jsx-runtime"
-        ],
+        "external": ["react/jsx-runtime"],
         "rollupConfig": "@nx/react/plugins/bundle-rollup",
         "assets": [
           {
@@ -32,21 +26,15 @@
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "packages/primitives/**/*.{ts,tsx,js,jsx}"
-        ]
+        "lintFilePatterns": ["packages/primitives/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/packages/primitives"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/packages/primitives"],
       "options": {
         "jestConfig": "packages/primitives/jest.config.ts",
         "passWithNoTests": true
@@ -66,9 +54,7 @@
     },
     "build-storybook": {
       "executor": "@nx/storybook:build",
-      "outputs": [
-        "{options.outputDir}"
-      ],
+      "outputs": ["{options.outputDir}"],
       "options": {
         "outputDir": "dist/storybook/primitives",
         "configDir": "packages/primitives/.storybook"

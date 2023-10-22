@@ -6,48 +6,34 @@
   "targets": {
     "build": {
       "executor": "@nx/esbuild:esbuild",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/cli",
         "main": "packages/cli/src/index.ts",
         "tsConfig": "packages/cli/tsconfig.lib.json",
-        "assets": [
-          "packages/cli/*.md"
-        ],
+        "assets": ["packages/cli/*.md"],
         "generatePackageJson": true
       }
     },
     "publish": {
       "command": "node tools/scripts/publish.mjs cli {args.ver} {args.tag}",
-      "dependsOn": [
-        "build"
-      ]
+      "dependsOn": ["build"]
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "packages/cli/**/*.ts"
-        ]
+        "lintFilePatterns": ["packages/cli/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": [
-        "{workspaceRoot}/coverage/packages/cli"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/packages/cli"],
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../coverage/packages/cli"
       }
     }
   },
-  "tags": [
-    "utils"
-  ]
+  "tags": ["utils"]
 }

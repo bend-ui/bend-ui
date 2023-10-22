@@ -3,26 +3,18 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/tailwind/src",
   "projectType": "library",
-  "tags": [
-    "ui"
-  ],
+  "tags": ["ui"],
   "targets": {
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "packages/tailwind/**/*.{ts,tsx,js,jsx}"
-        ]
+        "lintFilePatterns": ["packages/tailwind/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "build": {
       "executor": "@nx/vite:build",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/packages/tailwind"
@@ -38,9 +30,7 @@
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": [
-        "{workspaceRoot}/coverage/packages/tailwind"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/packages/tailwind"],
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../coverage/packages/tailwind"
@@ -60,9 +50,7 @@
     },
     "build-storybook": {
       "executor": "@nx/storybook:build",
-      "outputs": [
-        "{options.outputDir}"
-      ],
+      "outputs": ["{options.outputDir}"],
       "options": {
         "outputDir": "dist/storybook/tailwind",
         "configDir": "packages/tailwind/.storybook"
