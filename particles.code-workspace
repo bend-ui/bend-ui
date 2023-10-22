@@ -33,8 +33,16 @@
       "path": "packages/panda"
     },
     {
+      "name": "📦 @particles/panda-radix",
+      "path": "packages/panda-radix"
+    },
+    {
       "name": "🛠️ @particles/react-utils",
       "path": "packages/react-utils"
+    },
+    {
+      "name": "🛠️ @particles/cli",
+      "path": "packages/cli"
     },
     {
       "name": "📚 Website",
@@ -62,7 +70,7 @@
     "jest.testExplorer": {
       "enabled": false
     },
-    "typescript.tsdk": "✨ particles/✨ ds/node_modules/typescript/lib",
+    "typescript.tsdk": "✨ particles/node_modules/typescript/lib",
     "jest.disabledWorkspaceFolders": [
       "📦 @particles/primitives",
       "📦 @particles/emotion",
@@ -71,12 +79,14 @@
       "📦 @particles/vanilla-extract",
       "📦 @particles/tailwind",
       "📦 @particles/panda",
+      "📦 @particles/panda-radix",
       "🛠️ @particles/react-utils",
       "📚 Website",
       "🧪 Playground (Emotion)",
       "🧪 Playground (Tailwind)",
       "🧪 Playground (Panda)",
-      "🧪 Playground (Panda + Radix)"
+      "🧪 Playground (Panda + Radix)",
+      "🛠️ @particles/cli"
     ],
     "vitest.disabledWorkspaceFolders": [
       "📦 @particles/primitives",

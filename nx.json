@@ -37,9 +37,6 @@
   "affected": {
     "defaultBase": "main"
   },
-  "cli": {
-    "defaultCollection": "@nx/react"
-  },
   "generators": {
     "@nx/react": {
       "application": {
@@ -57,5 +54,6 @@
     }
   },
   "defaultProject": "playground-tailwind",
-  "extends": "nx/presets/npm.json"
+  "extends": "nx/presets/npm.json",
+  "$schema": "./node_modules/nx/schemas/nx-schema.json"
 }

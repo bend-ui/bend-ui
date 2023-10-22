@@ -19,8 +19,12 @@
       "@particles/cli": ["packages/cli/src/index.ts"],
       "@particles/emotion": ["packages/emotion/src/index.ts"],
       "@particles/panda": ["packages/panda/src/index.ts"],
+      "@particles/panda-radix": ["packages/panda-radix/src/index.ts"],
       "@particles/panda-system/css": [
         "node_modules/@particles/panda-system/css"
+      ],
+      "@particles/panda-system/jsx": [
+        "node_modules/@particles/panda-system/jsx"
       ],
       "@particles/panda-system/patterns": [
         "node_modules/@particles/panda-system/patterns"
