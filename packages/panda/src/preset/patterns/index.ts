@@ -11,7 +11,7 @@ export const scrollable = definePattern({
   // disallow the `overflow` property (in TypeScript)
   blocklist: ['overflow'],
   transform(props) {
-    const { direction, hideScrollbar, ...rest } = props;
+    const { direction = 'vertical', hideScrollbar = 'false', ...rest } = props;
     return {
       overflow: 'auto',
       height: direction === 'horizontal' ? '100%' : 'auto',

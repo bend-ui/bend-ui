@@ -71,3 +71,19 @@ export const WithSectionFooter: Story = {
     </Card>
   ),
 };
+
+export const WithCSSProp: Story = {
+  render: (args) => (
+    <Card {...args} css={{ color: 'primary' }}>
+      Card content
+    </Card>
+  ),
+};
+
+export const WithSystemProp: Story = {
+  render: (args) => (
+    <Card {...args} color="primary">
+      Card content
+    </Card>
+  ),
+};

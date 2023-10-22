@@ -1,22 +1,9 @@
-import { css, cx } from '@particles/panda-system/css';
+import { cx } from '@particles/panda-system/css';
 import { card } from '@particles/panda-system/recipes';
-
 import { createComponent, forwardRef } from '@particles/primitives';
-import { type ReactNode, useCallback } from 'react';
+import { type ReactNode } from 'react';
+import { styled } from '@particles/panda-system/jsx';
 import type { CardVariantProps } from '@particles/panda-system/recipes';
-
-const useComponent = (props: any) => {
-  const { css: cssProp = {}, className } = props;
-
-  const getComponentProps = useCallback(
-    (recipe?: string) => ({
-      className: cx(recipe, css(cssProp), className),
-    }),
-    [className, cssProp],
-  );
-
-  return { getComponentProps };
-};
 
 export interface CardSectionProps {
   children?: ReactNode;
@@ -28,16 +15,16 @@ const Section = forwardRef<'div', CardSectionProps>((props, ref) => {
   const {
     children,
     as: Component = 'div',
+    className,
     withBorder,
     inheritPadding,
     ...rest
   } = props;
 
-  const { getComponentProps } = useComponent(rest);
   const recipe = card({ withBorder, inheritPadding });
 
   return (
-    <Component ref={ref} {...getComponentProps(recipe.section)} {...rest}>
+    <Component ref={ref} className={cx(recipe.section, className)} {...rest}>
       {children}
     </Component>
   );
@@ -55,13 +42,12 @@ const Header = forwardRef<'div', CardHeaderProps>((props, ref) => {
     inheritPadding = true,
     ...rest
   } = props;
-  const { getComponentProps } = useComponent(rest);
   const recipe = card();
 
   return (
     <Section
       ref={ref}
-      {...getComponentProps(recipe.header)}
+      className={cx(recipe.header, className)}
       withBorder={withBorder}
       inheritPadding={inheritPadding}
       {...rest}
@@ -76,13 +62,18 @@ Header.displayName = 'Card.Header';
 export type CardFooterProps = CardSectionProps;
 
 const Footer = forwardRef<'div', CardFooterProps>((props, ref) => {
-  const { children, withBorder = true, inheritPadding = true, ...rest } = props;
-  const { getComponentProps } = useComponent(rest);
+  const {
+    children,
+    className,
+    withBorder = true,
+    inheritPadding = true,
+    ...rest
+  } = props;
   const recipe = card();
   return (
     <Section
       ref={ref}
-      {...getComponentProps(recipe.footer)}
+      className={cx(recipe.footer, className)}
       withBorder={withBorder}
       inheritPadding={inheritPadding}
       {...rest}
@@ -99,12 +90,11 @@ interface CardProps {
 }
 
 const Root = forwardRef<'div', CardProps>((props, ref) => {
-  const { children, as: Component = 'div', ...rest } = props;
-  const { getComponentProps } = useComponent(rest);
+  const { children, as: Component = 'div', className, ...rest } = props;
   const recipe = card();
 
   return (
-    <Component ref={ref} {...getComponentProps(recipe.root)} {...rest}>
+    <Component ref={ref} className={cx(recipe.root, className)} {...rest}>
       {children}
     </Component>
   );
@@ -112,4 +102,8 @@ const Root = forwardRef<'div', CardProps>((props, ref) => {
 
 Root.displayName = 'Card';
 
-export const Card = createComponent(Root, { Section, Header, Footer });
+export const Card = createComponent(styled(Root), {
+  Section: styled(Section),
+  Header: styled(Header),
+  Footer: styled(Footer),
+});

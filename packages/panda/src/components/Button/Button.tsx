@@ -1,31 +1,18 @@
 import {
   Button as ButtonPrimitive,
+  createComponent,
   createPolymorphicComponent,
+  forwardRef,
 } from '@particles/primitives';
-import { css, cx } from '@particles/panda-system/css';
 import { button } from '@particles/panda-system/recipes';
-import { forwardRef, useCallback } from 'react';
-import type { SystemStyleObject } from '@particles/panda-system/types';
+import { styled } from '@particles/panda-system/jsx';
 import type { ButtonVariantProps } from '@particles/panda-system/recipes';
+import { cx } from '../../system';
 import type { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
-
-const useComponent = (props: any) => {
-  const { css: cssProp = {}, className } = props;
-
-  const getComponentProps = useCallback(
-    (recipe?: string) => ({
-      className: cx(recipe, css(cssProp), className),
-    }),
-    [className, cssProp],
-  );
-
-  return { getComponentProps };
-};
 
 export type ButtonProps = ComponentPropsWithoutRef<'button'> & {
   as?: ElementType;
   children?: ReactNode;
-  css?: SystemStyleObject;
   palette?: ButtonVariantProps['palette'];
   variant?: ButtonVariantProps['variant'];
   size?: ButtonVariantProps['size'];
@@ -36,10 +23,11 @@ export type ButtonProps = ComponentPropsWithoutRef<'button'> & {
   isLoading?: boolean;
 };
 
-const Root = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+const Root = forwardRef<'button', ButtonProps>((props, ref) => {
   const {
     children,
     as = 'button',
+    className,
     palette = 'default',
     variant,
     size,
@@ -47,15 +35,13 @@ const Root = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     ...rest
   } = props;
 
-  const { getComponentProps } = useComponent(props);
-
-  const recipe = button({ palette, variant, size, isRounded });
+  const classes = button({ palette, variant, size, isRounded });
 
   return (
     <ButtonPrimitive.Root
       ref={ref}
       as={as}
-      {...getComponentProps(recipe.root)}
+      className={cx(classes.root, className)}
       {...rest}
     >
       {children}
@@ -65,4 +51,4 @@ const Root = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 
 Root.displayName = 'Button';
 
-export const Button = createPolymorphicComponent<'button', ButtonProps>(Root);
+export const Button = createComponent(styled(Root));

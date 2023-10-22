@@ -5,6 +5,8 @@ import { particlesPreset } from './packages/panda/src/preset';
 export default defineConfig({
   preflight: true,
 
+  jsxFramework: 'react',
+
   include: [
     path.resolve(
       __dirname,
