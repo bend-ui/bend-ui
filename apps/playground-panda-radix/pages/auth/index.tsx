@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import { center, splitLayout, stack } from '@particles/panda-system/patterns';
 import { css, cx } from '@particles/panda-system/css';
-import { Button, TextField } from '../../components';
+import { Button } from '@particles/panda-radix';
+import { TextField } from '../../components';
 
 const AuthPage = () => (
   <div className={splitLayout()}>

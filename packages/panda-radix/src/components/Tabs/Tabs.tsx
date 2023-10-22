@@ -1,7 +1,7 @@
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import { tabs } from '@particles/panda-system/recipes';
 
-import { createStyleContext } from './style-context';
+import { createStyleContext } from '../../utils';
 
 const { withProvider, withContext } = createStyleContext(tabs);
 

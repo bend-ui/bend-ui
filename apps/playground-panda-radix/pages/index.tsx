@@ -1,4 +1,5 @@
-import { css } from '@particles/panda-system/css';
+import { css, cx } from '@particles/panda-system/css';
+import { center } from '@particles/panda-system/patterns';
 import Link from 'next/link';
 
 const classes = css({
@@ -9,7 +10,12 @@ const classes = css({
 });
 
 const Index = () => (
-  <div>
+  <div
+    className={cx(
+      center(),
+      css({ height: 'screen', display: 'flex', gap: 'sm' }),
+    )}
+  >
     <Link className={classes} href="/dashboard">
       Dashboard
     </Link>

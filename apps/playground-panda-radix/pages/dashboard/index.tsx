@@ -8,16 +8,8 @@ import {
 } from '@particles/panda-system/patterns';
 import { appShell } from '@particles/panda-system/recipes';
 import { css, cx } from '@particles/panda-system/css';
-import {
-  Avatar,
-  Button,
-  Card,
-  List,
-  Modal,
-  Select,
-  Tabs,
-  TextField,
-} from '../../components';
+import { Button, Tabs } from '@particles/panda-radix';
+import { Avatar, Card, List, Modal, Select, TextField } from '../../components';
 import Sidebar from './components/sidebar';
 
 export function Dashboard() {
