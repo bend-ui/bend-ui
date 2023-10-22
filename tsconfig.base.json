@@ -17,7 +17,6 @@
     "baseUrl": ".",
     "paths": {
       "@particles/cli": ["packages/cli/src/index.ts"],
-      "@particles/emotion": ["packages/emotion/src/index.ts"],
       "@particles/panda": ["packages/panda/src/index.ts"],
       "@particles/panda-radix": ["packages/panda-radix/src/index.ts"],
       "@particles/panda-system/css": [
@@ -34,12 +33,8 @@
       ],
       "@particles/primitives": ["packages/primitives/src/index.ts"],
       "@particles/react-utils": ["packages/react-utils/src/index.ts"],
-      "@particles/styled-components": [
-        "packages/styled-components/src/index.ts"
-      ],
       "@particles/tailwind": ["packages/tailwind/src/index.ts"],
-      "@particles/theme": ["packages/theme/src/index.ts"],
-      "@particles/vanilla-extract": ["packages/vanilla-extract/src/index.ts"]
+      "@particles/theme": ["packages/theme/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

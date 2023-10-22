@@ -9,20 +9,8 @@
       "path": "packages/primitives"
     },
     {
-      "name": "📦 @particles/emotion",
-      "path": "packages/emotion"
-    },
-    {
-      "name": "📦 @particles/styled-components",
-      "path": "packages/styled-components"
-    },
-    {
       "name": "📦 @particles/theme",
       "path": "packages/theme"
-    },
-    {
-      "name": "📦 @particles/vanilla-extract",
-      "path": "packages/vanilla-extract"
     },
     {
       "name": "📦 @particles/tailwind",
@@ -49,10 +37,6 @@
       "path": "apps/website"
     },
     {
-      "name": "🧪 Playground (Emotion)",
-      "path": "apps/playground-emotion"
-    },
-    {
       "name": "🧪 Playground (Tailwind)",
       "path": "apps/playground-tailwind"
     },
@@ -73,38 +57,27 @@
     "typescript.tsdk": "✨ particles/node_modules/typescript/lib",
     "jest.disabledWorkspaceFolders": [
       "📦 @particles/primitives",
-      "📦 @particles/emotion",
-      "📦 @particles/styled-components",
-      "📦 @particles/theme",
-      "📦 @particles/vanilla-extract",
       "📦 @particles/tailwind",
       "📦 @particles/panda",
       "📦 @particles/panda-radix",
       "🛠️ @particles/react-utils",
       "📚 Website",
-      "🧪 Playground (Emotion)",
       "🧪 Playground (Tailwind)",
       "🧪 Playground (Panda)",
       "🧪 Playground (Panda + Radix)",
-      "🛠️ @particles/cli"
+      "🛠️ @particles/cli",
+      "📦 @particles/theme"
     ],
     "vitest.disabledWorkspaceFolders": [
       "📦 @particles/primitives",
-      "📦 @particles/emotion",
-      "📦 @particles/styled-components",
-      "📦 @particles/theme",
-      "📦 @particles/vanilla-extract",
       "📦 @particles/tailwind",
       "📦 @particles/panda",
       "🛠️ @particles/react-utils",
       "🛠️ @particles/cli",
-      "🧪 Playground (Emotion)",
       "🧪 Playground (Tailwind)",
       "🧪 Playground (Panda)",
       "📚 Website"
     ]
   },
-  "extensions": {
-    "recommendations": ["nrwl.angular-console"]
-  }
+  "extensions": {}
 }

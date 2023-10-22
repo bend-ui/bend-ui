@@ -1,47 +1,33 @@
 {
   "name": "theme",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/theme/src",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "theme/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/theme",
         "main": "packages/theme/src/index.ts",
         "tsConfig": "packages/theme/tsconfig.lib.json",
-        "assets": [
-          "packages/theme/*.md"
-        ],
-        "updateBuildableProjectDepsInPackageJson": true
+        "assets": ["packages/theme/*.md"]
       }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs theme {args.ver} {args.tag}",
+      "dependsOn": ["build"]
     },
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "packages/theme/**/*.ts"
+          "packages/theme/**/*.ts",
+          "packages/theme/package.json"
         ]
-      }
-    },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/packages/theme"
-      ],
-      "options": {
-        "jestConfig": "packages/theme/jest.config.ts",
-        "passWithNoTests": true
       }
     }
   },
-  "tags": [
-    "ui"
-  ]
+  "tags": []
 }

@@ -1,67 +1,6 @@
-import merge from 'deepmerge';
-import {
-  breakpoints,
-  fonts,
-  fontSizes,
-  fontWeights,
-  letterSpacings,
-  lineHeights,
-  palette,
-  radii,
-  shadows,
-  sizes,
-  spacing,
-} from './tokens';
-import type { CSSObject } from '@emotion/react';
-
-export const textStyles: Record<string, CSSObject> = {
-  display: {
-    fontSize: fontSizes['8xl'],
-    lineHeight: lineHeights['none'],
-    fontWeight: fontWeights.semibold,
-    letterSpacing: letterSpacings.tight,
-  },
-  headline: {
-    fontSize: fontSizes['6xl'],
-    lineHeight: lineHeights['none'],
-    fontWeight: fontWeights.bold,
-    letterSpacing: letterSpacings.tight,
-  },
-  title: {
-    fontSize: fontSizes['4xl'],
-    lineHeight: lineHeights['none'],
-    fontWeight: fontWeights.bold,
-  },
-  subtitle: {
-    fontSize: fontSizes['xl'],
-    lineHeight: lineHeights[7],
-  },
-  lead: {
-    fontSize: fontSizes['lg'],
-    lineHeight: lineHeights[6],
-  },
-  body: {
-    fontSize: fontSizes['md'],
-    lineHeight: lineHeights[5],
-  },
-  small: {
-    fontSize: fontSizes['sm'],
-    lineHeight: lineHeights[4],
-  },
-  caption: {
-    fontSize: fontSizes['xs'],
-    lineHeight: lineHeights[5],
-    textTransform: 'uppercase',
-  },
-};
+import { palette } from './tokens';
 
 export const theme = {
-  fonts,
-  fontSizes,
-  fontWeights,
-  lineHeights,
-  letterSpacings,
-  space: spacing,
   colors: {
     ...palette,
     neutral: palette.zinc200,
@@ -92,29 +31,4 @@ export const theme = {
     text: palette.neutral800,
     'text-muted': palette.neutral500,
   },
-  shadows: {
-    ...shadows,
-    focusRing: `0 0 0 4px ${palette.violet100}`,
-  },
-  radii,
-  zIndices: {},
-  breakpoints,
-  mediaQueries: {
-    bp1: '(max-width: 40em)',
-    bp2: '(max-width: 52em)',
-  },
-  sizes,
-  components: {},
-  fns: {
-    textStyles: (value: keyof typeof textStyles) => textStyles[value],
-    focusStyles: () => ({
-      '&:focus:not(:focus-visible)': {
-        outline: 'none',
-      },
-    }),
-  },
 };
-
-export type Theme = typeof theme;
-
-export const createTheme = (customTheme) => merge(theme, customTheme);

@@ -8,7 +8,3 @@ Design system tools for React
 
 - `@particles/primitives` - component primitives
 - `@particles/theme` - the default theme for Particles
-- `@particles/emotion` - tools for Emotion
-- `@particles/stitches` - tools for Stitches
-- `@particles/styled-components` - tools for Styled Components
-- `@particles/vanilla-extract` - tools for Vanilla Extract

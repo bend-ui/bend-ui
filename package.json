@@ -16,10 +16,6 @@
     "packages/*"
   ],
   "dependencies": {
-    "@emotion/css": "^11.11.2",
-    "@emotion/react": "11.11.1",
-    "@emotion/server": "11.11.0",
-    "@emotion/styled": "11.11.0",
     "@floating-ui/react": "^0.26.1",
     "@fontsource/inter": "^5.0.13",
     "@radix-ui/react-avatar": "^1.0.4",
@@ -42,7 +38,6 @@
     "regenerator-runtime": "0.13.11",
     "remark": "^14.0.3",
     "remark-html": "^15.0.2",
-    "styled-components": "5.3.9",
     "tailwind-merge": "^1.14.0",
     "tslib": "^2.5.3"
   },
@@ -54,7 +49,6 @@
     "@commitlint/cli": "^17.7.2",
     "@commitlint/config-conventional": "^17.7.0",
     "@commitlint/config-nx-scopes": "^17.6.4",
-    "@emotion/babel-plugin": "11.11.0",
     "@mertasan/tailwindcss-variables": "^2.7.0",
     "@nrwl/tao": "16.10.0",
     "@nx/cypress": "16.10.0",
