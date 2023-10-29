@@ -55,13 +55,13 @@ const SwitchInput = forwardRef<SwitchInputProps, 'input'>((props, ref) => {
     <VisuallyHidden>
       <input
         ref={ref}
-        type="checkbox"
-        role="switch"
         checked={context.isChecked}
         disabled={context.isDisabled}
-        onChange={handleChange}
-        name=""
         id=""
+        name=""
+        onChange={handleChange}
+        role="switch"
+        type="checkbox"
         {...rest}
       />
     </VisuallyHidden>

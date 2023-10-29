@@ -48,8 +48,8 @@ const Header = forwardRef<'div', CardHeaderProps>((props, ref) => {
     <Section
       ref={ref}
       className={cx(recipe.header, className)}
-      withBorder={withBorder}
       inheritPadding={inheritPadding}
+      withBorder={withBorder}
       {...rest}
     >
       <h2>{children}</h2>
@@ -74,8 +74,8 @@ const Footer = forwardRef<'div', CardFooterProps>((props, ref) => {
     <Section
       ref={ref}
       className={cx(recipe.footer, className)}
-      withBorder={withBorder}
       inheritPadding={inheritPadding}
+      withBorder={withBorder}
       {...rest}
     >
       {children}

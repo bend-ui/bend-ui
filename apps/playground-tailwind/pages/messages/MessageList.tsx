@@ -20,16 +20,16 @@ function MessageList(props: MessageListProps) {
             </span>
           </div>
           <div>
-            <Button palette="secondary" icon={<TbEdit />} label="Edit" />
+            <Button icon={<TbEdit />} label="Edit" palette="secondary" />
           </div>
         </Level>
         <div className="w-full">
           <Input
             icon={<TbSearch />}
-            type="search"
-            name=""
             id=""
+            name=""
             placeholder="Search"
+            type="search"
           />
         </div>
       </div>

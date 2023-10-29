@@ -12,7 +12,7 @@ export const Base: Story = {
   render: (args) => (
     <FormControl.Root {...args}>
       <label htmlFor="emailField">Email address</label>
-      <input type="text" name="" id="emailField" />
+      <input id="emailField" name="" type="text" />
       <div>Help text</div>
       <div>Error message</div>
     </FormControl.Root>

@@ -7,7 +7,7 @@ import './styles.css';
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider themes={['light', 'dark']} attribute="class">
+    <ThemeProvider attribute="class" themes={['light', 'dark']}>
       <Head>
         <title>Welcome to playground-panda-radix!</title>
       </Head>

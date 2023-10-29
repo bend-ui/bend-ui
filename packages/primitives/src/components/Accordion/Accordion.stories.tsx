@@ -157,7 +157,7 @@ export const Controlled: Story = {
     };
 
     return (
-      <Accordion.Root {...args} value={value} onChange={handleChange}>
+      <Accordion.Root {...args} onChange={handleChange} value={value}>
         <Accordion.Item value="item-1">
           <Accordion.Control>Item 1</Accordion.Control>
           <Accordion.Panel>

@@ -120,10 +120,10 @@ export const Button = forwardRef<ButtonProps, 'button'>((props, ref) => {
   return (
     <ButtonPrimitive.Root
       ref={ref}
+      aria-labelledby={label ? `button-label-${uuid}` : undefined}
       className={cn(classes.root, className)}
       disabled={disabled || isLoading}
       id={uuid}
-      aria-labelledby={label ? `button-label-${uuid}` : undefined}
       {...rest}
     >
       {isLoading ? (
@@ -142,7 +142,7 @@ export const Button = forwardRef<ButtonProps, 'button'>((props, ref) => {
       )}
 
       {label && (
-        <span id={`button-label-${uuid}`} className="sr-only">
+        <span className="sr-only" id={`button-label-${uuid}`}>
           {label}
         </span>
       )}

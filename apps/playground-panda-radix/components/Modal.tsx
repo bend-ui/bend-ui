@@ -32,9 +32,9 @@ const Content = (props: ModalContentProps) => {
       >
         {children}
         <DialogPrimitive.Close
-          className={classes.close}
           aria-label="Close"
           asChild
+          className={classes.close}
         >
           <Button>
             <TbX />

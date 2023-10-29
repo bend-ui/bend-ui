@@ -64,7 +64,7 @@ function MessageView() {
           return (
             <Media key={`user-${userId}`}>
               <Media.Image>
-                <Avatar src={user.avatar} size="lg" />
+                <Avatar size="lg" src={user.avatar} />
               </Media.Image>
               <Media.Body>
                 <div className="flex place-items-center gap-2 text-2xl font-semibold text-neutral-800">
@@ -84,7 +84,7 @@ function MessageView() {
           <Button>Call</Button>
           <Button palette="secondary">Archive</Button>
           <Button>View profile</Button>
-          <Button icon={<TbDotsVertical />} palette="secondary" label="More" />
+          <Button icon={<TbDotsVertical />} label="More" palette="secondary" />
         </ButtonGroup>
       </div>
       {/* Message feed */}
@@ -118,12 +118,12 @@ function MessageView() {
       {/* Message box */}
       <div className="sticky grow-0 p-4">
         <textarea
-          name=""
-          id=""
-          cols={30}
-          rows={5}
-          placeholder="Send a message"
           className="w-full rounded-2xl border border-neutral-300 p-4"
+          cols={30}
+          id=""
+          name=""
+          placeholder="Send a message"
+          rows={5}
         />
         <ButtonGroup>
           <Button palette="secondary">

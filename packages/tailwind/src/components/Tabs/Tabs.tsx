@@ -41,17 +41,17 @@ const Tabs = forwardRef((props, ref) => {
       {...rest}
     >
       <Primitive.List className={twMerge(classes.list)}>
-        <Primitive.Tab value="tab1" className={classes.tab}>
+        <Primitive.Tab className={classes.tab} value="tab1">
           Tab 1
         </Primitive.Tab>
-        <Primitive.Tab value="tab2" className={classes.tab}>
+        <Primitive.Tab className={classes.tab} value="tab2">
           Tab 2
         </Primitive.Tab>
       </Primitive.List>
-      <Primitive.Panel value="tab1" className={classes.panel}>
+      <Primitive.Panel className={classes.panel} value="tab1">
         <h2>Tab 1</h2>
       </Primitive.Panel>
-      <Primitive.Panel value="tab2" className={classes.panel}>
+      <Primitive.Panel className={classes.panel} value="tab2">
         <h2>Tab 2</h2>
       </Primitive.Panel>
     </Primitive.Root>

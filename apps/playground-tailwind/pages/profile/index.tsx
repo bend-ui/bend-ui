@@ -46,9 +46,9 @@ export default function ProfilePage(
           </div>
           <div className="ml-auto flex items-center gap-2">
             <Button
-              palette="secondary"
               icon={<TbDotsVertical />}
               label="More"
+              palette="secondary"
             />
             <Button>View portfolio</Button>
             <Button>Follow</Button>

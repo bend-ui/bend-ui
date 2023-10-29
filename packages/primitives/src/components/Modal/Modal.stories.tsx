@@ -46,10 +46,10 @@ export const Base: Story = {
                 </div>
                 {/* Modal footer */}
                 <div>
-                  <button type="button" onClick={close}>
+                  <button onClick={close} type="button">
                     I accept
                   </button>
-                  <button type="button" onClick={close}>
+                  <button onClick={close} type="button">
                     Decline
                   </button>
                 </div>

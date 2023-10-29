@@ -12,7 +12,7 @@ export const Base: Story = {
   render: (args) => (
     <Media.Root {...args}>
       <Media.Image style={mediaStyles.image}>
-        <img src="https://picsum.photos/100" alt="A nice view" />
+        <img alt="A nice view" src="https://picsum.photos/100" />
       </Media.Image>
       <Media.Body style={mediaStyles.body}>
         Hey yo. Everybody&apos;s got a price for the Million Dollar Man!

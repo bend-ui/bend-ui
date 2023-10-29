@@ -36,10 +36,10 @@ const Music = () => {
           {listenNowAlbums.map((album) => (
             <div key={album.name}>
               <Image
-                src={album.cover}
                 alt={album.name}
-                width={300}
                 height={300}
+                src={album.cover}
+                width={300}
               />
               <span>{album.artist}</span>
               <span>{album.name}</span>

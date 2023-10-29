@@ -17,8 +17,8 @@ export const MenuButton = forwardRef<MenuButtonProps, 'button'>(
 
     return (
       <Button
-        className={clsx(twButtonStyles.root)}
         ref={mergedRefs}
+        className={clsx(twButtonStyles.root)}
         {...getReferenceProps(rest)}
       >
         {children}

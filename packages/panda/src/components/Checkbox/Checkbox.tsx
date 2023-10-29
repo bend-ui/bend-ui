@@ -45,7 +45,7 @@ const Component = forwardRef<'input', CheckboxProps>((props, ref) => {
   const { children, className, ...rest } = props;
   return (
     <CheckboxPrimitive.Root className={cx(styles.root(), className)}>
-      <CheckboxPrimitive.Input hidden ref={ref} {...rest} />
+      <CheckboxPrimitive.Input ref={ref} hidden {...rest} />
       <CheckboxPrimitive.Control className={styles.control()}>
         <TbCheck />
       </CheckboxPrimitive.Control>

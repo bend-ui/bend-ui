@@ -14,12 +14,12 @@ const AuthPage = () => (
       })}
     >
       <Image
-        src="/images/bg.jpg"
         alt=""
-        fill
         className={css({
           objectFit: 'cover',
         })}
+        fill
+        src="/images/bg.jpg"
       />
       Marketing
     </div>

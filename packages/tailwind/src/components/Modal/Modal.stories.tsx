@@ -18,9 +18,9 @@ export const Base: Story = {
         <Button onClick={() => setOpen(!open)}>Button</Button>
         <Modal {...args} isOpen={open}>
           <label htmlFor="email">Email</label>
-          <Input type="text" name="email" id="" />
+          <Input id="" name="email" type="text" />
           <label htmlFor="password">Password</label>
-          <Input type="password" name="password" id="" />
+          <Input id="" name="password" type="password" />
           <Button>Continue</Button>
         </Modal>
       </>

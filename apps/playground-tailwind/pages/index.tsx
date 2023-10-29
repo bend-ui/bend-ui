@@ -13,7 +13,7 @@ export function Index() {
   return (
     <div className="flex h-screen w-full items-center justify-center gap-2">
       {items.map((item) => (
-        <Card className="flex" key={item}>
+        <Card key={item} className="flex">
           <Link className="p-4" href={item}>
             {item}
           </Link>

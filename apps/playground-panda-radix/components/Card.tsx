@@ -24,7 +24,7 @@ const Header = (props: CardHeaderProps) => {
   const { children, withBorder = true, inheritPadding = true, ...rest } = props;
 
   return (
-    <Section withBorder={withBorder} inheritPadding={inheritPadding} {...rest}>
+    <Section inheritPadding={inheritPadding} withBorder={withBorder} {...rest}>
       {children}
     </Section>
   );

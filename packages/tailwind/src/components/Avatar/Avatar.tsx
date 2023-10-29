@@ -39,7 +39,7 @@ const Avatar = forwardRef<AvatarProps, 'div'>((props, ref) => {
   const { classes, cn } = useStyles({ size });
   return (
     <AvatarPrimitive.Root ref={ref} className={cn(classes.root, className)}>
-      <AvatarPrimitive.Image src={src} className={classes.image} />
+      <AvatarPrimitive.Image className={classes.image} src={src} />
       {fallback && (
         <AvatarPrimitive.Fallback className={classes.fallback}>
           {fallback}

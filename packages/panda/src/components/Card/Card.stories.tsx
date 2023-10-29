@@ -40,14 +40,14 @@ export const WithSectionBorder: Story = {
 export const WithSectionInheritPadding: Story = {
   render: (args) => (
     <Card {...args}>
-      <Card.Section withBorder inheritPadding>
+      <Card.Section inheritPadding withBorder>
         A Header
       </Card.Section>
       Card content
-      <Card.Section withBorder inheritPadding>
+      <Card.Section inheritPadding withBorder>
         A banner
       </Card.Section>
-      <Card.Section withBorder inheritPadding>
+      <Card.Section inheritPadding withBorder>
         A footer
       </Card.Section>
     </Card>

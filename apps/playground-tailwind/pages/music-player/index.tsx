@@ -44,29 +44,29 @@ export function MusicPlayer(props: MusicPlayerProps) {
       <aside className="h-full flex-none px-4 py-6">
         <Stack as="nav" className="h-full gap-1">
           <Link href="/">Particles</Link>
-          <Link href="/music-player/" className={navItemStyles}>
+          <Link className={navItemStyles} href="/music-player/">
             <TbHome />
             Home
           </Link>
-          <Link href="/music-player/search" className={navItemStyles}>
+          <Link className={navItemStyles} href="/music-player/search">
             <TbSearch />
             Search
           </Link>
-          <Link href="/music-player/favorites" className={navItemStyles}>
+          <Link className={navItemStyles} href="/music-player/favorites">
             <TbHeart />
             Favorites
           </Link>
-          <Link href="/music-player/discover" className={navItemStyles}>
+          <Link className={navItemStyles} href="/music-player/discover">
             <TbNorthStar />
             Discover
           </Link>
-          <Link href="/music-player/library" className={navItemStyles}>
+          <Link className={navItemStyles} href="/music-player/library">
             <TbBooks />
             Library
           </Link>
           <Link
-            href="/music-player/settings"
             className={cn(navItemStyles, 'mt-auto')}
+            href="/music-player/settings"
           >
             <TbSettings />
             Settings
@@ -84,9 +84,9 @@ export function MusicPlayer(props: MusicPlayerProps) {
           <DropdownMenu>
             <DropdownMenu.Target
               as={Button}
-              palette="secondary"
               icon={<TbBellFilled />}
               label="Notifications"
+              palette="secondary"
             />
             <DropdownMenu.Menu>
               <DropdownMenu.MenuItem>A notification</DropdownMenu.MenuItem>
@@ -118,8 +118,8 @@ export function MusicPlayer(props: MusicPlayerProps) {
                     <DropdownMenu.Target
                       as={Button}
                       icon={<TbDots />}
-                      palette="secondary"
                       label="More"
+                      palette="secondary"
                     />
                     <DropdownMenu.Menu>
                       <DropdownMenu.MenuItem>Hello</DropdownMenu.MenuItem>
@@ -154,18 +154,18 @@ export function MusicPlayer(props: MusicPlayerProps) {
         <Level>
           <Text>Now playing</Text>
           <Button
-            palette="secondary"
             icon={<TbLayoutSidebarRightCollapse />}
             label="Collapse"
             onClick={() => alert('Implement drawer')}
+            palette="secondary"
           />
         </Level>
         <Stack>
           <Image
-            src="/images/album-art-1.jpg"
             alt="Album cover"
-            width={300}
             height={300}
+            src="/images/album-art-1.jpg"
+            width={300}
           />
           <Text>Song title</Text>
           <Text>Artist</Text>
@@ -174,7 +174,7 @@ export function MusicPlayer(props: MusicPlayerProps) {
         <ButtonGroup>
           <Button icon={<TbArrowsShuffle />}>Shuffle</Button>
           <Button icon={<TbPlayerTrackPrevFilled />}>Previous</Button>
-          <Button label="Pause" icon={<TbPlayerPauseFilled />} isRounded />
+          <Button icon={<TbPlayerPauseFilled />} isRounded label="Pause" />
           <Button icon={<TbPlayerTrackNextFilled />}>Next</Button>
           <Button icon={<TbRepeat />}>Repeat</Button>
         </ButtonGroup>

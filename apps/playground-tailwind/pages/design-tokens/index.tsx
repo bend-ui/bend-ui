@@ -54,10 +54,10 @@ export function DesignTokens(props: DesignTokensProps) {
               <DropdownMenu>
                 <DropdownMenu.Target
                   as={Button}
-                  palette="secondary"
                   className="border-none bg-transparent shadow-none hover:bg-gray-200"
                   icon={<RiSettings5Line />}
                   label="Settings"
+                  palette="secondary"
                 />
                 <DropdownMenu.Menu>
                   <DropdownMenu.MenuItem>Settings</DropdownMenu.MenuItem>
@@ -67,10 +67,10 @@ export function DesignTokens(props: DesignTokensProps) {
               <DropdownMenu>
                 <DropdownMenu.Target
                   as={Button}
-                  palette="secondary"
                   className="border-none bg-transparent shadow-none hover:bg-gray-200"
                   icon={<RiNotification3Line />}
                   label="Notifications"
+                  palette="secondary"
                 />
                 <DropdownMenu.Menu>
                   <DropdownMenu.MenuItem>A notification</DropdownMenu.MenuItem>

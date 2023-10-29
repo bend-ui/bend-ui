@@ -67,8 +67,8 @@ export function Dashboard() {
         <div className={css({ mt: 'auto' })}>
           <Avatar>
             <Avatar.Image
-              src="https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?&w=128&h=128&dpr=2&q=80"
               alt="Colm Tuite"
+              src="https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?&w=128&h=128&dpr=2&q=80"
             />
             <Avatar.Fallback>CT</Avatar.Fallback>
           </Avatar>
@@ -152,15 +152,15 @@ export function Dashboard() {
               <div className={stack({ gap: 'md' })}>
                 <fieldset>
                   <TextField
-                    id="name"
                     defaultValue="Particles UI"
+                    id="name"
                     label="Name"
                   />
                 </fieldset>
                 <fieldset>
                   <TextField
-                    id="username"
                     defaultValue="@particlesui"
+                    id="username"
                     label="Username"
                   />
                 </fieldset>
@@ -185,24 +185,24 @@ export function Dashboard() {
                   <TextField
                     className="Input"
                     id="currentPassword"
-                    type="password"
                     label="Current password"
+                    type="password"
                   />
                 </fieldset>
                 <fieldset>
                   <TextField
                     className="Input"
                     id="newPassword"
-                    type="password"
                     label="New password"
+                    type="password"
                   />
                 </fieldset>
                 <fieldset>
                   <TextField
                     className="Input"
                     id="confirmPassword"
-                    type="password"
                     label="Confirm password"
+                    type="password"
                   />
                 </fieldset>
               </div>

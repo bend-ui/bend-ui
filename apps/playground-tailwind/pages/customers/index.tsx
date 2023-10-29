@@ -35,9 +35,9 @@ export default function CustomersPage() {
             <Level>
               <span>Text</span>
               <Button
-                palette="secondary"
                 icon={<TbDotsVertical />}
                 label="More"
+                palette="secondary"
               />
             </Level>
             <Level>
@@ -49,9 +49,9 @@ export default function CustomersPage() {
             <Level>
               <span>Text</span>
               <Button
-                palette="secondary"
                 icon={<TbDotsVertical />}
                 label="More"
+                palette="secondary"
               />
             </Level>
             <Level>
@@ -63,9 +63,9 @@ export default function CustomersPage() {
             <Level>
               <span>Text</span>
               <Button
-                palette="secondary"
                 icon={<TbDotsVertical />}
                 label="More"
+                palette="secondary"
               />
             </Level>
             <Level>
