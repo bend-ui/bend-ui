@@ -4,7 +4,6 @@ const config: StorybookConfig = {
   core: {},
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
-    '@nx/react/plugins/storybook',
     '@storybook/addon-essentials',
     'storybook-dark-mode',
     '@storybook/addon-a11y',

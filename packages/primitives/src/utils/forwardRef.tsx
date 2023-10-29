@@ -81,6 +81,11 @@ export interface ComponentWithAs<
   id?: string;
 }
 
+/**
+ * Creates a polymorphic component with ref fowarding
+ * @param args Component, Props
+ **/
+
 export function forwardRef<
   Component extends ElementType,
   Props extends Record<never, never> = Record<never, never>,

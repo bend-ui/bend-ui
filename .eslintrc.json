@@ -44,6 +44,19 @@
         ]
       }
     ],
+    "react/destructuring-assignment": [
+      "error",
+      "always",
+      {
+        "destructureInSignature": "ignore"
+      }
+    ],
+    "react/jsx-sort-props": [
+      "warn",
+      {
+        "reservedFirst": true
+      }
+    ],
     "react/self-closing-comp": [
       "error",
       {
@@ -57,7 +70,8 @@
         "prefer": "type-imports"
       }
     ],
-    "@typescript-eslint/consistent-type-definitions": ["error", "interface"]
+    "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
+    "storybook/no-uninstalled-addons": "off"
   },
   "settings": {
     "import/parsers": {
