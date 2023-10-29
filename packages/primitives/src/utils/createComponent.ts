@@ -1,6 +1,6 @@
 import type { ComponentType } from 'react';
 
-export type StaticComponents = Record<string, React.FC<any>>;
+export type StaticComponents = Record<string, ComponentType<any>>;
 
 /** component, compount components */
 export const createComponent = <
