@@ -1,35 +1,46 @@
 'use client';
-import {
-  type ComponentType,
-  createContext,
-  forwardRef,
-  useContext,
-} from 'react';
+
+import { createContext, forwardRef, useContext } from 'react';
+import type { ComponentType } from 'react';
 
 type AnyProps = Record<string, unknown>;
-
 interface AnyRecipe {
   (props?: AnyProps): Record<string, string>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   splitVariantProps: (props: AnyProps) => any;
 }
 
-export const createStyleContext = <R extends AnyRecipe>(recipe: R) => {
-  const StyleContext = createContext<Record<string, string> | null>(null);
-  const useStyleContext = () => useContext(StyleContext);
+type Slots<R extends () => Record<string, string>> = keyof ReturnType<R>;
 
-  const withProvider = <T extends object>(
+export const createStyleContext = <R extends AnyRecipe>(recipe: R) => {
+  const StyleContext = createContext<ReturnType<R> | null>(null);
+
+  const withProvider = <T,>(
     Component: ComponentType<T>,
-    slot?: string,
+    slot: Slots<R>,
+    defaultProps?: Partial<T> & { className?: string },
   ) => {
     const Comp = forwardRef((props: T & Parameters<R>[0], ref) => {
-      if (!recipe) return null;
-
-      const [variantProps, rest] = recipe.splitVariantProps(props);
-      const classes = recipe(variantProps);
+      const [variantProps, otherProps] = recipe.splitVariantProps(
+        props as AnyProps,
+      );
+      const { className = '', ...rest } = otherProps;
+      const styles = recipe(variantProps) as ReturnType<R>;
+      const slotClass = styles?.[slot ?? ''];
+      const classNames = [
+        defaultProps?.className ?? null,
+        slotClass ?? null,
+        className ?? null,
+      ].filter(Boolean);
 
       return (
-        <StyleContext.Provider value={classes}>
-          <Component ref={ref} className={classes?.[slot ?? '']} {...rest} />
+        <StyleContext.Provider value={styles}>
+          <Component
+            ref={ref}
+            {...defaultProps}
+            className={classNames.join(' ')}
+            {...rest}
+          />
         </StyleContext.Provider>
       );
     });
@@ -37,27 +48,45 @@ export const createStyleContext = <R extends AnyRecipe>(recipe: R) => {
     return Comp;
   };
 
-  const withContext = <T extends object>(
+  const withContext = <T,>(
     Component: ComponentType<T>,
-    part?: string,
+    slot?: Slots<R>,
+    defaultProps?: Partial<T> & { className?: string },
   ) => {
-    if (!part) return Component;
+    if (!slot) return Component;
 
-    const Comp = forwardRef((props: T, ref) => {
-      const classes = useStyleContext();
-      return (
-        <Component ref={ref} className={classes?.[part ?? '']} {...props} />
-      );
-    });
+    const Comp = forwardRef(
+      ({ className, ...rest }: T & { className?: string }, ref) => {
+        const styles = useContext(StyleContext);
+        const slotClass = styles?.[slot ?? ''];
+        const classNames = [
+          defaultProps?.className ?? null,
+          slotClass ?? null,
+          className ?? null,
+        ].filter(Boolean);
 
+        return (
+          <Component
+            ref={ref}
+            {...defaultProps}
+            className={classNames.join(' ')}
+            {...(rest as T)}
+          />
+        );
+      },
+    );
     Comp.displayName = Component.displayName || Component.name;
-
     return Comp;
+  };
+
+  const useSlot = (slot?: Slots<R>) => {
+    const styles = useContext(StyleContext);
+    return styles?.[slot ?? ''] ?? '';
   };
 
   return {
     withProvider,
     withContext,
-    useStyleContext,
+    useSlot,
   };
 };
