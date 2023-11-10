@@ -36,8 +36,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/packages/primitives"],
       "options": {
-        "jestConfig": "packages/primitives/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "packages/primitives/jest.config.ts"
       }
     },
     "storybook": {
