@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ComponentTemplate = ({ componentName }) => (
+const ComponentTemplate = () => (
   <div>{/* Your {componentName} component */}</div>
 );
 
