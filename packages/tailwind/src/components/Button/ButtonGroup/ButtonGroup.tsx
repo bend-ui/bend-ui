@@ -10,7 +10,7 @@ const useStyles = createStyles({
   },
 });
 
-const ButtonGroup = forwardRef<ButtonGroupProps, 'div'>((props, ref) => {
+const ButtonGroup = forwardRef<'div', ButtonGroupProps>((props, ref) => {
   const { children, as: Component = 'div', className, ...rest } = props;
   const { classes, cn } = useStyles();
   return (
@@ -20,4 +20,4 @@ const ButtonGroup = forwardRef<ButtonGroupProps, 'div'>((props, ref) => {
   );
 });
 
-export default createComponent(ButtonGroup, {}, 'ButtonGroup');
+export default createComponent(ButtonGroup, {});

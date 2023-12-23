@@ -17,8 +17,8 @@ export const useTransition = (props: UseTransitionProps) => {
 
   const hasReducedMotion = useReducedMotion();
   const transitionDuration = hasReducedMotion ? 0 : duration;
-  const [transitionStatus, setTransitionStatus] = useState<TransitionStatus>(
-    isMounted ? 'entered' : 'exited'
+  const [transitionStatus] = useState<TransitionStatus>(
+    isMounted ? 'entered' : 'exited',
   );
 
   return {

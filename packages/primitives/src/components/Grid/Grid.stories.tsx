@@ -1,4 +1,3 @@
-import React from 'react';
 import { useGrid } from './useGrid';
 import type { Meta } from '@storybook/react';
 

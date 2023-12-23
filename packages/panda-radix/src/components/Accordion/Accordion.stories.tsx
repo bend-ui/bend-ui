@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 export default { component: Accordion } as Meta<typeof Accordion>;
 
-export const DefaultAccordion: StoryObj<typeof Accordion> = {
+export const Base: StoryObj<typeof Accordion> = {
   render: (args) => (
     <Accordion {...args}>
       <Accordion.Item value="item-1">

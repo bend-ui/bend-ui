@@ -7,12 +7,21 @@ export const layerStyles = defineLayerStyles({
       backgroundColor: 'surface',
     },
   },
-  element: {
+  panel: {
     value: {
-      backgroundColor: 'surface',
-      borderWidth: '1px',
-      borderStyle: 'solid',
-      borderColor: { base: 'shark.200', _dark: 'shark.700' },
+      backgroundColor: 'bg.surface',
+      border: 'base',
+      _focus: {},
+      _focusVisible: {
+        boxShadow: 'inner',
+      },
+    },
+  },
+  panelRaised: {
+    value: {
+      backgroundColor: 'bg.surface.raise',
+      border: 'base',
+      borderRadius: 'md',
       _focus: {},
       _focusVisible: {
         boxShadow: 'inner',

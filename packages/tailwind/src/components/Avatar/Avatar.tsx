@@ -34,7 +34,7 @@ const useStyles = createStyles({
   },
 });
 
-const Avatar = forwardRef<AvatarProps, 'div'>((props, ref) => {
+const Avatar = forwardRef<'div', AvatarProps>((props, ref) => {
   const { className, src, fallback, size = 'md' } = props;
   const { classes, cn } = useStyles({ size });
   return (
@@ -49,4 +49,4 @@ const Avatar = forwardRef<AvatarProps, 'div'>((props, ref) => {
   );
 });
 
-export default createComponent(Avatar, {}, 'Avatar');
+export default createComponent(Avatar, {});

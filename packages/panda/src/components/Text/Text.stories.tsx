@@ -3,6 +3,7 @@ import { Text } from './';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Text> = {
+  title: 'Components/Typography/Text',
   component: Text,
   args: {
     children:

@@ -8,7 +8,7 @@ export interface MenuListProps {
   children?: ReactNode;
 }
 
-export const MenuList = forwardRef<MenuListProps, 'div'>((props, ref) => {
+export const MenuList = forwardRef<'div', MenuListProps>((props, ref) => {
   const { children, ...rest } = props;
   const { refs, getFloatingProps, ...context } = useMenuContext();
   const mergedRefs = useMergeRefs([ref, refs.setFloating]);

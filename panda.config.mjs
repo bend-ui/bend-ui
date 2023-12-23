@@ -21,7 +21,11 @@ export default defineConfig({
       './apps/playground-panda-radix/components/**/*.{js,jsx,ts,tsx}',
     ),
     path.resolve(__dirname, './apps/website/pages/**/*.{js,jsx,ts,tsx}'),
-    path.resolve(__dirname, './packages/panda/src/**/*.{js,jsx,ts,tsx}'),
+    path.resolve(
+      __dirname,
+      './packages/panda/src/**/*.{js,jsx,ts,tsx}',
+      './packages/panda-radix/src/**/*.{js,jsx,ts,tsx}',
+    ),
   ],
 
   exclude: [],

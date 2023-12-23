@@ -1,105 +1,52 @@
-import { forwardRef } from 'react';
-import { createComponent } from '@particles/primitives';
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
-import { cx } from '@particles/panda-system/css';
-import type {
-  ComponentPropsWithoutRef,
-  ElementRef,
-  HTMLAttributes,
-} from 'react';
+import { styled } from '@particles/panda-system/jsx';
+import { modal } from '@particles/panda-system/recipes';
+import { createStyleContext } from '../../utils';
+import type { ReactNode } from 'react';
 
-const Root = AlertDialogPrimitive.Root;
+const { withProvider, withContext } = createStyleContext(modal);
+
+const Root = withProvider(AlertDialogPrimitive.Root, 'root');
 
 const Trigger = AlertDialogPrimitive.Trigger;
 
 const Portal = AlertDialogPrimitive.Portal;
 
-const Overlay = forwardRef<
-  ElementRef<typeof AlertDialogPrimitive.Overlay>,
-  ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Overlay>
->(({ className, children, ...props }, ref) => (
-  <AlertDialogPrimitive.Overlay
-    className={cx(className)}
-    {...props}
-    ref={ref}
-  />
-));
+const Overlay = withContext(styled(AlertDialogPrimitive.Overlay), 'overlay');
 
-Overlay.displayName = AlertDialogPrimitive.Overlay.displayName;
+const Content = withContext(styled(AlertDialogPrimitive.Content), 'content');
 
-const Content = forwardRef<
-  ElementRef<typeof AlertDialogPrimitive.Content>,
-  ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Content>
->(({ className, ...props }, ref) => (
-  <Portal>
-    <Overlay />
-    <AlertDialogPrimitive.Content
-      ref={ref}
-      className={cx(className)}
-      {...props}
-    />
-  </Portal>
-));
+const Header = withContext(styled('div'), 'header');
 
-Content.displayName = AlertDialogPrimitive.Content.displayName;
+const Footer = withContext(styled('div'), 'footer');
 
-const Header = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => (
-  <div className={cx(className)} {...props} />
+const Title = withContext(styled(AlertDialogPrimitive.Title), 'title');
+
+export const Description = withContext(
+  styled(AlertDialogPrimitive.Description),
+  'description',
 );
 
-Header.displayName = 'AlertDialogHeader';
+const Action = withContext(styled(AlertDialogPrimitive.Action), 'action');
 
-const Footer = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => (
-  <div className={cx(className)} {...props} />
-);
+const Cancel = withContext(styled(AlertDialogPrimitive.Cancel), 'cancel');
 
-Footer.displayName = 'AlertDialogFooter';
+export interface AlertDialogProps {
+  children: ReactNode;
+}
 
-const Title = forwardRef<
-  ElementRef<typeof AlertDialogPrimitive.Title>,
-  ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Title>
->(({ className, ...props }, ref) => (
-  <AlertDialogPrimitive.Title
-    ref={ref}
-    className={cx('text-lg font-semibold', className)}
-    {...props}
-  />
-));
+const AlertDialog = (props: AlertDialogProps) => {
+  const { children, ...rest } = props;
+  return (
+    <Root {...rest}>
+      <Portal>
+        <Content>{children}</Content>
+      </Portal>
+    </Root>
+  );
+};
 
-Title.displayName = AlertDialogPrimitive.Title.displayName;
-
-const Description = forwardRef<
-  ElementRef<typeof AlertDialogPrimitive.Description>,
-  ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Description>
->(({ className, ...props }, ref) => (
-  <AlertDialogPrimitive.Description
-    ref={ref}
-    className={cx(className)}
-    {...props}
-  />
-));
-
-Description.displayName = AlertDialogPrimitive.Description.displayName;
-
-const Action = forwardRef<
-  ElementRef<typeof AlertDialogPrimitive.Action>,
-  ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Action>
->(({ className, ...props }, ref) => (
-  <AlertDialogPrimitive.Action ref={ref} className={cx(className)} {...props} />
-));
-
-Action.displayName = AlertDialogPrimitive.Action.displayName;
-
-const Cancel = forwardRef<
-  ElementRef<typeof AlertDialogPrimitive.Cancel>,
-  ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Cancel>
->(({ className, ...props }, ref) => (
-  <AlertDialogPrimitive.Cancel ref={ref} className={cx(className)} {...props} />
-));
-
-Cancel.displayName = AlertDialogPrimitive.Cancel.displayName;
-
-export default createComponent(Root, {
+export default Object.assign(AlertDialog, {
   Root,
   Portal,
   Overlay,

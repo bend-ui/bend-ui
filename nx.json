@@ -36,10 +36,18 @@
   "generators": {
     "@nx/react": {
       "application": {
+        "style": "none",
+        "linter": "eslint",
+        "bundler": "vite",
         "babel": true
       },
       "library": {
+        "style": "none",
+        "linter": "eslint",
         "unitTestRunner": "vitest"
+      },
+      "component": {
+        "style": "none"
       }
     },
     "@nx/next": {
@@ -52,5 +60,12 @@
   "defaultProject": "playground-tailwind",
   "extends": "nx/presets/npm.json",
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "nxCloudAccessToken": "NDU1YmQ4ODEtZmY4MS00Mzk4LTgxZTAtMTVhYWY2MjRiMDgyfHJlYWQtd3JpdGU="
+  "nxCloudAccessToken": "NDU1YmQ4ODEtZmY4MS00Mzk4LTgxZTAtMTVhYWY2MjRiMDgyfHJlYWQtd3JpdGU=",
+  "tasksRunnerOptions": {
+    "default": {
+      "options": {
+        "cacheableOperations": ["build-storybook"]
+      }
+    }
+  }
 }

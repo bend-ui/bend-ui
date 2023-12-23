@@ -1,6 +1,7 @@
+import { defineTokens } from '@pandacss/dev';
 import { theme } from '@particles/theme';
 
-export const colors = {
+export const colors = defineTokens.colors({
   shark: {
     50: {
       value: theme.colors.shark50,
@@ -33,4 +34,4 @@ export const colors = {
       value: theme.colors.shark900,
     },
   },
-};
+});

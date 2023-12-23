@@ -1,6 +1,5 @@
-import React from 'react';
 import { Level, levelStyles } from '.';
-import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 export default {
   title: 'Layout/Level',

@@ -16,13 +16,9 @@ const Root = (props: MenuProps) => {
   return <MenuProvider value={context}>{children}</MenuProvider>;
 };
 
-export default createComponent(
+export default createComponent(Root, {
   Root,
-  {
-    Root,
-    Button: MenuButton,
-    List: MenuList,
-    Item: MenuItem,
-  },
-  'Menu'
-);
+  Button: MenuButton,
+  List: MenuList,
+  Item: MenuItem,
+});

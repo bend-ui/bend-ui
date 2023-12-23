@@ -1,7 +1,9 @@
+import { Text } from '../Text';
 import { Card } from './';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Card> = {
+  title: 'Components/Layout/Card',
   component: Card,
 };
 
@@ -11,7 +13,14 @@ type Story = StoryObj<typeof Card>;
 
 export const Base: Story = {
   args: {
-    children: 'A card component',
+    children: (
+      <>
+        <Text as="h2" variant="title">
+          Card content
+        </Text>
+        <Text>Card content</Text>
+      </>
+    ),
   },
 };
 

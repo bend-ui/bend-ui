@@ -58,7 +58,7 @@ const useStyles = createStyles({
   },
 });
 
-const Input = forwardRef<InputProps, 'input'>((props, ref) => {
+const Input = forwardRef<'input', InputProps>((props, ref) => {
   const {
     as: Component = 'input',
     className,

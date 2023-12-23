@@ -3,8 +3,9 @@ import { defineSlotRecipe } from '@pandacss/dev';
 export const modalRecipe = defineSlotRecipe({
   description: 'Modal styles',
   className: 'Modal',
-  slots: ['trigger', 'overlay', 'content', 'close'],
+  slots: ['root', 'trigger', 'overlay', 'content', 'header', 'close', 'footer'],
   base: {
+    root: {},
     trigger: {},
     overlay: {
       position: 'fixed',
@@ -26,7 +27,7 @@ export const modalRecipe = defineSlotRecipe({
       width: '90vw',
       maxW: '450px',
       maxH: '85vh',
-      backgroundColor: 'surface',
+      backgroundColor: 'bg.surface.raise',
       padding: 'lg',
       rounded: 'lg',
       _open: {
@@ -36,6 +37,13 @@ export const modalRecipe = defineSlotRecipe({
         animation: 'fadeOut 300ms ease-out',
       },
     },
+    header: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      mb: 'lg',
+    },
+    footer: {},
     close: {
       position: 'absolute',
       top: '10px',

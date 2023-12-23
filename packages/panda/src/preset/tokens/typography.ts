@@ -1,4 +1,6 @@
-export const fonts = {
+import { defineTokens } from '@pandacss/dev';
+
+export const fonts = defineTokens.fonts({
   sans: {
     value: '"Inter"',
   },
@@ -8,4 +10,4 @@ export const fonts = {
   mono: {
     value: '"Inter"',
   },
-};
+});

@@ -88,7 +88,7 @@ export interface ButtonProps extends ButtonPrimitiveProps {
   };
 }
 
-export const Button = forwardRef<ButtonProps, 'button'>((props, ref) => {
+export const Button = forwardRef<'button', ButtonProps>((props, ref) => {
   const {
     children,
     id,
@@ -108,7 +108,7 @@ export const Button = forwardRef<ButtonProps, 'button'>((props, ref) => {
 
   const { classes, cn } = useStyles(
     { palette, size, isRounded },
-    { classNames }
+    { classNames },
   );
 
   if (isValidElement(icon) && !children && !label) {

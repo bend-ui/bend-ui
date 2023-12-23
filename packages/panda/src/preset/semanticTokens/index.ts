@@ -1,105 +1,31 @@
 import { defineSemanticTokens } from '@pandacss/dev';
-import { theme } from '@particles/theme';
+import { colors } from './colors';
+import { spacing } from './spacing';
 
 export const semanticTokens = defineSemanticTokens({
-  colors: {
-    fg: {
-      onCanvas: {
-        value: {
-          base: theme.colors['on-canvas'],
-          _dark: theme.colors.white,
-        },
-      },
-      onSurface: {
-        value: {
-          base: theme.colors['on-surface'],
-          _dark: theme.colors.white,
-        },
-      },
-      onPrimary: {
-        value: theme.colors['on-primary'],
-      },
-    },
-    canvas: {
-      DEFAULT: {
-        value: {
-          base: '{colors.shark.50}',
-          _dark: '{colors.shark.900}',
-        },
-      },
-    },
-    surface: {
-      DEFAULT: {
-        value: {
-          base: '{colors.shark.100}',
-          _dark: '{colors.shark.800}',
-        },
-      },
-    },
-    primary: {
-      DEFAULT: {
-        value: theme.colors.primary,
-      },
-      base: {
-        value: theme.colors.primary,
-      },
-      subtle: {
-        value: theme.colors['primary-subtle'],
-      },
-      hover: {
-        value: theme.colors['primary-hover'],
-      },
-      fg: {
-        value: theme.colors['on-primary'],
-      },
-    },
-    secondary: {
-      DEFAULT: {
-        value: '{colors.amber.500}',
-      },
-      base: {
-        value: '{colors.amber.500}',
-      },
-      subtle: {
-        value: '{colors.amber.300}',
-      },
-      hover: {
-        value: '{colors.amber.700}',
-      },
-    },
-    neutral: {
-      DEFAULT: {
-        value: theme.colors.neutral,
-      },
-      base: {
-        value: theme.colors.neutral,
-      },
-      subtle: {
-        value: theme.colors['neutral-subtle'],
-      },
-      hover: {
-        value: theme.colors['neutral-hover'],
-      },
-    },
-    divider: {
-      DEFAULT: {
-        value: {
-          base: '{colors.shark.100}',
-          _dark: '{colors.shark.700}',
-        },
-      },
-      subtle: {
-        value: '{colors.shark.600}',
-      },
-    },
-  },
-  spacing: {
-    sm: { value: '{spacing.2}' },
-    md: { value: '{spacing.3}' },
-    lg: { value: '{spacing.5}' },
-  },
+  colors,
+  spacing,
   fonts: {
     body: { value: '{fonts.sans}' },
     heading: { value: '{fonts.sans}' },
+  },
+  borders: {
+    base: { value: '1px solid {colors.border}' },
+    input: { value: '1px solid {colors.border.input}' },
+    primary: { value: '1px solid {colors.border.primary}' },
+    danger: { value: '1px solid {colors.border.danger}' },
+    divider: { value: '1px solid {colors.border.divider}' },
+  },
+  radii: {
+    base: { value: '8px' },
+  },
+  animations: {
+    'accordion-down': { value: 'accordion-down 0.2s ease-out' },
+    'accordion-up': { value: 'accordion-up 0.2s ease-out' },
+  },
+  sizes: {
+    xs: { value: '{sizes.2}' },
+    sm: { value: '{sizes.3}' },
+    md: { value: '{sizes.4}' },
   },
 });

@@ -45,3 +45,6 @@ Thumbs.db
 # NX
 migrations.json
 .nx/cache
+
+# Panda
+styled-system

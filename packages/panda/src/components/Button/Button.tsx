@@ -1,27 +1,12 @@
 import {
   Button as ButtonPrimitive,
   createComponent,
-  createPolymorphicComponent,
   forwardRef,
 } from '@particles/primitives';
 import { button } from '@particles/panda-system/recipes';
 import { styled } from '@particles/panda-system/jsx';
-import type { ButtonVariantProps } from '@particles/panda-system/recipes';
-import { cx } from '../../system';
-import type { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
-
-export type ButtonProps = ComponentPropsWithoutRef<'button'> & {
-  as?: ElementType;
-  children?: ReactNode;
-  palette?: ButtonVariantProps['palette'];
-  variant?: ButtonVariantProps['variant'];
-  size?: ButtonVariantProps['size'];
-  isRounded?: ButtonVariantProps['isRounded'];
-  /** Disable the button */
-  isDisabled?: boolean;
-  /** Set the button in a loading state */
-  isLoading?: boolean;
-};
+import { cx } from '@particles/panda-system/css';
+import type { ButtonProps } from './Button.types';
 
 const Root = forwardRef<'button', ButtonProps>((props, ref) => {
   const {
@@ -32,6 +17,8 @@ const Root = forwardRef<'button', ButtonProps>((props, ref) => {
     variant,
     size,
     isRounded,
+    icon,
+    iconEnd,
     ...rest
   } = props;
 
@@ -44,7 +31,9 @@ const Root = forwardRef<'button', ButtonProps>((props, ref) => {
       className={cx(classes.root, className)}
       {...rest}
     >
-      {children}
+      {icon}
+      {children && <span className={classes.label}>{children}</span>}
+      {iconEnd}
     </ButtonPrimitive.Root>
   );
 });

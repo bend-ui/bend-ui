@@ -3,6 +3,7 @@ import * as ToastPrimitives from '@radix-ui/react-toast';
 import { TbX } from 'react-icons/tb';
 import { cx } from '@particles/panda-system/css';
 import { createComponent } from '@particles/primitives';
+import { toast } from '@particles/panda-system/recipes';
 import type { ComponentPropsWithoutRef, ElementRef, ReactElement } from 'react';
 
 const ToastProvider = ToastPrimitives.Provider;
@@ -10,24 +11,32 @@ const ToastProvider = ToastPrimitives.Provider;
 const ToastViewport = forwardRef<
   ElementRef<typeof ToastPrimitives.Viewport>,
   ComponentPropsWithoutRef<typeof ToastPrimitives.Viewport>
->(({ className, ...props }, ref) => (
-  <ToastPrimitives.Viewport
-    ref={ref}
-    className={cx(
-      'fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]',
-      className,
-    )}
-    {...props}
-  />
-));
+>(({ className, ...props }, ref) => {
+  const classes = toast();
+
+  return (
+    <ToastPrimitives.Viewport
+      ref={ref}
+      className={cx(classes.viewport, className)}
+      {...props}
+    />
+  );
+});
 ToastViewport.displayName = ToastPrimitives.Viewport.displayName;
 
 export type ToastProps = ComponentPropsWithoutRef<typeof ToastPrimitives.Root>;
 
 const Root = forwardRef<ElementRef<typeof ToastPrimitives.Root>, ToastProps>(
-  ({ className, ...props }, ref) => (
-    <ToastPrimitives.Root ref={ref} className={cx(className)} {...props} />
-  ),
+  ({ className, ...props }, ref) => {
+    const classes = toast();
+    return (
+      <ToastPrimitives.Root
+        ref={ref}
+        className={cx(classes.root, className)}
+        {...props}
+      />
+    );
+  },
 );
 Root.displayName = ToastPrimitives.Root.displayName;
 

@@ -9,7 +9,7 @@ interface MenuButtonProps {
   children?: ReactNode;
 }
 
-export const MenuButton = forwardRef<MenuButtonProps, 'button'>(
+export const MenuButton = forwardRef<'button', MenuButtonProps>(
   (props, ref) => {
     const { children, ...rest } = props;
     const { refs, getReferenceProps } = useMenuContext();
@@ -24,5 +24,5 @@ export const MenuButton = forwardRef<MenuButtonProps, 'button'>(
         {children}
       </Button>
     );
-  }
+  },
 );

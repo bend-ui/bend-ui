@@ -3,10 +3,11 @@ import { defineSlotRecipe } from '@pandacss/dev';
 export const buttonRecipe = defineSlotRecipe({
   description: 'Button styles',
   className: 'button',
-  slots: ['root'],
+  slots: ['root', 'label'],
   base: {
     root: {
-      display: 'inline-flex',
+      display: 'flex',
+      alignItems: 'center',
       rounded: 'md',
       borderWidth: '1px',
       borderStyle: 'solid',
@@ -17,7 +18,7 @@ export const buttonRecipe = defineSlotRecipe({
     palette: {
       default: {
         root: {
-          backgroundColor: 'surface',
+          backgroundColor: 'bg.surface',
           borderColor: { base: 'shark.200', _dark: 'shark.700' },
           _hover: {
             backgroundColor: { base: 'shark.200', _dark: 'shark.700' },
@@ -26,7 +27,12 @@ export const buttonRecipe = defineSlotRecipe({
       },
       primary: {
         root: {
-          colorPalette: 'primary',
+          colorPalette: 'bg.primary',
+        },
+      },
+      danger: {
+        root: {
+          colorPalette: 'bg.danger',
         },
       },
     },
@@ -34,7 +40,7 @@ export const buttonRecipe = defineSlotRecipe({
       solid: {
         root: {
           color: 'colorPalette.fg',
-          backgroundColor: 'colorPalette.base',
+          backgroundColor: 'colorPalette',
           _hover: {
             backgroundColor: 'colorPalette.hover',
           },
@@ -48,7 +54,10 @@ export const buttonRecipe = defineSlotRecipe({
       md: {
         root: {
           py: 'sm',
-          px: 'md',
+          px: 'sm',
+        },
+        label: {
+          px: 'sm',
         },
       },
     },

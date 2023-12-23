@@ -25,20 +25,28 @@ export default defineConfig({
   // Configuration for building your library.
   // See: https://vitejs.dev/guide/build.html#library-mode
   build: {
-    entry: 'src/index.ts',
-    name: 'panda-radix',
-    fileName: 'index',
-    formats: ['es', 'cjs'],
-    external: ['react', 'react-dom', 'react/jsx-runtime'],
     lib: {
+      // Could also be a dictionary or array of multiple entry points.
       entry: 'src/index.ts',
       name: 'panda-radix',
       fileName: 'index',
+      // Change this to the formats you want to support.
+      // Don't forgot to update your package.json as well.
       formats: ['es', 'cjs'],
     },
     rollupOptions: {
-      external: ["'react'", "'react-dom'", "'react/jsx-runtime'"],
+      // External packages that should not be bundled into your library.
+      external: [
+        'react',
+        'react-dom',
+        'react/jsx-runtime',
+        '@particles/panda-system',
+      ],
     },
+  },
+
+  optimizeDeps: {
+    exclude: ['@particles/panda-system'],
   },
 
   test: {

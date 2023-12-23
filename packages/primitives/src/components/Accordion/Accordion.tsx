@@ -1,5 +1,4 @@
 import { createComponent, forwardRef } from '../../utils';
-import { useId } from '../../hooks';
 import { useAccordion, useAccordionItem } from './useAccordion';
 import {
   AccordionItemProvider,
@@ -13,7 +12,7 @@ import type {
   AccordionProps,
 } from './Accordion.types';
 
-const Root = forwardRef<AccordionProps, 'div'>((props, ref) => {
+const Root = forwardRef<'div', AccordionProps>((props, ref) => {
   const {
     children,
     as: Component = 'div',
@@ -40,7 +39,7 @@ const Root = forwardRef<AccordionProps, 'div'>((props, ref) => {
   );
 });
 
-const Item = forwardRef<AccordionItemProps, 'div'>((props, ref) => {
+const Item = forwardRef<'div', AccordionItemProps>((props, ref) => {
   const { children, value, isDisabled, ...rest } = props;
 
   const context = useAccordionItem({
@@ -57,7 +56,7 @@ const Item = forwardRef<AccordionItemProps, 'div'>((props, ref) => {
   );
 });
 
-const Control = forwardRef<AccordionControlProps, 'button'>((props, ref) => {
+const Control = forwardRef<'button', AccordionControlProps>((props, ref) => {
   const { children, ...rest } = props;
   const { getTriggerProps } = useAccordionItemContext();
   return (
@@ -69,7 +68,7 @@ const Control = forwardRef<AccordionControlProps, 'button'>((props, ref) => {
   );
 });
 
-const Panel = forwardRef<AccordionPanelProps, 'div'>((props, ref) => {
+const Panel = forwardRef<'div', AccordionPanelProps>((props, ref) => {
   const { children, ...rest } = props;
   const { getPanelProps } = useAccordionItemContext();
 
@@ -80,8 +79,4 @@ const Panel = forwardRef<AccordionPanelProps, 'div'>((props, ref) => {
   );
 });
 
-export default createComponent(
-  Root,
-  { Root, Item, Control, Panel },
-  'Accordion'
-);
+export default createComponent(Root, { Root, Item, Control, Panel });

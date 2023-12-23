@@ -2,7 +2,7 @@ import { definePreset } from '@pandacss/dev';
 import * as patterns from './patterns';
 import { tokens } from './tokens';
 import { semanticTokens } from './semanticTokens';
-import { slotRecipes } from './recipes';
+import { recipes, slotRecipes } from './recipes';
 import { textStyles } from './textStyles';
 import { layerStyles } from './layerStyles';
 import { keyframes } from './keyframes';
@@ -26,6 +26,7 @@ export const particlesPreset = definePreset({
     extend: {
       tokens,
       semanticTokens,
+      recipes,
       slotRecipes,
       textStyles,
       layerStyles,

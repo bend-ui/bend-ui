@@ -9,5 +9,8 @@
       "require": "./index.js"
     }
   },
-  "scripts": {}
+  "scripts": {},
+  "peerDependencies": {
+    "@pandacss/dev": "^0.23.0"
+  }
 }

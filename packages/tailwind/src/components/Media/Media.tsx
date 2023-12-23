@@ -18,7 +18,7 @@ interface MediaProps {
   children?: ReactNode;
 }
 
-const Media = forwardRef<MediaProps, 'div'>((props, ref) => {
+const Media = forwardRef<'div', MediaProps>((props, ref) => {
   const { children, className, ...rest } = props;
   const { classes, cn } = useStyles();
   return (
@@ -32,7 +32,7 @@ interface MediaImageProps {
   children?: ReactNode;
 }
 
-const Image = forwardRef<MediaImageProps, 'div'>((props, ref) => {
+const Image = forwardRef<'div', MediaImageProps>((props, ref) => {
   const { children, className, ...rest } = props;
   const { classes, cn } = useStyles();
   return (
@@ -46,7 +46,7 @@ interface MediaBodyProps {
   children?: ReactNode;
 }
 
-const Body = forwardRef<MediaBodyProps, 'div'>((props, ref) => {
+const Body = forwardRef<'div', MediaBodyProps>((props, ref) => {
   const { children, className, ...rest } = props;
   const { classes, cn } = useStyles();
   return (
@@ -56,4 +56,4 @@ const Body = forwardRef<MediaBodyProps, 'div'>((props, ref) => {
   );
 });
 
-export default createComponent(Media, { Image, Body }, 'Media');
+export default createComponent(Media, { Image, Body });

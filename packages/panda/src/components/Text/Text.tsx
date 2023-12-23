@@ -4,11 +4,10 @@ import { text } from '@particles/panda-system/recipes';
 import { forwardRef } from 'react';
 import type { SystemStyleObject } from '@particles/panda-system/types';
 import type { TextVariantProps } from '@particles/panda-system/recipes';
-import type { ElementType, ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
 
-export interface TextProps {
+export interface TextProps extends ComponentPropsWithoutRef<'span'> {
   as?: ElementType;
-  className: HTMLElement['className'];
   children?: ReactNode;
   css?: SystemStyleObject;
   /** The style of the text */
@@ -25,12 +24,12 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
     ...rest
   } = props;
 
-  const classes = text({ variant });
+  const recipe = text({ variant });
 
   return (
     <Component
       ref={ref}
-      className={cx(classes, css(cssProp), className)}
+      className={cx(recipe, css(cssProp), className)}
       {...rest}
     >
       {children}

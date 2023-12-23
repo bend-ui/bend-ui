@@ -53,7 +53,7 @@ const data = {
 };
 
 function MessageView() {
-  const currentUser = 3;
+  // const currentUser = 3;
 
   return (
     <div className="flex min-w-max flex-1 flex-col">

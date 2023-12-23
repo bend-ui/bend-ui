@@ -3,7 +3,6 @@ import {
   forwardRef,
   Tooltip as Primitive,
 } from '@particles/primitives';
-import { twMerge } from 'tailwind-merge';
 import { createStyles } from '../../styles';
 import type { ReactNode } from 'react';
 
@@ -37,13 +36,13 @@ const useStyles = createStyles({
   },
 });
 
-const Tooltip = forwardRef<TooltipProps, 'div'>((props, ref) => {
+const Tooltip = forwardRef<'div', TooltipProps>((props, ref) => {
   const { children, content, className, ...rest } = props;
   const { classes, cn } = useStyles();
   return (
-    <Primitive.Root ref={ref} {...rest}>
+    <Primitive.Root {...rest}>
       <Primitive.Trigger>{children}</Primitive.Trigger>
-      <Primitive.Content className={cn(classes.root, className)}>
+      <Primitive.Content ref={ref} className={cn(classes.root, className)}>
         {content}
         <Primitive.Arrow className={classes.arrow} />
       </Primitive.Content>
@@ -51,4 +50,4 @@ const Tooltip = forwardRef<TooltipProps, 'div'>((props, ref) => {
   );
 });
 
-export default createComponent(Tooltip, {}, 'Tooltip');
+export default createComponent(Tooltip, {});

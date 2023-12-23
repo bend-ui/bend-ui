@@ -6,7 +6,7 @@ export interface LevelProps {
   children?: ReactNode;
 }
 
-const Level = forwardRef<LevelProps, 'div'>((props, ref) => {
+const Level = forwardRef<'div', LevelProps>((props, ref) => {
   const { children, className, ...rest } = props;
   const { classes, cn } = useStyles();
   return (
@@ -16,4 +16,4 @@ const Level = forwardRef<LevelProps, 'div'>((props, ref) => {
   );
 });
 
-export default createComponent(Level, {}, 'Level');
+export default createComponent(Level, {});

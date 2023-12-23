@@ -2,7 +2,10 @@ import { Card } from '../Card';
 import { Tiles } from './';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof Tiles> = { component: Tiles };
+const meta: Meta<typeof Tiles> = {
+  title: 'Components/Layout/Tiles',
+  component: Tiles,
+};
 
 export default meta;
 

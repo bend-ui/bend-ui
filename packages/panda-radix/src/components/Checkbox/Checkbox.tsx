@@ -3,8 +3,8 @@ import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import { TbCheck } from 'react-icons/tb';
 import { cx } from '@particles/panda-system/css';
 import { styled } from '@particles/panda-system/jsx';
+import { checkbox } from '@particles/panda-system/recipes';
 import type { ComponentPropsWithoutRef, ElementRef } from 'react';
-
 export interface CheckboxProps
   extends ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> {
   children?: never;
@@ -15,13 +15,14 @@ const Root = forwardRef<
   CheckboxProps
 >((props, ref) => {
   const { children, className, ...rest } = props;
+  const styles = checkbox();
   return (
     <CheckboxPrimitive.Root
       ref={ref}
-      className={cx('peer', className)}
+      className={cx('peer', styles.root, className)}
       {...rest}
     >
-      <CheckboxPrimitive.Indicator className={cx()}>
+      <CheckboxPrimitive.Indicator className={cx(styles.indicator)}>
         <TbCheck />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>

@@ -6,7 +6,6 @@ import {
   useDismiss,
   useFloating,
   useInteractions,
-  useListNavigation,
   useRole,
 } from '@floating-ui/react';
 
@@ -44,7 +43,7 @@ export const useSelect = (props: UseSelectProps) => {
       //   listRef: null,
       //   activeIndex: 1,
       // }),
-    ]
+    ],
   );
 
   const getTargetProps = () => ({

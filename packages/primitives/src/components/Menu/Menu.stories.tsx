@@ -1,14 +1,12 @@
-import clsx from 'clsx';
-import { twStyles } from './Menu.styles';
 import { Menu } from '.';
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 export default {
   title: 'Overlays/Menu',
   component: Menu,
 } as Meta<typeof Menu>;
 
-type Story = StoryFn<typeof Menu>;
+type Story = StoryObj<typeof Menu>;
 
 export const Base: Story = {
   render: (args) => (

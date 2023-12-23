@@ -1,4 +1,3 @@
-import { useDisclosure } from '../../hooks';
 import { createComponent, forwardRef } from '../../utils';
 import { DropdownContextProvider, useDropdownContext } from './DropdownContext';
 import { useDropdown } from './useDropdown';
@@ -9,7 +8,7 @@ export interface DropdownTargetProps {
   children?: ReactNode;
 }
 
-const Target = forwardRef<DropdownTargetProps, 'button'>((props, ref) => {
+const Target = forwardRef<'button', DropdownTargetProps>((props, ref) => {
   const { children, as: Component = 'button', ...rest } = props;
   const { getTargetProps } = useDropdownContext();
   return <Component {...getTargetProps(rest, ref)}>{children}</Component>;
@@ -19,7 +18,7 @@ export interface DropdownMenuProps {
   children?: ReactNode;
 }
 
-const Menu = forwardRef<DropdownMenuProps, 'div'>((props, ref) => {
+const Menu = forwardRef<'div', DropdownMenuProps>((props, ref) => {
   const { children, as: Component = 'div', ...rest } = props;
 
   const { isOpen, getMenuProps } = useDropdownContext();
@@ -33,7 +32,7 @@ export interface DropdownMenuItemProps {
   children?: ReactNode;
 }
 
-const MenuItem = forwardRef<DropdownMenuItemProps, 'button'>((props, ref) => {
+const MenuItem = forwardRef<'button', DropdownMenuItemProps>((props, ref) => {
   const { children, as: Component = 'button', ...rest } = props;
 
   const { getMenuItemProps } = useDropdownContext();
@@ -57,8 +56,4 @@ const Root = (props: DropdownRootProps) => {
   );
 };
 
-export default createComponent(
-  Root,
-  { Root, Target, Menu, MenuItem },
-  'Dropdown'
-);
+export default createComponent(Root, { Root, Target, Menu, MenuItem });

@@ -6,7 +6,6 @@ const config: StorybookConfig = {
     '@storybook/addon-essentials',
     'storybook-dark-mode',
     '@storybook/addon-a11y',
-    'storybook-addon-performance',
   ],
   framework: {
     name: '@storybook/react-vite',
@@ -15,9 +14,6 @@ const config: StorybookConfig = {
         viteConfigPath: 'packages/panda/vite.config.ts',
       },
     },
-  },
-  typescript: {
-    reactDocgen: 'react-docgen-typescript',
   },
   docs: {
     autodocs: true,

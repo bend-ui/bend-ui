@@ -8,7 +8,7 @@ export interface UseRadioProps {
 }
 
 export const useRadio = (props: UseRadioProps) => {
-  const { id, defaultChecked, isDisabled } = props;
+  const { id, defaultChecked } = props;
   const uuid = useId(id);
   // TODO: use toggle hook
   // TODO: use controlled hook
@@ -17,7 +17,7 @@ export const useRadio = (props: UseRadioProps) => {
   const getInputProps = () => ({
     id: uuid,
     checked: isChecked,
-    onChange: () => setChecked((prev: boolean) => !prev),
+    onChange: () => setChecked(!isChecked),
   });
 
   const getLabelProps = () => ({

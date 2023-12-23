@@ -2,6 +2,7 @@ import { forwardRef } from 'react';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
 import { TbChevronDown } from 'react-icons/tb';
 import { cx } from '@particles/panda-system/css';
+import { accordion } from '@particles/panda-system/recipes';
 import { createComponent } from '@particles/primitives';
 import type { ComponentPropsWithoutRef, ElementRef } from 'react';
 
@@ -12,8 +13,13 @@ const Item = forwardRef<
   ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
 >((props, ref) => {
   const { className, ...rest } = props;
+  const classes = accordion();
   return (
-    <AccordionPrimitive.Item ref={ref} className={cx(className)} {...rest} />
+    <AccordionPrimitive.Item
+      ref={ref}
+      className={cx(classes.item, className)}
+      {...rest}
+    />
   );
 });
 
@@ -24,9 +30,15 @@ const Trigger = forwardRef<
   ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
 >((props, ref) => {
   const { className, children, ...rest } = props;
+  const classes = accordion();
+
   return (
     <AccordionPrimitive.Header>
-      <AccordionPrimitive.Trigger ref={ref} className={cx(className)} {...rest}>
+      <AccordionPrimitive.Trigger
+        ref={ref}
+        className={cx(classes.trigger, className)}
+        {...rest}
+      >
         {children}
         <TbChevronDown />
       </AccordionPrimitive.Trigger>
@@ -41,8 +53,14 @@ const Content = forwardRef<
   ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
 >((props, ref) => {
   const { className, children, ...rest } = props;
+  const classes = accordion();
+
   return (
-    <AccordionPrimitive.Content ref={ref} className={cx(className)} {...rest}>
+    <AccordionPrimitive.Content
+      ref={ref}
+      className={cx(classes.content, className)}
+      {...rest}
+    >
       <div>{children}</div>
     </AccordionPrimitive.Content>
   );

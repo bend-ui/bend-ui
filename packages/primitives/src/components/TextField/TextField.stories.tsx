@@ -1,13 +1,12 @@
-import React from 'react';
 import { TextField } from '.';
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 export default {
   title: 'Forms/TextField',
   component: TextField,
 } as Meta<typeof TextField>;
 
-type Story = StoryFn<typeof TextField>;
+type Story = StoryObj<typeof TextField>;
 
 export const Base: Story = {
   render: (args) => (

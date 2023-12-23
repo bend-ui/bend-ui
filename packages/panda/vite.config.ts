@@ -50,6 +50,10 @@ export default defineConfig({
     },
   },
 
+  optimizeDeps: {
+    exclude: ['@particles/panda-system'],
+  },
+
   test: {
     globals: true,
     cache: {
