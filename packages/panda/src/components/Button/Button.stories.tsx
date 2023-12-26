@@ -1,5 +1,7 @@
 import { css } from '@particles/panda-system/css';
+import { Stack } from '@particles/panda-system/jsx';
 import { TbArrowRight, TbCloudDownload } from 'react-icons/tb';
+import { button } from '@particles/panda-system/recipes';
 import { Button } from './Button';
 
 import type { Meta, StoryObj } from '@storybook/react';
@@ -29,6 +31,36 @@ export const Danger: Story = {
   args: {
     palette: 'danger',
   },
+};
+
+export const Palette: Story = {
+  render: (args) => (
+    <Stack>
+      {button.variantMap.palette.map((palette) => (
+        <Button key={palette} {...args} palette={palette} />
+      ))}
+    </Stack>
+  ),
+};
+
+export const Variants: Story = {
+  render: (args) => (
+    <Stack>
+      {button.variantMap.variant.map((variant) => (
+        <Button key={variant} {...args} variant={variant} />
+      ))}
+    </Stack>
+  ),
+};
+
+export const Sizes: Story = {
+  render: (args) => (
+    <Stack>
+      {button.variantMap.size.map((size) => (
+        <Button key={size} {...args} size={size} />
+      ))}
+    </Stack>
+  ),
 };
 
 export const WithIcon: Story = {
