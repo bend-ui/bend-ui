@@ -1,4 +1,4 @@
-import { palette } from './tokens';
+import { palette } from './_tokens';
 
 export const theme = {
   colors: {
