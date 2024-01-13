@@ -2,56 +2,57 @@
   "folders": [
     {
       "name": "🧬 particles",
-      "path": "."
+      "path": ".",
     },
     {
       "name": "📦 @particles/primitives",
-      "path": "packages/primitives"
+      "path": "packages/primitives",
     },
     {
       "name": "📦 @particles/theme",
-      "path": "packages/theme"
+      "path": "packages/theme",
     },
     {
       "name": "📦 @particles/tailwind",
-      "path": "packages/tailwind"
+      "path": "packages/tailwind",
     },
     {
       "name": "📦 @particles/panda",
-      "path": "packages/panda"
+      "path": "packages/panda",
     },
+
     {
-      "name": "📦 @particles/panda-radix",
-      "path": "packages/panda-radix"
+      "name": "📦 @particles/panda-aria",
+      "path": "packages/panda-aria",
     },
     {
       "name": "🛠️ @particles/react-utils",
-      "path": "packages/react-utils"
+      "path": "packages/react-utils",
     },
     {
       "name": "🛠️ @particles/cli",
-      "path": "packages/cli"
+      "path": "packages/cli",
     },
     {
       "name": "📚 Website",
-      "path": "apps/website"
+      "path": "apps/website",
     },
     {
       "name": "📚 Storybook",
-      "path": "apps/storybook"
+      "path": "apps/storybook",
     },
     {
       "name": "🧪 Playground (Tailwind)",
-      "path": "apps/playground-tailwind"
+      "path": "apps/playground-tailwind",
     },
     {
       "name": "🧪 Playground (Panda)",
-      "path": "apps/playground-panda"
+      "path": "apps/playground-panda",
     },
     {
       "name": "🧪 Playground (Panda + Radix)",
-      "path": "apps/playground-panda-radix"
-    }
+      "path": "apps/playground-panda-radix",
+    },
   ],
   "settings": {
     "typescript.tsdk": "✨ particles/node_modules/typescript/lib",
@@ -63,10 +64,10 @@
       "🛠️ @particles/cli",
       "🧪 Playground (Tailwind)",
       "🧪 Playground (Panda)",
-      "📚 Website"
-    ]
+      "📚 Website",
+    ],
   },
   "extensions": {
-    "recommendations": ["firsttris.vscode-jest-runner"]
-  }
+    "recommendations": ["firsttris.vscode-jest-runner"],
+  },
 }
