@@ -1,0 +1,27 @@
+{
+  "name": "storybook-theme",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/storybook/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/storybook",
+        "main": "packages/storybook/src/index.ts",
+        "tsConfig": "packages/storybook/tsconfig.lib.json",
+        "assets": ["packages/storybook/*.md"]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs storybook-theme {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": []
+}
