@@ -20,7 +20,10 @@
       "name": "📦 @particles/panda",
       "path": "packages/panda",
     },
-
+    {
+      "name": "📦 @particles/panda-radix",
+      "path": "packages/panda-radix",
+    },
     {
       "name": "📦 @particles/panda-aria",
       "path": "packages/panda-aria",

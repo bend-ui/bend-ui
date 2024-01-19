@@ -1,12 +1,29 @@
-/* eslint-disable-next-line */
-export interface CheckboxProps {}
+import { forwardRef } from 'react';
+import * as ReactAria from 'react-aria-components';
+import { checkbox } from '@particles/panda-system/recipes';
+import { cx } from '@particles/panda-system/css';
+import type { CheckboxVariantProps } from '@particles/panda-system/recipes';
 
-export function Checkbox(props: CheckboxProps) {
-  return (
-    <div>
-      <h1>Welcome to Checkbox!</h1>
-    </div>
-  );
+export interface CheckboxProps
+  extends ReactAria.CheckboxProps,
+    CheckboxVariantProps {
+  className?: string;
 }
 
-export default Checkbox;
+export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
+  (props, ref) => {
+    const { className, ...rest } = props;
+    const classes = checkbox();
+    return (
+      <ReactAria.Checkbox className={cx(classes.root, className)} {...rest}>
+        <div className={classes.indicator}>
+          <svg aria-hidden="true" viewBox="0 0 18 18">
+            <polyline points="1 9 7 14 15 4" />
+          </svg>
+        </div>
+      </ReactAria.Checkbox>
+    );
+  },
+);
+
+Checkbox.displayName = 'Checkbox';

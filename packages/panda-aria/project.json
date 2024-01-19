@@ -35,7 +35,7 @@
     "storybook": {
       "executor": "@nx/storybook:storybook",
       "options": {
-        "port": 4400,
+        "port": 4404,
         "configDir": "packages/panda-aria/.storybook"
       },
       "configurations": {

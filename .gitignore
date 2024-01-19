@@ -48,3 +48,6 @@ migrations.json
 
 # Panda
 styled-system
+## Panda
+@particles/panda-system
+@particles/panda-system-studio
