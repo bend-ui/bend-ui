@@ -3,7 +3,7 @@ import '@fontsource/inter';
 import { createElement } from 'react';
 import { useDarkMode } from 'storybook-dark-mode';
 import { DocsContainer } from '@storybook/addon-docs';
-import { themeDark, themeLight } from './themes';
+import { themeDark, themeLight } from '@particles/storybook';
 
 import type { Preview } from '@storybook/react';
 import type { DocsContainerProps } from '@storybook/addon-docs';

@@ -1,5 +1,5 @@
 import { Button } from '@particles/panda';
-import { DropdownMenu } from './';
+import { DropdownMenu } from './DropdownMenu';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof DropdownMenu> = {

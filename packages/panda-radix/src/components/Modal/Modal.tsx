@@ -2,7 +2,7 @@ import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { modal } from '@particles/panda-system/recipes';
 import { styled } from '@particles/panda-system/jsx';
 import { createStyleContext } from '../../utils';
-import type { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 const { withContext, withProvider } = createStyleContext(modal);
 
@@ -26,14 +26,15 @@ const Footer = withContext(styled('div'), 'footer');
 
 const Close = withContext(styled(DialogPrimitive.Close), 'close');
 
-export interface ModalProps extends DialogPrimitive.DialogProps {
+export interface ModalProps
+  extends ComponentPropsWithoutRef<typeof DialogPrimitive.Root> {
   trigger?: ReactNode;
   title?: ReactNode;
   description?: ReactNode;
   withOverlay?: boolean;
 }
 
-const Modal = (props: ModalProps) => {
+const Component = (props: ModalProps) => {
   const {
     children,
     trigger,
@@ -58,7 +59,7 @@ const Modal = (props: ModalProps) => {
   );
 };
 
-export default Object.assign(Modal, {
+export const Modal = Object.assign(Component, {
   Root,
   Trigger,
   Portal,
@@ -70,3 +71,5 @@ export default Object.assign(Modal, {
   Footer,
   Close,
 });
+
+export default Modal;

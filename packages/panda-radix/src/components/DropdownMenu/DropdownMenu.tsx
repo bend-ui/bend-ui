@@ -153,7 +153,7 @@ export type DropdownMenuProps = ComponentProps<typeof Root> & {
   trigger: ReactNode;
 };
 
-const DropdownMenu = (props: DropdownMenuProps) => {
+const Component = (props: DropdownMenuProps) => {
   const { children, trigger, ...rest } = props;
   return (
     <Root {...rest}>
@@ -165,7 +165,7 @@ const DropdownMenu = (props: DropdownMenuProps) => {
   );
 };
 
-export default Object.assign(DropdownMenu, {
+export const DropdownMenu = Object.assign(Component, {
   Root,
   Trigger,
   Content,
@@ -174,3 +174,5 @@ export default Object.assign(DropdownMenu, {
   Separator,
   Shortcut,
 });
+
+export default DropdownMenu;

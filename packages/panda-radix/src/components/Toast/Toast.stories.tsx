@@ -1,18 +1,21 @@
 import { Button } from '@particles/panda';
-import { Toast, Toaster, useToast } from '.';
+import { Toast, ToastProvider } from './Toast';
+import { useToast } from './useToast';
 import type { Meta, StoryObj } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof Toast> = {
   component: Toast,
   decorators: [
     (story) => (
       <>
         {story()}
-        <Toaster />
+        <ToastProvider />
       </>
     ),
   ],
-} as Meta<typeof Toast>;
+};
+
+export default meta;
 
 type Story = StoryObj<typeof Toast>;
 

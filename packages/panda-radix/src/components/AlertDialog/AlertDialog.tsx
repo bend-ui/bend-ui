@@ -35,7 +35,7 @@ export interface AlertDialogProps {
   children: ReactNode;
 }
 
-const AlertDialog = (props: AlertDialogProps) => {
+const Component = (props: AlertDialogProps) => {
   const { children, ...rest } = props;
   return (
     <Root {...rest}>
@@ -46,7 +46,7 @@ const AlertDialog = (props: AlertDialogProps) => {
   );
 };
 
-export default Object.assign(AlertDialog, {
+export const AlertDialog = Object.assign(Component, {
   Root,
   Portal,
   Overlay,
@@ -59,3 +59,5 @@ export default Object.assign(AlertDialog, {
   Action,
   Cancel,
 });
+
+export default AlertDialog;

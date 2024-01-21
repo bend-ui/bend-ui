@@ -13,4 +13,6 @@ const Tab = withContext(TabsPrimitive.Trigger, 'tab');
 
 const Pane = withContext(TabsPrimitive.Content, 'pane');
 
-export default Object.assign(Root, { List, Tab, Pane });
+export const Tabs = Object.assign(Root, { List, Tab, Pane });
+
+export default Tabs;

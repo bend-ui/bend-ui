@@ -5,6 +5,7 @@ export * from './Checkbox';
 export * from './Drawer';
 export * from './DropdownMenu';
 export * from './Modal';
+export * from './Popover';
 export * from './Tabs';
 export * from './Toast';
 export * from './Tooltip';

@@ -1,5 +1,5 @@
 import { Button } from '@particles/panda';
-import { AlertDialog } from '.';
+import { AlertDialog } from './AlertDialog';
 import type { Meta, StoryObj } from '@storybook/react';
 
 export default { component: AlertDialog } as Meta<typeof AlertDialog>;

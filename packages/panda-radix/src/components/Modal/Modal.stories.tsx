@@ -1,6 +1,6 @@
 import { Stack } from '@particles/panda-system/jsx';
 import { Button, Input } from '@particles/panda';
-import { Modal } from './';
+import { Modal } from './Modal';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Modal> = {
