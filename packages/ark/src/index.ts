@@ -1,1 +1,1 @@
-export * from './lib/ark';
+export * from './components';
