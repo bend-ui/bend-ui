@@ -29,6 +29,10 @@
       "path": "packages/panda-aria",
     },
     {
+      "name": "📦 @particles/panda-ark",
+      "path": "packages/panda-ark",
+    },
+    {
       "name": "🛠️ @particles/react-utils",
       "path": "packages/react-utils",
     },
