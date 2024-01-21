@@ -28,7 +28,7 @@ jobs:
         run: pnpm install
 
       - name: Build
-        run: nx run panda-radix:build-storybook
+        run: pnpm exec nx run panda-radix:build-storybook
 
       - name: Publish to Chromatic
         uses: chromaui/action@latest
