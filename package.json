@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "nx run-many --target=lint --all=true",
     "test": "nx run-many --target=test --all=true",
+    "build-storybook": "nx run-many --target=build-storybook",
     "docgen": "tsx scripts/docgen.ts",
     "cli": "tsx packages/cli/src/index.ts",
     "prepare": "run-s prepare:*",
