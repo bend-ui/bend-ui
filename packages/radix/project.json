@@ -49,7 +49,7 @@
       "executor": "@nx/storybook:build",
       "outputs": ["{options.outputDir}"],
       "options": {
-        "outputDir": "dist/storybook/panda-radix",
+        "outputDir": "dist/storybook/radix",
         "configDir": "packages/radix/.storybook"
       },
       "configurations": {
@@ -68,7 +68,7 @@
       "executor": "@nx/web:file-server",
       "options": {
         "buildTarget": "radix:build-storybook",
-        "staticFilePath": "dist/storybook/panda-radix"
+        "staticFilePath": "dist/storybook/radix"
       },
       "configurations": {
         "ci": {

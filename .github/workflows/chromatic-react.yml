@@ -1,9 +1,9 @@
-name: 'Chromatic - Radix components'
+name: 'Chromatic - React components'
 
 on:
   push:
     paths:
-      - 'packages/radix/**'
+      - 'packages/react/**'
 
 jobs:
   chromatic:
@@ -28,10 +28,10 @@ jobs:
         run: pnpm install
 
       - name: Build
-        run: pnpm exec nx run radix:build-storybook
+        run: pnpm exec nx run react:build-storybook
 
       - name: Publish to Chromatic
         uses: chromaui/action@latest
         with:
-          projectToken: ${{ secrets.CHROMATIC_RADIX }}
-          storybookBuildDir: dist/storybook/radix
+          projectToken: ${{ secrets.CHROMATIC_REACT }}
+          storybookBuildDir: dist/storybook/react
