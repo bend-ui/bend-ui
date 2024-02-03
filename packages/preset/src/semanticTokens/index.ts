@@ -24,8 +24,8 @@ export const semanticTokens = defineSemanticTokens({
     'accordion-up': { value: 'accordion-up 0.2s ease-out' },
   },
   sizes: {
-    xs: { value: '{sizes.2}' },
-    sm: { value: '{sizes.3}' },
-    md: { value: '{sizes.4}' },
+    // xs: { value: '{sizes.2}' },
+    // sm: { value: '{sizes.3}' },
+    // md: { value: '{sizes.4}' },
   },
 });

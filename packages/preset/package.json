@@ -1,0 +1,32 @@
+{
+  "name": "@particles/preset",
+  "version": "0.0.1",
+  "types": "./src/preset.ts",
+  "main": "./dist/preset.js",
+  "exports": {
+    ".": {
+      "source": "./src/preset.ts",
+      "types": "./dist/preset.d.ts",
+      "import": "./dist/preset.mjs",
+      "require": "./dist/preset.js"
+    }
+  },
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup"
+  },
+  "dependencies": {
+    "@pandacss/dev": "^0.29.1",
+    "@particles/theme": "workspace:^",
+    "tsup": "^8.0.1",
+    "tslib": "^2.5.3"
+  },
+  "devDependencies": {
+    "tslib": "^2.0.0",
+    "tsup": "^8.0.1"
+  }
+}

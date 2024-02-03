@@ -1,6 +1,6 @@
 import path from 'path';
 import { defineConfig } from '@pandacss/dev';
-import { particlesPreset } from './packages/panda/src/preset';
+import { preset } from './packages/preset/src/preset';
 
 export default defineConfig({
   preflight: true,
@@ -30,7 +30,7 @@ export default defineConfig({
 
   exclude: [],
 
-  presets: ['@pandacss/dev/presets', particlesPreset],
+  presets: ['@pandacss/dev/presets', preset],
 
   emitPackage: true,
   outdir: '@particles/panda-system',

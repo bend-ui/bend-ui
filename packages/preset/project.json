@@ -1,0 +1,27 @@
+{
+  "name": "preset",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/preset/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/preset",
+        "main": "packages/preset/src/index.ts",
+        "tsConfig": "packages/preset/tsconfig.lib.json",
+        "assets": ["packages/preset/*.md"]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs preset {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": []
+}

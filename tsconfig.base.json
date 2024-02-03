@@ -21,9 +21,11 @@
       "@particles/panda": ["packages/panda/src/index.ts"],
       "@particles/panda-aria": ["packages/panda-aria/src/index.ts"],
       "@particles/panda-radix": ["packages/panda-radix/src/index.ts"],
+      "@particles/preset": ["packages/preset/src/preset.ts"],
       "@particles/primitives": ["packages/primitives/src/index.ts"],
       "@particles/react-utils": ["packages/react-utils/src/index.ts"],
       "@particles/storybook": ["packages/storybook/src/index.ts"],
+      "@particles/styled-system/*": ["packages/styled-system/dist/*"],
       "@particles/tailwind": ["packages/tailwind/src/index.ts"],
       "@particles/theme": ["packages/theme/src/index.ts"]
     }

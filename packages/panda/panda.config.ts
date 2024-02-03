@@ -1,6 +1,6 @@
 import path from 'path';
 import { defineConfig } from '@pandacss/dev';
-import { particlesPreset } from './src';
+import { preset } from '@particles/preset';
 
 export default defineConfig({
   cwd: path.resolve(__dirname),
@@ -14,7 +14,7 @@ export default defineConfig({
   // Files to exclude
   exclude: [],
 
-  presets: ['@pandacss/dev/presets', particlesPreset],
+  presets: ['@pandacss/dev/presets', preset],
 
   staticCss: {
     recipes: {

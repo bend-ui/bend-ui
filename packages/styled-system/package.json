@@ -1,0 +1,57 @@
+{
+  "name": "@particles/styled-system",
+  "version": "0.0.0",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    "./css": {
+      "types": "./dist/css/index.d.ts",
+      "require": "./dist/css/index.mjs",
+      "import": "./dist/css/index.mjs"
+    },
+    "./jsx": {
+      "types": "./dist/jsx/index.d.ts",
+      "require": "./dist/jsx/index.mjs",
+      "import": "./dist/jsx/index.mjs"
+    },
+    "./patterns": {
+      "types": "./dist/patterns/index.d.ts",
+      "require": "./dist/patterns/index.mjs",
+      "import": "./dist/patterns/index.mjs"
+    },
+    "./recipes": {
+      "types": "./dist/recipes/index.d.ts",
+      "require": "./dist/recipes/index.mjs",
+      "import": "./dist/recipes/index.mjs"
+    },
+    "./tokens": {
+      "types": "./dist/tokens/index.d.ts",
+      "require": "./dist/tokens/index.mjs",
+      "import": "./dist/tokens/index.mjs"
+    },
+    "./types": {
+      "types": "./dist/types/index.d.ts"
+    }
+  },
+  "scripts": {
+    "prepare": "panda codegen"
+  },
+  "devDependencies": {
+    "@pandacss/dev": "^0.29.1",
+    "@particles/preset": "workspace:^",
+    "@types/react": "^18.2.31",
+    "@types/react-dom": "^18.2.14"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/particles-ui/particles",
+    "directory": "packages/styled-system"
+  },
+  "files": [
+    "styled-system"
+  ],
+  "dependencies": {
+    "@pandacss/dev": "^0.29.1",
+    "@particles/preset": "*"
+  }
+}

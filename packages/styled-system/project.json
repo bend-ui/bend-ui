@@ -1,0 +1,23 @@
+{
+  "name": "styled-system",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/styled-system/src",
+  "projectType": "library",
+  "targets": {
+    "dev": {
+      "command": "panda codegen --watch"
+    },
+    "build": {
+      "command": "panda codegen"
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs styled-system {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": []
+}

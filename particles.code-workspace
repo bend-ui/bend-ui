@@ -33,6 +33,14 @@
       "path": "packages/ark",
     },
     {
+      "name": "🎨 @particles/preset",
+      "path": "packages/preset",
+    },
+    {
+      "name": "🛠️ @particles/styled-system",
+      "path": "packages/styled-system",
+    },
+    {
       "name": "🛠️ @particles/react-utils",
       "path": "packages/react-utils",
     },

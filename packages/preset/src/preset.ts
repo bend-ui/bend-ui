@@ -8,7 +8,7 @@ import { layerStyles } from './layerStyles';
 import { keyframes } from './keyframes';
 import { globalCss } from './globalCss';
 
-export const particlesPreset = definePreset({
+export const preset = definePreset({
   conditions: {
     extend: {
       light: '[data-color-mode=light] &, .light &',

@@ -8,7 +8,7 @@ export const colors = defineSemanticTokens.colors({
         _dark: '{colors.shark.800}',
       },
     },
-    body: {},
+    // body: {},
     surface: {
       DEFAULT: {
         value: {
@@ -16,7 +16,7 @@ export const colors = defineSemanticTokens.colors({
           _dark: '{colors.shark.800}',
         },
       },
-      invert: {},
+      // invert: {},
       raise: {
         value: {
           base: '{colors.shark.200}',
@@ -24,9 +24,9 @@ export const colors = defineSemanticTokens.colors({
         },
       },
     },
-    strong: {},
-    subtle: {},
-    muted: {},
+    // strong: {},
+    // subtle: {},
+    // muted: {},
     input: {
       DEFAULT: {
         value: {
@@ -40,27 +40,27 @@ export const colors = defineSemanticTokens.colors({
           _dark: '{colors.shark.800}',
         },
       },
-      focus: {},
-      disabled: {},
+      // focus: {},
+      // disabled: {},
     },
     primary: {
       DEFAULT: {
         value: {
-          base: '{colors.blue.400}',
-          _dark: '{colors.blue.600}',
+          base: '{colors.denim.400}',
+          _dark: '{colors.denim.600}',
         },
       },
       hover: {
         value: {
-          base: '{colors.blue.700}',
-          _dark: '{colors.blue.500}',
+          base: '{colors.denim.700}',
+          _dark: '{colors.denim.500}',
         },
       },
-      subtle: {},
-      'subtle-hover': {},
-      active: {},
-      disabled: {},
-      muted: {},
+      // subtle: {},
+      // 'subtle-hover': {},
+      // active: {},
+      // disabled: {},
+      // muted: {},
     },
     success: {
       DEFAULT: {
@@ -69,8 +69,8 @@ export const colors = defineSemanticTokens.colors({
           _dark: '{colors.green.600}',
         },
       },
-      hover: {},
-      muted: {},
+      // hover: {},
+      // muted: {},
     },
     warning: {
       DEFAULT: {
@@ -79,8 +79,8 @@ export const colors = defineSemanticTokens.colors({
           _dark: '{colors.yellow.600}',
         },
       },
-      hover: {},
-      muted: {},
+      // hover: {},
+      // muted: {},
     },
     danger: {
       DEFAULT: {
@@ -95,17 +95,17 @@ export const colors = defineSemanticTokens.colors({
           _dark: '{colors.red.500}',
         },
       },
-      muted: {},
+      // muted: {},
     },
     info: {
       DEFAULT: {
         value: {
-          base: '{colors.blue.400}',
-          _dark: '{colors.blue.600}',
+          base: '{colors.denim.400}',
+          _dark: '{colors.denim.600}',
         },
       },
-      hover: {},
-      muted: {},
+      // hover: {},
+      // muted: {},
     },
   },
   border: {
@@ -131,15 +131,15 @@ export const colors = defineSemanticTokens.colors({
       },
     },
     primary: {
-      DEFAULT: {},
+      DEFAULT: {
+        value: '{colors.denim.400}',
+      },
     },
     success: {
       DEFAULT: {
-        DEFAULT: {
-          value: {
-            base: '{colors.green.400}',
-            _dark: '{colors.green.600}',
-          },
+        value: {
+          base: '{colors.green.400}',
+          _dark: '{colors.green.600}',
         },
       },
     },
@@ -160,7 +160,12 @@ export const colors = defineSemanticTokens.colors({
       },
     },
     info: {
-      DEFAULT: {},
+      DEFAULT: {
+        value: {
+          base: '{colors.denim.400}',
+          _dark: '{colors.denim.600}',
+        },
+      },
     },
     input: {
       DEFAULT: {
@@ -179,7 +184,7 @@ export const colors = defineSemanticTokens.colors({
       },
     },
   },
-  icon: {},
+  // icon: {},
   text: {
     DEFAULT: {
       value: {

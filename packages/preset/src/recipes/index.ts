@@ -7,7 +7,7 @@ import { breadcrumbsRecipe } from './breadcrumbs';
 import { buttonRecipe } from './button';
 import { cardRecipe } from './card';
 import { checkboxRecipe } from './checkbox';
-import { dividerRecipe } from './divider';
+// import { dividerRecipe } from './divider';
 import { drawerRecipe } from './drawer';
 import { dropdownMenuRecipe } from './dropdownMenu';
 import { iconRecipe } from './icon';
@@ -35,7 +35,7 @@ export const slotRecipes = {
   button: buttonRecipe,
   card: cardRecipe,
   checkbox: checkboxRecipe,
-  divider: dividerRecipe,
+  // divider: dividerRecipe,
   drawer: drawerRecipe,
   dropdownMenu: dropdownMenuRecipe,
   indicator: indicatorRecipe,
