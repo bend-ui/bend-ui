@@ -4,6 +4,9 @@ on:
   push:
     paths:
       - 'packages/radix/**'
+    branches-ignore:
+      - 'dependabot/**'
+      - 'renovate/**'
 
 jobs:
   chromatic:

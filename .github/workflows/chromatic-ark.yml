@@ -4,6 +4,9 @@ on:
   push:
     paths:
       - 'packages/ark/**'
+    branches-ignore:
+      - 'dependabot/**'
+      - 'renovate/**'
 
 jobs:
   chromatic:

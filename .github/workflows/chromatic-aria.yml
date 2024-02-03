@@ -4,7 +4,9 @@ on:
   push:
     paths:
       - 'packages/aria/**'
-
+    branches-ignore:
+      - 'dependabot/**'
+      - 'renovate/**'
 jobs:
   chromatic:
     runs-on: ubuntu-latest
