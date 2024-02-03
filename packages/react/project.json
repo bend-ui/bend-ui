@@ -49,7 +49,7 @@
       "executor": "@nx/storybook:build",
       "outputs": ["{options.outputDir}"],
       "options": {
-        "outputDir": "dist/storybook/panda",
+        "outputDir": "dist/storybook/react",
         "configDir": "packages/react/.storybook"
       },
       "configurations": {
@@ -68,7 +68,7 @@
       "executor": "@nx/web:file-server",
       "options": {
         "buildTarget": "react:build-storybook",
-        "staticFilePath": "dist/storybook/panda"
+        "staticFilePath": "dist/storybook/react"
       },
       "configurations": {
         "ci": {
