@@ -12,7 +12,7 @@ const config: StorybookConfig = {
     name: '@storybook/react-vite',
     options: {
       builder: {
-        viteConfigPath: 'packages/panda-radix/vite.config.ts',
+        viteConfigPath: 'packages/radix/vite.config.ts',
       },
     },
   },

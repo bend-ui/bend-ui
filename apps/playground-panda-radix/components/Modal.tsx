@@ -2,7 +2,7 @@ import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { TbX } from 'react-icons/tb';
 import { modal } from '@particles/styled-system/recipes';
 import { cx } from '@particles/styled-system/css';
-import { Button } from '@particles/panda-radix';
+import { Button } from '@particles/radix';
 import type { ModalVariant } from '@particles/styled-system/recipes';
 import type { ComponentPropsWithoutRef } from 'react';
 

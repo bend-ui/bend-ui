@@ -8,7 +8,7 @@ import {
 } from '@particles/styled-system/patterns';
 import { appShell } from '@particles/styled-system/recipes';
 import { css, cx } from '@particles/styled-system/css';
-import { Button, Tabs } from '@particles/panda-radix';
+import { Button, Tabs } from '@particles/radix';
 import { Avatar, Card, List, Modal, Select, TextField } from '../../components';
 import Sidebar from './components/sidebar';
 

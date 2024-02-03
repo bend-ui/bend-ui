@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { center, splitLayout, stack } from '@particles/styled-system/patterns';
 import { css, cx } from '@particles/styled-system/css';
-import { Button } from '@particles/panda-radix';
+import { Button } from '@particles/radix';
 import { TextField } from '../../components';
 
 const AuthPage = () => (

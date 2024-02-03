@@ -21,8 +21,8 @@
       "path": "packages/panda",
     },
     {
-      "name": "📦 @particles/panda-radix",
-      "path": "packages/panda-radix",
+      "name": "📦 @particles/radix",
+      "path": "packages/radix",
     },
     {
       "name": "📦 @particles/panda-aria",
