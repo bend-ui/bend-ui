@@ -5,13 +5,13 @@ import type { ComponentPropsWithoutRef } from 'react';
 
 const { withProvider, withContext } = createStyleContext(tooltip);
 
-export const Root = withProvider(TooltipPrimitive.Root, 'root');
+const Root = withProvider(TooltipPrimitive.Root, 'root');
 
-export const Trigger = withContext(TooltipPrimitive.Trigger, 'trigger');
+const Trigger = withContext(TooltipPrimitive.Trigger, 'trigger');
 
-export const Positioner = withContext(TooltipPrimitive.Positioner);
+const Positioner = withContext(TooltipPrimitive.Positioner);
 
-export const Content = withContext(TooltipPrimitive.Content, 'content');
+const Content = withContext(TooltipPrimitive.Content, 'content');
 
 export type TooltipProps = ComponentPropsWithoutRef<typeof TooltipPrimitive>;
 

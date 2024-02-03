@@ -5,17 +5,17 @@ import type { DropdownMenuProps } from './DropdownMenu.types';
 
 const { withProvider, withContext } = createStyleContext(dropdownMenu);
 
-export const Root = withProvider(MenuPrimitive.Root);
+const Root = withProvider(MenuPrimitive.Root);
 
-export const Trigger = withContext(MenuPrimitive.ContextTrigger, 'trigger');
+const Trigger = withContext(MenuPrimitive.ContextTrigger, 'trigger');
 
-export const Positioner = withContext(MenuPrimitive.Positioner);
+const Positioner = withContext(MenuPrimitive.Positioner);
 
-export const Content = withContext(MenuPrimitive.Content, 'content');
+const Content = withContext(MenuPrimitive.Content, 'content');
 
-export const Item = withContext(MenuPrimitive.Item, 'item');
+const Item = withContext(MenuPrimitive.Item, 'item');
 
-export const SubItem = withContext(MenuPrimitive.TriggerItem, 'subTrigger');
+const SubItem = withContext(MenuPrimitive.TriggerItem, 'subTrigger');
 
 export const OptionItem = withContext(
   MenuPrimitive.TriggerItem,
@@ -54,4 +54,5 @@ export const DropdownMenu = Object.assign(Component, {
   Positioner,
   Content,
   Item,
+  SubItem,
 });
