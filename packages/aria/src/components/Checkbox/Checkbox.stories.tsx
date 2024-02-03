@@ -1,4 +1,3 @@
-
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import { Checkbox } from './Checkbox';

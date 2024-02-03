@@ -7,7 +7,7 @@ import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 
 export default defineConfig({
   root: __dirname,
-  cacheDir: '../../node_modules/.vite/packages/panda-aria',
+  cacheDir: '../../node_modules/.vite/packages/aria',
 
   plugins: [
     react(),
@@ -27,7 +27,7 @@ export default defineConfig({
   // Configuration for building your library.
   // See: https://vitejs.dev/guide/build.html#library-mode
   build: {
-    outDir: '../../dist/packages/panda-aria',
+    outDir: '../../dist/packages/aria',
     reportCompressedSize: true,
     commonjsOptions: {
       transformMixedEsModules: true,
@@ -35,7 +35,7 @@ export default defineConfig({
     lib: {
       // Could also be a dictionary or array of multiple entry points.
       entry: 'src/index.ts',
-      name: 'panda-aria',
+      name: 'aria',
       fileName: 'index',
       // Change this to the formats you want to support.
       // Don't forget to update your package.json as well.
@@ -57,7 +57,7 @@ export default defineConfig({
 
     reporters: ['default'],
     coverage: {
-      reportsDirectory: '../../coverage/packages/panda-aria',
+      reportsDirectory: '../../coverage/packages/aria',
       provider: 'v8',
     },
   },

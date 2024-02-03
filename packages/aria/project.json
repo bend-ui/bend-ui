@@ -1,7 +1,7 @@
 {
-  "name": "panda-aria",
+  "name": "aria",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/panda-aria/src",
+  "sourceRoot": "packages/aria/src",
   "projectType": "library",
   "tags": ["ui"],
   "targets": {
@@ -14,7 +14,7 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/packages/panda-aria"
+        "outputPath": "dist/packages/aria"
       },
       "configurations": {
         "development": {
@@ -29,14 +29,14 @@
       "executor": "@nx/vite:test",
       "outputs": ["{options.reportsDirectory}"],
       "options": {
-        "reportsDirectory": "../../coverage/packages/panda-aria"
+        "reportsDirectory": "../../coverage/packages/aria"
       }
     },
     "storybook": {
       "executor": "@nx/storybook:storybook",
       "options": {
         "port": 4404,
-        "configDir": "packages/panda-aria/.storybook"
+        "configDir": "packages/aria/.storybook"
       },
       "configurations": {
         "ci": {
@@ -48,8 +48,8 @@
       "executor": "@nx/storybook:build",
       "outputs": ["{options.outputDir}"],
       "options": {
-        "outputDir": "dist/storybook/panda-aria",
-        "configDir": "packages/panda-aria/.storybook"
+        "outputDir": "dist/storybook/aria",
+        "configDir": "packages/aria/.storybook"
       },
       "configurations": {
         "ci": {
@@ -60,18 +60,18 @@
     "test-storybook": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "test-storybook -c packages/panda-aria/.storybook --url=http://localhost:4400"
+        "command": "test-storybook -c packages/aria/.storybook --url=http://localhost:4400"
       }
     },
     "static-storybook": {
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "panda-aria:build-storybook",
-        "staticFilePath": "dist/storybook/panda-aria"
+        "buildTarget": "aria:build-storybook",
+        "staticFilePath": "dist/storybook/aria"
       },
       "configurations": {
         "ci": {
-          "buildTarget": "panda-aria:build-storybook:ci"
+          "buildTarget": "aria:build-storybook:ci"
         }
       }
     }
