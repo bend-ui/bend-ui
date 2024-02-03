@@ -6,8 +6,7 @@ const Root = SwitchPrimitive.Root;
 
 const Thumb = SwitchPrimitive.Thumb;
 
-export interface SwitchProps
-  extends ComponentPropsWithoutRef<typeof SwitchPrimitive.Root> {}
+export type SwitchProps = ComponentPropsWithoutRef<typeof SwitchPrimitive.Root>;
 
 const Component = forwardRef<
   ElementRef<typeof SwitchPrimitive.Root>,
