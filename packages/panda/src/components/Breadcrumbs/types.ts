@@ -1,7 +1,6 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-export interface BreadcrumbsSeparatorProps
-  extends ComponentPropsWithoutRef<'div'> {}
+export type BreadcrumbsSeparatorProps = ComponentPropsWithoutRef<'div'>;
 
 export interface BreadcrumbsItemProps extends ComponentPropsWithoutRef<'div'> {
   children: React.ReactNode;

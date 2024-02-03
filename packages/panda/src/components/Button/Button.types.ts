@@ -1,4 +1,4 @@
-import type { ButtonVariantProps } from '@particles/panda-system/recipes';
+import type { ButtonVariantProps } from '@particles/styled-system/recipes';
 import type { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
 
 export type ButtonProps = ComponentPropsWithoutRef<'button'> & {

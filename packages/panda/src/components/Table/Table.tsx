@@ -3,7 +3,7 @@ import { cx } from '@particles/styled-system/css';
 import { table } from '@particles/styled-system/recipes';
 import type { ComponentPropsWithoutRef } from 'react';
 
-export interface TableCellProps extends ComponentPropsWithoutRef<'td'> {}
+export type TableCellProps = ComponentPropsWithoutRef<'td'>;
 
 const Cell = forwardRef<'tr', TableCellProps>((props, ref) => {
   const { children, className, ...rest } = props;
@@ -15,7 +15,7 @@ const Cell = forwardRef<'tr', TableCellProps>((props, ref) => {
   );
 });
 
-export interface TableHeadProps extends ComponentPropsWithoutRef<'th'> {}
+export type TableHeadProps = ComponentPropsWithoutRef<'th'>;
 
 const Head = forwardRef<'tr', TableHeadProps>((props, ref) => {
   const { children, className, ...rest } = props;
@@ -27,7 +27,7 @@ const Head = forwardRef<'tr', TableHeadProps>((props, ref) => {
   );
 });
 
-export interface TableRowProps extends ComponentPropsWithoutRef<'tr'> {}
+export type TableRowProps = ComponentPropsWithoutRef<'tr'>;
 
 const Row = forwardRef<'tr', TableRowProps>((props, ref) => {
   const { children, className, ...rest } = props;
@@ -39,7 +39,7 @@ const Row = forwardRef<'tr', TableRowProps>((props, ref) => {
   );
 });
 
-export interface TableHeaderProps extends ComponentPropsWithoutRef<'thead'> {}
+export type TableHeaderProps = ComponentPropsWithoutRef<'thead'>;
 
 const Header = forwardRef<'thead', TableHeaderProps>((props, ref) => {
   const { children, className, ...rest } = props;
@@ -51,7 +51,7 @@ const Header = forwardRef<'thead', TableHeaderProps>((props, ref) => {
   );
 });
 
-export interface TableBodyProps extends ComponentPropsWithoutRef<'tbody'> {}
+export type TableBodyProps = ComponentPropsWithoutRef<'tbody'>;
 
 const Body = forwardRef<'tbody', TableBodyProps>((props, ref) => {
   const { children, className, ...rest } = props;
@@ -63,7 +63,7 @@ const Body = forwardRef<'tbody', TableBodyProps>((props, ref) => {
   );
 });
 
-export interface TableFooterProps extends ComponentPropsWithoutRef<'tfoot'> {}
+export type TableFooterProps = ComponentPropsWithoutRef<'tfoot'>;
 
 const Footer = forwardRef<'tfoot', TableFooterProps>((props, ref) => {
   const { children, className, ...rest } = props;
@@ -75,7 +75,7 @@ const Footer = forwardRef<'tfoot', TableFooterProps>((props, ref) => {
   );
 });
 
-export interface TableProps extends ComponentPropsWithoutRef<'table'> {}
+export type TableProps = ComponentPropsWithoutRef<'table'>;
 
 const Root = forwardRef<'table', TableProps>((props, ref) => {
   const { children, className, ...rest } = props;

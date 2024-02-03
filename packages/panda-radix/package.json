@@ -9,11 +9,17 @@
       "require": "./index.js"
     }
   },
+  "dependencies": {
+    "@particles/preset": "workspace:^",
+    "@particles/styled-system": "workspace:^"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2 || ^18.2.0",
+    "react-dom": "^17.0.2 || ^18.2.0",
+    "@pandacss/dev": "^0.29.0"
+  },
   "scripts": {
     "prepare": "panda codegen",
     "cli": "tsx ../cli/src/index.ts"
-  },
-  "peerDependencies": {
-    "@pandacss/dev": "^0.29.0"
   }
 }
