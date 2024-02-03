@@ -1,9 +1,9 @@
 import { forwardRef } from 'react';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { TbCheck, TbChevronRight, TbCircle } from 'react-icons/tb';
-import { styled } from '@particles/panda-system/jsx';
-import { css, cx } from '@particles/panda-system/css';
-import { dropdownMenu, icon } from '@particles/panda-system/recipes';
+import { styled } from '@particles/styled-system/jsx';
+import { css, cx } from '@particles/styled-system/css';
+import { dropdownMenu, icon } from '@particles/styled-system/recipes';
 import { createStyleContext } from '../../utils';
 import type {
   ComponentProps,

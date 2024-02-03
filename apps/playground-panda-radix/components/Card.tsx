@@ -1,6 +1,6 @@
-import { cx } from '@particles/panda-system/css';
-import { card } from '@particles/panda-system/recipes';
-import type { CardVariantProps } from '@particles/panda-system/recipes';
+import { cx } from '@particles/styled-system/css';
+import { card } from '@particles/styled-system/recipes';
+import type { CardVariantProps } from '@particles/styled-system/recipes';
 import type { ComponentPropsWithoutRef } from 'react';
 
 type CardSectionProps = ComponentPropsWithoutRef<'div'> & CardVariantProps;

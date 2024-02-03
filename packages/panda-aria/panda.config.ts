@@ -1,6 +1,6 @@
 import path from 'path';
 import { defineConfig } from '@pandacss/dev';
-import { particlesPreset } from '@particles/panda';
+import { preset } from '@particles/preset';
 
 export default defineConfig({
   cwd: path.resolve(__dirname),
@@ -14,22 +14,13 @@ export default defineConfig({
   // Files to exclude
   exclude: [],
 
-  presets: ['@pandacss/dev/presets', particlesPreset],
+  presets: ['@pandacss/dev/presets', preset],
 
   staticCss: {
     recipes: '*',
   },
 
-  // outdir: '../styled-system',
-  // importMap: {
-  //   css: '@particles/panda-system/css',
-  //   recipes: '@particles/panda-system/recipes',
-  //   patterns: '@particles/panda-system/patterns',
-  //   jsx: '@particles/panda-system/jsx',
-  // },
-
-  outdir: '@particles/panda-system',
-  emitPackage: true,
+  importMap: '@particles/styled-system',
 
   jsxFramework: 'react',
 });

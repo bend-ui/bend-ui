@@ -1,5 +1,5 @@
-import { level } from '@particles/panda-system/patterns';
-import { cx, sva } from '@particles/panda-system/css';
+import { level } from '@particles/styled-system/patterns';
+import { cx, sva } from '@particles/styled-system/css';
 import { Button, TextField } from '../../../components';
 
 const styles = sva({

@@ -1,5 +1,5 @@
-// import { tiles } from '@particles/panda-system/patterns';
-import { tiles } from '@particles/panda-system/patterns';
+// import { tiles } from '@particles/styled-system/patterns';
+import { tiles } from '@particles/styled-system/patterns';
 import Image from 'next/image';
 import { MenuBar } from '../../components';
 import { layout } from './styles';

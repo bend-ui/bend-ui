@@ -1,5 +1,5 @@
-import { css, sva } from '@particles/panda-system/css';
-import { stack } from '@particles/panda-system/patterns';
+import { css, sva } from '@particles/styled-system/css';
+import { stack } from '@particles/styled-system/patterns';
 import {
   TbDashboard,
   TbLogout,

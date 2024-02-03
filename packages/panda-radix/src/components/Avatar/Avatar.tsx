@@ -1,6 +1,6 @@
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
-import { styled } from '@particles/panda-system/jsx';
-import { avatar } from '@particles/panda-system/recipes';
+import { styled } from '@particles/styled-system/jsx';
+import { avatar } from '@particles/styled-system/recipes';
 import { createComponent } from '@particles/primitives';
 import { createStyleContext } from '../../utils';
 

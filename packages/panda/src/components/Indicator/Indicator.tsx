@@ -1,7 +1,7 @@
 import { forwardRef } from '@particles/primitives';
-import { cx } from '@particles/panda-system/css';
-import { indicator } from '@particles/panda-system/recipes';
-import type { IndicatorVariantProps } from '@particles/panda-system/recipes';
+import { cx } from '@particles/styled-system/css';
+import { indicator } from '@particles/styled-system/recipes';
+import type { IndicatorVariantProps } from '@particles/styled-system/recipes';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 interface IndicatorProps extends ComponentPropsWithoutRef<'span'> {

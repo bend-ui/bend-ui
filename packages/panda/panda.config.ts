@@ -17,27 +17,10 @@ export default defineConfig({
   presets: ['@pandacss/dev/presets', preset],
 
   staticCss: {
-    recipes: {
-      alert: ['*'],
-      badge: ['*'],
-      button: ['*'],
-      card: ['*'],
-      divider: ['*'],
-      indicator: ['*'],
-      input: ['*'],
-    },
+    recipes: '*',
   },
 
-  // outdir: '../styled-system',
-  // importMap: {
-  //   css: '@particles/panda-system/css',
-  //   recipes: '@particles/panda-system/recipes',
-  //   patterns: '@particles/panda-system/patterns',
-  //   jsx: '@particles/panda-system/jsx',
-  // },
-
-  outdir: '@particles/panda-system',
-  emitPackage: true,
+  importMap: '@particles/styled-system',
 
   jsxFramework: 'react',
 });

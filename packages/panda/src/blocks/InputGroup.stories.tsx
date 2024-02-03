@@ -1,5 +1,5 @@
-import { css, cx, sva } from '@particles/panda-system/css';
-import { visuallyHidden } from '@particles/panda-system/patterns';
+import { css, cx, sva } from '@particles/styled-system/css';
+import { visuallyHidden } from '@particles/styled-system/patterns';
 import { TbExclamationCircle } from 'react-icons/tb';
 import type { Meta, StoryObj } from '@storybook/react';
 

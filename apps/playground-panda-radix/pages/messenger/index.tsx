@@ -1,4 +1,4 @@
-import { sva } from '@particles/panda-system/css';
+import { sva } from '@particles/styled-system/css';
 import { Header } from './components/Header';
 import { Sidebar } from './components/Sidebar';
 import { Main } from './components/Main';

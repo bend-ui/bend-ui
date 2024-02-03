@@ -1,4 +1,4 @@
-import { sva } from '@particles/panda-system/css';
+import { sva } from '@particles/styled-system/css';
 import Link from 'next/link';
 
 const styles = sva({

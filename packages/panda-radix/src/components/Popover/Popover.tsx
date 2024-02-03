@@ -1,5 +1,5 @@
 import * as PopoverPrimitive from '@radix-ui/react-popover';
-import { popover } from '@particles/panda-system/recipes';
+import { popover } from '@particles/styled-system/recipes';
 import { createStyleContext } from '../../utils';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 

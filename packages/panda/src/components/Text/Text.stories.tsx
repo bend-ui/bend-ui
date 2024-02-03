@@ -1,4 +1,4 @@
-import { text } from '@particles/panda-system/recipes';
+import { text } from '@particles/styled-system/recipes';
 import { Text } from './';
 import type { Meta, StoryObj } from '@storybook/react';
 

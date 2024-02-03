@@ -5,9 +5,9 @@ import {
   grid,
   level,
   stack,
-} from '@particles/panda-system/patterns';
-import { appShell } from '@particles/panda-system/recipes';
-import { css, cx } from '@particles/panda-system/css';
+} from '@particles/styled-system/patterns';
+import { appShell } from '@particles/styled-system/recipes';
+import { css, cx } from '@particles/styled-system/css';
 import { Button, Tabs } from '@particles/panda-radix';
 import { Avatar, Card, List, Modal, Select, TextField } from '../../components';
 import Sidebar from './components/sidebar';

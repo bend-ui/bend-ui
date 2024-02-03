@@ -1,8 +1,8 @@
 import { forwardRef } from 'react';
 import * as ReactAria from 'react-aria-components';
-import { checkbox } from '@particles/panda-system/recipes';
-import { cx } from '@particles/panda-system/css';
-import type { CheckboxVariantProps } from '@particles/panda-system/recipes';
+import { checkbox } from '@particles/styled-system/recipes';
+import { cx } from '@particles/styled-system/css';
+import type { CheckboxVariantProps } from '@particles/styled-system/recipes';
 
 export interface CheckboxProps
   extends ReactAria.CheckboxProps,

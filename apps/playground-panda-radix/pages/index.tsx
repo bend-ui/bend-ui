@@ -1,5 +1,5 @@
-import { css, cx } from '@particles/panda-system/css';
-import { center } from '@particles/panda-system/patterns';
+import { css, cx } from '@particles/styled-system/css';
+import { center } from '@particles/styled-system/patterns';
 import Link from 'next/link';
 
 const classes = css({

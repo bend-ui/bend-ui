@@ -1,6 +1,6 @@
-import { tiles } from '@particles/panda-system/patterns';
-import { cx } from '@particles/panda-system/css';
-import type { TilesProperties } from '@particles/panda-system/patterns';
+import { tiles } from '@particles/styled-system/patterns';
+import { cx } from '@particles/styled-system/css';
+import type { TilesProperties } from '@particles/styled-system/patterns';
 import type { ComponentPropsWithoutRef } from 'react';
 
 type TilesProps = ComponentPropsWithoutRef<'div'> & TilesProperties;

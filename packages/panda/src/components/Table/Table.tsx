@@ -1,6 +1,6 @@
 import { forwardRef } from '@particles/primitives';
-import { cx } from '@particles/panda-system/css';
-import { table } from '@particles/panda-system/recipes';
+import { cx } from '@particles/styled-system/css';
+import { table } from '@particles/styled-system/recipes';
 import type { ComponentPropsWithoutRef } from 'react';
 
 export interface TableCellProps extends ComponentPropsWithoutRef<'td'> {}

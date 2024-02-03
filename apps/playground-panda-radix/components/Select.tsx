@@ -1,8 +1,8 @@
 import { forwardRef } from 'react';
 import * as SelectPrimitive from '@radix-ui/react-select';
 import { TbCaretDown, TbCheck } from 'react-icons/tb';
-import { cx } from '@particles/panda-system/css';
-import { select } from '@particles/panda-system/recipes';
+import { cx } from '@particles/styled-system/css';
+import { select } from '@particles/styled-system/recipes';
 
 import { createStyleContext } from './style-context';
 

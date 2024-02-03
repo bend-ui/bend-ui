@@ -1,5 +1,5 @@
 import * as TabsPrimitive from '@radix-ui/react-tabs';
-import { tabs } from '@particles/panda-system/recipes';
+import { tabs } from '@particles/styled-system/recipes';
 
 import { createStyleContext } from '../../utils';
 

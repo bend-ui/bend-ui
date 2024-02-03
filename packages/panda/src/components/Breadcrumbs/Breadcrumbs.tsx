@@ -1,6 +1,6 @@
 import { Children, forwardRef, Fragment } from 'react';
-import { breadcrumbs } from '@particles/panda-system/recipes';
-import { cx } from '@particles/panda-system/css';
+import { breadcrumbs } from '@particles/styled-system/recipes';
+import { cx } from '@particles/styled-system/css';
 import type {
   BreadcrumbsItemProps,
   BreadcrumbsProps,

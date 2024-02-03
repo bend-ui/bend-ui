@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import { center, splitLayout, stack } from '@particles/panda-system/patterns';
-import { css, cx } from '@particles/panda-system/css';
+import { center, splitLayout, stack } from '@particles/styled-system/patterns';
+import { css, cx } from '@particles/styled-system/css';
 import { Button } from '@particles/panda-radix';
 import { TextField } from '../../components';
 

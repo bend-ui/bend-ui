@@ -1,8 +1,8 @@
 import { forwardRef } from '@particles/primitives';
-import { cx } from '@particles/panda-system/css';
-import { divider } from '@particles/panda-system/recipes';
+import { cx } from '@particles/styled-system/css';
+import { divider } from '@particles/styled-system/recipes';
 import { Children, type ComponentPropsWithoutRef, type ReactNode } from 'react';
-import type { DividerVariantProps } from '@particles/panda-system/recipes';
+import type { DividerVariantProps } from '@particles/styled-system/recipes';
 
 export interface DividerProps extends ComponentPropsWithoutRef<'span'> {
   children?: ReactNode;

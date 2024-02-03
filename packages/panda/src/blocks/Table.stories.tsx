@@ -1,5 +1,5 @@
-import { cx } from '@particles/panda-system/css';
-import { table } from '@particles/panda-system/recipes';
+import { cx } from '@particles/styled-system/css';
+import { table } from '@particles/styled-system/recipes';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta = { title: 'Blocks/Table' };

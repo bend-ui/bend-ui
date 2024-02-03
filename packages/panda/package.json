@@ -9,8 +9,10 @@
       "require": "./index.js"
     }
   },
-  "scripts": {},
+  "scripts": {
+    "prepare": "panda codegen"
+  },
   "peerDependencies": {
-    "@pandacss/dev": "^0.23.0"
+    "@pandacss/dev": "^0.29.0"
   }
 }

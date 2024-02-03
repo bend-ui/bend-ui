@@ -1,5 +1,5 @@
-import { badge } from '@particles/panda-system/recipes';
-import { cx } from '@particles/panda-system/css';
+import { badge } from '@particles/styled-system/recipes';
+import { cx } from '@particles/styled-system/css';
 import { forwardRef } from '@particles/primitives';
 import type { BadgeProps } from './Badge.types';
 

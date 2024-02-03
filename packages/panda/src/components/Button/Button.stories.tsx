@@ -1,7 +1,7 @@
-import { css } from '@particles/panda-system/css';
-import { Stack } from '@particles/panda-system/jsx';
+import { css } from '@particles/styled-system/css';
+import { Stack } from '@particles/styled-system/jsx';
 import { TbArrowRight, TbCloudDownload } from 'react-icons/tb';
-import { button } from '@particles/panda-system/recipes';
+import { button } from '@particles/styled-system/recipes';
 import { Button } from './Button';
 
 import type { Meta, StoryObj } from '@storybook/react';

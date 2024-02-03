@@ -3,9 +3,9 @@ import {
   createComponent,
   forwardRef,
 } from '@particles/primitives';
-import { button } from '@particles/panda-system/recipes';
-import { styled } from '@particles/panda-system/jsx';
-import { cx } from '@particles/panda-system/css';
+import { button } from '@particles/styled-system/recipes';
+import { styled } from '@particles/styled-system/jsx';
+import { cx } from '@particles/styled-system/css';
 import type { ButtonProps } from './Button.types';
 
 const Root = forwardRef<'button', ButtonProps>((props, ref) => {

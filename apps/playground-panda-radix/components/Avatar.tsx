@@ -1,5 +1,5 @@
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
-import { avatar } from '@particles/panda-system/recipes';
+import { avatar } from '@particles/styled-system/recipes';
 
 import { createStyleContext } from './style-context';
 

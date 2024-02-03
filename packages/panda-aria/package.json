@@ -8,5 +8,11 @@
       "import": "./index.mjs",
       "require": "./index.js"
     }
+  },
+  "scripts": {
+    "prepare": "panda codegen"
+  },
+  "peerDependencies": {
+    "@pandacss/dev": "^0.29.0"
   }
 }

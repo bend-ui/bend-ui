@@ -1,5 +1,5 @@
-import { cx } from '@particles/panda-system/css';
-import { level } from '@particles/panda-system/patterns';
+import { cx } from '@particles/styled-system/css';
+import { level } from '@particles/styled-system/patterns';
 import { createPolymorphicComponent } from '@particles/primitives';
 import { forwardRef } from 'react';
 import type { ElementType, ReactNode } from 'react';

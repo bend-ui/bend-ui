@@ -1,9 +1,9 @@
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { TbX } from 'react-icons/tb';
-import { modal } from '@particles/panda-system/recipes';
-import { cx } from '@particles/panda-system/css';
+import { modal } from '@particles/styled-system/recipes';
+import { cx } from '@particles/styled-system/css';
 import { Button } from '@particles/panda-radix';
-import type { ModalVariant } from '@particles/panda-system/recipes';
+import type { ModalVariant } from '@particles/styled-system/recipes';
 import type { ComponentPropsWithoutRef } from 'react';
 
 const Root = DialogPrimitive.Root;

@@ -1,9 +1,9 @@
 import { createPolymorphicComponent } from '@particles/primitives';
-import { css, cx } from '@particles/panda-system/css';
-import { text } from '@particles/panda-system/recipes';
+import { css, cx } from '@particles/styled-system/css';
+import { text } from '@particles/styled-system/recipes';
 import { forwardRef } from 'react';
-import type { SystemStyleObject } from '@particles/panda-system/types';
-import type { TextVariantProps } from '@particles/panda-system/recipes';
+import type { SystemStyleObject } from '@particles/styled-system/types';
+import type { TextVariantProps } from '@particles/styled-system/recipes';
 import type { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
 
 export interface TextProps extends ComponentPropsWithoutRef<'span'> {

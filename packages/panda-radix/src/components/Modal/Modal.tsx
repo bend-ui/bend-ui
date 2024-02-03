@@ -1,6 +1,6 @@
 import * as DialogPrimitive from '@radix-ui/react-dialog';
-import { modal } from '@particles/panda-system/recipes';
-import { styled } from '@particles/panda-system/jsx';
+import { modal } from '@particles/styled-system/recipes';
+import { styled } from '@particles/styled-system/jsx';
 import { createStyleContext } from '../../utils';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 

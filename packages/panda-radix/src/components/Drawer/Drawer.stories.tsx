@@ -1,4 +1,4 @@
-import { Stack } from '@particles/panda-system/jsx';
+import { Stack } from '@particles/styled-system/jsx';
 import { Button, Input } from '@particles/panda';
 import { Drawer } from '.';
 import type { Meta, StoryObj } from '@storybook/react';

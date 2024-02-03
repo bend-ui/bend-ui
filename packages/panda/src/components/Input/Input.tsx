@@ -1,7 +1,7 @@
 import { createComponent, forwardRef } from '@particles/primitives';
-import { cx } from '@particles/panda-system/css';
-import { input } from '@particles/panda-system/recipes';
-import type { InputVariantProps } from '@particles/panda-system/recipes';
+import { cx } from '@particles/styled-system/css';
+import { input } from '@particles/styled-system/recipes';
+import type { InputVariantProps } from '@particles/styled-system/recipes';
 import type { ReactNode } from 'react';
 
 export type InputProps = InputVariantProps & {

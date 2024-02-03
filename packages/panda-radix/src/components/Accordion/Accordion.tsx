@@ -1,8 +1,8 @@
 import { forwardRef } from 'react';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
 import { TbChevronDown } from 'react-icons/tb';
-import { cx } from '@particles/panda-system/css';
-import { accordion } from '@particles/panda-system/recipes';
+import { cx } from '@particles/styled-system/css';
+import { accordion } from '@particles/styled-system/recipes';
 import { createComponent } from '@particles/primitives';
 import type { ComponentPropsWithoutRef, ElementRef } from 'react';
 

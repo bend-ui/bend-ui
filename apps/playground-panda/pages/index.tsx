@@ -1,4 +1,4 @@
-import { container, grid } from '@particles/panda-system/patterns';
+import { container, grid } from '@particles/styled-system/patterns';
 import { Card } from '@particles/panda';
 
 export function Index() {

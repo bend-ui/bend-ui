@@ -1,6 +1,6 @@
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
-import { styled } from '@particles/panda-system/jsx';
-import { tooltip } from '@particles/panda-system/recipes';
+import { styled } from '@particles/styled-system/jsx';
+import { tooltip } from '@particles/styled-system/recipes';
 import { createComponent } from '@particles/primitives';
 import { createStyleContext } from '../../utils';
 

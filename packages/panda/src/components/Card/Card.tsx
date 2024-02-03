@@ -1,9 +1,9 @@
-import { cx } from '@particles/panda-system/css';
-import { card } from '@particles/panda-system/recipes';
+import { cx } from '@particles/styled-system/css';
+import { card } from '@particles/styled-system/recipes';
 import { createComponent, forwardRef } from '@particles/primitives';
 import { type ReactNode } from 'react';
-import { styled } from '@particles/panda-system/jsx';
-import type { CardVariantProps } from '@particles/panda-system/recipes';
+import { styled } from '@particles/styled-system/jsx';
+import type { CardVariantProps } from '@particles/styled-system/recipes';
 
 export interface CardSectionProps {
   children?: ReactNode;

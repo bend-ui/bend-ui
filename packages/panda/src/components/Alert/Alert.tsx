@@ -1,7 +1,7 @@
 import { forwardRef } from '@particles/primitives';
-import { alert } from '@particles/panda-system/recipes';
-import { cx } from '@particles/panda-system/css';
-import type { AlertVariantProps } from '@particles/panda-system/recipes';
+import { alert } from '@particles/styled-system/recipes';
+import { cx } from '@particles/styled-system/css';
+import type { AlertVariantProps } from '@particles/styled-system/recipes';
 import type { ComponentPropsWithoutRef } from 'react';
 
 export interface AlertProps extends ComponentPropsWithoutRef<'div'> {

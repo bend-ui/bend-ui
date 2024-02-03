@@ -1,6 +1,6 @@
-import { cx } from '@particles/panda-system/css';
-import { textField } from '@particles/panda-system/recipes';
-import type { TextFieldVariant } from '@particles/panda-system/recipes';
+import { cx } from '@particles/styled-system/css';
+import { textField } from '@particles/styled-system/recipes';
+import type { TextFieldVariant } from '@particles/styled-system/recipes';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 type InputProps = ComponentPropsWithoutRef<'input'> &
