@@ -5,9 +5,6 @@
     }
   },
   "targetDefaults": {
-    "lint": {
-      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
-    },
     "build-storybook": {
       "inputs": ["default", "^default", "{workspaceRoot}/.storybook/**/*"],
       "cache": true
@@ -28,6 +25,10 @@
           "codeCoverage": true
         }
       }
+    },
+    "@nx/eslint:lint": {
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"],
+      "cache": true
     }
   },
   "affected": {
