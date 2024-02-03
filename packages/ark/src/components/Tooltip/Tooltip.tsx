@@ -13,8 +13,7 @@ export const Positioner = withContext(TooltipPrimitive.Positioner);
 
 export const Content = withContext(TooltipPrimitive.Content, 'content');
 
-export interface TooltipProps
-  extends ComponentPropsWithoutRef<typeof TooltipPrimitive> {}
+export type TooltipProps = ComponentPropsWithoutRef<typeof TooltipPrimitive>;
 
 const Component = (props: TooltipProps) => (
   <Root {...props}>
