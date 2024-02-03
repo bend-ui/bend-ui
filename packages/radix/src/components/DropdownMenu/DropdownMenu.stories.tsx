@@ -1,4 +1,4 @@
-import { Button } from '@particles/panda';
+import { Button } from '@particles/react';
 import { DropdownMenu } from './DropdownMenu';
 import type { Meta, StoryObj } from '@storybook/react';
 

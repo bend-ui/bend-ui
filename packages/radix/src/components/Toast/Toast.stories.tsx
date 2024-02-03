@@ -1,4 +1,4 @@
-import { Button } from '@particles/panda';
+import { Button } from '@particles/react';
 import { Toast, ToastProvider } from './Toast';
 import { useToast } from './useToast';
 import type { Meta, StoryObj } from '@storybook/react';

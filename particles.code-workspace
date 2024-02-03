@@ -17,8 +17,8 @@
       "path": "packages/tailwind",
     },
     {
-      "name": "📦 @particles/panda",
-      "path": "packages/panda",
+      "name": "📦 @particles/react",
+      "path": "packages/react",
     },
     {
       "name": "📦 @particles/radix",
@@ -78,7 +78,7 @@
     "vitest.disabledWorkspaceFolders": [
       "📦 @particles/primitives",
       "📦 @particles/tailwind",
-      "📦 @particles/panda",
+      "📦 @particles/react",
       "🛠️ @particles/react-utils",
       "🛠️ @particles/cli",
       "🧪 Playground (Tailwind)",

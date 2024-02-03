@@ -1,4 +1,4 @@
-import { sva } from '@particles/panda';
+import { sva } from '@particles/react';
 import { TbPhone, TbVideo } from 'react-icons/tb';
 import { Button } from '../../../components';
 

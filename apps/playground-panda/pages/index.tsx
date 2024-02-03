@@ -1,5 +1,5 @@
 import { container, grid } from '@particles/styled-system/patterns';
-import { Card } from '@particles/panda';
+import { Card } from '@particles/react';
 
 export function Index() {
   return (

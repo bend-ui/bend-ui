@@ -1,4 +1,4 @@
-import { sva } from '@particles/panda';
+import { sva } from '@particles/react';
 import { TbDashboard, TbSettings, TbTruckDelivery } from 'react-icons/tb';
 import Link from 'next/link';
 import { Badge } from '../../../components';

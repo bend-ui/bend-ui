@@ -1,4 +1,4 @@
-import { cx, scrollable, sva } from '@particles/panda';
+import { cx, scrollable, sva } from '@particles/react';
 import { Avatar, Button } from '../../../components';
 import { conversations, users } from '../data';
 

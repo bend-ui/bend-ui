@@ -523,24 +523,6 @@ importers:
         specifier: ^2.4.5
         version: 2.4.9
 
-  packages/panda:
-    dependencies:
-      '@pandacss/dev':
-        specifier: ^0.29.0
-        version: 0.29.1(jsdom@22.1.0)(typescript@5.3.3)
-      '@particles/preset':
-        specifier: workspace:^
-        version: link:../preset
-      '@particles/styled-system':
-        specifier: workspace:^
-        version: link:../styled-system
-      react:
-        specifier: ^17.0.2 || ^18.2.0
-        version: 18.2.0
-      react-dom:
-        specifier: ^17.0.2 || ^18.2.0
-        version: 18.2.0(react@18.2.0)
-
   packages/preset:
     dependencies:
       '@pandacss/dev':
@@ -559,6 +541,24 @@ importers:
   packages/primitives: {}
 
   packages/radix:
+    dependencies:
+      '@pandacss/dev':
+        specifier: ^0.29.0
+        version: 0.29.1(jsdom@22.1.0)(typescript@5.3.3)
+      '@particles/preset':
+        specifier: workspace:^
+        version: link:../preset
+      '@particles/styled-system':
+        specifier: workspace:^
+        version: link:../styled-system
+      react:
+        specifier: ^17.0.2 || ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^17.0.2 || ^18.2.0
+        version: 18.2.0(react@18.2.0)
+
+  packages/react:
     dependencies:
       '@pandacss/dev':
         specifier: ^0.29.0
@@ -9691,8 +9691,8 @@ packages:
         integrity: sha512-yi58uVyoAcK/Nq1inRY56ZSjKypBNKTa/1mcL8qdl6oJeEaDbOldlzrGn7P6Q3Id5d+SYNGc5AJgc4vGhjs5+g==,
       }
     peerDependencies:
-      '@types/react': '*'
-      '@types/react-dom': '*'
+      '@types/react': ^16.9.2
+      '@types/react-dom': ^16.9.5
       react: ^16.8 || ^17.0 || ^18.0
       react-dom: ^16.8 || ^17.0 || ^18.0
     peerDependenciesMeta:

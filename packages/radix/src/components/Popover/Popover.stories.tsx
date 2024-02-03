@@ -1,4 +1,4 @@
-import { Button } from '@particles/panda';
+import { Button } from '@particles/react';
 import { Popover } from './Popover';
 import type { Meta, StoryObj } from '@storybook/react';
 

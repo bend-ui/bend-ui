@@ -1,5 +1,5 @@
 import { Stack } from '@particles/styled-system/jsx';
-import { Button, Input } from '@particles/panda';
+import { Button, Input } from '@particles/react';
 import { Drawer } from '.';
 import type { Meta, StoryObj } from '@storybook/react';
 

@@ -1,4 +1,4 @@
-import { sva } from '@particles/panda';
+import { sva } from '@particles/react';
 import type { ComponentPropsWithoutRef } from 'react';
 
 const styles = sva({

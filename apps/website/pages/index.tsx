@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Button, Card, Text } from '@particles/panda';
+import { Button, Card, Text } from '@particles/react';
 import Layout from '../components/Layout';
 
 export function Index() {
