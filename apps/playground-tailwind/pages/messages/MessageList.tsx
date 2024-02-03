@@ -3,7 +3,7 @@ import { Avatar, Button, Input, Level, Media } from '@particles/tailwind';
 import { users } from './index';
 
 interface MessageListProps {
-  data: any;
+  data: unknown;
 }
 
 function MessageList(props: MessageListProps) {
@@ -38,7 +38,7 @@ function MessageList(props: MessageListProps) {
         {/* Message preview */}
         {data.map((message) => {
           const user = users.find(
-            (user) => user.id === message.messages[0].from
+            (user) => user.id === message.messages[0].from,
           );
           return (
             <div

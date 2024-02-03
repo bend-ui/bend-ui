@@ -47,7 +47,4 @@ migrations.json
 .nx/cache
 
 # Panda
-styled-system
-## Panda
-@particles/panda-system
-@particles/panda-system-studio
+./styled-system
