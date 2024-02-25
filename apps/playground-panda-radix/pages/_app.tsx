@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { ThemeProvider } from 'next-themes';
-import '@fontsource/inter';
+import '@fontsource-variable/inter';
 
 import type { AppProps } from 'next/app';
 import './styles.css';

@@ -1,6 +1,6 @@
 import { level } from '@particles/styled-system/patterns';
 import { cx, sva } from '@particles/styled-system/css';
-import { Button, TextField } from '../../../components';
+import { Button, Input } from '@particles/radix';
 
 const styles = sva({
   slots: ['wrapper'],
@@ -17,7 +17,7 @@ export function Header() {
     <div className={cx(level(), classes.wrapper)}>
       <div>Logo</div>
       <div>
-        <TextField />
+        <Input />
       </div>
       <div>
         <Button>Settings</Button>

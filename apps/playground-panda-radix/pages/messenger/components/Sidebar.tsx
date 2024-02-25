@@ -1,5 +1,6 @@
-import { cx, scrollable, sva } from '@particles/react';
-import { Avatar, Button } from '../../../components';
+import { scrollable } from '@particles/styled-system/patterns';
+import { cx, sva } from '@particles/styled-system/css';
+import { Avatar, Button } from '@particles/radix';
 import { conversations, users } from '../data';
 
 const styles = sva({

@@ -1,5 +1,7 @@
-import { cx, level, scrollable, sva } from '@particles/react';
-import { Avatar, Button, TextField } from '../../../components';
+import { cx, sva } from '@particles/styled-system/css';
+import { Avatar, Input } from '@particles/radix';
+import { level, scrollable } from '@particles/styled-system/patterns';
+import { Button } from '@particles/primitives';
 import { conversations, messages, users } from '../data';
 
 const styles = sva({
@@ -123,7 +125,7 @@ export function Main() {
         <Button>Image</Button>
         <Button>Add</Button>
         <Button>Attachment</Button>
-        <TextField placeholder="Type something..." />
+        <Input placeholder="Type something..." />
         <Button>Emoji</Button>
         <Button>Like</Button>
       </div>

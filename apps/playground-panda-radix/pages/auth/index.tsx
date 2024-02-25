@@ -1,8 +1,7 @@
 import Image from 'next/image';
 import { center, splitLayout, stack } from '@particles/styled-system/patterns';
 import { css, cx } from '@particles/styled-system/css';
-import { Button } from '@particles/radix';
-import { TextField } from '../../components';
+import { Button, Input } from '@particles/radix';
 
 const AuthPage = () => (
   <div className={splitLayout()}>
@@ -31,7 +30,8 @@ const AuthPage = () => (
         <p className={css({ textAlign: 'center' })}>
           And I really want a wife and kids. Oh hey, didn&apos;t see you.
         </p>
-        <TextField label="Email" />
+        <label htmlFor="">Email</label>
+        <Input />
         <span>Or continue with</span>
         <Button>Google</Button>
         <p>

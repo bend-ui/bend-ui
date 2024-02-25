@@ -1,7 +1,7 @@
-import { sva } from '@particles/react';
 import { TbDashboard, TbSettings, TbTruckDelivery } from 'react-icons/tb';
 import Link from 'next/link';
-import { Badge } from '../../../components';
+import { Badge } from '@particles/radix';
+import { sva } from '@particles/styled-system/css';
 
 const styles = sva({
   slots: ['root', 'brand', 'nav', 'group', 'item', 'section-end'],

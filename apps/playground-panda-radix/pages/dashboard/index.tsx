@@ -8,8 +8,7 @@ import {
 } from '@particles/styled-system/patterns';
 import { appShell } from '@particles/styled-system/recipes';
 import { css, cx } from '@particles/styled-system/css';
-import { Button, Tabs } from '@particles/radix';
-import { Avatar, Card, List, Modal, Select, TextField } from '../../components';
+import { Avatar, Button, Card, Modal, Tabs } from '@particles/radix';
 import Sidebar from './components/sidebar';
 
 export function Dashboard() {
@@ -38,7 +37,7 @@ export function Dashboard() {
           </nav>
         </div>
         <div>
-          <Select
+          {/* <Select
             defaultValue={theme}
             onValueChange={(value) => setTheme(value)}
           >
@@ -50,7 +49,7 @@ export function Dashboard() {
               <Select.Item value="dark">Dark</Select.Item>
               <Select.Item value="system">System</Select.Item>
             </Select.Content>
-          </Select>
+          </Select> */}
         </div>
       </div>
       <aside
@@ -98,19 +97,19 @@ export function Dashboard() {
                   </Tabs.List>
                   <Tabs.Pane value="information">
                     <h2>Information</h2>
-                    <TextField label="Product Name" />
+                    {/* <TextField label="Product Name" /> */}
                     {/* Should be a RichTextArea */}
-                    <TextField label="Description" /># Category
-                    <Select>
+                    {/* <TextField label="Description" /># Category */}
+                    {/* <Select>
                       <Select.Trigger>
                         <Select.Value placeholder="Choose a category" />
                       </Select.Trigger>
                       <Select.Content>
                         <Select.Item value="cool">Cool</Select.Item>
                       </Select.Content>
-                    </Select>
+                    </Select> */}
                     {/* Should be an Input with Chips */}
-                    <TextField label="Tags" />
+                    {/* <TextField label="Tags" /> */}
                     <div className={level()}>
                       <Button>Cancel</Button>
                       <Button>Save</Button>
@@ -125,10 +124,10 @@ export function Dashboard() {
                 <Button>Create new</Button>
               </Modal.Trigger>
               <Modal.Content>
-                <TextField label="Title" />
+                {/* <TextField label="Title" />
                 <TextField label="Company" />
-                <TextField label="Website" />
-                <Select />
+                <TextField label="Website" /> */}
+                {/* <Select /> */}
                 <div className={level({ mt: 'md' })}>
                   <Button>Save as draft</Button>
                   <Button>Add experience</Button>
@@ -150,7 +149,7 @@ export function Dashboard() {
                 done.
               </p>
               <div className={stack({ gap: 'md' })}>
-                <fieldset>
+                {/* <fieldset>
                   <TextField
                     defaultValue="Particles UI"
                     id="name"
@@ -163,7 +162,7 @@ export function Dashboard() {
                     id="username"
                     label="Username"
                   />
-                </fieldset>
+                </fieldset> */}
               </div>
               <div
                 style={{
@@ -181,7 +180,7 @@ export function Dashboard() {
                 out.
               </p>
               <div className={stack({ gap: 'md' })}>
-                <fieldset>
+                {/* <fieldset>
                   <TextField
                     className="Input"
                     id="currentPassword"
@@ -204,7 +203,7 @@ export function Dashboard() {
                     label="Confirm password"
                     type="password"
                   />
-                </fieldset>
+                </fieldset> */}
               </div>
               <div
                 style={{
@@ -228,11 +227,11 @@ export function Dashboard() {
                   </Card.Header>
                   <p>Free</p>
                   <p>For a lifetime</p>
-                  <List icon="🦖">
+                  {/* <List icon="🦖">
                     <List.Item>Unlimited projects</List.Item>
                     <List.Item>5 team members</List.Item>
                     <List.Item>Sync across devices</List.Item>
-                  </List>
+                  </List> */}
                 </Card>
                 <Card>
                   <Card.Header>
@@ -243,11 +242,11 @@ export function Dashboard() {
                   </Card.Header>
                   <p>Free</p>
                   <p>For a lifetime</p>
-                  <List>
+                  {/* <List>
                     <List.Item>Unlimited projects</List.Item>
                     <List.Item>5 team members</List.Item>
                     <List.Item>Sync across devices</List.Item>
-                  </List>
+                  </List> */}
                 </Card>
                 <Card>
                   <Card.Header>
@@ -258,11 +257,11 @@ export function Dashboard() {
                   </Card.Header>
                   <p>Free</p>
                   <p>For a lifetime</p>
-                  <List>
+                  {/* <List>
                     <List.Item>Unlimited projects</List.Item>
                     <List.Item>5 team members</List.Item>
                     <List.Item>Sync across devices</List.Item>
-                  </List>
+                  </List> */}
                 </Card>
               </div>
             </Tabs.Pane>
