@@ -39,3 +39,8 @@ export const themeDark = create({
   inputBg: theme.colors.shark800,
   inputBorder: theme.colors.shark500,
 });
+
+export const createTheme = (overrides: Partial<ThemeVars>) => ({
+  light: { ...themeLight, ...overrides },
+  dark: { ...themeDark, ...overrides },
+});
