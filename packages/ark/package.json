@@ -20,6 +20,7 @@
     "@pandacss/dev": "^0.29.0"
   },
   "scripts": {
-    "prepare": "panda codegen"
+    "prepare": "panda codegen",
+    "dev": "panda codegen --watch"
   }
 }

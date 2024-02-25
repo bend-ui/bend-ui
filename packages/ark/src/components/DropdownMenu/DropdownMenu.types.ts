@@ -1,4 +1,7 @@
-import type { Menu as MenuPrimitive } from '@ark-ui/react';
-import type { ComponentPropsWithoutRef } from 'react';
+import type { DropdownMenuVariantProps } from '@particles/styled-system/recipes';
+import type { Assign, JsxStyleProps } from '@particles/styled-system/types';
+import type { MenuRootProps } from '@ark-ui/react';
 
-export type DropdownMenuProps = ComponentPropsWithoutRef<typeof MenuPrimitive>;
+export interface DropdownMenuProps
+  extends Assign<JsxStyleProps, MenuRootProps>,
+    DropdownMenuVariantProps {}

@@ -1,5 +1,5 @@
 import { defineConfig } from '@pandacss/dev';
-import { preset } from '@particles/preset';
+import { arkPreset } from '@particles/preset';
 
 export default defineConfig({
   // Whether to use css reset
@@ -11,7 +11,7 @@ export default defineConfig({
   // Files to exclude
   exclude: [],
 
-  presets: ['@pandacss/dev/presets', preset],
+  presets: ['@pandacss/dev/presets', arkPreset],
 
   staticCss: {
     recipes: '*',

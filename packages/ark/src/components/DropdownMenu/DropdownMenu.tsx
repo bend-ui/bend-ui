@@ -7,7 +7,7 @@ const { withProvider, withContext } = createStyleContext(dropdownMenu);
 
 const Root = withProvider(MenuPrimitive.Root);
 
-const Trigger = withContext(MenuPrimitive.ContextTrigger, 'trigger');
+const Trigger = withContext(MenuPrimitive.Trigger, 'trigger');
 
 const Positioner = withContext(MenuPrimitive.Positioner);
 
@@ -24,17 +24,7 @@ export const OptionItem = withContext(
 
 const Component = (props: DropdownMenuProps) => (
   <Root {...props}>
-    <Trigger>
-      <div
-        style={{
-          width: '100%',
-          height: '20rem',
-          border: '1px solid lightgray',
-        }}
-      >
-        Some content
-      </div>
-    </Trigger>
+    <Trigger>Trigger</Trigger>
     <Positioner>
       <Content>
         <Item id="search">Search</Item>

@@ -1,10 +1,10 @@
 import { Dialog, Portal } from '@ark-ui/react';
-import { modal } from '@particles/styled-system/recipes';
+import { drawer } from '@particles/styled-system/recipes';
 import { DismissButton } from '@particles/react';
 import { createStyleContext } from '../../utils';
-import type { ModalProps } from './Modal.types';
+import type { DrawerProps } from './Drawer.types';
 
-const { withProvider, withContext } = createStyleContext(modal);
+const { withProvider, withContext } = createStyleContext(drawer);
 
 const Root = withProvider(Dialog.Root, 'root');
 
@@ -22,7 +22,7 @@ const Description = withContext(Dialog.Description, 'description');
 
 const CloseTrigger = withContext(Dialog.CloseTrigger, 'close');
 
-const Component = (props: ModalProps) => (
+const Component = (props: DrawerProps) => (
   <Root {...props}>
     <Trigger>Open Dialog</Trigger>
     <Portal>
@@ -31,7 +31,7 @@ const Component = (props: ModalProps) => (
         <Content>
           <Title>Dialog Title</Title>
           <Description>Dialog Description</Description>
-          <CloseTrigger>
+          <CloseTrigger asChild>
             <DismissButton />
           </CloseTrigger>
         </Content>
@@ -40,7 +40,7 @@ const Component = (props: ModalProps) => (
   </Root>
 );
 
-export const Modal = Object.assign(Component, {
+export const Drawer = Object.assign(Component, {
   Root,
   Trigger,
   Portal,

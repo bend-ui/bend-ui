@@ -1,3 +1,5 @@
+import { Button } from '@particles/react';
+import { LuChevronRight } from 'react-icons/lu';
 import { Popover } from './Popover';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -10,3 +12,27 @@ export default meta;
 type Story = StoryObj<typeof Popover>;
 
 export const Base: Story = {};
+
+export const Composed: Story = {
+  render: (args) => (
+    <Popover.Root {...args}>
+      <Popover.Trigger asChild>
+        <Button
+          iconEnd={
+            <Popover.Indicator>
+              <LuChevronRight />
+            </Popover.Indicator>
+          }
+        >
+          Click Me
+        </Button>
+      </Popover.Trigger>
+      <Popover.Positioner>
+        <Popover.Content>
+          <Popover.Title>Title</Popover.Title>
+          <Popover.Description>Description</Popover.Description>
+        </Popover.Content>
+      </Popover.Positioner>
+    </Popover.Root>
+  ),
+};
