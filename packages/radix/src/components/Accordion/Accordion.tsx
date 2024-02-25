@@ -1,76 +1,43 @@
 import { forwardRef } from 'react';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
-import { TbChevronDown } from 'react-icons/tb';
+import { LuChevronDown } from 'react-icons/lu';
 import { cx } from '@particles/styled-system/css';
 import { accordion } from '@particles/styled-system/recipes';
 import { createComponent } from '@particles/primitives';
-import type { ComponentPropsWithoutRef, ElementRef } from 'react';
+import { createStyleContext } from '../../utils/style-context';
 
-const Root = AccordionPrimitive.Root;
+const { withProvider, withContext } = createStyleContext(accordion);
 
-const Item = forwardRef<
-  ElementRef<typeof AccordionPrimitive.Item>,
-  ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
->((props, ref) => {
-  const { className, ...rest } = props;
-  const classes = accordion();
-  return (
-    <AccordionPrimitive.Item
-      ref={ref}
-      className={cx(classes.item, className)}
-      {...rest}
-    />
-  );
-});
+const Root = withProvider(AccordionPrimitive.Root);
 
-Item.displayName = 'AccordionItem';
+const Item = withContext(AccordionPrimitive.Item, 'item');
 
-const Trigger = forwardRef<
-  ElementRef<typeof AccordionPrimitive.Trigger>,
-  ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
->((props, ref) => {
-  const { className, children, ...rest } = props;
-  const classes = accordion();
+const Trigger = withContext(AccordionPrimitive.Trigger, 'trigger');
 
-  return (
-    <AccordionPrimitive.Header>
-      <AccordionPrimitive.Trigger
-        ref={ref}
-        className={cx(classes.trigger, className)}
-        {...rest}
-      >
-        {children}
-        <TbChevronDown />
-      </AccordionPrimitive.Trigger>
-    </AccordionPrimitive.Header>
-  );
-});
+const IndicatorPrimitive = forwardRef<HTMLDivElement, { className: string }>(
+  (props, ref) => {
+    const { className, ...rest } = props;
+    return (
+      <div ref={ref} className={cx('flex items-center', className)} {...rest}>
+        <LuChevronDown
+          className={cx('transform transition-transform', 'rotate-0')}
+          size={16}
+        />
+      </div>
+    );
+  },
+);
 
-Trigger.displayName = AccordionPrimitive.Trigger.displayName;
+IndicatorPrimitive.displayName = 'Accordion.Indicator';
 
-const Content = forwardRef<
-  ElementRef<typeof AccordionPrimitive.Content>,
-  ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
->((props, ref) => {
-  const { className, children, ...rest } = props;
-  const classes = accordion();
+const Indicator = withContext(IndicatorPrimitive, 'indicator');
 
-  return (
-    <AccordionPrimitive.Content
-      ref={ref}
-      className={cx(classes.content, className)}
-      {...rest}
-    >
-      <div>{children}</div>
-    </AccordionPrimitive.Content>
-  );
-});
-
-Content.displayName = AccordionPrimitive.Content.displayName;
+const Content = withContext(AccordionPrimitive.Content, 'content');
 
 export default createComponent(Root, {
   Root,
   Item,
   Trigger,
+  Indicator,
   Content,
 });

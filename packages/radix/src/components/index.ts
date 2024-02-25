@@ -1,3 +1,4 @@
+export * from '@particles/react';
 export * from './Accordion';
 export * from './AlertDialog';
 export * from './Avatar';
