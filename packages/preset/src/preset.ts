@@ -35,3 +35,7 @@ export const preset = definePreset({
   },
   globalCss,
 });
+
+export const arkPreset = definePreset({
+  presets: [preset],
+});

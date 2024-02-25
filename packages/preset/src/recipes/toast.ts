@@ -2,11 +2,18 @@ import { defineSlotRecipe } from '@pandacss/dev';
 
 export const toastRecipe = defineSlotRecipe({
   className: 'toast',
-  slots: ['root', 'viewport'],
+  slots: ['root', 'viewport', 'title', 'description', 'closeTrigger'],
   base: {
     root: {
       layerStyle: 'panelRaised',
       padding: 'md',
+      minWidth: 'sm',
+      _open: {
+        animation: 'panel.in',
+      },
+      _closed: {
+        animation: 'panel.out',
+      },
     },
     viewport: {
       position: 'fixed',
@@ -17,6 +24,23 @@ export const toastRecipe = defineSlotRecipe({
       width: 'full',
       display: 'flex',
       p: 'sm',
+    },
+    title: {
+      textStyle: 'title',
+    },
+    description: {
+      textStyle: 'body',
+    },
+    closeTrigger: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      cursor: 'pointer',
+      padding: 'sm',
+      borderRadius: 'md',
+      _hover: {
+        bg: 'gray.100',
+      },
     },
   },
 });

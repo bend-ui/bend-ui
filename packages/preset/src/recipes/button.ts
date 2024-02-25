@@ -6,12 +6,16 @@ export const buttonRecipe = defineSlotRecipe({
   slots: ['root', 'label'],
   base: {
     root: {
-      display: 'flex',
-      alignItems: 'center',
+      display: 'inline-flex',
+      placeItems: 'center',
+      placeContent: 'center',
       rounded: 'md',
       borderWidth: '1px',
       borderStyle: 'solid',
       borderColor: 'transparent',
+    },
+    label: {
+      textAlign: 'center',
     },
   },
   variants: {
@@ -27,12 +31,12 @@ export const buttonRecipe = defineSlotRecipe({
       },
       primary: {
         root: {
-          colorPalette: 'bg.primary',
+          colorPalette: 'primary',
         },
       },
       danger: {
         root: {
-          colorPalette: 'bg.danger',
+          colorPalette: 'danger',
         },
       },
     },
@@ -44,20 +48,64 @@ export const buttonRecipe = defineSlotRecipe({
           _hover: {
             backgroundColor: 'colorPalette.hover',
           },
+          _disabled: {
+            color: 'colorPalette.disabled',
+            backgroundColor: 'colorPalette.disabled',
+            _hover: {
+              color: 'colorPalette.disabled',
+              backgroundColor: 'colorPalette.disabled',
+            },
+          },
         },
       },
       outline: {
-        root: {},
+        root: {
+          color: 'colorPalette.text',
+          backgroundColor: 'transparent',
+          borderColor: 'colorPalette.border',
+          _hover: {
+            backgroundColor: 'colorPalette.border.hover',
+          },
+          _disabled: {
+            color: 'colorPalette.disabled',
+            borderColor: 'colorPalette.disabled',
+            _hover: {
+              color: 'colorPalette.disabled',
+              borderColor: 'colorPalette.disabled',
+            },
+          },
+        },
       },
     },
     size: {
+      sm: {
+        root: {
+          py: 'xs',
+          px: 'xs',
+          fontSize: 'sm',
+        },
+        label: {
+          px: 'xs',
+        },
+      },
       md: {
         root: {
           py: 'sm',
           px: 'sm',
+          fontSize: 'md',
         },
         label: {
           px: 'sm',
+        },
+      },
+      lg: {
+        root: {
+          py: 'md',
+          px: 'lg',
+          fontSize: 'lg',
+        },
+        label: {
+          px: 'lg',
         },
       },
     },

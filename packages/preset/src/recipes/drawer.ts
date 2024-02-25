@@ -2,7 +2,17 @@ import { defineSlotRecipe } from '@pandacss/dev';
 
 export const drawerRecipe = defineSlotRecipe({
   className: 'drawer',
-  slots: ['root', 'trigger', 'overlay', 'content', 'header', 'close', 'footer'],
+  slots: [
+    'root',
+    'trigger',
+    'overlay',
+    'content',
+    'header',
+    'close',
+    'footer',
+    'title',
+    'description',
+  ],
   base: {
     overlay: {
       position: 'fixed',
@@ -18,17 +28,29 @@ export const drawerRecipe = defineSlotRecipe({
     },
     content: {
       position: 'fixed',
-      width: '90vw',
-      maxW: '450px',
-      height: 'full',
       padding: 'lg',
       layerStyle: 'panelRaised',
-      _open: {
-        animation: 'fadeIn 200ms ease-out',
-      },
-      _closed: {
-        animation: 'fadeOut 300ms ease-out',
-      },
+    },
+    header: {
+      padding: 'md',
+      borderBottom: '1px solid',
+      borderColor: 'neutral.900',
+    },
+    close: {
+      position: 'absolute',
+      top: 'md',
+      right: 'md',
+    },
+    footer: {
+      padding: 'md',
+      borderTop: '1px solid',
+      borderColor: 'neutral.900',
+    },
+    title: {
+      textStyle: 'title',
+    },
+    description: {
+      textStyle: 'body',
     },
   },
   variants: {
@@ -36,9 +58,13 @@ export const drawerRecipe = defineSlotRecipe({
       left: {
         content: {
           top: 0,
+          bottom: 0,
           left: 0,
           roundedRight: 'lg',
           roundedLeft: '0',
+          width: '90vw',
+          maxW: '450px',
+          height: 'screen',
           _open: {
             animation: 'slideInLeft 300ms ease-out',
           },
@@ -50,9 +76,13 @@ export const drawerRecipe = defineSlotRecipe({
       right: {
         content: {
           top: 0,
+          bottom: 0,
           right: 0,
           roundedLeft: 'lg',
           roundedRight: '0',
+          width: '90vw',
+          maxW: '450px',
+          height: 'screen',
           _open: {
             animation: 'slideInRight 300ms ease-out',
           },
@@ -63,8 +93,12 @@ export const drawerRecipe = defineSlotRecipe({
       },
       top: {
         content: {
-          transform: 'translateY(-100%)',
+          width: 'screen',
+          height: '90vw',
+          maxH: '450px',
           top: 0,
+          left: 0,
+          right: 0,
           _open: {
             animation: 'slideInTop 300ms ease-out',
           },
@@ -75,8 +109,12 @@ export const drawerRecipe = defineSlotRecipe({
       },
       bottom: {
         content: {
-          transform: 'translateY(100%)',
+          width: 'screen',
+          height: '90vw',
+          maxH: '450px',
           bottom: 0,
+          left: 0,
+          right: 0,
           _open: {
             animation: 'slideInBottom 300ms ease-out',
           },

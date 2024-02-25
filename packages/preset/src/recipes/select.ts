@@ -5,8 +5,11 @@ export const selectRecipe = defineSlotRecipe({
   className: 'Select',
   slots: [
     'root',
+    'control',
     'trigger',
     'value',
+    'indicator',
+    'clear',
     'content',
     'group',
     'content',
@@ -14,7 +17,7 @@ export const selectRecipe = defineSlotRecipe({
     'label',
   ],
   base: {
-    trigger: {
+    control: {
       display: 'flex',
       alignItems: 'center',
       gap: 'sm',
@@ -29,17 +32,41 @@ export const selectRecipe = defineSlotRecipe({
         backgroundColor: { base: 'shark.200', _dark: 'shark.700' },
       },
     },
+    trigger: {
+      flex: '1 1 auto',
+      display: 'flex',
+      alignItems: 'center',
+      justifyItems: 'space-between',
+      gap: 'sm',
+    },
+    value: {},
+    indicator: {
+      marginLeft: 'auto',
+    },
+    clear: {
+      flex: 'none',
+    },
     content: {
       rounded: 'md',
-      layerStyle: 'element',
+      layerStyle: 'panelRaised',
       py: 'sm',
       px: 'md',
+      width: 'full',
       minW: '240px',
+      _open: {
+        animation: 'panel.in',
+      },
+      closed: {
+        animation: 'panel.out',
+      },
     },
     item: {
       display: 'flex',
       alignItems: 'center',
       gap: 'sm',
+      _hover: {
+        backgroundColor: 'bg.input.hover',
+      },
     },
   },
 });

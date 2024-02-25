@@ -28,4 +28,31 @@ export const semanticTokens = defineSemanticTokens({
     // sm: { value: '{sizes.3}' },
     // md: { value: '{sizes.4}' },
   },
+  shadows: {
+    base: { value: '0 0 0 1px {colors.shadow}' },
+    focus: { value: '0 0 0 2px {colors.focus}' },
+    focusRing: { value: '0 0 0 2px {colors.focusRing}' },
+  },
+  zIndices: {
+    base: { value: '0' },
+    dropdown: { value: '10' },
+    sticky: { value: '20' },
+    fixed: { value: '30' },
+    overlay: { value: '40' },
+    modal: { value: '50' },
+    popover: { value: '60' },
+    skipLink: { value: '70' },
+    toast: { value: '80' },
+    alert: { value: '90' },
+  },
+  transitions: {
+    base: { value: '0.2s ease-out' },
+  },
+  breakpoints: {
+    sm: { value: '640px' },
+    md: { value: '768px' },
+    lg: { value: '1024px' },
+    xl: { value: '1280px' },
+    '2xl': { value: '1536px' },
+  },
 });

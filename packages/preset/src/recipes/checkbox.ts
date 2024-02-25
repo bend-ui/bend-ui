@@ -3,9 +3,15 @@ import { defineSlotRecipe } from '@pandacss/dev';
 export const checkboxRecipe = defineSlotRecipe({
   description: 'Styles for the Checkbox component',
   className: 'checkbox',
-  slots: ['root', 'indicator'],
+  slots: ['root', 'control', 'indicator', 'label'],
   base: {
     root: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 'sm',
+    },
+    label: {},
+    control: {
       h: '4',
       w: '4',
       flexShrink: '0',
@@ -38,5 +44,30 @@ export const checkboxRecipe = defineSlotRecipe({
       justifyContent: 'center',
       color: 'currentColor',
     },
+  },
+  variants: {
+    size: {
+      sm: {
+        control: {
+          h: '3',
+          w: '3',
+        },
+      },
+      md: {
+        control: {
+          h: '4',
+          w: '4',
+        },
+      },
+      lg: {
+        control: {
+          h: '5',
+          w: '5',
+        },
+      },
+    },
+  },
+  defaultVariants: {
+    size: 'md',
   },
 });

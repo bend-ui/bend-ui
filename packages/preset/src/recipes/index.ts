@@ -14,6 +14,7 @@ import { iconRecipe } from './icon';
 import { indicatorRecipe } from './indicator';
 import { inputRecipe } from './input';
 import { modalRecipe } from './modal';
+import { navRecipe } from './nav';
 import { paginationRecipe } from './pagination';
 import { popoverRecipe } from './popover';
 import { radioRecipe } from './radio';
@@ -41,6 +42,7 @@ export const slotRecipes = {
   indicator: indicatorRecipe,
   input: inputRecipe,
   modal: modalRecipe,
+  nav: navRecipe,
   pagination: paginationRecipe,
   popover: popoverRecipe,
   radio: radioRecipe,

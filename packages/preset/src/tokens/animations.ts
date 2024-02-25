@@ -9,4 +9,12 @@ export const animations = defineTokens.animations({
       value: 'overlayOut 300ms ease-out',
     },
   },
+  panel: {
+    in: {
+      value: 'fadeIn 200ms ease-out',
+    },
+    out: {
+      value: 'fadeOut 300ms ease-out',
+    },
+  },
 });

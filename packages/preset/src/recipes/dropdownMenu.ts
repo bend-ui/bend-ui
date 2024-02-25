@@ -24,6 +24,12 @@ export const dropdownMenuRecipe = defineSlotRecipe({
     content: {
       padding: 'md',
       layerStyle: 'panelRaised',
+      _open: {
+        animation: 'panel.in',
+      },
+      _closed: {
+        animation: 'panel.out',
+      },
     },
   },
 });
