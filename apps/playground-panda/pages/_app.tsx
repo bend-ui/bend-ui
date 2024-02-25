@@ -1,18 +1,20 @@
 import Head from 'next/head';
-import type { AppProps } from 'next/app';
+import { ThemeProvider } from 'next-themes';
 import '@fontsource-variable/inter';
+
+import type { AppProps } from 'next/app';
 import './styles.css';
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <ThemeProvider attribute="class" themes={['light', 'dark']}>
       <Head>
         <title>Welcome to playground-panda!</title>
       </Head>
       <main>
         <Component {...pageProps} />
       </main>
-    </>
+    </ThemeProvider>
   );
 }
 
