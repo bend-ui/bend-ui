@@ -2,7 +2,7 @@ import { css } from '@particles/styled-system/css';
 import { Stack } from '@particles/styled-system/jsx';
 import { TbArrowRight, TbCloudDownload } from 'react-icons/tb';
 import { button } from '@particles/styled-system/recipes';
-import { Button } from './Button';
+import { Button } from './';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -11,6 +11,30 @@ const meta: Meta<typeof Button> = {
   component: Button,
   args: {
     children: 'Button',
+  },
+  argTypes: {
+    children: {
+      description: 'The button content',
+      control: 'text',
+    },
+    palette: {
+      control: 'select',
+      options: button.variantMap.palette,
+      description: 'The color palette for the button',
+      defaultValue: 'default',
+    },
+    variant: {
+      control: 'select',
+      options: button.variantMap.variant,
+      description: 'The button variant',
+      defaultValue: 'solid',
+    },
+    size: {
+      control: 'select',
+      options: button.variantMap.size,
+      description: 'The button size',
+      defaultValue: 'md',
+    },
   },
 };
 
@@ -35,7 +59,7 @@ export const Danger: Story = {
 
 export const Palette: Story = {
   render: (args) => (
-    <Stack>
+    <Stack align="flex-start">
       {button.variantMap.palette.map((palette) => (
         <Button key={palette} {...args} palette={palette} />
       ))}
@@ -45,17 +69,20 @@ export const Palette: Story = {
 
 export const Variants: Story = {
   render: (args) => (
-    <Stack>
+    <Stack align="flex-start">
       {button.variantMap.variant.map((variant) => (
         <Button key={variant} {...args} variant={variant} />
       ))}
     </Stack>
   ),
+  args: {
+    palette: 'primary',
+  },
 };
 
 export const Sizes: Story = {
   render: (args) => (
-    <Stack>
+    <Stack align="flex-start">
       {button.variantMap.size.map((size) => (
         <Button key={size} {...args} size={size} />
       ))}
@@ -82,16 +109,24 @@ export const IconButton: Story = {
   },
 };
 
-export const Polymorphic: Story = {
+export const Disabled: Story = {
   args: {
-    as: 'a',
+    isDisabled: true,
   },
+};
+
+export const Polymorphic: Story = {
+  render: (args) => (
+    <Button {...args}>
+      <a href="https://www.google.com">Google</a>
+    </Button>
+  ),
 };
 
 export const WithCSSProp: Story = {
   args: {
     css: css.raw({
-      color: 'red.500',
+      color: 'bg.danger',
     }),
   },
 };

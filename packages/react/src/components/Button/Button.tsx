@@ -1,43 +1,47 @@
-import {
-  Button as ButtonPrimitive,
-  createComponent,
-  forwardRef,
-} from '@particles/primitives';
+import { forwardRef } from 'react';
 import { button } from '@particles/styled-system/recipes';
-import { styled } from '@particles/styled-system/jsx';
-import { cx } from '@particles/styled-system/css';
+import { css, cx } from '@particles/styled-system/css';
+import { splitCssProps } from '@particles/styled-system/jsx';
+import { Slot } from '../Slot';
 import type { ButtonProps } from './Button.types';
 
-const Root = forwardRef<'button', ButtonProps>((props, ref) => {
+const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const {
     children,
-    as = 'button',
+    asChild,
+    css: cssProp,
     className,
-    palette = 'default',
+    palette,
     variant,
     size,
     isRounded,
     icon,
     iconEnd,
-    ...rest
+    isDisabled,
+    disabled,
+    ...otherProps
   } = props;
+
+  const [cssProps, restProps] = splitCssProps(otherProps);
 
   const classes = button({ palette, variant, size, isRounded });
 
+  const Component = asChild ? Slot : 'button';
+
   return (
-    <ButtonPrimitive.Root
+    <Component
       ref={ref}
-      as={as}
-      className={cx(classes.root, className)}
-      {...rest}
+      className={cx(classes.root, className, css(cssProps, cssProp))}
+      data-disabled={disabled || isDisabled}
+      {...restProps}
     >
       {icon}
       {children && <span className={classes.label}>{children}</span>}
       {iconEnd}
-    </ButtonPrimitive.Root>
+    </Component>
   );
 });
 
-Root.displayName = 'Button';
+Button.displayName = 'Button';
 
-export const Button = createComponent(styled(Root));
+export default Button;
