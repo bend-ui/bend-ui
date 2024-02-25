@@ -13,7 +13,7 @@ importers:
       '@floating-ui/react':
         specifier: ^0.26.9
         version: 0.26.9(react-dom@18.2.0)(react@18.2.0)
-      '@fontsource/inter':
+      '@fontsource-variable/inter':
         specifier: ^5.0.16
         version: 5.0.16
       '@radix-ui/react-accordion':
@@ -4182,6 +4182,7 @@ packages:
         integrity: sha512-bCvl5aGS9cEVpjPGx9rdzHpblOsYm8URxREy/S6dDIDWxo21/Ytc6ln1QYJYKxG/AgiisFcgpnWJvRH/xBLcAw==,
       }
     engines: { node: '>=16.0.0', yarn: '>=1.22.18' }
+    deprecated: This package has been renamed @chromatic-com/storybook
     dependencies:
       '@storybook/design-system': 7.15.17(react-dom@18.2.0)(react@18.2.0)
       '@urql/exchange-auth': 2.1.6
@@ -5896,10 +5897,10 @@ packages:
         integrity: sha512-9TANp6GPoMtYzQdt54kfAyMmz1+osLlXdg2ENroU7zzrtflTLrrC/lgrIfaSe+Wu0b89GKccT7vxXA0MoAIO+Q==,
       }
 
-  /@fontsource/inter@5.0.16:
+  /@fontsource-variable/inter@5.0.16:
     resolution:
       {
-        integrity: sha512-qF0aH5UiZvCmneX5orJbVRoc2VTyLTV3X/7laMp03Qt28L+B9tFlZODOGUL64wDWc69YVdi1LeJB0cIgd51lvw==,
+        integrity: sha512-k+BUNqksTL+AN+o+OV7ILeiE9B5M5X+/jA7LWvCwjbV9ovXTqZyKRhA/x7uYv/ml8WQ0XNLBM7cRFIx4jW0/hg==,
       }
     dev: false
 
@@ -36214,7 +36215,7 @@ packages:
     dependencies:
       '@storybook/addons': 7.6.3(react-dom@18.2.0)(react@18.2.0)
       '@storybook/components': 7.6.10(@types/react-dom@18.2.18)(@types/react@18.2.48)(react-dom@18.2.0)(react@18.2.0)
-      '@storybook/core-events': 7.6.10
+      '@storybook/core-events': 7.6.12
       '@storybook/global': 5.0.0
       '@storybook/manager-api': 7.6.10(react-dom@18.2.0)(react@18.2.0)
       '@storybook/theming': 7.6.10(react-dom@18.2.0)(react@18.2.0)
