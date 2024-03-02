@@ -23,8 +23,7 @@ export function Dashboard() {
           classes.header,
           level({
             p: 'lg',
-            borderBottomColor: 'divider',
-            borderBottomWidth: '1px',
+            borderBottom: 'divider',
           }),
         )}
       >
@@ -57,8 +56,7 @@ export function Dashboard() {
           classes.sidebar,
           css({
             p: 'lg',
-            borderRightColor: 'divider',
-            borderRightWidth: '1px',
+            borderRight: 'divider',
           }),
         )}
       >
@@ -77,8 +75,7 @@ export function Dashboard() {
         <div
           className={level({
             p: 'lg',
-            borderBottomColor: 'divider',
-            borderBottomWidth: '1px',
+            borderBottom: 'divider',
           })}
         >
           <div>Settings</div>

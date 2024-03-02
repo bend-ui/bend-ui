@@ -27,8 +27,7 @@ const styles = sva({
     footer: {
       flex: '0',
       p: 'lg',
-      borderTop: '1px solid',
-      borderTopColor: 'divider',
+      borderTop: 'divider',
       display: 'flex',
       gap: 'md',
       alignItems: 'center',

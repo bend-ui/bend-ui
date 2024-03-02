@@ -1,6 +1,6 @@
-import { sva } from '@particles/react';
+import { sva } from '@particles/styled-system/css';
 import { TbPhone, TbVideo } from 'react-icons/tb';
-import { Button } from '../../../components';
+import { Button } from '@particles/radix';
 
 const styles = sva({
   slots: ['wrapper'],

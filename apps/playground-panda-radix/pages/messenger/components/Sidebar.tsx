@@ -1,6 +1,7 @@
 import { scrollable } from '@particles/styled-system/patterns';
 import { cx, sva } from '@particles/styled-system/css';
 import { Avatar, Button } from '@particles/radix';
+import { useTheme } from 'next-themes';
 import { conversations, users } from '../data';
 
 const styles = sva({
@@ -29,7 +30,14 @@ const styles = sva({
 });
 
 export const Sidebar = () => {
+  const { theme, setTheme } = useTheme();
   const classes = styles();
+
+  const toggleTheme = () => {
+    const nextTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(nextTheme);
+  };
+
   return (
     <div className={classes.wrapper}>
       <div className={cx(scrollable(), classes.list)}>
@@ -50,7 +58,7 @@ export const Sidebar = () => {
         <Button>Add</Button>
       </div>
       <div className={classes.settings}>
-        <Button>Toggle Mode</Button>
+        <Button onClick={toggleTheme}>Toggle Mode</Button>
       </div>
     </div>
   );

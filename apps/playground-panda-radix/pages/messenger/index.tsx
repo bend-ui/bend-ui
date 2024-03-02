@@ -18,20 +18,17 @@ const layout = sva({
     },
     header: {
       gridArea: 'header',
-      borderBottom: '1px solid',
-      borderBottomColor: 'divider',
+      borderBottom: 'divider',
     },
     sidebar: {
       gridArea: 'sidebar',
-      borderRight: '1px solid',
-      borderRightColor: 'divider',
+      borderRight: 'divider',
       overflow: 'hidden',
     },
     main: { gridArea: 'main', overflow: 'hidden' },
     infos: {
       gridArea: 'infos',
-      borderLeft: '1px solid',
-      borderLeftColor: 'divider',
+      borderLeft: 'divider',
     },
   },
 });

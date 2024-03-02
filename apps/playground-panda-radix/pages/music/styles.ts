@@ -13,15 +13,13 @@ export const layout = sva({
     },
     menu: {
       gridArea: 'menu',
-      borderBottom: '1px solid',
-      borderBottomColor: 'divider',
+      borderBottom: 'divider',
       p: 'sm',
     },
     sidebar: {
       gridArea: 'sidebar',
       p: 'lg',
-      borderRight: '1px solid',
-      borderRightColor: 'divider',
+      borderRight: 'divider',
     },
     main: {
       gridArea: 'main-content',

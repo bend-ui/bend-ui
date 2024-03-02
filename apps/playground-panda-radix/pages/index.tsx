@@ -4,8 +4,7 @@ import Link from 'next/link';
 
 const classes = css({
   padding: 'md',
-  border: '1px solid',
-  borderColor: 'divider',
+  border: 'divider',
   rounded: 'md',
 });
 

@@ -1,7 +1,8 @@
 import { TbDashboard, TbSettings, TbTruckDelivery } from 'react-icons/tb';
 import Link from 'next/link';
-import { Badge } from '@particles/radix';
+import { Badge, Nav } from '@particles/radix';
 import { sva } from '@particles/styled-system/css';
+import { LuLayoutDashboard, LuSettings, LuTruck } from 'react-icons/lu';
 
 const styles = sva({
   slots: ['root', 'brand', 'nav', 'group', 'item', 'section-end'],
@@ -39,26 +40,25 @@ const Sidebar = () => {
   return (
     <div>
       <div className={classes.brand}>🧬 Particles</div>
-      <nav className={classes.nav}>
-        <Link className={classes.item} href="/">
-          <TbDashboard />
-          Overview
-        </Link>
-        <Link className={classes.item} href="/">
-          <TbSettings />
-          Settings
-        </Link>
-        <Link className={classes.item} href="/">
-          <TbTruckDelivery />
-          Orders
-          <div className={classes['section-end']}>
-            <Badge>4</Badge>
-          </div>
-        </Link>
+      <Nav direction="vertical">
+        <Nav.Link icon={<LuLayoutDashboard />}>
+          <Link href="/">Overview</Link>
+        </Nav.Link>
+        <Nav.Link icon={<LuSettings />}>
+          <Link href="/">Settings</Link>
+        </Nav.Link>
+        <Nav.Link icon={<LuTruck />}>
+          <Link href="/">
+            Orders
+            <div className={classes['section-end']}>
+              <Badge>4</Badge>
+            </div>
+          </Link>
+        </Nav.Link>
         <div className={classes.group}>
           <Link href="/">Home</Link>
         </div>
-      </nav>
+      </Nav>
     </div>
   );
 };
