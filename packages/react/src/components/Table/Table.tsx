@@ -5,7 +5,7 @@ import type { ComponentPropsWithoutRef } from 'react';
 
 export type TableCellProps = ComponentPropsWithoutRef<'td'>;
 
-const Cell = forwardRef<'tr', TableCellProps>((props, ref) => {
+const Cell = forwardRef<'td', TableCellProps>((props, ref) => {
   const { children, className, ...rest } = props;
   const recipe = table();
   return (
@@ -17,7 +17,7 @@ const Cell = forwardRef<'tr', TableCellProps>((props, ref) => {
 
 export type TableHeadProps = ComponentPropsWithoutRef<'th'>;
 
-const Head = forwardRef<'tr', TableHeadProps>((props, ref) => {
+const Head = forwardRef<'th', TableHeadProps>((props, ref) => {
   const { children, className, ...rest } = props;
   const recipe = table();
   return (

@@ -6,7 +6,7 @@ import type { ElementType, ReactNode } from 'react';
 
 export interface LevelProps {
   as?: ElementType;
-  className: HTMLElement['className'];
+  className?: HTMLElement['className'];
   children?: ReactNode;
 }
 

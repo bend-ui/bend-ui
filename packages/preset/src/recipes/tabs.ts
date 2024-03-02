@@ -7,9 +7,7 @@ export const tabsRecipe = defineSlotRecipe({
   base: {
     tablist: {
       display: 'flex',
-      borderBottomWidth: '1px',
-      borderBottomStyle: 'solid',
-      borderBottomColor: 'divider',
+      borderBottom: 'divider',
     },
     tab: {
       position: 'relative',
