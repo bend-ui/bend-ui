@@ -7,7 +7,7 @@ const config: StorybookConfig = {
     '@storybook/addon-essentials',
     'storybook-dark-mode',
     '@storybook/addon-a11y',
-    '@chromaui/addon-visual-tests',
+    '@chromatic-com/storybook',
   ],
   framework: {
     name: '@storybook/react-vite',
