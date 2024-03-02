@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@pandacss/dev": "^0.29.1",
-    "@particles/theme": "workspace:^",
+    "@particles/theme": "workspace:*",
     "tsup": "^8.0.1",
     "tslib": "^2.5.3"
   },
