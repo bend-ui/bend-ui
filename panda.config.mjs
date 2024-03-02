@@ -8,6 +8,10 @@ export default defineConfig({
   jsxFramework: 'react',
 
   include: [
+    path.resolve(__dirname, './packages/react/components/**/*.{js,jsx,ts,tsx}'),
+    path.resolve(__dirname, './packages/ark/components/**/*.{js,jsx,ts,tsx}'),
+    path.resolve(__dirname, './packages/radix/components/**/*.{js,jsx,ts,tsx}'),
+    path.resolve(__dirname, './packages/aria/components/**/*.{js,jsx,ts,tsx}'),
     path.resolve(
       __dirname,
       './apps/playground-panda/pages/**/*.{js,jsx,ts,tsx}',
