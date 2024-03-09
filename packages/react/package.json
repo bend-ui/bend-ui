@@ -10,8 +10,8 @@
     }
   },
   "dependencies": {
-    "@particles/preset": "workspace:^",
-    "@particles/styled-system": "workspace:^"
+    "@particles/preset": "workspace:*",
+    "@particles/styled-system": "workspace:*"
   },
   "peerDependencies": {
     "react": "^17.0.2 || ^18.2.0",

@@ -1,5 +1,4 @@
-import { within } from '@storybook/test';
-import { expect } from '@storybook/test';
+import { expect, within } from '@storybook/test';
 import { Modal } from './Modal';
 import type { Meta, StoryObj } from '@storybook/react';
 

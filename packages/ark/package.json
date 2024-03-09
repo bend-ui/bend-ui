@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@ark-ui/react": "^2.2.3",
-    "@particles/preset": "workspace:^",
-    "@particles/styled-system": "workspace:^"
+    "@particles/preset": "workspace:*",
+    "@particles/styled-system": "workspace:*"
   },
   "peerDependencies": {
     "@pandacss/dev": "^0.29.0",

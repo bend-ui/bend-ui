@@ -8,6 +8,8 @@ import { createTheme } from '@particles/storybook';
 import type { Preview } from '@storybook/react';
 import type { DocsContainerProps } from '@storybook/addon-docs';
 
+const theme = createTheme({ brandTitle: 'Particles - React' });
+
 const Container = (props: DocsContainerProps) => {
   const isDark = useDarkMode();
   const currentProps = { ...props };
@@ -18,8 +20,6 @@ const Container = (props: DocsContainerProps) => {
 
   return createElement(DocsContainer, currentProps);
 };
-
-const theme = createTheme({ brandTitle: 'Particles - React' });
 
 const preview: Preview = {
   parameters: {

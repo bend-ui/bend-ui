@@ -3,7 +3,7 @@ import { theme } from '@particles/theme';
 import type { ThemeVars } from '@storybook/theming';
 
 const common: Partial<ThemeVars> = {
-  brandTitle: 'Particles - Panda + Radix',
+  brandTitle: 'Particles',
   colorPrimary: theme.colors.indigo500,
   colorSecondary: theme.colors.indigo600,
 };

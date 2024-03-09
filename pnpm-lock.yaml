@@ -477,10 +477,10 @@ importers:
         specifier: ^0.29.0
         version: 0.29.1(jsdom@22.1.0)(typescript@5.3.3)
       '@particles/preset':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../preset
       '@particles/styled-system':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../styled-system
       react:
         specifier: ^17.0.2 || ^18.2.0
@@ -498,10 +498,10 @@ importers:
         specifier: ^0.29.0
         version: 0.29.1(jsdom@22.1.0)(typescript@5.3.3)
       '@particles/preset':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../preset
       '@particles/styled-system':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../styled-system
       react:
         specifier: ^17.0.2 || ^18.2.0
@@ -546,10 +546,10 @@ importers:
         specifier: ^0.29.0
         version: 0.29.1(jsdom@22.1.0)(typescript@5.3.3)
       '@particles/preset':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../preset
       '@particles/styled-system':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../styled-system
       react:
         specifier: ^17.0.2 || ^18.2.0
@@ -564,10 +564,10 @@ importers:
         specifier: ^0.29.0
         version: 0.29.1(jsdom@22.1.0)(typescript@5.3.3)
       '@particles/preset':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../preset
       '@particles/styled-system':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../styled-system
       react:
         specifier: ^17.0.2 || ^18.2.0

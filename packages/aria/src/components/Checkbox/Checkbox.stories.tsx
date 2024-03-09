@@ -1,5 +1,4 @@
-import { within } from '@storybook/test';
-import { expect } from '@storybook/test';
+import { expect, within } from '@storybook/test';
 import { Checkbox } from './Checkbox';
 import type { Meta, StoryObj } from '@storybook/react';
 
