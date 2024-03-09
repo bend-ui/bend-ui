@@ -51,7 +51,7 @@
     "styled-system"
   ],
   "dependencies": {
-    "@pandacss/dev": "^0.29.1",
+    "@pandacss/dev": "^0.34.2",
     "@particles/preset": "*"
   }
 }
