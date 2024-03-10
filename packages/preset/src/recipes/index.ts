@@ -20,6 +20,7 @@ import { popoverRecipe } from './popover';
 import { radioRecipe } from './radio';
 import { ratingRecipe } from './rating';
 import { selectRecipe } from './select';
+import { switchRecipe } from './switch';
 import { tableRecipe } from './table';
 import { tabsRecipe } from './tabs';
 import { textRecipe } from './text';
@@ -48,6 +49,7 @@ export const slotRecipes = {
   radio: radioRecipe,
   rating: ratingRecipe,
   select: selectRecipe,
+  switchRecipe: switchRecipe,
   table: tableRecipe,
   tabs: tabsRecipe,
   toast: toastRecipe,

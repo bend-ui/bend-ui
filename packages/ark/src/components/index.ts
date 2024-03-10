@@ -12,3 +12,4 @@ export * from './Tooltip';
 // export * from './ComboBox';
 // export * from './ContextMenu';
 export * from './Avatar';
+export * from './Switch';
