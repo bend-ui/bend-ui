@@ -1,5 +1,5 @@
-import { Button, ButtonGroup, Input } from '@particles/react';
 import { useState } from 'react';
+import { Button, ButtonGroup, Input } from '../';
 import { Modal } from './Modal';
 import type { Meta, StoryObj } from '@storybook/react';
 
