@@ -6,7 +6,9 @@ import { badgeRecipe } from './badge';
 import { breadcrumbsRecipe } from './breadcrumbs';
 import { buttonRecipe } from './button';
 import { cardRecipe } from './card';
+import { carouselRecipe } from './carousel';
 import { checkboxRecipe } from './checkbox';
+import { chipInputRecipe } from './chipInput';
 // import { dividerRecipe } from './divider';
 import { drawerRecipe } from './drawer';
 import { dropdownMenuRecipe } from './dropdownMenu';
@@ -36,7 +38,9 @@ export const slotRecipes = {
   breadcrumbs: breadcrumbsRecipe,
   button: buttonRecipe,
   card: cardRecipe,
+  carousel: carouselRecipe,
   checkbox: checkboxRecipe,
+  chipInput: chipInputRecipe,
   // divider: dividerRecipe,
   drawer: drawerRecipe,
   dropdownMenu: dropdownMenuRecipe,
