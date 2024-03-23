@@ -1,4 +1,3 @@
-import { expect, within } from '@storybook/test';
 import { Radio } from './Radio';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -9,14 +8,6 @@ const meta: Meta<typeof Radio> = {
 export default meta;
 type Story = StoryObj<typeof Radio>;
 
-export const Primary = {
+export const Base: Story = {
   args: {},
-};
-
-export const Heading: Story = {
-  args: {},
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    await expect(canvas.getByText(/Welcome to Radio!/gi)).toBeTruthy();
-  },
 };

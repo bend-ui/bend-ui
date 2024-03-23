@@ -1,4 +1,3 @@
-import { expect, within } from '@storybook/test';
 import { Breadcrumbs } from './Breadcrumbs';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -9,14 +8,6 @@ const meta: Meta<typeof Breadcrumbs> = {
 export default meta;
 type Story = StoryObj<typeof Breadcrumbs>;
 
-export const Primary = {
+export const Base: Story = {
   args: {},
-};
-
-export const Heading: Story = {
-  args: {},
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    await expect(canvas.getByText(/Welcome to Breadcrumbs!/gi)).toBeTruthy();
-  },
 };

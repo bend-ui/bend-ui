@@ -1,4 +1,3 @@
-import { expect, within } from '@storybook/test';
 import { Modal } from './Modal';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -9,14 +8,6 @@ const meta: Meta<typeof Modal> = {
 export default meta;
 type Story = StoryObj<typeof Modal>;
 
-export const Primary = {
+export const Base: Story = {
   args: {},
-};
-
-export const Heading: Story = {
-  args: {},
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    await expect(canvas.getByText(/Welcome to Modal!/gi)).toBeTruthy();
-  },
 };
