@@ -1,14 +1,15 @@
+import { dirname, join } from 'path';
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
-    '@storybook/addon-essentials',
-    'storybook-dark-mode',
-    '@storybook/addon-a11y',
+    getAbsolutePath('@storybook/addon-essentials'),
+    getAbsolutePath('storybook-dark-mode'),
+    getAbsolutePath('@storybook/addon-a11y'),
   ],
   framework: {
-    name: '@storybook/react-vite',
+    name: getAbsolutePath('@storybook/react-vite'),
     options: {
       builder: {
         viteConfigPath: 'packages/tailwind/vite.config.ts',
@@ -24,3 +25,7 @@ const config: StorybookConfig = {
 };
 
 export default config;
+
+function getAbsolutePath(value: string): any {
+  return dirname(require.resolve(join(value, 'package.json')));
+}

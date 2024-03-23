@@ -1,16 +1,17 @@
+import { dirname, join } from 'path';
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
-    '@storybook/addon-interactions',
-    '@storybook/addon-essentials',
-    'storybook-dark-mode',
-    '@storybook/addon-a11y',
-    '@chromatic-com/storybook',
+    getAbsolutePath('@storybook/addon-essentials'),
+    getAbsolutePath('@storybook/addon-interactions'),
+    getAbsolutePath('storybook-dark-mode'),
+    getAbsolutePath('@storybook/addon-a11y'),
+    getAbsolutePath('@chromatic-com/storybook'),
   ],
   framework: {
-    name: '@storybook/react-vite',
+    name: getAbsolutePath('@storybook/react-vite'),
     options: {
       builder: {
         viteConfigPath: 'packages/radix/vite.config.ts',
@@ -33,3 +34,7 @@ const config: StorybookConfig = {
 };
 
 export default config;
+
+function getAbsolutePath(value: string): any {
+  return dirname(require.resolve(join(value, 'package.json')));
+}
