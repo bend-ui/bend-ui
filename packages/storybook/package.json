@@ -2,9 +2,9 @@
   "name": "@particles/storybook",
   "version": "0.0.1",
   "dependencies": {
-    "tslib": "^2.3.0",
-    "@storybook/theming": "^8.0.0-rc.3",
-    "@particles/theme": "*"
+    "@particles/theme": "*",
+    "@storybook/theming": "^8.0.4",
+    "tslib": "^2.3.0"
   },
   "type": "commonjs",
   "main": "./src/index.js",
