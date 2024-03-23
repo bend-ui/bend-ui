@@ -31,9 +31,6 @@
       "cache": true
     }
   },
-  "affected": {
-    "defaultBase": "main"
-  },
   "generators": {
     "@nx/react": {
       "application": {
@@ -68,5 +65,6 @@
         "cacheableOperations": ["build-storybook"]
       }
     }
-  }
+  },
+  "defaultBase": "main"
 }
