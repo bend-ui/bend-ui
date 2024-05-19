@@ -11,4 +11,6 @@ export * from './Level';
 export * from './Nav';
 export * from './Table';
 export * from './Text';
+export * from './Paragraph';
+export * from './Heading';
 export * from './Tiles';
