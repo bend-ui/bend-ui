@@ -38,6 +38,8 @@ const preview: Preview = {
       hideNoControlsWarning: true,
     },
   },
+
+  tags: ['autodocs'],
 };
 
 export default preview;

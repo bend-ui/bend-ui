@@ -7,6 +7,7 @@ const config: StorybookConfig = {
     getAbsolutePath('@storybook/addon-essentials'),
     getAbsolutePath('storybook-dark-mode'),
     getAbsolutePath('@storybook/addon-a11y'),
+    '@chromatic-com/storybook',
   ],
   framework: {
     name: getAbsolutePath('@storybook/react-vite'),
@@ -25,9 +26,7 @@ const config: StorybookConfig = {
         prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
     },
   },
-  docs: {
-    autodocs: true,
-  },
+  docs: {},
 };
 
 export default config;

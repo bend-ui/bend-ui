@@ -38,6 +38,7 @@ const preview: Preview = {
       hideNoControlsWarning: true,
     },
   },
+
   globalTypes: {
     theme: {
       name: 'Theme',
@@ -49,6 +50,8 @@ const preview: Preview = {
       },
     },
   },
+
+  tags: ['autodocs'],
 };
 
 export default preview;

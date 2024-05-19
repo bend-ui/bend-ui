@@ -34,6 +34,8 @@ const preview: Preview = {
       container: Container,
     },
   },
+
+  tags: ['autodocs'],
 };
 
 export default preview;
