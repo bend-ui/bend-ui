@@ -13,10 +13,6 @@
       "path": "packages/theme",
     },
     {
-      "name": "📦 @particles/tailwind",
-      "path": "packages/tailwind",
-    },
-    {
       "name": "📦 @particles/react",
       "path": "packages/react",
     },
@@ -61,10 +57,6 @@
       "path": "apps/storybook",
     },
     {
-      "name": "🧪 Playground (Tailwind)",
-      "path": "apps/playground-tailwind",
-    },
-    {
       "name": "🧪 Playground (Panda + Ark)",
       "path": "apps/playground-panda",
     },
@@ -77,11 +69,9 @@
     "typescript.tsdk": "✨ particles/node_modules/typescript/lib",
     "vitest.disabledWorkspaceFolders": [
       "📦 @particles/primitives",
-      "📦 @particles/tailwind",
       "📦 @particles/react",
       "🛠️ @particles/react-utils",
       "🛠️ @particles/cli",
-      "🧪 Playground (Tailwind)",
       "🧪 Playground (Panda)",
       "📚 Website",
     ],

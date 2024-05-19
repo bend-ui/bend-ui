@@ -51,27 +51,3 @@ export const WithStyles: Story = {
     </Breadcrumbs.Root>
   ),
 };
-
-export const WithTailwind: Story = {
-  render: (args) => (
-    <Breadcrumbs.Root className={clsx(breadcrumbsClasses.root)} {...args}>
-      <Breadcrumbs.List className={clsx(breadcrumbsClasses.list)}>
-        <Breadcrumbs.Item className={clsx(breadcrumbsClasses.item)}>
-          <Breadcrumbs.Link className={clsx(breadcrumbsClasses.link)}>
-            Home
-          </Breadcrumbs.Link>
-        </Breadcrumbs.Item>
-        <Breadcrumbs.Item className={clsx(breadcrumbsClasses.item)}>
-          <Breadcrumbs.Link className={clsx(breadcrumbsClasses.link)}>
-            Account
-          </Breadcrumbs.Link>
-        </Breadcrumbs.Item>
-        <Breadcrumbs.Item className={clsx(breadcrumbsClasses.item)}>
-          <Breadcrumbs.Link className={clsx(breadcrumbsClasses.link)}>
-            Profile
-          </Breadcrumbs.Link>
-        </Breadcrumbs.Item>
-      </Breadcrumbs.List>
-    </Breadcrumbs.Root>
-  ),
-};

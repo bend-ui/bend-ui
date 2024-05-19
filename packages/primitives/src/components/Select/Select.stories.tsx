@@ -102,19 +102,3 @@ export const Hook: StoryFn = () => {
     </div>
   );
 };
-
-export const Tailwind: Story = {
-  render: (args) => (
-    <Select.Root {...args}>
-      <Select.Target className="flex w-full items-center justify-between border border-gray-700 rounded p-4">
-        Select
-        <CaretDown />
-      </Select.Target>
-      <Select.Content className="bg-gray-800 p-4 rounded">
-        {options.map((option) => (
-          <Select.Item key={option.value}>{option.label}</Select.Item>
-        ))}
-      </Select.Content>
-    </Select.Root>
-  ),
-};

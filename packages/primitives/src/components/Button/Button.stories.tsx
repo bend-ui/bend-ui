@@ -38,12 +38,3 @@ export const WithStyles: Story = {
 
   parameters: { docs: { source: { type: 'code' } } },
 };
-
-export const Tailwind: Story = {
-  render: (args) => (
-    <Button className={clsx(twButtonStyles.root)} {...args}>
-      <Icon />
-      Button
-    </Button>
-  ),
-};

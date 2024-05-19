@@ -16,15 +16,3 @@ export const Base: Story = {
     </Avatar.Root>
   ),
 };
-
-export const Tailwind: Story = {
-  render: (args) => (
-    <Avatar.Root
-      className="aspect-square overflow-hidden w-10 h-10 rounded-full"
-      {...args}
-    >
-      <Avatar.Image src="https://i.pravatar.cc/300?u=a042581f4e29026704d" />
-      <Avatar.Fallback>UI</Avatar.Fallback>
-    </Avatar.Root>
-  ),
-};

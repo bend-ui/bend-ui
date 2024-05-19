@@ -14,12 +14,9 @@ const generateDeclarations = (path) => {
 
 console.log(green('Welcome to Particles Docs Generator'));
 
-const tailwindPackage = path.join(
-  __dirname,
-  '../packages/tailwind/src/index.ts'
-);
+const reactPackage = path.join(__dirname, '../packages/react/src/index.ts');
 
-console.log(blue(`Getting packages from ${tailwindPackage}`));
+console.log(blue(`Getting packages from ${reactPackage}`));
 
 const PATHS = path.join(__dirname, '../packages/ui/src/lib/Ui.tsx');
 
@@ -27,5 +24,5 @@ fs.ensureDirSync(path.join(__dirname, '../docs/.docgen'));
 
 fs.writeJSONSync(
   path.join(__dirname, '../docs/.docgen/docgen.json'),
-  generateDeclarations(PATHS)
+  generateDeclarations(PATHS),
 );
