@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import clsx from 'clsx';
 import { Accordion } from '.';
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 export default {
   title: 'Components/Accordion',
@@ -13,7 +12,7 @@ export default {
   },
 } as Meta<typeof Accordion>;
 
-type Story = StoryFn<typeof Accordion>;
+type Story = StoryObj<typeof Accordion>;
 
 export const Base: Story = {
   render: (args) => (
@@ -56,8 +55,7 @@ export const Base: Story = {
 };
 
 export const AllowMultiple: Story = {
-  render: Base,
-
+  ...Base,
   args: {
     allowMultiple: true,
   },

@@ -1,6 +1,5 @@
-import clsx from 'clsx';
 import { useMergeRefs } from '@floating-ui/react';
-import { Button, twButtonStyles } from '../Button';
+import { Button } from '../Button';
 import { forwardRef } from '../../utils';
 import { useMenuContext } from './MenuContext';
 import type { ReactNode } from 'react';
@@ -16,11 +15,7 @@ export const MenuButton = forwardRef<'button', MenuButtonProps>(
     const mergedRefs = useMergeRefs([ref, refs.setReference]);
 
     return (
-      <Button
-        ref={mergedRefs}
-        className={clsx(twButtonStyles.root)}
-        {...getReferenceProps(rest)}
-      >
+      <Button ref={mergedRefs} {...getReferenceProps(rest)}>
         {children}
       </Button>
     );

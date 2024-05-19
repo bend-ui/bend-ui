@@ -1,5 +1,4 @@
-import clsx from 'clsx';
-import { Button, buttonStyles, twButtonStyles } from '.';
+import { Button, buttonStyles } from '.';
 import type { Meta, StoryObj } from '@storybook/react';
 
 export default {

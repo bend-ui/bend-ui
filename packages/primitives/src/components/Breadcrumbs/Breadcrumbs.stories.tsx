@@ -1,14 +1,13 @@
-import clsx from 'clsx';
-import { breadcrumbsClasses, breadcrumbsStyles } from './Breadcrumbs.styles';
+import { breadcrumbsStyles } from './Breadcrumbs.styles';
 import { Breadcrumbs } from './';
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 export default {
   title: 'Components/Breadcrumbs',
   component: Breadcrumbs,
 } as Meta<typeof Breadcrumbs>;
 
-type Story = StoryFn<typeof Breadcrumbs>;
+type Story = StoryObj<typeof Breadcrumbs>;
 
 export const Base: Story = {
   render: (args) => (
