@@ -14,9 +14,18 @@ const nextConfig = {
   },
 };
 
+/**
+ * @type {import('nextra')}
+ **/
+const withNextra = require('nextra')({
+  theme: './src/index.tsx',
+  themeConfig: './theme.config.tsx',
+});
+
 const plugins = [
   // Add more Next.js plugins to this list if needed.
   withNx,
+  withNextra,
 ];
 
 module.exports = composePlugins(...plugins)(nextConfig);

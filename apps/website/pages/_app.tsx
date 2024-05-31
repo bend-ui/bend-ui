@@ -3,7 +3,7 @@ import { ThemeProvider } from 'next-themes';
 import '@fontsource-variable/inter';
 
 import type { AppProps } from 'next/app';
-import './styles.css';
+import '../styles/globals.css';
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (

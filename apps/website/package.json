@@ -1,0 +1,17 @@
+{
+  "name": "website",
+  "private": true,
+  "dependencies": {
+    "@pandacss/token-dictionary": "^0.39.1",
+    "@particles/preset": "workspace:*",
+    "@particles/react": "workspace:*",
+    "escape-string-regexp": "^5.0.0",
+    "flexsearch": "^0.7.43",
+    "focus-visible": "^5.2.0",
+    "git-url-parse": "^14.0.0",
+    "intersection-observer": "^0.12.2",
+    "match-sorter": "^6.3.4",
+    "scroll-into-view-if-needed": "^3.1.0",
+    "zod": "^3.23.8"
+  }
+}
