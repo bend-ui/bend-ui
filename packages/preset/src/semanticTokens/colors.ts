@@ -274,4 +274,22 @@ export const colors = defineSemanticTokens.colors({
       value: 'black',
     },
   },
+  shadow: {
+    value: {
+      _light: '{colors.shark.100}',
+      _dark: '{colors.shark.900}',
+    },
+  },
+  focus: {
+    value: {
+      _light: '{colors.blue.400}',
+      _dark: '{colors.blue.600}',
+    },
+  },
+  focusRing: {
+    value: {
+      _light: '{colors.blue.400}',
+      _dark: '{colors.blue.600}',
+    },
+  },
 });

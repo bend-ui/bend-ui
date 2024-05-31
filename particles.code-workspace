@@ -29,6 +29,10 @@
       "path": "packages/ark",
     },
     {
+      "name": "🎨 @particles/preset-base",
+      "path": "packages/preset-base",
+    },
+    {
       "name": "🎨 @particles/preset",
       "path": "packages/preset",
     },

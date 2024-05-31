@@ -26,18 +26,6 @@ export const scrollable = definePattern({
   },
 });
 
-export const level = definePattern({
-  description: 'The level styles',
-  transform(props) {
-    return {
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      ...props,
-    };
-  },
-});
-
 export const splitLayout = definePattern({
   description: 'Fullscreen split layout',
   transform() {

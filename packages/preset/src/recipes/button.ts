@@ -6,9 +6,6 @@ export const buttonRecipe = defineSlotRecipe({
   slots: ['root', 'label'],
   base: {
     root: {
-      display: 'inline-flex',
-      placeItems: 'center',
-      placeContent: 'center',
       rounded: 'md',
       borderWidth: '1px',
       borderStyle: 'solid',

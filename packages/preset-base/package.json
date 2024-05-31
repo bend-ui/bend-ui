@@ -1,5 +1,5 @@
 {
-  "name": "@particles/preset",
+  "name": "@particles/preset-base",
   "version": "0.0.1",
   "types": "./src/preset.ts",
   "main": "./dist/preset.js",
@@ -21,8 +21,6 @@
   },
   "dependencies": {
     "@pandacss/dev": "^0.39.1",
-    "@particles/preset-base": "workspace:*",
-    "@particles/theme": "workspace:*",
     "tslib": "^2.5.3",
     "tsup": "^8.0.2"
   },

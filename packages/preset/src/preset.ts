@@ -1,4 +1,5 @@
 import { definePreset } from '@pandacss/dev';
+import basePreset from '@particles/preset-base';
 import * as patterns from './patterns';
 import { tokens } from './tokens';
 import { semanticTokens } from './semanticTokens';
@@ -9,6 +10,7 @@ import { keyframes } from './keyframes';
 import { globalCss } from './globalCss';
 
 export const preset = definePreset({
+  presets: [basePreset],
   conditions: {
     extend: {
       light: '[data-color-mode=light] &, .light &',
