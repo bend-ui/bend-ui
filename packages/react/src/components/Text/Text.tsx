@@ -1,42 +1,32 @@
-import { createPolymorphicComponent } from '@particles/primitives';
 import { css, cx } from '@particles/styled-system/css';
 import { text } from '@particles/styled-system/recipes';
 import { forwardRef } from 'react';
-import type { SystemStyleObject } from '@particles/styled-system/types';
+import { splitCssProps } from '@particles/styled-system/jsx';
+import type { JsxStyleProps } from '@particles/styled-system/types';
 import type { TextVariantProps } from '@particles/styled-system/recipes';
-import type { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-export interface TextProps extends ComponentPropsWithoutRef<'span'> {
-  as?: ElementType;
+export type Assign<T, U> = Omit<T, keyof U> & U;
+
+export interface TextProps
+  extends Assign<JsxStyleProps, ComponentPropsWithoutRef<'span'>> {
   children?: ReactNode;
-  css?: SystemStyleObject;
   /** The style of the text */
   variant?: TextVariantProps['variant'];
 }
 
 export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
-  const {
-    children,
-    as: Component = 'span',
-    variant,
-    className,
-    css: cssProp = {},
-    ...rest
-  } = props;
+  const [variantProps, textProps] = text.splitVariantProps(props);
+  const [cssProps, otherProps] = splitCssProps(textProps);
+  const { children, className, ...rest } = otherProps;
 
-  const recipe = text({ variant });
+  const classes = text(variantProps);
 
   return (
-    <Component
-      ref={ref}
-      className={cx(recipe, css(cssProp), className)}
-      {...rest}
-    >
+    <span ref={ref} className={cx(classes, css(cssProps), className)} {...rest}>
       {children}
-    </Component>
+    </span>
   );
 });
 
 Text.displayName = 'Text';
-
-export default createPolymorphicComponent<'span', TextProps>(Text);

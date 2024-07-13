@@ -5,7 +5,7 @@ import type { ComponentPropsWithoutRef } from 'react';
 
 type TilesProps = ComponentPropsWithoutRef<'div'> & TilesProperties;
 
-const Tiles = (props: TilesProps) => {
+export const Tiles = (props: TilesProps) => {
   const { children, className, ...rest } = props;
   return (
     <div className={cx(tiles(), className)} {...rest}>
@@ -13,5 +13,3 @@ const Tiles = (props: TilesProps) => {
     </div>
   );
 };
-
-export default Tiles;

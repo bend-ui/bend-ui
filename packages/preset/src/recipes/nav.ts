@@ -21,6 +21,9 @@ export const navRecipe = defineSlotRecipe({
       _hover: {
         backgroundColor: 'bg.hover',
       },
+      _current: {
+        backgroundColor: 'bg.hover',
+      },
     },
   },
   variants: {

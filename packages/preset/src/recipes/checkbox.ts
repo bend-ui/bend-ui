@@ -2,22 +2,16 @@ import { defineSlotRecipe } from '@pandacss/dev';
 
 export const checkboxRecipe = defineSlotRecipe({
   description: 'Styles for the Checkbox component',
-  className: 'checkbox',
-  slots: ['root', 'control', 'indicator', 'label'],
+  className: 'Checkbox',
+  slots: ['root', 'control', 'indicator', 'label', 'hidden-input'],
   base: {
-    root: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 'sm',
-    },
+    root: {},
     label: {},
     control: {
       h: '4',
       w: '4',
-      flexShrink: '0',
       rounded: 'sm',
       border: 'input',
-      cursor: 'pointer',
       focusRingOffsetColor: 'red',
 
       _focusVisible: {
@@ -29,7 +23,6 @@ export const checkboxRecipe = defineSlotRecipe({
       },
 
       _disabled: {
-        cursor: 'not-allowed',
         opacity: '0.5',
       },
 
@@ -38,12 +31,7 @@ export const checkboxRecipe = defineSlotRecipe({
         color: 'text.on.primary',
       },
     },
-    indicator: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      color: 'currentColor',
-    },
+    indicator: {},
   },
   variants: {
     size: {

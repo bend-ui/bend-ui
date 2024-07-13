@@ -12,6 +12,7 @@ import { chipInputRecipe } from './chipInput';
 // import { dividerRecipe } from './divider';
 import { drawerRecipe } from './drawer';
 import { dropdownMenuRecipe } from './dropdownMenu';
+import { formFieldRecipe } from './formField';
 import { iconRecipe } from './icon';
 import { indicatorRecipe } from './indicator';
 import { inputRecipe } from './input';
@@ -19,7 +20,7 @@ import { modalRecipe } from './modal';
 import { navRecipe } from './nav';
 import { paginationRecipe } from './pagination';
 import { popoverRecipe } from './popover';
-import { radioRecipe } from './radio';
+import { radioGroupRecipe } from './radioGroup';
 import { ratingRecipe } from './rating';
 import { selectRecipe } from './select';
 import { switchRecipe } from './switch';
@@ -44,13 +45,14 @@ export const slotRecipes = {
   // divider: dividerRecipe,
   drawer: drawerRecipe,
   dropdownMenu: dropdownMenuRecipe,
+  formField: formFieldRecipe,
   indicator: indicatorRecipe,
   input: inputRecipe,
   modal: modalRecipe,
   nav: navRecipe,
   pagination: paginationRecipe,
   popover: popoverRecipe,
-  radio: radioRecipe,
+  radioGroup: radioGroupRecipe,
   rating: ratingRecipe,
   select: selectRecipe,
   switchRecipe: switchRecipe,

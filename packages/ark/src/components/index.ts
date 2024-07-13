@@ -13,3 +13,4 @@ export * from './Tooltip';
 // export * from './ContextMenu';
 export * from './Avatar';
 export * from './Switch';
+export * from './Checkbox';

@@ -1,1 +1,2 @@
-export { default as Level } from './Level';
+export { Level } from './Level';
+export type * from './Level.types';

@@ -3,8 +3,6 @@ import { defineConfig } from '@pandacss/dev';
 import { preset } from '@particles/preset';
 
 export default defineConfig({
-  cwd: path.resolve(__dirname),
-
   // Whether to use css reset
   preflight: true,
 
@@ -14,10 +12,16 @@ export default defineConfig({
   // Files to exclude
   exclude: [],
 
-  presets: ['@pandacss/dev/presets', preset],
+  presets: [preset],
 
   staticCss: {
+    css: [
+      {
+        properties: { colorPalette: ['*'] },
+      },
+    ],
     recipes: '*',
+    themes: ['*'],
   },
 
   importMap: '@particles/styled-system',

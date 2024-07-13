@@ -1,7 +1,7 @@
 import { defineSlotRecipe } from '@pandacss/dev';
 
 export const switchRecipe = defineSlotRecipe({
-  className: 'switch',
+  className: 'Switch',
   jsx: ['Switch', /Switch\.+/],
   slots: ['root', 'control', 'thumb', 'label'],
   base: {

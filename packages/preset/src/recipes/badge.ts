@@ -1,17 +1,15 @@
 import { defineSlotRecipe } from '@pandacss/dev';
+import { badgeConfig } from '@particles/preset-base';
 
 export const badgeRecipe = defineSlotRecipe({
-  className: 'badge',
-  slots: ['root'],
+  className: badgeConfig.className,
+  slots: badgeConfig.slots,
   base: {
     root: {
-      display: 'inline-flex',
-      alignItems: 'center',
-      justifyContent: 'center',
       fontSize: 'xs',
       lineHeight: 'none',
       fontWeight: 'medium',
-      borderRadius: 'sm',
+      rounded: 'sm',
       paddingX: 'sm',
       paddingY: 'xs',
       color: 'white',

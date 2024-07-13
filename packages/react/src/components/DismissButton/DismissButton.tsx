@@ -10,13 +10,7 @@ export const DismissButton = forwardRef<
   ElementRef<typeof Button>,
   DismissButtonProps
 >((props, ref) => (
-  <Button
-    ref={ref}
-    aria-label="Dismiss"
-    icon={<LuX />}
-    variant="icon"
-    {...props}
-  />
+  <Button ref={ref} aria-label="Dismiss" icon={<LuX />} {...props} />
 ));
 
 DismissButton.displayName = 'DismissButton';

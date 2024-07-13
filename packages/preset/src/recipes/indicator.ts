@@ -6,8 +6,7 @@ export const indicatorRecipe = defineSlotRecipe({
   base: {
     root: {
       display: 'inline-block',
-      width: 'xs',
-      height: 'xs',
+      size: 'xs',
       borderRadius: 'full',
     },
   },

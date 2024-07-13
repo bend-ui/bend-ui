@@ -12,16 +12,17 @@ export const avatarRecipe = defineSlotRecipe({
       rounded: 'full',
     },
     image: {
-      w: '100%',
-      h: '100%',
+      w: 'full',
+      h: 'full',
       objectFit: 'cover',
     },
     fallback: {
-      w: '100%',
-      h: '100%',
+      w: 'full',
+      h: 'full',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      backgroundColor: 'bg.surface',
     },
   },
   variants: {

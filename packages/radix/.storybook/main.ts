@@ -18,6 +18,15 @@ const config: StorybookConfig = {
       },
     },
   },
+  async viteFinal(config) {
+    const { mergeConfig } = await import('vite');
+
+    return mergeConfig(config, {
+      optimizeDeps: {
+        include: ['storybook-dark-mode', '@storybook/theming'],
+      },
+    });
+  },
   typescript: {
     check: false,
     reactDocgen: 'react-docgen-typescript',

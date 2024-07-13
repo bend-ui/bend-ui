@@ -1,24 +1,17 @@
 import { cx } from '@particles/styled-system/css';
+import { splitCssProps } from '@particles/styled-system/jsx';
 import { level } from '@particles/styled-system/patterns';
-import { createPolymorphicComponent } from '@particles/primitives';
 import { forwardRef } from 'react';
-import type { ElementType, ReactNode } from 'react';
+import type { LevelProps } from './Level.types';
 
-export interface LevelProps {
-  as?: ElementType;
-  className?: HTMLElement['className'];
-  children?: ReactNode;
-}
-
-const Level = forwardRef<HTMLDivElement, LevelProps>((props, ref) => {
-  const { children, className, as: Component = 'div', ...rest } = props;
+export const Level = forwardRef<HTMLDivElement, LevelProps>((props, ref) => {
+  const [cssProps, otherProps] = splitCssProps(props);
+  const { children, className, ...rest } = otherProps;
   return (
-    <Component ref={ref} className={cx(level(), className)} {...rest}>
+    <div ref={ref} className={cx(level(cssProps), className)} {...rest}>
       {children}
-    </Component>
+    </div>
   );
 });
 
 Level.displayName = 'Level';
-
-export default createPolymorphicComponent<'div', LevelProps>(Level);

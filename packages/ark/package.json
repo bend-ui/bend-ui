@@ -10,12 +10,12 @@
     }
   },
   "dependencies": {
-    "@ark-ui/react": "^3.0.2",
+    "@ark-ui/react": "^3.2.1",
     "@particles/preset": "workspace:*",
     "@particles/styled-system": "workspace:*"
   },
   "peerDependencies": {
-    "@pandacss/dev": "^0.36.1",
+    "@pandacss/dev": "^0.40.1",
     "react": "^17.0.2 || ^18.2.0",
     "react-dom": "^17.0.2 || ^18.2.0"
   },

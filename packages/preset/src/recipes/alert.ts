@@ -1,75 +1,86 @@
 import { defineSlotRecipe } from '@pandacss/dev';
 
 export const alertRecipe = defineSlotRecipe({
-  className: 'alert',
-  slots: ['root', 'icon', 'title', 'message'],
+  className: 'Alert',
+  slots: ['root', 'icon', 'title', 'content', 'footer'],
   base: {
     root: {
       padding: 'md',
       borderRadius: 'base',
-      display: 'flex',
-      alignItems: 'center',
       gap: 'md',
+      border: 'base',
     },
     icon: {
-      fontSize: '2xl',
+      fontSize: 'lg',
+      padding: 'sm',
     },
     title: {
+      textStyle: 'body',
       fontWeight: 'bold',
     },
-    message: {},
+    content: {},
   },
   variants: {
     palette: {
       default: {
         root: {
-          backgroundColor: 'bg.surface',
+          colorPalette: 'bg.surface',
         },
       },
       primary: {
         root: {
-          backgroundColor: 'bg.primary',
+          colorPalette: 'primary',
         },
       },
       danger: {
         root: {
-          backgroundColor: 'bg.danger',
+          colorPalette: 'danger',
         },
       },
       warning: {
         root: {
-          backgroundColor: 'bg.warning',
+          colorPalette: 'warning',
         },
       },
       success: {
         root: {
-          backgroundColor: 'bg.success',
+          colorPalette: 'success',
         },
       },
       info: {
         root: {
-          backgroundColor: 'bg.info',
+          colorPalette: 'info',
         },
       },
     },
     variant: {
       solid: {
-        root: {},
+        root: {
+          backgroundColor: 'colorPalette',
+        },
       },
       subtle: {
         root: {
-          boxShadow: 'base',
+          backgroundColor: 'colorPalette/24',
         },
       },
       outline: {
         root: {
-          boxShadow: 'base',
-          border: 'base',
+          borderWidth: '1px',
+          borderStyle: 'solid',
+          borderColor: 'colorPalette',
+        },
+        icon: {
+          color: 'colorPalette',
+        },
+        title: {
+          color: 'colorPalette',
         },
       },
     },
   },
   defaultVariants: {
     palette: 'default',
+    variant: 'solid',
   },
 });

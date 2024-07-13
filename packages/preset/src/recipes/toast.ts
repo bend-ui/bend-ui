@@ -1,8 +1,15 @@
 import { defineSlotRecipe } from '@pandacss/dev';
 
 export const toastRecipe = defineSlotRecipe({
-  className: 'toast',
-  slots: ['root', 'viewport', 'title', 'description', 'closeTrigger'],
+  className: 'Toast',
+  slots: [
+    'root',
+    'viewport',
+    'title',
+    'description',
+    'closeTrigger',
+    'actionTrigger',
+  ],
   base: {
     root: {
       layerStyle: 'panelRaised',

@@ -4,49 +4,49 @@ export const colors = defineSemanticTokens.colors({
   bg: {
     page: {
       value: {
-        _light: '{colors.shark.100}',
-        _dark: '{colors.shark.900}',
+        _light: '{colors.neutral.100}',
+        _dark: '{colors.neutral.900}',
       },
     },
     subtle: {
       value: {
-        _light: '{colors.shark.200}',
-        _dark: '{colors.shark.800}',
+        _light: '{colors.neutral.200}',
+        _dark: '{colors.neutral.800}',
       },
     },
     surface: {
       DEFAULT: {
         value: {
-          _light: '{colors.shark.100}',
-          _dark: '{colors.shark.900}',
+          _light: '{colors.neutral.50}',
+          _dark: '{colors.neutral.900}',
         },
       },
       raise: {
         value: {
-          _light: '{colors.shark.200}',
-          _dark: '{colors.shark.800}',
+          _light: '{colors.neutral.200}',
+          _dark: '{colors.neutral.800}',
         },
       },
     },
     hover: {
       DEFAULT: {
         value: {
-          _light: '{colors.shark.100}',
-          _dark: '{colors.shark.700}',
+          _light: '{colors.neutral.100}',
+          _dark: '{colors.neutral.700}',
         },
       },
     },
     input: {
       DEFAULT: {
         value: {
-          _light: '{colors.shark.100}',
-          _dark: '{colors.shark.700}',
+          _light: '{colors.neutral.100}',
+          _dark: '{colors.neutral.700}',
         },
       },
       hover: {
         value: {
-          _light: '{colors.shark.200}',
-          _dark: '{colors.shark.800}',
+          _light: '{colors.neutral.200}',
+          _dark: '{colors.neutral.800}',
         },
       },
     },
@@ -192,6 +192,12 @@ export const colors = defineSemanticTokens.colors({
         _dark: '{colors.white}',
       },
     },
+    subtle: {
+      value: {
+        _light: '{colors.gray.500}',
+        _dark: '{colors.gray.400}',
+      },
+    },
     on: {
       primary: {
         value: {
@@ -217,6 +223,85 @@ export const colors = defineSemanticTokens.colors({
           _dark: '{colors.white}',
         },
       },
+    },
+  },
+  fg: {
+    danger: {
+      DEFAULT: {
+        value: {
+          _light: '{colors.red.400}',
+          _dark: '{colors.red.600}',
+        },
+      },
+      subtle: {
+        value: {
+          _light: '{colors.red.200}',
+          _dark: '{colors.red.600}',
+        },
+      },
+    },
+    warning: {
+      DEFAULT: {
+        value: {
+          _light: '{colors.warning}',
+          _dark: '{colors.warning}',
+        },
+      },
+      subtle: {
+        value: {
+          _light: '{colors.red.200}',
+          _dark: '{colors.red.600}',
+        },
+      },
+    },
+    success: {
+      DEFAULT: {
+        value: {
+          _light: '{colors.success}',
+          _dark: '{colors.success}',
+        },
+      },
+      subtle: {
+        value: {
+          _light: '{colors.red.200}',
+          _dark: '{colors.red.600}',
+        },
+      },
+    },
+  },
+  neutral: {
+    DEFAULT: {
+      value: '{colors.shark.500}',
+    },
+    50: {
+      value: '{colors.shark.50}',
+    },
+    100: {
+      value: '{colors.shark.100}',
+    },
+    200: {
+      value: '{colors.shark.200}',
+    },
+    300: {
+      value: '{colors.shark.300}',
+    },
+    400: {
+      value: '{colors.shark.400}',
+    },
+    500: {
+      value: '{colors.shark.500}',
+    },
+    600: {
+      value: '{colors.shark.600}',
+    },
+    700: {
+      value: '{colors.shark.700}',
+    },
+    800: {
+      value: '{colors.shark.800}',
+    },
+    900: {
+      value: '{colors.shark.900}',
     },
   },
   primary: {
@@ -274,22 +359,46 @@ export const colors = defineSemanticTokens.colors({
       value: 'black',
     },
   },
+  warning: {
+    DEFAULT: {
+      value: {
+        _light: '{colors.yellow.400}',
+        _dark: '{colors.yellow.600}',
+      },
+    },
+  },
+  success: {
+    DEFAULT: {
+      value: {
+        _light: '{colors.green.400}',
+        _dark: '{colors.green.600}',
+      },
+    },
+  },
   shadow: {
     value: {
       _light: '{colors.shark.100}',
       _dark: '{colors.shark.900}',
     },
   },
-  focus: {
-    value: {
-      _light: '{colors.blue.400}',
-      _dark: '{colors.blue.600}',
-    },
-  },
   focusRing: {
-    value: {
-      _light: '{colors.blue.400}',
-      _dark: '{colors.blue.600}',
+    DEFAULT: {
+      value: {
+        _light: '{colors.primary}',
+        _dark: '{colors.primary}',
+      },
+    },
+    neutral: {
+      value: {
+        _light: '{colors.gray.400}/14',
+        _dark: '{colors.gray.600}/14',
+      },
+    },
+    danger: {
+      value: {
+        _light: '{colors.danger}/24',
+        _dark: '{colors.danger}/24',
+      },
     },
   },
 });

@@ -4,4 +4,6 @@ import type { CollectionItem, SelectRootProps } from '@ark-ui/react';
 
 export interface SelectProps<T extends CollectionItem>
   extends Assign<JsxStyleProps, SelectRootProps<T>>,
-    SelectVariantProps {}
+    SelectVariantProps {
+      options: T[];
+    }

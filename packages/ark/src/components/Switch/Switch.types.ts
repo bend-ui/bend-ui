@@ -1,10 +1,7 @@
 import type { SwitchRecipeVariantProps } from '@particles/styled-system/recipes';
 import type { Assign, JsxStyleProps } from '@particles/styled-system/types';
 import type { SwitchRootProps } from '@ark-ui/react';
-import type { ReactNode } from 'react';
 
 export interface SwitchProps
   extends Assign<JsxStyleProps, SwitchRootProps>,
-    SwitchRecipeVariantProps {
-  children?: ReactNode;
-}
+    SwitchRecipeVariantProps {}

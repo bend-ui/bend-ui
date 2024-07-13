@@ -1,13 +1,13 @@
-import { createPolymorphicComponent } from '@particles/primitives';
 import { css, cx } from '@particles/styled-system/css';
 import { text } from '@particles/styled-system/recipes';
 import { forwardRef } from 'react';
+import { splitCssProps } from '@particles/styled-system/jsx';
 import type { SystemStyleObject } from '@particles/styled-system/types';
 import type { TextVariantProps } from '@particles/styled-system/recipes';
-import type { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 export interface HeadingProps extends ComponentPropsWithoutRef<'h2'> {
-  as?: ElementType;
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   children?: ReactNode;
   css?: SystemStyleObject;
   /** The style of the heading */
@@ -16,21 +16,16 @@ export interface HeadingProps extends ComponentPropsWithoutRef<'h2'> {
 
 export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
   (props, ref) => {
-    const {
-      children,
-      as: Component = 'h2',
-      variant = 'title',
-      className,
-      css: cssProp = {},
-      ...rest
-    } = props;
+    const [variantProps, textProps] = text.splitVariantProps(props);
+    const [cssProps, otherProps] = splitCssProps(textProps);
+    const { children, as: Component = 'h2', className, ...rest } = otherProps;
 
-    const recipe = text({ variant });
+    const classes = text(variantProps);
 
     return (
       <Component
         ref={ref}
-        className={cx(recipe, css(cssProp), className)}
+        className={cx(classes, css(cssProps), className)}
         {...rest}
       >
         {children}
@@ -40,5 +35,3 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
 );
 
 Heading.displayName = 'Heading';
-
-export default createPolymorphicComponent<'span', HeadingProps>(Heading);

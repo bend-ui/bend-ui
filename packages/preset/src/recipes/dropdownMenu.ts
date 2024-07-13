@@ -1,24 +1,25 @@
 import { defineSlotRecipe } from '@pandacss/dev';
 
 export const dropdownMenuRecipe = defineSlotRecipe({
-  className: 'dropdownMenu',
+  className: 'DropdownMenu',
   slots: [
     'root',
-    'trigger',
-    'group',
-    'portal',
-    'sub',
-    'radioGroup',
-    'subTrigger',
-    'subContent',
-    'content',
-    'item',
-    'itemIndicator',
+    'arrow',
+    'arrowTip',
     'checkboxItem',
+    'content',
+    'indicator',
+    'itemGroupLabel',
+    'itemGroup',
+    'itemIndicator',
+    'item',
+    'itemText',
+    'positioner',
+    'radioItemGroup',
     'radioItem',
-    'label',
     'separator',
-    'shortcut',
+    'triggerItem',
+    'trigger',
   ],
   base: {
     content: {

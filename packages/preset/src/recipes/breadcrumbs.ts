@@ -1,7 +1,7 @@
 import { defineSlotRecipe } from '@pandacss/dev';
 
 export const breadcrumbsRecipe = defineSlotRecipe({
-  className: 'breadcrumbs',
+  className: 'Breadcrumbs',
   slots: ['root', 'item', 'separator'],
   base: {
     root: {

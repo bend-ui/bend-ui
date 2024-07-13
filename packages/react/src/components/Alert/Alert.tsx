@@ -1,28 +1,44 @@
-import { forwardRef } from '@particles/primitives';
 import { alert } from '@particles/styled-system/recipes';
-import { cx } from '@particles/styled-system/css';
-import type { AlertVariantProps } from '@particles/styled-system/recipes';
-import type { ComponentPropsWithoutRef } from 'react';
+import { styled } from '@particles/styled-system/jsx';
+import { createStyleContext } from '../../utils/create-style-context';
+import type { AlertProps } from './Alert.types';
+import type { ReactNode } from 'react';
 
-export interface AlertProps extends ComponentPropsWithoutRef<'div'> {
-  palette?: AlertVariantProps['palette'];
-  variant?: AlertVariantProps['variant'];
-}
+const { withProvider, withContext } = createStyleContext(alert);
 
-const Root = forwardRef<'div', AlertProps>((props, ref) => {
-  const {
-    children,
-    className,
-    palette = 'info',
-    variant = 'outline',
-    ...rest
-  } = props;
-  const recipe = alert({ palette, variant });
+const Root = withProvider(styled.div, 'root');
+
+const Icon = withContext(styled.div, 'icon');
+
+const Title = withContext(styled.div, 'title');
+
+const Content = withContext(styled.div, 'content');
+
+const Footer = withContext(styled.div, 'footer');
+
+const Component = (
+  props: AlertProps & {
+    icon?: ReactNode;
+    title?: ReactNode;
+    children?: ReactNode;
+    footer?: ReactNode;
+  },
+) => {
+  const { icon, title, children, footer, ...rest } = props;
   return (
-    <div ref={ref} className={cx(recipe.root, className)} {...rest}>
-      {children}
-    </div>
+    <Alert.Root {...rest}>
+      {!!icon && <Alert.Icon>{icon}</Alert.Icon>}
+      {!!title && <Alert.Title>{title}</Alert.Title>}
+      {!!children && <Alert.Content>{children}</Alert.Content>}
+      {!!footer && <Alert.Footer>{footer}</Alert.Footer>}
+    </Alert.Root>
   );
-});
+};
 
-export const Alert = Object.assign(Root, {});
+export const Alert = Object.assign(Component, {
+  Root,
+  Icon,
+  Title,
+  Content,
+  Footer,
+});

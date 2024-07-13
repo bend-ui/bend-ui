@@ -2,7 +2,7 @@
   "name": "website",
   "private": true,
   "dependencies": {
-    "@pandacss/token-dictionary": "^0.40.1",
+    "@pandacss/token-dictionary": "^0.42.0",
     "@particles/preset": "workspace:*",
     "@particles/react": "workspace:*",
     "escape-string-regexp": "^5.0.0",

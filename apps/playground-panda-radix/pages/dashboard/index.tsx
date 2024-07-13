@@ -1,4 +1,4 @@
-import { useTheme } from 'next-themes';
+// import { useTheme } from 'next-themes';
 import Link from 'next/link';
 import {
   container,
@@ -12,7 +12,7 @@ import { Avatar, Button, Card, Modal, Tabs } from '@particles/radix';
 import Sidebar from './components/sidebar';
 
 export function Dashboard() {
-  const { theme, setTheme } = useTheme();
+  // const { theme, setTheme } = useTheme();
 
   const classes = appShell();
 

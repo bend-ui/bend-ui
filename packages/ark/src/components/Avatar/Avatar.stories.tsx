@@ -11,7 +11,14 @@ type Story = StoryObj<typeof Avatar>;
 
 export const Base: Story = {
   args: {
-    fallback: 'Fallback',
-    src: 'https://source.unsplash.com/random/64x64',
+    fallback: 'UI',
+    src: 'https://i.pravatar.cc/64',
+  },
+};
+
+export const Fallback: Story = {
+  args: {
+    fallback: 'UI',
+    src: '',
   },
 };

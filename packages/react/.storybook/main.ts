@@ -7,6 +7,7 @@ const config: StorybookConfig = {
     getAbsolutePath('@storybook/addon-essentials'),
     getAbsolutePath('@storybook/addon-interactions'),
     getAbsolutePath('storybook-dark-mode'),
+    getAbsolutePath('@storybook/addon-themes'),
     getAbsolutePath('@storybook/addon-a11y'),
     getAbsolutePath('@chromatic-com/storybook'),
   ],
@@ -17,6 +18,15 @@ const config: StorybookConfig = {
         viteConfigPath: 'packages/react/vite.config.ts',
       },
     },
+  },
+  async viteFinal(config) {
+    const { mergeConfig } = await import('vite');
+
+    return mergeConfig(config, {
+      optimizeDeps: {
+        include: ['storybook-dark-mode', '@storybook/theming'],
+      },
+    });
   },
   typescript: {
     check: false,

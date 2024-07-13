@@ -1,9 +1,8 @@
 import { defineSlotRecipe } from '@pandacss/dev';
 
 export const drawerRecipe = defineSlotRecipe({
-  className: 'drawer',
+  className: 'Drawer',
   slots: [
-    'root',
     'trigger',
     'overlay',
     'content',
@@ -15,8 +14,6 @@ export const drawerRecipe = defineSlotRecipe({
   ],
   base: {
     overlay: {
-      position: 'fixed',
-      inset: 0,
       bgColor: 'neutral.950',
       opacity: '0.8',
       _open: {
@@ -27,7 +24,6 @@ export const drawerRecipe = defineSlotRecipe({
       },
     },
     content: {
-      position: 'fixed',
       padding: 'lg',
       layerStyle: 'panelRaised',
     },
@@ -57,9 +53,6 @@ export const drawerRecipe = defineSlotRecipe({
     placement: {
       left: {
         content: {
-          top: 0,
-          bottom: 0,
-          left: 0,
           roundedRight: 'lg',
           roundedLeft: '0',
           width: '90vw',
@@ -75,9 +68,6 @@ export const drawerRecipe = defineSlotRecipe({
       },
       right: {
         content: {
-          top: 0,
-          bottom: 0,
-          right: 0,
           roundedLeft: 'lg',
           roundedRight: '0',
           width: '90vw',
@@ -96,9 +86,6 @@ export const drawerRecipe = defineSlotRecipe({
           width: 'screen',
           height: '90vw',
           maxH: '450px',
-          top: 0,
-          left: 0,
-          right: 0,
           _open: {
             animation: 'slideInTop 300ms ease-out',
           },
@@ -112,9 +99,6 @@ export const drawerRecipe = defineSlotRecipe({
           width: 'screen',
           height: '90vw',
           maxH: '450px',
-          bottom: 0,
-          left: 0,
-          right: 0,
           _open: {
             animation: 'slideInBottom 300ms ease-out',
           },

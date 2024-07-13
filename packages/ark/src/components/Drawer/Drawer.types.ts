@@ -4,4 +4,7 @@ import type { DialogRootProps } from '@ark-ui/react';
 
 export interface DrawerProps
   extends Assign<JsxStyleProps, DialogRootProps>,
-    DrawerVariantProps {}
+    DrawerVariantProps {
+  title?: string;
+  description?: string;
+}

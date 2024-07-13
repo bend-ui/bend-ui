@@ -1,4 +1,3 @@
-import { TbDashboard, TbSettings, TbTruckDelivery } from 'react-icons/tb';
 import Link from 'next/link';
 import { Badge, Nav } from '@particles/radix';
 import { sva } from '@particles/styled-system/css';

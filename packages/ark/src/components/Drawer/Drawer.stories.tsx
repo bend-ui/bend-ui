@@ -6,13 +6,26 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Drawer> = {
   component: Drawer,
+  argTypes: {
+    placement: {
+      control: 'select',
+      options: drawer.variantMap.placement,
+    },
+  },
 };
 
 export default meta;
 
 type Story = StoryObj<typeof Drawer>;
 
-export const Base: Story = {};
+export const Base: Story = {
+  render: (args) => <Drawer {...args} />,
+  args: {
+    title: 'Dialog Title',
+    description: 'Dialog Description',
+    children: 'Dialog Content',
+  },
+};
 
 export const Composed: Story = {
   render: (args) => (

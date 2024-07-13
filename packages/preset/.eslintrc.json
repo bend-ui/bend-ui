@@ -4,7 +4,17 @@
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "rules": {}
+      "parserOptions": {
+        "project": ["packages/preset/tsconfig.*?.json"]
+      },
+      "rules": {
+        "@typescript-eslint/consistent-type-imports": [
+          "error",
+          {
+            "prefer": "type-imports"
+          }
+        ]
+      }
     },
     {
       "files": ["*.ts", "*.tsx"],

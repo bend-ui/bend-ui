@@ -4,6 +4,7 @@ import { createElement } from 'react';
 import { useDarkMode } from 'storybook-dark-mode';
 import { DocsContainer } from '@storybook/addon-docs';
 import { createTheme } from '@particles/storybook';
+import { withThemeByDataAttribute } from '@storybook/addon-themes';
 
 import type { Preview } from '@storybook/react';
 import type { DocsContainerProps } from '@storybook/addon-docs';
@@ -39,17 +40,18 @@ const preview: Preview = {
     },
   },
 
-  globalTypes: {
-    theme: {
-      name: 'Theme',
-      description: 'Global theme for components',
-      defaultValue: 'default',
-      toolbar: {
-        icon: 'circlehollow',
-        items: ['default', 'cloud'],
+  decorators: [
+    withThemeByDataAttribute({
+      themes: {
+        Default: 'default',
+        Proton: 'proton',
+        Neutron: 'neutron',
+        Quark: 'quark',
       },
-    },
-  },
+      defaultTheme: 'default',
+      attributeName: 'data-panda-theme',
+    }),
+  ],
 
   tags: ['autodocs'],
 };

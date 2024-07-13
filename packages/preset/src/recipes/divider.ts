@@ -1,7 +1,7 @@
 import { defineSlotRecipe } from '@pandacss/dev';
 
 export const dividerRecipe = defineSlotRecipe({
-  className: 'divider',
+  className: 'Divider',
   slots: ['root', 'content'],
   base: {
     root: {},

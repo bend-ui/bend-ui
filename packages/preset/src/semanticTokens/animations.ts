@@ -17,4 +17,6 @@ export const animations = defineTokens.animations({
       value: 'fadeOut 300ms ease-out',
     },
   },
+  'accordion-down': { value: 'accordion-down 0.2s ease-out' },
+  'accordion-up': { value: 'accordion-up 0.2s ease-out' },
 });

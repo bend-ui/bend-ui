@@ -9,6 +9,7 @@ export interface ButtonProps extends HTMLStyledProps<'button'>, AsChildProps {
   variant?: ButtonVariantProps['variant'];
   size?: ButtonVariantProps['size'];
   isRounded?: ButtonVariantProps['isRounded'];
+  isFull?: ButtonVariantProps['isFull'];
   /** Disable the button */
   isDisabled?: boolean;
   /** Set the button in a loading state */

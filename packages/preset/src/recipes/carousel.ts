@@ -1,7 +1,7 @@
 import { defineSlotRecipe } from '@pandacss/dev';
 
 export const carouselRecipe = defineSlotRecipe({
-  className: 'carousel',
+  className: 'Carousel',
   slots: [
     'root',
     'control',

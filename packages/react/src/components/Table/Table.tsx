@@ -1,94 +1,28 @@
-import { forwardRef } from '@particles/primitives';
-import { cx } from '@particles/styled-system/css';
 import { table } from '@particles/styled-system/recipes';
-import type { ComponentPropsWithoutRef } from 'react';
+import { styled } from '@particles/styled-system/jsx';
+import { createStyleContext } from '../../utils/create-style-context';
 
-export type TableCellProps = ComponentPropsWithoutRef<'td'>;
+const { withProvider, withContext } = createStyleContext(table);
 
-const Cell = forwardRef<'td', TableCellProps>((props, ref) => {
-  const { children, className, ...rest } = props;
-  const recipe = table();
-  return (
-    <td ref={ref} className={cx(recipe.cell, className)} {...rest}>
-      {children}
-    </td>
-  );
-});
+const Root = withProvider(styled.table, 'root');
 
-export type TableHeadProps = ComponentPropsWithoutRef<'th'>;
+const Caption = withContext(styled.caption, 'caption');
 
-const Head = forwardRef<'th', TableHeadProps>((props, ref) => {
-  const { children, className, ...rest } = props;
-  const recipe = table();
-  return (
-    <th ref={ref} className={cx(recipe.head, className)} {...rest}>
-      {children}
-    </th>
-  );
-});
+const Header = withContext(styled.thead, 'header');
 
-export type TableRowProps = ComponentPropsWithoutRef<'tr'>;
+const Body = withContext(styled.tbody, 'body');
 
-const Row = forwardRef<'tr', TableRowProps>((props, ref) => {
-  const { children, className, ...rest } = props;
-  const recipe = table();
-  return (
-    <tr ref={ref} className={cx(recipe.row, className)} {...rest}>
-      {children}
-    </tr>
-  );
-});
+const Footer = withContext(styled.tfoot, 'footer');
 
-export type TableHeaderProps = ComponentPropsWithoutRef<'thead'>;
+const Row = withContext(styled.tr, 'row');
 
-const Header = forwardRef<'thead', TableHeaderProps>((props, ref) => {
-  const { children, className, ...rest } = props;
-  const recipe = table();
-  return (
-    <thead ref={ref} className={cx(recipe.header, className)} {...rest}>
-      {children}
-    </thead>
-  );
-});
+const Head = withContext(styled.th, 'head');
 
-export type TableBodyProps = ComponentPropsWithoutRef<'tbody'>;
-
-const Body = forwardRef<'tbody', TableBodyProps>((props, ref) => {
-  const { children, className, ...rest } = props;
-  const recipe = table();
-  return (
-    <tbody ref={ref} className={cx(recipe.body, className)} {...rest}>
-      {children}
-    </tbody>
-  );
-});
-
-export type TableFooterProps = ComponentPropsWithoutRef<'tfoot'>;
-
-const Footer = forwardRef<'tfoot', TableFooterProps>((props, ref) => {
-  const { children, className, ...rest } = props;
-  const recipe = table();
-  return (
-    <tfoot ref={ref} className={cx(recipe.footer, className)} {...rest}>
-      {children}
-    </tfoot>
-  );
-});
-
-export type TableProps = ComponentPropsWithoutRef<'table'>;
-
-const Root = forwardRef<'table', TableProps>((props, ref) => {
-  const { children, className, ...rest } = props;
-  const recipe = table();
-  return (
-    <table ref={ref} className={cx(recipe.root, className)} {...rest}>
-      {children}
-    </table>
-  );
-});
+const Cell = withContext(styled.td, 'cell');
 
 export const Table = Object.assign(Root, {
   Root,
+  Caption,
   Header,
   Body,
   Footer,

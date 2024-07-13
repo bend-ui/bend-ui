@@ -15,7 +15,9 @@ export const Base: Story = {
   render: (args) => (
     <Nav {...args}>
       <Nav.Link href="#home">Home</Nav.Link>
-      <Nav.Link href="#about">About</Nav.Link>
+      <Nav.Link aria-current="page" href="#about">
+        About
+      </Nav.Link>
       <Nav.Link href="#contact">Contact</Nav.Link>
     </Nav>
   ),
@@ -34,7 +36,7 @@ export const WithIcons: Story = {
       <Nav.Link href="#home" icon={<LuHome />}>
         Home
       </Nav.Link>
-      <Nav.Link href="#about" icon={<LuBook />}>
+      <Nav.Link aria-current="page" href="#about" icon={<LuBook />}>
         About
       </Nav.Link>
       <Nav.Link href="#contact" icon={<LuPhone />}>

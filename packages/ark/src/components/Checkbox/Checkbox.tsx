@@ -8,13 +8,27 @@ import type { CheckboxProps } from './Checkbox.types';
 
 const { withProvider, withContext } = createStyleContext(checkbox);
 
-const Root = withProvider(CheckboxPrimitive.Root, 'root');
+const Root = withProvider<HTMLLabelElement, CheckboxPrimitive.RootProps>(
+  CheckboxPrimitive.Root,
+  'root',
+);
 
-const Label = withContext(CheckboxPrimitive.Label, 'label');
+const Label = withContext<HTMLSpanElement, CheckboxPrimitive.LabelProps>(
+  CheckboxPrimitive.Label,
+  'label',
+);
 
-const Control = withContext(CheckboxPrimitive.Control, 'control');
+const Control = withContext<HTMLDivElement, CheckboxPrimitive.ControlProps>(
+  CheckboxPrimitive.Control,
+  'control',
+);
 
-const Indicator = withContext(CheckboxPrimitive.Indicator, 'indicator');
+const Indicator = withContext<HTMLDivElement, CheckboxPrimitive.IndicatorProps>(
+  CheckboxPrimitive.Indicator,
+  'indicator',
+);
+
+const HiddenInput = CheckboxPrimitive.HiddenInput;
 
 const Component = forwardRef<ElementRef<typeof Root>, CheckboxProps>(
   (props, ref) => (
@@ -24,6 +38,7 @@ const Component = forwardRef<ElementRef<typeof Root>, CheckboxProps>(
           <LuCheck />
         </Indicator>
       </Control>
+      <HiddenInput />
       <Label>Checkbox</Label>
     </Root>
   ),
@@ -36,4 +51,5 @@ export const Checkbox = Object.assign(Component, {
   Label,
   Control,
   Indicator,
+  HiddenInput,
 });

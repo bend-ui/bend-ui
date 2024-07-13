@@ -2,7 +2,7 @@ import { defineSlotRecipe } from '@pandacss/dev';
 
 export const buttonRecipe = defineSlotRecipe({
   description: 'Button styles',
-  className: 'button',
+  className: 'Button',
   slots: ['root', 'label'],
   base: {
     root: {

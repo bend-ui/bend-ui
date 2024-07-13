@@ -3,7 +3,7 @@ import { defineSlotRecipe } from '@pandacss/dev';
 export const tabsRecipe = defineSlotRecipe({
   description: '',
   className: 'Tabs',
-  slots: ['root', 'tablist', 'tab', 'pane'],
+  slots: ['root', 'tablist', 'tab', 'pane', 'indicator'],
   base: {
     tablist: {
       display: 'flex',
@@ -15,7 +15,7 @@ export const tabsRecipe = defineSlotRecipe({
       _hover: {
         backgroundColor: 'shark.800',
       },
-      _active: {
+      _selected: {
         _after: {
           content: '""',
           position: 'absolute',

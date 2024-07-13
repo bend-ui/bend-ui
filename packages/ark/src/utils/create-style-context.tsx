@@ -1,77 +1,83 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/display-name */
 import {
-  type ComponentProps,
   createContext,
-  createElement,
   type ElementType,
   forwardRef,
-  type JSX,
+  type ForwardRefExoticComponent,
+  type PropsWithoutRef,
+  type RefAttributes,
   useContext,
 } from 'react';
+import { cx } from '@particles/styled-system/css';
+import { styled } from '@particles/styled-system/jsx';
 
-type GenericProps = Record<string, unknown>;
-interface StyleRecipe {
-  (props?: GenericProps): Record<string, string>;
-  splitVariantProps: (props: GenericProps) => any;
-}
-type StyleSlot<R extends StyleRecipe> = keyof ReturnType<R>;
-type StyleSlotRecipe<R extends StyleRecipe> = Record<StyleSlot<R>, string>;
-type StyleVariantProps<R extends StyleRecipe> = Parameters<R>[0];
-type CombineProps<T, U> = Omit<T, keyof U> & U;
-
-const cx = (...args: (string | undefined)[]) => args.filter(Boolean).join(' ');
-
-export interface ComponentVariants<
-  T extends ElementType,
-  R extends StyleRecipe,
-> {
-  (props: CombineProps<ComponentProps<T>, StyleVariantProps<R>>): JSX.Element;
+type Props = Record<string, unknown>;
+interface Recipe {
+  (props?: Props): Props;
+  splitVariantProps: (props: Props) => [Props, Props];
 }
 
-export const createStyleContext = <R extends StyleRecipe>(recipe: R) => {
-  const StyleContext = createContext<StyleSlotRecipe<R> | null>(null);
+type Slot<R extends Recipe> = keyof ReturnType<R>;
 
-  const withProvider = <T extends ElementType>(
-    Component: T,
-    slot?: StyleSlot<R>,
-  ): ComponentVariants<T, R> => {
-    const StyledComponent = forwardRef((props: ComponentProps<T>, ref) => {
+export const createStyleContext = <R extends Recipe>(recipe: R) => {
+  const StyleContext = createContext<Record<Slot<R>, string> | null>(null);
+
+  const withRootProvider = <P extends NonNullable<unknown>>(
+    Component: ElementType,
+  ) => {
+    const StyledComponent = (props: P) => {
       const [variantProps, otherProps] = recipe.splitVariantProps(props);
-      const slotStyles = recipe(variantProps) as StyleSlotRecipe<R>;
+      const slotStyles = recipe(variantProps) as Record<Slot<R>, string>;
+
       return (
         <StyleContext.Provider value={slotStyles}>
-          <Component
-            ref={ref}
+          <Component {...otherProps} />
+        </StyleContext.Provider>
+      );
+    };
+    return StyledComponent;
+  };
+
+  const withProvider = <T, P extends { className?: string }>(
+    Component: ElementType,
+    slot: Slot<R>,
+  ): ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<T>> => {
+    const StyledComponent = styled(Component);
+    return forwardRef<T, P>((props, ref) => {
+      const [variantProps, otherProps] = recipe.splitVariantProps(props);
+      const slotStyles = recipe(variantProps) as Record<Slot<R>, string>;
+
+      return (
+        <StyleContext.Provider value={slotStyles}>
+          <StyledComponent
             {...otherProps}
-            className={cx(slotStyles[slot ?? ''], otherProps.className)}
+            ref={ref}
+            className={cx(slotStyles?.[slot], props.className)}
           />
         </StyleContext.Provider>
       );
     });
-    StyledComponent.displayName = Component.toString();
-
-    return StyledComponent as unknown as ComponentVariants<T, R>;
   };
 
-  const withContext = <T extends ElementType>(
-    Component: T,
-    slot?: StyleSlot<R>,
-  ): T => {
-    if (!slot) return Component;
-    const StyledComponent = forwardRef((props: ComponentProps<T>, ref) => {
+  const withContext = <T, P extends { className?: string }>(
+    Component: ElementType,
+    slot: Slot<R>,
+  ): ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<T>> => {
+    const StyledComponent = styled(Component);
+    return forwardRef<T, P>((props, ref) => {
       const slotStyles = useContext(StyleContext);
-      return createElement(Component, {
-        ...props,
-        className: cx(slotStyles?.[slot ?? ''], props.className),
-        ref,
-      });
+      return (
+        <StyledComponent
+          {...props}
+          ref={ref}
+          className={cx(slotStyles?.[slot], props.className)}
+        />
+      );
     });
-    StyledComponent.displayName = Component.toString();
-
-    return StyledComponent as unknown as T;
   };
 
   return {
+    withRootProvider,
     withProvider,
     withContext,
   };

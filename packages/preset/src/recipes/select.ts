@@ -5,45 +5,43 @@ export const selectRecipe = defineSlotRecipe({
   className: 'Select',
   slots: [
     'root',
+    'clearTrigger',
+    'content',
     'control',
-    'trigger',
-    'value',
     'indicator',
-    'clear',
-    'content',
-    'group',
-    'content',
+    'itemGroupLabel',
+    'itemGroup',
+    'itemIndicator',
     'item',
+    'itemText',
     'label',
+    'positioner',
+    'trigger',
+    'valueText',
   ],
   base: {
     control: {
-      display: 'flex',
-      alignItems: 'center',
       gap: 'sm',
       rounded: 'md',
-      backgroundColor: 'surface',
+      backgroundColor: 'bg.surface',
       borderWidth: '1px',
       borderStyle: 'solid',
-      borderColor: { base: 'shark.200', _dark: 'shark.700' },
-      py: 'sm',
-      px: 'md',
-      _hover: {
-        backgroundColor: { base: 'shark.200', _dark: 'shark.700' },
-      },
+      borderColor: 'border.input',
     },
     trigger: {
       flex: '1 1 auto',
       display: 'flex',
       alignItems: 'center',
       justifyItems: 'space-between',
+      py: 'sm',
+      px: 'md',
       gap: 'sm',
     },
-    value: {},
+    valueText: {},
     indicator: {
       marginLeft: 'auto',
     },
-    clear: {
+    clearTrigger: {
       flex: 'none',
     },
     content: {
@@ -56,13 +54,11 @@ export const selectRecipe = defineSlotRecipe({
       _open: {
         animation: 'panel.in',
       },
-      closed: {
+      _closed: {
         animation: 'panel.out',
       },
     },
     item: {
-      display: 'flex',
-      alignItems: 'center',
       gap: 'sm',
       _hover: {
         backgroundColor: 'bg.input.hover',

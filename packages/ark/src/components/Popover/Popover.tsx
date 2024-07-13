@@ -1,21 +1,55 @@
 import { Popover as PopoverPrimitive } from '@ark-ui/react';
 import { popover } from '@particles/styled-system/recipes';
 import { createStyleContext } from '../../utils';
+import { Button } from '..';
 import type { PopoverProps } from './Popover.types';
-const { withProvider, withContext } = createStyleContext(popover);
+const { withRootProvider, withContext } = createStyleContext(popover);
 
-const Root = withProvider(PopoverPrimitive.Root, 'root');
-const Trigger = withContext(PopoverPrimitive.Trigger, 'trigger');
-const Indicator = withContext(PopoverPrimitive.Indicator, 'indicator');
-const Positioner = withContext(PopoverPrimitive.Positioner, 'positioner');
-const Content = withContext(PopoverPrimitive.Content, 'content');
-const Title = withContext(PopoverPrimitive.Title, 'title');
-const Description = withContext(PopoverPrimitive.Description, 'description');
+const Root = withRootProvider(PopoverPrimitive.Root);
+
+const Trigger = withContext<HTMLButtonElement, PopoverPrimitive.TriggerProps>(
+  PopoverPrimitive.Trigger,
+  'trigger',
+);
+
+Trigger.displayName = 'Popover.Trigger';
+
+const Indicator = withContext<HTMLDivElement, PopoverPrimitive.IndicatorProps>(
+  PopoverPrimitive.Indicator,
+  'indicator',
+);
+
+Indicator.displayName = 'Popover.Indicator';
+
+const Positioner = PopoverPrimitive.Positioner;
+
+Positioner.displayName = 'Popover.Positioner';
+
+const Content = withContext<HTMLDivElement, PopoverPrimitive.ContentProps>(
+  PopoverPrimitive.Content,
+  'content',
+);
+
+Content.displayName = 'Popover.Content';
+
+const Title = withContext<HTMLDivElement, PopoverPrimitive.TitleProps>(
+  PopoverPrimitive.Title,
+  'title',
+);
+
+Title.displayName = 'Popover.Title';
+
+const Description = withContext<
+  HTMLParagraphElement,
+  PopoverPrimitive.DescriptionProps
+>(PopoverPrimitive.Description, 'description');
+
+Description.displayName = 'Popover.Description';
 
 const Component = (props: PopoverProps) => (
   <Root {...props}>
     <Trigger>
-      Click Me <Indicator>{'>'}</Indicator>
+      <Button>Click Me &gt;</Button>
     </Trigger>
     <Positioner>
       <Content>

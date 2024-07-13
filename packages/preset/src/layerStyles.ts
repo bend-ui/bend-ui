@@ -28,4 +28,11 @@ export const layerStyles = defineLayerStyles({
       },
     },
   },
+  focus: {
+    DEFAULT: {
+      value: {
+        boxShadow: 'focusRing',
+      },
+    },
+  },
 });

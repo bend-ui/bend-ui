@@ -6,15 +6,35 @@ import type { ReactNode } from 'react';
 
 export type InputProps = InputVariantProps & {
   icon?: ReactNode;
+  iconEnd?: ReactNode;
+  addonStart?: ReactNode;
+  addonEnd?: ReactNode;
 };
 
 export const Root = forwardRef<'input', InputProps>((props, ref) => {
-  const { className, icon, size, ...rest } = props;
+  const { className, icon, iconEnd, addonStart, addonEnd, size, ...rest } =
+    props;
   const classes = input({ size });
+
+  const inputAttrs = {
+    'data-has-icon': icon ? 'true' : undefined,
+    'data-has-icon-end': iconEnd ? 'true' : undefined,
+    'data-has-addon-start': addonStart ? 'true' : undefined,
+    'data-has-addon-end': addonEnd ? 'true' : undefined,
+  };
+
   return (
     <div className={classes.root}>
+      {addonStart && <div className={classes.addonStart}>{addonStart}</div>}
       {icon && <div className={classes.icon}>{icon}</div>}
-      <input ref={ref} className={cx(classes.input, className)} {...rest} />
+      <input
+        ref={ref}
+        className={cx(classes.input, className)}
+        {...inputAttrs}
+        {...rest}
+      />
+      {iconEnd && <div className={classes.iconEnd}>{iconEnd}</div>}
+      {addonEnd && <div className={classes.addonEnd}>{addonEnd}</div>}
     </div>
   );
 });
