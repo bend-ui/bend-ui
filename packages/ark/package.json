@@ -10,7 +10,7 @@
     }
   },
   "dependencies": {
-    "@ark-ui/react": "^3.2.1",
+    "@ark-ui/react": "^3.6.2",
     "@particles/preset": "workspace:*",
     "@particles/styled-system": "workspace:*"
   },

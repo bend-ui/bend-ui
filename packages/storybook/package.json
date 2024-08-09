@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "@particles/theme": "*",
-    "@storybook/theming": "^8.1.5",
+    "@storybook/theming": "^8.2.8",
     "tslib": "^2.3.0"
   },
   "type": "commonjs",
