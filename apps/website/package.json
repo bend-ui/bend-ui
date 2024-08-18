@@ -1,8 +1,11 @@
 {
   "name": "website",
   "private": true,
+  "scripts": {
+    "prepare": "panda codegen"
+  },
   "dependencies": {
-    "@pandacss/token-dictionary": "^0.45.0",
+    "@pandacss/token-dictionary": "^0.45.1",
     "@particles/preset": "workspace:*",
     "@particles/react": "workspace:*",
     "escape-string-regexp": "^5.0.0",

@@ -10,6 +10,7 @@ import { keyframes } from './keyframes';
 import { globalCss } from './globalCss';
 
 export const preset = definePreset({
+  name: 'particles',
   presets: [basePreset],
   conditions: {
     extend: {
@@ -149,5 +150,6 @@ export const preset = definePreset({
 });
 
 export const arkPreset = definePreset({
+  name: 'ark',
   presets: [preset],
 });

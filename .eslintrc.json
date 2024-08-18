@@ -3,11 +3,11 @@
   "ignorePatterns": ["**/*"],
   "extends": [
     "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
     "plugin:storybook/recommended",
     "plugin:import/recommended",
-    "plugin:import/typescript",
-    "plugin:react/jsx-runtime"
+    "plugin:import/typescript"
   ],
   "plugins": ["@nx", "autofix"],
   "rules": {
@@ -64,13 +64,13 @@
         "html": true
       }
     ],
-    "@typescript-eslint/consistent-type-imports": [
-      "error",
-      {
-        "prefer": "type-imports"
-      }
-    ],
-    "@typescript-eslint/consistent-type-definitions": "error",
+    // "@typescript-eslint/consistent-type-imports": [
+    //   "error",
+    //   {
+    //     "prefer": "type-imports"
+    //   }
+    // ],
+    // "@typescript-eslint/consistent-type-definitions": "error",
     "storybook/no-uninstalled-addons": "off"
   },
   "settings": {
@@ -113,7 +113,14 @@
       "rules": {
         "@typescript-eslint/no-explicit-any": "warn",
         "@typescript-eslint/no-extra-semi": "error",
-        "no-extra-semi": "off"
+        "no-extra-semi": "off",
+        "@typescript-eslint/consistent-type-imports": [
+          "error",
+          {
+            "prefer": "type-imports"
+          }
+        ],
+        "@typescript-eslint/consistent-type-definitions": "error"
       }
     },
     {

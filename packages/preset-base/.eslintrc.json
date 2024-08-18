@@ -1,12 +1,9 @@
 {
-  "extends": ["../../.eslintrc.json"],
+  "extends": ["plugin:@nx/react", "../../.eslintrc.json"],
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "parserOptions": {
-        "project": ["packages/preset-base/tsconfig.*?.json"]
-      },
       "rules": {}
     },
     {

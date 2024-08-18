@@ -20,7 +20,7 @@
     "build": "tsup"
   },
   "dependencies": {
-    "@pandacss/dev": "^0.45.0",
+    "@pandacss/dev": "^0.45.1",
     "tslib": "^2.5.3",
     "tsup": "^8.0.2"
   },
