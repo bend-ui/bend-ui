@@ -10,7 +10,8 @@ const config: StorybookConfig = {
     getAbsolutePath('storybook-dark-mode'),
     getAbsolutePath('@storybook/addon-a11y'),
     getAbsolutePath('@storybook/addon-mdx-gfm'),
-    '@chromatic-com/storybook',
+    getAbsolutePath('@chromatic-com/storybook'),
+    getAbsolutePath('@storybook/addon-mdx-gfm'),
   ],
 
   framework: {
