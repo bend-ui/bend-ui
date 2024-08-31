@@ -20,11 +20,11 @@
     "build": "tsup"
   },
   "dependencies": {
-    "@pandacss/dev": "^0.45.1",
+    "@pandacss/dev": "^0.45.2",
     "@particles/preset-base": "workspace:*",
     "@particles/theme": "workspace:*",
     "tslib": "^2.5.3",
-    "tsup": "^8.0.2"
+    "tsup": "^8.2.4"
   },
   "devDependencies": {
     "tslib": "^2.0.0",

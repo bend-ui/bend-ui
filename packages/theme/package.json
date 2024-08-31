@@ -8,7 +8,7 @@
   "main": "./src/index.js",
   "typings": "./src/index.d.ts",
   "devDependencies": {
-    "style-dictionary": "^3.9.2"
+    "style-dictionary": "^4.1.0"
   },
   "scripts": {
     "build": "style-dictionary build",
