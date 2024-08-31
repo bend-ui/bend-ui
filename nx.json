@@ -65,9 +65,7 @@
   "nxCloudAccessToken": "NDU1YmQ4ODEtZmY4MS00Mzk4LTgxZTAtMTVhYWY2MjRiMDgyfHJlYWQtd3JpdGU=",
   "tasksRunnerOptions": {
     "default": {
-      "options": {
-        "cacheableOperations": ["build-storybook"]
-      }
+      "options": {}
     }
   },
   "defaultBase": "main",
