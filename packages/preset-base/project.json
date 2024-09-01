@@ -13,16 +13,6 @@
   },
   "tags": ["preset"],
   "targets": {
-    "build": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/packages/preset-base",
-        "main": "packages/preset-base/src/index.ts",
-        "tsConfig": "packages/preset-base/tsconfig.lib.json",
-        "assets": ["packages/preset-base/*.md"]
-      }
-    },
     "nx-release-publish": {
       "options": {
         "packageRoot": "dist/{projectRoot}"
