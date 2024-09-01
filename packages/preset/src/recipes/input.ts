@@ -1,10 +1,9 @@
 import { defineSlotRecipe } from '@pandacss/dev';
-import { inputConfig } from '@particles/preset-base';
 
 export const inputRecipe = defineSlotRecipe({
   description: 'Input styles',
-  className: inputConfig.className,
-  slots: inputConfig.slots,
+  className: 'Input',
+  slots: ['root', 'icon', 'iconEnd', 'input', 'addonStart', 'addonEnd'],
   base: {
     root: {
       rounded: 'lg',
@@ -12,10 +11,6 @@ export const inputRecipe = defineSlotRecipe({
       _focusWithin: {
         layerStyle: 'focus',
       },
-    },
-    label: {
-      fontSize: 'md',
-      fontWeight: 'bold',
     },
   },
   variants: {

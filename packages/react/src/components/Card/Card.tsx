@@ -1,5 +1,4 @@
 import { card } from '@particles/styled-system/recipes';
-import { createComponent } from '@particles/primitives';
 import { styled } from '@particles/styled-system/jsx';
 import { createStyleContext } from '../../utils/create-style-context';
 
@@ -13,7 +12,7 @@ const Header = withContext(styled.div, 'header');
 
 const Footer = withContext(styled.div, 'footer');
 
-export const Card = createComponent(Root, {
+export const Card = Object.assign(Root, {
   Root,
   Section,
   Header,

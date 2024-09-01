@@ -1,4 +1,3 @@
-/* eslint-disable react/display-name */
 import {
   createContext,
   type ElementType,
@@ -9,22 +8,35 @@ import {
   useContext,
 } from 'react';
 import { cx } from '@particles/styled-system/css';
-import { styled } from '@particles/styled-system/jsx';
+import {
+  isCssProperty,
+  styled,
+  type StyledComponent,
+} from '@particles/styled-system/jsx';
 
 type Props = Record<string, unknown>;
 interface Recipe {
   (props?: Props): Props;
   splitVariantProps: (props: Props) => [Props, Props];
 }
-
 type Slot<R extends Recipe> = keyof ReturnType<R>;
+interface Options {
+  forwardProps?: string[];
+}
+
+const shouldForwardProp = (
+  prop: string,
+  variantKeys: string[],
+  options: Options = {},
+) =>
+  options.forwardProps?.includes(prop) ||
+  (!variantKeys.includes(prop) && !isCssProperty(prop));
 
 export const createStyleContext = <R extends Recipe>(recipe: R) => {
   const StyleContext = createContext<Record<Slot<R>, string> | null>(null);
 
-  const withRootProvider = <P extends NonNullable<unknown>>(
-    Component: ElementType,
-  ) => {
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  const withRootProvider = <P extends {}>(Component: ElementType) => {
     const StyledComponent = (props: P) => {
       const [variantProps, otherProps] = recipe.splitVariantProps(props);
       const slotStyles = recipe(variantProps) as Record<Slot<R>, string>;
@@ -38,12 +50,20 @@ export const createStyleContext = <R extends Recipe>(recipe: R) => {
     return StyledComponent;
   };
 
-  const withProvider = <T, P extends { className?: string }>(
+  const withProvider = <T, P extends { className?: string | undefined }>(
     Component: ElementType,
     slot: Slot<R>,
+    options?: Options,
   ): ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<T>> => {
-    const StyledComponent = styled(Component);
-    return forwardRef<T, P>((props, ref) => {
+    const StyledComponent = styled(
+      Component,
+      {},
+      {
+        shouldForwardProp: (prop, variantKeys) =>
+          shouldForwardProp(prop, variantKeys, options),
+      },
+    ) as StyledComponent<ElementType>;
+    const StyledSlotProvider = forwardRef<T, P>((props, ref) => {
       const [variantProps, otherProps] = recipe.splitVariantProps(props);
       const slotStyles = recipe(variantProps) as Record<Slot<R>, string>;
 
@@ -57,14 +77,19 @@ export const createStyleContext = <R extends Recipe>(recipe: R) => {
         </StyleContext.Provider>
       );
     });
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
+    StyledSlotProvider.displayName = Component.displayName || Component.name;
+
+    return StyledSlotProvider;
   };
 
-  const withContext = <T, P extends { className?: string }>(
+  const withContext = <T, P extends { className?: string | undefined }>(
     Component: ElementType,
     slot: Slot<R>,
   ): ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<T>> => {
     const StyledComponent = styled(Component);
-    return forwardRef<T, P>((props, ref) => {
+    const StyledSlotComponent = forwardRef<T, P>((props, ref) => {
       const slotStyles = useContext(StyleContext);
       return (
         <StyledComponent
@@ -74,6 +99,11 @@ export const createStyleContext = <R extends Recipe>(recipe: R) => {
         />
       );
     });
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
+    StyledSlotComponent.displayName = Component.displayName || Component.name;
+
+    return StyledSlotComponent;
   };
 
   return {

@@ -1,4 +1,3 @@
-import { Button } from '../../components/Button';
 import { useToggle } from './useToggle';
 
 export default {
@@ -9,5 +8,5 @@ export default {
 export const Usage = () => {
   const [value, toggle] = useToggle();
 
-  return <Button onClick={toggle}>{value ? 'ON' : 'OFF'}</Button>;
+  return <button onClick={toggle}>{value ? 'ON' : 'OFF'}</button>;
 };

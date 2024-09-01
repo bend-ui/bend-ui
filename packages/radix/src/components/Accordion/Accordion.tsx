@@ -3,7 +3,6 @@ import * as AccordionPrimitive from '@radix-ui/react-accordion';
 import { LuChevronDown } from 'react-icons/lu';
 import { cx } from '@particles/styled-system/css';
 import { accordion } from '@particles/styled-system/recipes';
-import { createComponent } from '@particles/primitives';
 import { createStyleContext } from '../../utils/style-context';
 
 const { withProvider, withContext } = createStyleContext(accordion);
@@ -34,7 +33,7 @@ const Indicator = withContext(IndicatorPrimitive, 'indicator');
 
 const Content = withContext(AccordionPrimitive.Content, 'content');
 
-export default createComponent(Root, {
+export default Object.assign(Root, {
   Root,
   Item,
   Trigger,

@@ -2,7 +2,7 @@ import { defineSlotRecipe } from '@pandacss/dev';
 
 export const accordionRecipe = defineSlotRecipe({
   className: 'Accordion',
-  slots: ['item', 'trigger', 'indicator', 'content'],
+  slots: ['root', 'item', 'trigger', 'indicator', 'content'],
   base: {
     item: {
       display: 'flex',

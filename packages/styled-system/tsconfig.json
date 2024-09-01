@@ -8,5 +8,5 @@
     "strict": true
   },
   "files": [],
-  "include": []
+  "include": ["panda.config.ts"]
 }

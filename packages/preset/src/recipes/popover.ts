@@ -10,6 +10,8 @@ export const popoverRecipe = defineSlotRecipe({
     'content',
     'title',
     'description',
+    'arrow',
+    'close',
   ],
   base: {
     content: {

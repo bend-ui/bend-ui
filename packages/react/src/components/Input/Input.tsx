@@ -1,17 +1,18 @@
-import { createComponent, forwardRef } from '@particles/primitives';
 import { cx } from '@particles/styled-system/css';
 import { input } from '@particles/styled-system/recipes';
+import { forwardRef } from 'react';
 import type { InputVariantProps } from '@particles/styled-system/recipes';
-import type { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-export type InputProps = InputVariantProps & {
-  icon?: ReactNode;
-  iconEnd?: ReactNode;
-  addonStart?: ReactNode;
-  addonEnd?: ReactNode;
-};
+export type InputProps = ComponentPropsWithoutRef<'input'> &
+  InputVariantProps & {
+    icon?: ReactNode;
+    iconEnd?: ReactNode;
+    addonStart?: ReactNode;
+    addonEnd?: ReactNode;
+  };
 
-export const Root = forwardRef<'input', InputProps>((props, ref) => {
+export const Root = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const { className, icon, iconEnd, addonStart, addonEnd, size, ...rest } =
     props;
   const classes = input({ size });
@@ -41,4 +42,4 @@ export const Root = forwardRef<'input', InputProps>((props, ref) => {
 
 Root.displayName = 'Input';
 
-export const Input = createComponent(Root);
+export const Input = Object.assign(Root, {});

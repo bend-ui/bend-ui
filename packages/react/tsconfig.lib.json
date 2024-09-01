@@ -2,13 +2,13 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "types": ["node", "vite/client", "@nx/react/typings/image.d.ts"]
+    "types": [
+      "node",
+      "@nx/react/typings/cssmodule.d.ts",
+      "@nx/react/typings/image.d.ts",
+      "vite/client"
+    ]
   },
-  "files": [
-    "../../node_modules/@nx/react/typings/image.d.ts",
-    "src/components/Alert/Alert.types.ts",
-    "src/components/Level/Level.types.ts"
-  ],
   "exclude": [
     "**/*.spec.ts",
     "**/*.test.ts",

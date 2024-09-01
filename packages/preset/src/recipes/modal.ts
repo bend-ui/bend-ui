@@ -13,6 +13,9 @@ export const modalRecipe = defineSlotRecipe({
     'footer',
     'title',
     'description',
+    'positioner',
+    'action',
+    'cancel',
   ],
   base: {
     root: {},

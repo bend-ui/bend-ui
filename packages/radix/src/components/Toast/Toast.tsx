@@ -2,7 +2,6 @@ import { forwardRef } from 'react';
 import * as ToastPrimitives from '@radix-ui/react-toast';
 import { TbX } from 'react-icons/tb';
 import { cx } from '@particles/styled-system/css';
-import { createComponent } from '@particles/primitives';
 import { toast } from '@particles/styled-system/recipes';
 import type { ComponentPropsWithoutRef, ElementRef, ReactElement } from 'react';
 
@@ -109,7 +108,7 @@ export type ToastActionElement = ReactElement<typeof Action>;
 
 export { ToastProvider, ToastViewport };
 
-export const Toast = createComponent(Root, {
+export const Toast = Object.assign(Root, {
   Root,
   Title,
   Description,

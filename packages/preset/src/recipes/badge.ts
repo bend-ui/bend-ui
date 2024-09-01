@@ -1,9 +1,8 @@
 import { defineSlotRecipe } from '@pandacss/dev';
-import { badgeConfig } from '@particles/preset-base';
 
 export const badgeRecipe = defineSlotRecipe({
-  className: badgeConfig.className,
-  slots: badgeConfig.slots,
+  className: 'Badge',
+  slots: ['root'],
   base: {
     root: {
       fontSize: 'xs',

@@ -5,16 +5,6 @@
   "projectType": "library",
   "tags": [],
   "targets": {
-    "build": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/packages/theme",
-        "main": "packages/theme/src/index.ts",
-        "tsConfig": "packages/theme/tsconfig.lib.json",
-        "assets": ["packages/theme/*.md"]
-      }
-    },
     "publish": {
       "command": "node tools/scripts/publish.mjs theme {args.ver} {args.tag}",
       "dependsOn": ["build"]

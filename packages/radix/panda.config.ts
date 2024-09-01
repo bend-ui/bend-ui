@@ -3,8 +3,6 @@ import { defineConfig } from '@pandacss/dev';
 import { preset } from '@particles/preset';
 
 export default defineConfig({
-  cwd: path.resolve(__dirname),
-
   // Whether to use css reset
   preflight: true,
 

@@ -1,25 +1,36 @@
 {
   "name": "@particles/radix",
   "version": "0.0.1",
-  "main": "./index.js",
-  "types": "./index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./index.mjs",
-      "require": "./index.js"
-    }
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  ".": {
+    "source": "./src/index.ts",
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
   },
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@particles/preset": "workspace:*",
-    "@particles/styled-system": "workspace:*"
+    "@particles/styled-system": "workspace:*",
+    "@particles/react": "workspace:*"
+  },
+  "devDependencies": {
+    "@particles/storybook": "workspace:*"
   },
   "peerDependencies": {
     "react": "^17.0.2 || ^18.2.0",
     "react-dom": "^17.0.2 || ^18.2.0",
-    "@pandacss/dev": "^0.40.1"
+    "@pandacss/dev": "^0.45.2"
   },
   "scripts": {
     "prepare": "panda codegen",
-    "cli": "tsx ../cli/src/index.ts"
+    "cli": "tsx ../cli/src/index.ts",
+    "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
+    "build": "tsup"
   }
 }

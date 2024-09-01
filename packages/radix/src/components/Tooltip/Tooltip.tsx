@@ -1,7 +1,6 @@
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import { styled } from '@particles/styled-system/jsx';
 import { tooltip } from '@particles/styled-system/recipes';
-import { createComponent } from '@particles/primitives';
 import { createStyleContext } from '../../utils';
 
 const { withProvider, withContext } = createStyleContext(tooltip);
@@ -12,8 +11,6 @@ const Root = withProvider(styled(TooltipPrimitive.Root), 'root');
 
 const Trigger = withContext(styled(TooltipPrimitive.Trigger), 'trigger');
 
-const Content = withContext(styled(TooltipPrimitive.Content), 'content', {
-  sideOffset: 4,
-});
+const Content = withContext(styled(TooltipPrimitive.Content), 'content');
 
-export const Tooltip = createComponent(Root, { Trigger, Content });
+export const Tooltip = Object.assign(Root, { Trigger, Content });

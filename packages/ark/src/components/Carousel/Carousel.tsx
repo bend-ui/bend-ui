@@ -1,29 +1,70 @@
 import { Carousel as CarouselPrimitive } from '@ark-ui/react';
 import { carousel } from '@particles/styled-system/recipes';
+import type { CarouselVariantProps } from '@particles/styled-system/recipes';
+import type { HTMLStyledProps } from '@particles/styled-system/types';
 import { createStyleContext } from '../../utils';
+import type { ComponentProps } from 'react';
+import type { Assign } from '@ark-ui/react';
 
 const { withProvider, withContext } = createStyleContext(carousel);
 
-const Root = withProvider(CarouselPrimitive.Root, 'root');
+export type RootProviderProps = ComponentProps<typeof RootProvider>;
+export const RootProvider = withProvider<
+  HTMLDivElement,
+  Assign<
+    Assign<HTMLStyledProps<'div'>, CarouselPrimitive.RootProviderBaseProps>,
+    CarouselVariantProps
+  >
+>(CarouselPrimitive.RootProvider, 'root');
 
-const Control = withContext(CarouselPrimitive.Control, 'control');
+export type RootProps = ComponentProps<typeof Root>;
+export const Root = withProvider<
+  HTMLDivElement,
+  Assign<
+    Assign<HTMLStyledProps<'div'>, CarouselPrimitive.RootBaseProps>,
+    CarouselVariantProps
+  >
+>(CarouselPrimitive.Root, 'root');
 
-const PrevTrigger = withContext(CarouselPrimitive.PrevTrigger, 'prevTrigger');
+export const Control = withContext<
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, CarouselPrimitive.ControlBaseProps>
+>(CarouselPrimitive.Control, 'control');
 
-const NextTrigger = withContext(CarouselPrimitive.NextTrigger, 'nextTrigger');
+export const IndicatorGroup = withContext<
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, CarouselPrimitive.IndicatorGroupBaseProps>
+>(CarouselPrimitive.IndicatorGroup, 'indicatorGroup');
 
-const IndicatorGroup = withContext(
-  CarouselPrimitive.IndicatorGroup,
-  'indicatorGroup',
-);
+export const Indicator = withContext<
+  HTMLButtonElement,
+  Assign<HTMLStyledProps<'button'>, CarouselPrimitive.IndicatorBaseProps>
+>(CarouselPrimitive.Indicator, 'indicator');
 
-const Indicator = withContext(CarouselPrimitive.Indicator, 'indicator');
+export const ItemGroup = withContext<
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, CarouselPrimitive.ItemGroupBaseProps>
+>(CarouselPrimitive.ItemGroup, 'itemGroup');
 
-const Viewport = withContext(CarouselPrimitive.Viewport, 'viewport');
+export const Item = withContext<
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, CarouselPrimitive.ItemBaseProps>
+>(CarouselPrimitive.Item, 'item');
 
-const ItemGroup = withContext(CarouselPrimitive.ItemGroup, 'itemGroup');
+export const NextTrigger = withContext<
+  HTMLButtonElement,
+  Assign<HTMLStyledProps<'button'>, CarouselPrimitive.NextTriggerBaseProps>
+>(CarouselPrimitive.NextTrigger, 'nextTrigger');
 
-const Item = withContext(CarouselPrimitive.Item, 'item');
+export const PrevTrigger = withContext<
+  HTMLButtonElement,
+  Assign<HTMLStyledProps<'button'>, CarouselPrimitive.PrevTriggerBaseProps>
+>(CarouselPrimitive.PrevTrigger, 'prevTrigger');
+
+export const Viewport = withContext<
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, CarouselPrimitive.ViewportBaseProps>
+>(CarouselPrimitive.Viewport, 'viewport');
 
 const Component = () => {
   const images = [

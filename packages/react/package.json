@@ -1,14 +1,21 @@
 {
   "name": "@particles/react",
   "version": "0.0.1",
-  "main": "./index.js",
-  "types": "./index.d.ts",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./index.mjs",
-      "require": "./index.js"
+      "source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     }
   },
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@particles/preset": "workspace:*",
     "@particles/styled-system": "workspace:*"
@@ -19,9 +26,11 @@
   "peerDependencies": {
     "react": "^17.0.2 || ^18.2.0",
     "react-dom": "^17.0.2 || ^18.2.0",
-    "@pandacss/dev": "^0.40.1"
+    "@pandacss/dev": "^0.45.2"
   },
   "scripts": {
-    "prepare": "panda codegen"
+    "prepare": "panda codegen",
+    "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
+    "build": "tsup"
   }
 }

@@ -8,7 +8,9 @@ export interface UseControlledProps<T> {
 
 export const useControlled = <T>(props: UseControlledProps<T>) => {
   const { value, defaultValue, onChange } = props;
-  const [internalValue, setInternalValue] = useState<T>(defaultValue);
+  const [internalValue, setInternalValue] = useState<T | undefined>(
+    defaultValue,
+  );
 
   const handleChange = (value: T) => {
     setInternalValue(value);
@@ -17,7 +19,7 @@ export const useControlled = <T>(props: UseControlledProps<T>) => {
 
   if (value === undefined && defaultValue === undefined) {
     console.warn(
-      `You must provide a defaultValue when using an uncontrolled component`
+      `You must provide a defaultValue when using an uncontrolled component`,
     );
   }
 

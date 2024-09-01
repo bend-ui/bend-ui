@@ -1,4 +1,3 @@
-import { Button } from '../../components/Button';
 import { useCycle } from './useCycle';
 
 export default {
@@ -12,5 +11,5 @@ export const Usage = () => {
     values: ['blue', 'orange', 'red'],
   });
 
-  return <Button onClick={cycle}>{value}</Button>;
+  return <button onClick={cycle}>{value}</button>;
 };

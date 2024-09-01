@@ -1,6 +1,6 @@
 import path from 'path';
 import { defineConfig } from '@pandacss/dev';
-import { preset } from './packages/preset/src/preset';
+import { preset } from './packages/preset/src';
 
 export default defineConfig({
   preflight: true,

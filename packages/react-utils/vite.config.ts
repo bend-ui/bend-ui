@@ -1,23 +1,12 @@
 /// <reference types="vitest" />
-import { join } from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
-import dts from 'vite-plugin-dts';
 
 export default defineConfig({
   root: __dirname,
   cacheDir: '../../node_modules/.vite/react-utils',
 
-  plugins: [
-    dts({
-      tsConfigFilePath: join(__dirname, 'tsconfig.lib.json'),
-      // Faster builds by skipping tests. Set this to false to enable type checking.
-      skipDiagnostics: true,
-    }),
-    react(),
-    nxViteTsPaths(),
-  ],
+  plugins: [react()],
 
   // Uncomment this if you are using workers.
   // worker: {

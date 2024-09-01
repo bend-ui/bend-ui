@@ -3,6 +3,7 @@ import { defineSlotRecipe } from '@pandacss/dev';
 export const drawerRecipe = defineSlotRecipe({
   className: 'Drawer',
   slots: [
+    'root',
     'trigger',
     'overlay',
     'content',

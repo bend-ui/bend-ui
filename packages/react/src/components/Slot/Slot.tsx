@@ -1,9 +1,11 @@
-import { mergeRefs } from '@particles/primitives';
 import { Children, cloneElement, forwardRef, isValidElement } from 'react';
+import { useMergeRefs } from '@floating-ui/react';
 import type { SlotProps } from './Slot.types';
 
 export const Slot = forwardRef<HTMLElement, SlotProps>((props, ref) => {
   const { children, ...rest } = props;
+
+  const mergedRef = useMergeRefs([ref, (children as any).ref]);
 
   if (!Children.only(children)) {
     console.error(
@@ -23,7 +25,7 @@ export const Slot = forwardRef<HTMLElement, SlotProps>((props, ref) => {
 
   return cloneElement(children, {
     ...Object.assign(rest, children.props),
-    ref: mergeRefs([ref, (children as any).ref]),
+    ref: mergedRef,
   });
 });
 

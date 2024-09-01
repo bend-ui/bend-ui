@@ -1,26 +1,36 @@
 {
   "name": "@particles/ark",
   "version": "0.0.1",
-  "main": "./index.js",
-  "types": "./index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./index.mjs",
-      "require": "./index.js"
-    }
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  ".": {
+    "source": "./src/index.ts",
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
   },
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@ark-ui/react": "^3.9.0",
     "@particles/preset": "workspace:*",
-    "@particles/styled-system": "workspace:*"
+    "@particles/styled-system": "workspace:*",
+    "@particles/react": "workspace:*"
+  },
+  "devDependencies": {
+    "@particles/storybook": "workspace:*"
   },
   "peerDependencies": {
-    "@pandacss/dev": "^0.40.1",
+    "@pandacss/dev": "^0.45.2",
     "react": "^17.0.2 || ^18.2.0",
     "react-dom": "^17.0.2 || ^18.2.0"
   },
   "scripts": {
     "prepare": "panda codegen",
-    "dev": "panda codegen --watch"
+    "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
+    "build": "tsup"
   }
 }

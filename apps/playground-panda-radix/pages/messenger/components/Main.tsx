@@ -1,7 +1,6 @@
 import { cx, sva } from '@particles/styled-system/css';
-import { Avatar, Input } from '@particles/radix';
+import { Avatar, Button, Input } from '@particles/radix';
 import { level, scrollable } from '@particles/styled-system/patterns';
-import { Button } from '@particles/primitives';
 import { conversations, messages, users } from '../data';
 
 const styles = sva({

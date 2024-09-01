@@ -1,39 +1,54 @@
 import { forwardRef } from 'react';
 import { Accordion as AccordionPrimitive } from '@ark-ui/react';
 import { accordion } from '@particles/styled-system/recipes';
+import type { HTMLStyledProps } from '@particles/styled-system/types';
+import type { AccordionVariantProps } from '@particles/styled-system/recipes';
 import { createStyleContext } from '../../utils';
+import type { Assign } from '@ark-ui/react';
 import type { AccordionProps } from './Accordion.types';
-import type { ElementRef } from 'react';
+import type { ComponentProps, ElementRef } from 'react';
 
 const { withProvider, withContext } = createStyleContext(accordion);
 
-const Root = withProvider(AccordionPrimitive.Root);
+export type RootProviderProps = ComponentProps<typeof RootProvider>;
+export const RootProvider = withProvider<
+  HTMLDivElement,
+  Assign<
+    Assign<HTMLStyledProps<'div'>, AccordionPrimitive.RootProviderBaseProps>,
+    AccordionVariantProps
+  >
+>(AccordionPrimitive.RootProvider, 'root');
 
-const Item = withContext(AccordionPrimitive.Item, 'item');
+export type RootProps = ComponentProps<typeof Root>;
+export const Root = withProvider<
+  HTMLDivElement,
+  Assign<
+    Assign<HTMLStyledProps<'div'>, AccordionPrimitive.RootBaseProps>,
+    AccordionVariantProps
+  >
+>(AccordionPrimitive.Root, 'root');
 
-const ItemTrigger = withContext(AccordionPrimitive.ItemTrigger, 'trigger');
+export const ItemContent = withContext<
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, AccordionPrimitive.ItemContentBaseProps>
+>(AccordionPrimitive.ItemContent, 'item');
 
-const ItemIndicator = withContext(
-  AccordionPrimitive.ItemIndicator,
-  'indicator',
-);
+export const ItemIndicator = withContext<
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, AccordionPrimitive.ItemIndicatorBaseProps>
+>(AccordionPrimitive.ItemIndicator, 'indicator');
 
-const ItemContent = withContext(AccordionPrimitive.ItemContent, 'content');
+export const Item = withContext<
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, AccordionPrimitive.ItemBaseProps>
+>(AccordionPrimitive.Item, 'item');
 
-const Component = forwardRef<ElementRef<typeof Root>, AccordionProps>(
-  (props, ref) => {
-    const { children, ...rest } = props;
-    return (
-      <Root ref={ref} {...rest}>
-        {children}
-      </Root>
-    );
-  },
-);
+export const ItemTrigger = withContext<
+  HTMLButtonElement,
+  Assign<HTMLStyledProps<'button'>, AccordionPrimitive.ItemTriggerBaseProps>
+>(AccordionPrimitive.ItemTrigger, 'trigger');
 
-Component.displayName = 'Accordion';
-
-export const Accordion = Object.assign(Component, {
+export const Accordion = Object.assign(Root, {
   Root,
   Item,
   ItemTrigger,

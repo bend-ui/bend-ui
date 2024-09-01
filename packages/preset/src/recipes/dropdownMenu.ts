@@ -20,6 +20,9 @@ export const dropdownMenuRecipe = defineSlotRecipe({
     'separator',
     'triggerItem',
     'trigger',
+    'shortcut',
+    'group',
+    'portal',
   ],
   base: {
     content: {

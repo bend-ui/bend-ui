@@ -1,11 +1,22 @@
 import { Popover as PopoverPrimitive } from '@ark-ui/react';
 import { popover } from '@particles/styled-system/recipes';
+import type { PopoverVariantProps } from '@particles/styled-system/recipes';
 import { createStyleContext } from '../../utils';
 import { Button } from '..';
+import type { ComponentProps } from 'react';
+import type { Assign } from '@ark-ui/react';
 import type { PopoverProps } from './Popover.types';
 const { withRootProvider, withContext } = createStyleContext(popover);
 
-const Root = withRootProvider(PopoverPrimitive.Root);
+export type RootProviderProps = ComponentProps<typeof RootProvider>;
+const RootProvider = withRootProvider<
+  Assign<PopoverPrimitive.RootProviderProps, PopoverVariantProps>
+>(PopoverPrimitive.RootProvider);
+
+export type RootProps = ComponentProps<typeof Root>;
+const Root = withRootProvider<
+  Assign<PopoverPrimitive.RootProps, PopoverVariantProps>
+>(PopoverPrimitive.Root);
 
 const Trigger = withContext<HTMLButtonElement, PopoverPrimitive.TriggerProps>(
   PopoverPrimitive.Trigger,
