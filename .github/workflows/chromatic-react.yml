@@ -38,3 +38,4 @@ jobs:
         with:
           projectToken: ${{ secrets.CHROMATIC_REACT }}
           storybookBuildDir: dist/storybook/react
+          exitOnceUploaded: true

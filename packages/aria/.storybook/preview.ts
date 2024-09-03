@@ -1,25 +1,10 @@
 import './index.css';
 import '@fontsource-variable/inter';
-import { createElement } from 'react';
-import { useDarkMode } from 'storybook-dark-mode';
-import { DocsContainer } from '@storybook/addon-docs';
 import { createTheme } from '@particles/storybook';
-
+import { Container } from './decorators';
 import type { Preview } from '@storybook/react';
-import type { DocsContainerProps } from '@storybook/addon-docs';
 
 const theme = createTheme({ brandTitle: 'Particles - Aria' });
-
-const Container = (props: DocsContainerProps) => {
-  const isDark = useDarkMode();
-  const currentProps = { ...props };
-
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  currentProps.theme = isDark ? theme.dark : theme.light;
-
-  return createElement(DocsContainer, currentProps);
-};
 
 const preview: Preview = {
   parameters: {

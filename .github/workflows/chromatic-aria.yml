@@ -37,3 +37,4 @@ jobs:
         with:
           projectToken: ${{ secrets.CHROMATIC_ARIA }}
           storybookBuildDir: dist/storybook/aria
+          exitOnceUploaded: true

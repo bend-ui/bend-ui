@@ -38,3 +38,4 @@ jobs:
         with:
           projectToken: ${{ secrets.CHROMATIC_RADIX }}
           storybookBuildDir: dist/storybook/radix
+          exitOnceUploaded: true

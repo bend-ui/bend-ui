@@ -38,3 +38,4 @@ jobs:
         with:
           projectToken: ${{ secrets.CHROMATIC_ARK }}
           storybookBuildDir: dist/storybook/ark
+          exitOnceUploaded: true
