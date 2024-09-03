@@ -17,13 +17,13 @@
     "dist"
   ],
   "scripts": {
-    "dev": "tsup --watch",
     "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
     "build": "tsup"
   },
   "dependencies": {
-    "@pandacss/dev": "^0.45.2",
-    "tsup": "^8.2.4",
-    "tslib": "^2.5.3"
+    "@pandacss/dev": "^0.45.2"
+  },
+  "devDependencies": {
+    "tsup": "^8.2.4"
   }
 }
