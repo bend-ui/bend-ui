@@ -8,8 +8,8 @@ importers:
   .:
     dependencies:
       '@ark-ui/react':
-        specifier: ^3.9.0
-        version: 3.9.0(react-dom@18.3.1)(react@18.3.1)
+        specifier: ^3.10.0
+        version: 3.10.0(react-dom@18.3.1)(react@18.3.1)
       '@floating-ui/react':
         specifier: ^0.26.23
         version: 0.26.23(react-dom@18.3.1)(react@18.3.1)
@@ -111,8 +111,8 @@ importers:
         specifier: ^2.27.7
         version: 2.27.7
       '@chromatic-com/storybook':
-        specifier: ^1.6.1
-        version: 1.6.1(react@18.3.1)
+        specifier: ^1.8.0
+        version: 1.8.0(react@18.3.1)
       '@commitlint/cli':
         specifier: ^19.3.0
         version: 19.3.0(@types/node@20.11.30)(typescript@5.5.4)
@@ -255,7 +255,7 @@ importers:
         specifier: 20.11.30
         version: 20.11.30
       '@types/react':
-        specifier: 18.3.3
+        specifier: ^18.3.3
         version: 18.3.3
       '@types/react-dom':
         specifier: 18.3.0
@@ -514,8 +514,8 @@ importers:
   packages/ark:
     dependencies:
       '@ark-ui/react':
-        specifier: ^3.9.0
-        version: 3.9.0(react-dom@18.3.1)(react@18.3.1)
+        specifier: ^3.10.0
+        version: 3.10.0(react-dom@18.3.1)(react@18.3.1)
       '@pandacss/dev':
         specifier: ^0.45.2
         version: 0.45.2(jsdom@22.1.0)(typescript@5.5.4)
@@ -639,7 +639,7 @@ importers:
         specifier: workspace:*
         version: link:../theme
       '@storybook/theming':
-        specifier: ^8.2.8
+        specifier: ^8.2.9
         version: 8.2.9(storybook@8.2.9)
       tsup:
         specifier: ^8.2.4
@@ -658,7 +658,7 @@ importers:
         specifier: ^18.3.3
         version: 18.3.3
       '@types/react-dom':
-        specifier: ^18.2.22
+        specifier: 18.3.0
         version: 18.3.0
 
   packages/theme:
@@ -741,10 +741,10 @@ packages:
       validate-npm-package-name: 5.0.1
     dev: true
 
-  /@ark-ui/react@3.9.0(react-dom@18.3.1)(react@18.3.1):
+  /@ark-ui/react@3.10.0(react-dom@18.3.1)(react@18.3.1):
     resolution:
       {
-        integrity: sha512-RQ7mhhs42WdpKstNaLEsw3Dv9XUyomoZ0TpdVEQTAUTYi3fLrC+tRXYnMJrvumlAJLEuBJo4G3gJb4u2DVV1/A==,
+        integrity: sha512-/Jt1smg6dNwH5XYh7xWhVpnggI9sd/UgZzNTc45n5ccZVYpbVL1Qco9fov38t5JArtLc6Q5cc+xOxpjuAomYZw==,
       }
     peerDependencies:
       react: '>=18.0.0'
@@ -4150,14 +4150,14 @@ packages:
       prettier: 2.8.8
     dev: true
 
-  /@chromatic-com/storybook@1.6.1(react@18.3.1):
+  /@chromatic-com/storybook@1.8.0(react@18.3.1):
     resolution:
       {
-        integrity: sha512-x1x1NB3j4xpfeSWKr96emc+7ZvfsvH+/WVb3XCjkB24PPbT8VZXb3mJSAQMrSzuQ8+eQE9kDogYHH9Fj3tb/Cw==,
+        integrity: sha512-vkB9dPVmM2Yvqc/0DJ4MYwOGY1MOjd/KbB9TXTMGN+qshaEyiZtSOgbz9u0ExFALEgDKLmtUnWyUtoGb0pCzUg==,
       }
     engines: { node: '>=16.0.0', yarn: '>=1.22.18' }
     dependencies:
-      chromatic: 11.5.5
+      chromatic: 11.7.1
       filesize: 10.1.4
       jsonfile: 6.1.0
       react-confetti: 6.1.0(react@18.3.1)
@@ -6027,7 +6027,7 @@ packages:
         integrity: sha512-H+CfYvOZ0LTJeeLOqm19E3uj/4YjrmOFtBufDHPfvtI80hFAMqtrp7oCACpe4Cil5l8S0Qu/9dYfZc/5lY8WQQ==,
       }
     dependencies:
-      '@swc/helpers': 0.5.12
+      '@swc/helpers': 0.5.13
     dev: false
 
   /@internationalized/message@3.1.4:
@@ -6046,7 +6046,7 @@ packages:
         integrity: sha512-rd1wA3ebzlp0Mehj5YTuTI50AQEx80gWFyHcQu+u91/5NgdwBecO8BH6ipPfE+lmQ9d63vpB3H9SHoIUiupllw==,
       }
     dependencies:
-      '@swc/helpers': 0.5.12
+      '@swc/helpers': 0.5.13
     dev: false
 
   /@internationalized/string@3.2.3:
@@ -13842,6 +13842,15 @@ packages:
     dependencies:
       tslib: 2.6.3
 
+  /@swc/helpers@0.5.13:
+    resolution:
+      {
+        integrity: sha512-UoKGxQ3r5kYI9dALKJapMmuK+1zWM/H17Z1+iwnNmzcJRnfFuevZs375TA5rW31pu4BS4NoSy1fRsexDXfWn5w==,
+      }
+    dependencies:
+      tslib: 2.7.0
+    dev: false
+
   /@swc/helpers@0.5.2:
     resolution:
       {
@@ -18807,10 +18816,10 @@ packages:
       }
     engines: { node: '>=10' }
 
-  /chromatic@11.5.5:
+  /chromatic@11.7.1:
     resolution:
       {
-        integrity: sha512-YS0GJwegF0vpMbwZE68/xJlI4SlUGMqI78V2ATAF19YwTHaq8jGP1CPQGKUSlgWUhzPtyu3ELy6Dvv/owYljAg==,
+        integrity: sha512-LvgPimdQdnQB07ZDxLEC2KtxgYeqTw0X71GA7fi3zhgtKLxZcE+BSZ/5I9rrQp1V8ydmfElfw0ZwnUH4fVgUAQ==,
       }
     hasBin: true
     peerDependencies:
@@ -38696,6 +38705,13 @@ packages:
       {
         integrity: sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==,
       }
+
+  /tslib@2.7.0:
+    resolution:
+      {
+        integrity: sha512-gLXCKdN1/j47AiHiOkJN69hJmcbGTHI0ImLmbYLHykhgeN0jVGola9yVjFgzCUklsZQMW55o+dW7IXv3RCXDzA==,
+      }
+    dev: false
 
   /tsscmp@1.0.6:
     resolution:

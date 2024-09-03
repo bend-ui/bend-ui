@@ -16,8 +16,8 @@
   ],
   "dependencies": {
     "@particles/preset": "workspace:*",
-    "@particles/styled-system": "workspace:*",
-    "@particles/react": "workspace:*"
+    "@particles/react": "workspace:*",
+    "@particles/styled-system": "workspace:*"
   },
   "devDependencies": {
     "@particles/storybook": "workspace:*"
