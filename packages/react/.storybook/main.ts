@@ -24,7 +24,12 @@ const config: StorybookConfig = {
 
     return mergeConfig(config, {
       optimizeDeps: {
-        include: ['storybook-dark-mode', '@storybook/theming'],
+        include: [
+          'storybook-dark-mode',
+          '@storybook/addon-themes',
+          '@storybook/theming',
+          '@particles/storybook',
+        ],
       },
     });
   },
@@ -34,8 +39,20 @@ const config: StorybookConfig = {
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
       shouldRemoveUndefinedFromOptional: true,
-      propFilter: (prop) =>
-        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
+      propFilter: (prop) => {
+        if (prop.parent) {
+          if (
+            prop.parent.fileName.match(/@ark-ui/) ||
+            prop.parent.fileName.match(/@particles/)
+          ) {
+            console.log(prop.parent.fileName);
+            return true;
+          } else {
+            return !/node_modules/.test(prop.parent.fileName);
+          }
+        }
+        return true;
+      },
     },
   },
   docs: {},

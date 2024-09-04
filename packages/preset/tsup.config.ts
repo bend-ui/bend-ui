@@ -4,6 +4,10 @@ export default defineConfig({
   entry: ['src/index.ts'],
   tsconfig: 'tsconfig.lib.json',
   clean: true,
-  dts: true,
+  dts: {
+    compilerOptions: {
+      rootDir: '../../',
+    },
+  },
   format: ['esm', 'cjs'],
 });

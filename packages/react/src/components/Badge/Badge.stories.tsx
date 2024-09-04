@@ -3,7 +3,7 @@ import { Indicator } from '../Indicator';
 import { Badge } from './Badge';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof Badge> = {
+export default {
   title: 'Components/Data/Badge',
   component: Badge,
   argTypes: {
@@ -13,9 +13,7 @@ const meta: Meta<typeof Badge> = {
     },
   },
   args: { children: 'Badge' },
-};
-
-export default meta;
+} satisfies Meta<typeof Badge>;
 
 type Story = StoryObj<typeof Badge>;
 

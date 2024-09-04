@@ -5,7 +5,7 @@ import { Button } from '../Button';
 import { Alert } from './Alert';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof Alert> = {
+export default {
   title: 'Components/Feedback/Alert',
   component: Alert,
   argTypes: {
@@ -18,9 +18,7 @@ const meta: Meta<typeof Alert> = {
       options: alert.variantMap.variant,
     },
   },
-};
-
-export default meta;
+} satisfies Meta<typeof Alert>;
 
 type Story = StoryObj<typeof Alert>;
 

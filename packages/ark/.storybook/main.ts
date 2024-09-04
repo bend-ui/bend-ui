@@ -2,7 +2,11 @@ import { dirname, join } from 'path';
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
-  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: [
+    '../src/**/*.mdx',
+    '../src/**/*.stories.@(js|jsx|ts|tsx)',
+    '../../react/src/**/*.stories.@(js|jsx|ts|tsx)',
+  ],
   addons: [
     getAbsolutePath('@storybook/addon-essentials'),
     getAbsolutePath('@storybook/addon-interactions'),
@@ -38,8 +42,20 @@ const config: StorybookConfig = {
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
       shouldRemoveUndefinedFromOptional: true,
-      propFilter: (prop) =>
-        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
+      propFilter: (prop) => {
+        if (prop.parent) {
+          if (
+            prop.parent.fileName.match(/@ark-ui/) ||
+            prop.parent.fileName.match(/@particles/)
+          ) {
+            console.log(prop.parent.fileName);
+            return true;
+          } else {
+            return !/node_modules/.test(prop.parent.fileName);
+          }
+        }
+        return true;
+      },
     },
   },
   docs: {},

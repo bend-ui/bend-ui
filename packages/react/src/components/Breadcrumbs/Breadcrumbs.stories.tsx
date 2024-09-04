@@ -2,12 +2,10 @@ import { TbCaretRight } from 'react-icons/tb';
 import { Breadcrumbs } from './';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof Breadcrumbs> = {
+export default {
   title: 'Components/Navigation/Breadcrumbs',
   component: Breadcrumbs,
-};
-
-export default meta;
+} satisfies Meta<typeof Breadcrumbs>;
 
 type Story = StoryObj<typeof Breadcrumbs>;
 

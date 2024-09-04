@@ -1,12 +1,10 @@
-import { forwardRef } from 'react';
 import { Accordion as AccordionPrimitive } from '@ark-ui/react';
 import { accordion } from '@particles/styled-system/recipes';
 import type { HTMLStyledProps } from '@particles/styled-system/types';
 import type { AccordionVariantProps } from '@particles/styled-system/recipes';
 import { createStyleContext } from '../../utils';
 import type { Assign } from '@ark-ui/react';
-import type { AccordionProps } from './Accordion.types';
-import type { ComponentProps, ElementRef } from 'react';
+import type { ComponentProps } from 'react';
 
 const { withProvider, withContext } = createStyleContext(accordion);
 
@@ -31,7 +29,7 @@ export const Root = withProvider<
 export const ItemContent = withContext<
   HTMLDivElement,
   Assign<HTMLStyledProps<'div'>, AccordionPrimitive.ItemContentBaseProps>
->(AccordionPrimitive.ItemContent, 'item');
+>(AccordionPrimitive.ItemContent, 'content');
 
 export const ItemIndicator = withContext<
   HTMLDivElement,
