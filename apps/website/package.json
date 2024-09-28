@@ -5,7 +5,7 @@
     "prepare": "panda codegen"
   },
   "dependencies": {
-    "@pandacss/token-dictionary": "^0.46.0",
+    "@pandacss/token-dictionary": "^0.46.1",
     "@particles/preset": "workspace:*",
     "@particles/react": "workspace:*",
     "escape-string-regexp": "^5.0.0",
