@@ -8,6 +8,7 @@ import { textStyles } from './textStyles';
 import { layerStyles } from './layerStyles';
 import { keyframes } from './keyframes';
 import { globalCss } from './globalCss';
+import { createTheme } from './themes';
 
 export const preset = definePreset({
   name: 'particles',
@@ -43,109 +44,24 @@ export const preset = definePreset({
   },
   globalCss,
   themes: {
-    proton: {
-      semanticTokens: {
-        colors: {
-          primary: {
-            DEFAULT: {
-              value: '{colors.green.500}',
-            },
-          },
-        },
-      },
-    },
-    neutron: {
-      semanticTokens: {
-        colors: {
-          neutral: {
-            DEFAULT: {
-              value: '{colors.stone.500}',
-            },
-            50: {
-              value: '{colors.stone.50}',
-            },
-            100: {
-              value: '{colors.stone.100}',
-            },
-            200: {
-              value: '{colors.stone.200}',
-            },
-            300: {
-              value: '{colors.stone.300}',
-            },
-            400: {
-              value: '{colors.stone.400}',
-            },
-            500: {
-              value: '{colors.stone.500}',
-            },
-            600: {
-              value: '{colors.stone.600}',
-            },
-            700: {
-              value: '{colors.stone.700}',
-            },
-            800: {
-              value: '{colors.stone.800}',
-            },
-            900: {
-              value: '{colors.stone.900}',
-            },
-          },
-          primary: {
-            DEFAULT: {
-              value: '{colors.yellow.500}',
-            },
-          },
-        },
-      },
-    },
-    quark: {
-      semanticTokens: {
-        colors: {
-          neutral: {
-            DEFAULT: {
-              value: '{colors.slate.500}',
-            },
-            50: {
-              value: '{colors.slate.50}',
-            },
-            100: {
-              value: '{colors.slate.100}',
-            },
-            200: {
-              value: '{colors.slate.200}',
-            },
-            300: {
-              value: '{colors.slate.300}',
-            },
-            400: {
-              value: '{colors.slate.400}',
-            },
-            500: {
-              value: '{colors.slate.500}',
-            },
-            600: {
-              value: '{colors.slate.600}',
-            },
-            700: {
-              value: '{colors.slate.700}',
-            },
-            800: {
-              value: '{colors.slate.800}',
-            },
-            900: {
-              value: '{colors.slate.900}',
-            },
-          },
-          primary: {
-            DEFAULT: {
-              value: '{colors.rose.500}',
-            },
-          },
-        },
-      },
-    },
+    proton: createTheme({
+      primaryColor: 'indigo',
+      neutralColor: 'slate',
+      defaultPrimaryColor: '500',
+      defaultNeutralColor: '500',
+    }),
+    neutron: createTheme({
+      primaryColor: 'amber',
+      neutralColor: 'sand',
+      defaultPrimaryColor: '500',
+      defaultNeutralColor: '500',
+    }),
+    quark: createTheme({
+      primaryColor: 'lime',
+      neutralColor: 'olive',
+      defaultPrimaryColor: '500',
+      defaultNeutralColor: '500',
+    }),
   },
 });
 

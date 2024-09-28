@@ -1,38 +1,18 @@
 import { defineTokens } from '@pandacss/dev';
-import { theme } from '@particles/theme';
 
 export const colors = defineTokens.colors({
   shark: {
-    50: {
-      value: theme.colors.shark50,
-    },
-    100: {
-      value: theme.colors.shark100,
-    },
-    200: {
-      value: theme.colors.shark200,
-    },
-    300: {
-      value: theme.colors.shark300,
-    },
-    400: {
-      value: theme.colors.shark400,
-    },
-    500: {
-      value: theme.colors.shark500,
-    },
-    600: {
-      value: theme.colors.shark600,
-    },
-    700: {
-      value: theme.colors.shark700,
-    },
-    800: {
-      value: theme.colors.shark800,
-    },
-    900: {
-      value: theme.colors.shark900,
-    },
+    50: { value: '#f7f8f8' },
+    100: { value: '#ededf1' },
+    200: { value: '#d8dadf' },
+    300: { value: '#b6b9c3' },
+    400: { value: '#8d92a3' },
+    500: { value: '#6f7588' },
+    600: { value: '#5b6071' },
+    700: { value: '#494d5b' },
+    800: { value: '#3f424d' },
+    900: { value: '#383a42' },
+    950: { value: '#25262c' },
   },
   denim: {
     50: { value: '#eef9ff' },
@@ -45,6 +25,32 @@ export const colors = defineTokens.colors({
     700: { value: '#1172e4' },
     800: { value: '#1662c5' },
     900: { value: '#174f91' },
-    // '950': '#133158',
+    950: { value: '#133158' },
+  },
+  olive: {
+    50: { value: '#f6f7f6' },
+    100: { value: '#e4e5e2' },
+    200: { value: '#c8cac5' },
+    300: { value: '#a5a8a0' },
+    400: { value: '#81857c' },
+    500: { value: '#666a62' },
+    600: { value: '#51544d' },
+    700: { value: '#424540' },
+    800: { value: '#383a36' },
+    900: { value: '#30322f' },
+    950: { value: '#191b18' },
+  },
+  sand: {
+    50: { value: '#f6f5f5' },
+    100: { value: '#e8e6e5' },
+    200: { value: '#d3d1ce' },
+    300: { value: '#b4b1ac' },
+    400: { value: '#8e8a82' },
+    500: { value: '#736f67' },
+    600: { value: '#625f58' },
+    700: { value: '#53514b' },
+    800: { value: '#484742' },
+    900: { value: '#3b3a37' },
+    950: { value: '#282724' },
   },
 });

@@ -1,10 +1,22 @@
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { center, container, grid } from '@particles/styled-system/patterns';
-import { Card, Heading, Paragraph } from '@particles/ark';
+import { Button, ButtonGroup, Card, Heading, Paragraph } from '@particles/ark';
 
 export function Index() {
+  const [theme, setTheme] = useState('quark');
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-panda-theme', theme);
+  }, [theme]);
+
   return (
     <div className={container({ h: 'screen' })}>
+      <ButtonGroup>
+        <Button onClick={() => setTheme('quark')}>Quark</Button>
+        <Button onClick={() => setTheme('neutron')}>Neutron</Button>
+        <Button onClick={() => setTheme('proton')}>Proton</Button>
+      </ButtonGroup>
       <div className={center({ h: 'full' })}>
         <div className={grid({ columns: 3, gap: '6' })}>
           <Link href="/music">

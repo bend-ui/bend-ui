@@ -23,7 +23,8 @@
   "dependencies": {
     "@pandacss/dev": "^0.46.0",
     "@particles/preset-base": "workspace:*",
-    "@particles/theme": "workspace:*"
+    "tsup": "^8.2.4",
+    "tslib": "^2.5.3"
   },
   "devDependencies": {
     "tsup": "^8.2.4"

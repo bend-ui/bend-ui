@@ -305,28 +305,58 @@ export const colors = defineSemanticTokens.colors({
     },
   },
   primary: {
+    50: {
+      value: '{colors.blue.50}',
+    },
+    100: {
+      value: '{colors.blue.100}',
+    },
+    200: {
+      value: '{colors.blue.200}',
+    },
+    300: {
+      value: '{colors.blue.300}',
+    },
+    400: {
+      value: '{colors.blue.400}',
+    },
+    500: {
+      value: '{colors.blue.500}',
+    },
+    600: {
+      value: '{colors.blue.600}',
+    },
+    700: {
+      value: '{colors.blue.700}',
+    },
+    800: {
+      value: '{colors.blue.800}',
+    },
+    900: {
+      value: '{colors.blue.900}',
+    },
     DEFAULT: {
       value: {
-        _light: '{colors.denim.400}',
-        _dark: '{colors.denim.600}',
+        _light: '{colors.primary.400}',
+        _dark: '{colors.primary.600}',
       },
     },
     hover: {
       value: {
-        _light: '{colors.denim.700}',
-        _dark: '{colors.denim.500}',
+        _light: '{colors.primary.600}',
+        _dark: '{colors.primary.400}',
       },
     },
     fg: {
       value: '{colors.white}',
     },
     text: {
-      value: '{colors.denim.400}',
+      value: '{colors.primary.400}',
     },
     border: {
       value: {
-        _light: '{colors.denim.400}',
-        _dark: '{colors.denim.600}',
+        _light: '{colors.primary.400}',
+        _dark: '{colors.primary.600}',
       },
     },
     disabled: {

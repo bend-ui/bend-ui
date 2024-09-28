@@ -32,4 +32,10 @@ export default defineConfig({
   presets: ['@pandacss/dev/presets', preset],
 
   importMap: '@particles/styled-system',
+
+  lightningcss: true,
+
+  staticCss: {
+    themes: ['*'],
+  },
 });

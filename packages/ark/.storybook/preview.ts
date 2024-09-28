@@ -1,10 +1,23 @@
 import './index.css';
 import '@fontsource-variable/inter';
 import { createTheme } from '@particles/storybook';
+import { withThemeByDataAttribute } from '@storybook/addon-themes';
 import { Container } from './decorators';
 import type { Preview } from '@storybook/react';
 
 const theme = createTheme({ brandTitle: 'Particles - Ark' });
+
+const decorators: Preview['decorators'] = [
+  withThemeByDataAttribute({
+    themes: {
+      Proton: 'proton',
+      Neutron: 'neutron',
+      Quark: 'quark',
+    },
+    defaultTheme: 'proton',
+    attributeName: 'data-panda-theme',
+  }),
+];
 
 const preview: Preview = {
   parameters: {
@@ -24,17 +37,7 @@ const preview: Preview = {
     },
   },
 
-  globalTypes: {
-    theme: {
-      name: 'Theme',
-      description: 'Global theme for components',
-      defaultValue: 'default',
-      toolbar: {
-        icon: 'circlehollow',
-        items: ['default', 'cloud'],
-      },
-    },
-  },
+  decorators,
 
   tags: ['autodocs'],
 };

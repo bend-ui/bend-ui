@@ -11,6 +11,7 @@ const config: StorybookConfig = {
     getAbsolutePath('@storybook/addon-essentials'),
     getAbsolutePath('@storybook/addon-interactions'),
     getAbsolutePath('storybook-dark-mode'),
+    getAbsolutePath('@storybook/addon-themes'),
     getAbsolutePath('@storybook/addon-a11y'),
     getAbsolutePath('@chromatic-com/storybook'),
   ],
@@ -48,7 +49,6 @@ const config: StorybookConfig = {
             prop.parent.fileName.match(/@ark-ui/) ||
             prop.parent.fileName.match(/@particles/)
           ) {
-            console.log(prop.parent.fileName);
             return true;
           } else {
             return !/node_modules/.test(prop.parent.fileName);

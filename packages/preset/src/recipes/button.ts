@@ -19,11 +19,7 @@ export const buttonRecipe = defineSlotRecipe({
     palette: {
       default: {
         root: {
-          backgroundColor: 'bg.surface',
-          borderColor: { base: 'shark.200', _dark: 'shark.700' },
-          _hover: {
-            backgroundColor: { base: 'shark.200', _dark: 'shark.700' },
-          },
+          colorPalette: 'neutral',
         },
       },
       primary: {
