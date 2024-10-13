@@ -93,13 +93,18 @@ const HiddenSelect = SelectPrimitive.HiddenSelect;
 
 const Component = forwardRef<ElementRef<typeof Root>, SelectProps<any>>(
   (props, ref) => {
-    const { items, ...rest } = props;
+    const { collection, placeholder, label, ...rest } = props;
     return (
-      <Root ref={ref} items={items} positioning={{ sameWidth: true }} {...rest}>
-        <Label>Framework</Label>
+      <Root
+        ref={ref}
+        collection={collection}
+        positioning={{ sameWidth: true }}
+        {...rest}
+      >
+        <Label>{label}</Label>
         <Control>
           <Trigger>
-            <ValueText placeholder="Select a Framework" />
+            <ValueText placeholder={placeholder} />
             <Indicator>
               <LuChevronDown />
             </Indicator>
@@ -113,7 +118,7 @@ const Component = forwardRef<ElementRef<typeof Root>, SelectProps<any>>(
             <Content>
               <ItemGroup>
                 <ItemGroupLabel>Frameworks</ItemGroupLabel>
-                {items.map((item) => (
+                {collection.items.map((item) => (
                   <Item key={item} item={item}>
                     <ItemText>{item}</ItemText>
                     <ItemIndicator>✓</ItemIndicator>
