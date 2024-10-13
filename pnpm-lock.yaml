@@ -138,8 +138,8 @@ importers:
         specifier: ^0.46.1
         version: 0.46.1(jsdom@25.0.1)(typescript@5.5.4)
       '@pandacss/eslint-plugin':
-        specifier: ^0.1.14
-        version: 0.1.14(eslint@8.57.0)(jsdom@25.0.1)(typescript@5.5.4)
+        specifier: ^0.2.0
+        version: 0.2.0(eslint@8.57.0)(jsdom@25.0.1)(typescript@5.5.4)
       '@rollup/plugin-url':
         specifier: 8.0.2
         version: 8.0.2(rollup@4.21.2)
@@ -632,8 +632,8 @@ importers:
         specifier: workspace:*
         version: link:../theme
       '@storybook/theming':
-        specifier: ^8.3.4
-        version: 8.3.4(storybook@8.3.5)
+        specifier: ^8.3.5
+        version: 8.3.5(storybook@8.3.5)
       tsup:
         specifier: ^8.2.4
         version: 8.2.4(@swc/core@1.5.7)(postcss@8.4.47)(tsx@4.19.1)(typescript@5.5.4)
@@ -4484,9 +4484,9 @@ packages:
     peerDependencies:
       postcss: ^8.4
     dependencies:
-      '@csstools/selector-specificity': 3.1.1(postcss-selector-parser@6.1.2)
+      '@csstools/selector-specificity': 3.1.1(postcss-selector-parser@6.1.1)
       postcss: 8.4.38
-      postcss-selector-parser: 6.1.2
+      postcss-selector-parser: 6.1.1
     dev: true
 
   /@csstools/postcss-cascade-layers@4.0.6(postcss@8.4.41):
@@ -4537,6 +4537,7 @@ packages:
       postcss-selector-parser: ^6.0.13
     dependencies:
       postcss-selector-parser: 6.1.2
+    dev: false
 
   /@cypress/request@3.0.1:
     resolution:
@@ -9051,10 +9052,10 @@ packages:
       - jsdom
       - typescript
 
-  /@pandacss/eslint-plugin@0.1.14(eslint@8.57.0)(jsdom@25.0.1)(typescript@5.5.4):
+  /@pandacss/eslint-plugin@0.2.0(eslint@8.57.0)(jsdom@25.0.1)(typescript@5.5.4):
     resolution:
       {
-        integrity: sha512-Qtjv2RtJuvKPCQrTiXPKDWEmV5Y/sNRyYDJOhFv3J4BRfYSoF4zhfjwj5aurGule96NXY9QyLX9DFK8I3XO+Vg==,
+        integrity: sha512-TLcOZp/5PcPu67abTgmVNytyRX193sYaRt+tNrVETUPBGex8SqtuBvacq8zLh7AKWnG6cVkzbpANvL7pwRViug==,
       }
     peerDependencies:
       eslint: '*'
@@ -9066,7 +9067,7 @@ packages:
       '@typescript-eslint/utils': 6.21.0(eslint@8.57.0)(typescript@5.5.4)
       eslint: 8.57.0
       hookable: 5.5.3
-      synckit: 0.9.1
+      synckit: 0.9.2
     transitivePeerDependencies:
       - jsdom
       - supports-color
@@ -13718,17 +13719,6 @@ packages:
       storybook: 8.3.5
       util: 0.12.5
 
-  /@storybook/theming@8.3.4(storybook@8.3.5):
-    resolution:
-      {
-        integrity: sha512-D4XVsQgTtpHEHLhwkx59aGy1GBwOedVr/mNns7hFrH8FjEpxrrWCuZQASq1ZpCl8LXlh7uvmT5sM2rOdQbGuGg==,
-      }
-    peerDependencies:
-      storybook: ^8.3.4
-    dependencies:
-      storybook: 8.3.5
-    dev: false
-
   /@storybook/theming@8.3.5(storybook@8.3.5):
     resolution:
       {
@@ -13738,7 +13728,6 @@ packages:
       storybook: ^8.3.5
     dependencies:
       storybook: 8.3.5
-    dev: true
 
   /@storybook/types@8.1.5:
     resolution:
@@ -18896,8 +18885,8 @@ packages:
     engines: { node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7 }
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001664
-      electron-to-chromium: 1.5.29
+      caniuse-lite: 1.0.30001668
+      electron-to-chromium: 1.5.36
       node-releases: 2.0.18
       update-browserslist-db: 1.1.1(browserslist@4.23.0)
     dev: true
@@ -19248,6 +19237,13 @@ packages:
       {
         integrity: sha512-AmE7k4dXiNKQipgn7a2xg558IRqPN3jMQY/rOsbxDhrd0tyChwbITBfiwtnqz8bi2M5mIWbxAYBvk7W7QBUS2g==,
       }
+
+  /caniuse-lite@1.0.30001668:
+    resolution:
+      {
+        integrity: sha512-nWLrdxqCdblixUO+27JtGJJE/txpJlyUy5YN1u53wLZkP0emYCo5zgS6QYft7VUYR42LGgi/S5hdLZTrnyIddw==,
+      }
+    dev: true
 
   /case-sensitive-paths-webpack-plugin@2.4.0:
     resolution:
@@ -22396,6 +22392,13 @@ packages:
     resolution:
       {
         integrity: sha512-PF8n2AlIhCKXQ+gTpiJi0VhcHDb69kYX4MtCiivctc2QD3XuNZ/XIOlbGzt7WAjjEev0TtaH6Cu3arZExm5DOw==,
+      }
+    dev: true
+
+  /electron-to-chromium@1.5.36:
+    resolution:
+      {
+        integrity: sha512-HYTX8tKge/VNp6FGO+f/uVDmUkq+cEfcxYhKf15Akc4M5yxt5YmorwlAitKWjWhWQnKcDRBAQKXkhqqXMqcrjw==,
       }
     dev: true
 
@@ -34653,7 +34656,7 @@ packages:
       postcss: ^8.2.14
     dependencies:
       postcss: 8.4.38
-      postcss-selector-parser: 6.1.2
+      postcss-selector-parser: 6.1.1
     dev: true
 
   /postcss-nested@6.0.1(postcss@8.4.41):
@@ -38891,10 +38894,10 @@ packages:
         integrity: sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==,
       }
 
-  /synckit@0.9.1:
+  /synckit@0.9.2:
     resolution:
       {
-        integrity: sha512-7gr8p9TQP6RAHusBOSLs46F4564ZrjV8xFmw5zCmgmhGUcw2hxsShhJ6CEiHQMgPDwAQ1fWHPM0ypc4RMAig4A==,
+        integrity: sha512-vrozgXDQwYO72vHjUb/HnFbQx1exDjoKzqx23aXEg2a9VIg2TSFZ8FmeZpTjUCFMYw7mpX4BE2SFu8wI7asYsw==,
       }
     engines: { node: ^14.18.0 || >=16.0.0 }
     dependencies:
