@@ -4,15 +4,20 @@ import { Stack } from '@particles/styled-system/jsx';
 import { Drawer } from './Drawer';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof Drawer> = {
+const meta = {
+  title: 'Components/Overlays/Drawer',
   component: Drawer,
+  tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+  },
   argTypes: {
     placement: {
       control: 'select',
       options: drawer.variantMap.placement,
     },
   },
-};
+} satisfies Meta<typeof Drawer>;
 
 export default meta;
 

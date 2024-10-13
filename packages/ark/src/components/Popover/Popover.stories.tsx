@@ -3,9 +3,14 @@ import { LuChevronRight } from 'react-icons/lu';
 import { Popover } from './Popover';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof Popover> = {
+const meta = {
+  title: 'Components/Overlays/Popover',
   component: Popover,
-};
+  tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+  },
+} satisfies Meta<typeof Popover>;
 
 export default meta;
 

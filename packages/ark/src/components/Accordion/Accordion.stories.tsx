@@ -2,9 +2,14 @@ import { LuChevronDown } from 'react-icons/lu';
 import { Accordion } from './Accordion';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof Accordion> = {
+const meta = {
+  title: 'Components/Data Display/Accordion',
   component: Accordion,
-};
+  tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+  },
+} satisfies Meta<typeof Accordion>;
 
 export default meta;
 

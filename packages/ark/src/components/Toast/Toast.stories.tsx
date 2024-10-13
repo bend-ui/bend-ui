@@ -1,11 +1,15 @@
 import { Button, DismissButton } from '@particles/react';
 import { createToaster, Toast, Toaster } from '.';
 import type { Meta, StoryObj } from '@storybook/react';
-import type { CreateToasterProps } from '@ark-ui/react';
 
-const meta: Meta<typeof Toast> = {
+const meta = {
+  title: 'Components/Overlays/Toast',
   component: Toast,
-};
+  tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+  },
+} satisfies Meta<typeof Toast>;
 
 export default meta;
 

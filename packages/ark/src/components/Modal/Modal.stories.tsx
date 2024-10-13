@@ -3,9 +3,14 @@ import { Button, ButtonGroup, Input } from '../';
 import { Modal } from './Modal';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof Modal> = {
+const meta = {
+  title: 'Components/Overlays/Modal',
   component: Modal,
-};
+  tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+  },
+} satisfies Meta<typeof Modal>;
 
 export default meta;
 
