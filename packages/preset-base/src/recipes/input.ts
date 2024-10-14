@@ -2,7 +2,7 @@ import { defineSlotRecipe } from '@pandacss/dev';
 
 export const inputConfig = {
   className: 'Input',
-  slots: ['root', 'icon', 'iconEnd', 'input', 'addonStart', 'addonEnd'],
+  slots: ['root', 'icon', 'iconEnd', 'field', 'addonStart', 'addonEnd'],
 };
 
 export default defineSlotRecipe({
@@ -15,7 +15,7 @@ export default defineSlotRecipe({
       flexDirection: 'row',
       alignItems: 'center',
     },
-    input: {
+    field: {
       flex: '1 1 auto',
       appearance: 'none',
       backgroundColor: 'transparent',

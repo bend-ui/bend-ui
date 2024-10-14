@@ -1,26 +1,31 @@
-import { LuArrowRightCircle, LuCheck, LuLock, LuUser } from 'react-icons/lu';
+import {
+  ArrowRightCircleIcon,
+  CheckIcon,
+  LockIcon,
+  UserIcon,
+} from 'lucide-react';
 import { Box, Flex } from '@particles/styled-system/jsx';
 import { Button } from '../Button';
 import { Input } from './';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof Input> = {
-  title: 'Components/Form/Input',
+const meta = {
+  title: 'Components/Forms/Input',
   component: Input,
-};
+} satisfies Meta<typeof Input>;
 
 export default meta;
 
-type Story = StoryObj<typeof Input>;
+type Story = StoryObj<typeof meta>;
 
 export const Base: Story = {};
 
 export const WithIcon: Story = {
-  args: { icon: <LuUser /> },
+  args: { icon: <UserIcon /> },
 };
 
 export const WithIconEnd: Story = {
-  args: { iconEnd: <LuCheck /> },
+  args: { iconEnd: <CheckIcon /> },
 };
 
 /** By default the addons don't have spacing, you'll have to add it yourself. */
@@ -68,13 +73,13 @@ export const WithIconAndAddon: Story = {
     // iconEnd: <LuCheck />,
     addonStart: (
       <Flex alignItems="center" color="text.subtle" gap="2" pl="3">
-        <LuArrowRightCircle />
+        <ArrowRightCircleIcon />
         https://
       </Flex>
     ),
     addonEnd: (
       <Flex alignItems="center" gap="2" pl="2" pr="1.5">
-        <LuCheck />
+        <CheckIcon />
         <Button size="sm">Go</Button>
       </Flex>
     ),
@@ -82,5 +87,5 @@ export const WithIconAndAddon: Story = {
 };
 
 export const Password: Story = {
-  args: { iconEnd: <LuLock />, type: 'password' },
+  args: { iconEnd: <LockIcon />, type: 'password' },
 };

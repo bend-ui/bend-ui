@@ -27,6 +27,7 @@ import { switchRecipe } from './switch';
 import { tableRecipe } from './table';
 import { tabsRecipe } from './tabs';
 import { textRecipe } from './text';
+import { textareaRecipe } from './textarea';
 import { toastRecipe } from './toast';
 import { tooltipRecipe } from './tooltip';
 
@@ -58,6 +59,7 @@ export const slotRecipes = {
   switchRecipe: switchRecipe,
   table: tableRecipe,
   tabs: tabsRecipe,
+  textarea: textareaRecipe,
   toast: toastRecipe,
   tooltip: tooltipRecipe,
 };

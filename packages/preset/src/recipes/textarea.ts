@@ -1,9 +1,8 @@
 import { defineSlotRecipe } from '@pandacss/dev';
 
-export const inputRecipe = defineSlotRecipe({
-  description: 'Input styles',
-  className: 'Input',
-  slots: ['root', 'icon', 'iconEnd', 'field', 'addonStart', 'addonEnd'],
+export const textareaRecipe = defineSlotRecipe({
+  className: 'Textarea',
+  slots: ['root', 'field'],
   base: {
     root: {
       rounded: 'lg',
@@ -19,24 +18,6 @@ export const inputRecipe = defineSlotRecipe({
         field: {
           py: 'sm',
           px: 'md',
-          _hasIcon: {
-            paddingInlineStart: '9',
-          },
-          _hasIconEnd: {
-            paddingInlineEnd: '9',
-          },
-          _hasAddonStart: {
-            paddingInlineStart: '0',
-          },
-          _hasAddonEnd: {
-            paddingInlineEnd: '0',
-          },
-        },
-        icon: {
-          paddingInlineStart: '3',
-        },
-        iconEnd: {
-          paddingInlineEnd: '3',
         },
       },
     },

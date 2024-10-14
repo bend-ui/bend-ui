@@ -24,6 +24,7 @@ import tagsInput from './tagsInput';
 import toast from './toast';
 import toggleGroup from './toggleGroup';
 import tooltip from './tooltip';
+import textarea from './textarea';
 
 export const slotRecipes = {
   accordion,
@@ -52,7 +53,9 @@ export const slotRecipes = {
   toast,
   toggleGroup,
   tooltip,
+  textarea,
 };
 
 export * from './badge';
 export * from './input';
+export * from './textarea';

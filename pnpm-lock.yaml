@@ -518,6 +518,9 @@ importers:
       '@pandacss/dev':
         specifier: ^0.46.1
         version: 0.46.1(jsdom@25.0.1)(typescript@5.5.4)
+      '@pandacss/types':
+        specifier: ^0.46.1
+        version: 0.46.1
       '@particles/preset-base':
         specifier: workspace:*
         version: link:../preset-base

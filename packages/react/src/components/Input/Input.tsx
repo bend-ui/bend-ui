@@ -1,6 +1,7 @@
-import { cx } from '@particles/styled-system/css';
+import { css, cx } from '@particles/styled-system/css';
 import { input } from '@particles/styled-system/recipes';
 import { forwardRef } from 'react';
+import { splitCssProps } from '@particles/styled-system/jsx';
 import type { InputVariantProps } from '@particles/styled-system/recipes';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
@@ -13,9 +14,11 @@ export type InputProps = ComponentPropsWithoutRef<'input'> &
   };
 
 export const Root = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const { className, icon, iconEnd, addonStart, addonEnd, size, ...rest } =
-    props;
-  const classes = input({ size });
+  const [variantProps, inputProps] = input.splitVariantProps(props);
+  const [cssProps, otherProps] = splitCssProps(inputProps);
+  const { className, icon, iconEnd, addonStart, addonEnd, ...rest } =
+    otherProps;
+  const classes = input(variantProps);
 
   const inputAttrs = {
     'data-has-icon': icon ? 'true' : undefined,
@@ -25,12 +28,12 @@ export const Root = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   };
 
   return (
-    <div className={classes.root}>
+    <div className={cx(classes.root, css(cssProps), className)}>
       {addonStart && <div className={classes.addonStart}>{addonStart}</div>}
       {icon && <div className={classes.icon}>{icon}</div>}
       <input
         ref={ref}
-        className={cx(classes.input, className)}
+        className={cx(classes.field)}
         {...inputAttrs}
         {...rest}
       />

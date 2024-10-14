@@ -15,4 +15,5 @@ export * from './Nav';
 export * from './Paragraph';
 export * from './Table';
 export * from './Text';
+export * from './Textarea';
 export * from './Tiles';

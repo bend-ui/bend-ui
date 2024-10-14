@@ -2,7 +2,7 @@ import { defineSlotRecipe } from '@pandacss/dev';
 
 export const formFieldRecipe = defineSlotRecipe({
   className: 'FormField',
-  slots: ['root', 'label', 'description', 'error'],
+  slots: ['root', 'label', 'description', 'error', 'helper'],
   base: {
     root: {
       display: 'flex',
@@ -13,6 +13,10 @@ export const formFieldRecipe = defineSlotRecipe({
       fontWeight: 'bold',
     },
     description: {
+      color: 'text.subtle',
+      textStyle: 'body.sm',
+    },
+    helper: {
       color: 'text.subtle',
       textStyle: 'body.sm',
     },
