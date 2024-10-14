@@ -14,9 +14,6 @@
   "files": [
     "dist"
   ],
-  "dependencies": {
-    "tsup": "^8.2.4"
-  },
   "devDependencies": {
     "style-dictionary": "^4.1.0"
   },

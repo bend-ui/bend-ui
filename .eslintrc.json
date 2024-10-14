@@ -64,14 +64,13 @@
         "html": true
       }
     ],
-    // "@typescript-eslint/consistent-type-imports": [
-    //   "error",
-    //   {
-    //     "prefer": "type-imports"
-    //   }
-    // ],
-    // "@typescript-eslint/consistent-type-definitions": "error",
-    "storybook/no-uninstalled-addons": "off"
+    "storybook/no-uninstalled-addons": "off",
+    "@nx/dependency-checks": [
+      "error",
+      {
+        "ignoredDependencies": ["tsup"]
+      }
+    ]
   },
   "settings": {
     "import/parsers": {

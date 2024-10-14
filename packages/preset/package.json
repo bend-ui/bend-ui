@@ -24,10 +24,6 @@
     "@pandacss/dev": "^0.46.1",
     "@pandacss/types": "^0.46.1",
     "@particles/preset-base": "workspace:*",
-    "tslib": "^2.5.3",
-    "tsup": "^8.2.4"
-  },
-  "devDependencies": {
-    "tsup": "^8.2.4"
+    "tslib": "^2.5.3"
   }
 }

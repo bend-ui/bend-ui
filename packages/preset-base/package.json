@@ -22,8 +22,5 @@
   },
   "dependencies": {
     "@pandacss/dev": "^0.46.1"
-  },
-  "devDependencies": {
-    "tsup": "^8.2.4"
   }
 }
