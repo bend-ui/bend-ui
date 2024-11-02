@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import Paragraph from './Paragraph';
+import { Paragraph } from './Paragraph';
 
 describe('Paragraph', () => {
   it('should render successfully', () => {

@@ -1,7 +1,8 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { DARK_MODE_EVENT_NAME } from 'storybook-dark-mode';
 import { DocsContainer } from '@storybook/addon-docs';
 import { createTheme } from '@particles/storybook';
+import type { ReactNode } from 'react';
 import type { DocsContextProps } from '@storybook/addon-docs';
 import type { ThemeVars } from '@storybook/theming';
 
@@ -18,14 +19,14 @@ export const setDarkModeEnabled = (enabled: boolean) =>
     : localStorage.removeItem(LOCAL_STORAGE_KEY);
 
 export const Container = (props: {
-  children: React.ReactNode;
+  children: ReactNode;
   context: DocsContextProps;
   theme?: ThemeVars;
 }) => {
   const { context } = props;
-  const [isDark, setDark] = React.useState(isDarkModeEnabled());
+  const [isDark, setDark] = useState(isDarkModeEnabled());
 
-  React.useEffect(() => {
+  useEffect(() => {
     context.channel.on(DARK_MODE_EVENT_NAME, (state) => {
       setDarkModeEnabled(state);
       setDark(state);

@@ -70,7 +70,7 @@
     },
   ],
   "settings": {
-    "typescript.tsdk": "✨ particles/node_modules/typescript/lib",
+    "typescript.tsdk": "🧬 particles/node_modules/typescript/lib",
     "vitest.disabledWorkspaceFolders": [
       "📦 @particles/primitives",
       "📦 @particles/react",

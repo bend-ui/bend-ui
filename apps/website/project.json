@@ -50,10 +50,6 @@
       "options": {
         "jestConfig": "apps/website/jest.config.ts"
       }
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
     }
   }
 }
