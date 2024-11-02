@@ -17,7 +17,11 @@
       }
     ],
     "types": ["jest", "node"],
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "paths": {
+      "@/*": ["apps/website/*"],
+      "@particles/*": ["packages/*/src/index.ts"]
+    }
   },
   "include": [
     "**/*.ts",
@@ -27,12 +31,15 @@
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "../../dist/apps/website/.next/types/**/*.ts",
-    "next.config.mjs"
+    "next.config.mjs",
+    "source.config.ts",
+    "panda.config.ts"
   ],
   "exclude": [
     "node_modules",
     "jest.config.ts",
     "src/**/*.spec.ts",
-    "src/**/*.test.ts"
+    "src/**/*.test.ts",
+    ".source"
   ]
 }
