@@ -18,11 +18,7 @@
       }
     ],
     "types": ["jest", "node"],
-    "strictNullChecks": true,
-    "paths": {
-      "@/*": ["apps/website/*"],
-      "@particles/*": ["packages/*/src/index.ts"]
-    }
+    "strictNullChecks": true
   },
   "include": [
     "**/*.ts",

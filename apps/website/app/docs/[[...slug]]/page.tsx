@@ -6,7 +6,7 @@ import {
 } from 'fumadocs-ui/page';
 import { notFound } from 'next/navigation';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
-import { source } from '@/lib/source';
+import { source } from '../../../lib/source';
 // import { metadataImage } from '@/lib/metadata';
 
 export default async function Page(props: {
