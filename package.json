@@ -9,9 +9,7 @@
     "build-storybook": "nx run-many --target=build-storybook",
     "docgen": "tsx scripts/docgen.ts",
     "cli": "tsx packages/cli/src/index.ts",
-    "prepare": "run-s prepare:*",
-    "prepare:husky": "husky",
-    "prepare:panda": "panda codegen"
+    "prepare": "husky"
   },
   "workspaces": [
     "packages/*"
