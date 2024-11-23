@@ -1,37 +1,59 @@
 #!/usr/bin/env node
 
-import { program } from 'commander';
-import { add } from './commands/add';
+import * as p from '@clack/prompts';
+import { Command } from 'commander';
+import boxen from 'boxen';
+import { AddCommand } from './commands/add';
 
-program
-  .version('1.0.0')
-  .description('Generate React Components CLI')
-  .addCommand(add)
-  .action(() => {
-    // const componentPath = path.join(__dirname, componentName);
-    // // Check if the component directory already exists
-    // if (fs.existsSync(componentPath)) {
-    //   console.error(`Component '${componentName}' already exists.`);
-    //   process.exit(1);
-    // }
-    // // Create the component directory
-    // fs.mkdirSync(componentPath);
-    // // Create the component file
-    // const componentContent = `import React from 'react';
-    // const ${componentName} = () => {
-    //   return (
-    //     <div>
-    //       {/* Your ${componentName} component */}
-    //     </div>
-    //   );
-    // };
-    // export default ${componentName};
-    // `;
-    // fs.writeFileSync(
-    //   path.join(componentPath, `${componentName}.tsx`),
-    //   componentContent,
-    // );
-    // console.log(`Component '${componentName}' created successfully.`);
+export async function run() {
+  p.intro('Welcome to Particles CLI 🎨');
+
+  const program = new Command()
+    .name('particles')
+    .version('1.0.0')
+    .description('Generate React Components CLI');
+
+  program.addCommand(AddCommand);
+
+  p.log.step(
+    boxen('Generate React Components CLI', {
+      title: 'Particles CLI',
+      borderColor: 'green',
+      padding: 1,
+    }),
+  );
+
+  const spinner = p.spinner();
+
+  spinner.start('Installing packages...');
+
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+
+  spinner.stop('Installed packages');
+
+  const projectType = await p.select({
+    message: 'What do you want to do?',
+    options: [
+      { value: 'add', label: 'Add component' },
+      { value: 'remove', label: 'Remove component' },
+    ],
   });
 
-program.parse();
+  p.log.info(`You selected ${projectType}`);
+
+  if (projectType === 'add') {
+    AddCommand.parse();
+  } else if (projectType === 'remove') {
+    p.log.info('Remove command not implemented yet');
+  }
+
+  // p.outro('Particles CLI is ready to use 🎉');
+
+  program.parse();
+}
+
+run().catch((error) => {
+  console.error(error);
+  p.outro('An error occurred while running the command.');
+  process.exit(1);
+});

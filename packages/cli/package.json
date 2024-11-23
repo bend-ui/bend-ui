@@ -4,9 +4,8 @@
   "type": "commonjs",
   "dependencies": {
     "commander": "^12.1.0",
-    "prompts": "^2.4.2"
+    "@clack/prompts": "0.7.0",
+    "boxen": "8.0.1"
   },
-  "devDependencies": {
-    "@types/prompts": "^2.4.5"
-  }
+  "devDependencies": {}
 }
