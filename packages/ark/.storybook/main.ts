@@ -14,7 +14,12 @@ const config: StorybookConfig = {
     getAbsolutePath('storybook-dark-mode'),
     getAbsolutePath('@storybook/addon-themes'),
     getAbsolutePath('@storybook/addon-a11y'),
-    getAbsolutePath('@chromatic-com/storybook'),
+    {
+      name: '@chromatic-com/storybook',
+      options: {
+        configFile: 'packages/ark/.storybook/chromatic.config.json',
+      },
+    },
   ],
   framework: {
     name: getAbsolutePath('@storybook/react-vite'),
