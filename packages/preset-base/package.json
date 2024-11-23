@@ -21,6 +21,6 @@
     "build": "tsup"
   },
   "dependencies": {
-    "@pandacss/dev": "^0.47.1"
+    "@pandacss/dev": "^0.48.0"
   }
 }
