@@ -1,6 +1,6 @@
 import { defineSlotRecipe } from '@pandacss/dev';
 
-export default defineSlotRecipe({
+export const checkbox = defineSlotRecipe({
   description: 'Styles for the Checkbox component',
   className: 'Checkbox',
   slots: ['root', 'control', 'indicator', 'label', 'hidden-input'],

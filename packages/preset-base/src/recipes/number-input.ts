@@ -1,6 +1,6 @@
 import { defineSlotRecipe } from '@pandacss/dev';
 
-export default defineSlotRecipe({
+export const numberInput = defineSlotRecipe({
   className: 'NumberInput',
   slots: [],
 });

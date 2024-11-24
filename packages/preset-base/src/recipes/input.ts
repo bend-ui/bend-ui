@@ -5,7 +5,7 @@ export const inputConfig = {
   slots: ['root', 'icon', 'iconEnd', 'field', 'addonStart', 'addonEnd'],
 };
 
-export default defineSlotRecipe({
+export const input = defineSlotRecipe({
   className: inputConfig.className,
   slots: inputConfig.slots,
   base: {

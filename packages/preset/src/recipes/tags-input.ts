@@ -1,6 +1,6 @@
 import { defineSlotRecipe } from '@pandacss/dev';
 
-export const chipInputRecipe = defineSlotRecipe({
-  className: 'ChipInput',
+export const tagsInputRecipe = defineSlotRecipe({
+  className: 'TagsInput',
   slots: ['root', 'input', 'chip', 'removeButton'],
 });

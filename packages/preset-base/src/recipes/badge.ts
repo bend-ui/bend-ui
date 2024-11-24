@@ -5,7 +5,7 @@ export const badgeConfig = {
   slots: ['root'],
 };
 
-export default defineSlotRecipe({
+export const badge = defineSlotRecipe({
   className: 'badge',
   slots: ['root'],
   base: {

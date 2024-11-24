@@ -1,6 +1,6 @@
 import { defineSlotRecipe } from '@pandacss/dev';
 
-export default defineSlotRecipe({
+export const radioGroup = defineSlotRecipe({
   className: 'RadioGroup',
   slots: [
     'root',

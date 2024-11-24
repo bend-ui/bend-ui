@@ -1,6 +1,6 @@
 import { defineSlotRecipe } from '@pandacss/dev';
 
-export default defineSlotRecipe({
+export const button = defineSlotRecipe({
   className: 'Button',
   slots: ['root', 'icon', 'label'],
   base: {

@@ -1,6 +1,6 @@
 import { defineSlotRecipe } from '@pandacss/dev';
 
-export default defineSlotRecipe({
+export const accordion = defineSlotRecipe({
   className: 'Accordion',
-  slots: [],
+  slots: ['root', 'item', 'trigger', 'content'],
 });

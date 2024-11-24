@@ -1,6 +1,6 @@
 import { defineSlotRecipe } from '@pandacss/dev';
 
-export default defineSlotRecipe({
+export const pagination = defineSlotRecipe({
   className: 'Pagination',
   slots: ['root', 'item', 'ellipsis'],
   base: {

@@ -1,6 +1,6 @@
 import { defineSlotRecipe } from '@pandacss/dev';
 
-export default defineSlotRecipe({
+export const tabs = defineSlotRecipe({
   className: 'Tabs',
-  slots: [],
+  slots: ['root', 'list', 'tab', 'pane'],
 });

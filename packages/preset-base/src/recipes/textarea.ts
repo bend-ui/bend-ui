@@ -5,7 +5,7 @@ export const textareaConfig = {
   slots: ['root', 'field'],
 };
 
-export default defineSlotRecipe({
+export const textarea = defineSlotRecipe({
   className: textareaConfig.className,
   slots: textareaConfig.slots,
   base: {

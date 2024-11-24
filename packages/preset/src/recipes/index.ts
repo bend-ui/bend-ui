@@ -1,6 +1,6 @@
 import { accordionRecipe } from './accordion';
 import { alertRecipe } from './alert';
-import { appShellRecipe } from './appShell';
+import { appShellRecipe } from './app-shell';
 import { avatarRecipe } from './avatar';
 import { badgeRecipe } from './badge';
 import { breadcrumbsRecipe } from './breadcrumbs';
@@ -8,7 +8,7 @@ import { buttonRecipe } from './button';
 import { cardRecipe } from './card';
 import { carouselRecipe } from './carousel';
 import { checkboxRecipe } from './checkbox';
-import { chipInputRecipe } from './chipInput';
+import { tagsInputRecipe } from './tags-input';
 // import { dividerRecipe } from './divider';
 import { drawerRecipe } from './drawer';
 import { dropdownMenuRecipe } from './dropdownMenu';
@@ -20,7 +20,7 @@ import { modalRecipe } from './modal';
 import { navRecipe } from './nav';
 import { paginationRecipe } from './pagination';
 import { popoverRecipe } from './popover';
-import { radioGroupRecipe } from './radioGroup';
+import { radioGroupRecipe } from './radio-group';
 import { ratingRecipe } from './rating';
 import { selectRecipe } from './select';
 import { switchRecipe } from './switch';
@@ -42,7 +42,7 @@ export const slotRecipes = {
   card: cardRecipe,
   carousel: carouselRecipe,
   checkbox: checkboxRecipe,
-  chipInput: chipInputRecipe,
+  tagsInput: tagsInputRecipe,
   // divider: dividerRecipe,
   drawer: drawerRecipe,
   dropdownMenu: dropdownMenuRecipe,

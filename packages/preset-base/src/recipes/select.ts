@@ -1,6 +1,6 @@
 import { defineSlotRecipe } from '@pandacss/dev';
 
-export default defineSlotRecipe({
+export const select = defineSlotRecipe({
   className: 'Select',
   slots: [
     'root',
