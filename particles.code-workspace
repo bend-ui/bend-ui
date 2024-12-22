@@ -33,6 +33,10 @@
       "path": "packages/base-ui",
     },
     {
+      "name": "📦 @particles/ariakit",
+      "path": "packages/ariakit",
+    },
+    {
       "name": "🎨 @particles/preset-base",
       "path": "packages/preset-base",
     },

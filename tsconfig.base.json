@@ -17,6 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "@particles/aria": ["packages/aria/src/index.ts"],
+      "@particles/ariakit": ["packages/ariakit/src/index.ts"],
       "@particles/ark": ["packages/ark/src/index.ts"],
       "@particles/base-ui": ["packages/base-ui/src/index.ts"],
       "@particles/cli": ["packages/cli/src/index.ts"],
