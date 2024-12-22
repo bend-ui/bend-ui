@@ -1,0 +1,19 @@
+{
+  "name": "@particles/base-ui",
+  "version": "0.0.1",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "require": "./index.js"
+    }
+  },
+  "dependencies": {
+    "@base-ui-components/react": "1.0.0-alpha.4"
+  },
+  "devDependencies": {
+    "@pandacss/dev": "^0.48.0",
+    "postcss": "8.4.47"
+  }
+}

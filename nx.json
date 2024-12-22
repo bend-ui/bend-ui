@@ -6,7 +6,13 @@
   },
   "targetDefaults": {
     "build-storybook": {
-      "inputs": ["default", "^default", "{workspaceRoot}/.storybook/**/*"],
+      "inputs": [
+        "default",
+        "^default",
+        "{workspaceRoot}/.storybook/**/*",
+        "{projectRoot}/.storybook/**/*",
+        "{projectRoot}/tsconfig.storybook.json"
+      ],
       "cache": true
     },
     "@nx/vite:test": {
@@ -31,6 +37,11 @@
       "cache": true
     },
     "@nx/js:tsc": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["default", "^default"]
+    },
+    "@nx/vite:build": {
       "cache": true,
       "dependsOn": ["^build"],
       "inputs": ["default", "^default"]
