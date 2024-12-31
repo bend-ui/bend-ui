@@ -79,16 +79,8 @@
   ],
   "settings": {
     "typescript.tsdk": "🧬 particles/node_modules/typescript/lib",
-    "vitest.disabledWorkspaceFolders": [
-      "📦 @particles/primitives",
-      "📦 @particles/react",
-      "🛠️ @particles/react-utils",
-      "🛠️ @particles/cli",
-      "🧪 Playground (Panda)",
-      "📚 Website",
-    ],
   },
   "extensions": {
-    "recommendations": ["firsttris.vscode-jest-runner"],
+    "recommendations": ["chakra-ui.panda-css-vscode"],
   },
 }

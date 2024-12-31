@@ -21,6 +21,7 @@
     "build": "tsup"
   },
   "dependencies": {
-    "@pandacss/dev": "^0.48.0"
+    "@pandabox/define-recipe": "^0.0.3",
+    "@pandacss/dev": "^0.51.0"
   }
 }
