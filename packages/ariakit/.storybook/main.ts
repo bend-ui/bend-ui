@@ -12,7 +12,10 @@ const options = {
 };
 
 const config: StorybookConfig = {
-  stories: ['../src/**/*.@(mdx|stories.@(js|jsx|ts|tsx))'],
+  stories: [
+    '../src/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
+    '../../react/src/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
+  ],
   addons: ['@storybook/addon-essentials', '@storybook/addon-interactions'],
   framework: {
     name: '@storybook/react-vite',

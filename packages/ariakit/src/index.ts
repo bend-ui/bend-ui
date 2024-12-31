@@ -1,1 +1,1 @@
-export * from './lib/ariakit';
+export * from './components';
