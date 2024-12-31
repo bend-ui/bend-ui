@@ -34,9 +34,9 @@
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.17.2",
-    "@babel/core": "7.21.4",
+    "@babel/core": "7.26.0",
     "@babel/preset-react": "^7.18.6",
-    "@babel/preset-typescript": "7.21.4",
+    "@babel/preset-typescript": "7.26.0",
     "@changesets/cli": "^2.27.11",
     "@chromatic-com/storybook": "^3.2.3",
     "@commitlint/cli": "^19.6.1",
