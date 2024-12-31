@@ -81,6 +81,6 @@
     "typescript.tsdk": "🧬 particles/node_modules/typescript/lib",
   },
   "extensions": {
-    "recommendations": ["chakra-ui.panda-css-vscode"],
+    "recommendations": ["chakra-ui.panda-css-vscode", "nrwl.angular-console"],
   },
 }
