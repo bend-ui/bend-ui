@@ -642,8 +642,8 @@ importers:
         specifier: workspace:*
         version: link:../theme
       '@storybook/theming':
-        specifier: ^8.4.5
-        version: 8.4.5(storybook@8.4.7)
+        specifier: ^8.4.7
+        version: 8.4.7(storybook@8.4.7)
 
   packages/styled-system:
     dependencies:
@@ -695,6 +695,13 @@ packages:
       {
         integrity: sha512-Ff9+ksdQQB3rMncgqDK78uLznstjyfIf2Arnh22pW8kBpLs6rpKDwgnZT46hin5Hl1WzazzK64DOrhSwYpS7bQ==,
       }
+
+  /@adobe/css-tools@4.4.1:
+    resolution:
+      {
+        integrity: sha512-12WGKBQzjUAI4ayyF4IAtfw2QR/IDoqk6jTddXDhtYTJF9ASmoE1zst7cVtP0aL/F1jUJL5r+JxKXKEgHNbEUQ==,
+      }
+    dev: true
 
   /@alloc/quick-lru@5.2.0:
     resolution:
@@ -9006,7 +9013,7 @@ packages:
       '@octokit/request-error': 3.0.3
       '@octokit/types': 9.3.2
       is-plain-object: 5.0.0
-      node-fetch: 2.7.0(encoding@0.1.13)
+      node-fetch: 2.6.7
       universal-user-agent: 6.0.1
     transitivePeerDependencies:
       - encoding
@@ -13885,7 +13892,7 @@ packages:
     deprecated: In Storybook 8, this package functionality has been integrated to a new package called @storybook/test, which uses Vitest APIs for an improved experience. When upgrading to Storybook 8 with 'npx storybook@latest upgrade', you will get prompted and will get an automigration for the new package. Please migrate when you can.
     dependencies:
       '@storybook/expect': 28.1.3-5
-      '@testing-library/jest-dom': 6.5.0
+      '@testing-library/jest-dom': 6.6.3
       '@types/jest': 28.1.3
       jest-mock: 27.5.1
     dev: true
@@ -14218,17 +14225,6 @@ packages:
       ts-dedent: 2.2.0
     dev: true
 
-  /@storybook/theming@8.4.5(storybook@8.4.7):
-    resolution:
-      {
-        integrity: sha512-45e/jeG4iuqdZcHg3PbB6dwXQTwlnnEB7r/QcVExyC7ibrkTnjUfvxzyUw4mmU3CXETFGD5EcUobFkgK+/aPxQ==,
-      }
-    peerDependencies:
-      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
-    dependencies:
-      storybook: 8.4.7(prettier@3.4.2)
-    dev: false
-
   /@storybook/theming@8.4.7(storybook@8.4.7):
     resolution:
       {
@@ -14238,7 +14234,6 @@ packages:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
     dependencies:
       storybook: 8.4.7(prettier@3.4.2)
-    dev: true
 
   /@svgr/babel-plugin-add-jsx-attribute@8.0.0(@babel/core@7.21.4):
     resolution:
@@ -14955,6 +14950,22 @@ packages:
       dom-accessibility-api: 0.6.3
       lodash: 4.17.21
       redent: 3.0.0
+
+  /@testing-library/jest-dom@6.6.3:
+    resolution:
+      {
+        integrity: sha512-IteBhl4XqYNkM54f4ejhLRJiZNqcSCoXUOG2CPK7qbD322KjQozM4kHQOfkG2oln9b9HTYqs+Sae8vBATubxxA==,
+      }
+    engines: { node: '>=14', npm: '>=6', yarn: '>=1' }
+    dependencies:
+      '@adobe/css-tools': 4.4.1
+      aria-query: 5.3.2
+      chalk: 3.0.0
+      css.escape: 1.5.1
+      dom-accessibility-api: 0.6.3
+      lodash: 4.17.21
+      redent: 3.0.0
+    dev: true
 
   /@testing-library/react@15.0.6(@types/react@18.3.12)(react-dom@18.3.1)(react@18.3.1):
     resolution:
@@ -18326,6 +18337,17 @@ packages:
     dependencies:
       call-bind: 1.0.7
       is-array-buffer: 3.0.4
+    dev: true
+
+  /array-buffer-byte-length@1.0.2:
+    resolution:
+      {
+        integrity: sha512-LHE+8BuR7RYGDKvnrmcuSq3tDcKv9OFEXQt/HpbZhY7V6h0zlUXutnAD82GiFx9rdieCMjkvtcsPqBwgUl1Iiw==,
+      }
+    engines: { node: '>= 0.4' }
+    dependencies:
+      call-bound: 1.0.3
+      is-array-buffer: 3.0.5
     dev: true
 
   /array-differ@3.0.0:
@@ -21805,24 +21827,24 @@ packages:
       }
     engines: { node: '>= 0.4' }
     dependencies:
-      array-buffer-byte-length: 1.0.1
-      call-bind: 1.0.7
+      array-buffer-byte-length: 1.0.2
+      call-bind: 1.0.8
       es-get-iterator: 1.1.3
-      get-intrinsic: 1.2.4
-      is-arguments: 1.1.1
-      is-array-buffer: 3.0.4
-      is-date-object: 1.0.5
-      is-regex: 1.1.4
-      is-shared-array-buffer: 1.0.3
+      get-intrinsic: 1.2.6
+      is-arguments: 1.2.0
+      is-array-buffer: 3.0.5
+      is-date-object: 1.1.0
+      is-regex: 1.2.1
+      is-shared-array-buffer: 1.0.4
       isarray: 2.0.5
       object-is: 1.1.6
       object-keys: 1.1.1
-      object.assign: 4.1.5
+      object.assign: 4.1.7
       regexp.prototype.flags: 1.5.3
-      side-channel: 1.0.6
-      which-boxed-primitive: 1.0.2
+      side-channel: 1.1.0
+      which-boxed-primitive: 1.1.1
       which-collection: 1.0.2
-      which-typed-array: 1.1.15
+      which-typed-array: 1.1.18
     dev: true
 
   /deep-is@0.1.4:
@@ -22832,13 +22854,13 @@ packages:
         integrity: sha512-sPZmqHBe6JIiTfN5q2pEi//TwxmAFHwj/XEuYjTuse78i8KxaqMTTzxPoFKuzRpDpTJ+0NAbpfenkmH2rePtuw==,
       }
     dependencies:
-      call-bind: 1.0.7
-      get-intrinsic: 1.2.4
-      has-symbols: 1.0.3
-      is-arguments: 1.1.1
+      call-bind: 1.0.8
+      get-intrinsic: 1.2.6
+      has-symbols: 1.1.0
+      is-arguments: 1.2.0
       is-map: 2.0.3
       is-set: 2.0.3
-      is-string: 1.0.7
+      is-string: 1.1.1
       isarray: 2.0.5
       stop-iteration-iterator: 1.1.0
     dev: true
@@ -25673,6 +25695,14 @@ packages:
       }
     dev: true
 
+  /has-bigints@1.1.0:
+    resolution:
+      {
+        integrity: sha512-R3pbpkcIqv2Pm3dUwgjclDRVmWpTJW2DcMzcIhEXEx1oh/CEMObMm3KLmRJOdvhM7o4uQBnwr8pzRK2sJWIqfg==,
+      }
+    engines: { node: '>= 0.4' }
+    dev: true
+
   /has-flag@3.0.0:
     resolution:
       {
@@ -26716,6 +26746,17 @@ packages:
       call-bind: 1.0.7
       has-tostringtag: 1.0.2
 
+  /is-arguments@1.2.0:
+    resolution:
+      {
+        integrity: sha512-7bVbi0huj/wrIAOzb8U1aszg9kdi3KN/CyU19CTI7tAoZYEZoL9yCDXpbXN+uPsuWnP02cyug1gleqq+TU+YCA==,
+      }
+    engines: { node: '>= 0.4' }
+    dependencies:
+      call-bound: 1.0.3
+      has-tostringtag: 1.0.2
+    dev: true
+
   /is-array-buffer@3.0.4:
     resolution:
       {
@@ -26725,6 +26766,18 @@ packages:
     dependencies:
       call-bind: 1.0.7
       get-intrinsic: 1.2.4
+    dev: true
+
+  /is-array-buffer@3.0.5:
+    resolution:
+      {
+        integrity: sha512-DDfANUiiG2wC1qawP66qlTugJeL5HyzMpfr8lLK+jMQirGzNod0B12cFB/9q838Ru27sBwfw78/rdoU7RERz6A==,
+      }
+    engines: { node: '>= 0.4' }
+    dependencies:
+      call-bind: 1.0.8
+      call-bound: 1.0.3
+      get-intrinsic: 1.2.6
     dev: true
 
   /is-arrayish@0.2.1:
@@ -26762,6 +26815,16 @@ packages:
       has-bigints: 1.0.2
     dev: true
 
+  /is-bigint@1.1.0:
+    resolution:
+      {
+        integrity: sha512-n4ZT37wG78iz03xPRKJrHTdZbe3IicyucEtdRsV5yglwc3GyUfbAfpSeD0FJ41NbUNSt5wbhqfp1fS+BgnvDFQ==,
+      }
+    engines: { node: '>= 0.4' }
+    dependencies:
+      has-bigints: 1.1.0
+    dev: true
+
   /is-binary-path@2.1.0:
     resolution:
       {
@@ -26779,6 +26842,17 @@ packages:
     engines: { node: '>= 0.4' }
     dependencies:
       call-bind: 1.0.7
+      has-tostringtag: 1.0.2
+    dev: true
+
+  /is-boolean-object@1.2.1:
+    resolution:
+      {
+        integrity: sha512-l9qO6eFlUETHtuihLcYOaLKByJ1f+N4kthcU9YjHy3N+B3hWv0y/2Nd0mu/7lTFnRQHTrSdXF50HQ3bl5fEnng==,
+      }
+    engines: { node: '>= 0.4' }
+    dependencies:
+      call-bound: 1.0.3
       has-tostringtag: 1.0.2
     dev: true
 
@@ -26844,6 +26918,17 @@ packages:
       }
     engines: { node: '>= 0.4' }
     dependencies:
+      has-tostringtag: 1.0.2
+    dev: true
+
+  /is-date-object@1.1.0:
+    resolution:
+      {
+        integrity: sha512-PwwhEakHVKTdRNVOw+/Gyh0+MzlCl4R6qKvkhuvLtPMggI1WAHt9sOwZxQLSGpUaDnrdyDsomoRgNnCfKNSXXg==,
+      }
+    engines: { node: '>= 0.4' }
+    dependencies:
+      call-bound: 1.0.3
       has-tostringtag: 1.0.2
     dev: true
 
@@ -27039,6 +27124,17 @@ packages:
       has-tostringtag: 1.0.2
     dev: true
 
+  /is-number-object@1.1.1:
+    resolution:
+      {
+        integrity: sha512-lZhclumE1G6VYD8VHe35wFaIif+CTy5SJIi5+3y4psDgWu4wPDoBhF8NxUOinEc7pHgiTsT6MaBb92rKhhD+Xw==,
+      }
+    engines: { node: '>= 0.4' }
+    dependencies:
+      call-bound: 1.0.3
+      has-tostringtag: 1.0.2
+    dev: true
+
   /is-number@7.0.0:
     resolution:
       {
@@ -27144,6 +27240,19 @@ packages:
       has-tostringtag: 1.0.2
     dev: true
 
+  /is-regex@1.2.1:
+    resolution:
+      {
+        integrity: sha512-MjYsKHO5O7mCsmRGxWcLWheFqN9DJ/2TmngvjKXihe6efViPqc274+Fx/4fYj/r03+ESvBdTXK0V6tA3rgez1g==,
+      }
+    engines: { node: '>= 0.4' }
+    dependencies:
+      call-bound: 1.0.3
+      gopd: 1.2.0
+      has-tostringtag: 1.0.2
+      hasown: 2.0.2
+    dev: true
+
   /is-set@2.0.3:
     resolution:
       {
@@ -27160,6 +27269,16 @@ packages:
     engines: { node: '>= 0.4' }
     dependencies:
       call-bind: 1.0.7
+    dev: true
+
+  /is-shared-array-buffer@1.0.4:
+    resolution:
+      {
+        integrity: sha512-ISWac8drv4ZGfwKl5slpHG9OwPNty4jOWPRIhBpxOoD+hqITiwuipOQ2bNthAzwA3B4fIjO4Nln74N0S9byq8A==,
+      }
+    engines: { node: '>= 0.4' }
+    dependencies:
+      call-bound: 1.0.3
     dev: true
 
   /is-ssh@1.4.0:
@@ -27213,6 +27332,17 @@ packages:
       has-tostringtag: 1.0.2
     dev: true
 
+  /is-string@1.1.1:
+    resolution:
+      {
+        integrity: sha512-BtEeSsoaQjlSPBemMQIrY1MY0uM6vnS1g5fmufYOtnxLGUZM2178PKbhsk7Ffv58IX+ZtcvoGwccYsh0PglkAA==,
+      }
+    engines: { node: '>= 0.4' }
+    dependencies:
+      call-bound: 1.0.3
+      has-tostringtag: 1.0.2
+    dev: true
+
   /is-subdir@1.2.0:
     resolution:
       {
@@ -27231,6 +27361,18 @@ packages:
     engines: { node: '>= 0.4' }
     dependencies:
       has-symbols: 1.0.3
+    dev: true
+
+  /is-symbol@1.1.1:
+    resolution:
+      {
+        integrity: sha512-9gGx6GTtCQM73BgmHQXfDmLtfjjTUDSyoxTCbp5WtoixAhfgsDirWIcVQ/IHpvI5Vgd5i/J5F7B9cN/WlVbC/w==,
+      }
+    engines: { node: '>= 0.4' }
+    dependencies:
+      call-bound: 1.0.3
+      has-symbols: 1.1.0
+      safe-regex-test: 1.1.0
     dev: true
 
   /is-text-path@1.0.1:
@@ -27310,15 +27452,15 @@ packages:
       call-bind: 1.0.7
     dev: true
 
-  /is-weakset@2.0.3:
+  /is-weakset@2.0.4:
     resolution:
       {
-        integrity: sha512-LvIm3/KWzS9oRFHugab7d+M/GcBXuXX5xZkzPmN+NxihdQlZUQ4dWuSV1xR/sq6upL1TJEDrfBgRepHFdBtSNQ==,
+        integrity: sha512-mfcwb6IzQyOKTs84CQMrOwW4gQcaTOAWJ0zzJCl2WSPDrWk/OzDaImWFH3djXhb24g4eudZfLRozAvPGw4d9hQ==,
       }
     engines: { node: '>= 0.4' }
     dependencies:
-      call-bind: 1.0.7
-      get-intrinsic: 1.2.4
+      call-bound: 1.0.3
+      get-intrinsic: 1.2.6
     dev: true
 
   /is-what@3.14.1:
@@ -36556,6 +36698,18 @@ packages:
       is-regex: 1.1.4
     dev: true
 
+  /safe-regex-test@1.1.0:
+    resolution:
+      {
+        integrity: sha512-x/+Cz4YrimQxQccJf5mKEbIa1NzeCRNI5Ecl/ekmlYaampdNLPalVyIcCZNNH3MvmqBugV5TMYZXv0ljslUlaw==,
+      }
+    engines: { node: '>= 0.4' }
+    dependencies:
+      call-bound: 1.0.3
+      es-errors: 1.3.0
+      is-regex: 1.2.1
+    dev: true
+
   /safe-stable-stringify@2.4.3:
     resolution:
       {
@@ -41097,6 +41251,20 @@ packages:
       is-symbol: 1.0.4
     dev: true
 
+  /which-boxed-primitive@1.1.1:
+    resolution:
+      {
+        integrity: sha512-TbX3mj8n0odCBFVlY8AxkqcHASw3L60jIuF8jFP78az3C2YhmGvqbHBpAjTRH2/xqYunrJ9g1jSyjCjpoWzIAA==,
+      }
+    engines: { node: '>= 0.4' }
+    dependencies:
+      is-bigint: 1.1.0
+      is-boolean-object: 1.2.1
+      is-number-object: 1.1.1
+      is-string: 1.1.1
+      is-symbol: 1.1.1
+    dev: true
+
   /which-builtin-type@1.1.4:
     resolution:
       {
@@ -41107,15 +41275,15 @@ packages:
       function.prototype.name: 1.1.6
       has-tostringtag: 1.0.2
       is-async-function: 2.0.0
-      is-date-object: 1.0.5
+      is-date-object: 1.1.0
       is-finalizationregistry: 1.0.2
       is-generator-function: 1.0.10
-      is-regex: 1.1.4
+      is-regex: 1.2.1
       is-weakref: 1.0.2
       isarray: 2.0.5
-      which-boxed-primitive: 1.0.2
+      which-boxed-primitive: 1.1.1
       which-collection: 1.0.2
-      which-typed-array: 1.1.15
+      which-typed-array: 1.1.18
     dev: true
 
   /which-collection@1.0.2:
@@ -41128,7 +41296,7 @@ packages:
       is-map: 2.0.3
       is-set: 2.0.3
       is-weakmap: 2.0.2
-      is-weakset: 2.0.3
+      is-weakset: 2.0.4
     dev: true
 
   /which-module@2.0.1:
@@ -41161,6 +41329,21 @@ packages:
       for-each: 0.3.3
       gopd: 1.0.1
       has-tostringtag: 1.0.2
+
+  /which-typed-array@1.1.18:
+    resolution:
+      {
+        integrity: sha512-qEcY+KJYlWyLH9vNbsr6/5j59AXk5ni5aakf8ldzBvGde6Iz4sxZGkJyWSAueTG7QhOvNRYb1lDdFmL5Td0QKA==,
+      }
+    engines: { node: '>= 0.4' }
+    dependencies:
+      available-typed-arrays: 1.0.7
+      call-bind: 1.0.8
+      call-bound: 1.0.3
+      for-each: 0.3.3
+      gopd: 1.2.0
+      has-tostringtag: 1.0.2
+    dev: true
 
   /which@1.3.1:
     resolution:
