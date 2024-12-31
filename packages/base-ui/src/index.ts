@@ -1,1 +1,1 @@
-export * from './lib/base-ui';
+export * from './components';
