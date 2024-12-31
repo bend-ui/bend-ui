@@ -4,7 +4,6 @@ import {
   createContext,
   createElement,
   type ElementType,
-  forwardRef,
   type JSX,
   useContext,
 } from 'react';
@@ -35,19 +34,18 @@ export const createStyleContext = <R extends StyleRecipe>(recipe: R) => {
     Component: T,
     slot?: StyleSlot<R>,
   ): ComponentVariants<T, R> => {
-    const StyledComponent = forwardRef((props: ComponentProps<T>, ref) => {
+    const StyledComponent = (props: ComponentProps<T>) => {
       const [variantProps, otherProps] = recipe.splitVariantProps(props);
       const slotStyles = recipe(variantProps) as StyleSlotRecipe<R>;
       return (
         <StyleContext.Provider value={slotStyles}>
           <Component
-            ref={ref}
             {...otherProps}
             className={cx(slotStyles[slot ?? ''], otherProps.className)}
           />
         </StyleContext.Provider>
       );
-    });
+    };
     StyledComponent.displayName = Component.toString();
 
     return StyledComponent as unknown as ComponentVariants<T, R>;
@@ -58,14 +56,14 @@ export const createStyleContext = <R extends StyleRecipe>(recipe: R) => {
     slot?: StyleSlot<R>,
   ): T => {
     if (!slot) return Component;
-    const StyledComponent = forwardRef((props: ComponentProps<T>, ref) => {
+    const StyledComponent = (props: ComponentProps<T>) => {
       const slotStyles = useContext(StyleContext);
+      const { className, ...otherProps } = props;
       return createElement(Component, {
-        ...props,
-        className: cx(slotStyles?.[slot ?? ''], props.className),
-        ref,
+        ...otherProps,
+        className: cx(slotStyles?.[slot ?? ''], className),
       });
-    });
+    };
     StyledComponent.displayName = Component.toString();
 
     return StyledComponent as unknown as T;

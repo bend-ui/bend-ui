@@ -32,23 +32,27 @@
       }
     },
     "storybook": {
-      "executor": "@nx/storybook:storybook",
       "options": {
-        "port": 4400,
-        "configDir": "packages/ariakit/.storybook"
+        "port": 4407,
+        "config-dir": ".storybook"
       },
       "configurations": {
         "ci": {
-          "quiet": true
+          "args": ["--quiet"]
         }
       }
     },
     "build-storybook": {
-      "executor": "@nx/storybook:build",
-      "outputs": ["{options.outputDir}"],
+      "outputs": [
+        "{projectRoot}/{options.output-dir}",
+        "{projectRoot}/storybook-static",
+        "{options.output-dir}",
+        "{options.outputDir}",
+        "{options.o}"
+      ],
       "options": {
-        "outputDir": "dist/storybook/ariakit",
-        "configDir": "packages/ariakit/.storybook"
+        "config-dir": ".storybook",
+        "output-dir": "../../dist/storybook/ariakit"
       },
       "configurations": {
         "ci": {

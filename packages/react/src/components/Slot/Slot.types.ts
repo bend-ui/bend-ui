@@ -1,6 +1,7 @@
-import type { ReactNode } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 
-export interface SlotProps {
+export interface SlotProps extends HTMLAttributes<HTMLElement> {
+  ref?: React.Ref<HTMLElement>;
   children?: ReactNode;
 }
 

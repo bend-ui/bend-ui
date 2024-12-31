@@ -1,9 +1,7 @@
 import { Checkbox as CheckboxPrimitive } from '@ark-ui/react';
 import { checkbox } from '@particles/styled-system/recipes';
 import { LuCheck } from 'react-icons/lu';
-import { forwardRef } from 'react';
 import { createStyleContext } from '../../utils';
-import type { ElementRef } from 'react';
 import type { CheckboxProps } from './Checkbox.types';
 
 const { withProvider, withContext } = createStyleContext(checkbox);
@@ -30,18 +28,16 @@ const Indicator = withContext<HTMLDivElement, CheckboxPrimitive.IndicatorProps>(
 
 const HiddenInput = CheckboxPrimitive.HiddenInput;
 
-const Component = forwardRef<ElementRef<typeof Root>, CheckboxProps>(
-  (props, ref) => (
-    <Root ref={ref} {...props}>
-      <Control>
-        <Indicator>
-          <LuCheck />
-        </Indicator>
-      </Control>
-      <HiddenInput />
-      <Label>Checkbox</Label>
-    </Root>
-  ),
+const Component = (props: CheckboxProps) => (
+  <Root {...props}>
+    <Control>
+      <Indicator>
+        <LuCheck />
+      </Indicator>
+    </Control>
+    <HiddenInput />
+    <Label>Checkbox</Label>
+  </Root>
 );
 
 Component.displayName = 'Checkbox';

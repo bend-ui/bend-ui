@@ -8,5 +8,14 @@
       "import": "./index.mjs",
       "require": "./index.js"
     }
+  },
+  "dependencies": {
+    "@ariakit/react": "^0.4.15",
+    "@particles/preset": "workspace:*",
+    "@particles/react": "workspace:*",
+    "@particles/styled-system": "workspace:*"
+  },
+  "devDependencies": {
+    "@pandacss/dev": "^0.51.0"
   }
 }

@@ -85,5 +85,25 @@
       "preVersionCommand": "pnpm dlx nx run-many -t build"
     }
   },
-  "useLegacyCache": true
+  "useLegacyCache": true,
+  "plugins": [
+    {
+      "plugin": "@nx/storybook/plugin",
+      "options": {
+        "buildStorybookTargetName": "build-storybook",
+        "serveStorybookTargetName": "storybook",
+        "staticStorybookTargetName": "static-storybook",
+        "testStorybookTargetName": "test-storybook"
+      },
+      "include": [
+        "packages/ark/**/*",
+        "packages/react/**/*",
+        "packages/base-ui/**/*",
+        "packages/ariakit/**/*",
+        "packages/aria/**/*",
+        "packages/radix/**/*",
+        "packages/primitives/**/*"
+      ]
+    }
+  ]
 }

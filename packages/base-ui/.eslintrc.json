@@ -1,6 +1,13 @@
 {
-  "extends": ["plugin:@nx/react", "../../.eslintrc.json"],
+  "extends": [
+    "plugin:@nx/react",
+    "../../.eslintrc.json",
+    "plugin:@pandacss/recommended"
+  ],
   "ignorePatterns": ["!**/*", "storybook-static"],
+  "settings": {
+    "@pandacss/configPath": "packages/base-ui/panda.config.ts"
+  },
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],

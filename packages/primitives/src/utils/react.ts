@@ -10,35 +10,37 @@ export const flattenChildren = (children: React.ReactNode): ReactChildArray =>
   Children.toArray(children).reduce<ReactChildArray>(
     (acc: ReactChildArray, child) => {
       if (isFragment(child)) {
-        return acc.concat(flattenChildren(child.props.children));
+        return acc.concat(
+          flattenChildren((child as React.ReactElement<any>).props.children),
+        );
       }
 
       acc.push(child);
 
       return acc;
     },
-    []
+    [],
   );
 
 export const isComponentType = (
   element: React.ReactElement,
-  type: JSXElementConstructor<any> | JSXElementConstructor<any>[]
+  type: JSXElementConstructor<any> | JSXElementConstructor<any>[],
 ): boolean => element.type === type;
 
 export const filterChildrenByType = <T extends Props>(
   children: React.ReactNode,
-  type: JSXElementConstructor<T> | JSXElementConstructor<T>[]
+  type: JSXElementConstructor<T> | JSXElementConstructor<T>[],
 ): React.ReactElement<T>[] =>
-  (flattenChildren(children) as React.ReactElement[]).filter((item) =>
+  (flattenChildren(children) as React.ReactElement<T>[]).filter((item) =>
     Array.isArray(type)
       ? type.some((component) => component === item.type)
-      : isComponentType(item, type)
-  );
+      : item.type === type,
+  ) as React.ReactElement<T>[];
 
 export const findChildrenByType = (
   children: ReactNode,
-  type: JSXElementConstructor<any>
+  type: JSXElementConstructor<any>,
 ) =>
   (flattenChildren(children) as ReactElement[]).find(
-    (item) => item.type === type
+    (item) => item.type === type,
   );

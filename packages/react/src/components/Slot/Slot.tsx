@@ -1,9 +1,9 @@
-import { Children, cloneElement, forwardRef, isValidElement } from 'react';
+import { Children, cloneElement, isValidElement } from 'react';
 import { useMergeRefs } from '@floating-ui/react';
 import type { SlotProps } from './Slot.types';
 
-export const Slot = forwardRef<HTMLElement, SlotProps>((props, ref) => {
-  const { children, ...rest } = props;
+export const Slot = (props: SlotProps) => {
+  const { children, ref, ...rest } = props;
 
   const mergedRef = useMergeRefs([ref, (children as any).ref]);
 
@@ -23,10 +23,10 @@ export const Slot = forwardRef<HTMLElement, SlotProps>((props, ref) => {
     return null;
   }
 
-  return cloneElement(children, {
+  return cloneElement(children as React.ReactElement<any>, {
     ...Object.assign(rest, children.props),
     ref: mergedRef,
   });
-});
+};
 
 Slot.displayName = 'Slot';

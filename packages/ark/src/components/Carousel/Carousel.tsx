@@ -61,11 +61,6 @@ export const PrevTrigger = withContext<
   Assign<HTMLStyledProps<'button'>, CarouselPrimitive.PrevTriggerBaseProps>
 >(CarouselPrimitive.PrevTrigger, 'prevTrigger');
 
-export const Viewport = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, CarouselPrimitive.ViewportBaseProps>
->(CarouselPrimitive.Viewport, 'viewport');
-
 const Component = () => {
   const images = [
     'https://tinyurl.com/5b6ka8jd',
@@ -85,15 +80,13 @@ const Component = () => {
           </Indicator>
         ))}
       </IndicatorGroup>
-      <Viewport>
-        <ItemGroup>
-          {images.map((image, index) => (
-            <Item key={index} index={index}>
-              <img src={image} />
-            </Item>
-          ))}
-        </ItemGroup>
-      </Viewport>
+      <ItemGroup>
+        {images.map((image, index) => (
+          <Item key={index} index={index}>
+            <img alt={`Slide ${index}`} src={image} />
+          </Item>
+        ))}
+      </ItemGroup>
     </Root>
   );
 };
@@ -105,7 +98,6 @@ export const Carousel = Object.assign(Component, {
   NextTrigger,
   IndicatorGroup,
   Indicator,
-  Viewport,
   ItemGroup,
   Item,
 });

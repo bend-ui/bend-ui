@@ -5,6 +5,9 @@
     "plugin:@pandacss/recommended"
   ],
   "ignorePatterns": ["!**/*"],
+  "settings": {
+    "@pandacss/configPath": "packages/ark/panda.config.ts"
+  },
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],

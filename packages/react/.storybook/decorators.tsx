@@ -1,7 +1,8 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { DARK_MODE_EVENT_NAME } from 'storybook-dark-mode';
 import { DocsContainer } from '@storybook/addon-docs';
 import { createTheme } from '@particles/storybook';
+import type React from 'react';
 import type { DocsContextProps } from '@storybook/addon-docs';
 import type { ThemeVars } from '@storybook/theming';
 
@@ -23,9 +24,9 @@ export const Container = (props: {
   theme?: ThemeVars;
 }) => {
   const { context } = props;
-  const [isDark, setDark] = React.useState(isDarkModeEnabled());
+  const [isDark, setDark] = useState(isDarkModeEnabled());
 
-  React.useEffect(() => {
+  useEffect(() => {
     context.channel.on(DARK_MODE_EVENT_NAME, (state) => {
       setDarkModeEnabled(state);
       setDark(state);
