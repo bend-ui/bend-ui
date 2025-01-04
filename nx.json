@@ -104,6 +104,12 @@
         "packages/radix/**/*",
         "packages/primitives/**/*"
       ]
+    },
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
     }
   ]
 }

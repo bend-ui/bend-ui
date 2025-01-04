@@ -5,10 +5,6 @@
   "projectType": "application",
   "tags": [],
   "targets": {
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
-    },
     "storybook": {
       "executor": "@nx/storybook:storybook",
       "options": {

@@ -14,10 +14,6 @@
     "publish": {
       "command": "node tools/scripts/publish.mjs styled-system {args.ver} {args.tag}",
       "dependsOn": ["build"]
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
     }
   }
 }

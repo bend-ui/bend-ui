@@ -49,10 +49,6 @@
       "options": {
         "jestConfig": "apps/playground-panda-radix/jest.config.ts"
       }
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
     }
   }
 }
