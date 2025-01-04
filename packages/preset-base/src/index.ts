@@ -1,6 +1,6 @@
 import { definePreset } from '@pandacss/dev';
 import patterns from './patterns';
-import { slotRecipes } from './recipes';
+import { recipes, slotRecipes } from './recipes';
 
 export default definePreset({
   name: 'particles-base',
@@ -12,6 +12,7 @@ export default definePreset({
 
   theme: {
     extend: {
+      recipes,
       slotRecipes,
     },
   },

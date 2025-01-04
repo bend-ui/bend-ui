@@ -1,59 +1,44 @@
-import { forwardRef } from 'react';
 import { Avatar as AvatarPrimitive } from '@ark-ui/react';
-import { avatar } from '@particles/styled-system/recipes';
+import {
+  avatar,
+  type AvatarVariantProps,
+} from '@particles/styled-system/recipes';
 import type { HTMLStyledProps } from '@particles/styled-system/types';
-import type { AvatarVariantProps } from '@particles/styled-system/recipes';
-import { createStyleContext } from '../../utils';
-import type { ComponentProps, ElementRef } from 'react';
+import { withRecipe } from '../../utils';
 import type { AvatarProps } from './Avatar.types';
 import type { Assign } from '@ark-ui/react';
 
-const { withProvider, withContext } = createStyleContext(avatar);
-
-export type RootProviderProps = ComponentProps<typeof RootProvider>;
-const RootProvider = withProvider<
-  HTMLDivElement,
-  Assign<
-    Assign<HTMLStyledProps<'div'>, AvatarPrimitive.RootProviderBaseProps>,
-    AvatarVariantProps
-  >
->(AvatarPrimitive.RootProvider, 'root');
-
-export type RootProps = ComponentProps<typeof Root>;
-const Root = withProvider<
-  HTMLDivElement,
+export const AvatarRoot = withRecipe<
   Assign<
     Assign<HTMLStyledProps<'div'>, AvatarPrimitive.RootBaseProps>,
     AvatarVariantProps
   >
->(AvatarPrimitive.Root, 'root');
+>(AvatarPrimitive.Root, avatar);
 
-const Fallback = withContext<
-  HTMLSpanElement,
-  Assign<HTMLStyledProps<'span'>, AvatarPrimitive.FallbackBaseProps>
->(AvatarPrimitive.Fallback, 'fallback');
+export const AvatarRootProvider = withRecipe<
+  Assign<
+    Assign<HTMLStyledProps<'div'>, AvatarPrimitive.RootProviderBaseProps>,
+    AvatarVariantProps
+  >
+>(AvatarPrimitive.RootProvider, avatar);
 
-const Image = withContext<
-  HTMLImageElement,
-  Assign<HTMLStyledProps<'img'>, AvatarPrimitive.ImageBaseProps>
->(AvatarPrimitive.Image, 'image');
+const AvatarFallback = AvatarPrimitive.Fallback;
+const AvatarImage = AvatarPrimitive.Image;
 
-const Component = forwardRef<ElementRef<typeof Root>, AvatarProps>(
-  (props, ref) => {
-    const { fallback, src, ...rest } = props;
-    return (
-      <Root ref={ref} {...rest}>
-        <Fallback>{fallback}</Fallback>
-        <Image alt={fallback} src={src} />
-      </Root>
-    );
-  },
-);
-
+const Component = (props: AvatarProps) => {
+  const { fallback, src, ...rest } = props;
+  return (
+    <AvatarRoot {...rest}>
+      <AvatarFallback>{fallback}</AvatarFallback>
+      <AvatarImage alt={fallback} src={src} />
+    </AvatarRoot>
+  );
+};
 Component.displayName = 'Avatar';
 
 export const Avatar = Object.assign(Component, {
-  Root,
-  Fallback,
-  Image,
+  RootProvider: AvatarRootProvider,
+  Root: AvatarRoot,
+  Fallback: AvatarFallback,
+  Image: AvatarImage,
 });

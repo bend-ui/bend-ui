@@ -45,7 +45,6 @@ export const slotRecipes = {
   carousel,
   checkbox,
   collapsible,
-  combobox,
   drawer,
   hoverCard,
   input,
@@ -68,6 +67,10 @@ export const slotRecipes = {
   textarea,
   toast,
   tooltip,
+};
+
+export const recipes = {
+  combobox,
 };
 
 export * from './accordion';

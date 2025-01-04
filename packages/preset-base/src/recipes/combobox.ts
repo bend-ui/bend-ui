@@ -1,6 +1,5 @@
-import { defineSlotRecipe } from '@pandacss/dev';
+import { defineRecipe } from '@pandacss/dev';
 
-export const combobox = defineSlotRecipe({
+export const combobox = defineRecipe({
   className: 'Combobox',
-  slots: [],
 });

@@ -1,6 +1,6 @@
+import { avatar } from '@particles/styled-system/recipes';
 import { Avatar } from './Avatar';
 import type { Meta, StoryObj } from '@storybook/react';
-
 const meta = {
   title: 'Components/Data Display/Avatar',
   component: Avatar,
@@ -8,11 +8,19 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
+  argTypes: {
+    size: {
+      options: avatar.variantMap.size,
+      control: {
+        type: 'select',
+      },
+    },
+  },
 } satisfies Meta<typeof Avatar>;
 
 export default meta;
 
-type Story = StoryObj<typeof Avatar>;
+type Story = StoryObj<typeof meta>;
 
 export const Base: Story = {
   args: {

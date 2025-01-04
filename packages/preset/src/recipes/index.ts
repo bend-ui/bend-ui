@@ -26,16 +26,17 @@ import { selectRecipe } from './select';
 import { switchRecipe } from './switch';
 import { tableRecipe } from './table';
 import { tabsRecipe } from './tabs';
+import { tagRecipe } from './tag';
 import { textRecipe } from './text';
 import { textareaRecipe } from './textarea';
 import { toastRecipe } from './toast';
 import { tooltipRecipe } from './tooltip';
+import { comboboxRecipe } from './combobox';
 
 export const slotRecipes = {
   accordion: accordionRecipe,
   alert: alertRecipe,
   appShell: appShellRecipe,
-  avatar: avatarRecipe,
   badge: badgeRecipe,
   breadcrumbs: breadcrumbsRecipe,
   button: buttonRecipe,
@@ -62,9 +63,12 @@ export const slotRecipes = {
   textarea: textareaRecipe,
   toast: toastRecipe,
   tooltip: tooltipRecipe,
+  tag: tagRecipe,
 };
 
 export const recipes = {
+  avatar: avatarRecipe,
   text: textRecipe,
   icon: iconRecipe,
+  combobox: comboboxRecipe,
 };
