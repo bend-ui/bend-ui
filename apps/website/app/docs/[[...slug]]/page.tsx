@@ -12,7 +12,6 @@ import { source } from '../../../lib/source';
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
 }) {
-  // eslint-disable-next-line react/destructuring-assignment
   const params = await props.params;
   const page = source.getPage(params.slug);
   if (!page) notFound();
