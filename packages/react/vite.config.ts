@@ -20,5 +20,10 @@ export default defineConfig({
       reportsDirectory: '../../coverage/packages/react',
       provider: 'v8',
     },
+    browser: {
+      provider: 'playwright',
+      enabled: true,
+      instances: [{ browser: 'chromium' }],
+    },
   },
 });

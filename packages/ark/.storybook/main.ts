@@ -21,16 +21,12 @@ const config: StorybookConfig = {
   staticDirs: ['../public'],
   addons: [
     getAbsolutePath('@storybook/addon-essentials'),
-    getAbsolutePath('@storybook/addon-interactions'),
     getAbsolutePath('storybook-dark-mode'),
     getAbsolutePath('@storybook/addon-themes'),
     getAbsolutePath('@storybook/addon-a11y'),
-    {
-      name: getAbsolutePath('@chromatic-com/storybook'),
-      options: {
-        configFile: '.storybook/chromatic.config.json',
-      },
-    },
+    getAbsolutePath('@chromatic-com/storybook'),
+    // eslint-disable-next-line storybook/no-uninstalled-addons
+    '@storybook/experimental-addon-test',
   ],
   framework: {
     name: getAbsolutePath('@storybook/react-vite'),

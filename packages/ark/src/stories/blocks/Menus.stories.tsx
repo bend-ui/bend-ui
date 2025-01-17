@@ -51,7 +51,7 @@ export const Default: StoryObj = {
           py: 'md',
           _hover: {
             bgColor: 'bg.primary',
-            color: 'fg.on.primary',
+            color: 'primary.fg',
           },
         },
         divider: {

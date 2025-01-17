@@ -1,5 +1,4 @@
 import { Switch } from './Switch';
-import type { Story } from '@storybook/addon-docs';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Switch> = {

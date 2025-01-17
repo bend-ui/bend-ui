@@ -12,9 +12,9 @@ const meta = {
 
 export default meta;
 
-type Switch = StoryObj<typeof Switch>;
+type Story = StoryObj<typeof Switch>;
 
-export const Base: Switch = {
+export const Base: Story = {
   render: (args) => <Switch {...args} />,
   args: {
     label: 'Switch',
