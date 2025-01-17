@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/ban-types */
-
 // Types
 
 export type AnyFunction<T = any> = (...args: T[]) => any;
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 export type FunctionArguments<T extends Function> = T extends (
   ...args: infer R
 ) => any
@@ -17,6 +16,7 @@ export type StringOrNumber = string | number;
 
 // Assertions
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 export const isFunction = <T extends Function = Function>(
   value: any,
 ): value is T => typeof value === 'function';

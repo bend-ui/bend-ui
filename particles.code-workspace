@@ -79,6 +79,7 @@
   ],
   "settings": {
     "typescript.tsdk": "🧬 particles/node_modules/typescript/lib",
+    "eslint.useFlatConfig": true,
   },
   "extensions": {
     "recommendations": ["chakra-ui.panda-css-vscode", "nrwl.angular-console"],

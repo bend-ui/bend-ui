@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 import { createComponent } from './createComponent';
 import type { StaticComponents } from './createComponent';
 import type React from 'react';
