@@ -1,16 +1,15 @@
-import { dirname, join } from 'path';
 import type { StorybookConfig } from '@storybook/react-vite';
 
 // These options were migrated by @nx/storybook:convert-to-inferred from the project.json file.
-const configValues = { default: {}, ci: {} };
+// const configValues = { default: {}, ci: {} };
 
 // Determine the correct configValue to use based on the configuration
-const nxConfiguration = process.env.NX_TASK_TARGET_CONFIGURATION ?? 'default';
+// const nxConfiguration = process.env.NX_TASK_TARGET_CONFIGURATION ?? 'default';
 
-const options = {
-  ...configValues.default,
-  ...(configValues[nxConfiguration] ?? {}),
-};
+// const options = {
+//   ...configValues.default,
+//   ...(configValues[nxConfiguration] ?? {}),
+// };
 
 const config: StorybookConfig = {
   stories: [
@@ -19,14 +18,14 @@ const config: StorybookConfig = {
     '../../react/src/**/*.stories.@(js|jsx|ts|tsx)',
   ],
   addons: [
-    getAbsolutePath('@storybook/addon-essentials'),
-    getAbsolutePath('@storybook/addon-interactions'),
-    getAbsolutePath('storybook-dark-mode'),
-    getAbsolutePath('@storybook/addon-a11y'),
-    getAbsolutePath('@chromatic-com/storybook'),
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
+    'storybook-dark-mode',
+    '@storybook/addon-a11y',
+    '@chromatic-com/storybook',
   ],
   framework: {
-    name: getAbsolutePath('@storybook/react-vite'),
+    name: '@storybook/react-vite',
     options: {
       builder: {
         viteConfigPath: './vite.config.ts',
@@ -41,7 +40,6 @@ const config: StorybookConfig = {
         include: [
           'storybook-dark-mode',
           '@storybook/theming',
-          '@particles/react',
           '@particles/storybook',
         ],
       },
@@ -72,7 +70,3 @@ const config: StorybookConfig = {
 };
 
 export default config;
-
-function getAbsolutePath(value: string): any {
-  return dirname(require.resolve(join(value, 'package.json')));
-}
