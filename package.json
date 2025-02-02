@@ -84,7 +84,7 @@
     "@swc/core": "1.10.4",
     "@swc/jest": "0.2.37",
     "@testing-library/react": "16.1.0",
-    "@types/jest": "29.5.12",
+    "@types/jest": "29.5.14",
     "@types/node": "20.11.30",
     "@types/react": "^19.0.2",
     "@types/react-dom": "19.0.2",
