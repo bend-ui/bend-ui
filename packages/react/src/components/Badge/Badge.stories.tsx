@@ -7,6 +7,10 @@ export default {
   title: 'Components/Data/Badge',
   component: Badge,
   argTypes: {
+    variant: {
+      control: 'select',
+      options: badge.variantMap.variant,
+    },
     palette: {
       control: 'select',
       options: badge.variantMap.palette,

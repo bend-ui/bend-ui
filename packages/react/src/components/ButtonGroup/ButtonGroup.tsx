@@ -1,19 +1,49 @@
-import { Stack } from '@particles/styled-system/jsx';
 import { forwardRef } from 'react';
-import type { StackProps } from '@particles/styled-system/jsx';
+import {
+  buttonGroup,
+  ButtonGroupVariantProps,
+} from '@particles/styled-system/recipes';
 import type { ReactNode } from 'react';
+import { type AsChildProps } from '../Slot';
+import { HTMLStyledProps } from '@particles/styled-system/jsx';
+import { cx } from '@particles/styled-system/css';
+import { createContext } from '@particles/primitives';
+import { particles } from '../factory';
 
-export interface ButtonGroupProps extends StackProps {
+export interface ButtonGroupContext {
+  size?: ButtonGroupVariantProps['size'];
+}
+
+export const [ButtonGroupProvider, useButtonGroupContext] =
+  createContext<ButtonGroupContext>('ButtonGroup');
+
+const useButtonGroup = (props: ButtonGroupProps): ButtonGroupContext => {
+  return {};
+};
+
+export interface ButtonGroupProps extends HTMLStyledProps<'div'>, AsChildProps {
   children?: ReactNode;
+  size?: ButtonGroupVariantProps['size'];
 }
 
 export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
   (props, ref) => {
-    const { children, direction = 'horizontal', ...rest } = props;
+    const [variantProps, rest] = buttonGroup.splitVariantProps(props);
+    const classes = buttonGroup(variantProps);
+
+    const context = useButtonGroup(rest);
+
     return (
-      <Stack ref={ref} direction={direction} role="group" {...rest}>
-        {children}
-      </Stack>
+      <ButtonGroupProvider value={context}>
+        <particles.div
+          ref={ref}
+          role="group"
+          {...rest}
+          className={cx(classes, rest.className)}
+        >
+          {rest.children}
+        </particles.div>
+      </ButtonGroupProvider>
     );
   },
 );

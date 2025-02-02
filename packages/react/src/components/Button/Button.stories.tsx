@@ -40,7 +40,7 @@ const meta: Meta<typeof Button> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<typeof meta>;
 
 /** The default button styles */
 export const Base: Story = {};
@@ -125,12 +125,12 @@ export const Polymorphic: Story = {
 
 export const WithCSSProp: Story = {
   args: {
-    css: css.raw({
-      color: 'bg.danger',
-    }),
+    css: {
+      bg: 'bg.danger',
+    },
   },
 };
 
 export const WithSystemProp: Story = {
-  render: (args) => <Button {...args} color="bg.primary" />,
+  render: (args) => <Button {...args} bg="bg.danger" />,
 };

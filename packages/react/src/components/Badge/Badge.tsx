@@ -4,8 +4,8 @@ import { forwardRef } from 'react';
 import type { BadgeProps } from './Badge.types';
 
 const Root = forwardRef<HTMLDivElement, BadgeProps>(function Root(props, ref) {
-  const { children, className, palette, ...rest } = props;
-  const recipe = badge({ palette });
+  const { children, className, palette, variant, ...rest } = props;
+  const recipe = badge({ palette, variant });
   return (
     <div ref={ref} className={cx(recipe.root, className)} {...rest}>
       {children}

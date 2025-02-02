@@ -17,3 +17,4 @@ export * from './Table';
 export * from './Text';
 export * from './Textarea';
 export * from './Tiles';
+export * from './AppShell';

@@ -5,10 +5,22 @@ import { splitCssProps } from '@particles/styled-system/jsx';
 import { Slot } from '../Slot';
 import type { ButtonProps } from './Button.types';
 
+const getProps = (options: { props: any; recipe: any }) => {
+  const [variantProps, restProps] = options.recipe.splitVariantProps(
+    options.props,
+  );
+  const [cssProps, otherProps] = splitCssProps(restProps);
+  const { css: cssProp, ...styleProps } = cssProps;
+  return { otherProps, styleProps, cssProp, variantProps };
+};
+
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (props, ref) => {
-    const [variantProps, buttonProps] = button.splitVariantProps(props);
-    const [cssProps, otherProps] = splitCssProps(buttonProps);
+    const { otherProps, styleProps, cssProp, variantProps } = getProps({
+      props: props,
+      recipe: button,
+    });
+
     const { children, className, asChild, disabled, icon, iconEnd, ...rest } =
       otherProps;
 
@@ -19,8 +31,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <Component
         ref={ref}
-        className={cx(classes.root, css(cssProps), className)}
-        data-disabled={disabled || buttonProps.isDisabled}
+        className={cx(classes.root, css(cssProp, styleProps), className)}
+        data-disabled={disabled || variantProps.isDisabled}
         {...rest}
       >
         {icon}
