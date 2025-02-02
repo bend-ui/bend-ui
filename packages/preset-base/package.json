@@ -21,7 +21,7 @@
     "build": "tsup"
   },
   "dependencies": {
-    "@pandacss/dev": "^0.51.1",
-    "@pandacss/types": "^0.51.1"
+    "@pandacss/dev": "^0.52.0",
+    "@pandacss/types": "^0.52.0"
   }
 }

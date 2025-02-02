@@ -42,7 +42,7 @@
     "styled-system"
   ],
   "dependencies": {
-    "@pandacss/dev": "^0.51.1",
+    "@pandacss/dev": "^0.52.0",
     "@particles/preset": "workspace:*"
   },
   "devDependencies": {
