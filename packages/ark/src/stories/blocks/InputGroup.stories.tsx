@@ -1,6 +1,7 @@
 import { css, cx, sva } from '@particles/styled-system/css';
 import { visuallyHidden } from '@particles/styled-system/patterns';
 import { TbExclamationCircle } from 'react-icons/tb';
+import { Paragraph } from '@particles/react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta = { title: 'Blocks/InputGroup' };
@@ -170,6 +171,7 @@ export const WithError: StoryObj = {
         <div className={cx(classes.addon, classes.addonEnd)}>
           <TbExclamationCircle />
         </div>
+        <Paragraph>Input text</Paragraph>
       </div>
     );
   },

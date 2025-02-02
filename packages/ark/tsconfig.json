@@ -8,6 +8,7 @@
     "paths": {
       "~/*": ["src/*"],
       "@particles/preset": ["packages/preset/src/index.ts"],
+      "@particles/react": ["packages/react/src/index.ts"],
       "@particles/styled-system/*": ["packages/styled-system/dist/*"]
     }
   },

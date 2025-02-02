@@ -1,4 +1,3 @@
-import { dirname, join } from 'path';
 import type { StorybookConfig } from '@storybook/react-vite';
 
 // These options were migrated by @nx/storybook:convert-to-inferred from the project.json file.
@@ -20,16 +19,15 @@ const config: StorybookConfig = {
   ],
   staticDirs: ['../public'],
   addons: [
-    getAbsolutePath('@storybook/addon-essentials'),
-    getAbsolutePath('storybook-dark-mode'),
-    getAbsolutePath('@storybook/addon-themes'),
-    getAbsolutePath('@storybook/addon-a11y'),
-    getAbsolutePath('@chromatic-com/storybook'),
-    // eslint-disable-next-line storybook/no-uninstalled-addons
+    '@storybook/addon-essentials',
+    'storybook-dark-mode',
+    '@storybook/addon-themes',
+    '@storybook/addon-a11y',
+    '@chromatic-com/storybook',
     '@storybook/experimental-addon-test',
   ],
   framework: {
-    name: getAbsolutePath('@storybook/react-vite'),
+    name: '@storybook/react-vite',
     options: {
       builder: {
         viteConfigPath: './vite.config.ts',
@@ -44,7 +42,6 @@ const config: StorybookConfig = {
         include: [
           'storybook-dark-mode',
           '@storybook/theming',
-          '@particles/react',
           '@particles/storybook',
         ],
       },
@@ -75,7 +72,3 @@ const config: StorybookConfig = {
 };
 
 export default config;
-
-function getAbsolutePath(value: string): any {
-  return dirname(require.resolve(join(value, 'package.json')));
-}
