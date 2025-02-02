@@ -1,6 +1,9 @@
 // source.config.ts
-import { defineDocs } from 'fumadocs-mdx/config';
+import { defineDocs } from "fumadocs-mdx/config";
 var { docs, meta } = defineDocs({
-  dir: '/content/docs',
+  dir: "/content/docs"
 });
-export { docs, meta };
+export {
+  docs,
+  meta
+};
