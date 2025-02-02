@@ -1,3 +1,4 @@
+import { Theme } from '@pandacss/types';
 import { accordion } from './accordion';
 import { actionBar } from './action-bar';
 import { alert } from './alert';
@@ -32,15 +33,16 @@ import { tagsInput } from './tags-input';
 import { textarea } from './textarea';
 import { toast } from './toast';
 import { tooltip } from './tooltip';
+import { avatarRecipe } from './avatar';
+import { appShellRecipe } from './app-shell';
 
-export const slotRecipes = {
+export const slotRecipes: Theme['slotRecipes'] = {
   accordion,
   actionBar,
   alert,
   badge,
   breadcrumb,
   button,
-  buttonGroup,
   card,
   carousel,
   checkbox,
@@ -69,8 +71,11 @@ export const slotRecipes = {
   tooltip,
 };
 
-export const recipes = {
+export const recipes: Theme['recipes'] = {
+  appShell: appShellRecipe,
+  buttonGroup,
   combobox,
+  avatar: avatarRecipe,
 };
 
 export * from './accordion';

@@ -1,4 +1,5 @@
 import { defineSlotRecipe } from '@pandacss/dev';
+import { subtle } from 'crypto';
 
 export const badgeRecipe = defineSlotRecipe({
   className: 'Badge',
@@ -15,40 +16,52 @@ export const badgeRecipe = defineSlotRecipe({
     },
   },
   variants: {
+    variant: {
+      solid: {
+        root: { backgroundColor: 'colorPalette.fill' },
+      },
+      subtle: {
+        root: { backgroundColor: 'colorPalette.surface' },
+      },
+      outline: {
+        root: { borderColor: 'colorPalette.border' },
+      },
+    },
     palette: {
       default: {
         root: {
-          backgroundColor: 'bg.surface',
+          colorPalette: 'bg',
         },
       },
       primary: {
         root: {
-          backgroundColor: 'bg.primary',
+          colorPalette: 'primary',
         },
       },
       danger: {
         root: {
-          backgroundColor: 'bg.danger',
+          colorPalette: 'danger',
         },
       },
       warning: {
         root: {
-          backgroundColor: 'bg.warning',
+          colorPalette: 'warning',
         },
       },
       success: {
         root: {
-          backgroundColor: 'bg.success',
+          colorPalette: 'success',
         },
       },
       info: {
         root: {
-          backgroundColor: 'bg.info',
+          colorPalette: 'info',
         },
       },
     },
   },
   defaultVariants: {
+    variant: 'solid',
     palette: 'primary',
   },
 });

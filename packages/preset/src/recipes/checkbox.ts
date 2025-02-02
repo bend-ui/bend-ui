@@ -8,10 +8,10 @@ export const checkboxRecipe = defineSlotRecipe({
     root: {},
     label: {},
     control: {
-      h: '4',
-      w: '4',
       rounded: 'sm',
+      color: 'text',
       border: 'input',
+      bg: 'bg.surface',
       focusRingOffsetColor: 'red',
 
       _focusVisible: {
@@ -22,13 +22,19 @@ export const checkboxRecipe = defineSlotRecipe({
         focusRingOffsetWidth: '2',
       },
 
+      _hover: {
+        borderColor: 'border.hover',
+        bg: 'bg.surface.hover',
+      },
+
       _disabled: {
         opacity: '0.5',
       },
 
       _checked: {
-        bg: 'bg.primary',
-        color: 'text.on.primary',
+        color: 'primary.fg',
+        borderColor: 'primary.fill',
+        bg: 'primary.fill',
       },
     },
     indicator: {},

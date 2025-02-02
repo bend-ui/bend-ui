@@ -1,6 +1,10 @@
-import { defineSlotRecipe } from '@pandacss/dev';
+import { defineRecipe } from '@pandacss/dev';
 
-export const buttonGroup = defineSlotRecipe({
+export const buttonGroup = defineRecipe({
   className: 'ButtonGroup',
-  slots: ['root'],
+  base: {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: 'md',
+  },
 });

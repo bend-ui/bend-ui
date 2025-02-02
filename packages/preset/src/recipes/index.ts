@@ -4,6 +4,7 @@ import { appShellRecipe } from './app-shell';
 import { avatarRecipe } from './avatar';
 import { badgeRecipe } from './badge';
 import { breadcrumbsRecipe } from './breadcrumbs';
+import { buttonGroupRecipe } from './button-group';
 import { buttonRecipe } from './button';
 import { cardRecipe } from './card';
 import { carouselRecipe } from './carousel';
@@ -32,11 +33,11 @@ import { textareaRecipe } from './textarea';
 import { toastRecipe } from './toast';
 import { tooltipRecipe } from './tooltip';
 import { comboboxRecipe } from './combobox';
+import { Theme } from '@pandacss/types';
 
-export const slotRecipes = {
+export const slotRecipes: Theme['slotRecipes'] = {
   accordion: accordionRecipe,
   alert: alertRecipe,
-  appShell: appShellRecipe,
   badge: badgeRecipe,
   breadcrumbs: breadcrumbsRecipe,
   button: buttonRecipe,
@@ -66,8 +67,10 @@ export const slotRecipes = {
   tag: tagRecipe,
 };
 
-export const recipes = {
+export const recipes: Theme['recipes'] = {
+  appShell: appShellRecipe,
   avatar: avatarRecipe,
+  buttonGroup: buttonGroupRecipe,
   text: textRecipe,
   icon: iconRecipe,
   combobox: comboboxRecipe,

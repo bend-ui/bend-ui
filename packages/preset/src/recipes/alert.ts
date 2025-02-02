@@ -24,7 +24,7 @@ export const alertRecipe = defineSlotRecipe({
     palette: {
       default: {
         root: {
-          colorPalette: 'bg.surface',
+          colorPalette: 'bg',
         },
       },
       primary: {
@@ -56,12 +56,14 @@ export const alertRecipe = defineSlotRecipe({
     variant: {
       solid: {
         root: {
-          backgroundColor: 'colorPalette',
+          color: 'colorPalette.fg',
+          backgroundColor: 'colorPalette.fill',
         },
       },
       subtle: {
         root: {
-          backgroundColor: 'colorPalette/24',
+          color: 'colorPalette.text',
+          backgroundColor: 'colorPalette.surface',
         },
       },
       outline: {
