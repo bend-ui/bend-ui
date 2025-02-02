@@ -1,5 +1,4 @@
-import { within } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
+import { within, expect } from '@storybook/test';
 import { Accordion } from './Accordion';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -12,7 +11,7 @@ type Story = StoryObj<typeof Accordion>;
 
 export const Primary: Story = {
   render: (args) => (
-    <Accordion.Root>
+    <Accordion.Root {...args}>
       <Accordion.Item>
         <Accordion.Header>
           <Accordion.Trigger>

@@ -17,6 +17,10 @@ module.exports = [
     },
     rules: {
       ...panda.configs.recommended.rules,
+      'storybook/no-uninstalled-addons': [
+        'error',
+        { packageJsonLocation: '../../package.json' },
+      ],
     },
   },
   {
