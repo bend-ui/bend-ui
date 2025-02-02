@@ -1,0 +1,73 @@
+{
+  "name": "vite-ark",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/vite-ark/src",
+  "projectType": "application",
+  "tags": ["example", "app"],
+  "targets": {
+    "build": {
+      "executor": "@nx/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/vite-ark"
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "vite-ark:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "vite-ark:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "vite-ark:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "preview": {
+      "dependsOn": ["build"],
+      "executor": "@nx/vite:preview-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "vite-ark:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "vite-ark:build:development"
+        },
+        "production": {
+          "buildTarget": "vite-ark:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "../../coverage/apps/vite-ark"
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "vite-ark:build",
+        "spa": true
+      }
+    }
+  }
+}

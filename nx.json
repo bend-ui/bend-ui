@@ -49,15 +49,19 @@
       "cache": true,
       "dependsOn": ["^build"],
       "inputs": ["default", "^default"]
+    },
+    "build": {
+      "cache": true,
+      "dependsOn": ["^build"]
     }
   },
   "generators": {
     "@nx/react": {
       "application": {
+        "babel": true,
         "style": "none",
         "linter": "eslint",
-        "bundler": "vite",
-        "babel": true
+        "bundler": "vite"
       },
       "library": {
         "style": "none",

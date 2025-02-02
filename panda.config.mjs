@@ -24,6 +24,7 @@ export default defineConfig({
       __dirname,
       './apps/playground-panda-radix/components/**/*.{js,jsx,ts,tsx}',
     ),
+    path.resolve(__dirname, './apps/vite-ark/src/**/*.{js,jsx,ts,tsx}'),
   ],
 
   exclude: [],
