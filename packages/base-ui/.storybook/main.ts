@@ -19,8 +19,12 @@ const config: StorybookConfig = {
 
   addons: [
     '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
+    'storybook-dark-mode',
+    '@storybook/addon-themes',
+    '@storybook/addon-a11y',
     '@chromatic-com/storybook',
+    '@storybook/experimental-addon-test',
+    'storybook-addon-tag-badges',
   ],
 
   framework: {

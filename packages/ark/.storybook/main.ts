@@ -25,6 +25,7 @@ const config: StorybookConfig = {
     '@storybook/addon-a11y',
     '@chromatic-com/storybook',
     '@storybook/experimental-addon-test',
+    'storybook-addon-tag-badges',
   ],
   framework: {
     name: '@storybook/react-vite',
