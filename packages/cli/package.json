@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "type": "commonjs",
   "dependencies": {
-    "@clack/prompts": "0.9.1",
+    "@clack/prompts": "0.10.0",
     "boxen": "8.0.1",
     "commander": "^13.1.0"
   }

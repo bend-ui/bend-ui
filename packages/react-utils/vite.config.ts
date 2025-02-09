@@ -41,7 +41,7 @@ export default defineConfig({
 
   test: {
     cache: {
-      dir: '../../node_modules/.vitest',
+      dir: '../../node_modules/.vitest/packages/react-utils',
     },
     globals: true,
     environment: 'jsdom',

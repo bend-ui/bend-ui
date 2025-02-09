@@ -11,7 +11,7 @@ export default defineConfig({
 
   test: {
     cache: {
-      dir: '../../node_modules/.vitest',
+      dir: '../../node_modules/.vitest/packages/aria',
     },
     globals: true,
     environment: 'jsdom',

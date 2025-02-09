@@ -2,16 +2,15 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tsconfigPaths from 'vite-tsconfig-paths';
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 
 export default defineConfig({
   cacheDir: '../../node_modules/.vite/packages/radix',
 
-  plugins: [react(), tsconfigPaths(), nxViteTsPaths()],
+  plugins: [react(), tsconfigPaths()],
 
   test: {
     cache: {
-      dir: '../../node_modules/.vitest',
+      dir: '../../node_modules/.vitest/packages/radix',
     },
     globals: true,
     environment: 'jsdom',

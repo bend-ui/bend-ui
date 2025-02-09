@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tsconfigPaths from 'vite-tsconfig-paths';
@@ -10,7 +11,7 @@ export default defineConfig({
 
   test: {
     cache: {
-      dir: '../../node_modules/.vitest',
+      dir: '../../node_modules/.vitest/packages/base-ui',
     },
     globals: true,
     environment: 'jsdom',

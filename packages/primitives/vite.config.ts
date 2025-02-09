@@ -10,7 +10,7 @@ export default defineConfig({
 
   test: {
     cache: {
-      dir: '../../node_modules/.vitest',
+      dir: '../../node_modules/.vitest/packages/primitives',
     },
     globals: true,
     environment: 'jsdom',
