@@ -21,8 +21,8 @@
     "build": "tsup"
   },
   "dependencies": {
-    "@pandacss/dev": "^0.52.0",
-    "@pandacss/types": "^0.52.0",
+    "@pandacss/dev": "^0.53.0",
+    "@pandacss/types": "^0.53.0",
     "@particles/preset-base": "workspace:*",
     "tslib": "^2.5.3"
   }

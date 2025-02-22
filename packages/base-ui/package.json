@@ -16,8 +16,8 @@
     "@particles/styled-system": "workspace:*"
   },
   "devDependencies": {
-    "@pandacss/dev": "^0.52.0",
+    "@pandacss/dev": "^0.53.0",
     "@particles/storybook": "workspace:*",
-    "postcss": "8.5.1"
+    "postcss": "8.5.3"
   }
 }
