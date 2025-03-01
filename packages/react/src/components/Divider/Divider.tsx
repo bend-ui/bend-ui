@@ -1,26 +1,10 @@
-import { Divider } from '@particles/styled-system/jsx';
+import { forwardRef } from 'react';
+import { particles, HTMLParticlesProps } from '../factory';
 
-// export interface DividerProps extends ComponentPropsWithoutRef<'span'> {
-//   children?: ReactNode;
-//   orientation?: DividerVariantProps['orientation'];
-// }
+export type DividerProps = HTMLParticlesProps<'div'>
 
-// const Root = forwardRef<'span', DividerProps>((props, ref) => {
-//   const { children, className, orientation, ...rest } = props;
-//   const withContent = Children.count(children) > 0;
-//   const recipe = divider({ withContent, orientation });
-//   return (
-//     <span
-//       ref={ref}
-//       className={cx(recipe.root, className)}
-//       role="separator"
-//       {...rest}
-//     >
-//       {withContent && <span className={recipe.content}>{children}</span>}
-//     </span>
-//   );
-// });
-
-// export const Divider = Object.assign(Root, {});
+const Divider = forwardRef<HTMLDivElement, DividerProps>((props, ref) => {
+  return <particles.div ref={ref} {...props} />;
+});
 
 export { Divider };
