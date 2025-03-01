@@ -1,10 +1,14 @@
-'use client';
-import { Collapsible as ArkCollapsible } from '@ark-ui/react';
+import { Collapsible as CollapsiblePrimitive } from '@ark-ui/react';
 
-export default Object.assign(ArkCollapsible.Root, {
-  Root: ArkCollapsible.Root,
-  Content: ArkCollapsible.Content,
-  Trigger: ArkCollapsible.Trigger,
+const Component = () => (
+  <CollapsiblePrimitive.Root>
+    <CollapsiblePrimitive.Trigger>Toggle</CollapsiblePrimitive.Trigger>
+    <CollapsiblePrimitive.Content>Content</CollapsiblePrimitive.Content>
+  </CollapsiblePrimitive.Root>
+);
+
+export const Collapsible = Object.assign(Component, {
+  Root: CollapsiblePrimitive.Root,
+  Trigger: CollapsiblePrimitive.Trigger,
+  Content: CollapsiblePrimitive.Content,
 });
-
-export { CollapsibleContext as Context } from '@ark-ui/react';

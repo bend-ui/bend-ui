@@ -8,8 +8,8 @@ import type { Assign } from '@ark-ui/react';
 
 const { withProvider, withContext } = createStyleContext(carousel);
 
-export type RootProviderProps = ComponentProps<typeof RootProvider>;
-export const RootProvider = withProvider<
+export type CarouselRootProviderProps = ComponentProps<typeof RootProvider>;
+const RootProvider = withProvider<
   HTMLDivElement,
   Assign<
     Assign<HTMLStyledProps<'div'>, CarouselPrimitive.RootProviderBaseProps>,
@@ -17,8 +17,8 @@ export const RootProvider = withProvider<
   >
 >(CarouselPrimitive.RootProvider, 'root');
 
-export type RootProps = ComponentProps<typeof Root>;
-export const Root = withProvider<
+export type CarouselRootProps = ComponentProps<typeof Root>;
+const Root = withProvider<
   HTMLDivElement,
   Assign<
     Assign<HTMLStyledProps<'div'>, CarouselPrimitive.RootBaseProps>,
@@ -26,37 +26,37 @@ export const Root = withProvider<
   >
 >(CarouselPrimitive.Root, 'root');
 
-export const Control = withContext<
+const Control = withContext<
   HTMLDivElement,
   Assign<HTMLStyledProps<'div'>, CarouselPrimitive.ControlBaseProps>
 >(CarouselPrimitive.Control, 'control');
 
-export const IndicatorGroup = withContext<
+const IndicatorGroup = withContext<
   HTMLDivElement,
   Assign<HTMLStyledProps<'div'>, CarouselPrimitive.IndicatorGroupBaseProps>
 >(CarouselPrimitive.IndicatorGroup, 'indicatorGroup');
 
-export const Indicator = withContext<
+const Indicator = withContext<
   HTMLButtonElement,
   Assign<HTMLStyledProps<'button'>, CarouselPrimitive.IndicatorBaseProps>
 >(CarouselPrimitive.Indicator, 'indicator');
 
-export const ItemGroup = withContext<
+const ItemGroup = withContext<
   HTMLDivElement,
   Assign<HTMLStyledProps<'div'>, CarouselPrimitive.ItemGroupBaseProps>
 >(CarouselPrimitive.ItemGroup, 'itemGroup');
 
-export const Item = withContext<
+const Item = withContext<
   HTMLDivElement,
   Assign<HTMLStyledProps<'div'>, CarouselPrimitive.ItemBaseProps>
 >(CarouselPrimitive.Item, 'item');
 
-export const NextTrigger = withContext<
+const NextTrigger = withContext<
   HTMLButtonElement,
   Assign<HTMLStyledProps<'button'>, CarouselPrimitive.NextTriggerBaseProps>
 >(CarouselPrimitive.NextTrigger, 'nextTrigger');
 
-export const PrevTrigger = withContext<
+const PrevTrigger = withContext<
   HTMLButtonElement,
   Assign<HTMLStyledProps<'button'>, CarouselPrimitive.PrevTriggerBaseProps>
 >(CarouselPrimitive.PrevTrigger, 'prevTrigger');
