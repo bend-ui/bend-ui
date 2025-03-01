@@ -1,0 +1,9 @@
+---
+description: Best practices for React development
+globs: **/*.{ts,tsx,js,jsx}
+alwaysApply: false
+---
+- Use functional components with hooks instead of class components.
+- Implement proper state management using Context API or external libraries like Redux.
+- Utilize memoization techniques (useMemo, useCallback) to optimize performance.
+- Follow React's one-way data flow principle for predictable state updates.

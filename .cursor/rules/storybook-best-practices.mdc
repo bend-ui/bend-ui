@@ -1,0 +1,9 @@
+---
+description: Best practices for using Storybook in component development
+globs: **/*.stories.{ts,tsx,js,jsx}
+alwaysApply: false
+---
+- Create stories for all components to showcase different states and props.
+- Use Storybook addons like a11y for accessibility testing and controls for interactive props.
+- Implement chromatic integration for visual regression testing.
+- Organize stories in a hierarchical structure that mirrors your component library.

@@ -1,0 +1,9 @@
+---
+description: Best practices for testing with Vitest
+globs: **/*.spec.{ts,js}
+alwaysApply: false
+---
+- Use Vitest's concurrent test running for faster test execution.
+- Implement Vitest's mocking capabilities for isolating unit tests.
+- Leverage Vitest's snapshot testing for UI components.
+- Utilize Vitest's coverage reporting to ensure adequate test coverage.

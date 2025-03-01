@@ -1,0 +1,9 @@
+---
+description: Best practices for using Nx in monorepo management
+globs: **/*.{ts,js}
+alwaysApply: false
+---
+- Use Nx's affected commands to optimize CI/CD pipelines.
+- Implement Nx's caching system to speed up builds and tests.
+- Utilize Nx's code generation capabilities for consistent project structure.
+- Regularly run `nx migrate` to keep your Nx setup up-to-date with best practices.

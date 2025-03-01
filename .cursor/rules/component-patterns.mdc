@@ -1,0 +1,29 @@
+---
+description: Rules for creating components
+globs: *.tsx
+alwaysApply: false
+---
+## Overall rules
+Components are using React and Typescript. Styles are create with PandaCSS in recipes.
+
+Logic should be separated in a component hook. e.g. Checkbox => useCheckbox
+
+Components must follow a11y guidelines and best practices.
+
+Components should follow the compound component pattern. Each DOM element should be in its own component for better flexibility.
+
+## Structure
+
+A component should have a component file, a story file, a test file and a types file. A barrel file is used to export everything.
+
+- /ComponentName
+  - ComponentName.tsx
+  - ComponentName.stories.tsx
+  - ComponentName.spec.tsx
+  - types.ts
+  - index.ts 
+
+When importing from an headless component library (Ark UI, Base UI, Radix UI, etc...) always suffix the imported component with `Primitive`.
+e.g. `import { Avatar as AvatarPrimitive } from '@ark-ui/react';`
+
+
