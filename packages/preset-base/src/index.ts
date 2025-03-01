@@ -16,16 +16,7 @@ export default definePreset({
       slotRecipes,
     },
   },
-  conditions: {
-    extend: {
-      current: '&:is([aria-current], [data-current])',
-      hidden: '&:is([hidden])',
-      hover: [
-        '@media (hover: hover) and (pointer: fine)',
-        '&:is(:hover, [data-hover])',
-      ],
-    },
-  },
+  conditions: {},
 });
 
 export * from './recipes';

@@ -27,7 +27,7 @@ import { skeleton } from './skeleton';
 import { slider } from './slider';
 import { switchRecipe } from './switch';
 import { table } from './table';
-import { tabs } from './tabs';
+import { tabsRecipe } from './tabs';
 import { tag } from './tag';
 import { tagsInput } from './tags-input';
 import { textarea } from './textarea';
@@ -63,7 +63,6 @@ export const slotRecipes: Theme['slotRecipes'] = {
   slider,
   switchRecipe,
   table,
-  tabs,
   tag,
   tagsInput,
   textarea,
@@ -76,18 +75,23 @@ export const recipes: Theme['recipes'] = {
   buttonGroup,
   combobox,
   avatar: avatarRecipe,
+  tabs: tabsRecipe,
 };
 
 export * from './accordion';
 export * from './action-bar';
 export * from './alert';
+export * from './avatar';
 export * from './badge';
 export * from './breadcrumb';
-export * from './button';
 export * from './button-group';
+export * from './button';
 export * from './card';
 export * from './carousel';
 export * from './checkbox';
+export * from './collapsible';
+export * from './combobox';
+export * from './drawer';
 export * from './radio-group';
 export * from './rating';
 export * from './segmented-control';

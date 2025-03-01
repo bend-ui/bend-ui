@@ -60,7 +60,6 @@ export const slotRecipes: Theme['slotRecipes'] = {
   select: selectRecipe,
   switchRecipe: switchRecipe,
   table: tableRecipe,
-  tabs: tabsRecipe,
   textarea: textareaRecipe,
   toast: toastRecipe,
   tooltip: tooltipRecipe,
@@ -74,4 +73,5 @@ export const recipes: Theme['recipes'] = {
   text: textRecipe,
   icon: iconRecipe,
   combobox: comboboxRecipe,
+  tabs: tabsRecipe,
 };

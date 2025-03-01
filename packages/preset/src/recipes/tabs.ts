@@ -1,15 +1,19 @@
-import { defineSlotRecipe } from '@pandacss/dev';
+import { defineRecipe } from '@pandacss/dev';
+import { tabsParts } from '@particles/preset-base';
 
-export const tabsRecipe = defineSlotRecipe({
-  description: '',
+const parts = tabsParts;
+
+export const tabsRecipe = defineRecipe({
   className: 'Tabs',
-  slots: ['root', 'tablist', 'tab', 'pane', 'indicator'],
-  base: {
-    tablist: {
+  base: parts({
+    root: {
+      gap: 'md',
+    },
+    list: {
       display: 'flex',
       borderBottom: 'divider',
     },
-    tab: {
+    trigger: {
       position: 'relative',
       padding: 'md',
       _hover: {
@@ -27,8 +31,8 @@ export const tabsRecipe = defineSlotRecipe({
         },
       },
     },
-    pane: {
+    content: {
       pt: 'lg',
     },
-  },
+  }),
 });

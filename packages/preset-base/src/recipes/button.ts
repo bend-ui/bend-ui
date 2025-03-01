@@ -5,7 +5,7 @@ export const button = defineSlotRecipe({
   slots: ['root', 'icon', 'label'],
   base: {
     root: {
-      display: 'inline-flex',
+      display: 'flex',
       placeItems: 'center',
       placeContent: 'center',
       maxWidth: 'max-content',
