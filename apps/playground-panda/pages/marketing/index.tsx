@@ -25,7 +25,7 @@ export default function Marketing() {
   const isDark = theme === 'dark';
   return (
     <>
-      <header className={css({ px: 'lg', py: 'lg', bgColor: 'bg.surface' })}>
+      <header className={css({ px: 'lg', py: 'lg', bgColor: 'surface' })}>
         <Level>
           <div>Acme</div>
           <nav>

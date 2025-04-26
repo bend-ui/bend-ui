@@ -33,6 +33,12 @@ export function Index() {
               <Paragraph variant="body">A dashboard with widgets</Paragraph>
             </Card>
           </Link>
+          <Link href="/dental-app">
+            <Card>
+              <Heading variant="title">Dental App</Heading>
+              <Paragraph variant="body">A dental app with widgets</Paragraph>
+            </Card>
+          </Link>
           <Link href="/marketing">
             <Card>
               <Heading variant="title">Marketing website</Heading>

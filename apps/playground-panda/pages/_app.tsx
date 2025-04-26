@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { ThemeProvider } from 'next-themes';
 import '@fontsource-variable/inter';
-import { Button, Modal } from '@particles/ark';
+import { Button, Dialog } from '@particles/ark';
 
 import type { AppProps } from 'next/app';
 import './styles.css';
@@ -29,15 +29,15 @@ function CustomApp({ Component, pageProps }: AppProps) {
         <title>Welcome to playground-panda!</title>
       </Head>
       <main>
-        <Modal.Root open={open}>
-          <Modal.Content>
-            <Modal.Title>Hello</Modal.Title>
-            <Modal.Description>Hello</Modal.Description>
-            <Modal.Content>
+        <Dialog.Root open={open}>
+          <Dialog.Content>
+            <Dialog.Title>Hello</Dialog.Title>
+            <Dialog.Description>Hello</Dialog.Description>
+            <Dialog.Content>
               <Button onClick={() => setOpen(false)}>Hello</Button>
-            </Modal.Content>
-          </Modal.Content>
-        </Modal.Root>
+            </Dialog.Content>
+          </Dialog.Content>
+        </Dialog.Root>
         <Component {...pageProps} />
       </main>
     </ThemeProvider>
