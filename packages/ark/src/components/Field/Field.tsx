@@ -1,75 +1,56 @@
 'use client';
-import { Field } from '@ark-ui/react';
+import { Field as ArkField } from '@ark-ui/react';
+import {
+  Input,
+  Textarea,
+  type InputProps,
+  type TextareaProps,
+} from '@particles/react';
 import {
   formField,
   type FormFieldVariantProps,
 } from '@particles/styled-system/recipes';
-import { Input, Textarea } from '@particles/react';
 import { forwardRef } from 'react';
-import type {
-  ComponentProps,
-  HTMLStyledProps,
-} from '@particles/styled-system/types';
-import { createStyleContext } from '../../utils/create-style-context';
-import type { Assign } from '@ark-ui/react';
 
-const { withProvider, withContext } = createStyleContext(formField);
+export type FieldRootProps = ArkField.RootProps & FormFieldVariantProps;
 
-export type RootProviderProps = ComponentProps<typeof RootProvider>;
-const RootProvider = withProvider<
-  HTMLDivElement,
-  Assign<
-    Assign<HTMLStyledProps<'div'>, Field.RootProviderBaseProps>,
-    FormFieldVariantProps
-  >
->(Field.RootProvider, 'root');
+const FieldRoot = forwardRef<HTMLDivElement, FieldRootProps>((props, ref) => {
+  const [variantProps, rest] = formField.splitVariantProps(props);
+  const classes = formField(variantProps);
+  return <ArkField.Root ref={ref} {...rest} className={classes} />;
+});
 
-export type RootProps = ComponentProps<typeof Root>;
-const Root = withProvider<
-  HTMLDivElement,
-  Assign<
-    Assign<HTMLStyledProps<'div'>, Field.RootBaseProps>,
-    FormFieldVariantProps
-  >
->(Field.Root, 'root');
+const FieldLabel = ArkField.Label;
 
-const ErrorText = withContext<
-  HTMLSpanElement,
-  Assign<HTMLStyledProps<'span'>, Field.ErrorTextBaseProps>
->(Field.ErrorText, 'error');
+type FieldInputProps = ArkField.InputProps & InputProps;
 
-const HelperText = withContext<
-  HTMLSpanElement,
-  Assign<HTMLStyledProps<'span'>, Field.HelperTextBaseProps>
->(Field.HelperText, 'helper');
-
-const Label = withContext<
-  HTMLLabelElement,
-  Assign<HTMLStyledProps<'label'>, Field.LabelBaseProps>
->(Field.Label, 'label');
-
-export type FieldInputProps = ComponentProps<typeof Input>;
 const FieldInput = forwardRef<HTMLInputElement, FieldInputProps>(
-  (props, ref) => (
-    <Field.Input ref={ref} {...props} asChild>
-      <Input />
-    </Field.Input>
-  ),
+  (props, ref) => {
+    return (
+      <ArkField.Input ref={ref} {...props} asChild>
+        <Input />
+      </ArkField.Input>
+    );
+  },
 );
-FieldInput.displayName = 'Field.Input';
 
-export type FieldTextareaProps = ComponentProps<typeof Textarea>;
+type FieldTextareaProps = ArkField.TextareaProps & TextareaProps;
+
 const FieldTextarea = forwardRef<HTMLTextAreaElement, FieldTextareaProps>(
-  (props, ref) => (
-    <Field.Textarea asChild {...props} ref={ref}>
-      <Textarea />
-    </Field.Textarea>
-  ),
+  (props, ref) => {
+    return (
+      <ArkField.Textarea ref={ref} {...props} asChild>
+        <Textarea />
+      </ArkField.Textarea>
+    );
+  },
 );
-FieldTextarea.displayName = 'Field.Textarea';
-export { FieldContext as Context } from '@ark-ui/react';
 
-export interface FieldProps extends RootProps {
+const FieldHelperText = ArkField.HelperText;
+
+const FieldErrorText = ArkField.ErrorText;
+
+export interface FieldProps extends FieldRootProps {
   label?: string;
   helperText?: string;
   errorText?: string;
@@ -78,22 +59,22 @@ export interface FieldProps extends RootProps {
 const Component = forwardRef<HTMLDivElement, FieldProps>((props, ref) => {
   const { children, label, helperText, errorText, ...rest } = props;
   return (
-    <Root ref={ref} {...rest}>
-      {label && <Label>{label}</Label>}
+    <FieldRoot ref={ref} {...rest}>
+      {label && <FieldLabel>{label}</FieldLabel>}
       {children}
-      {helperText && <HelperText>{helperText}</HelperText>}
-      {errorText && <ErrorText>{errorText}</ErrorText>}
-    </Root>
+      {helperText && <FieldHelperText>{helperText}</FieldHelperText>}
+      {errorText && <FieldErrorText>{errorText}</FieldErrorText>}
+    </FieldRoot>
   );
 });
 
 Component.displayName = 'Field';
 
-export default Object.assign(Component, {
-  Root,
-  Label,
+export const Field = Object.assign(Component, {
+  Root: FieldRoot,
+  Label: FieldLabel,
   Input: FieldInput,
   Textarea: FieldTextarea,
-  HelperText,
-  ErrorText,
+  HelperText: FieldHelperText,
+  ErrorText: FieldErrorText,
 });

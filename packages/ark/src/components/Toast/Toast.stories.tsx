@@ -5,7 +5,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta = {
   title: 'Components/Overlays/Toast',
   component: Toast,
-  tags: ['autodocs'],
+
   parameters: {
     layout: 'centered',
   },

@@ -1,7 +1,7 @@
 import { defineParts, defineRecipe } from '@pandacss/dev';
 
-export const parts = defineParts({
-  root: { selector: '&[data-part="root"]' },
+const parts = defineParts({
+  root: { selector: '&' },
   image: { selector: '& [data-part="image"]' },
   fallback: { selector: '& [data-part="fallback"]' },
 });
@@ -11,9 +11,13 @@ export const avatarRecipe = defineRecipe({
   base: parts({
     root: {
       rounded: 'full',
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      overflow: 'hidden',
     },
     fallback: {
-      backgroundColor: 'bg.surface',
+      backgroundColor: 'surface',
     },
   }),
   variants: {

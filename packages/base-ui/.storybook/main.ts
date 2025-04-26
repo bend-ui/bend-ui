@@ -23,7 +23,7 @@ const config: StorybookConfig = {
     '@storybook/addon-themes',
     '@storybook/addon-a11y',
     '@chromatic-com/storybook',
-    '@storybook/experimental-addon-test',
+    // '@storybook/experimental-addon-test',
     'storybook-addon-tag-badges',
   ],
 

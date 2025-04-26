@@ -1,84 +1,119 @@
-import { Dialog, Portal } from '@ark-ui/react';
-import { drawer } from '@particles/styled-system/recipes';
+import { Dialog as ArkDialog, Portal as ArkPortal } from '@ark-ui/react';
+import { backdrop, drawer } from '@particles/styled-system/recipes';
 import { DismissButton } from '@particles/react';
-import { forwardRef } from 'react';
-import type { DrawerVariantProps } from '@particles/styled-system/recipes';
-import { createStyleContext } from '../../utils';
+import { ElementRef, forwardRef } from 'react';
+import type {
+  BackdropVariantProps,
+  DrawerVariantProps,
+} from '@particles/styled-system/recipes';
 import { Button } from '..';
-import type { DrawerProps } from './Drawer.types';
+import { HTMLParticlesProps, particles } from '@particles/react';
 
-const { withRootProvider, withContext } = createStyleContext(drawer);
+type DrawerRootProps = ArkDialog.RootProps;
 
-const Root = withRootProvider<Dialog.RootProps & DrawerVariantProps>(
-  Dialog.Root,
+const DrawerRoot = ArkDialog.Root;
+
+const DrawerTrigger = ArkDialog.Trigger;
+DrawerTrigger.displayName = 'DrawerTrigger';
+
+type DrawerCloseTriggerProps = ArkDialog.CloseTriggerProps;
+
+const DrawerCloseTrigger = forwardRef<
+  ElementRef<typeof ArkDialog.CloseTrigger>,
+  DrawerCloseTriggerProps
+>((props, ref) => {
+  return (
+    <ArkDialog.CloseTrigger ref={ref} {...props} asChild>
+      <DismissButton variant="outline" size="sm" />
+    </ArkDialog.CloseTrigger>
+  );
+});
+DrawerCloseTrigger.displayName = 'DrawerCloseTrigger';
+
+const DrawerPortal = ArkPortal;
+
+export type DrawerBackdropProps = ArkDialog.BackdropProps &
+  BackdropVariantProps;
+
+const DrawerBackdrop = forwardRef<HTMLDivElement, DrawerBackdropProps>(
+  (props, ref) => {
+    const [variantProps, rest] = backdrop.splitVariantProps(props);
+    const classes = backdrop(variantProps);
+    return <ArkDialog.Backdrop ref={ref} className={classes} {...rest} />;
+  },
 );
+DrawerBackdrop.displayName = 'DrawerBackdrop';
 
-const Trigger = withContext<HTMLButtonElement, Dialog.TriggerProps>(
-  Dialog.Trigger,
-  'trigger',
+export type DrawerPositionerProps = ArkDialog.PositionerProps &
+  DrawerVariantProps;
+
+const DrawerPositioner = forwardRef<HTMLDivElement, DrawerPositionerProps>(
+  (props, ref) => {
+    const [variantProps, rest] = drawer.splitVariantProps(props);
+    const classes = drawer(variantProps);
+    return <ArkDialog.Positioner ref={ref} className={classes} {...rest} />;
+  },
 );
+DrawerPositioner.displayName = 'DrawerPositioner';
 
-const Backdrop = withContext<HTMLDivElement, Dialog.BackdropProps>(
-  Dialog.Backdrop,
-  'overlay',
+const DrawerContent = ArkDialog.Content;
+DrawerContent.displayName = 'DrawerContent';
+
+const DrawerTitle = ArkDialog.Title;
+DrawerTitle.displayName = 'DrawerTitle';
+
+const DrawerDescription = ArkDialog.Description;
+DrawerDescription.displayName = 'DrawerDescription';
+
+export type DrawerFooterProps = HTMLParticlesProps<'div'>;
+
+const DrawerFooter = forwardRef<HTMLDivElement, DrawerFooterProps>(
+  (props, ref) => {
+    return <particles.div {...props} data-part="footer" ref={ref} />;
+  },
 );
+DrawerFooter.displayName = 'DrawerFooter';
 
-const Positioner = Dialog.Positioner;
-
-const Content = withContext<HTMLDivElement, Dialog.ContentProps>(
-  Dialog.Content,
-  'content',
-);
-
-const Title = withContext<HTMLDivElement, Dialog.TitleProps>(
-  Dialog.Title,
-  'title',
-);
-
-const Description = withContext<HTMLParagraphElement, Dialog.DescriptionProps>(
-  Dialog.Description,
-  'description',
-);
-
-const CloseTrigger = withContext<HTMLButtonElement, Dialog.CloseTriggerProps>(
-  Dialog.CloseTrigger,
-  'close',
-);
+export interface DrawerProps extends DrawerRootProps, DrawerVariantProps {
+  trigger: React.ReactNode;
+  title?: string;
+  description?: string;
+}
 
 const Component = forwardRef<HTMLDivElement, DrawerProps>((props, ref) => {
-  const { children, title, description } = props;
+  const { children, title, description, trigger, placement, ...rest } = props;
   return (
-    <Root {...props}>
-      <Trigger asChild>
-        <Button>Trigger</Button>
-      </Trigger>
-      <Portal>
-        <Backdrop />
-        <Positioner>
-          <Content ref={ref}>
-            {!!title && <Title>{title}</Title>}
-            {!!description && <Description>{description}</Description>}
+    <DrawerRoot {...rest}>
+      <DrawerTrigger asChild>
+        <Button>{trigger}</Button>
+      </DrawerTrigger>
+      <DrawerPortal>
+        <DrawerBackdrop />
+        <DrawerPositioner placement={placement}>
+          <DrawerContent ref={ref}>
+            {!!title && <DrawerTitle>{title}</DrawerTitle>}
+            {!!description && (
+              <DrawerDescription>{description}</DrawerDescription>
+            )}
             {children}
-            <CloseTrigger asChild>
-              <DismissButton />
-            </CloseTrigger>
-          </Content>
-        </Positioner>
-      </Portal>
-    </Root>
+            <DrawerCloseTrigger />
+          </DrawerContent>
+        </DrawerPositioner>
+      </DrawerPortal>
+    </DrawerRoot>
   );
 });
 
 Component.displayName = 'Drawer';
 
 export const Drawer = Object.assign(Component, {
-  Root,
-  Trigger,
-  Portal,
-  Backdrop,
-  Positioner,
-  Content,
-  Title,
-  Description,
-  CloseTrigger,
+  Root: DrawerRoot,
+  Trigger: DrawerTrigger,
+  Portal: DrawerPortal,
+  Backdrop: DrawerBackdrop,
+  Positioner: DrawerPositioner,
+  Content: DrawerContent,
+  Title: DrawerTitle,
+  Description: DrawerDescription,
+  CloseTrigger: DrawerCloseTrigger,
 });

@@ -1,18 +1,30 @@
-import {
-  ArrowRightCircleIcon,
-  CheckIcon,
-  LockIcon,
-  UserIcon,
-} from 'lucide-react';
-import { Box, Flex } from '@particles/styled-system/jsx';
-import { Button } from '../Button';
-import { Input } from './';
+import { ArrowRightCircleIcon, CheckIcon, UserIcon } from 'lucide-react';
+import { Button, Box } from '../';
+import { Input, SearchInput, PasswordInput } from './';
 import type { Meta, StoryObj } from '@storybook/react';
+import { input } from '@particles/styled-system/recipes';
 
-const meta = {
+const meta: Meta<typeof Input> = {
   title: 'Components/Forms/Input',
   component: Input,
-} satisfies Meta<typeof Input>;
+  argTypes: {
+    size: {
+      control: {
+        type: 'select',
+      },
+      options: input.variantMap.size,
+    },
+    variant: {
+      control: {
+        type: 'select',
+      },
+      options: input.variantMap.variant,
+    },
+  },
+  args: {
+    placeholder: 'Enter your email',
+  },
+};
 
 export default meta;
 
@@ -31,61 +43,80 @@ export const WithIconEnd: Story = {
 /** By default the addons don't have spacing, you'll have to add it yourself. */
 export const WithAddonStart: Story = {
   args: {
-    addonStart: (
-      <Box color="text.subtle" pl="3" pointerEvents="none">
-        https://
-      </Box>
-    ),
+    addonStart: <Box color="text.secondary">https://</Box>,
   },
 };
 
 export const WithAddonEnd: Story = {
   args: {
     addonEnd: (
-      <Box pl="2" pr="1.5">
-        <Button size="sm">Search</Button>
-      </Box>
+      <Button size="sm" marginX="-2">
+        Search
+      </Button>
     ),
   },
 };
 
 export const WithAddons: Story = {
   args: {
-    addonStart: (
-      <Box color="text.subtle" pl="3">
-        https://
-      </Box>
-    ),
-    addonEnd: (
-      <Box pl="2" pr="1.5">
-        <Button size="sm">Go</Button>
-      </Box>
+    addonStart: <Box color="text.secondary">https://</Box>,
+    addonEnd: <Button size="sm">Go</Button>,
+  },
+};
+
+export const WithElementStart: Story = {
+  args: {
+    elementStart: <Box color="text.secondary">https://</Box>,
+  },
+};
+
+export const WithElementEnd: Story = {
+  args: {
+    elementEnd: (
+      <Button size="sm" marginInline="-2">
+        Search
+      </Button>
     ),
   },
 };
 
-/**
- * > Combination of icon and addon is not working, if needed place the icon in the addonStart.
- */
 export const WithIconAndAddon: Story = {
   args: {
-    // icon: <LuArrowRightCircle />,
-    // iconEnd: <LuCheck />,
-    addonStart: (
-      <Flex alignItems="center" color="text.subtle" gap="2" pl="3">
-        <ArrowRightCircleIcon />
-        https://
-      </Flex>
-    ),
-    addonEnd: (
-      <Flex alignItems="center" gap="2" pl="2" pr="1.5">
-        <CheckIcon />
-        <Button size="sm">Go</Button>
-      </Flex>
-    ),
+    icon: <ArrowRightCircleIcon />,
+    iconEnd: <CheckIcon />,
+    addonStart: <Box color="text.secondary">https://</Box>,
+    addonEnd: <Button size="sm">Go</Button>,
+  },
+};
+
+export const WithIconAndElement: Story = {
+  args: {
+    icon: <ArrowRightCircleIcon />,
+    elementStart: <Box color="text.secondary">https://</Box>,
+  },
+};
+
+export const WithIconAndElementEnd: Story = {
+  args: {
+    icon: <ArrowRightCircleIcon />,
+    elementEnd: <Box color="text.secondary">https://</Box>,
+  },
+};
+
+export const WithIconAndAddonAndElement: Story = {
+  args: {
+    icon: <ArrowRightCircleIcon />,
+    iconEnd: <CheckIcon />,
+    addonStart: <Box color="text.secondary">https://</Box>,
+    addonEnd: <Button size="sm">Go</Button>,
+    elementStart: <Box color="text.secondary">https://</Box>,
   },
 };
 
 export const Password: Story = {
-  args: { iconEnd: <LockIcon />, type: 'password' },
+  render: () => <PasswordInput />,
+};
+
+export const Search: Story = {
+  render: () => <SearchInput />,
 };

@@ -26,4 +26,4 @@ const Component = forwardRef<HTMLTextAreaElement, TextareaProps>(
 
 Component.displayName = 'Textarea';
 
-export default Component;
+export const Textarea = Object.assign(Component, {});

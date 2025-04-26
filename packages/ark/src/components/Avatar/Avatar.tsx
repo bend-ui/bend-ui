@@ -1,43 +1,40 @@
-import { Avatar as AvatarPrimitive } from '@ark-ui/react';
+import { Avatar as ArkAvatar } from '@ark-ui/react';
 import {
   avatar,
   type AvatarVariantProps,
 } from '@particles/styled-system/recipes';
-import type { HTMLStyledProps } from '@particles/styled-system/types';
-import { withRecipe } from '../../utils';
-import type { AvatarProps } from './Avatar.types';
-import type { Assign } from '@ark-ui/react';
+import { forwardRef } from 'react';
 
-export const AvatarRoot = withRecipe<
-  Assign<
-    Assign<HTMLStyledProps<'div'>, AvatarPrimitive.RootBaseProps>,
-    AvatarVariantProps
-  >
->(AvatarPrimitive.Root, avatar);
+export type AvatarRootProps = ArkAvatar.RootProps & AvatarVariantProps;
 
-export const AvatarRootProvider = withRecipe<
-  Assign<
-    Assign<HTMLStyledProps<'div'>, AvatarPrimitive.RootProviderBaseProps>,
-    AvatarVariantProps
-  >
->(AvatarPrimitive.RootProvider, avatar);
+export const AvatarRoot = forwardRef<HTMLDivElement, AvatarRootProps>(
+  (props, ref) => {
+    const [variantProps, rest] = avatar.splitVariantProps(props);
+    const classes = avatar(variantProps);
+    return <ArkAvatar.Root {...rest} ref={ref} className={classes} />;
+  },
+);
 
-const AvatarFallback = AvatarPrimitive.Fallback;
-const AvatarImage = AvatarPrimitive.Image;
+const AvatarFallback = ArkAvatar.Fallback;
+const AvatarImage = ArkAvatar.Image;
 
-const Component = (props: AvatarProps) => {
+export interface AvatarProps extends AvatarRootProps {
+  fallback?: string;
+  src?: string;
+}
+
+const Component = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
   const { fallback, src, ...rest } = props;
   return (
-    <AvatarRoot {...rest}>
+    <AvatarRoot {...rest} ref={ref}>
       <AvatarFallback>{fallback}</AvatarFallback>
-      <AvatarImage alt={fallback} src={src} />
+      <AvatarImage src={src} />
     </AvatarRoot>
   );
-};
+});
 Component.displayName = 'Avatar';
 
 export const Avatar = Object.assign(Component, {
-  RootProvider: AvatarRootProvider,
   Root: AvatarRoot,
   Fallback: AvatarFallback,
   Image: AvatarImage,

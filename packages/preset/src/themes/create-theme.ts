@@ -19,9 +19,9 @@ export const createTheme = (options: ThemeOptions): ThemeVariant => {
     semanticTokens: {
       colors: {
         primary: {
-          DEFAULT: {
-            value: `{colors.${primaryColor}.${defaultPrimaryColor}}`,
-          },
+          // DEFAULT: {
+          //   value: `{colors.primary.${defaultPrimaryColor}}`,
+          // },
           50: {
             value: `{colors.${primaryColor}.50}`,
           },
@@ -57,9 +57,9 @@ export const createTheme = (options: ThemeOptions): ThemeVariant => {
           },
         },
         neutral: {
-          DEFAULT: {
-            value: `{colors.${neutralColor}.${defaultNeutralColor}}`,
-          },
+          // DEFAULT: {
+          //   value: `{colors.neutral.${defaultNeutralColor}}`,
+          // },
           50: {
             value: `{colors.${neutralColor}.50}`,
           },

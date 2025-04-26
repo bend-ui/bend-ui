@@ -1,6 +1,11 @@
-import { defineSlotRecipe } from '@pandacss/dev';
+import { defineParts, defineRecipe } from '@pandacss/dev';
 
-export const menu = defineSlotRecipe({
+const parts = defineParts({
+  root: { selector: '&' },
+  content: { selector: '& [data-part="content"]' },
+  item: { selector: '& [data-part="item"]' },
+});
+
+export const menu = defineRecipe({
   className: 'Menu',
-  slots: [],
 });

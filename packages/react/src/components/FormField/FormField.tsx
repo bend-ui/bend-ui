@@ -1,16 +1,13 @@
 import { styled } from '@particles/styled-system/jsx';
 import { formField } from '@particles/styled-system/recipes';
-import { createStyleContext } from '../../utils/create-style-context';
 
-const { withProvider, withContext } = createStyleContext(formField);
+const Root = styled('div', formField);
 
-const Root = withProvider(styled.div, 'root');
+const Label = styled('label', {});
 
-const Label = withContext(styled.label, 'label');
+const Description = styled('div', {});
 
-const Description = withContext(styled.div, 'description');
-
-const Error = withContext(styled.div, 'error');
+const Error = styled('div', {});
 
 export const FormField = Object.assign(Root, {
   Root,

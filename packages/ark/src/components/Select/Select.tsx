@@ -1,135 +1,143 @@
 import { forwardRef } from 'react';
-import { Portal, Select as SelectPrimitive } from '@ark-ui/react';
+import { Portal, Select as ArkSelect } from '@ark-ui/react';
 import { select } from '@particles/styled-system/recipes';
 import { LuChevronDown } from 'react-icons/lu';
-import { DismissButton } from '@particles/react';
-import type { JsxStyleProps } from '@particles/styled-system/types';
+import { DismissButton, Input } from '@particles/react';
 import type { SelectVariantProps } from '@particles/styled-system/recipes';
-import { createStyleContext } from '../../utils';
-import type { Assign } from '@ark-ui/react';
+import type { CollectionItem } from '@ark-ui/react';
 import type { ElementRef } from 'react';
-import type { SelectProps } from './Select.types';
+import { ChevronDownIcon, XIcon } from 'lucide-react';
 
-const { withProvider, withContext } = createStyleContext(select);
+export type SelectRootProps<T extends CollectionItem> = ArkSelect.RootProps<T>;
 
-export interface RootProps
-  extends Assign<
-      JsxStyleProps,
-      SelectPrimitive.RootProps<SelectPrimitive.CollectionItem>
-    >,
-    SelectVariantProps {}
+const SelectRoot = ArkSelect.Root;
 
-const Root = withProvider<HTMLDivElement, RootProps>(
-  SelectPrimitive.Root,
-  'root',
-);
+const SelectLabel = ArkSelect.Label;
 
-const ClearTrigger = withContext<
-  HTMLButtonElement,
-  Assign<JsxStyleProps, SelectPrimitive.ClearTriggerProps>
->(SelectPrimitive.ClearTrigger, 'clearTrigger');
+const SelectControl = forwardRef<
+  ElementRef<typeof ArkSelect.Control>,
+  ArkSelect.ControlProps
+>((props, ref) => {
+  const { children, ...rest } = props;
+  return (
+    <ArkSelect.Control ref={ref} {...rest} asChild>
+      <Input.Root>{children}</Input.Root>
+    </ArkSelect.Control>
+  );
+});
 
-const Content = withContext<
-  HTMLDivElement,
-  Assign<JsxStyleProps, SelectPrimitive.ContentProps>
->(SelectPrimitive.Content, 'content');
+type SelectTriggerProps = ArkSelect.TriggerProps;
 
-const Control = withContext<
-  HTMLDivElement,
-  Assign<JsxStyleProps, SelectPrimitive.ControlProps>
->(SelectPrimitive.Control, 'control');
+const SelectTrigger = forwardRef<
+  ElementRef<typeof ArkSelect.Trigger>,
+  SelectTriggerProps
+>((props, ref) => {
+  const { children, ...rest } = props;
+  return (
+    <Input.Wrapper asChild cursor="pointer">
+      <ArkSelect.Trigger ref={ref} {...rest}>
+        {children}
+      </ArkSelect.Trigger>
+    </Input.Wrapper>
+  );
+});
 
-const Indicator = withContext<
-  HTMLDivElement,
-  Assign<JsxStyleProps, SelectPrimitive.IndicatorProps>
->(SelectPrimitive.Indicator, 'indicator');
+const SelectValueText = ArkSelect.ValueText;
 
-const ItemGroupLabel = withContext<
-  HTMLDivElement,
-  Assign<JsxStyleProps, SelectPrimitive.ItemGroupLabelProps>
->(SelectPrimitive.ItemGroupLabel, 'itemGroupLabel');
+const SelectIndicator = forwardRef<
+  ElementRef<typeof ArkSelect.Indicator>,
+  ArkSelect.IndicatorProps
+>((props, ref) => {
+  const { children, ...rest } = props;
+  return (
+    <ArkSelect.Indicator ref={ref} {...rest} asChild>
+      <Input.Icon>
+        <ChevronDownIcon />
+      </Input.Icon>
+    </ArkSelect.Indicator>
+  );
+});
 
-const ItemGroup = withContext<
-  HTMLDivElement,
-  Assign<JsxStyleProps, SelectPrimitive.ItemGroupProps>
->(SelectPrimitive.ItemGroup, 'itemGroup');
+const SelectClearTrigger = forwardRef<
+  ElementRef<typeof ArkSelect.ClearTrigger>,
+  ArkSelect.ClearTriggerProps
+>((props, ref) => {
+  const { children, ...rest } = props;
+  return (
+    <ArkSelect.ClearTrigger ref={ref} {...rest} asChild>
+      <Input.Icon>
+        <XIcon />
+      </Input.Icon>
+    </ArkSelect.ClearTrigger>
+  );
+});
 
-const ItemIndicator = withContext<
-  HTMLDivElement,
-  Assign<JsxStyleProps, SelectPrimitive.ItemIndicatorProps>
->(SelectPrimitive.ItemIndicator, 'itemIndicator');
+const SelectItemGroup = ArkSelect.ItemGroup;
 
-const Item = withContext<
-  HTMLDivElement,
-  Assign<JsxStyleProps, SelectPrimitive.ItemProps>
->(SelectPrimitive.Item, 'item');
+const SelectItemGroupLabel = ArkSelect.ItemGroupLabel;
 
-const ItemText = withContext<
-  HTMLDivElement,
-  Assign<JsxStyleProps, SelectPrimitive.ItemTextProps>
->(SelectPrimitive.ItemText, 'itemText');
+const SelectItem = ArkSelect.Item;
 
-const Label = withContext<
-  HTMLLabelElement,
-  Assign<JsxStyleProps, SelectPrimitive.LabelProps>
->(SelectPrimitive.Label, 'label');
+const SelectContent = ArkSelect.Content;
 
-const Positioner = withContext<
-  HTMLDivElement,
-  Assign<JsxStyleProps, SelectPrimitive.PositionerProps>
->(SelectPrimitive.Positioner, 'positioner');
+const SelectPositioner = forwardRef<
+  ElementRef<typeof ArkSelect.Positioner>,
+  ArkSelect.PositionerProps & SelectVariantProps
+>((props, ref) => {
+  const [variantProps, rest] = select.splitVariantProps(props);
+  const classes = select(variantProps);
+  return <ArkSelect.Positioner ref={ref} {...rest} className={classes} />;
+});
 
-const Trigger = withContext<
-  HTMLButtonElement,
-  Assign<JsxStyleProps, SelectPrimitive.TriggerProps>
->(SelectPrimitive.Trigger, 'trigger');
+const SelectItemText = ArkSelect.ItemText;
 
-const ValueText = withContext<
-  HTMLSpanElement,
-  Assign<JsxStyleProps, SelectPrimitive.ValueTextProps>
->(SelectPrimitive.ValueText, 'valueText');
+const SelectItemIndicator = ArkSelect.ItemIndicator;
 
-const HiddenSelect = SelectPrimitive.HiddenSelect;
+const SelectHiddenSelect = ArkSelect.HiddenSelect;
 
-const Component = forwardRef<ElementRef<typeof Root>, SelectProps<any>>(
+export interface SelectProps<T extends CollectionItem>
+  extends SelectRootProps<T> {
+  placeholder?: string;
+  label?: string;
+}
+
+const Component = forwardRef<ElementRef<typeof SelectRoot>, SelectProps<any>>(
   (props, ref) => {
     const { collection, placeholder, label, ...rest } = props;
     return (
-      <Root
+      <SelectRoot
         ref={ref}
         collection={collection}
         positioning={{ sameWidth: true }}
         {...rest}
       >
-        <Label>{label}</Label>
-        <Control>
-          <Trigger>
-            <ValueText placeholder={placeholder} />
-            <Indicator>
-              <LuChevronDown />
-            </Indicator>
-          </Trigger>
-          <ClearTrigger asChild>
+        <SelectLabel>{label}</SelectLabel>
+        <SelectControl>
+          <SelectTrigger>
+            <SelectValueText placeholder={placeholder} />
+          </SelectTrigger>
+          <SelectIndicator />
+          <SelectClearTrigger asChild>
             <DismissButton />
-          </ClearTrigger>
-        </Control>
+          </SelectClearTrigger>
+        </SelectControl>
         <Portal>
-          <Positioner>
-            <Content>
-              <ItemGroup>
-                <ItemGroupLabel>Frameworks</ItemGroupLabel>
+          <SelectPositioner>
+            <SelectContent>
+              <SelectItemGroup>
+                <SelectItemGroupLabel>Frameworks</SelectItemGroupLabel>
                 {collection.items.map((item) => (
-                  <Item key={item} item={item}>
-                    <ItemText>{item}</ItemText>
-                    <ItemIndicator>✓</ItemIndicator>
-                  </Item>
+                  <SelectItem key={item} item={item}>
+                    <SelectItemText>{item}</SelectItemText>
+                    <SelectItemIndicator>✓</SelectItemIndicator>
+                  </SelectItem>
                 ))}
-              </ItemGroup>
-            </Content>
-          </Positioner>
+              </SelectItemGroup>
+            </SelectContent>
+          </SelectPositioner>
         </Portal>
-        <HiddenSelect />
-      </Root>
+        <SelectHiddenSelect />
+      </SelectRoot>
     );
   },
 );
@@ -137,19 +145,19 @@ const Component = forwardRef<ElementRef<typeof Root>, SelectProps<any>>(
 Component.displayName = 'Select';
 
 export const Select = Object.assign(Component, {
-  Root,
-  Label,
-  Item,
-  Trigger,
-  Content,
-  Control,
-  ValueText,
-  Indicator,
-  ClearTrigger,
-  HiddenSelect,
-  Positioner,
-  ItemText,
-  ItemIndicator,
-  ItemGroup,
-  ItemGroupLabel,
+  Root: SelectRoot,
+  Label: SelectLabel,
+  Item: SelectItem,
+  Trigger: SelectTrigger,
+  Content: SelectContent,
+  Control: SelectControl,
+  ValueText: SelectValueText,
+  Indicator: SelectIndicator,
+  ClearTrigger: SelectClearTrigger,
+  HiddenSelect: SelectHiddenSelect,
+  Positioner: SelectPositioner,
+  ItemText: SelectItemText,
+  ItemIndicator: SelectItemIndicator,
+  ItemGroup: SelectItemGroup,
+  ItemGroupLabel: SelectItemGroupLabel,
 });

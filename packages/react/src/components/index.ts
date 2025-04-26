@@ -20,3 +20,5 @@ export * from './Textarea';
 export * from './Tiles';
 export * from './AppShell';
 export * from './Grid';
+export * from './factory';
+export * from './Stack';

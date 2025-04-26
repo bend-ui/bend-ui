@@ -1,55 +1,30 @@
-import { Accordion as AccordionPrimitive } from '@ark-ui/react';
+import { Accordion as ArkAccordion } from '@ark-ui/react';
 import { accordion } from '@particles/styled-system/recipes';
-import type { HTMLStyledProps } from '@particles/styled-system/types';
 import type { AccordionVariantProps } from '@particles/styled-system/recipes';
-import { createStyleContext } from '../../utils';
-import type { Assign } from '@ark-ui/react';
-import type { ComponentProps } from 'react';
+import { forwardRef } from 'react';
 
-const { withProvider, withContext } = createStyleContext(accordion);
+export type AccordionRootProps = ArkAccordion.RootProps & AccordionVariantProps;
 
-export type RootProviderProps = ComponentProps<typeof RootProvider>;
-export const RootProvider = withProvider<
-  HTMLDivElement,
-  Assign<
-    Assign<HTMLStyledProps<'div'>, AccordionPrimitive.RootProviderBaseProps>,
-    AccordionVariantProps
-  >
->(AccordionPrimitive.RootProvider, 'root');
+const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>(
+  (props, ref) => {
+    const [variantProps, rest] = accordion.splitVariantProps(props);
+    const classes = accordion(variantProps);
+    return <ArkAccordion.Root {...rest} ref={ref} className={classes} />;
+  },
+);
 
-export type RootProps = ComponentProps<typeof Root>;
-export const Root = withProvider<
-  HTMLDivElement,
-  Assign<
-    Assign<HTMLStyledProps<'div'>, AccordionPrimitive.RootBaseProps>,
-    AccordionVariantProps
-  >
->(AccordionPrimitive.Root, 'root');
+const AccordionItem = ArkAccordion.Item;
 
-export const ItemContent = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, AccordionPrimitive.ItemContentBaseProps>
->(AccordionPrimitive.ItemContent, 'content');
+const AccordionItemTrigger = ArkAccordion.ItemTrigger;
 
-export const ItemIndicator = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, AccordionPrimitive.ItemIndicatorBaseProps>
->(AccordionPrimitive.ItemIndicator, 'indicator');
+const AccordionItemIndicator = ArkAccordion.ItemIndicator;
 
-export const Item = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, AccordionPrimitive.ItemBaseProps>
->(AccordionPrimitive.Item, 'item');
+const AccordionItemContent = ArkAccordion.ItemContent;
 
-export const ItemTrigger = withContext<
-  HTMLButtonElement,
-  Assign<HTMLStyledProps<'button'>, AccordionPrimitive.ItemTriggerBaseProps>
->(AccordionPrimitive.ItemTrigger, 'trigger');
-
-export const Accordion = Object.assign(Root, {
-  Root,
-  Item,
-  ItemTrigger,
-  ItemIndicator,
-  ItemContent,
+export const Accordion = Object.assign(AccordionRoot, {
+  Root: AccordionRoot,
+  Item: AccordionItem,
+  ItemTrigger: AccordionItemTrigger,
+  ItemIndicator: AccordionItemIndicator,
+  ItemContent: AccordionItemContent,
 });

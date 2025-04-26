@@ -1,21 +1,31 @@
-import { defineSlotRecipe } from '@pandacss/dev';
+import { defineParts, defineRecipe } from '@pandacss/dev';
 
-export const inputConfig = {
+const parts = defineParts({
+  root: { selector: '&' },
+  wrapper: { selector: '& [data-part="wrapper"]' },
+  input: { selector: '& [data-part="input"]' },
+  icon: { selector: '& [data-part="icon"]' },
+  element: { selector: '& [data-part="element"]' },
+  addon: { selector: '& [data-part="addon"]' },
+});
+
+export const inputRecipe = defineRecipe({
   className: 'Input',
-  slots: ['root', 'icon', 'iconEnd', 'field', 'addonStart', 'addonEnd'],
-};
-
-export const input = defineSlotRecipe({
-  className: inputConfig.className,
-  slots: inputConfig.slots,
-  base: {
+  base: parts({
     root: {
       position: 'relative',
       display: 'flex',
       flexDirection: 'row',
-      alignItems: 'center',
+      overflow: 'hidden',
+      width: 'full',
     },
-    field: {
+    wrapper: {
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      width: 'full',
+    },
+    input: {
       flex: '1 1 auto',
       appearance: 'none',
       backgroundColor: 'transparent',
@@ -25,22 +35,19 @@ export const input = defineSlotRecipe({
       },
     },
     icon: {
-      position: 'absolute',
-      insetStart: '0',
-      flex: '0',
-      pointerEvents: 'none',
+      flexShrink: 0,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      userSelect: 'none',
     },
-    iconEnd: {
-      position: 'absolute',
-      insetEnd: '0',
-      flex: '0',
-      pointerEvents: 'none',
+    element: {},
+    addon: {
+      flexShrink: 0,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      truncate: true,
     },
-    addonStart: {
-      flex: '0',
-    },
-    addonEnd: {
-      flex: '0',
-    },
-  },
+  }),
 });

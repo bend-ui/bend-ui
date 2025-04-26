@@ -12,7 +12,7 @@ import { checkboxRecipe } from './checkbox';
 import { tagsInputRecipe } from './tags-input';
 // import { dividerRecipe } from './divider';
 import { drawerRecipe } from './drawer';
-import { dropdownMenuRecipe } from './dropdownMenu';
+import { menuRecipe } from './menu';
 import { formFieldRecipe } from './formField';
 import { iconRecipe } from './icon';
 import { indicatorRecipe } from './indicator';
@@ -34,35 +34,28 @@ import { toastRecipe } from './toast';
 import { tooltipRecipe } from './tooltip';
 import { comboboxRecipe } from './combobox';
 import { Theme } from '@pandacss/types';
+import { dialogRecipe } from './dialog';
+import { backdropRecipe } from './backdrop';
+import { commandRecipe } from './command';
 
 export const slotRecipes: Theme['slotRecipes'] = {
-  accordion: accordionRecipe,
   alert: alertRecipe,
   badge: badgeRecipe,
   breadcrumbs: breadcrumbsRecipe,
   button: buttonRecipe,
   card: cardRecipe,
   carousel: carouselRecipe,
-  checkbox: checkboxRecipe,
   tagsInput: tagsInputRecipe,
   // divider: dividerRecipe,
-  drawer: drawerRecipe,
-  dropdownMenu: dropdownMenuRecipe,
-  formField: formFieldRecipe,
   indicator: indicatorRecipe,
-  input: inputRecipe,
   modal: modalRecipe,
   nav: navRecipe,
   pagination: paginationRecipe,
-  popover: popoverRecipe,
   radioGroup: radioGroupRecipe,
   rating: ratingRecipe,
-  select: selectRecipe,
   switchRecipe: switchRecipe,
   table: tableRecipe,
   textarea: textareaRecipe,
-  toast: toastRecipe,
-  tooltip: tooltipRecipe,
   tag: tagRecipe,
 };
 
@@ -74,4 +67,17 @@ export const recipes: Theme['recipes'] = {
   icon: iconRecipe,
   combobox: comboboxRecipe,
   tabs: tabsRecipe,
+  checkbox: checkboxRecipe,
+  dialog: dialogRecipe,
+  backdrop: backdropRecipe,
+  drawer: drawerRecipe,
+  popover: popoverRecipe,
+  toast: toastRecipe,
+  menu: menuRecipe,
+  accordion: accordionRecipe,
+  tooltip: tooltipRecipe,
+  formField: formFieldRecipe,
+  select: selectRecipe,
+  command: commandRecipe,
+  input: inputRecipe,
 };

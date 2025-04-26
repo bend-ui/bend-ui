@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta = {
   title: 'Components/Data Display/Avatar',
   component: Avatar,
-  tags: ['autodocs'],
+
   parameters: {
     layout: 'centered',
   },

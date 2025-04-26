@@ -24,7 +24,7 @@ const config: StorybookConfig = {
     '@storybook/addon-themes',
     '@storybook/addon-a11y',
     '@chromatic-com/storybook',
-    '@storybook/experimental-addon-test',
+    // '@storybook/experimental-addon-test',
     'storybook-addon-tag-badges',
   ],
   framework: {
@@ -51,23 +51,23 @@ const config: StorybookConfig = {
   typescript: {
     check: false,
     reactDocgen: 'react-docgen-typescript',
-    reactDocgenTypescriptOptions: {
-      shouldExtractLiteralValuesFromEnum: true,
-      shouldRemoveUndefinedFromOptional: true,
-      propFilter: (prop) => {
-        if (prop.parent) {
-          if (
-            prop.parent.fileName.match(/@ark-ui/) ||
-            prop.parent.fileName.match(/@particles/)
-          ) {
-            return true;
-          } else {
-            return !/node_modules/.test(prop.parent.fileName);
-          }
-        }
-        return true;
-      },
-    },
+    // reactDocgenTypescriptOptions: {
+    //   shouldExtractLiteralValuesFromEnum: true,
+    //   shouldRemoveUndefinedFromOptional: true,
+    //   propFilter: (prop) => {
+    //     if (prop.parent) {
+    //       if (
+    //         prop.parent.fileName.match(/@ark-ui/) ||
+    //         prop.parent.fileName.match(/@particles/)
+    //       ) {
+    //         return true;
+    //       } else {
+    //         return !/node_modules/.test(prop.parent.fileName);
+    //       }
+    //     }
+    //     return true;
+    //   },
+    // },
   },
   docs: {},
 };

@@ -8,7 +8,7 @@ export const cardRecipe = defineSlotRecipe({
     root: {
       p: 'lg',
       rounded: '2xl',
-      layerStyle: 'panel',
+      layerStyle: 'raised',
     },
     section: {
       mx: '-4',

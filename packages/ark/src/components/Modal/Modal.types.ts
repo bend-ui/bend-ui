@@ -1,7 +1,0 @@
-import type { ModalVariantProps } from '@particles/styled-system/recipes';
-import type { Assign, JsxStyleProps } from '@particles/styled-system/types';
-import type { DialogRootProps } from '@ark-ui/react';
-
-export interface ModalProps
-  extends Assign<JsxStyleProps, DialogRootProps>,
-    ModalVariantProps {}

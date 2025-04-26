@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta = {
   title: 'Components/Navigation/Pagination',
   component: Pagination,
-  tags: ['autodocs'],
+
   parameters: {
     layout: 'centered',
   },

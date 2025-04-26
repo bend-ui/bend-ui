@@ -1,3 +1,2 @@
-export { Select } from './Select';
-export * from './Select.types';
+export * from './Select';
 export { createListCollection } from '@ark-ui/react';

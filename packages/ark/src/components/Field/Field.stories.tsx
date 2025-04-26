@@ -2,7 +2,7 @@ import { UserIcon } from 'lucide-react';
 import { Field } from './';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta = {
+const meta: Meta<typeof Field> = {
   title: 'Components/Forms/Field',
   component: Field,
   argTypes: {
@@ -23,7 +23,7 @@ const meta = {
         'Field is a component that wraps an input and provides a label, helper text, and error text. It also provides a context for the input to be used in a form.',
     },
   },
-} satisfies Meta<typeof Field>;
+};
 
 export default meta;
 

@@ -40,15 +40,17 @@ export const textStyles = defineTextStyles({
     },
   },
   title: {
-    description: 'The title text style - used for headings',
-    value: {
-      fontFamily: 'heading',
-      fontWeight: '600',
-      fontSize: '24px',
-      lineHeight: '30px',
-      letterSpacing: '0',
-      textDecoration: 'none',
-      textTransform: 'none',
+    DEFAULT: {
+      description: 'The title text style - used for headings',
+      value: {
+        fontFamily: 'heading',
+        fontWeight: '600',
+        fontSize: '24px',
+        lineHeight: '30px',
+        letterSpacing: '0',
+        textDecoration: 'none',
+        textTransform: 'none',
+      },
     },
   },
   subtitle: {

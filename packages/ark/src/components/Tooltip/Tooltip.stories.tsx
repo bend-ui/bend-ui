@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta = {
   title: 'Components/Overlays/Tooltip',
   component: Tooltip,
-  tags: ['autodocs'],
+
   parameters: {
     layout: 'centered',
   },

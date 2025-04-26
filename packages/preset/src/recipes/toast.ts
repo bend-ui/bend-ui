@@ -1,25 +1,25 @@
-import { defineSlotRecipe } from '@pandacss/dev';
+import { defineParts, defineRecipe } from '@pandacss/dev';
 
-export const toastRecipe = defineSlotRecipe({
+const parts = defineParts({
+  root: { selector: '&' },
+  viewport: { selector: '& [data-part="viewport"]' },
+  title: { selector: '& [data-part="title"]' },
+  description: { selector: '& [data-part="description"]' },
+  closeTrigger: { selector: '& [data-part="close-trigger"]' },
+});
+
+export const toastRecipe = defineRecipe({
   className: 'Toast',
-  slots: [
-    'root',
-    'viewport',
-    'title',
-    'description',
-    'closeTrigger',
-    'actionTrigger',
-  ],
-  base: {
+  base: parts({
     root: {
-      layerStyle: 'panelRaised',
+      layerStyle: 'panel.raised',
       padding: 'md',
       minWidth: 'sm',
       _open: {
-        animation: 'panel.in',
+        animation: 'dialog-in',
       },
       _closed: {
-        animation: 'panel.out',
+        animation: 'dialog-out',
       },
     },
     viewport: {
@@ -39,15 +39,9 @@ export const toastRecipe = defineSlotRecipe({
       textStyle: 'body',
     },
     closeTrigger: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      cursor: 'pointer',
-      padding: 'sm',
-      borderRadius: 'md',
-      _hover: {
-        bg: 'gray.100',
-      },
+      position: 'absolute',
+      top: 'sm',
+      right: 'sm',
     },
-  },
+  }),
 });

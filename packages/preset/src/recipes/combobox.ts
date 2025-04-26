@@ -1,9 +1,8 @@
 import { defineParts, defineRecipe } from '@pandacss/dev';
 
 const parts = defineParts({
-  root: { selector: '&[data-part="root"]' },
+  root: { selector: '&' },
   label: { selector: '& [data-part="label"]' },
-  input: { selector: '& [data-part="input"]' },
   positioner: { selector: '& [data-part="positioner"]' },
   content: { selector: '& [data-part="content"]' },
   item: { selector: '& [data-part="item"]' },
@@ -26,33 +25,6 @@ export const comboboxRecipe = defineRecipe({
       color: 'fg.emphasized',
       fontWeight: 'medium',
       textStyle: 'sm',
-    },
-    input: {
-      width: 'full',
-      minW: '0',
-      outline: '0',
-      position: 'relative',
-      appearance: 'none',
-      transitionProperty: 'base',
-      transitionDuration: '100',
-      cursor: 'text',
-      paddingInlineStart: '3',
-      paddingInlineEnd: '3',
-      height: '10',
-      borderRadius: 'md',
-      borderWidth: '1px',
-      borderColor: 'border.default',
-      bg: 'bg.default',
-      _hover: {
-        borderColor: 'border.emphasized',
-      },
-      _focusVisible: {
-        borderColor: 'border.accent',
-        boxShadow: 'accent',
-      },
-      _placeholder: {
-        color: 'fg.subtle',
-      },
     },
     positioner: {
       zIndex: 'dropdown',
@@ -107,15 +79,12 @@ export const comboboxRecipe = defineRecipe({
   variants: {
     size: {
       sm: parts({
-        input: { height: '8', fontSize: 'sm' },
         item: { height: '8', fontSize: 'sm' },
       }),
       md: parts({
-        input: { height: '10', fontSize: 'md' },
         item: { height: '10', fontSize: 'md' },
       }),
       lg: parts({
-        input: { height: '12', fontSize: 'lg' },
         item: { height: '12', fontSize: 'lg' },
       }),
     },

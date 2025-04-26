@@ -1,47 +1,36 @@
-import { defineSlotRecipe } from '@pandacss/dev';
+import { defineParts, defineRecipe } from '@pandacss/dev';
 
-export const drawerRecipe = defineSlotRecipe({
+const parts = defineParts({
+  root: { selector: '&' },
+  content: { selector: '& [data-part="content"]' },
+  header: { selector: '& [data-part="header"]' },
+  closeTrigger: { selector: '& [data-part="close-trigger"]' },
+  footer: { selector: '& [data-part="footer"]' },
+  title: { selector: '& [data-part="title"]' },
+  description: { selector: '& [data-part="description"]' },
+});
+
+export const drawerRecipe = defineRecipe({
   className: 'Drawer',
-  slots: [
-    'root',
-    'trigger',
-    'overlay',
-    'content',
-    'header',
-    'close',
-    'footer',
-    'title',
-    'description',
-  ],
-  base: {
-    overlay: {
-      bgColor: 'neutral.950',
-      opacity: '0.8',
-      _open: {
-        animation: 'overlay.in',
-      },
-      _closed: {
-        animation: 'overlay.out',
-      },
-    },
+  base: parts({
     content: {
       padding: 'lg',
-      layerStyle: 'panelRaised',
+      layerStyle: 'panel.raised',
     },
     header: {
       padding: 'md',
       borderBottom: '1px solid',
-      borderColor: 'neutral.900',
+      borderColor: 'border',
     },
-    close: {
+    closeTrigger: {
       position: 'absolute',
-      top: 'md',
-      right: 'md',
+      top: 'sm',
+      right: 'sm',
     },
     footer: {
       padding: 'md',
       borderTop: '1px solid',
-      borderColor: 'neutral.900',
+      borderColor: 'border',
     },
     title: {
       textStyle: 'title',
@@ -49,10 +38,10 @@ export const drawerRecipe = defineSlotRecipe({
     description: {
       textStyle: 'body',
     },
-  },
+  }),
   variants: {
     placement: {
-      left: {
+      left: parts({
         content: {
           roundedRight: 'lg',
           roundedLeft: '0',
@@ -60,14 +49,14 @@ export const drawerRecipe = defineSlotRecipe({
           maxW: '450px',
           height: 'screen',
           _open: {
-            animation: 'slideInLeft 300ms ease-out',
+            animation: 'drawer-in-left',
           },
           _closed: {
-            animation: 'slideOutLeft 300ms ease-out',
+            animation: 'drawer-out-left',
           },
         },
-      },
-      right: {
+      }),
+      right: parts({
         content: {
           roundedLeft: 'lg',
           roundedRight: '0',
@@ -75,39 +64,39 @@ export const drawerRecipe = defineSlotRecipe({
           maxW: '450px',
           height: 'screen',
           _open: {
-            animation: 'slideInRight 300ms ease-out',
+            animation: 'drawer-in-right',
           },
           _closed: {
-            animation: 'slideOutRight 300ms ease-out',
+            animation: 'drawer-out-right',
           },
         },
-      },
-      top: {
+      }),
+      top: parts({
         content: {
           width: 'screen',
           height: '90vw',
           maxH: '450px',
           _open: {
-            animation: 'slideInTop 300ms ease-out',
+            animation: 'drawer-in-top',
           },
           _closed: {
-            animation: 'slideOutTop 300ms ease-out',
+            animation: 'drawer-out-top',
           },
         },
-      },
-      bottom: {
+      }),
+      bottom: parts({
         content: {
           width: 'screen',
           height: '90vw',
           maxH: '450px',
           _open: {
-            animation: 'slideInBottom 300ms ease-out',
+            animation: 'drawer-in-bottom',
           },
           _closed: {
-            animation: 'slideOutBottom 300ms ease-out',
+            animation: 'drawer-out-bottom',
           },
         },
-      },
+      }),
     },
   },
   defaultVariants: {

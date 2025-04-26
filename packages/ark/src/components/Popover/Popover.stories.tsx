@@ -6,7 +6,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta = {
   title: 'Components/Overlays/Popover',
   component: Popover,
-  tags: ['autodocs'],
+
   parameters: {
     layout: 'centered',
   },
@@ -16,7 +16,14 @@ export default meta;
 
 type Story = StoryObj<typeof Popover>;
 
-export const Base: Story = {};
+export const Base: Story = {
+  args: {
+    trigger: 'Click Me',
+    title: 'Title',
+    description: 'Description',
+    children: 'Content',
+  },
+};
 
 export const Composed: Story = {
   render: (args) => (

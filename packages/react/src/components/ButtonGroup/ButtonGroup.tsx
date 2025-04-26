@@ -8,7 +8,7 @@ import { type AsChildProps } from '../Slot';
 import { HTMLStyledProps } from '@particles/styled-system/jsx';
 import { cx } from '@particles/styled-system/css';
 import { createContext } from '@particles/primitives';
-import { particles } from '../factory';
+import { HTMLParticlesProps, particles } from '../factory';
 
 export interface ButtonGroupContext {
   size?: ButtonGroupVariantProps['size'];
@@ -21,7 +21,7 @@ const useButtonGroup = (props: ButtonGroupProps): ButtonGroupContext => {
   return {};
 };
 
-export interface ButtonGroupProps extends HTMLStyledProps<'div'>, AsChildProps {
+export interface ButtonGroupProps extends HTMLParticlesProps<'div'> {
   children?: ReactNode;
   size?: ButtonGroupVariantProps['size'];
 }

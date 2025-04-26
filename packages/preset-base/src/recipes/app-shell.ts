@@ -1,6 +1,6 @@
 import { defineParts, defineRecipe } from '@pandacss/dev';
 
-export const parts = defineParts({
+const parts = defineParts({
   root: { selector: '&' },
   header: { selector: '& [data-part="header"]' },
   footer: { selector: '& [data-part="footer"]' },

@@ -1,51 +1,40 @@
-import { Tooltip as TooltipPrimitive } from '@ark-ui/react';
-import { tooltip } from '@particles/styled-system/recipes';
-import { createStyleContext } from '../../utils';
+import { Tooltip as ArkTooltip } from '@ark-ui/react';
+import { tooltip, TooltipVariantProps } from '@particles/styled-system/recipes';
+import { forwardRef } from 'react';
 
-const { withRootProvider, withContext } = createStyleContext(tooltip);
+const TooltipRoot = ArkTooltip.Root;
+const TooltipTrigger = ArkTooltip.Trigger;
 
-const Root = withRootProvider<TooltipPrimitive.RootProps>(
-  TooltipPrimitive.Root,
+type TooltipPositionerProps = ArkTooltip.PositionerProps & TooltipVariantProps;
+
+const TooltipPositioner = forwardRef<HTMLDivElement, TooltipPositionerProps>(
+  (props, ref) => {
+    const [variantProps, rest] = tooltip.splitVariantProps(props);
+    const classes = tooltip(variantProps);
+    return <ArkTooltip.Positioner ref={ref} {...rest} className={classes} />;
+  },
 );
 
-const Arrow = withContext<HTMLDivElement, TooltipPrimitive.ArrowProps>(
-  TooltipPrimitive.Arrow,
-  'arrow',
-);
+const TooltipContent = ArkTooltip.Content;
+const TooltipArrow = ArkTooltip.Arrow;
+const TooltipArrowTip = ArkTooltip.ArrowTip;
 
-const ArrowTip = withContext<HTMLDivElement, TooltipPrimitive.ArrowTipProps>(
-  TooltipPrimitive.ArrowTip,
-  'arrowTip',
-);
-
-const Trigger = withContext<HTMLButtonElement, TooltipPrimitive.TriggerProps>(
-  TooltipPrimitive.Trigger,
-  'trigger',
-);
-
-const Positioner = TooltipPrimitive.Positioner;
-
-const Content = withContext<HTMLDivElement, TooltipPrimitive.ContentProps>(
-  TooltipPrimitive.Content,
-  'content',
-);
-
-export type TooltipProps = TooltipPrimitive.RootProps;
+export type TooltipProps = ArkTooltip.RootProps;
 
 const Component = (props: TooltipProps) => (
-  <Root {...props}>
-    <Trigger>Hover Me</Trigger>
-    <Positioner>
-      <Content>I am a tooltip!</Content>
-    </Positioner>
-  </Root>
+  <TooltipRoot {...props}>
+    <TooltipTrigger>Hover Me</TooltipTrigger>
+    <TooltipPositioner>
+      <TooltipContent>I am a tooltip!</TooltipContent>
+    </TooltipPositioner>
+  </TooltipRoot>
 );
 
 export const Tooltip = Object.assign(Component, {
-  Root,
-  Arrow,
-  ArrowTip,
-  Trigger,
-  Positioner,
-  Content,
+  Root: TooltipRoot,
+  Arrow: TooltipArrow,
+  ArrowTip: TooltipArrowTip,
+  Trigger: TooltipTrigger,
+  Positioner: TooltipPositioner,
+  Content: TooltipContent,
 });

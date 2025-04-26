@@ -1,17 +1,29 @@
-import { defineSlotRecipe } from '@pandacss/dev';
+import { defineParts, defineRecipe } from '@pandacss/dev';
 
-export const checkboxRecipe = defineSlotRecipe({
+const parts = defineParts({
+  root: {
+    selector: '&',
+  },
+  label: {
+    selector: '& [data-part="label"]',
+  },
+  control: {
+    selector: '& [data-part="control"]',
+  },
+  indicator: {
+    selector: '& [data-part="indicator"]',
+  },
+});
+
+export const checkboxRecipe = defineRecipe({
   description: 'Styles for the Checkbox component',
   className: 'Checkbox',
-  slots: ['root', 'control', 'indicator', 'label', 'hidden-input'],
-  base: {
+  base: parts({
     root: {},
     label: {},
     control: {
       rounded: 'sm',
-      color: 'text',
-      border: 'input',
-      bg: 'bg.surface',
+      layerStyle: 'interaction.neutral',
       focusRingOffsetColor: 'red',
 
       _focusVisible: {
@@ -22,43 +34,36 @@ export const checkboxRecipe = defineSlotRecipe({
         focusRingOffsetWidth: '2',
       },
 
-      _hover: {
-        borderColor: 'border.hover',
-        bg: 'bg.surface.hover',
-      },
-
       _disabled: {
         opacity: '0.5',
       },
 
       _checked: {
-        color: 'primary.fg',
-        borderColor: 'primary.fill',
-        bg: 'primary.fill',
+        layerStyle: 'interaction.primary',
       },
     },
     indicator: {},
-  },
+  }),
   variants: {
     size: {
-      sm: {
+      sm: parts({
         control: {
           h: '3',
           w: '3',
         },
-      },
-      md: {
+      }),
+      md: parts({
         control: {
           h: '4',
           w: '4',
         },
-      },
-      lg: {
+      }),
+      lg: parts({
         control: {
           h: '5',
           w: '5',
         },
-      },
+      }),
     },
   },
   defaultVariants: {

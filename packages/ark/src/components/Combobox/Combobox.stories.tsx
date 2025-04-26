@@ -14,6 +14,7 @@ const meta = {
 } satisfies Meta<typeof Combobox>;
 
 export default meta;
+
 type Story = StoryObj<typeof meta>;
 
 const collection = createListCollection({

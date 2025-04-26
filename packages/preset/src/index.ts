@@ -17,15 +17,14 @@ export const preset = definePreset({
     extend: {
       light: '[data-color-mode=light] &, .light &',
       dark: '[data-color-mode=dark] &, .dark &',
+      real: '[data-tone="real"] &',
+      soft: '[data-tone="soft"] &',
+      glass: '[data-tone="glass"] &',
       closed: '&:is([data-state=closed])',
       open: '&:is([open], [data-state=open])',
       selected: '&:is([data-selected], [data-state=selected])',
       active: '&:is(:active, [data-active], [data-state=active])',
       inactive: '&:is([data-inactive], [data-state=inactive])',
-      hasIcon: '&:is([data-has-icon])',
-      hasIconEnd: '&:is([data-has-icon-end])',
-      hasAddonStart: '&:is([data-has-addon-start])',
-      hasAddonEnd: '&:is([data-has-addon-end])',
     },
   },
   patterns: {

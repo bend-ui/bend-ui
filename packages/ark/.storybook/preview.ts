@@ -17,7 +17,29 @@ const decorators: Preview['decorators'] = [
     defaultTheme: 'proton',
     attributeName: 'data-panda-theme',
   }),
+  (story, context) => {
+    const selectedTone = context.globals.tone || 'flat';
+    document.documentElement.setAttribute('data-tone', selectedTone);
+    return story(context);
+  },
 ];
+
+const globalTypes: Preview['globalTypes'] = {
+  tone: {
+    description: 'The tone of the app',
+    toolbar: {
+      title: 'Tone',
+      icon: 'circle',
+      items: [
+        { value: 'flat', title: 'Flat' },
+        { value: 'real', title: 'Real' },
+        { value: 'soft', title: 'Soft' },
+        { value: 'glass', title: 'Glass' },
+      ],
+      dynamicTitle: true,
+    },
+  },
+};
 
 const preview: Preview = {
   parameters: {
@@ -38,8 +60,11 @@ const preview: Preview = {
   },
 
   decorators,
-
-  tags: ['autodocs'],
+  globalTypes,
+  initialGlobals: {
+    tone: 'flat',
+  },
+  tags: [],
 };
 
 export default preview;

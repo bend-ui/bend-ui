@@ -7,7 +7,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta = {
   title: 'Components/Overlays/Drawer',
   component: Drawer,
-  tags: ['autodocs'],
+
   parameters: {
     layout: 'centered',
   },
@@ -26,9 +26,10 @@ type Story = StoryObj<typeof Drawer>;
 export const Base: Story = {
   render: (args) => <Drawer {...args} />,
   args: {
-    title: 'Dialog Title',
-    description: 'Dialog Description',
-    children: 'Dialog Content',
+    trigger: 'Open drawer',
+    title: 'Drawer Title',
+    description: 'Drawer Description',
+    children: 'Drawer Content',
   },
 };
 

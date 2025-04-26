@@ -1,56 +1,62 @@
-import { defineSlotRecipe } from '@pandacss/dev';
+import { defineParts, defineRecipe } from '@pandacss/dev';
 
-export const drawer = defineSlotRecipe({
+const parts = defineParts({
+  root: { selector: '&' },
+  content: { selector: '& [data-part="content"]' },
+});
+
+export const drawer = defineRecipe({
   className: 'Drawer',
-  slots: [
-    'trigger',
-    'overlay',
-    'content',
-    'header',
-    'close',
-    'footer',
-    'title',
-    'description',
-  ],
-  base: {
-    overlay: {
+  base: parts({
+    root: {
+      alignItems: 'center',
+      display: 'flex',
+      justifyContent: 'center',
+      left: '0',
+      overflow: 'auto',
       position: 'fixed',
-      inset: 0,
+      top: '0',
+      width: '100vw',
+      height: '100dvh',
+      zIndex: 'modal',
     },
     content: {
       position: 'fixed',
     },
-  },
+  }),
   variants: {
     placement: {
-      left: {
+      left: parts({
         content: {
           top: 0,
           left: 0,
           bottom: 0,
         },
-      },
-      right: {
+      }),
+      right: parts({
         content: {
           top: 0,
           right: 0,
           bottom: 0,
         },
-      },
-      top: {
+      }),
+      top: parts({
         content: {
           top: 0,
           left: 0,
           right: 0,
         },
-      },
-      bottom: {
+      }),
+      bottom: parts({
         content: {
           left: 0,
           right: 0,
           bottom: 0,
         },
-      },
+      }),
     },
+  },
+  defaultVariants: {
+    placement: 'right',
   },
 });

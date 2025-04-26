@@ -1,24 +1,25 @@
-import { defineSlotRecipe } from '@pandacss/dev';
+import { defineParts, defineRecipe } from '@pandacss/dev';
 
-export const select = defineSlotRecipe({
+const parts = defineParts({
+  root: { selector: '&' },
+  clearTrigger: { selector: '&  [data-part="clearTrigger"]' },
+  content: { selector: '&  [data-part="content"]' },
+  control: { selector: '&  [data-part="control"]' },
+  indicator: { selector: '&  [data-part="indicator"]' },
+  itemGroupLabel: { selector: '&  [data-part="itemGroupLabel"]' },
+  itemGroup: { selector: '&  [data-part="itemGroup"]' },
+  item: { selector: '&  [data-part="item"]' },
+  itemText: { selector: '&  [data-part="itemText"]' },
+  itemIndicator: { selector: '&  [data-part="itemIndicator"]' },
+  label: { selector: '&  [data-part="label"]' },
+  positioner: { selector: '&  [data-part="positioner"]' },
+  trigger: { selector: '&  [data-part="trigger"]' },
+  valueText: { selector: '&  [data-part="valueText"]' },
+});
+
+export const selectRecipe = defineRecipe({
   className: 'Select',
-  slots: [
-    'root',
-    'clearTrigger',
-    'content',
-    'control',
-    'indicator',
-    'itemGroupLabel',
-    'itemGroup',
-    'itemIndicator',
-    'item',
-    'itemText',
-    'label',
-    'positioner',
-    'trigger',
-    'valueText',
-  ],
-  base: {
+  base: parts({
     root: {
       display: 'flex',
       flexDirection: 'column',
@@ -47,5 +48,5 @@ export const select = defineSlotRecipe({
       outline: 'none',
       width: 'full',
     },
-  },
+  }),
 });

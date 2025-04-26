@@ -6,4 +6,7 @@ export const borders = defineSemanticTokens.borders({
   primary: { value: '1px solid {colors.border.primary}' },
   danger: { value: '1px solid {colors.border.danger}' },
   divider: { value: '1px solid {colors.border.divider}' },
+  strong: { value: '1px solid {colors.border.strong}' },
+  subtle: { value: '1px solid {colors.border.subtle}' },
+  disabled: { value: '1px solid {colors.border.disabled}' },
 });

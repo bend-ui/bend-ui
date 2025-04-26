@@ -1,48 +1,112 @@
-import { css, cx } from '@particles/styled-system/css';
 import { input } from '@particles/styled-system/recipes';
 import { forwardRef } from 'react';
-import { splitCssProps } from '@particles/styled-system/jsx';
 import type { InputVariantProps } from '@particles/styled-system/recipes';
-import type { ComponentPropsWithoutRef, ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import { HTMLParticlesProps, particles } from '../factory';
+import { Assign } from '@particles/styled-system/types';
+import { cx } from '@particles/styled-system/css';
 
-export type InputProps = ComponentPropsWithoutRef<'input'> &
-  InputVariantProps & {
-    icon?: ReactNode;
-    iconEnd?: ReactNode;
-    addonStart?: ReactNode;
-    addonEnd?: ReactNode;
-  };
+export type InputRootProps = HTMLParticlesProps<'input'> & InputVariantProps;
 
-export const Root = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const [variantProps, inputProps] = input.splitVariantProps(props);
-  const [cssProps, otherProps] = splitCssProps(inputProps);
-  const { className, icon, iconEnd, addonStart, addonEnd, ...rest } =
-    otherProps;
+const InputRoot = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+  const [variantProps, rest] = input.splitVariantProps(props);
   const classes = input(variantProps);
-
-  const inputAttrs = {
-    'data-has-icon': icon ? 'true' : undefined,
-    'data-has-icon-end': iconEnd ? 'true' : undefined,
-    'data-has-addon-start': addonStart ? 'true' : undefined,
-    'data-has-addon-end': addonEnd ? 'true' : undefined,
-  };
-
   return (
-    <div className={cx(classes.root, css(cssProps), className)}>
-      {addonStart && <div className={classes.addonStart}>{addonStart}</div>}
-      {icon && <div className={classes.icon}>{icon}</div>}
-      <input
-        ref={ref}
-        className={cx(classes.field)}
-        {...inputAttrs}
-        {...rest}
-      />
-      {iconEnd && <div className={classes.iconEnd}>{iconEnd}</div>}
-      {addonEnd && <div className={classes.addonEnd}>{addonEnd}</div>}
-    </div>
+    <particles.div
+      ref={ref}
+      data-part="root"
+      {...rest}
+      className={cx('group', classes, rest.className)}
+    />
   );
 });
 
-Root.displayName = 'Input';
+export type InputWrapperProps = HTMLParticlesProps<'label'>;
 
-export const Input = Object.assign(Root, {});
+const InputWrapper = forwardRef<HTMLLabelElement, InputWrapperProps>(
+  (props, ref) => {
+    return <particles.label ref={ref} data-part="wrapper" {...props} />;
+  },
+);
+
+export type InputIconProps = HTMLParticlesProps<'div'>;
+
+const InputIcon = forwardRef<HTMLDivElement, InputIconProps>((props, ref) => {
+  return <particles.div ref={ref} data-part="icon" asChild {...props} />;
+});
+
+export type InputInputProps = HTMLParticlesProps<'input'>;
+
+const InputInput = forwardRef<HTMLInputElement, InputInputProps>(
+  (props, ref) => {
+    const { className, ...rest } = props;
+    return (
+      <particles.input
+        ref={ref}
+        data-part="input"
+        className={cx('peer', className)}
+        {...rest}
+      />
+    );
+  },
+);
+
+export type InputElementProps = HTMLParticlesProps<'div'>;
+
+const InputElement = forwardRef<HTMLDivElement, InputElementProps>(
+  (props, ref) => {
+    return <particles.div ref={ref} data-part="element" {...props} />;
+  },
+);
+
+export type InputAddonProps = HTMLParticlesProps<'div'>;
+
+const InputAddon = forwardRef<HTMLDivElement, InputAddonProps>((props, ref) => {
+  return <particles.div ref={ref} data-part="addon" {...props} />;
+});
+
+export interface InputProps
+  extends Assign<HTMLParticlesProps<'input'>, InputVariantProps> {
+  icon?: ReactNode;
+  iconEnd?: ReactNode;
+  elementStart?: ReactNode;
+  elementEnd?: ReactNode;
+  addonStart?: ReactNode;
+  addonEnd?: ReactNode;
+}
+
+const Component = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+  const {
+    addonStart,
+    addonEnd,
+    icon,
+    iconEnd,
+    elementStart,
+    elementEnd,
+    ...rest
+  } = props;
+  return (
+    <InputRoot {...rest}>
+      {addonStart && <InputAddon>{addonStart}</InputAddon>}
+      <InputWrapper>
+        {icon && <InputIcon>{icon}</InputIcon>}
+        {elementStart && <InputElement>{elementStart}</InputElement>}
+        <InputInput ref={ref} />
+        {elementEnd && <InputElement>{elementEnd}</InputElement>}
+        {iconEnd && <InputIcon>{iconEnd}</InputIcon>}
+      </InputWrapper>
+      {addonEnd && <InputAddon>{addonEnd}</InputAddon>}
+    </InputRoot>
+  );
+});
+
+Component.displayName = 'Input';
+
+export const Input = Object.assign(Component, {
+  Root: InputRoot,
+  Wrapper: InputWrapper,
+  Icon: InputIcon,
+  Input: InputInput,
+  Element: InputElement,
+  Addon: InputAddon,
+});

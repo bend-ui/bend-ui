@@ -26,7 +26,7 @@ export const Default: StoryObj = {
         root: {
           maxW: 'min-content',
           minW: '320px',
-          bgColor: 'bg.surface',
+          bgColor: 'surface',
           border: 'base',
           borderRadius: 'base',
         },

@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta = {
   title: 'Components/Forms/Switch',
   component: Switch,
-  tags: ['autodocs'],
+
   parameters: {
     layout: 'centered',
   },

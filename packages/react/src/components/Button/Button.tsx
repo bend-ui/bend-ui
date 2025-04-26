@@ -1,44 +1,48 @@
-import { forwardRef } from 'react';
-import { button } from '@particles/styled-system/recipes';
-import { css, cx } from '@particles/styled-system/css';
-import { splitCssProps } from '@particles/styled-system/jsx';
-import { Slot } from '../Slot';
-import type { ButtonProps } from './Button.types';
+import { forwardRef, ReactNode } from 'react';
+import { button, ButtonVariantProps } from '@particles/styled-system/recipes';
+import { cx } from '@particles/styled-system/css';
+import { HTMLParticlesProps, particles } from '../factory';
+import { Assign } from '@particles/styled-system/types';
 
-const getProps = (options: { props: any; recipe: any }) => {
-  const [variantProps, restProps] = options.recipe.splitVariantProps(
-    options.props,
-  );
-  const [cssProps, otherProps] = splitCssProps(restProps);
-  const { css: cssProp, ...styleProps } = cssProps;
-  return { otherProps, styleProps, cssProp, variantProps };
-};
+export interface ButtonProps
+  extends Assign<HTMLParticlesProps<'button'>, ButtonVariantProps> {
+  /** Disable the button */
+  isDisabled?: boolean;
+  /** Set the button in a loading state */
+  isLoading?: boolean;
+  /** The icon to display at the start of the button */
+  icon?: ReactNode;
+  /** The icon to display at the end of the button */
+  iconEnd?: ReactNode;
+}
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (props, ref) => {
-    const { otherProps, styleProps, cssProp, variantProps } = getProps({
-      props: props,
-      recipe: button,
-    });
-
-    const { children, className, asChild, disabled, icon, iconEnd, ...rest } =
-      otherProps;
+    const [variantProps, restProps] = button.splitVariantProps(props);
+    const {
+      className,
+      children,
+      icon,
+      iconEnd,
+      disabled,
+      isDisabled,
+      isLoading,
+      ...rest
+    } = restProps;
 
     const classes = button(variantProps);
 
-    const Component = asChild ? Slot : 'button';
-
     return (
-      <Component
+      <particles.button
         ref={ref}
-        className={cx(classes.root, css(cssProp, styleProps), className)}
-        data-disabled={disabled || variantProps.isDisabled}
+        className={cx(classes.root, className)}
+        data-disabled={disabled || isDisabled}
         {...rest}
       >
         {icon}
-        {children && <span className={classes.label}>{children}</span>}
+        {!!children && <span className={classes.label}>{children}</span>}
         {iconEnd}
-      </Component>
+      </particles.button>
     );
   },
 );

@@ -1,65 +1,72 @@
-import { defineSlotRecipe } from '@pandacss/dev';
+import { defineParts, defineRecipe } from '@pandacss/dev';
 
-export const inputRecipe = defineSlotRecipe({
+const parts = defineParts({
+  root: { selector: '&' },
+  wrapper: { selector: '& [data-part="wrapper"]' },
+  input: { selector: '& [data-part="input"]' },
+  icon: { selector: '& [data-part="icon"]' },
+  element: { selector: '& [data-part="element"]' },
+  addon: { selector: '& [data-part="addon"]' },
+});
+
+export const inputRecipe = defineRecipe({
   description: 'Input styles',
   className: 'Input',
-  slots: ['root', 'icon', 'iconEnd', 'field', 'addonStart', 'addonEnd'],
-  base: {
+  base: parts({
     root: {
       rounded: 'lg',
-      border: '1px solid transparent',
+      border: 'strong',
+      transitionProperty: 'colors, border-color, background-color',
+      transitionDuration: 'fast',
+      transitionTimingFunction: 'ease-in-out',
+      divideX: '1px',
+      divideColor: 'border.subtle',
       _focusWithin: {
         layerStyle: 'focus',
       },
+      _invalid: {
+        border: 'danger',
+      },
+      _disabled: {
+        border: 'disabled',
+      },
     },
-  },
+    wrapper: {
+      cursor: 'text',
+    },
+  }),
   variants: {
     size: {
-      md: {
-        field: {
-          py: 'sm',
-          px: 'md',
-          _hasIcon: {
-            paddingInlineStart: '9',
-          },
-          _hasIconEnd: {
-            paddingInlineEnd: '9',
-          },
-          _hasAddonStart: {
-            paddingInlineStart: '0',
-          },
-          _hasAddonEnd: {
-            paddingInlineEnd: '0',
-          },
+      md: parts({
+        input: {
+          height: '10',
+        },
+        wrapper: {
+          paddingInline: '3',
+          gap: '2',
         },
         icon: {
-          paddingInlineStart: '3',
+          width: '5',
+          height: '5',
         },
-        iconEnd: {
-          paddingInlineEnd: '3',
+        element: {},
+        addon: {
+          paddingInline: '3',
         },
-      },
+      }),
     },
     variant: {
-      solid: {
-        root: {
-          backgroundColor: 'bg.input',
+      solid: parts({
+        root: {},
+      }),
+      outline: parts({
+        root: {},
+        wrapper: {
           _hover: {
-            backgroundColor: 'bg.input.hover',
-          },
-          '&:has(:invalid, [data-invalid])': {
-            borderColor: 'border.danger',
+            backgroundColor: 'surface.hover',
           },
         },
-      },
-      outline: {
-        root: {
-          border: 'input',
-          '&:has(:invalid, [data-invalid])': {
-            borderColor: 'border.danger',
-          },
-        },
-      },
+      }),
     },
   },
   defaultVariants: {

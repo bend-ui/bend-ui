@@ -1,6 +1,6 @@
 import { defineParts, defineRecipe } from '@pandacss/dev';
 
-export const parts = defineParts({
+const parts = defineParts({
   root: { selector: '&' },
   image: { selector: '& [data-part="image"]' },
   fallback: { selector: '& [data-part="fallback"]' },

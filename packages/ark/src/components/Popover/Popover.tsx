@@ -1,84 +1,64 @@
-import { Popover as PopoverPrimitive } from '@ark-ui/react';
+import { Popover as ArkPopover } from '@ark-ui/react';
 import { popover } from '@particles/styled-system/recipes';
 import type { PopoverVariantProps } from '@particles/styled-system/recipes';
-import { createStyleContext } from '../../utils';
 import { Button } from '..';
-import type { ComponentProps } from 'react';
-import type { Assign } from '@ark-ui/react';
-import type { PopoverProps } from './Popover.types';
-const { withRootProvider, withContext } = createStyleContext(popover);
+import { forwardRef } from 'react';
 
-export type RootProviderProps = ComponentProps<typeof RootProvider>;
-const RootProvider = withRootProvider<
-  Assign<PopoverPrimitive.RootProviderProps, PopoverVariantProps>
->(PopoverPrimitive.RootProvider);
+const PopoverRoot = ArkPopover.Root;
+const PopoverTrigger = ArkPopover.Trigger;
+const PopoverIndicator = ArkPopover.Indicator;
 
-export type RootProps = ComponentProps<typeof Root>;
-const Root = withRootProvider<
-  Assign<PopoverPrimitive.RootProps, PopoverVariantProps>
->(PopoverPrimitive.Root);
+type PopoverPositionerProps = ArkPopover.PositionerProps & PopoverVariantProps;
 
-const Trigger = withContext<HTMLButtonElement, PopoverPrimitive.TriggerProps>(
-  PopoverPrimitive.Trigger,
-  'trigger',
+const PopoverPositioner = forwardRef<HTMLDivElement, PopoverPositionerProps>(
+  (props, ref) => {
+    const [variantProps, rest] = popover.splitVariantProps(props);
+    const classes = popover(variantProps);
+    return <ArkPopover.Positioner {...rest} className={classes} ref={ref} />;
+  },
 );
 
-Trigger.displayName = 'Popover.Trigger';
+const PopoverContent = ArkPopover.Content;
+const PopoverTitle = ArkPopover.Title;
+const PopoverDescription = ArkPopover.Description;
 
-const Indicator = withContext<HTMLDivElement, PopoverPrimitive.IndicatorProps>(
-  PopoverPrimitive.Indicator,
-  'indicator',
-);
+export interface PopoverProps
+  extends ArkPopover.RootProps,
+    PopoverVariantProps {
+  trigger: React.ReactNode;
+  title?: string;
+  description?: string;
+  children: React.ReactNode;
+}
 
-Indicator.displayName = 'Popover.Indicator';
-
-const Positioner = PopoverPrimitive.Positioner;
-
-Positioner.displayName = 'Popover.Positioner';
-
-const Content = withContext<HTMLDivElement, PopoverPrimitive.ContentProps>(
-  PopoverPrimitive.Content,
-  'content',
-);
-
-Content.displayName = 'Popover.Content';
-
-const Title = withContext<HTMLDivElement, PopoverPrimitive.TitleProps>(
-  PopoverPrimitive.Title,
-  'title',
-);
-
-Title.displayName = 'Popover.Title';
-
-const Description = withContext<
-  HTMLParagraphElement,
-  PopoverPrimitive.DescriptionProps
->(PopoverPrimitive.Description, 'description');
-
-Description.displayName = 'Popover.Description';
-
-const Component = (props: PopoverProps) => (
-  <Root {...props}>
-    <Trigger>
-      <Button>Click Me &gt;</Button>
-    </Trigger>
-    <Positioner>
-      <Content>
-        <Title>Title</Title>
-        <Description>Description</Description>
-      </Content>
-    </Positioner>
-  </Root>
-);
+const Component = (props: PopoverProps) => {
+  const { trigger, title, description, children, size, ...rest } = props;
+  return (
+    <PopoverRoot {...rest}>
+      <PopoverTrigger asChild>
+        <Button>{trigger}</Button>
+      </PopoverTrigger>
+      <PopoverPositioner size={size}>
+        <PopoverContent>
+          {!!title && <PopoverTitle>{title}</PopoverTitle>}
+          {!!description && (
+            <PopoverDescription>{description}</PopoverDescription>
+          )}
+          {children}
+        </PopoverContent>
+      </PopoverPositioner>
+    </PopoverRoot>
+  );
+};
 
 Component.displayName = 'Popover';
 
 export const Popover = Object.assign(Component, {
-  Root,
-  Trigger,
-  Indicator,
-  Positioner,
-  Content,
-  Title,
-  Description,
+  Root: PopoverRoot,
+  Trigger: PopoverTrigger,
+  Indicator: PopoverIndicator,
+  Positioner: PopoverPositioner,
+  Content: PopoverContent,
+  Title: PopoverTitle,
+  Description: PopoverDescription,
 });

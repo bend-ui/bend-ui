@@ -1,9 +1,16 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Checkbox } from './Checkbox';
+import { checkbox } from '@particles/styled-system/recipes';
 
 const meta: Meta<typeof Checkbox> = {
   title: 'Checkbox',
   component: Checkbox,
+  argTypes: {
+    size: {
+      control: 'select',
+      options: checkbox.variantMap.size,
+    },
+  },
 };
 
 export default meta;
@@ -11,5 +18,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    children: 'Enable notifications',
+  },
 };

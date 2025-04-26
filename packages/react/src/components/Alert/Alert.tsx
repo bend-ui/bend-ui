@@ -1,20 +1,18 @@
 import { alert } from '@particles/styled-system/recipes';
 import { styled } from '@particles/styled-system/jsx';
-import { createStyleContext } from '../../utils/create-style-context';
 import type { AlertProps } from './Alert.types';
 import type { ReactNode } from 'react';
+import { particles } from '../factory';
 
-const { withProvider, withContext } = createStyleContext(alert);
+const Root = styled('div', alert);
 
-const Root = withProvider(styled.div, 'root');
+const Icon = particles.div;
 
-const Icon = withContext(styled.div, 'icon');
+const Title = particles.div;
 
-const Title = withContext(styled.div, 'title');
+const Content = particles.div;
 
-const Content = withContext(styled.div, 'content');
-
-const Footer = withContext(styled.div, 'footer');
+const Footer = particles.div;
 
 const Component = (
   props: AlertProps & {

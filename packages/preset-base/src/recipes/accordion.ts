@@ -1,6 +1,19 @@
-import { defineSlotRecipe } from '@pandacss/dev';
+import { defineParts, defineRecipe } from '@pandacss/dev';
 
-export const accordion = defineSlotRecipe({
+const parts = defineParts({
+  root: { selector: '&' },
+  item: { selector: '& [data-part="item"]' },
+  trigger: { selector: '& [data-part="item-trigger"]' },
+  content: { selector: '& [data-part="item-content"]' },
+});
+
+export const accordion = defineRecipe({
   className: 'Accordion',
-  slots: ['root', 'item', 'trigger', 'content'],
+  base: parts({
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 'base',
+    },
+  }),
 });

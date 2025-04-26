@@ -3,31 +3,17 @@ import {
   combobox,
   type ComboboxVariantProps,
 } from '@particles/styled-system/recipes';
-import type { HTMLStyledProps } from '@particles/styled-system/types';
-import { withRecipe } from '../../utils';
-import type { Assign } from '@ark-ui/react';
 
-export const ComboboxRoot = withRecipe<
-  typeof ArkCombobox.Root,
-  Assign<
-    Assign<
-      HTMLStyledProps<'div'>,
-      ArkCombobox.RootBaseProps<ArkCombobox.CollectionItem>
-    >,
-    ComboboxVariantProps
-  >
->(ArkCombobox.Root, combobox);
+type ComboboxRootProps = ArkCombobox.RootProps<ArkCombobox.CollectionItem> &
+  ComboboxVariantProps;
 
-export const ComboboxRootProvider = withRecipe<
-  typeof ArkCombobox.RootProvider,
-  Assign<
-    Assign<
-      HTMLStyledProps<'div'>,
-      ArkCombobox.RootProviderBaseProps<ArkCombobox.CollectionItem>
-    >,
-    ComboboxVariantProps
-  >
->(ArkCombobox.RootProvider, combobox);
+const ComboboxRoot = (props: ComboboxRootProps) => {
+  const [variantProps, rest] = combobox.splitVariantProps(props);
+  const classes = combobox(variantProps);
+
+  return <ArkCombobox.Root className={classes} {...rest} />;
+};
+const ComboboxRootProvider = ArkCombobox.RootProvider;
 
 export const ComboboxLabel = ArkCombobox.Label;
 export const ComboboxInput = ArkCombobox.Input;

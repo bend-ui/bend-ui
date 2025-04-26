@@ -1,31 +1,51 @@
-import { defineSlotRecipe } from '@pandacss/dev';
+import { defineParts, defineRecipe } from '@pandacss/dev';
 
-export const popoverRecipe = defineSlotRecipe({
-  className: 'popover',
-  slots: [
-    'root',
-    'trigger',
-    'indicator',
-    'positioner',
-    'content',
-    'title',
-    'description',
-    'arrow',
-    'close',
-  ],
-  base: {
+const parts = defineParts({
+  root: { selector: '&' },
+  content: { selector: '& [data-part="content"]' },
+  title: { selector: '& [data-part="title"]' },
+  description: { selector: '& [data-part="description"]' },
+});
+
+export const popoverRecipe = defineRecipe({
+  className: 'Popover',
+  base: parts({
+    root: {
+      position: 'relative',
+    },
     content: {
-      padding: 'base',
-      layerStyle: 'panelRaised',
+      layerStyle: 'panel.raised',
+      borderRadius: 'md',
       _open: {
-        animation: 'panel.in',
+        animation: 'fade-in',
       },
       _closed: {
-        animation: 'panel.out',
+        animation: 'fade-out',
       },
     },
     title: {
-      textStyle: 'title',
+      fontSize: 'lg',
+      fontWeight: 'bold',
     },
+    description: {
+      fontSize: 'sm',
+      color: 'gray.500',
+    },
+  }),
+  variants: {
+    size: {
+      sm: parts({
+        content: { padding: 'sm', maxWidth: 'sm' },
+      }),
+      md: parts({
+        content: { padding: 'md', maxWidth: 'md' },
+      }),
+      lg: parts({
+        content: { padding: 'lg', maxWidth: 'lg' },
+      }),
+    },
+  },
+  defaultVariants: {
+    size: 'md',
   },
 });

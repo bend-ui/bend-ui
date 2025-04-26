@@ -1,24 +1,20 @@
-/**
- * This code is heavily inspired by the factory function from Ark UI
- * https://github.com/chakra-ui/ark/blob/main/packages/react/src/components/factory.ts
- **/
-
-import React, {
-  ComponentPropsWithRef,
-  ElementType,
-  ForwardRefExoticComponent,
-  JSX,
+// Do not replace with '@zag-js/react'
+import type React from 'react';
+import {
+  Children,
+  type JSX,
+  cloneElement,
+  createElement,
   forwardRef,
+  isValidElement,
   memo,
 } from 'react';
-import { splitCssProps } from '@particles/styled-system/jsx';
-import { css, cx } from '@particles/styled-system/css';
+import { composeRefs } from '../utils/compose-refs';
 import {
   Assign,
   HTMLStyledProps,
   JsxStyleProps,
 } from '@particles/styled-system/types';
-import { Slot } from './Slot';
 
 export interface PolymorphicProps {
   /**
@@ -31,39 +27,71 @@ type JsxElements = {
   [E in keyof JSX.IntrinsicElements]: ParticlesForwardRefComponent<E>;
 };
 
-type ParticlesForwardRefComponent<E extends ElementType> =
-  ForwardRefExoticComponent<ParticlesPropsWithRef<E>>;
+type ParticlesForwardRefComponent<E extends React.ElementType> =
+  React.ForwardRefExoticComponent<ParticlesPropsWithRef<E>>;
 
-type ParticlesPropsWithRef<E extends ElementType> = Assign<
-  ComponentPropsWithRef<E>,
+type ParticlesPropsWithRef<E extends React.ElementType> = Assign<
+  React.ComponentPropsWithRef<E>,
   JsxStyleProps
 > &
   PolymorphicProps;
 
-const withAsChild = (Component: ElementType) => {
-  const ComponentWithAsChild = memo(
+// Credits to the Radix team
+function getRef(element: React.ReactElement) {
+  // React <=18 in DEV
+  let getter = Object.getOwnPropertyDescriptor(element.props, 'ref')?.get;
+  let mayWarn = getter && 'isReactWarning' in getter && getter.isReactWarning;
+  if (mayWarn) {
+    return (element as any).ref;
+  }
+
+  // React 19 in DEV
+  getter = Object.getOwnPropertyDescriptor(element, 'ref')?.get;
+  mayWarn = getter && 'isReactWarning' in getter && getter.isReactWarning;
+  if (mayWarn) {
+    return (element.props as { ref?: React.Ref<unknown> }).ref;
+  }
+
+  return (
+    (element.props as { ref?: React.Ref<unknown> }).ref || (element as any).ref
+  );
+}
+
+const withAsChild = (Component: React.ElementType) => {
+  const Comp = memo(
     forwardRef<unknown, ParticlesPropsWithRef<typeof Component>>(
       (props, ref) => {
-        const [cssProps, otherProps] = splitCssProps(props);
-        const { css: cssProp, ...styledProps } = cssProps;
+        const { asChild, children, ...restProps } = props;
 
-        const classes = css(styledProps, cssProp);
-        const { asChild, className, ...rest } = otherProps;
+        if (!asChild) {
+          return createElement(Component, { ...restProps, ref }, children);
+        }
 
-        const Comp: any = asChild ? Slot : Component;
+        const onlyChild: React.ReactNode = Children.only(children);
 
-        return <Comp ref={ref} className={cx(classes, className)} {...rest} />;
+        if (!isValidElement<Record<string, unknown>>(onlyChild)) {
+          return null;
+        }
+
+        const childRef = getRef(onlyChild);
+
+        return cloneElement(onlyChild, {
+          ...restProps,
+          ...onlyChild.props,
+          ref: ref ? composeRefs(ref, childRef) : childRef,
+        });
       },
     ),
   );
-  // @ts-expect-error - it exists
-  ComponentWithAsChild.displayName = Component.displayName || Component.name;
 
-  return ComponentWithAsChild;
+  // @ts-expect-error - it exists
+  Comp.displayName = Component.displayName || Component.name;
+
+  return Comp;
 };
 
 export type HTMLParticlesProps<T extends keyof JSX.IntrinsicElements> =
-  HTMLStyledProps<T> & PolymorphicProps;
+  HTMLStyledProps<T> & PolymorphicProps & { children?: React.ReactNode };
 
 export const jsxFactory = () => {
   const cache = new Map();

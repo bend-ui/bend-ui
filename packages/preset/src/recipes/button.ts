@@ -10,6 +10,9 @@ export const buttonRecipe = defineSlotRecipe({
       borderWidth: '1px',
       borderStyle: 'solid',
       borderColor: 'transparent',
+      fontWeight: 'medium',
+      position: 'relative',
+      overflow: 'hidden',
     },
     label: {
       textAlign: 'center',
@@ -20,16 +23,25 @@ export const buttonRecipe = defineSlotRecipe({
       default: {
         root: {
           colorPalette: 'neutral',
+          _soft: {
+            boxShadow: 'interaction.neutral',
+          },
         },
       },
       primary: {
         root: {
           colorPalette: 'primary',
+          _soft: {
+            boxShadow: 'interaction.primary',
+          },
         },
       },
       danger: {
         root: {
           colorPalette: 'danger',
+          _soft: {
+            boxShadow: 'interaction.danger',
+          },
         },
       },
     },
@@ -38,6 +50,7 @@ export const buttonRecipe = defineSlotRecipe({
         root: {
           color: 'colorPalette.fg',
           backgroundColor: 'colorPalette',
+          borderColor: 'colorPalette.border',
           _hover: {
             backgroundColor: 'colorPalette.hover',
           },
@@ -49,6 +62,16 @@ export const buttonRecipe = defineSlotRecipe({
               backgroundColor: 'colorPalette.disabled',
             },
           },
+          _soft: {
+            _before: {
+              content: '""',
+              position: 'absolute',
+              inset: 0,
+              bgGradient: 'to-b',
+              gradientFrom: 'white/16',
+              gradientTo: 'transparent',
+            },
+          },
         },
       },
       outline: {
@@ -56,6 +79,7 @@ export const buttonRecipe = defineSlotRecipe({
           color: 'colorPalette.text',
           backgroundColor: 'transparent',
           borderColor: 'colorPalette.border',
+          boxShadow: 'revert',
           _hover: {
             backgroundColor: 'colorPalette.border.hover',
           },

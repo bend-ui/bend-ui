@@ -1,9 +1,16 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Dialog } from './Dialog';
+import { dialog } from '@particles/styled-system/recipes';
 
 const meta: Meta<typeof Dialog> = {
   title: 'Dialog',
   component: Dialog,
+  argTypes: {
+    size: {
+      control: 'select',
+      options: dialog.variantMap.size,
+    },
+  },
 };
 
 export default meta;
@@ -11,5 +18,10 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Basic: Story = {
-  args: {},
+  args: {
+    children: <div>Hello</div>,
+    title: 'Dialog Title',
+    description: 'Dialog Description',
+    closeTrigger: 'Close',
+  },
 };

@@ -1,5 +1,4 @@
 import { defineSemanticTokens } from '@pandacss/dev';
-import { animations } from './animations';
 import { borders } from './borders';
 import { colors } from './colors';
 import {
@@ -14,6 +13,7 @@ import { shadows } from './shadows';
 import { sizes } from './sizes';
 import { spacing } from './spacing';
 import { zIndex } from './zIndex';
+import { gradients } from './gradients';
 
 export const semanticTokens = defineSemanticTokens({
   borders,
@@ -24,7 +24,7 @@ export const semanticTokens = defineSemanticTokens({
   fonts,
   fontSizes,
   fontWeights,
-  gradients: {},
+  gradients,
   letterSpacings,
   lineHeights,
   opacity: {},
@@ -36,5 +36,4 @@ export const semanticTokens = defineSemanticTokens({
   transitions: {
     base: { value: '0.2s ease-out' },
   },
-  animations,
 });

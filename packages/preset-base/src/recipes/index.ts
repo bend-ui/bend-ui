@@ -13,7 +13,7 @@ import { collapsible } from './collapsible';
 import { combobox } from './combobox';
 import { drawer } from './drawer';
 import { hoverCard } from './hover-card';
-import { input } from './input';
+import { inputRecipe } from './input';
 import { menu } from './menu';
 import { numberInput } from './number-input';
 import { pagination } from './pagination';
@@ -22,7 +22,7 @@ import { progress } from './progress';
 import { radioGroup } from './radio-group';
 import { rating } from './rating';
 import { segmentedControl } from './segmented-control';
-import { select } from './select';
+import { selectRecipe } from './select';
 import { skeleton } from './skeleton';
 import { slider } from './slider';
 import { switchRecipe } from './switch';
@@ -31,13 +31,15 @@ import { tabsRecipe } from './tabs';
 import { tag } from './tag';
 import { tagsInput } from './tags-input';
 import { textarea } from './textarea';
-import { toast } from './toast';
-import { tooltip } from './tooltip';
+import { toastRecipe } from './toast';
+import { tooltipRecipe } from './tooltip';
 import { avatarRecipe } from './avatar';
 import { appShellRecipe } from './app-shell';
+import { dialogRecipe } from './dialog';
+import { backdropRecipe } from './backdrop';
+import { commandRecipe } from './command';
 
 export const slotRecipes: Theme['slotRecipes'] = {
-  accordion,
   actionBar,
   alert,
   badge,
@@ -45,20 +47,14 @@ export const slotRecipes: Theme['slotRecipes'] = {
   button,
   card,
   carousel,
-  checkbox,
   collapsible,
-  drawer,
   hoverCard,
-  input,
-  menu,
   numberInput,
   pagination,
-  popover,
   progress,
   radioGroup,
   rating,
   segmentedControl,
-  select,
   skeleton,
   slider,
   switchRecipe,
@@ -66,16 +62,26 @@ export const slotRecipes: Theme['slotRecipes'] = {
   tag,
   tagsInput,
   textarea,
-  toast,
-  tooltip,
 };
 
 export const recipes: Theme['recipes'] = {
+  accordion,
   appShell: appShellRecipe,
   buttonGroup,
   combobox,
   avatar: avatarRecipe,
   tabs: tabsRecipe,
+  checkbox,
+  dialog: dialogRecipe,
+  backdrop: backdropRecipe,
+  drawer,
+  popover,
+  toast: toastRecipe,
+  menu,
+  tooltip: tooltipRecipe,
+  select: selectRecipe,
+  command: commandRecipe,
+  input: inputRecipe,
 };
 
 export * from './accordion';
