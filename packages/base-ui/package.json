@@ -10,13 +10,13 @@
     }
   },
   "dependencies": {
-    "@base-ui-components/react": "1.0.0-alpha.6",
+    "@base-ui-components/react": "1.0.0-alpha.8",
     "@particles/preset": "workspace:*",
     "@particles/react": "workspace:*",
     "@particles/styled-system": "workspace:*"
   },
   "devDependencies": {
-    "@pandacss/dev": "^0.53.0",
+    "@pandacss/dev": "^0.53.5",
     "@particles/storybook": "workspace:*",
     "postcss": "8.5.3"
   }
