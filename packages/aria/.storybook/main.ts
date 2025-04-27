@@ -1,16 +1,15 @@
-import { dirname, join } from 'path';
 import type { StorybookConfig } from '@storybook/react-vite';
 
 // These options were migrated by @nx/storybook:convert-to-inferred from the project.json file.
-const configValues = { default: {}, ci: {} };
+// const configValues = { default: {}, ci: {} };
 
 // Determine the correct configValue to use based on the configuration
-const nxConfiguration = process.env.NX_TASK_TARGET_CONFIGURATION ?? 'default';
+// const nxConfiguration = process.env.NX_TASK_TARGET_CONFIGURATION ?? 'default';
 
-const options = {
-  ...configValues.default,
-  ...(configValues[nxConfiguration] ?? {}),
-};
+// const options = {
+//   ...configValues.default,
+//   ...(configValues[nxConfiguration] ?? {}),
+// };
 
 const config: StorybookConfig = {
   stories: [
@@ -18,15 +17,18 @@ const config: StorybookConfig = {
     '../src/**/*.stories.@(js|jsx|ts|tsx)',
     '../../react/src/**/*.stories.@(js|jsx|ts|tsx)',
   ],
+  // staticDirs: ['../public'],
   addons: [
-    getAbsolutePath('@storybook/addon-essentials'),
-    getAbsolutePath('@storybook/addon-interactions'),
-    getAbsolutePath('storybook-dark-mode'),
-    getAbsolutePath('@storybook/addon-a11y'),
-    getAbsolutePath('@chromatic-com/storybook'),
+    '@storybook/addon-essentials',
+    'storybook-dark-mode',
+    '@storybook/addon-themes',
+    '@storybook/addon-a11y',
+    '@chromatic-com/storybook',
+    // '@storybook/experimental-addon-test',
+    'storybook-addon-tag-badges',
   ],
   framework: {
-    name: getAbsolutePath('@storybook/react-vite'),
+    name: '@storybook/react-vite',
     options: {
       builder: {
         viteConfigPath: './vite.config.ts',
@@ -41,7 +43,6 @@ const config: StorybookConfig = {
         include: [
           'storybook-dark-mode',
           '@storybook/theming',
-          '@particles/react',
           '@particles/storybook',
         ],
       },
@@ -50,30 +51,25 @@ const config: StorybookConfig = {
   typescript: {
     check: false,
     reactDocgen: 'react-docgen-typescript',
-    reactDocgenTypescriptOptions: {
-      shouldExtractLiteralValuesFromEnum: true,
-      shouldRemoveUndefinedFromOptional: true,
-      propFilter: (prop) => {
-        if (prop.parent) {
-          if (
-            prop.parent.fileName.match(/react-aria-components/) ||
-            prop.parent.fileName.match(/@particles/)
-          ) {
-            console.log(prop.parent.fileName);
-            return true;
-          } else {
-            return !/node_modules/.test(prop.parent.fileName);
-          }
-        }
-        return true;
-      },
-    },
+    // reactDocgenTypescriptOptions: {
+    //   shouldExtractLiteralValuesFromEnum: true,
+    //   shouldRemoveUndefinedFromOptional: true,
+    //   propFilter: (prop) => {
+    //     if (prop.parent) {
+    //       if (
+    //         prop.parent.fileName.match(/@ark-ui/) ||
+    //         prop.parent.fileName.match(/@particles/)
+    //       ) {
+    //         return true;
+    //       } else {
+    //         return !/node_modules/.test(prop.parent.fileName);
+    //       }
+    //     }
+    //     return true;
+    //   },
+    // },
   },
   docs: {},
 };
 
 export default config;
-
-function getAbsolutePath(value: string) {
-  return dirname(require.resolve(join(value, 'package.json')));
-}
