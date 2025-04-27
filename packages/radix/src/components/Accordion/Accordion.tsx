@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import * as AccordionPrimitive from '@radix-ui/react-accordion';
+import { Accordion as AccordionPrimitive } from 'radix-ui';
 import { LuChevronDown } from 'react-icons/lu';
 import { cx } from '@particles/styled-system/css';
 import { accordion } from '@particles/styled-system/recipes';

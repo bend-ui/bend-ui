@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
+import { DropdownMenu as DropdownMenuPrimitive } from 'radix-ui';
 import { TbCheck, TbChevronRight, TbCircle } from 'react-icons/tb';
 import { styled } from '@particles/styled-system/jsx';
 import { css, cx } from '@particles/styled-system/css';

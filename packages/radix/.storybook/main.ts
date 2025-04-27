@@ -54,7 +54,7 @@ const config: StorybookConfig = {
       propFilter: (prop) => {
         if (prop.parent) {
           if (
-            prop.parent.fileName.match(/@radix-ui/) ||
+            prop.parent.fileName.match(/radix-ui/) ||
             prop.parent.fileName.match(/@particles/)
           ) {
             return true;

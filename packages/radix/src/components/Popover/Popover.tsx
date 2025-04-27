@@ -1,4 +1,4 @@
-import * as PopoverPrimitive from '@radix-ui/react-popover';
+import { Popover as PopoverPrimitive } from 'radix-ui';
 import { popover } from '@particles/styled-system/recipes';
 import { createStyleContext } from '../../utils';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';

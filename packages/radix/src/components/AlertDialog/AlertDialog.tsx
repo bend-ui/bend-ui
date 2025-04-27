@@ -1,4 +1,4 @@
-import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
+import { AlertDialog as AlertDialogPrimitive } from 'radix-ui';
 import { styled } from '@particles/styled-system/jsx';
 import { modal } from '@particles/styled-system/recipes';
 import { createStyleContext } from '../../utils';

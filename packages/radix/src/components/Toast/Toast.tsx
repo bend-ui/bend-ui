@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import * as ToastPrimitives from '@radix-ui/react-toast';
+import { Toast as ToastPrimitives } from 'radix-ui';
 import { TbX } from 'react-icons/tb';
 import { cx } from '@particles/styled-system/css';
 import { toast } from '@particles/styled-system/recipes';

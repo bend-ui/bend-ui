@@ -1,4 +1,4 @@
-import * as DialogPrimitive from '@radix-ui/react-dialog';
+import { Dialog as DialogPrimitive } from 'radix-ui';
 import { modal } from '@particles/styled-system/recipes';
 import { styled } from '@particles/styled-system/jsx';
 import { createStyleContext } from '../../utils';
