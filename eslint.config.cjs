@@ -5,7 +5,14 @@ module.exports = [
   ...nx.configs['flat/typescript'],
   ...nx.configs['flat/javascript'],
   {
-    ignores: ['**/dist', '**/styled-system', '**/.source', '.nx'],
+    ignores: [
+      '**/dist',
+      '**/styled-system',
+      '**/.source',
+      '.nx',
+      '**/vite.config.*.timestamp*',
+      '**/vitest.config.*.timestamp*',
+    ],
   },
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
