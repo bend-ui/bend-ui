@@ -9,7 +9,7 @@ interface Recipe {
   splitVariantProps: (props: Props) => [Props, Props];
 }
 
-export function withRecipe<P extends { className?: string | undefined }>(
+export function withRecipe<P extends { className?: any }>(
   Component: ElementType,
   recipe: Recipe,
   part: string,
@@ -17,7 +17,7 @@ export function withRecipe<P extends { className?: string | undefined }>(
   const StyledComponent = styled(Component);
 
   const FinalComponent = (props: P) => {
-    const { className, part, ...otherProps } = props;
+    const { className, ...otherProps } = props;
     const [variantProps, rest] = recipe.splitVariantProps(otherProps);
     const styles = recipe(variantProps);
 
@@ -26,6 +26,31 @@ export function withRecipe<P extends { className?: string | undefined }>(
         className={cx(styles, className)}
         data-part={part}
         {...rest}
+      />
+    );
+  };
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
+  FinalComponent.displayName = Component.displayName || Component.name;
+
+  return FinalComponent;
+}
+
+export function withParts<P extends { className?: any }>(
+  Component: ElementType,
+  part: string,
+) {
+  const StyledComponent = styled(Component);
+
+  const FinalComponent = (props: P) => {
+    const { className, ...otherProps } = props;
+
+    return (
+      <StyledComponent
+        className={cx(className)}
+        data-part={part}
+        {...otherProps}
       />
     );
   };

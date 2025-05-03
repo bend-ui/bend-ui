@@ -2,11 +2,11 @@ import { defineParts, defineRecipe } from '@pandacss/dev';
 
 const parts = defineParts({
   root: { selector: '&' },
-  wrapper: { selector: '& [data-part="wrapper"]' },
-  input: { selector: '& [data-part="input"]' },
-  icon: { selector: '& [data-part="icon"]' },
-  element: { selector: '& [data-part="element"]' },
-  addon: { selector: '& [data-part="addon"]' },
+  wrapper: { selector: '& [data-component-part="wrapper"]' },
+  input: { selector: '& [data-component-part="input"]' },
+  icon: { selector: '& [data-component-part="icon"]' },
+  element: { selector: '& [data-component-part="element"]' },
+  addon: { selector: '& [data-component-part="addon"]' },
 });
 
 export const inputRecipe = defineRecipe({

@@ -1,14 +1,19 @@
 {
   "name": "@particles/base-ui",
   "version": "0.0.1",
-  "main": "./index.js",
-  "types": "./index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./index.mjs",
-      "require": "./index.js"
-    }
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  ".": {
+    "source": "./src/index.ts",
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
   },
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@base-ui-components/react": "1.0.0-alpha.8",
     "@particles/preset": "workspace:*",
@@ -16,8 +21,16 @@
     "@particles/styled-system": "workspace:*"
   },
   "devDependencies": {
-    "@pandacss/dev": "^0.53.5",
-    "@particles/storybook": "workspace:*",
-    "postcss": "8.5.3"
+    "@particles/storybook": "workspace:*"
+  },
+  "peerDependencies": {
+    "@pandacss/dev": "^0.53.0",
+    "react": "^17.0.2 || ^18.2.0",
+    "react-dom": "^17.0.2 || ^18.2.0"
+  },
+  "scripts": {
+    "prepare": "panda codegen",
+    "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
+    "build": "tsup"
   }
 }

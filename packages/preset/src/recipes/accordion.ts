@@ -11,20 +11,15 @@ const parts = defineParts({
 export const accordionRecipe = defineRecipe({
   className: 'Accordion',
   base: parts({
+    root: {
+      gap: 'sm',
+    },
     item: {
       display: 'flex',
       flexDirection: 'column',
       border: 'base',
-      borderTop: 'none',
       padding: 'base',
-
-      _first: {
-        border: 'base',
-        roundedTop: 'base',
-      },
-      _last: {
-        roundedBottom: 'base',
-      },
+      rounded: 'base',
     },
     trigger: {
       display: 'flex',
@@ -56,4 +51,23 @@ export const accordionRecipe = defineRecipe({
       },
     },
   }),
+  variants: {
+    attached: {
+      true: parts({
+        root: {
+          gap: '0',
+        },
+        item: {
+          borderTop: 'none',
+          _first: {
+            borderTop: 'base',
+            roundedTop: 'base',
+          },
+          _last: {
+            roundedBottom: 'base',
+          },
+        },
+      }),
+    },
+  },
 });

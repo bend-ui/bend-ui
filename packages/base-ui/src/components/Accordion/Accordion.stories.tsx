@@ -9,14 +9,14 @@ const meta: Meta<typeof Accordion> = {
 export default meta;
 type Story = StoryObj<typeof Accordion>;
 
-export const Primary: Story = {
+export const Base: Story = {
   render: (args) => (
     <Accordion.Root {...args}>
       <Accordion.Item>
         <Accordion.Header>
           <Accordion.Trigger>
             What is Base UI?
-            {/* <PlusIcon /> */}
+            <Accordion.Indicator />
           </Accordion.Trigger>
         </Accordion.Header>
         <Accordion.Panel>
@@ -31,7 +31,7 @@ export const Primary: Story = {
         <Accordion.Header>
           <Accordion.Trigger>
             How do I get started?
-            {/* <PlusIcon /> */}
+            <Accordion.Indicator />
           </Accordion.Trigger>
         </Accordion.Header>
         <Accordion.Panel>
@@ -44,7 +44,10 @@ export const Primary: Story = {
 
       <Accordion.Item>
         <Accordion.Header>
-          <Accordion.Trigger>Can I use it for my project?</Accordion.Trigger>
+          <Accordion.Trigger>
+            Can I use it for my project?
+            <Accordion.Indicator />
+          </Accordion.Trigger>
         </Accordion.Header>
         <Accordion.Panel>
           <div>Of course! Base UI is free and open source.</div>
@@ -55,11 +58,9 @@ export const Primary: Story = {
   args: {},
 };
 
-export const Heading: Story = {
-  ...Primary,
-  args: {},
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    await expect(canvas.getByText(/Welcome to Component!/gi)).toBeTruthy();
+export const Attached: Story = {
+  ...Base,
+  args: {
+    attached: true,
   },
 };

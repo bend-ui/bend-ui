@@ -1,6 +1,7 @@
 export * from '@particles/react';
 
 export * from './Accordion';
+export * from './AngleSlider';
 export * from './Avatar';
 export * from './Carousel';
 export * from './Checkbox';

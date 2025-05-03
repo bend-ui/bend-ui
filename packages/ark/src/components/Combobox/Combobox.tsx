@@ -3,28 +3,125 @@ import {
   combobox,
   type ComboboxVariantProps,
 } from '@particles/styled-system/recipes';
+import { Input, withParts, withRecipe } from '../..';
+import { ChevronDownIcon } from 'lucide-react';
 
 type ComboboxRootProps = ArkCombobox.RootProps<ArkCombobox.CollectionItem> &
   ComboboxVariantProps;
 
-const ComboboxRoot = (props: ComboboxRootProps) => {
-  const [variantProps, rest] = combobox.splitVariantProps(props);
-  const classes = combobox(variantProps);
+const ComboboxRoot = withRecipe<ComboboxRootProps>(
+  ArkCombobox.Root,
+  combobox,
+  'root',
+);
 
-  return <ArkCombobox.Root className={classes} {...rest} />;
-};
 const ComboboxRootProvider = ArkCombobox.RootProvider;
 
-export const ComboboxLabel = ArkCombobox.Label;
-export const ComboboxInput = ArkCombobox.Input;
-export const ComboboxTrigger = ArkCombobox.Trigger;
-export const ComboboxContent = ArkCombobox.Content;
-export const ComboboxPositioner = ArkCombobox.Positioner;
-export const ComboboxControl = ArkCombobox.Control;
-export const ComboboxItem = ArkCombobox.Item;
-export const ComboboxItemText = ArkCombobox.ItemText;
-export const ComboboxItemIndicator = ArkCombobox.ItemIndicator;
-export const ComboboxClearTrigger = ArkCombobox.ClearTrigger;
+export interface ComboboxLabelProps
+  extends React.ComponentProps<typeof ArkCombobox.Label> {
+  children?: React.ReactNode;
+}
+
+const ComboboxLabel = withParts<ComboboxLabelProps>(ArkCombobox.Label, 'label');
+
+export type ComboboxInputProps = React.ComponentProps<typeof ArkCombobox.Input>;
+
+export interface ComboboxControlProps
+  extends React.ComponentProps<typeof ArkCombobox.Control> {
+  children?: React.ReactNode;
+}
+
+export const ComboboxControl = (props: ComboboxControlProps) => {
+  const { children, ...rest } = props;
+
+  return (
+    <ArkCombobox.Control asChild {...rest}>
+      <Input.Root>
+        <Input.Wrapper>{children}</Input.Wrapper>
+      </Input.Root>
+    </ArkCombobox.Control>
+  );
+};
+
+const ComboboxInput = (props: ComboboxInputProps) => {
+  return (
+    <ArkCombobox.Input asChild {...props}>
+      <Input.Input />
+    </ArkCombobox.Input>
+  );
+};
+
+export interface ComboboxTriggerProps
+  extends React.ComponentProps<typeof ArkCombobox.Trigger> {
+  children?: React.ReactNode;
+}
+
+const ComboboxTrigger = (props: ComboboxTriggerProps) => {
+  return (
+    <ArkCombobox.Trigger asChild {...props}>
+      <Input.Icon>
+        <ChevronDownIcon />
+      </Input.Icon>
+    </ArkCombobox.Trigger>
+  );
+};
+
+export interface ComboboxContentProps
+  extends React.ComponentProps<typeof ArkCombobox.Content> {
+  children?: React.ReactNode;
+}
+
+export const ComboboxContent = withParts<ComboboxContentProps>(
+  ArkCombobox.Content,
+  'content',
+);
+
+export interface ComboboxPositionerProps
+  extends React.ComponentProps<typeof ArkCombobox.Positioner> {
+  children?: React.ReactNode;
+}
+
+export const ComboboxPositioner = withParts<ComboboxPositionerProps>(
+  ArkCombobox.Positioner,
+  'positioner',
+);
+
+export interface ComboboxItemProps
+  extends React.ComponentProps<typeof ArkCombobox.Item> {
+  children?: React.ReactNode;
+}
+
+const ComboboxItem = withParts<ComboboxItemProps>(ArkCombobox.Item, 'item');
+
+export interface ComboboxItemTextProps
+  extends React.ComponentProps<typeof ArkCombobox.ItemText> {
+  children?: React.ReactNode;
+}
+
+const ComboboxItemText = withParts<ComboboxItemTextProps>(
+  ArkCombobox.ItemText,
+  'item-text',
+);
+
+export interface ComboboxItemIndicatorProps
+  extends React.ComponentProps<typeof ArkCombobox.ItemIndicator> {
+  children?: React.ReactNode;
+}
+
+const ComboboxItemIndicator = withParts<ComboboxItemIndicatorProps>(
+  ArkCombobox.ItemIndicator,
+  'item-indicator',
+);
+
+export interface ComboboxClearTriggerProps
+  extends React.ComponentProps<typeof ArkCombobox.ClearTrigger> {
+  children?: React.ReactNode;
+}
+
+const ComboboxClearTrigger = withParts<ComboboxClearTriggerProps>(
+  ArkCombobox.ClearTrigger,
+  'clear-trigger',
+);
 
 export interface ComboboxProps
   extends React.ComponentProps<typeof ComboboxRoot> {

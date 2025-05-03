@@ -1,25 +1,53 @@
 import { Accordion as ArkAccordion } from '@ark-ui/react';
 import { accordion } from '@particles/styled-system/recipes';
 import type { AccordionVariantProps } from '@particles/styled-system/recipes';
-import { forwardRef } from 'react';
+import { withParts, withRecipe } from '../../utils';
 
-export type AccordionRootProps = ArkAccordion.RootProps & AccordionVariantProps;
+export interface AccordionRootProps extends ArkAccordion.RootProps {
+  children: React.ReactNode;
+  attached?: AccordionVariantProps['attached'];
+}
 
-const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>(
-  (props, ref) => {
-    const [variantProps, rest] = accordion.splitVariantProps(props);
-    const classes = accordion(variantProps);
-    return <ArkAccordion.Root {...rest} ref={ref} className={classes} />;
-  },
+const AccordionRoot = withRecipe<AccordionRootProps>(
+  ArkAccordion.Root,
+  accordion,
+  'root',
+);
+export interface AccordionItemProps extends ArkAccordion.ItemProps {
+  children: React.ReactNode;
+}
+
+const AccordionItem = withParts<AccordionItemProps>(ArkAccordion.Item, 'item');
+
+export interface AccordionItemTriggerProps
+  extends ArkAccordion.ItemTriggerProps {
+  children: React.ReactNode;
+}
+
+const AccordionItemTrigger = withParts<AccordionItemTriggerProps>(
+  ArkAccordion.ItemTrigger,
+  'item-trigger',
 );
 
-const AccordionItem = ArkAccordion.Item;
+export interface AccordionItemIndicatorProps
+  extends ArkAccordion.ItemIndicatorProps {
+  children: React.ReactNode;
+}
 
-const AccordionItemTrigger = ArkAccordion.ItemTrigger;
+const AccordionItemIndicator = withParts<AccordionItemIndicatorProps>(
+  ArkAccordion.ItemIndicator,
+  'item-indicator',
+);
 
-const AccordionItemIndicator = ArkAccordion.ItemIndicator;
+export interface AccordionItemContentProps
+  extends ArkAccordion.ItemContentProps {
+  children: React.ReactNode;
+}
 
-const AccordionItemContent = ArkAccordion.ItemContent;
+const AccordionItemContent = withParts<AccordionItemContentProps>(
+  ArkAccordion.ItemContent,
+  'item-content',
+);
 
 export const Accordion = Object.assign(AccordionRoot, {
   Root: AccordionRoot,

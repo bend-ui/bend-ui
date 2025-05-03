@@ -34,3 +34,10 @@ export const Base: Story = {
     </Accordion.Root>
   ),
 };
+
+export const Attached: Story = {
+  ...Base,
+  args: {
+    attached: true,
+  },
+};

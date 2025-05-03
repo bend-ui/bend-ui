@@ -533,6 +533,9 @@ importers:
       '@base-ui-components/react':
         specifier: 1.0.0-alpha.8
         version: 1.0.0-alpha.8(@types/react@18.3.18)(react-dom@18.3.1)(react@18.3.1)
+      '@pandacss/dev':
+        specifier: ^0.53.0
+        version: 0.53.5(jsdom@26.0.0)(typescript@5.7.3)
       '@particles/preset':
         specifier: workspace:*
         version: link:../preset
@@ -542,16 +545,16 @@ importers:
       '@particles/styled-system':
         specifier: workspace:*
         version: link:../styled-system
+      react:
+        specifier: ^17.0.2 || ^18.2.0
+        version: 18.3.1
+      react-dom:
+        specifier: ^17.0.2 || ^18.2.0
+        version: 18.3.1(react@18.3.1)
     devDependencies:
-      '@pandacss/dev':
-        specifier: ^0.53.5
-        version: 0.53.5(jsdom@26.0.0)(typescript@5.7.3)
       '@particles/storybook':
         specifier: workspace:*
         version: link:../storybook
-      postcss:
-        specifier: 8.5.3
-        version: 8.5.3
 
   packages/cli:
     dependencies:
@@ -14015,7 +14018,7 @@ packages:
     dependencies:
       minimatch: 9.0.5
       path-browserify: 1.0.1
-      tinyglobby: 0.2.12
+      tinyglobby: 0.2.13
 
   /@ts-morph/common@0.26.1:
     resolution:
@@ -22669,7 +22672,6 @@ packages:
         optional: true
     dependencies:
       picomatch: 4.0.2
-    dev: true
 
   /fflate@0.8.2:
     resolution:
@@ -37115,7 +37117,6 @@ packages:
     dependencies:
       fdir: 6.4.4(picomatch@4.0.2)
       picomatch: 4.0.2
-    dev: true
 
   /tinypool@1.0.2:
     resolution:

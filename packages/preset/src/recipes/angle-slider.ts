@@ -1,0 +1,103 @@
+import { defineParts, defineRecipe } from '@pandacss/dev';
+
+const parts = defineParts({
+  root: { selector: '&' },
+  label: { selector: '& [data-part="label"]' },
+  control: { selector: '& [data-part="control"]' },
+  thumb: { selector: '& [data-part="thumb"]' },
+  markerGroup: { selector: '& [data-part="marker-group"]' },
+  marker: { selector: '& [data-part="marker"]' },
+});
+
+export const angleSliderRecipe = defineRecipe({
+  className: 'AngleSlider',
+  base: parts({
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '0.5rem',
+      marginBottom: '1rem',
+      alignItems: 'center',
+    },
+    label: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '8px',
+    },
+    control: {
+      '--size': '120px',
+      '--thumb-size': '40px',
+      '--thumb-indicator-size': 'min(var(--thumb-size), calc(var(--size) / 2))',
+      '--bg': 'hsl(220, 25.7%, 13.7%)',
+      '--thumb-color': 'hsl(24, 74.7%, 49.6%)',
+      '--accent': 'hsl(24, 74.7%, 40%)',
+      width: 'var(--size)',
+      height: 'var(--size)',
+      borderRadius: '100%',
+      backgroundColor: 'var(--bg)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      userSelect: 'none',
+      position: 'relative',
+      _webkitUserSelect: 'none',
+      _mozUserSelect: 'none',
+      _disabled: {
+        opacity: 0.4,
+      },
+    },
+    thumb: {
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 'calc(50% - 1.5px)',
+      pointerEvents: 'none',
+      outline: 'none',
+      height: '100%',
+      width: '3px',
+      _before: {
+        content: "''",
+        position: 'absolute',
+        right: 0,
+        top: 0,
+        height: 'var(--thumb-indicator-size)',
+        background: 'var(--thumb-color)',
+        width: '3px',
+      },
+    },
+    markerGroup: {
+      position: 'absolute',
+      inset: '1px',
+      borderRadius: 'var(--size)',
+      pointerEvents: 'none',
+    },
+    marker: {
+      width: '2px',
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      left: 'calc(50% - 1px)',
+      '--marker-color': 'var(--marker-color, var(--thumb-color))',
+      _before: {
+        content: "''",
+        position: 'absolute',
+        top: 'calc(var(--thumb-size) / 3)',
+        left: '0.5px',
+        width: '1px',
+        height: 'calc(var(--thumb-size) / 1.5)',
+        transform: 'translate(-50%, -50%)',
+        backgroundColor: 'var(--marker-color)',
+      },
+      _atValue: {
+        '--marker-color': 'var(--accent)',
+      },
+      _underValue: {
+        '--marker-color': 'var(--accent)',
+      },
+      _overValue: {
+        '--marker-color': 'hsl(218, 23.1%, 22.9%)',
+      },
+    },
+  }),
+});

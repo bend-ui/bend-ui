@@ -13,7 +13,6 @@ export const accordion = defineRecipe({
     root: {
       display: 'flex',
       flexDirection: 'column',
-      gap: 'base',
     },
   }),
 });

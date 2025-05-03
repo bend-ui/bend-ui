@@ -14,7 +14,7 @@ const InputRoot = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   return (
     <particles.div
       ref={ref}
-      data-part="root"
+      data-component-part="root"
       {...rest}
       className={cx('group', classes, rest.className)}
     />
@@ -25,14 +25,18 @@ export type InputWrapperProps = HTMLParticlesProps<'label'>;
 
 const InputWrapper = forwardRef<HTMLLabelElement, InputWrapperProps>(
   (props, ref) => {
-    return <particles.label ref={ref} data-part="wrapper" {...props} />;
+    return (
+      <particles.label ref={ref} data-component-part="wrapper" {...props} />
+    );
   },
 );
 
 export type InputIconProps = HTMLParticlesProps<'div'>;
 
 const InputIcon = forwardRef<HTMLDivElement, InputIconProps>((props, ref) => {
-  return <particles.div ref={ref} data-part="icon" asChild {...props} />;
+  return (
+    <particles.div ref={ref} data-component-part="icon" asChild {...props} />
+  );
 });
 
 export type InputInputProps = HTMLParticlesProps<'input'>;
@@ -43,7 +47,7 @@ const InputInput = forwardRef<HTMLInputElement, InputInputProps>(
     return (
       <particles.input
         ref={ref}
-        data-part="input"
+        data-component-part="input"
         className={cx('peer', className)}
         {...rest}
       />
@@ -55,14 +59,14 @@ export type InputElementProps = HTMLParticlesProps<'div'>;
 
 const InputElement = forwardRef<HTMLDivElement, InputElementProps>(
   (props, ref) => {
-    return <particles.div ref={ref} data-part="element" {...props} />;
+    return <particles.div ref={ref} data-component-part="element" {...props} />;
   },
 );
 
 export type InputAddonProps = HTMLParticlesProps<'div'>;
 
 const InputAddon = forwardRef<HTMLDivElement, InputAddonProps>((props, ref) => {
-  return <particles.div ref={ref} data-part="addon" {...props} />;
+  return <particles.div ref={ref} data-component-part="addon" {...props} />;
 });
 
 export interface InputProps
