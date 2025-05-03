@@ -16,6 +16,6 @@
     "@particles/styled-system": "workspace:*"
   },
   "devDependencies": {
-    "@pandacss/dev": "^0.53.5"
+    "@pandacss/dev": "^0.53.6"
   }
 }
