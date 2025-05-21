@@ -40,11 +40,7 @@ const config: StorybookConfig = {
 
     return mergeConfig(config, {
       optimizeDeps: {
-        include: [
-          'storybook-dark-mode',
-          '@storybook/theming',
-          '@particles/storybook',
-        ],
+        include: ['storybook-dark-mode', '@storybook/theming'],
       },
     });
   },

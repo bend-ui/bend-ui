@@ -39,7 +39,6 @@ const config: StorybookConfig = {
           'storybook-dark-mode',
           '@storybook/addon-themes',
           '@storybook/theming',
-          '@particles/storybook',
         ],
       },
     });

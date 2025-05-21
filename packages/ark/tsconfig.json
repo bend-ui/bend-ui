@@ -9,7 +9,8 @@
       "~/*": ["src/*"],
       "@particles/preset": ["packages/preset/src/index.ts"],
       "@particles/react": ["packages/react/src/index.ts"],
-      "@particles/styled-system/*": ["packages/styled-system/dist/*"]
+      "@particles/styled-system/*": ["packages/styled-system/dist/*"],
+      "@particles/storybook": ["packages/storybook/src/index.ts"]
     }
   },
   "files": [],
