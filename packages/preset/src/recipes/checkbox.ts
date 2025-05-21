@@ -5,13 +5,13 @@ const parts = defineParts({
     selector: '&',
   },
   label: {
-    selector: '& [data-part="label"]',
+    selector: '& [data-component-part="label"]',
   },
   control: {
-    selector: '& [data-part="control"]',
+    selector: '& [data-component-part="control"]',
   },
   indicator: {
-    selector: '& [data-part="indicator"]',
+    selector: '& [data-component-part="indicator"]',
   },
 });
 
@@ -23,8 +23,10 @@ export const checkboxRecipe = defineRecipe({
     label: {},
     control: {
       rounded: 'sm',
-      layerStyle: 'interaction.neutral',
       focusRingOffsetColor: 'red',
+      borderColor: 'neutral.200',
+      borderWidth: '1px',
+      borderStyle: 'solid',
 
       _focusVisible: {
         outline: '2px solid transparent',
@@ -39,7 +41,9 @@ export const checkboxRecipe = defineRecipe({
       },
 
       _checked: {
-        layerStyle: 'interaction.primary',
+        color: 'primary.fg',
+        bgColor: 'primary',
+        borderColor: 'primary',
       },
     },
     indicator: {},

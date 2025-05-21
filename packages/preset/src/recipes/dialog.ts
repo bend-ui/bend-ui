@@ -1,7 +1,7 @@
 import { defineParts, defineRecipe } from '@pandacss/dev';
 
 const parts = defineParts({
-  root: { selector: '&' },
+  positioner: { selector: '&' },
   content: { selector: '& [data-part="content"]' },
   title: { selector: '& [data-part="title"]' },
   description: { selector: '& [data-part="description"]' },
@@ -11,7 +11,7 @@ const parts = defineParts({
 export const dialogRecipe = defineRecipe({
   className: 'Dialog',
   base: parts({
-    root: {},
+    positioner: {},
     content: {
       layerStyle: 'panel.raised',
       borderRadius: 'md',

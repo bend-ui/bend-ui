@@ -2,22 +2,40 @@ import { Checkbox as ArkCheckbox } from '@ark-ui/react';
 import { CheckIcon } from 'lucide-react';
 import { CheckboxVariantProps } from '@particles/styled-system/recipes';
 import { checkbox } from '@particles/styled-system/recipes';
-import { forwardRef } from 'react';
+import { withParts, withRecipe } from '../../utils';
 
 export type CheckboxRootProps = ArkCheckbox.RootProps & CheckboxVariantProps;
 
-const CheckboxRoot = forwardRef<HTMLLabelElement, CheckboxRootProps>(
-  (props, ref) => {
-    const [variantProps, rest] = checkbox.splitVariantProps(props);
-    const classes = checkbox(variantProps);
-    return <ArkCheckbox.Root ref={ref} {...rest} className={classes} />;
-  },
+const CheckboxRoot = withRecipe<CheckboxRootProps>(
+  ArkCheckbox.Root,
+  checkbox,
+  'root',
 );
 
-const CheckboxLabel = ArkCheckbox.Label;
-const CheckboxControl = ArkCheckbox.Control;
-const CheckboxIndicator = ArkCheckbox.Indicator;
-const CheckboxHiddenInput = ArkCheckbox.HiddenInput;
+export type CheckboxLabelProps = ArkCheckbox.LabelProps;
+
+const CheckboxLabel = withParts<CheckboxLabelProps>(ArkCheckbox.Label, 'label');
+
+export type CheckboxControlProps = ArkCheckbox.ControlProps;
+
+const CheckboxControl = withParts<CheckboxControlProps>(
+  ArkCheckbox.Control,
+  'control',
+);
+
+export type CheckboxIndicatorProps = ArkCheckbox.IndicatorProps;
+
+const CheckboxIndicator = withParts<CheckboxIndicatorProps>(
+  ArkCheckbox.Indicator,
+  'indicator',
+);
+
+export type CheckboxHiddenInputProps = ArkCheckbox.HiddenInputProps;
+
+const CheckboxHiddenInput = withParts<CheckboxHiddenInputProps>(
+  ArkCheckbox.HiddenInput,
+  'hiddenInput',
+);
 
 export type CheckboxProps = CheckboxRootProps;
 

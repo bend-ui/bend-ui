@@ -68,7 +68,7 @@ const Component = () => {
     'https://tinyurl.com/59jxz9uu',
   ];
   return (
-    <Root>
+    <Root defaultPage={0} slideCount={images.length}>
       <Control>
         <PrevTrigger>Previous</PrevTrigger>
         <NextTrigger>Next</NextTrigger>
