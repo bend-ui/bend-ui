@@ -64,8 +64,6 @@
     "@rollup/plugin-url": "8.0.2",
     "@storybook/addon-a11y": "8.6.12",
     "@storybook/addon-docs": "8.6.12",
-    "@storybook/addon-essentials": "8.6.12",
-    "@storybook/addon-interactions": "8.6.12",
     "@storybook/addon-mdx-gfm": "8.6.12",
     "@storybook/addon-themes": "9.0.9",
     "@storybook/core-common": "8.6.12",
