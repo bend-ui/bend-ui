@@ -1,17 +1,18 @@
-import { forwardRef } from 'react';
+import * as React from 'react';
 import { Switch as SwitchPrimitive } from '@base-ui-components/react/switch';
-import { switchRecipe } from '@particles/styled-system/recipes';
 
-const Root = SwitchPrimitive.Root;
-const Thumb = SwitchPrimitive.Thumb;
+const SwitchRoot = SwitchPrimitive.Root;
+const SwitchThumb = SwitchPrimitive.Thumb;
 
-export type SwitchProps = React.ComponentPropsWithoutRef<typeof Root>;
-
-const Component = forwardRef<HTMLDivElement, SwitchProps>((props, ref) => {
-  return <Root ref={ref} {...props} />;
-});
+const Component = () => {
+  return (
+    <SwitchRoot defaultChecked>
+      <SwitchThumb />
+    </SwitchRoot>
+  );
+};
 
 export const Switch = Object.assign(Component, {
-  Root,
-  Thumb,
+  Root: SwitchRoot,
+  Thumb: SwitchThumb,
 });

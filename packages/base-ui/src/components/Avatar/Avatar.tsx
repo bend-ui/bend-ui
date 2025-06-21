@@ -2,26 +2,23 @@ import { forwardRef } from 'react';
 import { Avatar as AvatarPrimitive } from '@base-ui-components/react/avatar';
 import { avatar, AvatarVariantProps } from '@particles/styled-system/recipes';
 
-export interface AvatarRootProps
-  extends React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>,
-    AvatarVariantProps {}
+export type AvatarRootProps = AvatarPrimitive.Root.Props & AvatarVariantProps;
 
-const Root = forwardRef<HTMLDivElement, AvatarRootProps>((props, ref) => {
+const AvatarRoot = forwardRef<HTMLDivElement, AvatarRootProps>((props, ref) => {
   const { size, ...rest } = props;
   const classes = avatar({ size });
   return <AvatarPrimitive.Root {...rest} ref={ref} className={classes} />;
 });
 
-const Image = forwardRef<
-  HTMLImageElement,
-  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>
->((props, ref) => {
-  return <AvatarPrimitive.Image {...props} ref={ref} data-part="image" />;
-});
+const AvatarImage = forwardRef<HTMLImageElement, AvatarPrimitive.Image.Props>(
+  (props, ref) => {
+    return <AvatarPrimitive.Image {...props} ref={ref} data-part="image" />;
+  },
+);
 
-const Fallback = forwardRef<
+const AvatarFallback = forwardRef<
   HTMLDivElement,
-  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>
+  AvatarPrimitive.Fallback.Props
 >((props, ref) => {
   return <AvatarPrimitive.Fallback {...props} ref={ref} data-part="fallback" />;
 });
@@ -33,15 +30,15 @@ export interface AvatarProps extends AvatarRootProps {
 const Component = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
   const { src, ...rest } = props;
   return (
-    <Root ref={ref} {...rest}>
-      <Image src={src} />
-      <Fallback />
-    </Root>
+    <AvatarRoot ref={ref} {...rest}>
+      <AvatarImage src={src} />
+      <AvatarFallback />
+    </AvatarRoot>
   );
 });
 
 export const Avatar = Object.assign(Component, {
-  Root,
-  Image,
-  Fallback,
+  Root: AvatarRoot,
+  Image: AvatarImage,
+  Fallback: AvatarFallback,
 });

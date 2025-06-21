@@ -6,51 +6,50 @@ import {
 } from '@particles/styled-system/recipes';
 import { CheckIcon } from 'lucide-react';
 
-const Root = forwardRef<
-  HTMLButtonElement,
-  React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>
->((props, ref) => {
-  return <CheckboxPrimitive.Root {...props} ref={ref} data-part="control" />;
-});
+export type CheckboxRootProps = CheckboxPrimitive.Root.Props;
 
-const Indicator = forwardRef<
-  HTMLButtonElement,
-  React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Indicator>
->((props, ref) => {
-  return (
-    <CheckboxPrimitive.Indicator {...props} ref={ref} data-part="indicator" />
-  );
-});
+const CheckboxRoot = forwardRef<HTMLButtonElement, CheckboxRootProps>(
+  (props, ref) => {
+    return <CheckboxPrimitive.Root {...props} ref={ref} data-part="control" />;
+  },
+);
 
-const Label = forwardRef<
+export type CheckboxIndicatorProps = CheckboxPrimitive.Indicator.Props;
+
+const CheckboxIndicator = forwardRef<HTMLButtonElement, CheckboxIndicatorProps>(
+  (props, ref) => {
+    return (
+      <CheckboxPrimitive.Indicator {...props} ref={ref} data-part="indicator" />
+    );
+  },
+);
+
+const CheckboxLabel = forwardRef<
   HTMLLabelElement,
   React.LabelHTMLAttributes<HTMLLabelElement>
 >((props, ref) => {
   return <label {...props} ref={ref} data-part="root" />;
 });
 
-export type CheckboxProps = React.ComponentPropsWithoutRef<
-  typeof CheckboxPrimitive.Root
-> &
-  CheckboxVariantProps;
+export type CheckboxProps = CheckboxRootProps & CheckboxVariantProps;
 
 const Component = forwardRef<HTMLButtonElement, CheckboxProps>((props, ref) => {
   const { children, size = 'md', ...rest } = props;
   const classes = checkbox({ size });
   return (
-    <Label className={classes}>
-      <Root ref={ref} defaultChecked {...rest}>
-        <Indicator>
+    <CheckboxLabel className={classes}>
+      <CheckboxRoot ref={ref} defaultChecked {...rest}>
+        <CheckboxIndicator>
           <CheckIcon />
-        </Indicator>
-      </Root>
+        </CheckboxIndicator>
+      </CheckboxRoot>
       {children}
-    </Label>
+    </CheckboxLabel>
   );
 });
 
 export const Checkbox = Object.assign(Component, {
-  Root,
-  Indicator,
-  Label,
+  Root: CheckboxRoot,
+  Indicator: CheckboxIndicator,
+  Label: CheckboxLabel,
 });

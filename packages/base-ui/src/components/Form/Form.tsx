@@ -1,13 +1,69 @@
-import { forwardRef } from 'react';
+import * as React from 'react';
 import { Form as FormPrimitive } from '@base-ui-components/react/form';
-import { form } from '@particles/styled-system/recipes';
+import { Field } from '../Field';
 
-const Root = FormPrimitive;
+const FormRoot = FormPrimitive;
 
-export type FormProps = React.ComponentPropsWithoutRef<typeof Root>;
+const Component = () => {
+  const [errors, setErrors] = React.useState({});
+  const [loading, setLoading] = React.useState(false);
 
-const Component = forwardRef<HTMLFormElement, FormProps>((props, ref) => {
-  return <Root ref={ref} {...props} />;
+  return (
+    <FormRoot
+      errors={errors}
+      onClearErrors={setErrors}
+      onSubmit={async (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.currentTarget);
+        const value = formData.get('url') as string;
+
+        setLoading(true);
+        const response = await submitForm(value);
+        const serverErrors = {
+          url: response.error,
+        };
+
+        setErrors(serverErrors);
+        setLoading(false);
+      }}
+    >
+      <Field.Root name="url">
+        <Field.Label>Homepage</Field.Label>
+        <Field.Control
+          type="url"
+          required
+          defaultValue="https://example.com"
+          placeholder="https://example.com"
+          pattern="https?://.*"
+        />
+        <Field.Error />
+      </Field.Root>
+      <button disabled={loading} type="submit">
+        Submit
+      </button>
+    </FormRoot>
+  );
+};
+
+async function submitForm(value: string) {
+  // Mimic a server response
+  await new Promise((resolve) => {
+    setTimeout(resolve, 1000);
+  });
+
+  try {
+    const url = new URL(value);
+
+    if (url.hostname.endsWith('example.com')) {
+      return { error: 'The example domain is not allowed' };
+    }
+  } catch {
+    return { error: 'This is not a valid URL' };
+  }
+
+  return { success: true };
+}
+
+export const Form = Object.assign(Component, {
+  Root: FormRoot,
 });
-
-export const Form = Object.assign(Component, {});

@@ -1,25 +1,29 @@
-import { forwardRef } from 'react';
+import * as React from 'react';
 import { Field as FieldPrimitive } from '@base-ui-components/react/field';
-import { field } from '@particles/styled-system/recipes';
 
-const Root = FieldPrimitive.Root;
-const Label = FieldPrimitive.Label;
-const Control = FieldPrimitive.Control;
-const Description = FieldPrimitive.Description;
-const Error = FieldPrimitive.Error;
-const Validity = FieldPrimitive.Validity;
+const FieldRoot = FieldPrimitive.Root;
+const FieldLabel = FieldPrimitive.Label;
+const FieldControl = FieldPrimitive.Control;
+const FieldError = FieldPrimitive.Error;
+const FieldDescription = FieldPrimitive.Description;
 
-export type FieldProps = React.ComponentPropsWithoutRef<typeof Root>;
+const Component = () => {
+  return (
+    <FieldRoot>
+      <FieldLabel>Name</FieldLabel>
+      <FieldControl required placeholder="Required" />
 
-const Component = forwardRef<HTMLDivElement, FieldProps>((props, ref) => {
-  return <Root ref={ref} {...props} />;
-});
+      <FieldError match="valueMissing">Please enter your name</FieldError>
+
+      <FieldDescription>Visible on your profile</FieldDescription>
+    </FieldRoot>
+  );
+};
 
 export const Field = Object.assign(Component, {
-  Root,
-  Label,
-  Control,
-  Description,
-  Error,
-  Validity,
+  Root: FieldRoot,
+  Label: FieldLabel,
+  Control: FieldControl,
+  Error: FieldError,
+  Description: FieldDescription,
 });

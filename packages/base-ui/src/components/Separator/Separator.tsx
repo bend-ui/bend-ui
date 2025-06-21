@@ -1,15 +1,24 @@
-import { forwardRef } from 'react';
+import * as React from 'react';
 import { Separator as SeparatorPrimitive } from '@base-ui-components/react/separator';
-import { separator } from '@particles/styled-system/recipes';
 
-const Root = SeparatorPrimitive;
+const SeparatorRoot = SeparatorPrimitive;
 
-export type SeparatorProps = React.ComponentPropsWithoutRef<typeof Root>;
+const Component = () => {
+  return (
+    <div>
+      <a href="#">Home</a>
+      <a href="#">Pricing</a>
+      <a href="#">Blog</a>
+      <a href="#">Support</a>
 
-const Component = forwardRef<HTMLDivElement, SeparatorProps>((props, ref) => {
-  return <Root ref={ref} {...props} />;
-});
+      <SeparatorRoot orientation="vertical" />
+
+      <a href="#">Log in</a>
+      <a href="#">Sign up</a>
+    </div>
+  );
+};
 
 export const Separator = Object.assign(Component, {
-  Root,
+  Root: SeparatorRoot,
 });

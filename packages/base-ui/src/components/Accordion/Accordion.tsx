@@ -8,31 +8,32 @@ import { forwardRef, HTMLAttributes } from 'react';
 import { Box } from '@particles/styled-system/jsx';
 import { LucideChevronDown } from 'lucide-react';
 
-export interface AccordionProps
-  extends React.ComponentProps<typeof AccordionPrimitive.Root> {
+export interface AccordionRootProps extends AccordionPrimitive.Root.Props {
   children: React.ReactNode;
   attached?: AccordionVariantProps['attached'];
 }
 
-const Root = withRecipe<AccordionProps>(
+const AccordionRoot = withRecipe<AccordionRootProps>(
   AccordionPrimitive.Root,
   accordion,
   'root',
 );
 
-export interface AccordionItemProps
-  extends React.ComponentProps<typeof AccordionPrimitive.Item> {
+export interface AccordionItemProps extends AccordionPrimitive.Item.Props {
   children: React.ReactNode;
 }
 
-const Item = withParts<AccordionItemProps>(AccordionPrimitive.Item, 'item');
+const AccordionItem = withParts<AccordionItemProps>(
+  AccordionPrimitive.Item,
+  'item',
+);
 
 export interface AccordionHeaderProps
   extends React.ComponentProps<typeof AccordionPrimitive.Header> {
   children: React.ReactNode;
 }
 
-const Header = withParts<AccordionHeaderProps>(
+const AccordionHeader = withParts<AccordionHeaderProps>(
   AccordionPrimitive.Header,
   'header',
 );
@@ -42,14 +43,14 @@ export interface AccordionTriggerProps
   children: React.ReactNode;
 }
 
-const Trigger = withParts<AccordionTriggerProps>(
+const AccordionTrigger = withParts<AccordionTriggerProps>(
   AccordionPrimitive.Trigger,
   'item-trigger',
 );
 
 export type AccordionItemIndicatorProps = HTMLAttributes<HTMLDivElement>;
 
-const Indicator = withParts<AccordionItemIndicatorProps>((props) => {
+const AccordionIndicator = withParts<AccordionItemIndicatorProps>((props) => {
   // const { open } = useAccordionItemContext();
   return (
     <Box {...props}>
@@ -63,20 +64,22 @@ export interface AccordionPanelProps
   children: React.ReactNode;
 }
 
-const Panel = withParts<AccordionPanelProps>(
+const AccordionPanel = withParts<AccordionPanelProps>(
   AccordionPrimitive.Panel,
   'item-content',
 );
 
+export type AccordionProps = AccordionRootProps;
+
 const Component = forwardRef<HTMLDivElement, AccordionProps>((props, ref) => (
-  <Root ref={ref} {...props} />
+  <AccordionRoot ref={ref} {...props} />
 ));
 
 export const Accordion = Object.assign(Component, {
-  Root,
-  Item,
-  Header,
-  Trigger,
-  Indicator,
-  Panel,
+  Root: AccordionRoot,
+  Item: AccordionItem,
+  Header: AccordionHeader,
+  Trigger: AccordionTrigger,
+  Indicator: AccordionIndicator,
+  Panel: AccordionPanel,
 });

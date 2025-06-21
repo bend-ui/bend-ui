@@ -1,25 +1,28 @@
-import { forwardRef } from 'react';
 import { Slider as SliderPrimitive } from '@base-ui-components/react/slider';
-import { slider } from '@particles/styled-system/recipes';
 
-const Root = SliderPrimitive.Root;
-const Value = SliderPrimitive.Value;
-const Control = SliderPrimitive.Control;
-const Track = SliderPrimitive.Track;
-const Indicator = SliderPrimitive.Indicator;
-const Thumb = SliderPrimitive.Thumb;
+const SliderRoot = SliderPrimitive.Root;
+const SliderControl = SliderPrimitive.Control;
+const SliderTrack = SliderPrimitive.Track;
+const SliderIndicator = SliderPrimitive.Indicator;
+const SliderThumb = SliderPrimitive.Thumb;
 
-export type SliderProps = React.ComponentPropsWithoutRef<typeof Root>;
-
-const Component = forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
-  return <Root ref={ref} {...props} />;
-});
+const Component = () => {
+  return (
+    <SliderRoot defaultValue={25}>
+      <SliderControl>
+        <SliderTrack>
+          <SliderIndicator />
+          <SliderThumb />
+        </SliderTrack>
+      </SliderControl>
+    </SliderRoot>
+  );
+};
 
 export const Slider = Object.assign(Component, {
-  Root,
-  Value,
-  Control,
-  Track,
-  Indicator,
-  Thumb,
+  Root: SliderRoot,
+  Control: SliderControl,
+  Track: SliderTrack,
+  Indicator: SliderIndicator,
+  Thumb: SliderThumb,
 });

@@ -1,10 +1,9 @@
-import { within, expect } from 'storybook/test';
 import { Accordion } from './Accordion';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Accordion> = {
   component: Accordion,
-  title: 'Components/Accordion',
+  title: 'Accordion',
 };
 export default meta;
 type Story = StoryObj<typeof Accordion>;

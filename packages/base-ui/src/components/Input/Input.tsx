@@ -1,13 +1,14 @@
 import { forwardRef } from 'react';
 import { Input as InputPrimitive } from '@base-ui-components/react/input';
-import { input } from '@particles/styled-system/recipes';
 
-const Root = InputPrimitive;
+const InputRoot = InputPrimitive;
 
-export type InputProps = React.ComponentPropsWithoutRef<typeof Root>;
+export type InputProps = React.ComponentPropsWithoutRef<typeof InputRoot>;
 
 const Component = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  return <Root ref={ref} {...props} />;
+  return <InputRoot ref={ref} {...props} />;
 });
 
-export const Input = Object.assign(Component, {});
+export const Input = Object.assign(Component, {
+  Root: InputRoot,
+});

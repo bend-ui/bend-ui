@@ -5,68 +5,66 @@ import { withParts, withRecipe } from '../../utils/with-recipe';
 export interface AlertDialogRootProps extends AlertDialogPrimitive.Root.Props {
   children?: React.ReactNode;
 }
-const Root = AlertDialogPrimitive.Root;
+const AlertDialogRoot = AlertDialogPrimitive.Root;
 
 export interface AlertDialogTriggerProps
-  extends React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Trigger> {
+  extends AlertDialogPrimitive.Trigger.Props {
   children?: React.ReactNode;
 }
-const Trigger = withParts<AlertDialogTriggerProps>(
+const AlertDialogTrigger = withParts<AlertDialogTriggerProps>(
   AlertDialogPrimitive.Trigger,
   'trigger',
 );
 
 export interface AlertDialogPortalProps
-  extends React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Portal> {
+  extends AlertDialogPrimitive.Portal.Props {
   children?: React.ReactNode;
 }
-const Portal = AlertDialogPrimitive.Portal;
+const AlertDialogPortal = AlertDialogPrimitive.Portal;
 
 export interface AlertDialogBackdropProps
   extends React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Backdrop> {
   children?: React.ReactNode;
 }
-const Backdrop = withRecipe<AlertDialogBackdropProps>(
+const AlertDialogBackdrop = withRecipe<AlertDialogBackdropProps>(
   AlertDialogPrimitive.Backdrop,
   overlay,
   'root',
 );
 
 export interface AlertDialogPopupProps
-  extends React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Popup> {
+  extends AlertDialogPrimitive.Popup.Props {
   children?: React.ReactNode;
 }
-const Popup = withRecipe<AlertDialogPopupProps>(
+const AlertDialogPopup = withRecipe<AlertDialogPopupProps>(
   AlertDialogPrimitive.Popup,
   alertDialog,
   'content',
 );
 
 export interface AlertDialogTitleProps
-  extends React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Title> {
+  extends AlertDialogPrimitive.Title.Props {
   children?: React.ReactNode;
 }
-const Title = withParts<AlertDialogTitleProps>(
+const AlertDialogTitle = withParts<AlertDialogTitleProps>(
   AlertDialogPrimitive.Title,
   'title',
 );
 
 export interface AlertDialogDescriptionProps
-  extends React.ComponentPropsWithoutRef<
-    typeof AlertDialogPrimitive.Description
-  > {
+  extends AlertDialogPrimitive.Description.Props {
   children?: React.ReactNode;
 }
-const Description = withParts<AlertDialogDescriptionProps>(
+const AlertDialogDescription = withParts<AlertDialogDescriptionProps>(
   AlertDialogPrimitive.Description,
   'description',
 );
 
 export interface AlertDialogCloseProps
-  extends React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Close> {
+  extends AlertDialogPrimitive.Close.Props {
   children?: React.ReactNode;
 }
-const Close = withParts<AlertDialogCloseProps>(
+const AlertDialogClose = withParts<AlertDialogCloseProps>(
   AlertDialogPrimitive.Close,
   'close',
 );
@@ -77,16 +75,16 @@ export interface AlertDialogProps extends AlertDialogRootProps {
 }
 
 const Component = (props: AlertDialogProps) => {
-  return <Root {...props} />;
+  return <AlertDialogRoot {...props} />;
 };
 
 export const AlertDialog = Object.assign(Component, {
-  Root,
-  Trigger,
-  Portal,
-  Backdrop,
-  Popup,
-  Title,
-  Description,
-  Close,
+  Root: AlertDialogRoot,
+  Trigger: AlertDialogTrigger,
+  Portal: AlertDialogPortal,
+  Backdrop: AlertDialogBackdrop,
+  Popup: AlertDialogPopup,
+  Title: AlertDialogTitle,
+  Description: AlertDialogDescription,
+  Close: AlertDialogClose,
 });
