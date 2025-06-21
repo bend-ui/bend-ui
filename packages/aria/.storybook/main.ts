@@ -26,8 +26,8 @@ const config: StorybookConfig = {
     getAbsolutePath('@vueless/storybook-dark-mode'),
     getAbsolutePath('@storybook/addon-themes'),
     getAbsolutePath('@storybook/addon-a11y'),
+    getAbsolutePath('@storybook/addon-docs'),
     getAbsolutePath('@chromatic-com/storybook'),
-    getAbsolutePath('@storybook/addon-vitest'),
     getAbsolutePath('storybook-addon-tag-badges'),
   ],
   framework: {
@@ -45,8 +45,8 @@ const config: StorybookConfig = {
       optimizeDeps: {
         include: [
           'storybook-dark-mode',
+          '@storybook/addon-themes',
           'storybook/theming',
-          '@particles/storybook',
         ],
       },
     });
@@ -54,23 +54,23 @@ const config: StorybookConfig = {
   typescript: {
     check: false,
     reactDocgen: 'react-docgen-typescript',
-    // reactDocgenTypescriptOptions: {
-    //   shouldExtractLiteralValuesFromEnum: true,
-    //   shouldRemoveUndefinedFromOptional: true,
-    //   propFilter: (prop) => {
-    //     if (prop.parent) {
-    //       if (
-    //         prop.parent.fileName.match(/@ark-ui/) ||
-    //         prop.parent.fileName.match(/@particles/)
-    //       ) {
-    //         return true;
-    //       } else {
-    //         return !/node_modules/.test(prop.parent.fileName);
-    //       }
-    //     }
-    //     return true;
-    //   },
-    // },
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      shouldRemoveUndefinedFromOptional: true,
+      // propFilter: (prop) => {
+      //   if (prop.parent) {
+      //     if (
+      //       prop.parent.fileName.match(/@ark-ui/) ||
+      //       prop.parent.fileName.match(/@particles/)
+      //     ) {
+      //       return true;
+      //     } else {
+      //       return !/node_modules/.test(prop.parent.fileName);
+      //     }
+      //   }
+      //   return true;
+      // },
+    },
   },
   docs: {},
 };

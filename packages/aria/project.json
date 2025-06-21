@@ -44,7 +44,7 @@
     "test-storybook": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "test-storybook -c packages/aria/.storybook --url=http://localhost:4400"
+        "command": "test-storybook -c packages/aria/.storybook --url=http://localhost:4404"
       }
     },
     "static-storybook": {

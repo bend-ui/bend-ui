@@ -44,7 +44,7 @@
     "test-storybook": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "test-storybook -c packages/ark/.storybook --url=http://localhost:4400"
+        "command": "test-storybook -c packages/ark/.storybook --url=http://localhost:4405"
       }
     },
     "static-storybook": {

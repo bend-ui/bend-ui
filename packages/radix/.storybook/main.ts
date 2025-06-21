@@ -52,19 +52,19 @@ const config: StorybookConfig = {
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
       shouldRemoveUndefinedFromOptional: true,
-      propFilter: (prop) => {
-        if (prop.parent) {
-          if (
-            prop.parent.fileName.match(/radix-ui/) ||
-            prop.parent.fileName.match(/@particles/)
-          ) {
-            return true;
-          } else {
-            return !/node_modules/.test(prop.parent.fileName);
-          }
-        }
-        return true;
-      },
+      // propFilter: (prop) => {
+      //   if (prop.parent) {
+      //     if (
+      //       prop.parent.fileName.match(/radix-ui/) ||
+      //       prop.parent.fileName.match(/@particles/)
+      //     ) {
+      //       return true;
+      //     } else {
+      //       return !/node_modules/.test(prop.parent.fileName);
+      //     }
+      //   }
+      //   return true;
+      // },
     },
   },
   docs: {},

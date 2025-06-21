@@ -21,6 +21,7 @@ const config: StorybookConfig = {
     getAbsolutePath('@vueless/storybook-dark-mode'),
     getAbsolutePath('@storybook/addon-themes'),
     getAbsolutePath('@storybook/addon-a11y'),
+    getAbsolutePath('@storybook/addon-docs'),
     getAbsolutePath('@chromatic-com/storybook'),
     getAbsolutePath('@storybook/addon-vitest'),
     getAbsolutePath('storybook-addon-tag-badges'),
@@ -52,20 +53,6 @@ const config: StorybookConfig = {
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
       shouldRemoveUndefinedFromOptional: true,
-      propFilter: (prop) => {
-        if (prop.parent) {
-          if (
-            prop.parent.fileName.match(/@ark-ui/) ||
-            prop.parent.fileName.match(/@particles/)
-          ) {
-            console.log(prop.parent.fileName);
-            return true;
-          } else {
-            return !/node_modules/.test(prop.parent.fileName);
-          }
-        }
-        return true;
-      },
     },
   },
   docs: {},

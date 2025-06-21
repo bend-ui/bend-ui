@@ -43,30 +43,34 @@ const config: StorybookConfig = {
 
     return mergeConfig(config, {
       optimizeDeps: {
-        include: ['storybook-dark-mode', 'storybook/theming'],
+        include: [
+          'storybook-dark-mode',
+          '@storybook/addon-themes',
+          'storybook/theming',
+        ],
       },
     });
   },
   typescript: {
     check: false,
     reactDocgen: 'react-docgen-typescript',
-    // reactDocgenTypescriptOptions: {
-    //   shouldExtractLiteralValuesFromEnum: true,
-    //   shouldRemoveUndefinedFromOptional: true,
-    //   propFilter: (prop) => {
-    //     if (prop.parent) {
-    //       if (
-    //         prop.parent.fileName.match(/@ark-ui/) ||
-    //         prop.parent.fileName.match(/@particles/)
-    //       ) {
-    //         return true;
-    //       } else {
-    //         return !/node_modules/.test(prop.parent.fileName);
-    //       }
-    //     }
-    //     return true;
-    //   },
-    // },
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      shouldRemoveUndefinedFromOptional: true,
+      // propFilter: (prop) => {
+      //   if (prop.parent) {
+      //     if (
+      //       prop.parent.fileName.match(/@ark-ui/) ||
+      //       prop.parent.fileName.match(/@particles/)
+      //     ) {
+      //       return true;
+      //     } else {
+      //       return !/node_modules/.test(prop.parent.fileName);
+      //     }
+      //   }
+      //   return true;
+      // },
+    },
   },
   docs: {},
 };

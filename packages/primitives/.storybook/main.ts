@@ -20,6 +20,7 @@ const config: StorybookConfig = {
   addons: [
     getAbsolutePath('@vueless/storybook-dark-mode'),
     getAbsolutePath('@storybook/addon-a11y'),
+    getAbsolutePath('@storybook/addon-docs'),
     getAbsolutePath('@chromatic-com/storybook'),
   ],
   framework: {
