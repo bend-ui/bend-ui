@@ -15,7 +15,7 @@
     "dist"
   ],
   "dependencies": {
-    "@ark-ui/react": "^5.9.1",
+    "@ark-ui/react": "^5.14.2",
     "@particles/preset": "workspace:*",
     "@particles/react": "workspace:*",
     "@particles/styled-system": "workspace:*"
