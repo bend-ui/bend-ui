@@ -1,6 +1,6 @@
 import { tag } from '@particles/styled-system/recipes';
 import { Tag } from './Tag';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Components/Data/Tag',

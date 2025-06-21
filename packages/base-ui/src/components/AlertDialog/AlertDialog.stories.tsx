@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { AlertDialog } from './AlertDialog';
 
 const meta: Meta<typeof AlertDialog> = {

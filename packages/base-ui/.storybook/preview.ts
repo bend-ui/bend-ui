@@ -4,7 +4,7 @@ import { withThemeByDataAttribute } from '@storybook/addon-themes';
 import { Container } from './decorators';
 import { theme } from './theme';
 
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-vite';
 
 const preview: Preview = {
   parameters: {

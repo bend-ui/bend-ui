@@ -1,4 +1,8 @@
+import { createRequire } from 'node:module';
+import { dirname, join } from 'node:path';
 import type { StorybookConfig } from '@storybook/react-vite';
+
+const require = createRequire(import.meta.url);
 
 // These options were migrated by @nx/storybook:convert-to-inferred from the project.json file.
 // const configValues = { default: {}, ci: {} };
@@ -18,14 +22,15 @@ const config: StorybookConfig = {
     '../../react/src/**/*.stories.@(js|jsx|ts|tsx)',
   ],
   addons: [
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-    'storybook-dark-mode',
-    '@storybook/addon-a11y',
-    '@chromatic-com/storybook',
+    getAbsolutePath('@vueless/storybook-dark-mode'),
+    getAbsolutePath('@storybook/addon-themes'),
+    getAbsolutePath('@storybook/addon-a11y'),
+    getAbsolutePath('@storybook/addon-docs'),
+    getAbsolutePath('@chromatic-com/storybook'),
+    getAbsolutePath('storybook-addon-tag-badges'),
   ],
   framework: {
-    name: '@storybook/react-vite',
+    name: getAbsolutePath('@storybook/react-vite'),
     options: {
       builder: {
         viteConfigPath: './vite.config.ts',
@@ -37,7 +42,7 @@ const config: StorybookConfig = {
 
     return mergeConfig(config, {
       optimizeDeps: {
-        include: ['storybook-dark-mode', '@storybook/theming'],
+        include: ['storybook-dark-mode', 'storybook/theming'],
       },
     });
   },
@@ -65,4 +70,7 @@ const config: StorybookConfig = {
   docs: {},
 };
 
+function getAbsolutePath(value: string): any {
+  return dirname(require.resolve(join(value, 'package.json')));
+}
 export default config;

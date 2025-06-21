@@ -1,4 +1,4 @@
-import { create } from '@storybook/theming';
+import { create } from 'storybook/theming';
 import { theme } from '@particles/theme';
 
 const common = { brandTitle: 'Particles - Primitives' };

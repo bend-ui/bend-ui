@@ -3,7 +3,7 @@ import { alert } from '@particles/styled-system/recipes';
 import { ButtonGroup } from '../ButtonGroup';
 import { Button } from '../Button';
 import { Alert } from './Alert';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 export default {
   title: 'Components/Feedback/Alert',

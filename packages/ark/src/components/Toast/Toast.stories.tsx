@@ -1,6 +1,6 @@
 import { Button, DismissButton } from '@particles/react';
 import { createToaster, Toast, Toaster } from '.';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Components/Overlays/Toast',

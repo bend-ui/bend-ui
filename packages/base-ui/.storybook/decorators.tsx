@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { DARK_MODE_EVENT_NAME } from 'storybook-dark-mode';
-import { DocsContainer } from '@storybook/addon-docs';
+import { DARK_MODE_EVENT_NAME } from '@vueless/storybook-dark-mode';
+import { DocsContainer } from '@storybook/addon-docs/blocks';
 import { theme } from './theme';
 import type { ReactNode } from 'react';
-import type { DocsContextProps } from '@storybook/addon-docs';
-import type { ThemeVars } from '@storybook/theming';
+import type { DocsContextProps } from '@storybook/addon-docs/blocks';
+import type { ThemeVars } from 'storybook/theming';
 
 const LOCAL_STORAGE_KEY = '_tmp-dark-mode-hack';
 

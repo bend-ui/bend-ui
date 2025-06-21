@@ -1,6 +1,6 @@
 import { text } from '@particles/styled-system/recipes';
 import { Paragraph } from '.';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Paragraph> = {
   title: 'Components/Typography/Paragraph',

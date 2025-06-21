@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { Editable } from './Editable';
 
 const meta: Meta<typeof Editable> = {

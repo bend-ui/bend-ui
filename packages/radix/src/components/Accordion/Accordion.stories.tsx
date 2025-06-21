@@ -1,5 +1,5 @@
 import { Accordion } from '.';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 export default { component: Accordion } as Meta<typeof Accordion>;
 

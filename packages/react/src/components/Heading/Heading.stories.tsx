@@ -1,6 +1,6 @@
 import { text } from '@particles/styled-system/recipes';
 import { Heading } from '.';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Heading> = {
   title: 'Components/Typography/Heading',

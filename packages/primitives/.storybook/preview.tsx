@@ -1,11 +1,11 @@
 import './styles.css';
 import { createElement } from 'react';
-import { useDarkMode } from 'storybook-dark-mode';
-import { DocsContainer } from '@storybook/addon-docs';
+import { useDarkMode } from '@vueless/storybook-dark-mode';
+import { DocsContainer } from '@storybook/addon-docs/blocks';
 import { createTheme } from '@particles/storybook';
 
-import type { Preview } from '@storybook/react';
-import type { DocsContainerProps } from '@storybook/addon-docs';
+import type { Preview } from '@storybook/react-vite';
+import type { DocsContainerProps } from '@storybook/addon-docs/blocks';
 
 const theme = createTheme({ brandTitle: 'Particles - Primitives' });
 

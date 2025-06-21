@@ -1,7 +1,7 @@
 import { Button } from '@particles/react';
 import { Toast, ToastProvider } from './Toast';
 import { useToast } from './useToast';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Toast> = {
   component: Toast,

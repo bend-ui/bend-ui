@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { NumberField } from './NumberField';
 
 const meta: Meta<typeof NumberField> = {

@@ -1,7 +1,7 @@
 import { Stack } from '@particles/styled-system/jsx';
 import { Button, Input } from '@particles/react';
 import { Drawer } from '.';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Drawer> = {
   component: Drawer,

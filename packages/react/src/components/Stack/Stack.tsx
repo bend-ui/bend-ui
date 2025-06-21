@@ -2,8 +2,10 @@ import { stack, StackProperties } from '@particles/styled-system/patterns';
 import { particles, HTMLParticlesProps } from '../factory';
 import { forwardRef } from 'react';
 import { cx } from '@particles/styled-system/css';
+import { Assign } from '@ark-ui/react';
 
-export interface StackProps extends StackProperties, HTMLParticlesProps<'div'> {
+export interface StackProps
+  extends Assign<HTMLParticlesProps<'div'>, StackProperties> {
   children: React.ReactNode;
 }
 

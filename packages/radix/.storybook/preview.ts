@@ -2,7 +2,7 @@ import './index.css';
 import '@fontsource-variable/inter';
 import { createTheme } from '@particles/storybook';
 import { Container } from './decorators';
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-vite';
 
 const theme = createTheme({ brandTitle: 'Particles - Radix' });
 

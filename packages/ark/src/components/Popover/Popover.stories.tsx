@@ -1,7 +1,7 @@
 import { Button } from '@particles/react';
 import { LuChevronRight } from 'react-icons/lu';
 import { Popover } from './Popover';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Components/Overlays/Popover',

@@ -1,6 +1,6 @@
 import { TbCaretRight } from 'react-icons/tb';
 import { Breadcrumbs } from './';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 export default {
   title: 'Components/Navigation/Breadcrumbs',

@@ -1,6 +1,6 @@
-import { create } from '@storybook/theming';
+import { create } from 'storybook/theming';
 import { theme } from '@particles/theme';
-import type { ThemeVars } from '@storybook/theming';
+import type { ThemeVars } from 'storybook/theming';
 
 const common: Partial<ThemeVars> = {
   brandTitle: 'Particles',

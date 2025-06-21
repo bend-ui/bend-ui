@@ -7,7 +7,7 @@ import {
   Text,
   Box,
 } from '@particles/react';
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-vite';
 import { Field } from '../../components';
 
 const meta: Meta = {

@@ -1,6 +1,6 @@
 import { UserIcon } from 'lucide-react';
 import { Field } from './';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Field> = {
   title: 'Components/Forms/Field',

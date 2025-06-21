@@ -2,7 +2,7 @@ import { css, cx, sva } from '@particles/styled-system/css';
 import { visuallyHidden } from '@particles/styled-system/patterns';
 import { TbExclamationCircle } from 'react-icons/tb';
 import { Paragraph } from '@particles/react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta = { title: 'Blocks/InputGroup' };
 export default meta;

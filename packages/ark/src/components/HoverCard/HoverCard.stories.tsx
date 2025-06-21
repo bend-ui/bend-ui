@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { HoverCard } from './HoverCard';
 
 const meta: Meta<typeof HoverCard> = {

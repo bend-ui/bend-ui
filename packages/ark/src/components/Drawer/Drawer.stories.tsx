@@ -2,7 +2,7 @@ import { Button } from '@particles/react';
 import { drawer } from '@particles/styled-system/recipes';
 import { Stack } from '@particles/styled-system/jsx';
 import { Drawer } from './Drawer';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Components/Overlays/Drawer',

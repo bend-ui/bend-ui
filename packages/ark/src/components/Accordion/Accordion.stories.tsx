@@ -1,6 +1,6 @@
 import { LuChevronDown } from 'react-icons/lu';
 import { Accordion } from './Accordion';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Components/Data Display/Accordion',

@@ -1,5 +1,5 @@
 import { Box } from '@particles/react';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { Input } from '../../components';
 
 const meta: Meta = {

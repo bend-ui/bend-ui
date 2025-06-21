@@ -1,7 +1,7 @@
 import { badge } from '@particles/styled-system/recipes';
 import { Indicator } from '../Indicator';
 import { Badge } from './Badge';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 export default {
   title: 'Components/Data/Badge',

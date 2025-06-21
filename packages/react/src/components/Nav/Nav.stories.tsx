@@ -1,6 +1,6 @@
 import { BookIcon, HomeIcon, PhoneIcon } from 'lucide-react';
 import { Nav } from '.';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Nav> = {
   title: 'Components/Navigation/Nav',

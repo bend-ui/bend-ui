@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { PreviewCard } from './PreviewCard';
 
 const meta: Meta<typeof PreviewCard> = {

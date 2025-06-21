@@ -19,7 +19,7 @@
   ],
   "dependencies": {
     "@particles/theme": "workspace:*",
-    "@storybook/theming": "^8.6.12"
+    "storybook": ">=9.0.0"
   },
   "scripts": {
     "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",

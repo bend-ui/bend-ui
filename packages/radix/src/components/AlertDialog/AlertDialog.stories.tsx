@@ -1,6 +1,6 @@
 import { Button } from '@particles/react';
 import { AlertDialog } from './AlertDialog';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 export default { component: AlertDialog } as Meta<typeof AlertDialog>;
 

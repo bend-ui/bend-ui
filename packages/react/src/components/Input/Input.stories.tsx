@@ -1,7 +1,7 @@
 import { ArrowRightCircleIcon, CheckIcon, UserIcon } from 'lucide-react';
 import { Button, Box } from '../';
 import { Input, SearchInput, PasswordInput } from './';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { input } from '@particles/styled-system/recipes';
 
 const meta: Meta<typeof Input> = {

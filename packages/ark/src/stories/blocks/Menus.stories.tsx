@@ -9,7 +9,7 @@ import {
   TbSettings,
   TbStar,
 } from 'react-icons/tb';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta = {
   title: 'Blocks/Menus',
