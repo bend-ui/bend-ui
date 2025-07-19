@@ -4,7 +4,7 @@ import { Popover } from './Popover';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
-  title: 'Components/Overlays/Popover',
+  title: 'Popover',
   component: Popover,
 
   parameters: {

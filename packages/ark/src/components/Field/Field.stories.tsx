@@ -3,7 +3,7 @@ import { Field } from './';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Field> = {
-  title: 'Components/Forms/Field',
+  title: 'Field',
   component: Field,
   argTypes: {
     disabled: {

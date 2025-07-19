@@ -38,6 +38,8 @@ import { appShellRecipe } from './app-shell';
 import { dialogRecipe } from './dialog';
 import { backdropRecipe } from './backdrop';
 import { commandRecipe } from './command';
+import { datePickerRecipe } from './date-picker';
+import { clipboardRecipe } from './clipboard';
 
 export const slotRecipes: Theme['slotRecipes'] = {
   actionBar,
@@ -56,7 +58,6 @@ export const slotRecipes: Theme['slotRecipes'] = {
   segmentedControl,
   skeleton,
   slider,
-  switchRecipe,
   table,
   tag,
   tagsInput,
@@ -66,22 +67,25 @@ export const slotRecipes: Theme['slotRecipes'] = {
 export const recipes: Theme['recipes'] = {
   accordion,
   appShell: appShellRecipe,
-  buttonGroup,
-  combobox,
   avatar: avatarRecipe,
-  tabs: tabsRecipe,
-  checkbox,
-  dialog: dialogRecipe,
   backdrop: backdropRecipe,
+  buttonGroup,
+  checkbox,
+  combobox,
+  command: commandRecipe,
+  clipboard: clipboardRecipe,
+  datePicker: datePickerRecipe,
+  dialog: dialogRecipe,
   drawer,
-  popover,
-  toast: toastRecipe,
+  input: inputRecipe,
   menu,
   pagination,
-  tooltip: tooltipRecipe,
+  popover,
   select: selectRecipe,
-  command: commandRecipe,
-  input: inputRecipe,
+  switchRecipe: switchRecipe,
+  tabs: tabsRecipe,
+  toast: toastRecipe,
+  tooltip: tooltipRecipe,
 };
 
 export * from './accordion';
@@ -97,6 +101,8 @@ export * from './carousel';
 export * from './checkbox';
 export * from './collapsible';
 export * from './combobox';
+export * from './date-picker';
+export * from './clipboard';
 export * from './drawer';
 export * from './radio-group';
 export * from './rating';

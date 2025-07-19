@@ -4,8 +4,8 @@ import {
   backdrop,
   DialogVariantProps,
 } from '@particles/styled-system/recipes';
-import { DismissButton } from '@particles/react';
 import { withRecipe, withParts } from '../../utils';
+import { Button } from '@particles/react';
 
 export type DialogRootProps = ArkDialog.RootProps;
 const DialogRoot = ArkDialog.Root;
@@ -60,7 +60,9 @@ const Component = (props: DialogProps) => {
   const { title, description, closeTrigger, children, ...rest } = otherProps;
   return (
     <DialogRoot {...rest}>
-      <DialogTrigger>Open Dialog</DialogTrigger>
+      <DialogTrigger asChild>
+        <Button>Open Dialog</Button>
+      </DialogTrigger>
       <Portal>
         <DialogBackdrop />
         <DialogPositioner {...variantProps}>

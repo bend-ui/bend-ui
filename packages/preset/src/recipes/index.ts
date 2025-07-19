@@ -39,6 +39,8 @@ import { backdropRecipe } from './backdrop';
 import { commandRecipe } from './command';
 import { overlayRecipe } from './overlay';
 import { angleSliderRecipe } from './angle-slider';
+import { datePickerRecipe } from './date-picker';
+import { clipboardRecipe } from './clipboard';
 
 export const slotRecipes: Theme['slotRecipes'] = {
   // divider: dividerRecipe,
@@ -52,7 +54,6 @@ export const slotRecipes: Theme['slotRecipes'] = {
   nav: navRecipe,
   radioGroup: radioGroupRecipe,
   rating: ratingRecipe,
-  switchRecipe: switchRecipe,
   table: tableRecipe,
   tag: tagRecipe,
   tagsInput: tagsInputRecipe,
@@ -70,6 +71,8 @@ export const recipes: Theme['recipes'] = {
   checkbox: checkboxRecipe,
   combobox: comboboxRecipe,
   command: commandRecipe,
+  clipboard: clipboardRecipe,
+  datePicker: datePickerRecipe,
   dialog: dialogRecipe,
   drawer: drawerRecipe,
   formField: formFieldRecipe,
@@ -81,6 +84,7 @@ export const recipes: Theme['recipes'] = {
   pagination: paginationRecipe,
   popover: popoverRecipe,
   select: selectRecipe,
+  switchRecipe: switchRecipe,
   tabs: tabsRecipe,
   text: textRecipe,
   toast: toastRecipe,

@@ -1,8 +1,9 @@
 import { Pagination as ArkPagination } from '@ark-ui/react';
 import { withParts, withRecipe } from '../../utils';
 import { pagination } from '@particles/styled-system/recipes';
+import { Assign, HTMLStyledProps } from '@particles/styled-system/types';
 
-export type PaginationRootProps = ArkPagination.RootProps;
+export type PaginationRootProps = Assign<HTMLStyledProps<'div'>, ArkPagination.RootProps>
 
 const PaginationRoot = withRecipe<PaginationRootProps>(
   ArkPagination.Root,
@@ -10,7 +11,7 @@ const PaginationRoot = withRecipe<PaginationRootProps>(
   'root',
 );
 
-export type PaginationPrevTriggerProps = ArkPagination.PrevTriggerProps;
+export type PaginationPrevTriggerProps = Assign<HTMLStyledProps<'button'>, ArkPagination.PrevTriggerProps>
 
 const PaginationPrevTrigger = withParts<PaginationPrevTriggerProps>(
   ArkPagination.PrevTrigger,
@@ -19,29 +20,31 @@ const PaginationPrevTrigger = withParts<PaginationPrevTriggerProps>(
 
 const PaginationContext = ArkPagination.Context;
 
-export type PaginationNextTriggerProps = ArkPagination.NextTriggerProps;
+export type PaginationNextTriggerProps = Assign<HTMLStyledProps<'button'>, ArkPagination.NextTriggerProps>
 
 const PaginationNextTrigger = withParts<PaginationNextTriggerProps>(
   ArkPagination.NextTrigger,
   'next-trigger',
 );
 
-export type PaginationItemProps = ArkPagination.ItemProps;
+export type PaginationItemProps = Assign<HTMLStyledProps<'button'>, ArkPagination.ItemProps>
 
 const PaginationItem = withParts<PaginationItemProps>(
   ArkPagination.Item,
   'item',
 );
 
-export type PaginationEllipsisProps = ArkPagination.EllipsisProps;
+export type PaginationEllipsisProps = Assign<HTMLStyledProps<'button'>, ArkPagination.EllipsisProps>
 
 const PaginationEllipsis = withParts<PaginationEllipsisProps>(
   ArkPagination.Ellipsis,
   'ellipsis',
 );
 
-const Component = () => (
-  <PaginationRoot count={5000} pageSize={10} siblingCount={2}>
+export type PaginationProps = PaginationRootProps
+
+const Component = (props: PaginationProps) => (
+  <PaginationRoot {...props}>
     <PaginationPrevTrigger>Previous Page</PaginationPrevTrigger>
     <PaginationContext>
       {(pagination) =>
@@ -62,7 +65,7 @@ const Component = () => (
   </PaginationRoot>
 );
 
-export default Object.assign(Component, {
+export const Pagination = Object.assign(Component, {
   Root: PaginationRoot,
   PrevTrigger: PaginationPrevTrigger,
   Context: PaginationContext,

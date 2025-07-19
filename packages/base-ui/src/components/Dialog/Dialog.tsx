@@ -1,6 +1,11 @@
-import { forwardRef } from 'react';
 import { Dialog as DialogPrimitive } from '@base-ui-components/react/dialog';
-import { dialog, DialogVariantProps } from '@particles/styled-system/recipes';
+import {
+  dialog,
+  DialogVariantProps,
+  backdrop,
+} from '@particles/styled-system/recipes';
+import { withParts, withRecipe } from '../../utils/with-recipe';
+import { Button, HTMLParticlesProps } from '@particles/react';
 
 export interface DialogRootProps
   extends DialogPrimitive.Root.Props,
@@ -12,64 +17,57 @@ const DialogRoot = (props: DialogRootProps) => {
 
 export type DialogTriggerProps = DialogPrimitive.Trigger.Props;
 
-const DialogTrigger = forwardRef<HTMLButtonElement, DialogTriggerProps>(
-  (props, ref) => {
-    return <DialogPrimitive.Trigger {...props} ref={ref} data-part="trigger" />;
+const DialogTrigger = withParts<DialogTriggerProps>(
+  DialogPrimitive.Trigger,
+  'trigger',
+  {
+    render: (props) => <Button {...props} />,
   },
 );
 
 export type DialogPortalProps = DialogPrimitive.Portal.Props;
 
-const DialogPortal = (props: DialogPortalProps) => {
-  return <DialogPrimitive.Portal {...props} data-part="portal" />;
-};
+const DialogPortal = DialogPrimitive.Portal;
 
 export type DialogBackdropProps = DialogPrimitive.Backdrop.Props;
 
-const DialogBackdrop = forwardRef<HTMLDivElement, DialogBackdropProps>(
-  (props, ref) => {
-    return (
-      <DialogPrimitive.Backdrop {...props} ref={ref} data-part="backdrop" />
-    );
-  },
+const DialogBackdrop = withRecipe<DialogBackdropProps>(
+  DialogPrimitive.Backdrop,
+  backdrop,
+  'backdrop',
+);
+
+export type DialogPositionerProps = HTMLParticlesProps<'div'>;
+
+const DialogPositioner = withRecipe<DialogPositionerProps>(
+  'div',
+  dialog,
+  'positioner',
 );
 
 export type DialogPopupProps = DialogPrimitive.Popup.Props;
 
-const DialogPopup = forwardRef<HTMLDivElement, DialogPopupProps>(
-  (props, ref) => {
-    return <DialogPrimitive.Popup {...props} ref={ref} data-part="popup" />;
-  },
+const DialogPopup = withParts<DialogPopupProps>(
+  DialogPrimitive.Popup,
+  'content',
 );
 
 export type DialogTitleProps = DialogPrimitive.Title.Props;
 
-const DialogTitle = forwardRef<HTMLHeadingElement, DialogTitleProps>(
-  (props, ref) => {
-    return <DialogPrimitive.Title {...props} ref={ref} data-part="title" />;
-  },
-);
+const DialogTitle = withParts<DialogTitleProps>(DialogPrimitive.Title, 'title');
 
 export type DialogDescriptionProps = DialogPrimitive.Description.Props;
 
-const DialogDescription = forwardRef<HTMLDivElement, DialogDescriptionProps>(
-  (props, ref) => {
-    return (
-      <DialogPrimitive.Description
-        {...props}
-        ref={ref}
-        data-part="description"
-      />
-    );
-  },
+const DialogDescription = withParts<DialogDescriptionProps>(
+  DialogPrimitive.Description,
+  'description',
 );
 
 export type DialogCloseProps = DialogPrimitive.Close.Props;
 
-const DialogClose = forwardRef<HTMLButtonElement, DialogCloseProps>(
-  (props, ref) => {
-    return <DialogPrimitive.Close {...props} ref={ref} data-part="close" />;
-  },
+const DialogClose = withParts<DialogCloseProps>(
+  DialogPrimitive.Close,
+  'close-trigger',
 );
 
 export interface DialogProps extends DialogRootProps {
@@ -85,6 +83,7 @@ export const Dialog = Object.assign(Component, {
   Root: DialogRoot,
   Trigger: DialogTrigger,
   Portal: DialogPortal,
+  Positioner: DialogPositioner,
   Backdrop: DialogBackdrop,
   Popup: DialogPopup,
   Title: DialogTitle,

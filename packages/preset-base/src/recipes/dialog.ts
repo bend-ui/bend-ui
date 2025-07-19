@@ -2,10 +2,10 @@ import { defineParts, defineRecipe } from '@pandacss/dev';
 
 const parts = defineParts({
   positioner: { selector: '&' },
-  content: { selector: '& [data-component-part="content"]' },
-  title: { selector: '& [data-component-part="title"]' },
-  description: { selector: '& [data-component-part="description"]' },
-  closeTrigger: { selector: '& [data-component-part="close"]' },
+  content: { selector: '& [data-part="content"]' },
+  title: { selector: '& [data-part="title"]' },
+  description: { selector: '& [data-part="description"]' },
+  closeTrigger: { selector: '& [data-part="close"]' },
 });
 
 export const dialogRecipe = defineRecipe({

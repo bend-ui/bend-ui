@@ -5,13 +5,13 @@ const parts = defineParts({
     selector: '&',
   },
   label: {
-    selector: '& [data-component-part="label"]',
+    selector: '& [data-part="label"]',
   },
   control: {
-    selector: '& [data-component-part="control"]',
+    selector: '& [data-part="control"]',
   },
   indicator: {
-    selector: '& [data-component-part="indicator"]',
+    selector: '& [data-part="indicator"]',
   },
 });
 

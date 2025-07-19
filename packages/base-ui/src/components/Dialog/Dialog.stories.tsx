@@ -12,19 +12,19 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: (args) => (
-    <Dialog.Root>
+    <Dialog.Root {...args}>
       <Dialog.Trigger>View notifications</Dialog.Trigger>
-      <Dialog.Portal keepMounted>
+      <Dialog.Portal>
         <Dialog.Backdrop />
-        <Dialog.Popup>
-          <Dialog.Title>Notifications</Dialog.Title>
-          <Dialog.Description>
-            You are all caught up. Good job!
-          </Dialog.Description>
-          <div>
+        <Dialog.Positioner>
+          <Dialog.Popup>
+            <Dialog.Title>Notifications</Dialog.Title>
+            <Dialog.Description>
+              You are all caught up. Good job!
+            </Dialog.Description>
             <Dialog.Close>Close</Dialog.Close>
-          </div>
-        </Dialog.Popup>
+          </Dialog.Popup>
+        </Dialog.Positioner>
       </Dialog.Portal>
     </Dialog.Root>
   ),

@@ -1,27 +1,25 @@
 import { forwardRef } from 'react';
 import { Avatar as AvatarPrimitive } from '@base-ui-components/react/avatar';
 import { avatar, AvatarVariantProps } from '@particles/styled-system/recipes';
+import { withParts, withRecipe } from '../../utils/with-recipe';
 
 export type AvatarRootProps = AvatarPrimitive.Root.Props & AvatarVariantProps;
 
-const AvatarRoot = forwardRef<HTMLDivElement, AvatarRootProps>((props, ref) => {
-  const { size, ...rest } = props;
-  const classes = avatar({ size });
-  return <AvatarPrimitive.Root {...rest} ref={ref} className={classes} />;
-});
-
-const AvatarImage = forwardRef<HTMLImageElement, AvatarPrimitive.Image.Props>(
-  (props, ref) => {
-    return <AvatarPrimitive.Image {...props} ref={ref} data-part="image" />;
-  },
+const AvatarRoot = withRecipe<AvatarRootProps>(
+  AvatarPrimitive.Root,
+  avatar,
+  'root',
 );
 
-const AvatarFallback = forwardRef<
-  HTMLDivElement,
-  AvatarPrimitive.Fallback.Props
->((props, ref) => {
-  return <AvatarPrimitive.Fallback {...props} ref={ref} data-part="fallback" />;
-});
+const AvatarImage = withParts<AvatarPrimitive.Image.Props>(
+  AvatarPrimitive.Image,
+  'image',
+);
+
+const AvatarFallback = withParts<AvatarPrimitive.Fallback.Props>(
+  AvatarPrimitive.Fallback,
+  'fallback',
+);
 
 export interface AvatarProps extends AvatarRootProps {
   src?: string;

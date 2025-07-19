@@ -3,7 +3,7 @@ import { AngleSlider } from './AngleSlider';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
-  title: 'Components/AngleSlider',
+  title: 'AngleSlider',
   component: AngleSlider,
 
   parameters: {

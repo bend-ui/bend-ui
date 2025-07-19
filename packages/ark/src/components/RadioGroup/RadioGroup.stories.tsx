@@ -2,7 +2,7 @@ import { RadioGroup } from '.';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
-  title: 'Components/Forms/RadioGroup',
+  title: 'RadioGroup',
   component: RadioGroup,
 
   parameters: {

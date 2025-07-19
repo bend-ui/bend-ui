@@ -1,23 +1,90 @@
 import { Select as SelectPrimitive } from '@base-ui-components/react/select';
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react';
+import { withParts, withRecipe } from '../../utils/with-recipe';
+import { select } from '@particles/styled-system/recipes';
 
-const SelectRoot = SelectPrimitive.Root;
-const SelectTrigger = SelectPrimitive.Trigger;
-const SelectValue = SelectPrimitive.Value;
-const SelectIcon = SelectPrimitive.Icon;
-const SelectBackdrop = SelectPrimitive.Backdrop;
+const SelectRoot = withRecipe<SelectPrimitive.Root.Props<string>>(
+  SelectPrimitive.Root,
+  select,
+  'root',
+);
+
+const SelectTrigger = withParts<SelectPrimitive.Trigger.Props>(
+  SelectPrimitive.Trigger,
+  'trigger',
+);
+
+const SelectValue = withParts<SelectPrimitive.Value.Props>(
+  SelectPrimitive.Value,
+  'value',
+);
+
+const SelectIcon = withParts<SelectPrimitive.Icon.Props>(
+  SelectPrimitive.Icon,
+  'icon',
+);
+
+const SelectBackdrop = withParts<SelectPrimitive.Backdrop.Props>(
+  SelectPrimitive.Backdrop,
+  'backdrop',
+);
+
 const SelectPortal = SelectPrimitive.Portal;
-const SelectPositioner = SelectPrimitive.Positioner;
-const SelectPopup = SelectPrimitive.Popup;
-const SelectArrow = SelectPrimitive.Arrow;
-const SelectItem = SelectPrimitive.Item;
-const SelectItemText = SelectPrimitive.ItemText;
-const SelectItemIndicator = SelectPrimitive.ItemIndicator;
-const SelectGroup = SelectPrimitive.Group;
-const SelectGroupLabel = SelectPrimitive.GroupLabel;
-const SelectScrollUpArrow = SelectPrimitive.ScrollUpArrow;
-const SelectScrollDownArrow = SelectPrimitive.ScrollDownArrow;
-const SelectSeparator = SelectPrimitive.Separator;
+
+const SelectPositioner = withParts<SelectPrimitive.Positioner.Props>(
+  SelectPrimitive.Positioner,
+  'positioner',
+);
+
+const SelectPopup = withParts<SelectPrimitive.Popup.Props>(
+  SelectPrimitive.Popup,
+  'popup',
+);
+
+const SelectArrow = withParts<SelectPrimitive.Arrow.Props>(
+  SelectPrimitive.Arrow,
+  'arrow',
+);
+
+const SelectItem = withParts<SelectPrimitive.Item.Props>(
+  SelectPrimitive.Item,
+  'item',
+);
+
+const SelectItemText = withParts<SelectPrimitive.ItemText.Props>(
+  SelectPrimitive.ItemText,
+  'itemText',
+);
+
+const SelectItemIndicator = withParts<SelectPrimitive.ItemIndicator.Props>(
+  SelectPrimitive.ItemIndicator,
+  'itemIndicator',
+);
+
+const SelectGroup = withParts<SelectPrimitive.Group.Props>(
+  SelectPrimitive.Group,
+  'group',
+);
+
+const SelectGroupLabel = withParts<SelectPrimitive.GroupLabel.Props>(
+  SelectPrimitive.GroupLabel,
+  'groupLabel',
+);
+
+const SelectSeparator = withParts<SelectPrimitive.Separator.Props>(
+  SelectPrimitive.Separator,
+  'separator',
+);
+
+const SelectScrollUpArrow = withParts<SelectPrimitive.ScrollUpArrow.Props>(
+  SelectPrimitive.ScrollUpArrow,
+  'scrollUpArrow',
+);
+
+const SelectScrollDownArrow = withParts<SelectPrimitive.ScrollDownArrow.Props>(
+  SelectPrimitive.ScrollDownArrow,
+  'scrollDownArrow',
+);
 
 const Component = () => {
   return (

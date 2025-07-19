@@ -2,7 +2,7 @@ import { avatar } from '@particles/styled-system/recipes';
 import { Avatar } from './Avatar';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 const meta = {
-  title: 'Components/Data Display/Avatar',
+  title: 'Avatar',
   component: Avatar,
 
   parameters: {

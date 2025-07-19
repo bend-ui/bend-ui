@@ -1,6 +1,13 @@
-import { defineSlotRecipe } from '@pandacss/dev';
+import { defineParts, defineRecipe } from '@pandacss/dev';
 
-export const switchRecipe = defineSlotRecipe({
+const parts = defineParts({
+  root: { selector: '&' },
+  control: { selector: '& [data-part="control"]' },
+  thumb: { selector: '& [data-part="thumb"]' },
+  label: { selector: '& [data-part="label"]' },
+});
+
+export const switchRecipe = defineRecipe({
   className: 'Switch',
-  slots: [],
+  jsx: ['Switch', /Switch\.+/],
 });

@@ -1,13 +1,22 @@
 import React from 'react';
 import { Tooltip as TooltipPrimitive } from '@base-ui-components/react/tooltip';
+import { withParts, withRecipe } from '../../utils/with-recipe';
+import { tooltip } from '@particles/styled-system/recipes';
 
 const TooltipProvider = TooltipPrimitive.Provider;
 const TooltipRoot = TooltipPrimitive.Root;
 const TooltipTrigger = TooltipPrimitive.Trigger;
 const TooltipPortal = TooltipPrimitive.Portal;
 const TooltipPositioner = TooltipPrimitive.Positioner;
-const TooltipPopup = TooltipPrimitive.Popup;
-const TooltipArrow = TooltipPrimitive.Arrow;
+const TooltipPopup = withRecipe<TooltipPrimitive.Popup.Props>(
+  TooltipPrimitive.Popup,
+  tooltip,
+  'popup',
+);
+const TooltipArrow = withParts<TooltipPrimitive.Arrow.Props>(
+  TooltipPrimitive.Arrow,
+  'arrow',
+);
 
 const Component = () => {
   return (

@@ -5,23 +5,21 @@ import {
   CheckboxVariantProps,
 } from '@particles/styled-system/recipes';
 import { CheckIcon } from 'lucide-react';
+import { withParts, withRecipe } from '../../utils/with-recipe';
 
 export type CheckboxRootProps = CheckboxPrimitive.Root.Props;
 
-const CheckboxRoot = forwardRef<HTMLButtonElement, CheckboxRootProps>(
-  (props, ref) => {
-    return <CheckboxPrimitive.Root {...props} ref={ref} data-part="control" />;
-  },
+const CheckboxRoot = withRecipe<CheckboxRootProps>(
+  CheckboxPrimitive.Root,
+  checkbox,
+  'root',
 );
 
 export type CheckboxIndicatorProps = CheckboxPrimitive.Indicator.Props;
 
-const CheckboxIndicator = forwardRef<HTMLButtonElement, CheckboxIndicatorProps>(
-  (props, ref) => {
-    return (
-      <CheckboxPrimitive.Indicator {...props} ref={ref} data-part="indicator" />
-    );
-  },
+const CheckboxIndicator = withParts<CheckboxIndicatorProps>(
+  CheckboxPrimitive.Indicator,
+  'indicator',
 );
 
 const CheckboxLabel = forwardRef<

@@ -1,15 +1,36 @@
 'use client';
 import React from 'react';
 import { Toast as ToastPrimitive } from '@base-ui-components/react/toast';
+import { withParts, withRecipe } from '../../utils/with-recipe';
+import { toast } from '@particles/styled-system/recipes';
 
 const ToastProvider = ToastPrimitive.Provider;
 const ToastPortal = ToastPrimitive.Portal;
 const ToastViewport = ToastPrimitive.Viewport;
-const ToastRoot = ToastPrimitive.Root;
-const ToastTitle = ToastPrimitive.Title;
-const ToastDescription = ToastPrimitive.Description;
-const ToastAction = ToastPrimitive.Action;
-const ToastClose = ToastPrimitive.Close;
+const ToastRoot = withRecipe<ToastPrimitive.Root.Props>(
+  ToastPrimitive.Root,
+  toast,
+  'root',
+);
+const ToastTitle = withParts<ToastPrimitive.Title.Props>(
+  ToastPrimitive.Title,
+  'title',
+);
+
+const ToastDescription = withParts<ToastPrimitive.Description.Props>(
+  ToastPrimitive.Description,
+  'description',
+);
+
+const ToastAction = withParts<ToastPrimitive.Action.Props>(
+  ToastPrimitive.Action,
+  'action',
+);
+
+const ToastClose = withParts<ToastPrimitive.Close.Props>(
+  ToastPrimitive.Close,
+  'close',
+);
 
 const Component = () => {
   return (

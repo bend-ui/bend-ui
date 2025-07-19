@@ -2,7 +2,7 @@ import { Tabs } from '.';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
-  title: 'Components/Navigation/Tabs',
+  title: 'Tabs',
   component: Tabs,
 
   parameters: {

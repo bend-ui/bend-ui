@@ -9,14 +9,15 @@ interface Recipe {
   splitVariantProps: (props: Props) => [Props, Props];
 }
 
-export function withRecipe<P extends { className?: any }>(
+export function withRecipe<P extends object>(
   Component: ElementType,
   recipe: Recipe,
   part: string,
+  defaultProps?: P,
 ) {
   const StyledComponent = styled(Component);
 
-  const FinalComponent = (props: P) => {
+  const FinalComponent = (props: P & { className?: string }) => {
     const { className, ...otherProps } = props;
     const [variantProps, rest] = recipe.splitVariantProps(otherProps);
     const styles = recipe(variantProps);
@@ -25,6 +26,7 @@ export function withRecipe<P extends { className?: any }>(
       <StyledComponent
         className={cx(styles, className)}
         data-part={part}
+        {...defaultProps}
         {...rest}
       />
     );
@@ -37,19 +39,21 @@ export function withRecipe<P extends { className?: any }>(
   return FinalComponent;
 }
 
-export function withParts<P extends { className?: any }>(
+export function withParts<P extends object>(
   Component: ElementType,
   part: string,
+  defaultProps?: P,
 ) {
   const StyledComponent = styled(Component);
 
-  const FinalComponent = (props: P) => {
+  const FinalComponent = (props: P & { className?: string }) => {
     const { className, ...otherProps } = props;
 
     return (
       <StyledComponent
         className={cx(className)}
         data-part={part}
+        {...defaultProps}
         {...otherProps}
       />
     );

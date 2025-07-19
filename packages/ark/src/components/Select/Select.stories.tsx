@@ -2,7 +2,7 @@ import { createListCollection, Select } from '.';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
-  title: 'Components/Forms/Select',
+  title: 'Select',
   component: Select,
 
   parameters: {

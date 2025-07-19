@@ -1,6 +1,7 @@
 import { alertDialog, overlay } from '@particles/styled-system/recipes';
 import { AlertDialog as AlertDialogPrimitive } from '@base-ui-components/react/alert-dialog';
 import { withParts, withRecipe } from '../../utils/with-recipe';
+import { Button } from '@particles/react';
 
 export interface AlertDialogRootProps extends AlertDialogPrimitive.Root.Props {
   children?: React.ReactNode;
@@ -14,6 +15,9 @@ export interface AlertDialogTriggerProps
 const AlertDialogTrigger = withParts<AlertDialogTriggerProps>(
   AlertDialogPrimitive.Trigger,
   'trigger',
+  {
+    render: (props) => <Button {...props} />,
+  },
 );
 
 export interface AlertDialogPortalProps

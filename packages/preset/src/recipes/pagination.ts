@@ -5,16 +5,16 @@ const parts = defineParts({
     selector: '&',
   },
   item: {
-    selector: '& [data-component-part="item"]',
+    selector: '& [data-part="item"]',
   },
   ellipsis: {
-    selector: '& [data-component-part="ellipsis"]',
+    selector: '& [data-part="ellipsis"]',
   },
   nextTrigger: {
-    selector: '& [data-component-part="next-trigger"]',
+    selector: '& [data-part="next-trigger"]',
   },
   prevTrigger: {
-    selector: '& [data-component-part="prev-trigger"]',
+    selector: '& [data-part="prev-trigger"]',
   },
 });
 

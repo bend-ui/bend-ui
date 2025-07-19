@@ -3,7 +3,7 @@ import { createToaster, Toast, Toaster } from '.';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
-  title: 'Components/Overlays/Toast',
+  title: 'Toast',
   component: Toast,
 
   parameters: {

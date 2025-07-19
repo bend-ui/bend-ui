@@ -1,11 +1,30 @@
 import * as React from 'react';
 import { Tabs as TabsPrimitive } from '@base-ui-components/react/tabs';
+import { withParts, withRecipe } from '../../utils/with-recipe';
+import { tabs } from '@particles/styled-system/recipes';
 
-const TabsRoot = TabsPrimitive.Root;
-const TabsList = TabsPrimitive.List;
-const TabsTab = TabsPrimitive.Tab;
-const TabsPanel = TabsPrimitive.Panel;
-const TabsIndicator = TabsPrimitive.Indicator;
+const TabsRoot = withRecipe<TabsPrimitive.Root.Props>(
+  TabsPrimitive.Root,
+  tabs,
+  'root',
+);
+
+const TabsList = withParts<TabsPrimitive.List.Props>(
+  TabsPrimitive.List,
+  'list',
+);
+
+const TabsTab = withParts<TabsPrimitive.Tab.Props>(TabsPrimitive.Tab, 'tab');
+
+const TabsPanel = withParts<TabsPrimitive.Panel.Props>(
+  TabsPrimitive.Panel,
+  'panel',
+);
+
+const TabsIndicator = withParts<TabsPrimitive.Indicator.Props>(
+  TabsPrimitive.Indicator,
+  'indicator',
+);
 
 const Component = () => {
   return (

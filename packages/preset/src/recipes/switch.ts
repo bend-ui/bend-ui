@@ -1,10 +1,16 @@
-import { defineSlotRecipe } from '@pandacss/dev';
+import { defineParts, defineRecipe } from '@pandacss/dev';
 
-export const switchRecipe = defineSlotRecipe({
+const parts = defineParts({
+  root: { selector: '&' },
+  control: { selector: '& [data-part="control"]' },
+  thumb: { selector: '& [data-part="thumb"]' },
+  label: { selector: '& [data-part="label"]' },
+});
+
+export const switchRecipe = defineRecipe({
   className: 'Switch',
   jsx: ['Switch', /Switch\.+/],
-  slots: ['root', 'control', 'thumb', 'label'],
-  base: {
+  base: parts({
     root: {
       display: 'flex',
       alignItems: 'center',
@@ -29,10 +35,10 @@ export const switchRecipe = defineSlotRecipe({
       },
     },
     label: {},
-  },
+  }),
   variants: {
     size: {
-      sm: {
+      sm: parts({
         control: {
           w: '8',
         },
@@ -40,8 +46,8 @@ export const switchRecipe = defineSlotRecipe({
           w: '3',
           h: '3',
         },
-      },
-      md: {
+      }),
+      md: parts({
         control: {
           w: '10',
         },
@@ -49,8 +55,8 @@ export const switchRecipe = defineSlotRecipe({
           w: '4',
           h: '4',
         },
-      },
-      lg: {
+      }),
+      lg: parts({
         control: {
           w: '12',
         },
@@ -58,7 +64,7 @@ export const switchRecipe = defineSlotRecipe({
           w: '5',
           h: '5',
         },
-      },
+      }),
     },
   },
   defaultVariants: {
