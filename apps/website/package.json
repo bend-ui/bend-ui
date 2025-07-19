@@ -10,10 +10,10 @@
     "@particles/preset": "workspace:*",
     "@particles/react": "workspace:*",
     "@types/mdx": "2.0.13",
-    "fumadocs-core": "15.5.3",
-    "fumadocs-mdx": "11.6.9",
+    "fumadocs-core": "15.6.4",
+    "fumadocs-mdx": "11.6.11",
     "fumadocs-typescript": "^4.0.6",
-    "fumadocs-ui": "15.5.3",
-    "tailwindcss": "4.1.10"
+    "fumadocs-ui": "15.6.4",
+    "tailwindcss": "4.1.11"
   }
 }

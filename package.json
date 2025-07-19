@@ -15,8 +15,8 @@
     "packages/*"
   ],
   "dependencies": {
-    "@ark-ui/react": "^5.14.2",
-    "@floating-ui/react": "^0.27.12",
+    "@ark-ui/react": "^5.17.0",
+    "@floating-ui/react": "^0.27.13",
     "@fontsource-variable/inter": "^5.2.6",
     "@swc/helpers": "0.5.17",
     "class-variance-authority": "^0.7.0",
@@ -114,7 +114,7 @@
     "lucide-react": "^0.522.0",
     "npm-run-all": "^4.1.5",
     "nx": "21.3.0",
-    "playwright": "^1.49.1",
+    "playwright": "^1.54.1",
     "postcss": "8.5.6",
     "prettier": "3.4.2",
     "react-docgen": "^7.1.1",
