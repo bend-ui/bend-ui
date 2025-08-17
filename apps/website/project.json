@@ -3,7 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/website",
   "projectType": "application",
-  "tags": [],
+  "tags": ["app"],
   "targets": {
     "build": {
       "executor": "@nx/next:build",

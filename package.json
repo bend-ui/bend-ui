@@ -6,8 +6,8 @@
   "scripts": {
     "build": "nx run-many --target=build --all=true",
     "build:affected": "nx affected --target=build",
-    "build:packages": "nx affected --target=build --projects=packages/*",
-    "build:apps": "nx affected --target=build --projects=apps/*",
+    "build:packages": "nx affected --target=build --projects=tag:ui,tag:utils,tag:preset",
+    "build:apps": "nx affected --target=build --projects=tag:app",
     "lint": "nx run-many --target=lint --all=true",
     "test": "nx run-many --target=test --all=true",
     "build-storybook": "nx run-many --target=build-storybook",
