@@ -53,8 +53,10 @@ styled-system
 
 
 vite.config.*.timestamp*
-build-storybook.log
 
 vitest.config.*.timestamp*
 .cursor/rules/nx-rules.mdc
 .github/instructions/nx.instructions.md
+
+build-storybook.log
+debug-storybook.log
