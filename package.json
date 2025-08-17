@@ -146,5 +146,6 @@
   },
   "nx": {
     "includedScripts": []
-  }
+  },
+  "packageManager": "pnpm@10.14.0"
 }
