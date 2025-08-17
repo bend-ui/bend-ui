@@ -24,14 +24,12 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v3
-        with:
-          version: 8
 
       - name: Install dependencies
         run: pnpm install
 
       - name: Build affected packages
-        run: pnpm exec nx affected --target=build
+        run: pnpm build:packages
 
       - name: Test affected packages
         run: pnpm exec nx affected --target=test
