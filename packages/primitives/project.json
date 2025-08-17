@@ -6,23 +6,11 @@
   "tags": ["ui"],
   "targets": {
     "build": {
-      "executor": "@nx/rollup:rollup",
-      "outputs": ["{options.outputPath}"],
+      "executor": "nx:run-commands",
+      "outputs": ["{projectRoot}/dist"],
       "options": {
-        "outputPath": "dist/packages/primitives",
-        "tsConfig": "packages/primitives/tsconfig.lib.json",
-        "project": "packages/primitives/package.json",
-        "entryFile": "packages/primitives/src/index.ts",
-        "external": ["react/jsx-runtime"],
-        "rollupConfig": "@nx/react/plugins/bundle-rollup",
-        "assets": [
-          {
-            "glob": "packages/primitives/README.md",
-            "input": ".",
-            "output": "."
-          }
-        ],
-        "updateBuildableProjectDepsInPackageJson": true
+        "command": "tsup",
+        "cwd": "packages/primitives"
       }
     },
     "test": {

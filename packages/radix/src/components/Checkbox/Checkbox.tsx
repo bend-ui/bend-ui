@@ -20,10 +20,10 @@ const Root = forwardRef<
   return (
     <CheckboxPrimitive.Root
       ref={ref}
-      className={cx('peer', styles.root, className)}
+      className={cx('peer', styles, className)}
       {...rest}
     >
-      <CheckboxPrimitive.Indicator className={cx(styles.indicator)}>
+      <CheckboxPrimitive.Indicator className={cx(styles)}>
         <TbCheck />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>

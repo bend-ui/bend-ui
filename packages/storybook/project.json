@@ -5,6 +5,14 @@
   "projectType": "library",
   "tags": [],
   "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "outputs": ["{projectRoot}/dist"],
+      "options": {
+        "command": "tsup",
+        "cwd": "packages/storybook"
+      }
+    },
     "publish": {
       "command": "node tools/scripts/publish.mjs storybook-theme {args.ver} {args.tag}",
       "dependsOn": ["build"]

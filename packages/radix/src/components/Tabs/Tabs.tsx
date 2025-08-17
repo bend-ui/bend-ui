@@ -1,17 +1,16 @@
 import { Tabs as TabsPrimitive } from 'radix-ui';
 import { tabs } from '@particles/styled-system/recipes';
+import { createRecipeContext } from '../../utils/recipe-context';
 
-import { createStyleContext } from '../../utils';
-
-const { withProvider, withContext } = createStyleContext(tabs);
+const { withProvider, withPart } = createRecipeContext(tabs);
 
 const Root = withProvider(TabsPrimitive.Root, 'root');
 
-const List = withContext(TabsPrimitive.List, 'tablist');
+const List = withPart(TabsPrimitive.List, 'tablist');
 
-const Tab = withContext(TabsPrimitive.Trigger, 'tab');
+const Tab = withPart(TabsPrimitive.Trigger, 'tab');
 
-const Pane = withContext(TabsPrimitive.Content, 'pane');
+const Pane = withPart(TabsPrimitive.Content, 'pane');
 
 export const Tabs = Object.assign(Root, { List, Tab, Pane });
 

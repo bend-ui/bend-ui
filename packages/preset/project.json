@@ -6,13 +6,11 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
+      "executor": "nx:run-commands",
+      "outputs": ["{projectRoot}/dist"],
       "options": {
-        "outputPath": "dist/packages/preset",
-        "main": "packages/preset/src/index.ts",
-        "tsConfig": "packages/preset/tsconfig.lib.json",
-        "assets": ["packages/preset/*.md"]
+        "command": "tsup",
+        "cwd": "packages/preset"
       }
     },
     "publish": {

@@ -4,6 +4,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "build": "nx run-many --target=build --all=true",
     "lint": "nx run-many --target=lint --all=true",
     "test": "nx run-many --target=test --all=true",
     "build-storybook": "nx run-many --target=build-storybook",
@@ -59,7 +60,7 @@
     "@nx/web": "21.4.0",
     "@nx/webpack": "21.4.0",
     "@nx/workspace": "21.4.0",
-    "@pandacss/dev": "^0.54.0",
+    "@pandacss/dev": "^1.0.1",
     "@pandacss/eslint-plugin": "^0.2.12",
     "@rollup/plugin-url": "8.0.2",
     "@storybook/addon-a11y": "9.1.2",

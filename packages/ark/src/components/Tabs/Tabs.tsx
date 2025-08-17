@@ -9,7 +9,11 @@ export interface TabsRootProps
   extends Assign<JsxStyleProps, TabsPrimitive.RootProps>,
     TabsVariantProps {}
 
-const Root = withRecipe<TabsPrimitive.RootProps>(TabsPrimitive.Root, tabs);
+const Root = withRecipe<TabsPrimitive.RootProps>(
+  TabsPrimitive.Root,
+  tabs,
+  'root',
+);
 
 const Content = TabsPrimitive.Content;
 

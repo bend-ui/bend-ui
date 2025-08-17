@@ -3,7 +3,7 @@ import { Input, InputProps } from '../Input';
 import { particles } from '../../factory';
 import { EyeIcon } from 'lucide-react';
 
-interface PasswordInputProps extends InputProps {
+export interface PasswordInputProps extends Omit<InputProps, 'onToggle'> {
   onToggle?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
@@ -32,5 +32,7 @@ const Component = forwardRef<HTMLInputElement, PasswordInputProps>(
     );
   },
 );
+
+Component.displayName = 'PasswordInput';
 
 export const PasswordInput = Component;

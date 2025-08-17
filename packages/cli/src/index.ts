@@ -39,15 +39,13 @@ export async function run() {
     ],
   });
 
-  p.log.info(`You selected ${projectType}`);
+  p.log.info(`You selected ${String(projectType)}`);
 
   if (projectType === 'add') {
     AddCommand.parse();
   } else if (projectType === 'remove') {
     p.log.info('Remove command not implemented yet');
   }
-
-  // p.outro('Particles CLI is ready to use 🎉');
 
   program.parse();
 }

@@ -3,7 +3,7 @@ import { radioGroup } from '@particles/styled-system/recipes';
 import { forwardRef } from 'react';
 import type { JsxStyleProps } from '@particles/styled-system/types';
 import type { RadioGroupVariantProps } from '@particles/styled-system/recipes';
-import { createStyleContext } from '../../utils';
+import { createStyleContext } from '@particles/styled-system/jsx';
 import type { Assign } from '@ark-ui/react';
 
 const { withProvider, withContext } = createStyleContext(radioGroup);
@@ -12,37 +12,19 @@ export interface RootProps
   extends Assign<JsxStyleProps, RadioGroupPrimitive.RootProps>,
     RadioGroupVariantProps {}
 
-const Root = withProvider<HTMLDivElement, RootProps>(
-  RadioGroupPrimitive.Root,
-  'root',
-);
+const Root = withProvider(RadioGroupPrimitive.Root, 'root');
 
-const Indicator = withContext<
-  HTMLDivElement,
-  Assign<JsxStyleProps, RadioGroupPrimitive.IndicatorProps>
->(RadioGroupPrimitive.Indicator, 'indicator');
+const Indicator = withContext(RadioGroupPrimitive.Indicator, 'indicator');
 
-const ItemControl = withContext<
-  HTMLDivElement,
-  Assign<JsxStyleProps, RadioGroupPrimitive.ItemControlProps>
->(RadioGroupPrimitive.ItemControl, 'itemControl');
+const ItemControl = withContext(RadioGroupPrimitive.ItemControl, 'itemControl');
 
-const Item = withContext<
-  HTMLLabelElement,
-  Assign<JsxStyleProps, RadioGroupPrimitive.ItemProps>
->(RadioGroupPrimitive.Item, 'item');
+const Item = withContext(RadioGroupPrimitive.Item, 'item');
 
-const ItemText = withContext<
-  HTMLSpanElement,
-  Assign<JsxStyleProps, RadioGroupPrimitive.ItemTextProps>
->(RadioGroupPrimitive.ItemText, 'itemText');
+const ItemText = withContext(RadioGroupPrimitive.ItemText, 'itemText');
 
 const ItemHiddenInput = RadioGroupPrimitive.ItemHiddenInput;
 
-const Label = withContext<
-  HTMLLabelElement,
-  Assign<JsxStyleProps, RadioGroupPrimitive.LabelProps>
->(RadioGroupPrimitive.Label, 'label');
+const Label = withContext(RadioGroupPrimitive.Label, 'label');
 
 export interface RadioGroupProps {
   options: {

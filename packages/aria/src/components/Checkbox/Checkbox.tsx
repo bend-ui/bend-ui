@@ -10,13 +10,18 @@ export interface CheckboxProps
   className?: string;
 }
 
-export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
+export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
   (props, ref) => {
     const { className, ...rest } = props;
     const classes = checkbox();
     return (
-      <ReactAria.Checkbox className={cx(classes.root, className)} {...rest}>
-        <div className={classes.indicator}>
+      <ReactAria.Checkbox
+        ref={ref}
+        data-part="root"
+        className={cx(classes, className)}
+        {...rest}
+      >
+        <div data-part="indicator">
           <svg aria-hidden="true" viewBox="0 0 18 18">
             <polyline points="1 9 7 14 15 4" />
           </svg>

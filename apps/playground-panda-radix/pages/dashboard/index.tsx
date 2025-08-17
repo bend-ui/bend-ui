@@ -17,10 +17,10 @@ export function Dashboard() {
   const classes = appShell();
 
   return (
-    <div className={classes.root}>
+    <div className={classes} data-part="root">
       <div
+        data-part="header"
         className={cx(
-          classes.header,
           level({
             p: 'lg',
             borderBottom: 'divider',
@@ -52,8 +52,8 @@ export function Dashboard() {
         </div>
       </div>
       <aside
+        data-part="sidebar"
         className={cx(
-          classes.sidebar,
           css({
             p: 'lg',
             borderRight: 'divider',
@@ -71,7 +71,7 @@ export function Dashboard() {
           </Avatar>
         </div>
       </aside>
-      <main className={classes.main}>
+      <main data-part="main">
         <div
           className={level({
             p: 'lg',
@@ -94,19 +94,6 @@ export function Dashboard() {
                   </Tabs.List>
                   <Tabs.Pane value="information">
                     <h2>Information</h2>
-                    {/* <TextField label="Product Name" /> */}
-                    {/* Should be a RichTextArea */}
-                    {/* <TextField label="Description" /># Category */}
-                    {/* <Select>
-                      <Select.Trigger>
-                        <Select.Value placeholder="Choose a category" />
-                      </Select.Trigger>
-                      <Select.Content>
-                        <Select.Item value="cool">Cool</Select.Item>
-                      </Select.Content>
-                    </Select> */}
-                    {/* Should be an Input with Chips */}
-                    {/* <TextField label="Tags" /> */}
                     <div className={level()}>
                       <Button>Cancel</Button>
                       <Button>Save</Button>
@@ -121,10 +108,6 @@ export function Dashboard() {
                 <Button>Create new</Button>
               </Modal.Trigger>
               <Modal.Content>
-                {/* <TextField label="Title" />
-                <TextField label="Company" />
-                <TextField label="Website" /> */}
-                {/* <Select /> */}
                 <div className={level({ mt: 'md' })}>
                   <Button>Save as draft</Button>
                   <Button>Add experience</Button>
@@ -145,22 +128,7 @@ export function Dashboard() {
                 Make changes to your account here. Click save when you&apos;re
                 done.
               </p>
-              <div className={stack({ gap: 'md' })}>
-                {/* <fieldset>
-                  <TextField
-                    defaultValue="Particles UI"
-                    id="name"
-                    label="Name"
-                  />
-                </fieldset>
-                <fieldset>
-                  <TextField
-                    defaultValue="@particlesui"
-                    id="username"
-                    label="Username"
-                  />
-                </fieldset> */}
-              </div>
+              <div className={stack({ gap: 'md' })} />
               <div
                 style={{
                   display: 'flex',
@@ -176,32 +144,7 @@ export function Dashboard() {
                 Change your password here. After saving, you&apos;ll be logged
                 out.
               </p>
-              <div className={stack({ gap: 'md' })}>
-                {/* <fieldset>
-                  <TextField
-                    className="Input"
-                    id="currentPassword"
-                    label="Current password"
-                    type="password"
-                  />
-                </fieldset>
-                <fieldset>
-                  <TextField
-                    className="Input"
-                    id="newPassword"
-                    label="New password"
-                    type="password"
-                  />
-                </fieldset>
-                <fieldset>
-                  <TextField
-                    className="Input"
-                    id="confirmPassword"
-                    label="Confirm password"
-                    type="password"
-                  />
-                </fieldset> */}
-              </div>
+              <div className={stack({ gap: 'md' })} />
               <div
                 style={{
                   display: 'flex',
@@ -224,11 +167,6 @@ export function Dashboard() {
                   </Card.Header>
                   <p>Free</p>
                   <p>For a lifetime</p>
-                  {/* <List icon="🦖">
-                    <List.Item>Unlimited projects</List.Item>
-                    <List.Item>5 team members</List.Item>
-                    <List.Item>Sync across devices</List.Item>
-                  </List> */}
                 </Card>
                 <Card>
                   <Card.Header>
@@ -239,11 +177,6 @@ export function Dashboard() {
                   </Card.Header>
                   <p>Free</p>
                   <p>For a lifetime</p>
-                  {/* <List>
-                    <List.Item>Unlimited projects</List.Item>
-                    <List.Item>5 team members</List.Item>
-                    <List.Item>Sync across devices</List.Item>
-                  </List> */}
                 </Card>
                 <Card>
                   <Card.Header>
@@ -254,11 +187,6 @@ export function Dashboard() {
                   </Card.Header>
                   <p>Free</p>
                   <p>For a lifetime</p>
-                  {/* <List>
-                    <List.Item>Unlimited projects</List.Item>
-                    <List.Item>5 team members</List.Item>
-                    <List.Item>Sync across devices</List.Item>
-                  </List> */}
                 </Card>
               </div>
             </Tabs.Pane>

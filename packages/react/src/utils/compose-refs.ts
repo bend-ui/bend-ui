@@ -1,10 +1,12 @@
-type PossibleRef<T> = React.Ref<T | null> | undefined;
+import type { MutableRefObject, Ref } from 'react';
 
-const setRef = <T>(ref: PossibleRef<T>, value: T) => {
+type PossibleRef<T> = Ref<T | null> | undefined;
+
+const setRef = <T>(ref: PossibleRef<T>, value: T | null) => {
   if (typeof ref === 'function') {
     ref(value);
   } else if (ref !== null && ref !== undefined) {
-    (ref as React.RefObject<T>).current = value;
+    (ref as MutableRefObject<T | null>).current = value;
   }
 };
 

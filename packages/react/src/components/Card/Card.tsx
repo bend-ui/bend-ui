@@ -1,6 +1,5 @@
 import { card } from '@particles/styled-system/recipes';
-import { styled } from '@particles/styled-system/jsx';
-import { createStyleContext } from '../../utils/create-style-context';
+import { styled, createStyleContext } from '@particles/styled-system/jsx';
 
 const { withProvider, withContext } = createStyleContext(card);
 

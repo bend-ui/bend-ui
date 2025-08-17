@@ -6,7 +6,7 @@
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
-    "@pandacss/token-dictionary": "^0.54.0",
+    "@pandacss/token-dictionary": "^1.0.1",
     "@particles/preset": "workspace:*",
     "@particles/react": "workspace:*",
     "@types/mdx": "2.0.13",

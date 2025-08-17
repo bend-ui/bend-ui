@@ -17,7 +17,7 @@ const ToastViewport = forwardRef<
   return (
     <ToastPrimitives.Viewport
       ref={ref}
-      className={cx(classes.viewport, className)}
+      className={cx(classes, className)}
       {...rest}
     />
   );
@@ -33,7 +33,7 @@ const Root = forwardRef<ElementRef<typeof ToastPrimitives.Root>, ToastProps>(
     return (
       <ToastPrimitives.Root
         ref={ref}
-        className={cx(classes.root, className)}
+        className={cx(classes, className)}
         {...rest}
       />
     );

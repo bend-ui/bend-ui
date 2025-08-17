@@ -1,19 +1,20 @@
 import { Popover as PopoverPrimitive } from 'radix-ui';
 import { popover } from '@particles/styled-system/recipes';
-import { createStyleContext } from '../../utils';
+import { styled } from '@particles/styled-system/jsx';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
+import { createRecipeContext } from '../../utils/recipe-context';
 
-const { withContext, withProvider } = createStyleContext(popover);
+const { withProvider, withPart } = createRecipeContext(popover);
 
 const Root = withProvider(PopoverPrimitive.Root, 'root');
 
-const Trigger = withContext(PopoverPrimitive.Trigger, 'trigger');
+const Trigger = withPart(PopoverPrimitive.Trigger, 'trigger');
 
-const Content = withContext(PopoverPrimitive.Content, 'content');
+const Content = withPart(PopoverPrimitive.Content, 'content');
 
-const Arrow = withContext(PopoverPrimitive.Arrow, 'arrow');
+const Arrow = withPart(PopoverPrimitive.Arrow, 'arrow');
 
-const Close = withContext(PopoverPrimitive.Close, 'close');
+const Close = withPart(PopoverPrimitive.Close, 'close');
 
 export interface PopoverProps
   extends ComponentPropsWithoutRef<typeof PopoverPrimitive.Root> {

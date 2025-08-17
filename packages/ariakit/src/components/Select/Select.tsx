@@ -6,11 +6,17 @@ const Root = AriaKit.Select;
 const Popover = AriaKit.SelectPopover;
 const Item = AriaKit.SelectItem;
 
-const Component = (props) => (
+export interface SelectProps extends AriaKit.SelectProps {
+  children?: React.ReactNode;
+}
+
+const Component = (props: SelectProps) => (
   <SelectProvider>
-    <Root />
+    <Root {...props} />
   </SelectProvider>
 );
+
+Component.displayName = 'Select';
 
 export const Select = Object.assign(Component, {
   Provider: SelectProvider,

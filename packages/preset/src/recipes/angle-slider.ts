@@ -40,8 +40,6 @@ export const angleSliderRecipe = defineRecipe({
       justifyContent: 'center',
       userSelect: 'none',
       position: 'relative',
-      _webkitUserSelect: 'none',
-      _mozUserSelect: 'none',
       _disabled: {
         opacity: 0.4,
       },

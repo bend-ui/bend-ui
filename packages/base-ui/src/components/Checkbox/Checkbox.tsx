@@ -13,14 +13,14 @@ const CheckboxRoot = withRecipe<CheckboxRootProps>(
   CheckboxPrimitive.Root,
   checkbox,
   'root',
-);
+) as unknown as typeof CheckboxPrimitive.Root;
 
 export type CheckboxIndicatorProps = CheckboxPrimitive.Indicator.Props;
 
 const CheckboxIndicator = withParts<CheckboxIndicatorProps>(
   CheckboxPrimitive.Indicator,
   'indicator',
-);
+) as unknown as typeof CheckboxPrimitive.Indicator;
 
 const CheckboxLabel = forwardRef<
   HTMLLabelElement,
@@ -28,6 +28,8 @@ const CheckboxLabel = forwardRef<
 >((props, ref) => {
   return <label {...props} ref={ref} data-part="root" />;
 });
+
+CheckboxLabel.displayName = 'Checkbox.Label';
 
 export type CheckboxProps = CheckboxRootProps & CheckboxVariantProps;
 
@@ -45,6 +47,8 @@ const Component = forwardRef<HTMLButtonElement, CheckboxProps>((props, ref) => {
     </CheckboxLabel>
   );
 });
+
+Component.displayName = 'Checkbox';
 
 export const Checkbox = Object.assign(Component, {
   Root: CheckboxRoot,

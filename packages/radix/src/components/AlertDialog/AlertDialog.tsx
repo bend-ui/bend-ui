@@ -1,10 +1,10 @@
 import { AlertDialog as AlertDialogPrimitive } from 'radix-ui';
-import { styled } from '@particles/styled-system/jsx';
+import { styled, createStyleContext } from '@particles/styled-system/jsx';
 import { modal } from '@particles/styled-system/recipes';
-import { createStyleContext } from '../../utils';
 import type { ReactNode } from 'react';
+import { createRecipeContext } from '../../utils/recipe-context';
 
-const { withProvider, withContext } = createStyleContext(modal);
+const { withProvider, withPart } = createRecipeContext(modal);
 
 const Root = withProvider(AlertDialogPrimitive.Root, 'root');
 
@@ -12,24 +12,24 @@ const Trigger = AlertDialogPrimitive.Trigger;
 
 const Portal = AlertDialogPrimitive.Portal;
 
-const Overlay = withContext(styled(AlertDialogPrimitive.Overlay), 'overlay');
+const Overlay = withPart(styled(AlertDialogPrimitive.Overlay), 'overlay');
 
-const Content = withContext(styled(AlertDialogPrimitive.Content), 'content');
+const Content = withPart(styled(AlertDialogPrimitive.Content), 'content');
 
-const Header = withContext(styled('div'), 'header');
+const Header = withPart(styled('div'), 'header');
 
-const Footer = withContext(styled('div'), 'footer');
+const Footer = withPart(styled('div'), 'footer');
 
-const Title = withContext(styled(AlertDialogPrimitive.Title), 'title');
+const Title = withPart(styled(AlertDialogPrimitive.Title), 'title');
 
-export const Description = withContext(
+export const Description = withPart(
   styled(AlertDialogPrimitive.Description),
   'description',
 );
 
-const Action = withContext(styled(AlertDialogPrimitive.Action), 'action');
+const Action = withPart(styled(AlertDialogPrimitive.Action), 'action');
 
-const Cancel = withContext(styled(AlertDialogPrimitive.Cancel), 'cancel');
+const Cancel = withPart(styled(AlertDialogPrimitive.Cancel), 'cancel');
 
 export interface AlertDialogProps {
   children: ReactNode;

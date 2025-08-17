@@ -3,16 +3,16 @@ import { DropdownMenu as DropdownMenuPrimitive } from 'radix-ui';
 import { TbCheck, TbChevronRight, TbCircle } from 'react-icons/tb';
 import { styled } from '@particles/styled-system/jsx';
 import { css, cx } from '@particles/styled-system/css';
-import { dropdownMenu, icon } from '@particles/styled-system/recipes';
-import { createStyleContext } from '../../utils';
+import { menu, icon } from '@particles/styled-system/recipes';
 import type {
   ComponentProps,
   ComponentPropsWithoutRef,
   ElementRef,
   ReactNode,
 } from 'react';
+import { createRecipeContext } from '../../utils/recipe-context';
 
-const { withProvider, withContext } = createStyleContext(dropdownMenu);
+const { withProvider, withPart } = createRecipeContext(menu);
 
 const SubTrigger = forwardRef<
   ElementRef<typeof DropdownMenuPrimitive.SubTrigger>,
@@ -35,12 +35,12 @@ const Content = forwardRef<
   ElementRef<typeof DropdownMenuPrimitive.Content>,
   ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content>
 >(({ className, sideOffset = 4, ...props }, ref) => {
-  const classes = dropdownMenu();
+  const classes = menu();
   return (
     <DropdownMenuPrimitive.Portal>
       <DropdownMenuPrimitive.Content
         ref={ref}
-        className={cx(classes.content, className)}
+        className={cx(classes, className)}
         sideOffset={sideOffset}
         {...props}
       />
@@ -49,21 +49,10 @@ const Content = forwardRef<
 });
 Content.displayName = DropdownMenuPrimitive.Content.displayName;
 
-const Item = forwardRef<
-  ElementRef<typeof DropdownMenuPrimitive.Item>,
-  ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & {
-    insetLeft?: boolean;
-  }
->(({ className, insetLeft, ...props }, ref) => (
-  <DropdownMenuPrimitive.Item
-    ref={ref}
-    className={cx(insetLeft && css({ pl: '8' }), className)}
-    {...props}
-  />
-));
+const Item = withPart(DropdownMenuPrimitive.Item, 'item');
 Item.displayName = DropdownMenuPrimitive.Item.displayName;
 
-const ItemIndicator = withContext(
+const ItemIndicator = withPart(
   styled(DropdownMenuPrimitive.ItemIndicator),
   'itemIndicator',
 );
@@ -110,11 +99,11 @@ Label.displayName = DropdownMenuPrimitive.Label.displayName;
 
 const Root = withProvider(styled(DropdownMenuPrimitive.Root), 'root');
 
-const Trigger = withContext(styled(DropdownMenuPrimitive.Trigger), 'trigger');
+const Trigger = withPart(styled(DropdownMenuPrimitive.Trigger), 'trigger');
 
-const Group = withContext(styled(DropdownMenuPrimitive.Group), 'group');
+const Group = withPart(styled(DropdownMenuPrimitive.Group), 'group');
 
-const Portal = withContext(styled(DropdownMenuPrimitive.Portal), 'portal');
+const Portal = withPart(styled(DropdownMenuPrimitive.Portal), 'portal');
 
 // const DropdownMenuSub = withContext(styled(DropdownMenuPrimitive.Sub), 'sub');
 
@@ -142,14 +131,15 @@ const Portal = withContext(styled(DropdownMenuPrimitive.Portal), 'portal');
 
 // const DropdownMenuLabel = withContext(styled(Label), 'label');
 
-const Separator = withContext(
+const Separator = withPart(
   styled(DropdownMenuPrimitive.Separator),
   'separator',
 );
 
-const Shortcut = withContext(styled('span'), 'shortcut');
+const Shortcut = withPart(styled('span'), 'shortcut');
 
-export type DropdownMenuProps = ComponentProps<typeof Root> & {
+export type DropdownMenuProps = ComponentPropsWithoutRef<typeof Root> & {
+  children: ReactNode;
   trigger: ReactNode;
 };
 

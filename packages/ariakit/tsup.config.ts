@@ -2,7 +2,14 @@ import { defineConfig } from 'tsup';
 
 export default defineConfig({
   entry: ['src/index.ts'],
-  external: ['@particles/theme', '@particles/styled-system'],
+  external: [
+    'react',
+    'react-dom',
+    '@particles/theme',
+    '@particles/styled-system',
+    '@particles/primitives',
+    'ariakit',
+  ],
   platform: 'browser',
   format: ['cjs', 'esm'],
   target: 'es2020',
@@ -12,7 +19,7 @@ export default defineConfig({
   sourcemap: true,
   minify: false,
   keepNames: true,
-  dts: true,
+  dts: false,
   treeshake: true,
   bundle: true,
   outDir: 'dist',

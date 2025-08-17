@@ -4,12 +4,15 @@ import { Field } from '../Field';
 
 const FormRoot = FormPrimitive;
 
-const Component = () => {
+type FormProps = React.ComponentProps<typeof FormPrimitive>;
+
+const Component = (props: FormProps) => {
   const [errors, setErrors] = React.useState({});
   const [loading, setLoading] = React.useState(false);
 
   return (
     <FormRoot
+      {...props}
       errors={errors}
       onClearErrors={setErrors}
       onSubmit={async (event) => {
@@ -27,23 +30,28 @@ const Component = () => {
         setLoading(false);
       }}
     >
-      <Field.Root name="url">
-        <Field.Label>Homepage</Field.Label>
-        <Field.Control
-          type="url"
-          required
-          defaultValue="https://example.com"
-          placeholder="https://example.com"
-          pattern="https?://.*"
-        />
-        <Field.Error />
-      </Field.Root>
+      <div>
+        <div>
+          <Field.Label>Homepage</Field.Label>
+          <Field.Control
+            name="url"
+            type="url"
+            required
+            defaultValue="https://example.com"
+            placeholder="https://example.com"
+            pattern="https?://.*"
+          />
+          <Field.Error />
+        </div>
+      </div>
       <button disabled={loading} type="submit">
         Submit
       </button>
     </FormRoot>
   );
 };
+
+Component.displayName = 'Form';
 
 async function submitForm(value: string) {
   // Mimic a server response

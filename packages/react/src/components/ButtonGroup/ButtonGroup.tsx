@@ -4,8 +4,6 @@ import {
   ButtonGroupVariantProps,
 } from '@particles/styled-system/recipes';
 import type { ReactNode } from 'react';
-import { type AsChildProps } from '../Slot';
-import { HTMLStyledProps } from '@particles/styled-system/jsx';
 import { cx } from '@particles/styled-system/css';
 import { createContext } from '@particles/primitives';
 import { HTMLParticlesProps, particles } from '../factory';
@@ -18,7 +16,9 @@ export const [ButtonGroupProvider, useButtonGroupContext] =
   createContext<ButtonGroupContext>('ButtonGroup');
 
 const useButtonGroup = (props: ButtonGroupProps): ButtonGroupContext => {
-  return {};
+  return {
+    size: props.size,
+  };
 };
 
 export interface ButtonGroupProps extends HTMLParticlesProps<'div'> {

@@ -3,15 +3,15 @@ import { Accordion as AccordionPrimitive } from 'radix-ui';
 import { LuChevronDown } from 'react-icons/lu';
 import { cx } from '@particles/styled-system/css';
 import { accordion } from '@particles/styled-system/recipes';
-import { createStyleContext } from '../../utils/style-context';
+import { createRecipeContext } from '../../utils/recipe-context';
 
-const { withProvider, withContext } = createStyleContext(accordion);
+const { withProvider, withPart } = createRecipeContext(accordion);
 
-const Root = withProvider(AccordionPrimitive.Root);
+const Root = withProvider(AccordionPrimitive.Root, 'root');
 
-const Item = withContext(AccordionPrimitive.Item, 'item');
+const Item = withPart(AccordionPrimitive.Item, 'item');
 
-const Trigger = withContext(AccordionPrimitive.Trigger, 'trigger');
+const Trigger = withPart(AccordionPrimitive.Trigger, 'trigger');
 
 const IndicatorPrimitive = forwardRef<HTMLDivElement, { className: string }>(
   (props, ref) => {
@@ -29,9 +29,9 @@ const IndicatorPrimitive = forwardRef<HTMLDivElement, { className: string }>(
 
 IndicatorPrimitive.displayName = 'Accordion.Indicator';
 
-const Indicator = withContext(IndicatorPrimitive, 'indicator');
+const Indicator = withPart(IndicatorPrimitive, 'indicator');
 
-const Content = withContext(AccordionPrimitive.Content, 'content');
+const Content = withPart(AccordionPrimitive.Content, 'content');
 
 export default Object.assign(Root, {
   Root,

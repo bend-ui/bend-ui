@@ -31,9 +31,9 @@ export const checkboxRecipe = defineRecipe({
       _focusVisible: {
         outline: '2px solid transparent',
         outlineOffset: '2px',
-        focusRingWidth: '2',
-        focusRingColor: 'ring',
-        focusRingOffsetWidth: '2',
+        ringWidth: '2',
+        ringColor: 'ring',
+        ringOffsetWidth: '2',
       },
 
       _disabled: {

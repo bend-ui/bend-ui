@@ -6,14 +6,11 @@
   "tags": ["utils"],
   "targets": {
     "build": {
-      "executor": "@nx/esbuild:esbuild",
-      "outputs": ["{options.outputPath}"],
+      "executor": "nx:run-commands",
+      "outputs": ["{projectRoot}/dist"],
       "options": {
-        "outputPath": "dist/packages/cli",
-        "main": "packages/cli/src/index.ts",
-        "tsConfig": "packages/cli/tsconfig.lib.json",
-        "assets": ["packages/cli/*.md"],
-        "generatePackageJson": true
+        "command": "tsup",
+        "cwd": "packages/cli"
       }
     },
     "publish": {

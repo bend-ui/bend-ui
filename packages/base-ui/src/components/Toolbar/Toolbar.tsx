@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Toolbar as ToolbarPrimitive } from '@base-ui-components/react/toolbar';
-import { ToggleGroup } from '../ToggleGroup';
 import { Toggle } from '../Toggle';
 import { Select } from '../Select';
 
@@ -10,25 +9,29 @@ const ToolbarSeparator = ToolbarPrimitive.Separator;
 const ToolbarButton = ToolbarPrimitive.Button;
 const ToolbarLink = ToolbarPrimitive.Link;
 
-const Component = () => {
+export type ToolbarProps = React.ComponentProps<typeof ToolbarRoot>;
+
+const Component = (props: ToolbarProps) => {
   return (
-    <ToolbarRoot>
-      <ToggleGroup aria-label="Alignment">
-        <ToolbarButton
-          render={<Toggle />}
-          aria-label="Align left"
-          value="align-left"
-        >
-          Align Left
+    <ToolbarRoot {...props}>
+      <ToolbarGroup>
+        <ToolbarButton>
+          <ToolbarButton
+            render={<Toggle />}
+            aria-label="Align left"
+            value="align-left"
+          >
+            Align Left
+          </ToolbarButton>
+          <ToolbarButton
+            render={<Toggle />}
+            aria-label="Align right"
+            value="align-right"
+          >
+            Align Right
+          </ToolbarButton>
         </ToolbarButton>
-        <ToolbarButton
-          render={<Toggle />}
-          aria-label="Align right"
-          value="align-right"
-        >
-          Align Right
-        </ToolbarButton>
-      </ToggleGroup>
+      </ToolbarGroup>
       <ToolbarSeparator />
       <ToolbarGroup aria-label="Numerical format">
         <ToolbarButton aria-label="Format as currency">$</ToolbarButton>
@@ -37,7 +40,7 @@ const Component = () => {
       <ToolbarSeparator />
       <Select.Root defaultValue="helvetica">
         <ToolbarButton render={<Select.Trigger />}>
-          <Select.Value placeholder="Helvetica" />
+          <Select.Value>Helvetica</Select.Value>
           <Select.Icon>
             <ChevronUpDownIcon />
           </Select.Icon>
@@ -69,6 +72,8 @@ const Component = () => {
     </ToolbarRoot>
   );
 };
+
+Component.displayName = 'Toolbar';
 
 function ArrowSvg(props: React.ComponentProps<'svg'>) {
   return (

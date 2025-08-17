@@ -2,10 +2,10 @@ import { Dialog as DialogPrimitive } from 'radix-ui';
 import { drawer } from '@particles/styled-system/recipes';
 import { styled } from '@particles/styled-system/jsx';
 import type { DrawerVariantProps } from '@particles/styled-system/recipes';
-import { createStyleContext } from '../../utils';
 import type { ReactNode } from 'react';
+import { createRecipeContext } from '../../utils/recipe-context';
 
-const { withContext, withProvider } = createStyleContext(drawer);
+const { withProvider, withPart } = createRecipeContext(drawer);
 
 const Root = withProvider(DialogPrimitive.Root, 'root');
 
@@ -13,19 +13,19 @@ const Trigger = DialogPrimitive.Trigger;
 
 const Portal = DialogPrimitive.Portal;
 
-const Overlay = withContext(styled(DialogPrimitive.Overlay), 'overlay');
+const Overlay = withPart(styled(DialogPrimitive.Overlay), 'overlay');
 
-const Content = withContext(styled(DialogPrimitive.Content), 'content');
+const Content = withPart(styled(DialogPrimitive.Content), 'content');
 
-const Header = withContext(styled('div'), 'header');
+const Header = withPart(styled('div'), 'header');
 
 const Title = DialogPrimitive.Title;
 
 const Description = DialogPrimitive.Description;
 
-const Footer = withContext(styled('div'), 'footer');
+const Footer = withPart(styled('div'), 'footer');
 
-const Close = withContext(styled(DialogPrimitive.Close), 'close');
+const Close = withPart(styled(DialogPrimitive.Close), 'close');
 
 export interface DrawerProps extends DialogPrimitive.DialogProps {
   trigger?: ReactNode;
