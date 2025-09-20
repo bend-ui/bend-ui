@@ -19,6 +19,6 @@ describe('App', () => {
         <App />
       </BrowserRouter>,
     );
-    expect(getByText(/Welcome vite-ark/gi)).toBeTruthy();
+    expect(getByText(/This is the generated root route/gi)).toBeTruthy();
   });
 });

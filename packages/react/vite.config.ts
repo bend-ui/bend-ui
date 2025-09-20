@@ -10,21 +10,18 @@ export default defineConfig({
   plugins: [react(), tsconfigPaths()],
 
   test: {
-    cache: {
-      dir: '../../node_modules/.vitest/packages/react',
-    },
     globals: true,
     environment: 'jsdom',
-    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     reporters: ['default'],
     coverage: {
       reportsDirectory: '../../coverage/packages/react',
       provider: 'v8',
     },
-    browser: {
-      provider: 'playwright',
-      enabled: true,
-      instances: [{ browser: 'chromium' }],
-    },
+    // browser: {
+    //   name: 'react-chromium',
+    //   provider: 'playwright',
+    //   enabled: true,
+    //   headless: true,
+    // },
   },
 });
