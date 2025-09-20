@@ -42,6 +42,30 @@ const config: StorybookConfig = {
 
   typescript: {
     reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      shouldRemoveUndefinedFromOptional: true,
+      propFilter: (prop) => {
+        if (!prop.parent) return true;
+
+        const fileName = prop.parent.fileName;
+
+        // Filter out node_modules
+        if (/node_modules/.test(fileName)) {
+          return false;
+        }
+
+        // Filter out styled-system package (both relative and absolute paths)
+        if (
+          /packages\/styled-system/.test(fileName) ||
+          /@particles\/styled-system/.test(fileName)
+        ) {
+          return false;
+        }
+
+        return true;
+      },
+    },
   },
 };
 
