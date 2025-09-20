@@ -23,7 +23,7 @@ export const checkboxRecipe = defineRecipe({
     label: {},
     control: {
       rounded: 'sm',
-      focusRingOffsetColor: 'red',
+      focusRingOffset: 'red',
       borderColor: 'neutral.200',
       borderWidth: '1px',
       borderStyle: 'solid',
@@ -33,7 +33,7 @@ export const checkboxRecipe = defineRecipe({
         outlineOffset: '2px',
         ringWidth: '2',
         ringColor: 'ring',
-        ringOffsetWidth: '2',
+        ringOffset: '2',
       },
 
       _disabled: {

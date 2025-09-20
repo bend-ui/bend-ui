@@ -33,15 +33,15 @@ export async function generateStaticParams() {
   return source.generateParams();
 }
 
-// export async function generateMetadata(props: {
-//   params: Promise<{ slug?: string[] }>;
-// }) {
-//   const params = await props.params;
-//   const page = source.getPage(params.slug);
-//   if (!page) notFound();
+export async function generateMetadata(props: {
+  params: Promise<{ slug?: string[] }>;
+}) {
+  const params = await props.params;
+  const page = source.getPage(params.slug);
+  if (!page) notFound();
 
-//   return metadataImage.withImage(page.slugs, {
-//     title: page.data.title,
-//     description: page.data.description,
-//   });
-// }
+  return {
+    title: page.data.title,
+    description: page.data.description,
+  };
+}
