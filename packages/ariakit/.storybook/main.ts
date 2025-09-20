@@ -55,23 +55,12 @@ const config: StorybookConfig = {
   typescript: {
     check: false,
     reactDocgen: 'react-docgen-typescript',
-    // reactDocgenTypescriptOptions: {
-    //   shouldExtractLiteralValuesFromEnum: true,
-    //   shouldRemoveUndefinedFromOptional: true,
-    //   propFilter: (prop) => {
-    //     if (prop.parent) {
-    //       if (
-    //         prop.parent.fileName.match(/@ark-ui/) ||
-    //         prop.parent.fileName.match(/@particles/)
-    //       ) {
-    //         return true;
-    //       } else {
-    //         return !/node_modules/.test(prop.parent.fileName);
-    //       }
-    //     }
-    //     return true;
-    //   },
-    // },
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      shouldRemoveUndefinedFromOptional: true,
+      propFilter: (prop) =>
+        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
+    },
   },
   docs: {},
 };

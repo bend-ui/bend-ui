@@ -70,6 +70,8 @@ const config: StorybookConfig = {
       //   }
       //   return true;
       // },
+      propFilter: (prop) =>
+        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
     },
   },
   docs: {},
