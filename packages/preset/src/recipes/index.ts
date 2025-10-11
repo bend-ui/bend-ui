@@ -44,7 +44,6 @@ import { clipboardRecipe } from './clipboard';
 
 export const slotRecipes: Theme['slotRecipes'] = {
   // divider: dividerRecipe,
-  alert: alertRecipe,
   badge: badgeRecipe,
   breadcrumbs: breadcrumbsRecipe,
   button: buttonRecipe,
@@ -62,6 +61,7 @@ export const slotRecipes: Theme['slotRecipes'] = {
 
 export const recipes: Theme['recipes'] = {
   accordion: accordionRecipe,
+  alert: alertRecipe,
   angleSlider: angleSliderRecipe,
   alertDialog: modalRecipe,
   appShell: appShellRecipe,

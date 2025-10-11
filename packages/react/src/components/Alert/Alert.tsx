@@ -2,33 +2,41 @@ import { alert } from '@particles/styled-system/recipes';
 import { styled } from '@particles/styled-system/jsx';
 import type { AlertProps } from './Alert.types';
 import type { ReactNode } from 'react';
-import { particles } from '../factory';
+import { HTMLParticlesProps, particles } from '../factory';
 
 const Root = styled('div', alert);
 
-const Icon = particles.div;
+const Icon = (props: HTMLParticlesProps<'div'>) => {
+  return <particles.div data-part="icon" {...props} />;
+};
 
-const Title = particles.div;
+const Title = (props: HTMLParticlesProps<'div'>) => {
+  return <particles.div data-part="title" {...props} />;
+};
 
-const Content = particles.div;
+const Content = (props: HTMLParticlesProps<'div'>) => {
+  return <particles.div data-part="content" {...props} />;
+};
 
-const Footer = particles.div;
+const Footer = (props: HTMLParticlesProps<'div'>) => {
+  return <particles.div data-part="footer" {...props} />;
+};
 
-const Component = (
-  props: AlertProps & {
-    icon?: ReactNode;
-    title?: ReactNode;
-    children?: ReactNode;
-    footer?: ReactNode;
-  },
-) => {
-  const { icon, title, children, footer, ...rest } = props;
+const Dismiss = (props: HTMLParticlesProps<'button'>) => {
+  return <particles.button data-part="dismiss" {...props} />;
+};
+
+const Component = (props: AlertProps) => {
+  const { icon, title, children, footer, onDismiss, ...rest } = props;
   return (
     <Alert.Root {...rest}>
       {!!icon && <Alert.Icon>{icon}</Alert.Icon>}
       {!!title && <Alert.Title>{title}</Alert.Title>}
       {!!children && <Alert.Content>{children}</Alert.Content>}
       {!!footer && <Alert.Footer>{footer}</Alert.Footer>}
+      {!!onDismiss && (
+        <Alert.Dismiss onClick={onDismiss}>&times;</Alert.Dismiss>
+      )}
     </Alert.Root>
   );
 };
@@ -39,4 +47,5 @@ export const Alert = Object.assign(Component, {
   Title,
   Content,
   Footer,
+  Dismiss,
 });

@@ -15,6 +15,7 @@ import {
   HTMLStyledProps,
   JsxStyleProps,
 } from '@particles/styled-system/types';
+import { styled } from '@particles/styled-system/jsx';
 
 export interface PolymorphicProps {
   /**
@@ -64,7 +65,11 @@ const withAsChild = (Component: React.ElementType) => {
         const { asChild, children, ...restProps } = props;
 
         if (!asChild) {
-          return createElement(Component, { ...restProps, ref }, children);
+          return createElement(
+            styled(Component),
+            { ...restProps, ref },
+            children,
+          );
         }
 
         const onlyChild: React.ReactNode = Children.only(children);

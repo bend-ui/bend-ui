@@ -1,9 +1,17 @@
-import { defineSlotRecipe } from '@pandacss/dev';
+import { defineParts, defineRecipe } from '@pandacss/dev';
 
-export const alertRecipe = defineSlotRecipe({
+const parts = defineParts({
+  root: { selector: '&' },
+  icon: { selector: '& [data-part="icon"]' },
+  title: { selector: '& [data-part="title"]' },
+  content: { selector: '& [data-part="content"]' },
+  footer: { selector: '& [data-part="footer"]' },
+  dismiss: { selector: '& [data-part="dismiss"]' },
+});
+
+export const alertRecipe = defineRecipe({
   className: 'Alert',
-  slots: ['root', 'icon', 'title', 'content', 'footer'],
-  base: {
+  base: parts({
     root: {
       padding: 'md',
       borderRadius: 'base',
@@ -11,62 +19,63 @@ export const alertRecipe = defineSlotRecipe({
       border: 'base',
     },
     icon: {
-      fontSize: 'lg',
-      padding: 'sm',
+      h: '1lh',
     },
     title: {
       textStyle: 'body',
       fontWeight: 'bold',
     },
     content: {},
-  },
+    footer: {},
+    dismiss: {},
+  }),
   variants: {
     palette: {
-      default: {
+      default: parts({
         root: {
           colorPalette: 'bg',
         },
-      },
-      primary: {
+      }),
+      primary: parts({
         root: {
           colorPalette: 'primary',
         },
-      },
-      danger: {
+      }),
+      danger: parts({
         root: {
           colorPalette: 'danger',
         },
-      },
-      warning: {
+      }),
+      warning: parts({
         root: {
           colorPalette: 'warning',
         },
-      },
-      success: {
+      }),
+      success: parts({
         root: {
           colorPalette: 'success',
         },
-      },
-      info: {
+      }),
+      info: parts({
         root: {
           colorPalette: 'info',
         },
-      },
+      }),
     },
     variant: {
-      solid: {
+      solid: parts({
         root: {
           color: 'colorPalette.fg',
           backgroundColor: 'colorPalette.fill',
         },
-      },
-      subtle: {
+      }),
+      subtle: parts({
         root: {
           color: 'colorPalette.text',
           backgroundColor: 'colorPalette.surface',
         },
-      },
-      outline: {
+      }),
+      outline: parts({
         root: {
           borderWidth: '1px',
           borderStyle: 'solid',
@@ -78,7 +87,7 @@ export const alertRecipe = defineSlotRecipe({
         title: {
           color: 'colorPalette',
         },
-      },
+      }),
     },
   },
   defaultVariants: {

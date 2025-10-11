@@ -80,3 +80,44 @@ export const Full: Story = {
     ),
   },
 };
+
+export const WithDismiss: Story = {
+  ...Base,
+  args: {
+    onDismiss: () => console.log('dismissed'),
+  },
+};
+
+export const Composition: Story = {
+  render: (args) => (
+    <Alert.Root {...args}>
+      <Alert.Icon>
+        <LuBell />
+      </Alert.Icon>
+      <Alert.Title>Watch out!</Alert.Title>
+      <Alert.Content>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi esse
+          unde incidunt quibusdam magnam assumenda veritatis quos labore, nemo
+          quidem illum explicabo, saepe corporis voluptatem optio, quas commodi
+          consectetur vel.
+        </p>
+      </Alert.Content>
+      <Alert.Footer
+        css={{
+          gridColumn: '-1 / 1',
+          display: 'flex',
+          justifyContent: 'start',
+          gap: 'md',
+        }}
+      >
+        <ButtonGroup>
+          <Button>Learn more</Button>
+        </ButtonGroup>
+        <Alert.Dismiss onClick={() => console.log('dismissed')}>
+          Dismiss
+        </Alert.Dismiss>
+      </Alert.Footer>
+    </Alert.Root>
+  ),
+};
