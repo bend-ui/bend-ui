@@ -3,122 +3,65 @@ import { defineSemanticTokens } from '@pandacss/dev';
 export const colors = defineSemanticTokens.colors({
   bg: {
     DEFAULT: {
-      value: {
-        _light: '{colors.neutral.50}',
-        _dark: '{colors.neutral.950}',
-      },
+      value: '{colors.neutral.50}',
     },
     page: {
-      value: {
-        _light: '{colors.neutral.100}',
-        _dark: '{colors.neutral.950}',
-      },
+      value: '{colors.neutral.100}',
     },
     raised: {
-      value: {
-        _light: '{colors.neutral.50}',
-        _dark: '{colors.neutral.900}',
-      },
+      value: '{colors.neutral.50}',
     },
     overlay: {
-      value: {
-        _light: '{colors.neutral.50}',
-        _dark: '{colors.neutral.950}',
-      },
+      value: '{colors.neutral.50}',
     },
     sunken: {
-      value: {
-        _light: '{colors.neutral.50}',
-        _dark: '{colors.neutral.950}',
-      },
+      value: '{colors.neutral.50}',
     },
     alternate: {
-      value: {
-        _light: '{colors.neutral.50}',
-        _dark: '{colors.neutral.950}',
-      },
+      value: '{colors.neutral.50}',
     },
     inverse: {
-      value: {
-        _light: '{colors.neutral.50}',
-        _dark: '{colors.neutral.950}',
-      },
+      value: '{colors.neutral.950}',
     },
   },
   surface: {
     DEFAULT: {
-      value: {
-        _light: '{colors.neutral.100}',
-        _dark: '{colors.neutral.900}',
-      },
+      value: '{colors.neutral.100}',
     },
     strong: {
-      value: {
-        _light: '{colors.neutral.50}',
-        _dark: '{colors.neutral.900}',
-      },
+      value: '{colors.neutral.50}',
     },
     subtle: {
-      value: {
-        _light: '{colors.neutral.50}',
-        _dark: '{colors.neutral.900}',
-      },
+      value: '{colors.neutral.50}',
     },
     hover: {
-      value: {
-        _light: '{colors.neutral.100}',
-        _dark: '{colors.neutral.800}',
-      },
+      value: '{colors.neutral.100}',
     },
     pressed: {
-      value: {
-        _light: '{colors.neutral.50}',
-        _dark: '{colors.neutral.900}',
-      },
+      value: '{colors.neutral.50}',
     },
     selected: {
-      value: {
-        _light: '{colors.neutral.50}',
-        _dark: '{colors.neutral.900}',
-      },
+      value: '{colors.neutral.50}',
     },
     disabled: {
-      value: {
-        _light: '{colors.neutral.50}',
-        _dark: '{colors.neutral.900}',
-      },
+      value: '{colors.neutral.50}',
     },
     overlay: {
-      value: {
-        _light: '{colors.neutral.50}',
-        _dark: '{colors.neutral.900}',
-      },
+      value: '{colors.neutral.50}',
     },
   },
   text: {
     DEFAULT: {
-      value: {
-        _light: '{colors.neutral.950}',
-        _dark: '{colors.neutral.50}',
-      },
+      value: '{colors.neutral.950}',
     },
     strong: {
-      value: {
-        _light: '{colors.neutral.950}',
-        _dark: '{colors.neutral.50}',
-      },
+      value: '{colors.neutral.950}',
     },
     secondary: {
-      value: {
-        _light: '{colors.neutral.700}',
-        _dark: '{colors.neutral.300}',
-      },
+      value: '{colors.neutral.700}',
     },
     disabled: {
-      value: {
-        _light: '{colors.neutral.100}',
-        _dark: '{colors.neutral.900}',
-      },
+      value: '{colors.neutral.100}',
     },
     danger: {
       value: {
@@ -178,42 +121,24 @@ export const colors = defineSemanticTokens.colors({
   },
   border: {
     DEFAULT: {
-      value: {
-        _light: '{colors.neutral.100}',
-        _dark: '{colors.neutral.700}',
-      },
+      value: '{colors.neutral.300}',
     },
     strong: {
-      value: {
-        _light: '{colors.neutral.300}',
-        _dark: '{colors.neutral.700}',
-      },
+      value: '{colors.neutral.300}',
     },
     subtle: {
-      value: {
-        _light: '{colors.neutral.200}',
-        _dark: '{colors.neutral.800}',
-      },
+      value: '{colors.neutral.200}',
     },
     selected: {
-      value: {
-        _light: '{colors.neutral.100}',
-        _dark: '{colors.neutral.700}',
-      },
+      value: '{colors.neutral.200}',
     },
     focus: {
       DEFAULT: {
-        value: {
-          _light: '{colors.shark.200}',
-          _dark: '{colors.shark.600}',
-        },
+        value: '{colors.neutral.200}',
       },
     },
     disabled: {
-      value: {
-        _light: '{colors.neutral.100}',
-        _dark: '{colors.neutral.700}',
-      },
+      value: '{colors.neutral.100}',
     },
     primary: {
       DEFAULT: {
@@ -255,95 +180,51 @@ export const colors = defineSemanticTokens.colors({
     input: {
       DEFAULT: {
         value: {
-          _light: '{colors.shark.200}',
-          _dark: '{colors.shark.600}',
+          _light: '{colors.neutral.200}',
+          _dark: '{colors.neutral.600}',
         },
       },
     },
     divider: {
       DEFAULT: {
         value: {
-          _light: '{colors.shark.200}',
-          _dark: '{colors.shark.600}',
+          _light: '{colors.neutral.200}',
+          _dark: '{colors.neutral.600}',
         },
       },
     },
   },
   icon: {
     DEFAULT: {
-      value: {
-        _light: '{colors.neutral.950}',
-        _dark: '{colors.neutral.50}',
-      },
+      value: '{colors.neutral.950}',
     },
     disabled: {
-      value: {
-        _light: '{colors.neutral.100}',
-        _dark: '{colors.neutral.900}',
-      },
+      value: '{colors.neutral.100}',
     },
     inverse: {
       DEFAULT: {
-        value: {
-          _light: '{colors.neutral.50}',
-          _dark: '{colors.neutral.950}',
-        },
+        value: '{colors.neutral.50}',
       },
       strong: {
-        value: {
-          _light: '{colors.neutral.950}',
-          _dark: '{colors.neutral.50}',
-        },
+        value: '{colors.neutral.950}',
       },
       disabled: {
-        value: {
-          _light: '{colors.neutral.100}',
-          _dark: '{colors.neutral.900}',
-        },
+        value: '{colors.neutral.100}',
       },
     },
   },
   neutral: {
-    50: { value: '{colors.shark.50}' },
-    100: { value: '{colors.shark.100}' },
-    200: { value: '{colors.shark.200}' },
-    300: { value: '{colors.shark.300}' },
-    400: { value: '{colors.shark.400}' },
-    500: { value: '{colors.shark.500}' },
-    600: { value: '{colors.shark.600}' },
-    700: { value: '{colors.shark.700}' },
-    800: { value: '{colors.shark.800}' },
-    900: { value: '{colors.shark.900}' },
-    950: { value: '{colors.shark.950}' },
-    DEFAULT: {
-      value: {
-        _light: '{colors.neutral.300}',
-        _dark: '{colors.neutral.900}',
-      },
-    },
     hover: {
-      value: {
-        _light: '{colors.neutral.400}',
-        _dark: '{colors.neutral.950}',
-      },
+      value: '{colors.neutral.400}',
     },
     fg: {
-      value: {
-        _light: '{colors.neutral.900}',
-        _dark: '{colors.neutral.50}',
-      },
+      value: '{colors.neutral.900}',
     },
     text: {
-      value: {
-        _light: '{colors.neutral.900}',
-        _dark: '{colors.neutral.50}',
-      },
+      value: '{colors.neutral.900}',
     },
     border: {
-      value: {
-        _light: '{colors.neutral.300}',
-        _dark: '{colors.neutral.900}',
-      },
+      value: '{colors.neutral.300}',
     },
   },
   primary: {
@@ -527,11 +408,29 @@ export const colors = defineSemanticTokens.colors({
         _dark: '{colors.blue.600}',
       },
     },
+    hover: {
+      value: {
+        _light: '{colors.blue.400}',
+        _dark: '{colors.blue.600}',
+      },
+    },
+    fg: {
+      value: '{colors.blue.950}',
+    },
+    text: {
+      value: '{colors.blue.600}',
+    },
+    border: {
+      value: '{colors.blue.400}',
+    },
+    fill: {
+      value: '{colors.blue.400}',
+    },
+    surface: {
+      value: '{colors.blue.300}',
+    },
   },
   shadow: {
-    value: {
-      _light: '{colors.shark.100}',
-      _dark: '{colors.shark.900}',
-    },
+    value: '{colors.neutral.100}',
   },
 });

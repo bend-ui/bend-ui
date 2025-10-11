@@ -17,7 +17,7 @@ export const preset = definePreset({
     extend: {
       light: '[data-color-mode=light] &, .light &',
       dark: '[data-color-mode=dark] &, .dark &',
-      real: '[data-tone="real"] &',
+      flat: '[data-tone="flat"] &',
       soft: '[data-tone="soft"] &',
       glass: '[data-tone="glass"] &',
       closed: '&:is([data-state=closed], [data-closed])',
@@ -43,6 +43,7 @@ export const preset = definePreset({
   },
   globalCss,
   themes: {
+    default: createTheme(),
     proton: createTheme({
       primaryColor: 'indigo',
       neutralColor: 'slate',
