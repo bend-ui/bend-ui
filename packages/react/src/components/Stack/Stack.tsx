@@ -1,3 +1,5 @@
+'use client';
+
 import { stack, StackProperties } from '@particles/styled-system/patterns';
 import { particles, HTMLParticlesProps } from '../factory';
 import { forwardRef } from 'react';

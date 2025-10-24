@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef } from 'react';
 import { tag } from '@particles/styled-system/recipes';
 import { styled } from '@particles/styled-system/jsx';

@@ -1,3 +1,5 @@
+'use client';
+
 import { RadioGroup as RadioGroupPrimitive } from '@ark-ui/react';
 import { radioGroup } from '@particles/styled-system/recipes';
 import { forwardRef } from 'react';

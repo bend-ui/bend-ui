@@ -1,3 +1,5 @@
+'use client';
+
 import { css, cx } from '@particles/styled-system/css';
 import { text } from '@particles/styled-system/recipes';
 import { forwardRef } from 'react';

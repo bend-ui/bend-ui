@@ -1,3 +1,5 @@
+'use client';
+
 import { tiles } from '@particles/styled-system/patterns';
 import { cx } from '@particles/styled-system/css';
 import type { TilesProperties } from '@particles/styled-system/patterns';

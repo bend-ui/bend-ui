@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef, useState } from 'react';
 import { Input, InputProps } from '../Input';
 import { particles } from '../../factory';

@@ -1,3 +1,5 @@
+'use client';
+
 import { styled } from '@particles/styled-system/jsx';
 import { formField } from '@particles/styled-system/recipes';
 

@@ -1,4 +1,5 @@
-// Do not replace with '@zag-js/react'
+'use client';
+
 import type React from 'react';
 import {
   Children,

@@ -22,3 +22,4 @@ export * from './AppShell';
 export * from './Grid';
 export * from './factory';
 export * from './Stack';
+export * from './Code';

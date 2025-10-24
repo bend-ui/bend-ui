@@ -1,3 +1,5 @@
+'use client';
+
 import { particles, HTMLParticlesProps } from '../factory';
 import { forwardRef } from 'react';
 import {
