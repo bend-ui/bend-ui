@@ -59,3 +59,6 @@ vitest.config.*.timestamp*
 
 build-storybook.log
 debug-storybook.log
+
+# Fumadocs generated files
+.source
