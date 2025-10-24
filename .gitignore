@@ -43,7 +43,6 @@ Thumbs.db
 .next
 
 # NX
-migrations.json
 .nx/cache
 .nx/workspace-data
 
