@@ -1,0 +1,223 @@
+---
+title: Design Tokens
+description: Learn about design tokens and how they create consistency across the design system
+---
+
+# Design Tokens
+
+Design tokens are the foundational elements of the Particles design system. They are the named values that represent design decisions, such as colors, typography, spacing, and more.
+
+## What are Design Tokens?
+
+Design tokens are the single source of truth for design values. Instead of hardcoding values like `#3b82f6` or `16px`, we use tokens like `colors.blue.500` or `spacing.4`.
+
+### Benefits
+
+- **Consistency**: Ensures the same values are used throughout your application
+- **Maintainability**: Update a value in one place, change it everywhere
+- **Theming**: Easy to create different themes by swapping token values
+- **Type Safety**: Full TypeScript support for autocomplete and validation
+
+## Token Categories
+
+### Colors
+
+Colors are organized into semantic categories:
+
+```tsx
+import { css } from 'styled-system/css';
+
+// Using color tokens
+<div className={css({
+  color: 'blue.600',
+  bg: 'gray.50',
+  borderColor: 'gray.200',
+})} />
+```
+
+#### Semantic Colors
+
+```tsx
+// Semantic tokens adapt to context
+<div className={css({
+  color: 'primary',      // Theme primary color
+  bg: 'background',      // Background color
+  borderColor: 'border', // Border color
+})} />
+```
+
+### Typography
+
+Typography tokens include font families, sizes, weights, and line heights:
+
+```tsx
+import { css } from 'styled-system/css';
+
+<p className={css({
+  fontFamily: 'body',
+  fontSize: 'lg',
+  fontWeight: 'medium',
+  lineHeight: 'relaxed',
+})} />
+```
+
+#### Font Scale
+
+- `xs`: 0.75rem (12px)
+- `sm`: 0.875rem (14px)
+- `md`: 1rem (16px)
+- `lg`: 1.125rem (18px)
+- `xl`: 1.25rem (20px)
+- `2xl`: 1.5rem (24px)
+- `3xl`: 1.875rem (30px)
+- `4xl`: 2.25rem (36px)
+
+### Spacing
+
+Consistent spacing creates visual rhythm:
+
+```tsx
+import { css } from 'styled-system/css';
+
+<div className={css({
+  padding: '4',      // 1rem (16px)
+  margin: '8',       // 2rem (32px)
+  gap: '6',          // 1.5rem (24px)
+})} />
+```
+
+#### Spacing Scale
+
+- `0`: 0
+- `1`: 0.25rem (4px)
+- `2`: 0.5rem (8px)
+- `3`: 0.75rem (12px)
+- `4`: 1rem (16px)
+- `6`: 1.5rem (24px)
+- `8`: 2rem (32px)
+- `12`: 3rem (48px)
+- `16`: 4rem (64px)
+
+### Radii
+
+Border radius tokens for rounded corners:
+
+```tsx
+import { css } from 'styled-system/css';
+
+<div className={css({
+  borderRadius: 'md',  // 0.375rem (6px)
+})} />
+```
+
+#### Radius Scale
+
+- `none`: 0
+- `sm`: 0.125rem (2px)
+- `md`: 0.375rem (6px)
+- `lg`: 0.5rem (8px)
+- `xl`: 0.75rem (12px)
+- `2xl`: 1rem (16px)
+- `full`: 9999px
+
+### Shadows
+
+Elevation through shadow tokens:
+
+```tsx
+import { css } from 'styled-system/css';
+
+<div className={css({
+  shadow: 'md',
+})} />
+```
+
+#### Shadow Scale
+
+- `xs`: Subtle shadow
+- `sm`: Small shadow
+- `md`: Medium shadow
+- `lg`: Large shadow
+- `xl`: Extra large shadow
+- `2xl`: Extra extra large shadow
+
+## Using Tokens in Components
+
+### With Panda CSS
+
+```tsx
+import { css } from 'styled-system/css';
+
+function Card() {
+  return (
+    <div
+      className={css({
+        bg: 'white',
+        padding: '6',
+        borderRadius: 'lg',
+        shadow: 'md',
+        borderWidth: '1px',
+        borderColor: 'gray.200',
+      })}
+    >
+      <h2 className={css({ fontSize: '2xl', fontWeight: 'bold', mb: '4' })}>
+        Card Title
+      </h2>
+      <p className={css({ color: 'gray.600' })}>Card content</p>
+    </div>
+  );
+}
+```
+
+### With Particles Components
+
+Particles components accept token values directly:
+
+```tsx
+import { Box, Text } from '@particles/react';
+
+function Example() {
+  return (
+    <Box bg="blue.50" padding="8" borderRadius="lg">
+      <Text fontSize="2xl" fontWeight="bold" color="blue.900">
+        Hello Particles
+      </Text>
+    </Box>
+  );
+}
+```
+
+## Customizing Tokens
+
+You can extend or override tokens in your `panda.config.ts`:
+
+```typescript
+import { defineConfig } from '@pandacss/dev';
+import particlesPreset from '@particles/preset';
+
+export default defineConfig({
+  presets: [particlesPreset],
+  theme: {
+    extend: {
+      tokens: {
+        colors: {
+          brand: {
+            primary: { value: '#3b82f6' },
+            secondary: { value: '#8b5cf6' },
+          },
+        },
+        spacing: {
+          '18': { value: '4.5rem' },
+        },
+      },
+    },
+  },
+});
+```
+
+## Next Steps
+
+- [Colors](/docs/foundation/colors) - Explore the color system
+- [Typography](/docs/foundation/typography) - Learn about typography
+- [Spacing](/docs/foundation/spacing) - Understand spacing principles
+- [Theming](/docs/foundation/theming) - Create custom themes

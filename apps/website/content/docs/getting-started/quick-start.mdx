@@ -1,0 +1,132 @@
+---
+title: Quick Start
+description: Get up and running with Particles in minutes
+---
+
+# Quick Start
+
+This guide will help you build your first page using Particles Design System.
+
+## Your First Component
+
+After [installation](/docs/getting-started/installation), you can start using Particles components immediately.
+
+### Basic Example
+
+```tsx
+import { Button, Stack, Text } from '@particles/react';
+
+export default function HomePage() {
+  return (
+    <Stack gap="4" padding="8">
+      <Text fontSize="2xl" fontWeight="bold">
+        Welcome to Particles
+      </Text>
+      <Text color="gray.600">
+        Start building beautiful interfaces with our design system.
+      </Text>
+      <Button colorScheme="blue" size="lg">
+        Get Started
+      </Button>
+    </Stack>
+  );
+}
+```
+
+## Using Design Tokens
+
+Particles provides design tokens through Panda CSS:
+
+```tsx
+import { css } from 'styled-system/css';
+import { Box } from '@particles/react';
+
+export default function Card() {
+  return (
+    <Box
+      className={css({
+        bg: 'white',
+        borderRadius: 'lg',
+        padding: '6',
+        shadow: 'md',
+      })}
+    >
+      <h2>Card Title</h2>
+      <p>Card content goes here.</p>
+    </Box>
+  );
+}
+```
+
+## Building a Layout
+
+Combine components to create complex layouts:
+
+```tsx
+import { Box, Container, Stack, Flex, Button, Text } from '@particles/react';
+
+export default function Layout() {
+  return (
+    <Container maxW="container.xl">
+      <Flex justify="space-between" align="center" padding="4">
+        <Text fontSize="xl" fontWeight="bold">
+          Particles
+        </Text>
+        <Stack direction="row" gap="4">
+          <Button variant="ghost">Docs</Button>
+          <Button variant="ghost">Components</Button>
+          <Button colorScheme="blue">Sign In</Button>
+        </Stack>
+      </Flex>
+
+      <Box padding="8">
+        <Stack gap="6">
+          <Text fontSize="3xl" fontWeight="bold">
+            Build faster with Particles
+          </Text>
+          <Text fontSize="lg" color="gray.600">
+            A comprehensive design system for modern web applications.
+          </Text>
+        </Stack>
+      </Box>
+    </Container>
+  );
+}
+```
+
+## Common Patterns
+
+### Form Example
+
+```tsx
+import { Stack, Input, Button, FormControl, FormLabel } from '@particles/react';
+
+export default function LoginForm() {
+  return (
+    <Stack gap="4" maxW="md">
+      <FormControl>
+        <FormLabel>Email</FormLabel>
+        <Input type="email" placeholder="Enter your email" />
+      </FormControl>
+
+      <FormControl>
+        <FormLabel>Password</FormLabel>
+        <Input type="password" placeholder="Enter your password" />
+      </FormControl>
+
+      <Button colorScheme="blue" width="full">
+        Sign In
+      </Button>
+    </Stack>
+  );
+}
+```
+
+## Next Steps
+
+Now that you've created your first components, explore more:
+
+- [Components](/docs/components) - Browse all available components
+- [Design Tokens](/docs/foundation/design-tokens) - Learn about the design system foundation
+- [Theming](/docs/foundation/theming) - Customize the design system
+- [Examples](/docs/examples) - View complete examples and patterns

@@ -1,0 +1,315 @@
+---
+title: Button
+description: Interactive button component for user actions
+---
+
+# Button
+
+The Button component is used to trigger actions and events. It supports various styles, sizes, and states.
+
+## Import
+
+```tsx
+import { Button } from '@particles/react';
+```
+
+## Basic Usage
+
+```tsx
+import { Button } from '@particles/react';
+
+function Example() {
+  return <Button>Click me</Button>;
+}
+```
+
+## Variants
+
+The Button component supports different visual styles:
+
+```tsx
+import { Button, Stack } from '@particles/react';
+
+function VariantsExample() {
+  return (
+    <Stack direction="row" gap="4">
+      <Button variant="solid">Solid</Button>
+      <Button variant="outline">Outline</Button>
+      <Button variant="ghost">Ghost</Button>
+      <Button variant="link">Link</Button>
+    </Stack>
+  );
+}
+```
+
+### Variant Types
+
+- **solid** (default): Filled background with solid color
+- **outline**: Transparent background with border
+- **ghost**: Transparent background, shows on hover
+- **link**: Styled as a text link
+
+## Color Schemes
+
+Apply different color schemes to match your design:
+
+```tsx
+import { Button, Stack } from '@particles/react';
+
+function ColorSchemesExample() {
+  return (
+    <Stack direction="row" gap="4">
+      <Button colorScheme="blue">Blue</Button>
+      <Button colorScheme="green">Green</Button>
+      <Button colorScheme="red">Red</Button>
+      <Button colorScheme="purple">Purple</Button>
+      <Button colorScheme="gray">Gray</Button>
+    </Stack>
+  );
+}
+```
+
+## Sizes
+
+Buttons come in multiple sizes:
+
+```tsx
+import { Button, Stack } from '@particles/react';
+
+function SizesExample() {
+  return (
+    <Stack direction="row" gap="4" align="center">
+      <Button size="xs">Extra Small</Button>
+      <Button size="sm">Small</Button>
+      <Button size="md">Medium</Button>
+      <Button size="lg">Large</Button>
+    </Stack>
+  );
+}
+```
+
+## States
+
+### Disabled
+
+Disable interaction with the button:
+
+```tsx
+import { Button } from '@particles/react';
+
+function DisabledExample() {
+  return (
+    <Button disabled>
+      Disabled Button
+    </Button>
+  );
+}
+```
+
+### Loading
+
+Show a loading state:
+
+```tsx
+import { Button, Stack } from '@particles/react';
+
+function LoadingExample() {
+  return (
+    <Stack direction="row" gap="4">
+      <Button isLoading>Loading</Button>
+      <Button isLoading loadingText="Submitting...">
+        Submit
+      </Button>
+    </Stack>
+  );
+}
+```
+
+## With Icons
+
+Add icons to buttons:
+
+```tsx
+import { Button, Stack } from '@particles/react';
+import { PlusIcon, ArrowRightIcon } from '@particles/icons';
+
+function IconsExample() {
+  return (
+    <Stack direction="row" gap="4">
+      <Button leftIcon={<PlusIcon />}>
+        Add Item
+      </Button>
+      <Button rightIcon={<ArrowRightIcon />}>
+        Next
+      </Button>
+    </Stack>
+  );
+}
+```
+
+## Full Width
+
+Make button take full width of container:
+
+```tsx
+import { Button } from '@particles/react';
+
+function FullWidthExample() {
+  return (
+    <Button width="full" colorScheme="blue">
+      Full Width Button
+    </Button>
+  );
+}
+```
+
+## Button Group
+
+Group related buttons together:
+
+```tsx
+import { ButtonGroup, Button } from '@particles/react';
+
+function ButtonGroupExample() {
+  return (
+    <ButtonGroup>
+      <Button>Left</Button>
+      <Button>Middle</Button>
+      <Button>Right</Button>
+    </ButtonGroup>
+  );
+}
+```
+
+## Custom Styling
+
+Apply custom styles using Panda CSS:
+
+```tsx
+import { Button } from '@particles/react';
+import { css } from 'styled-system/css';
+
+function CustomExample() {
+  return (
+    <Button
+      className={css({
+        bg: 'gradient.to.r',
+        from: 'blue.500',
+        to: 'purple.500',
+        _hover: {
+          from: 'blue.600',
+          to: 'purple.600',
+        },
+      })}
+    >
+      Gradient Button
+    </Button>
+  );
+}
+```
+
+## Accessibility
+
+The Button component follows accessibility best practices:
+
+- Uses semantic `<button>` element
+- Supports keyboard navigation (Enter/Space)
+- Includes proper ARIA attributes
+- Indicates disabled and loading states
+- Maintains focus management
+
+### Accessible Example
+
+```tsx
+import { Button } from '@particles/react';
+
+function AccessibleExample() {
+  return (
+    <Button
+      aria-label="Delete item"
+      onClick={() => console.log('Delete clicked')}
+    >
+      Delete
+    </Button>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `'solid' \| 'outline' \| 'ghost' \| 'link'` | `'solid'` | Visual style variant |
+| `colorScheme` | `string` | `'blue'` | Color scheme to apply |
+| `size` | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` | Button size |
+| `disabled` | `boolean` | `false` | Disable the button |
+| `isLoading` | `boolean` | `false` | Show loading state |
+| `loadingText` | `string` | - | Text to show when loading |
+| `leftIcon` | `ReactElement` | - | Icon to show on left |
+| `rightIcon` | `ReactElement` | - | Icon to show on right |
+| `width` | `string \| number` | - | Button width |
+| `onClick` | `() => void` | - | Click handler |
+
+## Examples
+
+### Submit Button
+
+```tsx
+import { Button } from '@particles/react';
+
+function SubmitExample() {
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  const handleSubmit = async () => {
+    setIsLoading(true);
+    await submitForm();
+    setIsLoading(false);
+  };
+
+  return (
+    <Button
+      type="submit"
+      colorScheme="blue"
+      isLoading={isLoading}
+      loadingText="Submitting..."
+      onClick={handleSubmit}
+    >
+      Submit
+    </Button>
+  );
+}
+```
+
+### Delete Button
+
+```tsx
+import { Button } from '@particles/react';
+import { TrashIcon } from '@particles/icons';
+
+function DeleteExample() {
+  return (
+    <Button
+      variant="outline"
+      colorScheme="red"
+      leftIcon={<TrashIcon />}
+      onClick={() => console.log('Delete')}
+    >
+      Delete
+    </Button>
+  );
+}
+```
+
+## Best Practices
+
+1. **Use appropriate variants**: Solid for primary actions, outline/ghost for secondary
+2. **Consistent sizing**: Use the same sizes throughout your app
+3. **Clear labels**: Button text should clearly indicate the action
+4. **Loading states**: Show feedback during async operations
+5. **Disabled states**: Clearly indicate when actions are unavailable
+
+## Related Components
+
+- [IconButton](/docs/components/icon-button) - Button with icon only
+- [ButtonGroup](/docs/components/button-group) - Group related buttons
+- [Link](/docs/components/link) - For navigation actions
