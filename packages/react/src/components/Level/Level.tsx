@@ -1,3 +1,5 @@
+'use client';
+
 import { cx } from '@particles/styled-system/css';
 import { splitCssProps } from '@particles/styled-system/jsx';
 import { level } from '@particles/styled-system/patterns';

@@ -1,3 +1,5 @@
+'use client';
+
 import { Carousel as CarouselPrimitive } from '@ark-ui/react';
 import { carousel } from '@particles/styled-system/recipes';
 import { createStyleContext } from '@particles/styled-system/jsx';

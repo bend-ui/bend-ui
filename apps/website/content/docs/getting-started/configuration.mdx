@@ -1,0 +1,174 @@
+---
+title: Configuration
+description: Configure Particles Design System to match your project needs
+---
+
+# Configuration
+
+Learn how to configure Particles Design System for your specific needs.
+
+## Panda CSS Configuration
+
+The main configuration happens in your `panda.config.ts` file.
+
+### Basic Configuration
+
+```typescript
+import { defineConfig } from '@pandacss/dev';
+import particlesPreset from '@particles/preset';
+
+export default defineConfig({
+  // Apply browser reset styles
+  preflight: true,
+
+  // Use the Particles preset
+  presets: [particlesPreset],
+
+  // Files to scan for styles
+  include: [
+    './src/**/*.{js,jsx,ts,tsx}',
+    './app/**/*.{js,jsx,ts,tsx}',
+    './node_modules/@particles/react/**/*.{js,jsx,ts,tsx}',
+  ],
+
+  // Files to exclude
+  exclude: [],
+
+  // Output directory for generated files
+  outdir: 'styled-system',
+});
+```
+
+### Extending the Theme
+
+You can extend or override the default theme:
+
+```typescript
+import { defineConfig } from '@pandacss/dev';
+import particlesPreset from '@particles/preset';
+
+export default defineConfig({
+  presets: [particlesPreset],
+
+  theme: {
+    extend: {
+      tokens: {
+        colors: {
+          brand: {
+            50: { value: '#eff6ff' },
+            100: { value: '#dbeafe' },
+            500: { value: '#3b82f6' },
+            900: { value: '#1e3a8a' },
+          },
+        },
+      },
+      semanticTokens: {
+        colors: {
+          primary: { value: '{colors.brand.500}' },
+        },
+      },
+    },
+  },
+});
+```
+
+## TypeScript Configuration
+
+Ensure your `tsconfig.json` includes the generated styled-system:
+
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "styled-system/*": ["./styled-system/*"]
+    }
+  },
+  "include": ["src", "styled-system"]
+}
+```
+
+## Next.js Configuration
+
+For Next.js projects, update your `next.config.js`:
+
+```javascript
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  transpilePackages: ['@particles/react'],
+};
+
+module.exports = nextConfig;
+```
+
+## Framework-Specific Setup
+
+### Vite
+
+```typescript
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [react()],
+  optimizeDeps: {
+    include: ['@particles/react'],
+  },
+});
+```
+
+### Remix
+
+```typescript
+// remix.config.js
+export default {
+  serverDependenciesToBundle: ['@particles/react'],
+};
+```
+
+## Environment Variables
+
+You can configure certain behaviors through environment variables:
+
+```bash
+# .env.local
+NEXT_PUBLIC_THEME_MODE=light
+NEXT_PUBLIC_PRIMARY_COLOR=blue
+```
+
+## IDE Integration
+
+### VS Code
+
+Install the Panda CSS extension for better developer experience:
+
+1. Install "Panda CSS IntelliSense" extension
+2. Configure in `.vscode/settings.json`:
+
+```json
+{
+  "pandacss.configPath": "panda.config.ts"
+}
+```
+
+## Production Optimization
+
+For production builds, enable optimizations:
+
+```typescript
+import { defineConfig } from '@pandacss/dev';
+import particlesPreset from '@particles/preset';
+
+export default defineConfig({
+  presets: [particlesPreset],
+  minify: true,
+  hash: true,
+  optimize: true,
+});
+```
+
+## Next Steps
+
+- [Theming](/docs/foundation/theming) - Customize the design system appearance
+- [Design Tokens](/docs/foundation/design-tokens) - Learn about design tokens
+- [Components](/docs/components) - Start using components

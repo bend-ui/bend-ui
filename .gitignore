@@ -43,7 +43,6 @@ Thumbs.db
 .next
 
 # NX
-migrations.json
 .nx/cache
 .nx/workspace-data
 
@@ -60,3 +59,6 @@ vitest.config.*.timestamp*
 
 build-storybook.log
 debug-storybook.log
+
+# Fumadocs generated files
+.source

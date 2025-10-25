@@ -1,3 +1,5 @@
+'use client';
+
 import { alert } from '@particles/styled-system/recipes';
 import { styled } from '@particles/styled-system/jsx';
 import type { AlertProps } from './Alert.types';

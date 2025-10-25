@@ -1,0 +1,106 @@
+---
+title: Installation
+description: Learn how to install and set up Particles Design System in your project
+---
+
+# Installation
+
+Get started with Particles by installing the necessary packages in your project.
+
+## Prerequisites
+
+Before installing Particles, ensure you have:
+
+- **Node.js**: Version 18 or higher
+- **Package Manager**: npm, yarn, or pnpm
+- **React**: Version 18 or higher
+
+## Installation Steps
+
+### 1. Install Packages
+
+Install the core Particles packages:
+
+```bash
+npm install @particles/react @particles/preset
+```
+
+Or using yarn:
+
+```bash
+yarn add @particles/react @particles/preset
+```
+
+Or using pnpm:
+
+```bash
+pnpm add @particles/react @particles/preset
+```
+
+### 2. Configure Panda CSS
+
+Particles uses Panda CSS for styling. Create or update your `panda.config.ts`:
+
+```typescript
+import { defineConfig } from '@pandacss/dev';
+import particlesPreset from '@particles/preset';
+
+export default defineConfig({
+  preflight: true,
+  presets: [particlesPreset],
+  include: [
+    './src/**/*.{js,jsx,ts,tsx}',
+    './app/**/*.{js,jsx,ts,tsx}',
+    './node_modules/@particles/react/**/*.{js,jsx,ts,tsx}',
+  ],
+  exclude: [],
+  outdir: 'styled-system',
+});
+```
+
+### 3. Add Panda CSS Scripts
+
+Add the following scripts to your `package.json`:
+
+```json
+{
+  "scripts": {
+    "prepare": "panda codegen",
+    "dev": "panda --watch & next dev"
+  }
+}
+```
+
+### 4. Generate Styles
+
+Run the Panda CSS codegen:
+
+```bash
+npm run prepare
+```
+
+### 5. Import Styles
+
+Import the generated Panda CSS styles in your app:
+
+```typescript
+import 'styled-system/styles.css';
+```
+
+## Verify Installation
+
+Create a test component to verify everything is working:
+
+```tsx
+import { Button } from '@particles/react';
+
+export default function App() {
+  return <Button>Hello Particles!</Button>;
+}
+```
+
+## Next Steps
+
+- [Quick Start](/docs/getting-started/quick-start) - Build your first page with Particles
+- [Configuration](/docs/getting-started/configuration) - Customize your setup
+- [Theming](/docs/foundation/theming) - Learn about customizing the design system

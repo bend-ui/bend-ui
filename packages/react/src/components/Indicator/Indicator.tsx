@@ -1,3 +1,5 @@
+'use client';
+
 import { styled } from '@particles/styled-system/jsx';
 import { indicator } from '@particles/styled-system/recipes';
 import type { IndicatorVariantProps } from '@particles/styled-system/recipes';

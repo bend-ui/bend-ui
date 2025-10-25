@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext as createReactContext, useContext } from 'react';
 
 export function createContext<ContextValue>(name: string) {

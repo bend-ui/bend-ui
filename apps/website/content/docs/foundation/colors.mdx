@@ -1,0 +1,242 @@
+---
+title: Colors
+description: Understanding the color system in Particles Design System
+---
+
+# Colors
+
+Particles uses a comprehensive color system designed for flexibility, accessibility, and consistency.
+
+## Color Palette
+
+### Gray Scale
+
+The gray scale is used for text, backgrounds, borders, and other UI elements:
+
+- `gray.50` - Lightest gray
+- `gray.100` - Very light gray
+- `gray.200` - Light gray
+- `gray.300` - Medium-light gray
+- `gray.400` - Medium gray
+- `gray.500` - Base gray
+- `gray.600` - Medium-dark gray
+- `gray.700` - Dark gray
+- `gray.800` - Very dark gray
+- `gray.900` - Darkest gray
+
+### Brand Colors
+
+Each brand color includes 10 shades from 50 (lightest) to 900 (darkest):
+
+#### Blue
+Primary brand color, used for interactive elements:
+
+```tsx
+import { Box } from '@particles/react';
+
+<Box bg="blue.500" color="white" padding="4">
+  Primary Action
+</Box>
+```
+
+#### Red
+Used for errors, warnings, and destructive actions:
+
+```tsx
+import { Box } from '@particles/react';
+
+<Box bg="red.500" color="white" padding="4">
+  Error Message
+</Box>
+```
+
+#### Green
+Used for success states and positive feedback:
+
+```tsx
+import { Box } from '@particles/react';
+
+<Box bg="green.500" color="white" padding="4">
+  Success Message
+</Box>
+```
+
+#### Yellow
+Used for warnings and attention:
+
+```tsx
+import { Box } from '@particles/react';
+
+<Box bg="yellow.500" color="white" padding="4">
+  Warning Message
+</Box>
+```
+
+#### Purple
+Used for secondary branding and special features:
+
+```tsx
+import { Box } from '@particles/react';
+
+<Box bg="purple.500" color="white" padding="4">
+  Special Feature
+</Box>
+```
+
+## Semantic Colors
+
+Semantic tokens provide context-aware colors that adapt to themes:
+
+### Text Colors
+
+```tsx
+import { Text } from '@particles/react';
+
+<Text color="text.primary">Primary text</Text>
+<Text color="text.secondary">Secondary text</Text>
+<Text color="text.tertiary">Tertiary text</Text>
+<Text color="text.disabled">Disabled text</Text>
+```
+
+### Background Colors
+
+```tsx
+import { Box } from '@particles/react';
+
+<Box bg="background.default">Default background</Box>
+<Box bg="background.subtle">Subtle background</Box>
+<Box bg="background.elevated">Elevated background</Box>
+```
+
+### Border Colors
+
+```tsx
+import { Box } from '@particles/react';
+
+<Box borderWidth="1px" borderColor="border.default">
+  Default border
+</Box>
+<Box borderWidth="1px" borderColor="border.muted">
+  Muted border
+</Box>
+```
+
+### Interactive Colors
+
+```tsx
+import { Box } from '@particles/react';
+
+<Box bg="interactive.default" _hover={{ bg: 'interactive.hover' }}>
+  Hover me
+</Box>
+```
+
+## Color Usage Guidelines
+
+### Text on Backgrounds
+
+Ensure sufficient contrast for accessibility:
+
+```tsx
+import { Box, Text } from '@particles/react';
+
+// Good: High contrast
+<Box bg="blue.600">
+  <Text color="white">Readable text</Text>
+</Box>
+
+// Good: Using semantic tokens
+<Box bg="background.default">
+  <Text color="text.primary">Readable text</Text>
+</Box>
+```
+
+### Color Schemes
+
+Use consistent color schemes for components:
+
+```tsx
+import { Button, Stack } from '@particles/react';
+
+<Stack direction="row" gap="4">
+  <Button colorScheme="blue">Primary</Button>
+  <Button colorScheme="red">Danger</Button>
+  <Button colorScheme="green">Success</Button>
+</Stack>
+```
+
+## Accessibility
+
+All color combinations are designed to meet WCAG 2.1 AA standards:
+
+- Text colors have at least 4.5:1 contrast ratio
+- Large text has at least 3:1 contrast ratio
+- Interactive elements have clear visual states
+
+### Testing Contrast
+
+```tsx
+// Good contrast examples
+<Box bg="blue.600" color="white" />      // 7.2:1 ratio
+<Box bg="gray.100" color="gray.900" />   // 15.3:1 ratio
+
+// Avoid low contrast
+// <Box bg="gray.200" color="gray.300" /> // Too low contrast
+```
+
+## Dark Mode
+
+Colors automatically adapt in dark mode using semantic tokens:
+
+```tsx
+import { Box, Text } from '@particles/react';
+
+<Box bg="background.default" color="text.primary">
+  This adapts to dark mode automatically
+</Box>
+```
+
+## Custom Colors
+
+Extend the color palette in `panda.config.ts`:
+
+```typescript
+import { defineConfig } from '@pandacss/dev';
+import particlesPreset from '@particles/preset';
+
+export default defineConfig({
+  presets: [particlesPreset],
+  theme: {
+    extend: {
+      tokens: {
+        colors: {
+          brand: {
+            50: { value: '#eff6ff' },
+            100: { value: '#dbeafe' },
+            200: { value: '#bfdbfe' },
+            300: { value: '#93c5fd' },
+            400: { value: '#60a5fa' },
+            500: { value: '#3b82f6' },
+            600: { value: '#2563eb' },
+            700: { value: '#1d4ed8' },
+            800: { value: '#1e40af' },
+            900: { value: '#1e3a8a' },
+          },
+        },
+      },
+      semanticTokens: {
+        colors: {
+          primary: { value: '{colors.brand.500}' },
+        },
+      },
+    },
+  },
+});
+```
+
+## Next Steps
+
+- [Typography](/docs/foundation/typography) - Learn about text styling
+- [Design Tokens](/docs/foundation/design-tokens) - Understand all design tokens
+- [Theming](/docs/foundation/theming) - Create custom themes
+- [Accessibility](/docs/foundation/accessibility) - Learn about accessibility

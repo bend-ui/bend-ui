@@ -1,3 +1,5 @@
+'use client';
+
 import { card } from '@particles/styled-system/recipes';
 import { styled, createStyleContext } from '@particles/styled-system/jsx';
 

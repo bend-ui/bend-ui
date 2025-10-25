@@ -1,0 +1,317 @@
+---
+title: Components Overview
+description: Explore the component library in Particles Design System
+---
+
+# Components Overview
+
+Particles provides a comprehensive collection of accessible, customizable React components built with TypeScript and Panda CSS.
+
+## Component Categories
+
+### Layout
+
+Components for structuring your application:
+
+- **Box** - The fundamental building block
+- **Container** - Centered content container with max-width
+- **Stack** - Vertical or horizontal stacking with gap
+- **Flex** - Flexible box layout
+- **Grid** - Grid layout system
+- **Divider** - Visual separator
+
+### Typography
+
+Components for text content:
+
+- **Text** - Generic text component
+- **Heading** - Semantic heading component
+- **Code** - Inline code display
+- **CodeBlock** - Multi-line code blocks
+
+### Forms
+
+Interactive form components:
+
+- **Input** - Text input field
+- **Textarea** - Multi-line text input
+- **Select** - Dropdown selection
+- **Checkbox** - Binary choice
+- **Radio** - Single choice from options
+- **Switch** - Toggle switch
+- **FormControl** - Form field wrapper
+- **FormLabel** - Field label
+- **FormHelperText** - Helper text
+- **FormErrorMessage** - Error feedback
+
+### Buttons
+
+Action components:
+
+- **Button** - Primary action button
+- **IconButton** - Button with icon only
+- **ButtonGroup** - Group of related buttons
+
+### Feedback
+
+Components for user feedback:
+
+- **Alert** - Contextual feedback messages
+- **Toast** - Temporary notification
+- **Spinner** - Loading indicator
+- **Progress** - Progress indicator
+- **Skeleton** - Loading placeholder
+
+### Overlay
+
+Components that overlay content:
+
+- **Modal** - Dialog overlay
+- **Drawer** - Side panel
+- **Popover** - Floating content
+- **Tooltip** - Contextual hint
+- **Menu** - Dropdown menu
+
+### Data Display
+
+Components for displaying data:
+
+- **Table** - Data table
+- **List** - List of items
+- **Card** - Content container
+- **Badge** - Status indicator
+- **Tag** - Label or category
+- **Avatar** - User profile image
+
+### Navigation
+
+Components for navigation:
+
+- **Tabs** - Tab navigation
+- **Breadcrumb** - Hierarchical navigation
+- **Pagination** - Page navigation
+- **Link** - Navigation link
+
+## Component Features
+
+### Accessibility
+
+All components follow WAI-ARIA standards:
+
+- Keyboard navigation support
+- Screen reader compatibility
+- Focus management
+- ARIA attributes
+
+### Theming
+
+Components support theming through:
+
+- Color schemes
+- Size variants
+- Custom styling
+- Design tokens
+
+### TypeScript
+
+Full TypeScript support:
+
+- Type definitions
+- IntelliSense
+- Prop validation
+- Generic types
+
+### Composability
+
+Components are designed to work together:
+
+```tsx
+import { Box, Stack, Heading, Text, Button } from '@particles/react';
+
+function Feature() {
+  return (
+    <Box padding="6" borderRadius="lg" shadow="md">
+      <Stack gap="4">
+        <Heading size="lg">Feature Title</Heading>
+        <Text color="gray.600">
+          Feature description goes here.
+        </Text>
+        <Button colorScheme="blue">Learn More</Button>
+      </Stack>
+    </Box>
+  );
+}
+```
+
+## Usage Patterns
+
+### Import Components
+
+```tsx
+// Named imports
+import { Button, Input, Stack } from '@particles/react';
+
+// Or import specific components
+import { Button } from '@particles/react/button';
+import { Input } from '@particles/react/input';
+```
+
+### Basic Example
+
+```tsx
+import { Stack, Input, Button } from '@particles/react';
+
+function SearchForm() {
+  return (
+    <Stack direction="row" gap="4">
+      <Input placeholder="Search..." />
+      <Button colorScheme="blue">Search</Button>
+    </Stack>
+  );
+}
+```
+
+### With Styling
+
+```tsx
+import { css } from 'styled-system/css';
+import { Box, Heading } from '@particles/react';
+
+function Card() {
+  return (
+    <Box
+      className={css({
+        bg: 'white',
+        padding: '6',
+        borderRadius: 'lg',
+        _hover: { shadow: 'lg' },
+      })}
+    >
+      <Heading size="md">Card Title</Heading>
+    </Box>
+  );
+}
+```
+
+## Component Props
+
+### Common Props
+
+Most components accept these common props:
+
+```typescript
+interface CommonProps {
+  // Styling
+  className?: string;
+  style?: CSSProperties;
+
+  // Layout
+  width?: string | number;
+  height?: string | number;
+  padding?: string;
+  margin?: string;
+
+  // Display
+  display?: 'block' | 'inline' | 'flex' | 'grid' | 'none';
+
+  // Colors
+  bg?: string;
+  color?: string;
+
+  // Events
+  onClick?: () => void;
+  onFocus?: () => void;
+  onBlur?: () => void;
+}
+```
+
+### Variant Props
+
+Many components support variants:
+
+```tsx
+import { Button } from '@particles/react';
+
+<Button variant="solid">Solid</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="link">Link</Button>
+```
+
+### Size Props
+
+Components often have size variants:
+
+```tsx
+import { Button } from '@particles/react';
+
+<Button size="xs">Extra Small</Button>
+<Button size="sm">Small</Button>
+<Button size="md">Medium</Button>
+<Button size="lg">Large</Button>
+```
+
+## Customization
+
+### Style Props
+
+Use Panda CSS style props:
+
+```tsx
+import { Box } from '@particles/react';
+
+<Box
+  bg="blue.50"
+  padding="8"
+  borderRadius="lg"
+  borderWidth="1px"
+  borderColor="blue.200"
+>
+  Custom styled box
+</Box>
+```
+
+### CSS Classes
+
+Use the `css` function for complex styling:
+
+```tsx
+import { css } from 'styled-system/css';
+import { Box } from '@particles/react';
+
+<Box
+  className={css({
+    bg: 'gradient.to.r',
+    from: 'blue.500',
+    to: 'purple.500',
+    _hover: {
+      from: 'blue.600',
+      to: 'purple.600',
+    },
+  })}
+>
+  Gradient box
+</Box>
+```
+
+## Best Practices
+
+1. **Use Semantic Components**: Choose components based on their semantic meaning
+2. **Maintain Consistency**: Use the same patterns throughout your app
+3. **Follow Accessibility**: Ensure proper ARIA labels and keyboard navigation
+4. **Leverage Theming**: Use color schemes and variants for consistency
+5. **Compose Components**: Build complex UIs from simple components
+
+## Next Steps
+
+Explore specific component documentation:
+
+- [Button](/docs/components/button) - Interactive button component
+- [Input](/docs/components/input) - Text input field
+- [Modal](/docs/components/modal) - Dialog overlay
+- [Card](/docs/components/card) - Content container
+
+Or browse by category:
+- [Layout Components](/docs/components/layout)
+- [Form Components](/docs/components/forms)
+- [Feedback Components](/docs/components/feedback)

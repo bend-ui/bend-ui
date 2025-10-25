@@ -1,3 +1,5 @@
+'use client';
+
 import { Children, cloneElement, isValidElement } from 'react';
 import { useMergeRefs } from '@floating-ui/react';
 import type { SlotProps } from './Slot.types';

@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef, ReactNode } from 'react';
 import { button, ButtonVariantProps } from '@particles/styled-system/recipes';
 import { cx } from '@particles/styled-system/css';

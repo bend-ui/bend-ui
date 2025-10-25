@@ -1,31 +1,28 @@
-import { css, cx } from '@particles/styled-system/css';
+'use client';
+
+import { cx } from '@particles/styled-system/css';
 import { text } from '@particles/styled-system/recipes';
 import { forwardRef } from 'react';
-import { splitCssProps } from '@particles/styled-system/jsx';
-import type { JsxStyleProps } from '@particles/styled-system/types';
 import type { TextVariantProps } from '@particles/styled-system/recipes';
-import type { ComponentPropsWithoutRef, ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import { HTMLParticlesProps, particles } from '../factory';
 
-export type Assign<T, U> = Omit<T, keyof U> & U;
-
-export interface TextProps
-  extends Assign<JsxStyleProps, ComponentPropsWithoutRef<'span'>> {
+export interface TextProps extends HTMLParticlesProps<'span'> {
   children?: ReactNode;
   /** The style of the text */
   variant?: TextVariantProps['variant'];
 }
 
 export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
-  const [variantProps, textProps] = text.splitVariantProps(props);
-  const [cssProps, otherProps] = splitCssProps(textProps);
+  const [variantProps, otherProps] = text.splitVariantProps(props);
   const { children, className, ...rest } = otherProps;
 
   const classes = text(variantProps);
 
   return (
-    <span ref={ref} className={cx(classes, css(cssProps), className)} {...rest}>
+    <particles.span ref={ref} className={cx(classes, className)} {...rest}>
       {children}
-    </span>
+    </particles.span>
   );
 });
 

@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef } from 'react';
 import { splitCssProps } from '@particles/styled-system/jsx';
 import { css, cx } from '@particles/styled-system/css';
