@@ -37,25 +37,25 @@ import { css } from '@particles/styled-system/css';
 
 // Primary button
 <button className={css({
-  bg: 'tone.primary.fill',
-  color: 'tone.primary.text',
-  borderColor: 'tone.primary.stroke',
-  _hover: { bg: 'tone.primary.hover' }
+  bg: 'primary.fill',
+  color: 'primary.text',
+  borderColor: 'primary.stroke',
+  _hover: { bg: 'primary.hover' }
 })} />
 
-// Error alert
+// Error alert (uses danger tokens)
 <div className={css({
-  bg: 'tone.error.fill',
-  color: 'tone.error.text',
-  borderColor: 'tone.error.stroke'
+  bg: 'danger.fill',
+  color: 'danger.text',
+  borderColor: 'danger.stroke'
 })} />
 
 // Success notification with icon
 <div className={css({
-  bg: 'tone.success.fill',
-  color: 'tone.success.text'
+  bg: 'success.fill',
+  color: 'success.text'
 })}>
-  <Icon className={css({ color: 'tone.success.icon' })} />
+  <Icon className={css({ color: 'success.icon' })} />
   <p>Success message</p>
 </div>
 ```
@@ -75,22 +75,22 @@ export const buttonRecipe = defineRecipe({
   variants: {
     tone: {
       neutral: {
-        bg: 'tone.neutral.fill',
-        color: 'tone.neutral.text',
-        borderColor: 'tone.neutral.stroke',
-        _hover: { bg: 'tone.neutral.hover' },
+        bg: 'neutral.fill',
+        color: 'neutral.text',
+        borderColor: 'neutral.stroke',
+        _hover: { bg: 'neutral.hover' },
       },
       primary: {
-        bg: 'tone.primary.fill',
-        color: 'tone.primary.text',
-        borderColor: 'tone.primary.stroke',
-        _hover: { bg: 'tone.primary.hover' },
+        bg: 'primary.fill',
+        color: 'primary.text',
+        borderColor: 'primary.stroke',
+        _hover: { bg: 'primary.hover' },
       },
       error: {
-        bg: 'tone.error.fill',
-        color: 'tone.error.text',
-        borderColor: 'tone.error.stroke',
-        _hover: { bg: 'tone.error.hover' },
+        bg: 'danger.fill',
+        color: 'danger.text',
+        borderColor: 'danger.stroke',
+        _hover: { bg: 'danger.hover' },
       },
       // ... warning, success
     },
@@ -103,60 +103,62 @@ export const buttonRecipe = defineRecipe({
 All tone tokens follow this pattern:
 
 ```
-tone.{toneName}.{category}
+{toneName}.{category}
 ```
 
 Where:
-- `toneName` is: neutral | primary | error | warning | success
+- `toneName` is: neutral | primary | danger | warning | success
 - `category` is: fill | text | stroke | icon | hover | pressed | disabled
+
+Note: Error tones are available under the `danger` key to match the existing semantic token structure.
 
 ### Complete Token Reference
 
 ```typescript
 // Neutral tone
-tone.neutral.fill      // Background color
-tone.neutral.text      // Text color
-tone.neutral.stroke    // Border color
-tone.neutral.icon      // Icon color
-tone.neutral.hover     // Hover state
-tone.neutral.pressed   // Pressed state
-tone.neutral.disabled  // Disabled state
+neutral.fill      // Background color
+neutral.text      // Text color
+neutral.stroke    // Border color
+neutral.icon      // Icon color
+neutral.hover     // Hover state
+neutral.pressed   // Pressed state
+neutral.disabled  // Disabled state
 
 // Primary tone
-tone.primary.fill
-tone.primary.text
-tone.primary.stroke
-tone.primary.icon
-tone.primary.hover
-tone.primary.pressed
-tone.primary.disabled
+primary.fill
+primary.text
+primary.stroke
+primary.icon
+primary.hover
+primary.pressed
+primary.disabled
 
-// Error tone
-tone.error.fill
-tone.error.text
-tone.error.stroke
-tone.error.icon
-tone.error.hover
-tone.error.pressed
-tone.error.disabled
+// Danger/Error tone
+danger.fill
+danger.text
+danger.stroke
+danger.icon
+danger.hover
+danger.pressed
+danger.disabled
 
 // Warning tone
-tone.warning.fill
-tone.warning.text
-tone.warning.stroke
-tone.warning.icon
-tone.warning.hover
-tone.warning.pressed
-tone.warning.disabled
+warning.fill
+warning.text
+warning.stroke
+warning.icon
+warning.hover
+warning.pressed
+warning.disabled
 
 // Success tone
-tone.success.fill
-tone.success.text
-tone.success.stroke
-tone.success.icon
-tone.success.hover
-tone.success.pressed
-tone.success.disabled
+success.fill
+success.text
+success.stroke
+success.icon
+success.hover
+success.pressed
+success.disabled
 ```
 
 ## Light & Dark Mode
@@ -259,9 +261,9 @@ interface AlertProps {
 
 export const Alert = ({ tone = 'neutral', children }: AlertProps) => (
   <div className={css({
-    bg: `tone.${tone}.fill`,
-    color: `tone.${tone}.text`,
-    borderColor: `tone.${tone}.stroke`,
+    bg: `${tone}.fill`,
+    color: `${tone}.text`,
+    borderColor: `${tone}.stroke`,
     borderWidth: '1px',
     borderRadius: 'md',
     padding: '4',
@@ -279,9 +281,9 @@ export const Badge = ({ tone = 'neutral', children }: BadgeProps) => (
     display: 'inline-flex',
     alignItems: 'center',
     gap: '1',
-    bg: `tone.${tone}.fill`,
-    color: `tone.${tone}.text`,
-    borderColor: `tone.${tone}.stroke`,
+    bg: `${tone}.fill`,
+    color: `${tone}.text`,
+    borderColor: `${tone}.stroke`,
     borderWidth: '1px',
     borderRadius: 'full',
     px: '2',
@@ -298,7 +300,7 @@ export const Badge = ({ tone = 'neutral', children }: BadgeProps) => (
 ```tsx
 export const StatusIcon = ({ tone, icon: Icon }: StatusIconProps) => (
   <Icon className={css({
-    color: `tone.${tone}.icon`,
+    color: `${tone}.icon`,
     width: '5',
     height: '5',
   })} />

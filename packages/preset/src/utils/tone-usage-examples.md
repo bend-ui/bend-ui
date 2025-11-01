@@ -6,7 +6,7 @@ The tone generator creates consistent semantic tokens for component theming with
 
 - **neutral** - For neutral/grayscale UI elements
 - **primary** - For primary brand colors
-- **error** - For error states and destructive actions
+- **danger** - For error states and destructive actions (error preset applied to danger tokens)
 - **warning** - For warning states and cautionary content
 - **success** - For success states and positive feedback
 
@@ -38,11 +38,11 @@ import { css } from '@particles/styled-system/css';
 const Button = () => (
   <button
     className={css({
-      bg: 'tone.primary.fill',
-      color: 'tone.primary.text',
-      borderColor: 'tone.primary.stroke',
+      bg: 'primary.fill',
+      color: 'primary.text',
+      borderColor: 'primary.stroke',
       _hover: {
-        bg: 'tone.primary.hover',
+        bg: 'primary.hover',
       },
     })}
   >
@@ -50,13 +50,13 @@ const Button = () => (
   </button>
 );
 
-// Error button
+// Error button (uses danger tokens)
 const ErrorButton = () => (
   <button
     className={css({
-      bg: 'tone.error.fill',
-      color: 'tone.error.text',
-      borderColor: 'tone.error.stroke',
+      bg: 'danger.fill',
+      color: 'danger.text',
+      borderColor: 'danger.stroke',
     })}
   >
     Delete
@@ -67,15 +67,15 @@ const ErrorButton = () => (
 const SuccessAlert = () => (
   <div
     className={css({
-      bg: 'tone.success.fill',
-      color: 'tone.success.text',
-      borderColor: 'tone.success.stroke',
+      bg: 'success.fill',
+      color: 'success.text',
+      borderColor: 'success.stroke',
       borderWidth: '1px',
       padding: '4',
       borderRadius: 'md',
     })}
   >
-    <svg className={css({ color: 'tone.success.icon' })}>
+    <svg className={css({ color: 'success.icon' })}>
       {/* Icon content */}
     </svg>
     <p>Operation completed successfully!</p>
@@ -100,29 +100,29 @@ export const alertRecipe = defineRecipe({
   variants: {
     tone: {
       neutral: {
-        bg: 'tone.neutral.fill',
-        color: 'tone.neutral.text',
-        borderColor: 'tone.neutral.stroke',
+        bg: 'neutral.fill',
+        color: 'neutral.text',
+        borderColor: 'neutral.stroke',
       },
       primary: {
-        bg: 'tone.primary.fill',
-        color: 'tone.primary.text',
-        borderColor: 'tone.primary.stroke',
+        bg: 'primary.fill',
+        color: 'primary.text',
+        borderColor: 'primary.stroke',
       },
       error: {
-        bg: 'tone.error.fill',
-        color: 'tone.error.text',
-        borderColor: 'tone.error.stroke',
+        bg: 'danger.fill',
+        color: 'danger.text',
+        borderColor: 'danger.stroke',
       },
       warning: {
-        bg: 'tone.warning.fill',
-        color: 'tone.warning.text',
-        borderColor: 'tone.warning.stroke',
+        bg: 'warning.fill',
+        color: 'warning.text',
+        borderColor: 'warning.stroke',
       },
       success: {
-        bg: 'tone.success.fill',
-        color: 'tone.success.text',
-        borderColor: 'tone.success.stroke',
+        bg: 'success.fill',
+        color: 'success.text',
+        borderColor: 'success.stroke',
       },
     },
   },
@@ -166,20 +166,22 @@ export const customColors = defineSemanticTokens.colors({
 All tone tokens follow this structure:
 
 ```
-tone.{toneName}.{subcategory}
+{toneName}.{subcategory}
 ```
 
 Where:
-- `{toneName}` is one of: neutral, primary, error, warning, success
+- `{toneName}` is one of: neutral, primary, danger, warning, success
 - `{subcategory}` is one of: fill, text, stroke, icon, hover, pressed, disabled
+
+Note: Error tones are available under the `danger` key to match the existing semantic token structure.
 
 ### Examples
 
-- `tone.primary.fill` - Primary fill/background color
-- `tone.error.text` - Error text color
-- `tone.warning.stroke` - Warning border color
-- `tone.success.icon` - Success icon color
-- `tone.neutral.hover` - Neutral hover state color
+- `primary.fill` - Primary fill/background color
+- `danger.text` - Error text color
+- `warning.stroke` - Warning border color
+- `success.icon` - Success icon color
+- `neutral.hover` - Neutral hover state color
 
 ## Light and Dark Mode Support
 
@@ -187,7 +189,7 @@ All tone tokens automatically adapt to light and dark color modes:
 
 ```tsx
 // This will use light colors in light mode and dark colors in dark mode
-<div className={css({ bg: 'tone.primary.fill' })}>
+<div className={css({ bg: 'primary.fill' })}>
   Content
 </div>
 ```
@@ -197,6 +199,6 @@ The tone generator handles the light/dark mode switching automatically using Pan
 ## Best Practices
 
 1. **Consistency** - Use the same tone throughout a component for visual coherence
-2. **Semantics** - Choose tones based on meaning (error for destructive actions, success for confirmations, etc.)
+2. **Semantics** - Choose tones based on meaning (danger for destructive actions, success for confirmations, etc.)
 3. **Accessibility** - The default shade values are chosen for good contrast, but always test with actual content
 4. **States** - Use the state tokens (hover, pressed, disabled) for interactive elements to maintain consistent feedback

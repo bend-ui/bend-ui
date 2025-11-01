@@ -2,15 +2,6 @@ import { defineSemanticTokens } from '@pandacss/dev';
 import { createTone, tonePresets } from '../utils/create-tone';
 
 export const colors = defineSemanticTokens.colors({
-  // Tone-based semantic tokens
-  // Each tone includes: fill, text, stroke, icon, and state tokens
-  tone: {
-    neutral: createTone(tonePresets.neutral),
-    primary: createTone(tonePresets.primary),
-    error: createTone(tonePresets.error),
-    warning: createTone(tonePresets.warning),
-    success: createTone(tonePresets.success),
-  },
   bg: {
     DEFAULT: {
       value: '{colors.neutral.50}',
@@ -224,13 +215,8 @@ export const colors = defineSemanticTokens.colors({
     },
   },
   neutral: {
-    hover: {
-      value: '{colors.neutral.400}',
-    },
+    ...createTone(tonePresets.neutral),
     fg: {
-      value: '{colors.neutral.900}',
-    },
-    text: {
       value: '{colors.neutral.900}',
     },
     border: {
@@ -238,6 +224,7 @@ export const colors = defineSemanticTokens.colors({
     },
   },
   primary: {
+    ...createTone(tonePresets.primary),
     50: { value: '{colors.blue.50}' },
     100: { value: '{colors.blue.100}' },
     200: { value: '{colors.blue.200}' },
@@ -255,17 +242,8 @@ export const colors = defineSemanticTokens.colors({
         _dark: '{colors.primary.600}',
       },
     },
-    hover: {
-      value: {
-        _light: '{colors.primary.600}',
-        _dark: '{colors.primary.700}',
-      },
-    },
     fg: {
       value: '{colors.white}',
-    },
-    text: {
-      value: '{colors.primary.800}',
     },
     border: {
       value: {
@@ -273,17 +251,12 @@ export const colors = defineSemanticTokens.colors({
         _dark: '{colors.primary.600}',
       },
     },
-    disabled: {
-      value: 'black',
-    },
-    fill: {
-      value: '{colors.primary.400}',
-    },
     surface: {
       value: '{colors.primary.300}',
     },
   },
   danger: {
+    ...createTone(tonePresets.error),
     50: { value: '{colors.red.50}' },
     100: { value: '{colors.red.100}' },
     200: { value: '{colors.red.200}' },
@@ -301,32 +274,18 @@ export const colors = defineSemanticTokens.colors({
         _dark: '{colors.red.600}',
       },
     },
-    hover: {
-      value: {
-        _light: '{colors.danger.500}',
-        _dark: '{colors.danger.700}',
-      },
-    },
     fg: {
       value: '{colors.white}',
     },
-    text: {
-      value: '{colors.danger.600}',
-    },
     border: {
       value: '{colors.danger.600}',
-    },
-    disabled: {
-      value: 'black',
-    },
-    fill: {
-      value: '{colors.danger.400}',
     },
     surface: {
       value: '{colors.danger.300}',
     },
   },
   warning: {
+    ...createTone(tonePresets.warning),
     50: { value: '{colors.yellow.50}' },
     100: { value: '{colors.yellow.100}' },
     200: { value: '{colors.yellow.200}' },
@@ -347,13 +306,7 @@ export const colors = defineSemanticTokens.colors({
     fg: {
       value: '{colors.warning.950}',
     },
-    text: {
-      value: '{colors.warning.600}',
-    },
     border: {
-      value: '{colors.warning.400}',
-    },
-    fill: {
       value: '{colors.warning.400}',
     },
     surface: {
@@ -361,6 +314,7 @@ export const colors = defineSemanticTokens.colors({
     },
   },
   success: {
+    ...createTone(tonePresets.success),
     50: { value: '{colors.green.50}' },
     100: { value: '{colors.green.100}' },
     200: { value: '{colors.green.200}' },
@@ -378,22 +332,10 @@ export const colors = defineSemanticTokens.colors({
         _dark: '{colors.green.600}',
       },
     },
-    hover: {
-      value: {
-        _light: '{colors.success.400}',
-        _dark: '{colors.success.600}',
-      },
-    },
     fg: {
       value: '{colors.success.950}',
     },
-    text: {
-      value: '{colors.success.600}',
-    },
     border: {
-      value: '{colors.success.400}',
-    },
-    fill: {
       value: '{colors.success.400}',
     },
     surface: {
