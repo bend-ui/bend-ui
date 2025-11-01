@@ -69,3 +69,7 @@ export const arkPreset = definePreset({
   name: 'ark',
   presets: [preset],
 });
+
+// Export tone utilities for external use
+export { createTone, tonePresets, generateAllTones } from './utils/create-tone';
+export type { ToneConfig, ToneTokens } from './utils/create-tone';

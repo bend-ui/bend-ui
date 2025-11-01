@@ -1,6 +1,16 @@
 import { defineSemanticTokens } from '@pandacss/dev';
+import { createTone, tonePresets } from '../utils/create-tone';
 
 export const colors = defineSemanticTokens.colors({
+  // Tone-based semantic tokens
+  // Each tone includes: fill, text, stroke, icon, and state tokens
+  tone: {
+    neutral: createTone(tonePresets.neutral),
+    primary: createTone(tonePresets.primary),
+    error: createTone(tonePresets.error),
+    warning: createTone(tonePresets.warning),
+    success: createTone(tonePresets.success),
+  },
   bg: {
     DEFAULT: {
       value: '{colors.neutral.50}',
