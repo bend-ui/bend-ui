@@ -45,11 +45,11 @@ export const buttonRecipe = defineSlotRecipe({
           },
         },
       },
-      danger: {
+      error: {
         root: {
-          colorPalette: 'danger',
+          colorPalette: 'error',
           _soft: {
-            boxShadow: 'interaction.danger',
+            boxShadow: 'interaction.error',
           },
         },
       },
@@ -57,18 +57,18 @@ export const buttonRecipe = defineSlotRecipe({
     variant: {
       solid: {
         root: {
-          color: 'colorPalette.fg',
-          backgroundColor: 'colorPalette',
-          borderColor: 'colorPalette.border',
-          // _hover: {
-          //   backgroundColor: 'colorPalette.hover',
-          // },
+          color: 'colorPalette.text.inverse',
+          backgroundColor: 'colorPalette.fill',
+          borderColor: 'colorPalette.stroke',
+          _hover: {
+            backgroundColor: 'colorPalette.fill.hover',
+          },
           _disabled: {
-            color: 'colorPalette.disabled',
-            backgroundColor: 'colorPalette.disabled',
+            color: 'colorPalette.text.disabled',
+            backgroundColor: 'colorPalette.fill.disabled',
             _hover: {
-              color: 'colorPalette.disabled',
-              backgroundColor: 'colorPalette.disabled',
+              color: 'colorPalette.text.disabled',
+              backgroundColor: 'colorPalette.fill.disabled',
             },
           },
           _soft: {
@@ -87,17 +87,17 @@ export const buttonRecipe = defineSlotRecipe({
         root: {
           color: 'colorPalette.text',
           backgroundColor: 'transparent',
-          borderColor: 'colorPalette.border',
+          borderColor: 'colorPalette.stroke',
           boxShadow: 'revert',
-          // _hover: {
-          //   backgroundColor: 'colorPalette.border.hover',
-          // },
+          _hover: {
+            backgroundColor: 'colorPalette.fill.hover',
+          },
           _disabled: {
-            color: 'colorPalette.disabled',
-            borderColor: 'colorPalette.disabled',
+            color: 'colorPalette.text.disabled',
+            borderColor: 'colorPalette.stroke.disabled',
             _hover: {
-              color: 'colorPalette.disabled',
-              borderColor: 'colorPalette.disabled',
+              color: 'colorPalette.text.disabled',
+              borderColor: 'colorPalette.stroke.disabled',
             },
           },
         },
@@ -105,14 +105,14 @@ export const buttonRecipe = defineSlotRecipe({
       subtle: {
         root: {
           color: 'colorPalette.text',
-          backgroundColor: 'colorPalette.surface',
+          backgroundColor: 'colorPalette.fill.weak',
         },
-        // _hover: {
-        //   backgroundColor: 'colorPalette.surface.hover',
-        // },
+        _hover: {
+          backgroundColor: 'colorPalette.fill.hover',
+        },
         _disabled: {
-          color: 'colorPalette.disabled',
-          backgroundColor: 'colorPalette.disabled',
+          color: 'colorPalette.text.disabled',
+          backgroundColor: 'colorPalette.fill.disabled',
         },
       },
       ghost: {
@@ -120,12 +120,12 @@ export const buttonRecipe = defineSlotRecipe({
           color: 'colorPalette.text',
           backgroundColor: 'transparent',
         },
-        // _hover: {
-        //   backgroundColor: 'colorPalette.surface.hover',
-        // },
+        _hover: {
+          backgroundColor: 'colorPalette.fill.hover',
+        },
         _disabled: {
-          color: 'colorPalette.disabled',
-          backgroundColor: 'colorPalette.disabled',
+          color: 'colorPalette.text.disabled',
+          backgroundColor: 'colorPalette.fill.disabled',
         },
       },
     },

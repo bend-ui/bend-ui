@@ -14,12 +14,12 @@ export const indicatorRecipe = defineSlotRecipe({
     palette: {
       default: {
         root: {
-          backgroundColor: 'surface',
+          backgroundColor: 'fill',
         },
       },
       primary: {
         root: {
-          backgroundColor: 'bg.primary',
+          backgroundColor: 'fill.primary',
         },
       },
     },

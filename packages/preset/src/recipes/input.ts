@@ -25,7 +25,7 @@ export const inputRecipe = defineRecipe({
         layerStyle: 'focus',
       },
       _invalid: {
-        border: 'danger',
+        border: 'error',
       },
       _disabled: {
         border: 'disabled',
@@ -65,7 +65,7 @@ export const inputRecipe = defineRecipe({
         root: {},
         wrapper: {
           _hover: {
-            backgroundColor: 'surface.hover',
+            backgroundColor: 'fill.hover',
           },
         },
       }),

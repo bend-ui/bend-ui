@@ -23,16 +23,16 @@ export const badgeRecipe = defineRecipe({
         root: { backgroundColor: 'colorPalette.fill' },
       }),
       subtle: parts({
-        root: { backgroundColor: 'colorPalette.surface' },
+        root: { backgroundColor: 'colorPalette.fill' },
       }),
       outline: parts({
-        root: { borderColor: 'colorPalette.border' },
+        root: { borderColor: 'colorPalette.stroke' },
       }),
     },
     palette: {
       default: parts({
         root: {
-          colorPalette: 'bg',
+          colorPalette: 'neutral',
         },
       }),
       primary: parts({
@@ -40,9 +40,9 @@ export const badgeRecipe = defineRecipe({
           colorPalette: 'primary',
         },
       }),
-      danger: parts({
+      error: parts({
         root: {
-          colorPalette: 'danger',
+          colorPalette: 'error',
         },
       }),
       warning: parts({

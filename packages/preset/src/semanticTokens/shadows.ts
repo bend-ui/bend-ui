@@ -14,9 +14,9 @@ export const shadows = defineSemanticTokens.shadows({
         value: ['inset 0 1px 3px -1px {colors.primary.200}'],
       },
     },
-    danger: {
+    error: {
       DEFAULT: {
-        value: ['inset 0 1px 3px -1px {colors.danger.200}'],
+        value: ['inset 0 1px 3px -1px {colors.error.200}'],
       },
     },
   },

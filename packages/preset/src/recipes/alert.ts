@@ -41,9 +41,9 @@ export const alertRecipe = defineRecipe({
           colorPalette: 'primary',
         },
       }),
-      danger: parts({
+      error: parts({
         root: {
-          colorPalette: 'danger',
+          colorPalette: 'error',
         },
       }),
       warning: parts({
@@ -65,14 +65,14 @@ export const alertRecipe = defineRecipe({
     variant: {
       solid: parts({
         root: {
-          color: 'colorPalette.fg',
+          color: 'colorPalette.text.inverse',
           backgroundColor: 'colorPalette.fill',
         },
       }),
       subtle: parts({
         root: {
           color: 'colorPalette.text',
-          backgroundColor: 'colorPalette.surface',
+          backgroundColor: 'colorPalette.fill',
         },
       }),
       outline: parts({

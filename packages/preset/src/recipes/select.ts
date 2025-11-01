@@ -24,7 +24,7 @@ export const selectRecipe = defineRecipe({
     control: {
       gap: 'sm',
       rounded: 'md',
-      backgroundColor: 'surface',
+      backgroundColor: 'fill',
       border: 'base',
     },
     trigger: {
@@ -68,7 +68,7 @@ export const selectDropdownRecipe = defineRecipe({
       justifyContent: 'space-between',
       gap: 'sm',
       _hover: {
-        backgroundColor: 'surface.hover',
+        backgroundColor: 'fill.hover',
       },
     },
   }),

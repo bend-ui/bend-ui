@@ -4,13 +4,13 @@ export const layerStyles = defineLayerStyles({
   container: {
     description: 'Container styles',
     value: {
-      backgroundColor: 'surface.subtle',
+      backgroundColor: 'bg.weak',
     },
   },
   surface: {
     DEFAULT: {
       value: {
-        backgroundColor: 'surface',
+        backgroundColor: 'fill',
         border: 'base',
         _focus: {},
         _focusVisible: {
@@ -20,7 +20,7 @@ export const layerStyles = defineLayerStyles({
     },
     raised: {
       value: {
-        backgroundColor: 'surface.strong',
+        backgroundColor: 'fill.strong',
         border: 'base',
         borderRadius: 'md',
         boxShadow: 'md',
@@ -32,7 +32,7 @@ export const layerStyles = defineLayerStyles({
     },
     overlay: {
       value: {
-        backgroundColor: 'surface.overlay',
+        backgroundColor: 'fill.overlay',
         border: 'base',
         borderRadius: 'md',
         boxShadow: 'md',
@@ -40,7 +40,7 @@ export const layerStyles = defineLayerStyles({
     },
     sunken: {
       value: {
-        backgroundColor: 'surface.sunken',
+        backgroundColor: 'fill.weak',
         border: 'base',
         borderRadius: 'md',
         boxShadow: 'md',

@@ -17,7 +17,7 @@ export const avatarRecipe = defineRecipe({
       overflow: 'hidden',
     },
     fallback: {
-      backgroundColor: 'surface',
+      backgroundColor: 'fill',
     },
   }),
   variants: {

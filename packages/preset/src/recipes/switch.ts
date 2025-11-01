@@ -19,7 +19,7 @@ export const switchRecipe = defineRecipe({
     control: {
       display: 'flex',
       p: '1',
-      backgroundColor: 'surface',
+      backgroundColor: 'fill',
       rounded: 'full',
       transition: 'background 200ms',
       _checked: {
