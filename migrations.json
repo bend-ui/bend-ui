@@ -1,0 +1,10 @@
+{
+  "nx-console": {
+    "initialGitRef": {
+      "ref": "5e5293ae4fc1f4306ab94884d23dcb484129d262",
+      "subject": "feat: update components and stories for improved structure and functionality"
+    },
+    "targetVersion": "latest",
+    "confirmedPackageUpdates": true
+  }
+}
