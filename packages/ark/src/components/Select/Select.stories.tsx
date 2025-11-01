@@ -2,11 +2,11 @@ import { createListCollection, Select } from '.';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
-  title: 'Select',
+  title: 'Components/Form/Select',
   component: Select,
 
   parameters: {
-    layout: 'centered',
+    layout: 'padded',
   },
 } satisfies Meta<typeof Select>;
 

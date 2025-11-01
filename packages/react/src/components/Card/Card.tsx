@@ -1,21 +1,14 @@
 'use client';
 
-import { card } from '@particles/styled-system/recipes';
-import { styled, createStyleContext } from '@particles/styled-system/jsx';
+import { card, cardSection } from '@particles/styled-system/recipes';
+import { styled } from '@particles/styled-system/jsx';
+import { withRecipe } from '../../utils';
 
-const { withProvider, withContext } = createStyleContext(card);
+const Root = withRecipe(styled('div'), card, 'root');
 
-const Root = withProvider(styled.div, 'root');
-
-const Section = withContext(styled.div, 'section');
-
-const Header = withContext(styled.div, 'header');
-
-const Footer = withContext(styled.div, 'footer');
+const Section = withRecipe(styled('div'), cardSection, 'section');
 
 export const Card = Object.assign(Root, {
   Root,
   Section,
-  Header,
-  Footer,
 });

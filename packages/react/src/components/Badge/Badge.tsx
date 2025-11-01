@@ -1,20 +1,9 @@
 'use client';
 
 import { badge } from '@particles/styled-system/recipes';
-import { cx } from '@particles/styled-system/css';
-import { forwardRef } from 'react';
-import type { BadgeProps } from './Badge.types';
+import { withRecipe } from '../../utils';
+import { styled } from '@particles/styled-system/jsx';
 
-const Root = forwardRef<HTMLDivElement, BadgeProps>(function Root(props, ref) {
-  const { children, className, palette, variant, ...rest } = props;
-  const recipe = badge({ palette, variant });
-  return (
-    <div ref={ref} className={cx(recipe.root, className)} {...rest}>
-      {children}
-    </div>
-  );
-});
-
-Root.displayName = 'Badge';
+const Root = withRecipe(styled('div'), badge, 'root');
 
 export const Badge = Object.assign(Root, {});

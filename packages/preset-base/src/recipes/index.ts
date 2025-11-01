@@ -22,7 +22,7 @@ import { progress } from './progress';
 import { radioGroup } from './radio-group';
 import { rating } from './rating';
 import { segmentedControl } from './segmented-control';
-import { selectRecipe } from './select';
+import { selectDropdownRecipe, selectRecipe } from './select';
 import { skeleton } from './skeleton';
 import { slider } from './slider';
 import { switchRecipe } from './switch';
@@ -44,10 +44,8 @@ import { clipboardRecipe } from './clipboard';
 export const slotRecipes: Theme['slotRecipes'] = {
   actionBar,
 
-  badge,
   breadcrumb,
   button,
-  card,
   carousel,
   collapsible,
   hoverCard,
@@ -70,7 +68,9 @@ export const recipes: Theme['recipes'] = {
   appShell: appShellRecipe,
   avatar: avatarRecipe,
   backdrop: backdropRecipe,
+  badge,
   buttonGroup,
+  card,
   checkbox,
   combobox,
   command: commandRecipe,
@@ -83,6 +83,7 @@ export const recipes: Theme['recipes'] = {
   pagination,
   popover,
   select: selectRecipe,
+  selectDropdown: selectDropdownRecipe,
   switchRecipe: switchRecipe,
   tabs: tabsRecipe,
   toast: toastRecipe,

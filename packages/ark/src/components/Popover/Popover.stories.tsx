@@ -1,12 +1,11 @@
 import { Button } from '@particles/react';
-import { LuChevronRight } from 'react-icons/lu';
+import { LuChevronRight, LuX } from 'react-icons/lu';
 import { Popover } from './Popover';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Popover',
   component: Popover,
-
   parameters: {
     layout: 'centered',
   },
@@ -16,7 +15,7 @@ export default meta;
 
 type Story = StoryObj<typeof Popover>;
 
-export const Base: Story = {
+export const Basic: Story = {
   args: {
     trigger: 'Click Me',
     title: 'Title',
@@ -25,9 +24,9 @@ export const Base: Story = {
   },
 };
 
-export const Composed: Story = {
-  render: (args) => (
-    <Popover.Root {...args}>
+export const WithIndicator: Story = {
+  render: () => (
+    <Popover.Root>
       <Popover.Trigger asChild>
         <Button
           iconEnd={
@@ -46,5 +45,70 @@ export const Composed: Story = {
         </Popover.Content>
       </Popover.Positioner>
     </Popover.Root>
+  ),
+};
+
+export const WithCloseButton: Story = {
+  args: {
+    trigger: 'Click Me',
+    title: 'Title',
+    description: 'Description',
+    children: 'Content',
+    showCloseButton: true,
+  },
+};
+
+export const WithArrow: Story = {
+  args: {
+    trigger: 'Click Me',
+    title: 'Title',
+    description: 'Description',
+    children: 'Content',
+    showArrow: true,
+  },
+};
+
+export const DifferentSizes: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '1rem' }}>
+      <Popover
+        trigger="Small"
+        title="Small Popover"
+        description="This is a small popover"
+        size="sm"
+      >
+        <p>Small content</p>
+      </Popover>
+
+      <Popover
+        trigger="Medium"
+        title="Medium Popover"
+        description="This is a medium popover"
+        size="md"
+      >
+        <p>Medium content</p>
+      </Popover>
+
+      <Popover
+        trigger="Large"
+        title="Large Popover"
+        description="This is a large popover"
+        size="lg"
+      >
+        <p>Large content</p>
+      </Popover>
+    </div>
+  ),
+};
+
+export const WithCustomTrigger: Story = {
+  render: () => (
+    <Popover
+      trigger={<Button variant="outline">Custom Trigger</Button>}
+      title="Custom Trigger"
+      description="This popover uses a custom trigger component"
+    >
+      <p>The trigger can be any React element.</p>
+    </Popover>
   ),
 };

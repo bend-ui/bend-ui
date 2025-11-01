@@ -1,18 +1,21 @@
-import { defineSlotRecipe } from '@pandacss/dev';
+import { defineParts, defineRecipe } from '@pandacss/dev';
+
+const parts = defineParts({
+  root: { selector: '&' },
+});
 
 export const badgeConfig = {
   className: 'Badge',
   slots: ['root'],
 };
 
-export const badge = defineSlotRecipe({
+export const badge = defineRecipe({
   className: 'badge',
-  slots: ['root'],
-  base: {
+  base: parts({
     root: {
       display: 'inline-flex',
       alignItems: 'center',
       justifyContent: 'center',
     },
-  },
+  }),
 });

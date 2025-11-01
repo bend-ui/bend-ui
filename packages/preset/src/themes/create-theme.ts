@@ -38,7 +38,7 @@ const createColorScale = (colorName: string, defaultShade: string) => {
 export const createTheme = (options: ThemeOptions = {}): ThemeVariant => {
   const {
     primaryColor = 'indigo',
-    neutralColor = 'shark',
+    neutralColor = 'gray',
     successColor = 'green',
     warningColor = 'yellow',
     dangerColor = 'red',

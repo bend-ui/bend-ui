@@ -25,6 +25,8 @@ export const preset = definePreset({
       selected: '&:is([data-selected], [data-state=selected])',
       active: '&:is(:active, [data-active], [data-state=active])',
       inactive: '&:is([data-inactive], [data-state=inactive])',
+      checked: '&:is([data-checked], [data-state=checked])',
+      unchecked: '&:is([data-unchecked], [data-state=unchecked])',
     },
   },
   patterns: {

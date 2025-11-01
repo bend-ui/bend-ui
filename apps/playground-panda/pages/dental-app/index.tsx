@@ -110,30 +110,30 @@ const DentalApp = () => {
           <Grid columns={4}>
             <Grid.Item>
               <Card>
-                <Card.Header>
+                <Card.Section>
                   <Heading>Appointment</Heading>
-                </Card.Header>
+                </Card.Section>
               </Card>
             </Grid.Item>
             <Grid.Item>
               <Card>
-                <Card.Header>
+                <Card.Section>
                   <Heading>Appointment</Heading>
-                </Card.Header>
+                </Card.Section>
               </Card>
             </Grid.Item>
             <Grid.Item>
               <Card>
-                <Card.Header>
+                <Card.Section>
                   <Heading>Appointment</Heading>
-                </Card.Header>
+                </Card.Section>
               </Card>
             </Grid.Item>
             <Grid.Item>
               <Card>
-                <Card.Header>
+                <Card.Section>
                   <Heading>Appointment</Heading>
-                </Card.Header>
+                </Card.Section>
               </Card>
             </Grid.Item>
           </Grid>

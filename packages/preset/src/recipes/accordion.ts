@@ -59,6 +59,7 @@ export const accordionRecipe = defineRecipe({
         },
         item: {
           borderTop: 'none',
+          borderRadius: '0',
           _first: {
             borderTop: 'base',
             roundedTop: 'base',

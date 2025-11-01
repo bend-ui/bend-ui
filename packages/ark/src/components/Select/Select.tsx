@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { Portal, Select as ArkSelect } from '@ark-ui/react';
-import { select } from '@particles/styled-system/recipes';
+import { selectDropdown, select } from '@particles/styled-system/recipes';
 import { LuChevronDown } from 'react-icons/lu';
 import { DismissButton, Input } from '@particles/react';
 import type { SelectVariantProps } from '@particles/styled-system/recipes';
@@ -23,29 +23,17 @@ const SelectLabel = withParts<SelectLabelProps>(ArkSelect.Label, 'label');
 
 export type SelectControlProps = ArkSelect.ControlProps;
 
-const SelectControl = (props: SelectControlProps) => {
-  const { children, ...rest } = props;
-  return (
-    <ArkSelect.Control {...rest} asChild>
-      <Input.Root>
-        <Input.Wrapper>{children}</Input.Wrapper>
-      </Input.Root>
-    </ArkSelect.Control>
-  );
-};
+const SelectControl = withParts<SelectControlProps>(
+  ArkSelect.Control,
+  'control',
+);
 
 export type SelectTriggerProps = ArkSelect.TriggerProps;
 
-const SelectTrigger = (props: SelectTriggerProps) => {
-  const { children, ...rest } = props;
-  return (
-    <ArkSelect.Trigger {...rest} asChild>
-      <Input.Input asChild>
-        <button type="button">{children}</button>
-      </Input.Input>
-    </ArkSelect.Trigger>
-  );
-};
+const SelectTrigger = withParts<SelectTriggerProps>(
+  ArkSelect.Trigger,
+  'trigger',
+);
 
 export type SelectValueTextProps = ArkSelect.ValueTextProps;
 
@@ -56,29 +44,17 @@ const SelectValueText = withParts<SelectValueTextProps>(
 
 type SelectIndicatorProps = ArkSelect.IndicatorProps;
 
-const SelectIndicator = (props: SelectIndicatorProps) => {
-  const { children, ...rest } = props;
-  return (
-    <ArkSelect.Indicator {...rest} asChild>
-      <Input.Icon>
-        <ChevronDownIcon />
-      </Input.Icon>
-    </ArkSelect.Indicator>
-  );
-};
+const SelectIndicator = withParts<SelectIndicatorProps>(
+  ArkSelect.Indicator,
+  'indicator',
+);
 
 export type SelectClearTriggerProps = ArkSelect.ClearTriggerProps;
 
-const SelectClearTrigger = (props: SelectClearTriggerProps) => {
-  const { children, ...rest } = props;
-  return (
-    <ArkSelect.ClearTrigger {...rest} asChild>
-      <Input.Icon>
-        <XIcon />
-      </Input.Icon>
-    </ArkSelect.ClearTrigger>
-  );
-};
+const SelectClearTrigger = withParts<SelectClearTriggerProps>(
+  ArkSelect.ClearTrigger,
+  'clearTrigger',
+);
 
 export type SelectItemGroupProps = ArkSelect.ItemGroupProps;
 
@@ -94,9 +70,13 @@ const SelectItemGroupLabel = withParts<SelectItemGroupLabelProps>(
   'itemGroupLabel',
 );
 
-export type SelectItemProps = ArkSelect.ItemProps;
+export type SelectPositionerProps = ArkSelect.PositionerProps;
 
-const SelectItem = withParts<SelectItemProps>(ArkSelect.Item, 'item');
+const SelectPositioner = withRecipe<SelectPositionerProps>(
+  ArkSelect.Positioner,
+  selectDropdown,
+  'root',
+);
 
 export type SelectContentProps = ArkSelect.ContentProps;
 
@@ -105,14 +85,11 @@ const SelectContent = withParts<SelectContentProps>(
   'content',
 );
 
-export type SelectPositionerProps = ArkSelect.PositionerProps;
-
-const SelectPositioner = withParts<SelectPositionerProps>(
-  ArkSelect.Positioner,
-  'positioner',
-);
-
 export type SelectItemTextProps = ArkSelect.ItemTextProps;
+
+export type SelectItemProps = ArkSelect.ItemProps;
+
+const SelectItem = withParts<SelectItemProps>(ArkSelect.Item, 'item');
 
 const SelectItemText = withParts<SelectItemTextProps>(
   ArkSelect.ItemText,
@@ -151,8 +128,10 @@ const Component = (props: SelectProps<any>) => {
       <SelectControl>
         <SelectTrigger>
           <SelectValueText placeholder={placeholder} />
+          <SelectIndicator>
+            <ChevronDownIcon />
+          </SelectIndicator>
         </SelectTrigger>
-        <SelectIndicator />
         <SelectClearTrigger asChild>
           <DismissButton />
         </SelectClearTrigger>

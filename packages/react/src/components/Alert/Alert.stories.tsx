@@ -4,6 +4,11 @@ import { ButtonGroup } from '../ButtonGroup';
 import { Button } from '../Button';
 import { Alert } from './Alert';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Stack } from '../Stack';
+import { Text } from '../Text';
+
+const variants = alert.variantMap.variant;
+const palettes = alert.variantMap.palette;
 
 export default {
   title: 'Components/Feedback/Alert',
@@ -11,11 +16,11 @@ export default {
   argTypes: {
     palette: {
       control: 'select',
-      options: alert.variantMap.palette,
+      options: palettes,
     },
     variant: {
       control: 'select',
-      options: alert.variantMap.variant,
+      options: variants,
     },
   },
 } satisfies Meta<typeof Alert>;
@@ -32,6 +37,52 @@ export const Base: Story = {
         consectetur vel.
       </p>
     </Alert>
+  ),
+};
+
+export const Variants: Story = {
+  render: (args) => (
+    <Stack align="flex-start">
+      {variants.map((variant) => (
+        <Stack key={variant} align="flex-start" gap="md">
+          <Text variant="caption">{variant}</Text>
+          <Alert key={variant} {...args} variant={variant}>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
+              esse unde incidunt quibusdam magnam assumenda veritatis quos
+              labore, nemo quidem illum explicabo, saepe corporis voluptatem
+              optio, quas commodi consectetur vel.
+            </p>
+          </Alert>
+        </Stack>
+      ))}
+    </Stack>
+  ),
+};
+
+export const Palettes: Story = {
+  render: (args) => (
+    <Stack align="flex-start">
+      {palettes.map((palette) => (
+        <Stack key={palette} align="flex-start" gap="md">
+          <Text variant="caption">{palette}</Text>
+          <Alert
+            key={palette}
+            {...args}
+            palette={palette}
+            title="Watch out!"
+            icon={<LuBell />}
+          >
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
+              esse unde incidunt quibusdam magnam assumenda veritatis quos
+              labore, nemo quidem illum explicabo, saepe corporis voluptatem
+              optio, quas commodi consectetur vel.
+            </p>
+          </Alert>
+        </Stack>
+      ))}
+    </Stack>
   ),
 };
 

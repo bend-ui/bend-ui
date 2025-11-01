@@ -5,7 +5,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { input } from '@particles/styled-system/recipes';
 
 const meta: Meta<typeof Input> = {
-  title: 'Components/Forms/Input',
+  title: 'Components/Form/InputBase',
   component: Input,
   argTypes: {
     size: {

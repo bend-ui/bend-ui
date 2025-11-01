@@ -13,7 +13,7 @@ export const tooltipRecipe = defineRecipe({
   base: parts({
     content: {
       p: 'sm',
-      layerStyle: 'panel.raised',
+      layerStyle: 'surface.raised',
       _open: {
         animation: 'fade-in',
       },

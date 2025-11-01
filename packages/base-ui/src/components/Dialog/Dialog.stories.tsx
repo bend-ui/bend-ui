@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react-vite';
 import { Dialog } from './Dialog';
 
 const meta: Meta<typeof Dialog> = {
-  title: 'Dialog',
+  title: 'Components/Overlays/Dialog',
   component: Dialog,
 };
 

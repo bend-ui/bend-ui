@@ -13,7 +13,7 @@ export const commandRecipe = defineRecipe({
   base: parts({
     root: {},
     content: {
-      layerStyle: 'panel.raised',
+      layerStyle: 'surface.overlay',
       borderRadius: 'md',
       _open: {
         animation: 'dialog-in',

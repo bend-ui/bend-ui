@@ -1,48 +1,72 @@
-import { defineSlotRecipe } from '@pandacss/dev';
+import { defineParts, defineRecipe } from '@pandacss/dev';
 
-export const cardRecipe = defineSlotRecipe({
-  description: '',
+const parts = defineParts({
+  root: { selector: '&' },
+  section: { selector: '& [data-part="section"]' },
+});
+
+export const cardRecipe = defineRecipe({
   className: 'Card',
-  slots: ['root', 'section', 'header', 'footer'],
-  base: {
-    root: {
-      p: 'lg',
-      rounded: '2xl',
-      layerStyle: 'raised',
-    },
+  base: parts({
+    root: { p: 'lg', rounded: '2xl', layerStyle: 'panel' },
     section: {
-      mx: '-4',
-      '&:first-child': {
-        mt: '-4',
-      },
-      '&:last-child': {
-        mb: '-4',
-      },
+      mx: '-lg',
+      _first: { mt: '-lg' },
+      _last: { mb: '-lg' },
+    },
+  }),
+  variants: {
+    inheritPadding: {
+      true: parts({
+        section: {
+          p: 'lg',
+        },
+      }),
+    },
+    withBorder: {
+      true: parts({
+        section: {
+          borderBottom: 'base',
+          _notFirst: {
+            borderTop: 'base',
+          },
+          _last: {
+            borderBottom: 'none',
+          },
+          '& + &': {
+            borderBottom: 'none',
+          },
+        },
+      }),
     },
   },
+  defaultVariants: {
+    inheritPadding: true,
+    withBorder: false,
+  },
+});
+
+export const cardSectionRecipe = defineRecipe({
+  className: 'CardSection',
+  base: {},
   variants: {
     inheritPadding: {
       true: {
-        section: {
-          p: 'md',
-        },
+        p: 'md',
       },
     },
     withBorder: {
       true: {
-        section: {
-          color: 'amber.500',
-          borderColor: 'primary',
-          '&:not(:first-child)': {
-            borderStyle: 'solid',
-            borderTopWidth: 1,
-          },
-          '&:not(:last-child)': {
-            borderStyle: 'solid',
-            borderBottomWidth: 1,
-          },
+        _notFirst: {
+          borderTop: 'base',
+        },
+        _notLast: {
+          borderBottom: 'base',
         },
       },
     },
+  },
+  defaultVariants: {
+    inheritPadding: true,
   },
 });

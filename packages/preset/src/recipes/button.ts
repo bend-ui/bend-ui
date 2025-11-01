@@ -13,6 +13,15 @@ export const buttonRecipe = defineSlotRecipe({
       fontWeight: 'medium',
       position: 'relative',
       overflow: 'hidden',
+      _hover: {
+        _after: {
+          content: '""',
+          position: 'absolute',
+          inset: 0,
+          bgColor: 'black',
+          opacity: '0.1',
+        },
+      },
     },
     label: {
       textAlign: 'center',
@@ -51,9 +60,9 @@ export const buttonRecipe = defineSlotRecipe({
           color: 'colorPalette.fg',
           backgroundColor: 'colorPalette',
           borderColor: 'colorPalette.border',
-          _hover: {
-            backgroundColor: 'colorPalette.hover',
-          },
+          // _hover: {
+          //   backgroundColor: 'colorPalette.hover',
+          // },
           _disabled: {
             color: 'colorPalette.disabled',
             backgroundColor: 'colorPalette.disabled',
@@ -80,9 +89,9 @@ export const buttonRecipe = defineSlotRecipe({
           backgroundColor: 'transparent',
           borderColor: 'colorPalette.border',
           boxShadow: 'revert',
-          _hover: {
-            backgroundColor: 'colorPalette.border.hover',
-          },
+          // _hover: {
+          //   backgroundColor: 'colorPalette.border.hover',
+          // },
           _disabled: {
             color: 'colorPalette.disabled',
             borderColor: 'colorPalette.disabled',
@@ -91,6 +100,32 @@ export const buttonRecipe = defineSlotRecipe({
               borderColor: 'colorPalette.disabled',
             },
           },
+        },
+      },
+      subtle: {
+        root: {
+          color: 'colorPalette.text',
+          backgroundColor: 'colorPalette.surface',
+        },
+        // _hover: {
+        //   backgroundColor: 'colorPalette.surface.hover',
+        // },
+        _disabled: {
+          color: 'colorPalette.disabled',
+          backgroundColor: 'colorPalette.disabled',
+        },
+      },
+      ghost: {
+        root: {
+          color: 'colorPalette.text',
+          backgroundColor: 'transparent',
+        },
+        // _hover: {
+        //   backgroundColor: 'colorPalette.surface.hover',
+        // },
+        _disabled: {
+          color: 'colorPalette.disabled',
+          backgroundColor: 'colorPalette.disabled',
         },
       },
     },

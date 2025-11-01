@@ -1,37 +1,27 @@
 'use client';
 
 import { alert } from '@particles/styled-system/recipes';
-import { styled } from '@particles/styled-system/jsx';
 import type { AlertProps } from './Alert.types';
-import type { ReactNode } from 'react';
-import { HTMLParticlesProps, particles } from '../factory';
+import { particles } from '../factory';
+import { withParts, withRecipe } from '../../utils';
+import { forwardRef } from 'react';
 
-const Root = styled('div', alert);
+const Root = withRecipe(particles.div, alert, 'root');
 
-const Icon = (props: HTMLParticlesProps<'div'>) => {
-  return <particles.div data-part="icon" {...props} />;
-};
+const Icon = withParts(particles.div, 'icon');
 
-const Title = (props: HTMLParticlesProps<'div'>) => {
-  return <particles.div data-part="title" {...props} />;
-};
+const Title = withParts(particles.div, 'title');
 
-const Content = (props: HTMLParticlesProps<'div'>) => {
-  return <particles.div data-part="content" {...props} />;
-};
+const Content = withParts(particles.div, 'content');
 
-const Footer = (props: HTMLParticlesProps<'div'>) => {
-  return <particles.div data-part="footer" {...props} />;
-};
+const Footer = withParts(particles.div, 'footer');
 
-const Dismiss = (props: HTMLParticlesProps<'button'>) => {
-  return <particles.button data-part="dismiss" {...props} />;
-};
+const Dismiss = withParts(particles.button, 'dismiss');
 
-const Component = (props: AlertProps) => {
+const Component = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   const { icon, title, children, footer, onDismiss, ...rest } = props;
   return (
-    <Alert.Root {...rest}>
+    <Alert.Root ref={ref} {...rest}>
       {!!icon && <Alert.Icon>{icon}</Alert.Icon>}
       {!!title && <Alert.Title>{title}</Alert.Title>}
       {!!children && <Alert.Content>{children}</Alert.Content>}
@@ -41,7 +31,7 @@ const Component = (props: AlertProps) => {
       )}
     </Alert.Root>
   );
-};
+});
 
 export const Alert = Object.assign(Component, {
   Root,

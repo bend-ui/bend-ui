@@ -1,29 +1,51 @@
 'use client';
 
-import { cx } from '@particles/styled-system/css';
+import { cx, css } from '@particles/styled-system/css';
 import { text } from '@particles/styled-system/recipes';
 import { forwardRef } from 'react';
+import { splitCssProps } from '@particles/styled-system/jsx';
 import type { TextVariantProps } from '@particles/styled-system/recipes';
 import type { ReactNode } from 'react';
-import { HTMLParticlesProps, particles } from '../factory';
+import {
+  PolymorphicComponent,
+  PolymorphicComponentPropsWithRef,
+  PolymorphicRef,
+} from '../../utils';
+import { HTMLParticlesProps } from '../factory';
 
 export interface TextProps extends HTMLParticlesProps<'span'> {
   children?: ReactNode;
   /** The style of the text */
   variant?: TextVariantProps['variant'];
+  // as?: 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 }
 
-export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
-  const [variantProps, otherProps] = text.splitVariantProps(props);
-  const { children, className, ...rest } = otherProps;
+const TextComponent = <T extends React.ElementType = 'span'>(
+  props: PolymorphicComponentPropsWithRef<T, TextProps>,
+  ref: PolymorphicRef<T>,
+) => {
+  const [variantProps, textProps] = text.splitVariantProps(props);
+  const [cssProps, otherProps] = splitCssProps(textProps);
+  const { children, className, as, ...rest } = otherProps;
+  const Component = (as || 'span') as React.ElementType;
 
   const classes = text(variantProps);
 
   return (
-    <particles.span ref={ref} className={cx(classes, className)} {...rest}>
+    <Component
+      ref={ref}
+      className={cx(classes, css(cssProps), className)}
+      {...rest}
+    >
       {children}
-    </particles.span>
+    </Component>
   );
-});
+};
+
+export const Text = forwardRef(
+  TextComponent as any,
+) as PolymorphicComponent<TextProps> & {
+  displayName?: string;
+};
 
 Text.displayName = 'Text';

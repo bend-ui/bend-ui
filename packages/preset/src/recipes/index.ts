@@ -6,7 +6,7 @@ import { badgeRecipe } from './badge';
 import { breadcrumbsRecipe } from './breadcrumbs';
 import { buttonGroupRecipe } from './button-group';
 import { buttonRecipe } from './button';
-import { cardRecipe } from './card';
+import { cardRecipe, cardSectionRecipe } from './card';
 import { carouselRecipe } from './carousel';
 import { checkboxRecipe } from './checkbox';
 import { tagsInputRecipe } from './tags-input';
@@ -23,7 +23,7 @@ import { paginationRecipe } from './pagination';
 import { popoverRecipe } from './popover';
 import { radioGroupRecipe } from './radio-group';
 import { ratingRecipe } from './rating';
-import { selectRecipe } from './select';
+import { selectDropdownRecipe, selectRecipe } from './select';
 import { switchRecipe } from './switch';
 import { tableRecipe } from './table';
 import { tabsRecipe } from './tabs';
@@ -44,10 +44,8 @@ import { clipboardRecipe } from './clipboard';
 
 export const slotRecipes: Theme['slotRecipes'] = {
   // divider: dividerRecipe,
-  badge: badgeRecipe,
   breadcrumbs: breadcrumbsRecipe,
   button: buttonRecipe,
-  card: cardRecipe,
   carousel: carouselRecipe,
   indicator: indicatorRecipe,
   nav: navRecipe,
@@ -67,7 +65,10 @@ export const recipes: Theme['recipes'] = {
   appShell: appShellRecipe,
   avatar: avatarRecipe,
   backdrop: backdropRecipe,
+  badge: badgeRecipe,
   buttonGroup: buttonGroupRecipe,
+  card: cardRecipe,
+  cardSection: cardSectionRecipe,
   checkbox: checkboxRecipe,
   combobox: comboboxRecipe,
   command: commandRecipe,
@@ -84,6 +85,7 @@ export const recipes: Theme['recipes'] = {
   pagination: paginationRecipe,
   popover: popoverRecipe,
   select: selectRecipe,
+  selectDropdown: selectDropdownRecipe,
   switchRecipe: switchRecipe,
   tabs: tabsRecipe,
   text: textRecipe,

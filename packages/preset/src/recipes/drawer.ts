@@ -15,7 +15,7 @@ export const drawerRecipe = defineRecipe({
   base: parts({
     content: {
       padding: 'lg',
-      layerStyle: 'panel.raised',
+      layerStyle: 'surface.overlay',
     },
     header: {
       padding: 'md',

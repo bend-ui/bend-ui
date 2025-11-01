@@ -25,18 +25,7 @@ export const selectRecipe = defineRecipe({
       flexDirection: 'column',
       width: 'full',
     },
-    content: {
-      display: 'flex',
-      flexDirection: 'column',
-      _hidden: {
-        display: 'none',
-      },
-    },
     control: {
-      display: 'flex',
-      alignItems: 'center',
-    },
-    item: {
       display: 'flex',
       alignItems: 'center',
     },
@@ -44,9 +33,35 @@ export const selectRecipe = defineRecipe({
       appearance: 'none',
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'space-between',
       outline: 'none',
       width: 'full',
+    },
+    valueText: {
+      width: 'full',
+      pointerEvents: 'none',
+    },
+    indicator: {
+      pointerEvents: 'none',
+      flex: 'none',
+    },
+    clearTrigger: {
+      pointerEvents: 'none',
+      flex: 'none',
+    },
+  }),
+});
+
+export const selectDropdownRecipe = defineRecipe({
+  className: 'SelectDropdown',
+  base: parts({
+    content: {
+      width: 'full',
+      // width: 'full',
+      // display: 'flex',
+      // flexDirection: 'column',
+      // _hidden: {
+      //   display: 'none',
+      // },
     },
   }),
 });

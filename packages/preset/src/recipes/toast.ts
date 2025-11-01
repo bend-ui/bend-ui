@@ -12,7 +12,7 @@ export const toastRecipe = defineRecipe({
   className: 'Toast',
   base: parts({
     root: {
-      layerStyle: 'panel.raised',
+      layerStyle: 'surface.raised',
       padding: 'md',
       minWidth: 'sm',
       _open: {

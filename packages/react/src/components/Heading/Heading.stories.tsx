@@ -1,6 +1,7 @@
 import { text } from '@particles/styled-system/recipes';
 import { Heading } from '.';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Stack } from '../Stack';
 
 const meta: Meta<typeof Heading> = {
   title: 'Components/Typography/Heading',
@@ -22,9 +23,17 @@ export const Title: Story = {
 };
 
 export const Body: Story = {
-  args: {
-    args: text.raw({ variant: 'body' }),
-  },
+  args: text.raw({ variant: 'body' }),
+};
+
+export const Variants: Story = {
+  render: (args) => (
+    <Stack align="center" gap="md">
+      {text.variantMap.variant.map((variant) => (
+        <Heading key={variant} {...args} variant={variant} />
+      ))}
+    </Stack>
+  ),
 };
 
 export const Polymorphic: Story = {

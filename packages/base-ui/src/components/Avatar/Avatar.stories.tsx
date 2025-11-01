@@ -3,7 +3,7 @@ import { Avatar } from './Avatar';
 import { avatar } from '@particles/styled-system/recipes';
 
 const meta: Meta<typeof Avatar> = {
-  title: 'Avatar',
+  title: 'Components/Media/Avatar',
   component: Avatar,
   argTypes: {
     size: {

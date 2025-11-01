@@ -7,7 +7,7 @@ export const layerStyles = defineLayerStyles({
       backgroundColor: 'surface.subtle',
     },
   },
-  panel: {
+  surface: {
     DEFAULT: {
       value: {
         backgroundColor: 'surface',
@@ -28,6 +28,22 @@ export const layerStyles = defineLayerStyles({
         _focusVisible: {
           boxShadow: 'inner',
         },
+      },
+    },
+    overlay: {
+      value: {
+        backgroundColor: 'surface.overlay',
+        border: 'base',
+        borderRadius: 'md',
+        boxShadow: 'md',
+      },
+    },
+    sunken: {
+      value: {
+        backgroundColor: 'surface.sunken',
+        border: 'base',
+        borderRadius: 'md',
+        boxShadow: 'md',
       },
     },
   },

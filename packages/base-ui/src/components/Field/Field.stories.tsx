@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react-vite';
 import { Field } from './Field';
 
 const meta: Meta<typeof Field> = {
-  title: 'Field',
+  title: 'Components/Form/Field',
   component: Field,
 };
 

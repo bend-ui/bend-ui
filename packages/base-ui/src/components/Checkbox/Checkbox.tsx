@@ -12,7 +12,7 @@ export type CheckboxRootProps = CheckboxPrimitive.Root.Props;
 const CheckboxRoot = withRecipe<CheckboxRootProps>(
   CheckboxPrimitive.Root,
   checkbox,
-  'root',
+  'control',
 ) as unknown as typeof CheckboxPrimitive.Root;
 
 export type CheckboxIndicatorProps = CheckboxPrimitive.Indicator.Props;

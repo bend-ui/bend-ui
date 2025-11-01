@@ -5,15 +5,18 @@ import { switchRecipe } from '@particles/styled-system/recipes';
 import { styled } from '@particles/styled-system/jsx';
 import { HTMLParticlesProps } from '@particles/react';
 
-const SwitchRoot = withRecipe<SwitchPrimitive.Root.Props>(
-  SwitchPrimitive.Root,
+export type SwitchRootProps = HTMLParticlesProps<'div'>;
+
+const SwitchRoot = withRecipe<SwitchRootProps>(
+  styled('div'),
   switchRecipe,
   'root',
 );
 
-export type SwitchControlProps = HTMLParticlesProps<'div'>;
-
-const SwitchControl = withParts<SwitchControlProps>(styled('div'), 'control');
+const SwitchControl = withParts<SwitchPrimitive.Root.Props>(
+  SwitchPrimitive.Root,
+  'control',
+);
 
 const SwitchThumb = withParts<SwitchPrimitive.Thumb.Props>(
   SwitchPrimitive.Thumb,

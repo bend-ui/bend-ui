@@ -1,7 +1,6 @@
 import { defineParts, defineRecipe } from '@pandacss/dev';
 
 const parts = defineParts({
-  root: { selector: '&' },
   content: { selector: '& [data-part="content"]' },
   title: { selector: '& [data-part="title"]' },
   description: { selector: '& [data-part="description"]' },
@@ -13,11 +12,8 @@ const parts = defineParts({
 export const popoverRecipe = defineRecipe({
   className: 'Popover',
   base: parts({
-    root: {
-      position: 'relative',
-    },
     content: {
-      layerStyle: 'panel.raised',
+      layerStyle: 'surface.overlay',
       borderRadius: 'md',
       _open: {
         animation: 'fade-in',
@@ -38,13 +34,13 @@ export const popoverRecipe = defineRecipe({
   variants: {
     size: {
       sm: parts({
-        content: { padding: 'sm', maxWidth: 'sm' },
+        content: { padding: 'sm' },
       }),
       md: parts({
-        content: { padding: 'md', maxWidth: 'md' },
+        content: { padding: 'md' },
       }),
       lg: parts({
-        content: { padding: 'lg', maxWidth: 'lg' },
+        content: { padding: 'lg' },
       }),
     },
   },

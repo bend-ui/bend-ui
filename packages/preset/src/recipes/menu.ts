@@ -19,7 +19,7 @@ export const menuRecipe = defineRecipe({
   base: parts({
     content: {
       padding: 'md',
-      layerStyle: 'panel.raised',
+      layerStyle: 'surface.overlay',
       _open: {
         animation: 'dialog-in',
       },

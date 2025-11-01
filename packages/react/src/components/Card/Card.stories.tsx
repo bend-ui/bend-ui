@@ -38,10 +38,25 @@ export const WithSection: Story = {
 export const WithSectionBorder: Story = {
   render: (args) => (
     <Card {...args}>
+      <Card.Section>A Header</Card.Section>
+      Card content
+      <Card.Section>A banner</Card.Section>
+      <Card.Section>A banner</Card.Section>
+      <Card.Section>A footer</Card.Section>
+    </Card>
+  ),
+  args: {
+    withBorder: true,
+  },
+};
+
+export const WithSpecificSectionBorder: Story = {
+  render: (args) => (
+    <Card {...args}>
       <Card.Section withBorder>A Header</Card.Section>
       Card content
-      <Card.Section withBorder>A banner</Card.Section>
-      <Card.Section withBorder>A footer</Card.Section>
+      <Card.Section>A banner</Card.Section>
+      <Card.Section>A footer</Card.Section>
     </Card>
   ),
 };
@@ -59,24 +74,6 @@ export const WithSectionInheritPadding: Story = {
       <Card.Section inheritPadding withBorder>
         A footer
       </Card.Section>
-    </Card>
-  ),
-};
-
-export const WithSectionHeader: Story = {
-  render: (args) => (
-    <Card {...args}>
-      <Card.Header>A Header</Card.Header>
-      <div>Card content</div>
-    </Card>
-  ),
-};
-
-export const WithSectionFooter: Story = {
-  render: (args) => (
-    <Card {...args}>
-      Card content
-      <Card.Footer>A Footer</Card.Footer>
     </Card>
   ),
 };

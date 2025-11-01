@@ -32,7 +32,9 @@ export const inputRecipe = defineRecipe({
       },
     },
     wrapper: {
-      cursor: 'text',
+      '&[type="text"]': {
+        cursor: 'text',
+      },
     },
   }),
   variants: {

@@ -5,7 +5,6 @@ import {
   Grid,
   Heading,
   Paragraph,
-  Text,
 } from '@particles/ark';
 
 interface AppointmentCardProps {
@@ -17,7 +16,7 @@ const AppointmentCard = (props: AppointmentCardProps) => {
 
   return (
     <Card withBorder>
-      <Card.Header>#{data.id}</Card.Header>
+      <Card.Section>#{data.id}</Card.Section>
       <Card.Section>
         <Grid columns={2}>
           <Grid.Item>
@@ -50,12 +49,12 @@ const AppointmentCard = (props: AppointmentCardProps) => {
           </Grid.Item>
         </Grid>
       </Card.Section>
-      <Card.Footer>
+      <Card.Section>
         <ButtonGroup>
           <Button>Decline</Button>
           <Button>Approve</Button>
         </ButtonGroup>
-      </Card.Footer>
+      </Card.Section>
     </Card>
   );
 };

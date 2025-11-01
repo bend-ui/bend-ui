@@ -1,7 +1,7 @@
-import { Stack } from '@particles/styled-system/jsx';
 import { TbArrowRight, TbCloudDownload } from 'react-icons/tb';
 import { button } from '@particles/styled-system/recipes';
 import { Button } from './';
+import { Stack } from '../Stack';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
@@ -59,7 +59,7 @@ export const Danger: Story = {
 
 export const Palette: Story = {
   render: (args) => (
-    <Stack align="flex-start">
+    <Stack align="center" gap="md">
       {button.variantMap.palette.map((palette) => (
         <Button key={palette} {...args} palette={palette} />
       ))}
@@ -69,7 +69,7 @@ export const Palette: Story = {
 
 export const Variants: Story = {
   render: (args) => (
-    <Stack align="flex-start">
+    <Stack align="center" gap="md">
       {button.variantMap.variant.map((variant) => (
         <Button key={variant} {...args} variant={variant} />
       ))}
@@ -82,7 +82,7 @@ export const Variants: Story = {
 
 export const Sizes: Story = {
   render: (args) => (
-    <Stack align="flex-start">
+    <Stack align="center" gap="md">
       {button.variantMap.size.map((size) => (
         <Button key={size} {...args} size={size} />
       ))}

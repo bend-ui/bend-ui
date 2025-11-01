@@ -6,7 +6,7 @@ export const colors = defineSemanticTokens.colors({
       value: '{colors.neutral.50}',
     },
     page: {
-      value: '{colors.neutral.100}',
+      value: '{colors.neutral.50}',
     },
     raised: {
       value: '{colors.neutral.50}',
@@ -29,7 +29,7 @@ export const colors = defineSemanticTokens.colors({
       value: '{colors.neutral.100}',
     },
     strong: {
-      value: '{colors.neutral.50}',
+      value: '{colors.neutral.200}',
     },
     subtle: {
       value: '{colors.neutral.50}',
@@ -121,7 +121,7 @@ export const colors = defineSemanticTokens.colors({
   },
   border: {
     DEFAULT: {
-      value: '{colors.neutral.300}',
+      value: '{colors.neutral.200}',
     },
     strong: {
       value: '{colors.neutral.300}',

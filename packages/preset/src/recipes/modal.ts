@@ -37,7 +37,7 @@ export const modalRecipe = defineRecipe({
       width: '90vw',
       maxW: '450px',
       maxH: '85vh',
-      layerStyle: 'panel',
+      layerStyle: 'surface.overlay',
       padding: 'lg',
       rounded: 'lg',
       _open: {

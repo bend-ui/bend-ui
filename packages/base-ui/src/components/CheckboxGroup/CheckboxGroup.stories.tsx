@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react-vite';
 import { CheckboxGroup } from './CheckboxGroup';
 
 const meta: Meta<typeof CheckboxGroup> = {
-  title: 'CheckboxGroup',
+  title: 'Components/Form/CheckboxGroup',
   component: CheckboxGroup,
 };
 

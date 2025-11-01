@@ -3,7 +3,7 @@ import { Checkbox } from './Checkbox';
 import { checkbox } from '@particles/styled-system/recipes';
 
 const meta: Meta<typeof Checkbox> = {
-  title: 'Checkbox',
+  title: 'Components/Form/Checkbox',
   component: Checkbox,
   argTypes: {
     size: {

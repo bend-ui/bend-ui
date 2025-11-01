@@ -16,7 +16,12 @@ export default definePreset({
       slotRecipes,
     },
   },
-  conditions: {},
+  conditions: {
+    extend: {
+      notFirst: '&:not(:first-child)',
+      notLast: '&:not(:last-child)',
+    },
+  },
 });
 
 export * from './recipes';

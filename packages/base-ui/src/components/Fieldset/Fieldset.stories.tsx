@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react-vite';
 import { Fieldset } from './Fieldset';
 
 const meta: Meta<typeof Fieldset> = {
-  title: 'Fieldset',
+  title: 'Components/Form/Fieldset',
   component: Fieldset,
 };
 
