@@ -14,7 +14,10 @@ export const colorRamp = [
 
 export type ColorRamp = (typeof colorRamp)[number];
 
-export const createColorScale = (colorName: string, defaultShade: string) => {
+export const createColorScale = (
+  colorName: string,
+  defaultShade: ColorRamp = '500',
+) => {
   return {
     DEFAULT: {
       value: `{colors.${colorName}.${defaultShade}}`,

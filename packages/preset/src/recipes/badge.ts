@@ -23,7 +23,7 @@ export const badgeRecipe = defineRecipe({
         root: { backgroundColor: 'colorPalette.fill' },
       }),
       subtle: parts({
-        root: { backgroundColor: 'colorPalette.fill' },
+        root: { backgroundColor: 'colorPalette.fill.weak' },
       }),
       outline: parts({
         root: { borderColor: 'colorPalette.stroke' },
@@ -40,7 +40,7 @@ export const badgeRecipe = defineRecipe({
           colorPalette: 'primary',
         },
       }),
-      error: parts({
+      danger: parts({
         root: {
           colorPalette: 'error',
         },

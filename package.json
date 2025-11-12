@@ -65,6 +65,7 @@
     "@nx/workspace": "22.0.2",
     "@pandacss/dev": "^1.4.3",
     "@pandacss/eslint-plugin": "^0.2.14",
+    "@pandacss/studio": "^1.4.3",
     "@rollup/plugin-url": "8.0.2",
     "@storybook/addon-a11y": "10.0.2",
     "@storybook/addon-docs": "10.0.2",

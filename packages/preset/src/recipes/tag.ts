@@ -33,18 +33,52 @@ export const tagRecipe = defineSlotRecipe({
     variant: {
       solid: {
         root: {
-          backgroundColor: 'primary',
+          color: 'colorPalette.text.inverse',
+          backgroundColor: 'colorPalette.fill',
         },
       },
       outline: {
         root: {
           backgroundColor: 'transparent',
-          border: 'primary',
+          border: 'colorPalette.stroke',
         },
       },
       subtle: {
         root: {
-          backgroundColor: 'primary',
+          color: 'colorPalette.text',
+          backgroundColor: 'colorPalette.fill.weak',
+        },
+      },
+    },
+    palette: {
+      default: {
+        root: {
+          colorPalette: 'neutral',
+        },
+      },
+      primary: {
+        root: {
+          colorPalette: 'primary',
+        },
+      },
+      danger: {
+        root: {
+          colorPalette: 'error',
+        },
+      },
+      warning: {
+        root: {
+          colorPalette: 'warning',
+        },
+      },
+      success: {
+        root: {
+          colorPalette: 'success',
+        },
+      },
+      info: {
+        root: {
+          colorPalette: 'info',
         },
       },
     },
@@ -52,5 +86,6 @@ export const tagRecipe = defineSlotRecipe({
   defaultVariants: {
     size: 'md',
     variant: 'solid',
+    palette: 'default',
   },
 });

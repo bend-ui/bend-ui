@@ -1,12 +1,12 @@
 import { defineSemanticTokens } from '@pandacss/dev';
 
 export const borders = defineSemanticTokens.borders({
-  base: { value: '1px solid {colors.border}' },
-  input: { value: '1px solid {colors.border.input}' },
-  primary: { value: '1px solid {colors.border.primary}' },
-  error: { value: '1px solid {colors.border.error}' },
-  divider: { value: '1px solid {colors.border.divider}' },
-  strong: { value: '1px solid {colors.border.strong}' },
-  subtle: { value: '1px solid {colors.border.subtle}' },
-  disabled: { value: '1px solid {colors.border.disabled}' },
+  base: { value: '1px solid {colors.stroke}' },
+  primary: { value: '1px solid {colors.stroke.primary}' },
+  error: { value: '1px solid {colors.stroke.error}' },
+  strong: { value: '1px solid {colors.stroke.strong}' },
+  subtle: { value: '1px solid {colors.stroke.weak}' },
+  disabled: { value: '1px solid {colors.stroke.disabled}' },
+  input: { value: '1px solid {colors.input.stroke}' },
+  divider: { value: '1px solid {colors.divider.stroke}' },
 });

@@ -13,15 +13,6 @@ export const buttonRecipe = defineSlotRecipe({
       fontWeight: 'medium',
       position: 'relative',
       overflow: 'hidden',
-      _hover: {
-        _after: {
-          content: '""',
-          position: 'absolute',
-          inset: 0,
-          bgColor: 'black',
-          opacity: '0.1',
-        },
-      },
     },
     label: {
       textAlign: 'center',
@@ -45,11 +36,35 @@ export const buttonRecipe = defineSlotRecipe({
           },
         },
       },
-      error: {
+      danger: {
         root: {
           colorPalette: 'error',
           _soft: {
             boxShadow: 'interaction.error',
+          },
+        },
+      },
+      warning: {
+        root: {
+          colorPalette: 'warning',
+          _soft: {
+            boxShadow: 'interaction.warning',
+          },
+        },
+      },
+      success: {
+        root: {
+          colorPalette: 'success',
+          _soft: {
+            boxShadow: 'interaction.success',
+          },
+        },
+      },
+      info: {
+        root: {
+          colorPalette: 'info',
+          _soft: {
+            boxShadow: 'interaction.info',
           },
         },
       },
@@ -62,6 +77,12 @@ export const buttonRecipe = defineSlotRecipe({
           borderColor: 'colorPalette.stroke',
           _hover: {
             backgroundColor: 'colorPalette.fill.hover',
+          },
+          _active: {
+            backgroundColor: 'colorPalette.fill.press',
+          },
+          _focusVisible: {
+            backgroundColor: 'colorPalette.fill.focus',
           },
           _disabled: {
             color: 'colorPalette.text.disabled',
@@ -108,11 +129,14 @@ export const buttonRecipe = defineSlotRecipe({
           backgroundColor: 'colorPalette.fill.weak',
         },
         _hover: {
-          backgroundColor: 'colorPalette.fill.hover',
+          backgroundColor: 'colorPalette.fill.weak.hover',
         },
         _disabled: {
           color: 'colorPalette.text.disabled',
           backgroundColor: 'colorPalette.fill.disabled',
+          _hover: {
+            backgroundColor: 'colorPalette.fill.disabled',
+          },
         },
       },
       ghost: {
@@ -121,7 +145,7 @@ export const buttonRecipe = defineSlotRecipe({
           backgroundColor: 'transparent',
         },
         _hover: {
-          backgroundColor: 'colorPalette.fill.hover',
+          backgroundColor: 'colorPalette.fill.weak.hover',
         },
         _disabled: {
           color: 'colorPalette.text.disabled',

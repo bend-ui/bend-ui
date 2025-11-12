@@ -16,7 +16,8 @@ export const alertRecipe = defineRecipe({
       padding: 'md',
       borderRadius: 'base',
       gap: 'md',
-      border: 'base',
+      borderWidth: '1px',
+      borderStyle: 'solid',
     },
     icon: {
       h: '1lh',
@@ -33,7 +34,7 @@ export const alertRecipe = defineRecipe({
     palette: {
       default: parts({
         root: {
-          colorPalette: 'bg',
+          colorPalette: 'neutral',
         },
       }),
       primary: parts({
@@ -67,19 +68,19 @@ export const alertRecipe = defineRecipe({
         root: {
           color: 'colorPalette.text.inverse',
           backgroundColor: 'colorPalette.fill',
+          borderColor: 'colorPalette.stroke',
         },
       }),
       subtle: parts({
         root: {
           color: 'colorPalette.text',
-          backgroundColor: 'colorPalette.fill',
+          backgroundColor: 'colorPalette.fill.weak',
+          borderColor: 'colorPalette.stroke',
         },
       }),
       outline: parts({
         root: {
-          borderWidth: '1px',
-          borderStyle: 'solid',
-          borderColor: 'colorPalette',
+          borderColor: 'colorPalette.stroke',
         },
         icon: {
           color: 'colorPalette',

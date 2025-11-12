@@ -1,5 +1,5 @@
 import { type ThemeVariant } from '@pandacss/types';
-import { createColorScale } from '../utils/create-color-scale';
+import { ColorRamp, createColorScale } from '../utils/create-color-scale';
 import { createNeutralScale } from '../utils/create-neutral-scale';
 
 interface ThemeOptions {
@@ -9,12 +9,12 @@ interface ThemeOptions {
   warningColor?: string;
   errorColor?: string;
   infoColor?: string;
-  defaultPrimaryColor?: string;
-  defaultNeutralColor?: string;
-  defaultSuccessColor?: string;
-  defaultWarningColor?: string;
-  defaulterrorColor?: string;
-  defaultInfoColor?: string;
+  defaultPrimaryColor?: ColorRamp;
+  defaultNeutralColor?: ColorRamp;
+  defaultSuccessColor?: ColorRamp;
+  defaultWarningColor?: ColorRamp;
+  defaultErrorColor?: ColorRamp;
+  defaultInfoColor?: ColorRamp;
 }
 
 export const createTheme = (options: ThemeOptions = {}): ThemeVariant => {
@@ -29,7 +29,7 @@ export const createTheme = (options: ThemeOptions = {}): ThemeVariant => {
     defaultNeutralColor = '500',
     defaultSuccessColor = '500',
     defaultWarningColor = '500',
-    defaulterrorColor = '500',
+    defaultErrorColor = '500',
     defaultInfoColor = '500',
   } = options;
 
@@ -39,7 +39,7 @@ export const createTheme = (options: ThemeOptions = {}): ThemeVariant => {
         primary: createColorScale(primaryColor, defaultPrimaryColor),
         success: createColorScale(successColor, defaultSuccessColor),
         warning: createColorScale(warningColor, defaultWarningColor),
-        error: createColorScale(errorColor, defaulterrorColor),
+        error: createColorScale(errorColor, defaultErrorColor),
         info: createColorScale(infoColor, defaultInfoColor),
         neutral: createNeutralScale(neutralColor, defaultNeutralColor),
       },

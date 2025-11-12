@@ -1,6 +1,8 @@
+import { ColorRamp } from './create-color-scale';
+
 export const createNeutralScale = (
   neutralColor: string,
-  defaultNeutralColor: string,
+  defaultNeutralColor: ColorRamp = '500',
 ) => {
   return {
     DEFAULT: {

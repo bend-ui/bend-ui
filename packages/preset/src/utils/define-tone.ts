@@ -1,5 +1,5 @@
 import { defineSemanticTokens } from '@pandacss/dev';
-import { Token } from '@pandacss/types';
+import { SemanticToken, Token } from '@pandacss/types';
 import merge from 'deepmerge';
 import { ColorRamp, createColorScale } from './create-color-scale';
 
@@ -11,11 +11,11 @@ type DeepPartial<T> = T extends object
 
 export interface DefineToneTokens {
   fill?: Partial<
-    Record<'default' | 'hover' | 'active' | 'disabled', Token<'color'>>
+    Record<'default' | 'hover' | 'active' | 'disabled', SemanticToken>
   >;
-  text?: Partial<Record<'default' | 'inverse' | 'disabled', Token<'color'>>>;
-  stroke?: Partial<Record<'default' | 'subtle', Token<'color'>>>;
-  icon?: Partial<Record<'default' | 'inverse', Token<'color'>>>;
+  text?: Partial<Record<'default' | 'inverse' | 'disabled', SemanticToken>>;
+  stroke?: Partial<Record<'default' | 'subtle', SemanticToken>>;
+  icon?: Partial<Record<'default' | 'inverse', SemanticToken>>;
 }
 
 export interface DefineToneOptions {
@@ -30,17 +30,11 @@ const generateDefaultTokens = (tone: string) =>
       DEFAULT: {
         value: `{colors.${tone}.500}`,
       },
-      strong: {
-        value: `{colors.${tone}.600}`,
-      },
-      weak: {
-        value: `{colors.${tone}.700}`,
-      },
       weaker: {
         value: `{colors.${tone}.800}`,
       },
       hover: {
-        value: `{colors.${tone}.600}`,
+        value: `color-mix(in srgb, {colors.${tone}.fill} 100%, white 20%)`,
       },
       press: {
         value: `{colors.${tone}.700}`,
@@ -53,6 +47,17 @@ const generateDefaultTokens = (tone: string) =>
       },
       selected: {
         value: `{colors.${tone}.500}`,
+      },
+      strong: {
+        value: `{colors.${tone}.600}`,
+      },
+      weak: {
+        DEFAULT: {
+          value: `{colors.${tone}.300}`,
+        },
+        hover: {
+          value: `color-mix(in srgb, {colors.${tone}.fill.weak} 100%, white 80%)`,
+        },
       },
     },
     text: {
@@ -69,7 +74,7 @@ const generateDefaultTokens = (tone: string) =>
         value: `{colors.${tone}.700}`,
       },
       inverse: {
-        value: `{colors.${tone}.900}`,
+        value: `{colors.${tone}.50}`,
       },
       disabled: {
         value: `{colors.${tone}.400}`,
@@ -134,9 +139,6 @@ export function defineTone(name: string, options: DefineToneOptions) {
 
   return defineSemanticTokens.colors({
     ...toneRamp,
-    DEFAULT: {
-      value: `{colors.${name}.${baseShade}}`,
-    },
     ...mergedTokens,
   });
 }

@@ -26,7 +26,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       icon,
       iconEnd,
-      disabled,
       isDisabled,
       isLoading,
       ...rest
@@ -38,7 +37,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <particles.button
         ref={ref}
         className={cx(classes.root, className)}
-        data-disabled={disabled || isDisabled}
+        data-disabled={restProps.disabled || isDisabled}
+        aria-disabled={restProps.disabled || isDisabled}
+        aria-busy={isLoading}
         {...rest}
       >
         {icon}
