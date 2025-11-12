@@ -29,6 +29,7 @@ const config: StorybookConfig = {
     getAbsolutePath('@storybook/addon-a11y'),
     getAbsolutePath('@storybook/addon-docs'),
     getAbsolutePath('@chromatic-com/storybook'),
+    getAbsolutePath('@storybook/addon-vitest'),
     getAbsolutePath('storybook-addon-tag-badges'),
   ],
   framework: {
@@ -45,7 +46,7 @@ const config: StorybookConfig = {
     return mergeConfig(config, {
       optimizeDeps: {
         include: [
-          'storybook-dark-mode',
+          '@vueless/storybook-dark-mode',
           '@storybook/addon-themes',
           'storybook/theming',
         ],
@@ -58,19 +59,6 @@ const config: StorybookConfig = {
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
       shouldRemoveUndefinedFromOptional: true,
-      // propFilter: (prop) => {
-      //   if (prop.parent) {
-      //     if (
-      //       prop.parent.fileName.match(/@ark-ui/) ||
-      //       prop.parent.fileName.match(/@particles/)
-      //     ) {
-      //       return true;
-      //     } else {
-      //       return !/node_modules/.test(prop.parent.fileName);
-      //     }
-      //   }
-      //   return true;
-      // },
       propFilter: (prop) => {
         if (!prop.parent) return true;
 

@@ -1,24 +1,11 @@
 import './styles.css';
-import { createElement } from 'react';
-import { useDarkMode } from '@vueless/storybook-dark-mode';
-import { DocsContainer } from '@storybook/addon-docs/blocks';
+import '@fontsource-variable/inter';
 import { createTheme } from '@particles/storybook';
-
+import { withThemeByDataAttribute } from '@storybook/addon-themes';
+import { Container } from './decorators';
 import type { Preview } from '@storybook/react-vite';
-import type { DocsContainerProps } from '@storybook/addon-docs/blocks';
 
 const theme = createTheme({ brandTitle: 'Particles - Primitives' });
-
-const Container = (props: DocsContainerProps) => {
-  const isDark = useDarkMode();
-  const currentProps = { ...props };
-
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  currentProps.theme = isDark ? theme.dark : theme.light;
-
-  return createElement(DocsContainer, currentProps);
-};
 
 const preview: Preview = {
   parameters: {
@@ -33,8 +20,28 @@ const preview: Preview = {
     docs: {
       container: Container,
     },
+    controls: {
+      hideNoControlsWarning: true,
+    },
+    a11y: {
+      // 'todo' - show a11y violations in the test UI only
+      // 'error' - fail CI on a11y violations
+      // 'off' - skip a11y checks entirely
+      test: 'todo',
+    },
   },
-
+  decorators: [
+    withThemeByDataAttribute({
+      themes: {
+        Default: 'default',
+        Proton: 'proton',
+        Neutron: 'neutron',
+        Quark: 'quark',
+      },
+      defaultTheme: 'Default',
+      attributeName: 'data-panda-theme',
+    }),
+  ],
   tags: ['autodocs'],
 };
 

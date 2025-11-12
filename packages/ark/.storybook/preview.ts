@@ -7,40 +7,6 @@ import type { Preview } from '@storybook/react-vite';
 
 const theme = createTheme({ brandTitle: 'Particles - Ark' });
 
-const decorators: Preview['decorators'] = [
-  withThemeByDataAttribute({
-    themes: {
-      Proton: 'proton',
-      Neutron: 'neutron',
-      Quark: 'quark',
-    },
-    defaultTheme: 'proton',
-    attributeName: 'data-panda-theme',
-  }),
-  (story, context) => {
-    const selectedTone = context.globals.tone || 'flat';
-    document.documentElement.setAttribute('data-tone', selectedTone);
-    return story(context);
-  },
-];
-
-const globalTypes: Preview['globalTypes'] = {
-  tone: {
-    description: 'The tone of the app',
-    toolbar: {
-      title: 'Tone',
-      icon: 'circle',
-      items: [
-        { value: 'flat', title: 'Flat' },
-        { value: 'real', title: 'Real' },
-        { value: 'soft', title: 'Soft' },
-        { value: 'glass', title: 'Glass' },
-      ],
-      dynamicTitle: true,
-    },
-  },
-};
-
 const preview: Preview = {
   parameters: {
     darkMode: {
@@ -57,10 +23,46 @@ const preview: Preview = {
     controls: {
       hideNoControlsWarning: true,
     },
+    a11y: {
+      // 'todo' - show a11y violations in the test UI only
+      // 'error' - fail CI on a11y violations
+      // 'off' - skip a11y checks entirely
+      test: 'todo',
+    },
   },
-
-  decorators,
-  globalTypes,
+  decorators: [
+    withThemeByDataAttribute({
+      themes: {
+        Default: 'default',
+        Proton: 'proton',
+        Neutron: 'neutron',
+        Quark: 'quark',
+      },
+      defaultTheme: 'Default',
+      attributeName: 'data-panda-theme',
+    }),
+    (story: any, context: any) => {
+      const selectedTone = context.globals.tone || 'flat';
+      document.documentElement.setAttribute('data-tone', selectedTone);
+      return story(context);
+    },
+  ],
+  globalTypes: {
+    tone: {
+      description: 'The tone of the app',
+      toolbar: {
+        title: 'Tone',
+        icon: 'circle',
+        items: [
+          { value: 'flat', title: 'Flat' },
+          { value: 'real', title: 'Real' },
+          { value: 'soft', title: 'Soft' },
+          { value: 'glass', title: 'Glass' },
+        ],
+        dynamicTitle: true,
+      },
+    },
+  },
   initialGlobals: {
     tone: 'flat',
   },

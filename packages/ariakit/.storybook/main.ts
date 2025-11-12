@@ -46,9 +46,9 @@ const config: StorybookConfig = {
     return mergeConfig(config, {
       optimizeDeps: {
         include: [
-          'storybook-dark-mode',
+          '@vueless/storybook-dark-mode',
+          '@storybook/addon-themes',
           'storybook/theming',
-          '@particles/storybook',
         ],
       },
     });

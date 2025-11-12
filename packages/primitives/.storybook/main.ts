@@ -20,9 +20,12 @@ const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
     getAbsolutePath('@vueless/storybook-dark-mode'),
+    getAbsolutePath('@storybook/addon-themes'),
     getAbsolutePath('@storybook/addon-a11y'),
     getAbsolutePath('@storybook/addon-docs'),
     getAbsolutePath('@chromatic-com/storybook'),
+    getAbsolutePath('@storybook/addon-vitest'),
+    getAbsolutePath('storybook-addon-tag-badges'),
   ],
   framework: {
     name: getAbsolutePath('@storybook/react-vite'),
@@ -32,12 +35,26 @@ const config: StorybookConfig = {
       },
     },
   },
+  async viteFinal(config: any) {
+    const { mergeConfig } = await import('vite');
+
+    return mergeConfig(config, {
+      optimizeDeps: {
+        include: [
+          '@vueless/storybook-dark-mode',
+          '@storybook/addon-themes',
+          'storybook/theming',
+        ],
+      },
+    });
+  },
   typescript: {
+    check: false,
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
-      // 👇 Default prop filter, which excludes props from node_modules
-      propFilter: (prop) => {
+      shouldRemoveUndefinedFromOptional: true,
+      propFilter: (prop: any) => {
         if (!prop.parent) return true;
 
         const fileName = prop.parent.fileName;

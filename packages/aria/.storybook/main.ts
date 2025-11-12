@@ -29,6 +29,7 @@ const config: StorybookConfig = {
     getAbsolutePath('@storybook/addon-a11y'),
     getAbsolutePath('@storybook/addon-docs'),
     getAbsolutePath('@chromatic-com/storybook'),
+    getAbsolutePath('@storybook/addon-vitest'),
     getAbsolutePath('storybook-addon-tag-badges'),
   ],
   framework: {
@@ -45,7 +46,7 @@ const config: StorybookConfig = {
     return mergeConfig(config, {
       optimizeDeps: {
         include: [
-          'storybook-dark-mode',
+          '@vueless/storybook-dark-mode',
           '@storybook/addon-themes',
           'storybook/theming',
         ],

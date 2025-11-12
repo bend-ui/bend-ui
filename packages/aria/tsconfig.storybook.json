@@ -2,7 +2,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "emitDecoratorMetadata": true,
-    "outDir": ""
+    "outDir": "",
+    "moduleResolution": "bundler"
   },
   "files": [
     "../../node_modules/@nx/react/typings/styled-jsx.d.ts",
@@ -11,13 +12,9 @@
   ],
   "exclude": [
     "src/**/*.spec.ts",
-    "src/**/*.test.ts",
     "src/**/*.spec.js",
-    "src/**/*.test.js",
     "src/**/*.spec.tsx",
-    "src/**/*.test.tsx",
-    "src/**/*.spec.jsx",
-    "src/**/*.test.js"
+    "src/**/*.spec.jsx"
   ],
   "include": [
     "src/**/*.stories.ts",
@@ -25,7 +22,8 @@
     "src/**/*.stories.jsx",
     "src/**/*.stories.tsx",
     "src/**/*.stories.mdx",
+    ".storybook/*.ts",
     ".storybook/*.js",
-    ".storybook/*.ts"
+    ".storybook/*.tsx"
   ]
 }

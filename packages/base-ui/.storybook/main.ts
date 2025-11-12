@@ -18,10 +18,10 @@ const require = createRequire(import.meta.url);
 
 const config: StorybookConfig = {
   stories: [
-    '../src/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
-    '../../react/src/**/*.@(mdx|stories.@(js|jsx|ts|tsx))',
+    '../src/**/*.mdx',
+    '../src/**/*.stories.@(js|jsx|ts|tsx)',
+    '../../react/src/**/*.stories.@(js|jsx|ts|tsx)',
   ],
-
   addons: [
     getAbsolutePath('@vueless/storybook-dark-mode'),
     getAbsolutePath('@storybook/addon-themes'),
@@ -31,7 +31,6 @@ const config: StorybookConfig = {
     getAbsolutePath('@storybook/addon-vitest'),
     getAbsolutePath('storybook-addon-tag-badges'),
   ],
-
   framework: {
     name: getAbsolutePath('@storybook/react-vite'),
     options: {
@@ -40,10 +39,21 @@ const config: StorybookConfig = {
       },
     },
   },
+  async viteFinal(config) {
+    const { mergeConfig } = await import('vite');
 
-  docs: {},
-
+    return mergeConfig(config, {
+      optimizeDeps: {
+        include: [
+          '@vueless/storybook-dark-mode',
+          '@storybook/addon-themes',
+          'storybook/theming',
+        ],
+      },
+    });
+  },
   typescript: {
+    check: false,
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
@@ -73,6 +83,7 @@ const config: StorybookConfig = {
       },
     },
   },
+  docs: {},
 };
 
 export default config;
