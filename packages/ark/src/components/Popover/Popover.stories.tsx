@@ -1,5 +1,5 @@
 import { Button } from '@particles/react';
-import { LuChevronRight, LuX } from 'react-icons/lu';
+import { ChevronRightIcon, XIcon } from 'lucide-react';
 import { Popover } from './Popover';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
@@ -31,7 +31,7 @@ export const WithIndicator: Story = {
         <Button
           iconEnd={
             <Popover.Indicator>
-              <LuChevronRight />
+              <ChevronRightIcon />
             </Popover.Indicator>
           }
         >

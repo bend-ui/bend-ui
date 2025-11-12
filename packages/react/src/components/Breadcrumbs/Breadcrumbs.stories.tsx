@@ -1,4 +1,4 @@
-import { TbCaretRight } from 'react-icons/tb';
+import { ChevronRightIcon } from 'lucide-react';
 import { Breadcrumbs } from './';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
@@ -30,6 +30,6 @@ export const CustomSeparator: Story = {
 export const CustomIconSeparator: Story = {
   ...Base,
   args: {
-    separator: <TbCaretRight />,
+    separator: <ChevronRightIcon />,
   },
 };

@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { DropdownMenu as DropdownMenuPrimitive } from 'radix-ui';
-import { TbCheck, TbChevronRight, TbCircle } from 'react-icons/tb';
+import { CheckIcon, ChevronRightIcon, CircleIcon } from 'lucide-react';
 import { styled } from '@particles/styled-system/jsx';
 import { css, cx } from '@particles/styled-system/css';
 import { menu, icon } from '@particles/styled-system/recipes';
@@ -26,7 +26,7 @@ const SubTrigger = forwardRef<
     {...props}
   >
     {children}
-    <TbChevronRight className={icon({ left: 'auto' })} />
+    <ChevronRightIcon className={icon({ left: 'auto' })} />
   </DropdownMenuPrimitive.SubTrigger>
 ));
 SubTrigger.displayName = DropdownMenuPrimitive.SubTrigger.displayName;
@@ -63,7 +63,7 @@ const CheckboxItem = forwardRef<
 >(({ children, ...props }, ref) => (
   <DropdownMenuPrimitive.CheckboxItem ref={ref} {...props}>
     <ItemIndicator>
-      <TbCheck className={icon()} />
+      <CheckIcon className={icon()} />
     </ItemIndicator>
     {children}
   </DropdownMenuPrimitive.CheckboxItem>
@@ -76,7 +76,7 @@ const RadioItem = forwardRef<
 >(({ children, ...props }, ref) => (
   <DropdownMenuPrimitive.RadioItem ref={ref} {...props}>
     <ItemIndicator>
-      <TbCircle className={icon({ size: 'xs', fillCurrent: true })} />
+      <CircleIcon className={icon({ size: 'xs', fillCurrent: true })} />
     </ItemIndicator>
     {children}
   </DropdownMenuPrimitive.RadioItem>

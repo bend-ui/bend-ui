@@ -1,5 +1,5 @@
 import { sva } from '@particles/styled-system/css';
-import { TbPhone, TbVideo } from 'react-icons/tb';
+import { PhoneIcon, VideoIcon } from 'lucide-react';
 import { Button } from '@particles/radix';
 
 const styles = sva({
@@ -21,8 +21,8 @@ export function Infos() {
       <div>Avatars</div>
       <div>Group name</div>
       <div>
-        <Button icon={<TbPhone />}>Call Group</Button>
-        <Button icon={<TbVideo />}>Video Chat</Button>
+        <Button icon={<PhoneIcon />}>Call Group</Button>
+        <Button icon={<VideoIcon />}>Video Chat</Button>
       </div>
       <div>status</div>
     </div>

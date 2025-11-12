@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import {
-  LuFacebook,
-  LuInstagram,
-  LuMail,
-  LuMoon,
-  LuSun,
-  LuTwitter,
-} from 'react-icons/lu';
+  FacebookIcon,
+  InstagramIcon,
+  MailIcon,
+  MoonIcon,
+  SunIcon,
+  TwitterIcon,
+} from 'lucide-react';
 import { useTheme } from 'next-themes';
 import {
   Button,
@@ -37,7 +37,7 @@ export default function Marketing() {
           </nav>
           <ButtonGroup>
             <Button
-              icon={isDark ? <LuSun /> : <LuMoon />}
+              icon={isDark ? <SunIcon /> : <MoonIcon />}
               onClick={() => setTheme(isDark ? 'light' : 'dark')}
             />
             <Button>Sign in</Button>
@@ -98,7 +98,7 @@ export default function Marketing() {
             <Link href="/">Privacy</Link>
           </div>
           <div>
-            <Input icon={<LuMail />} placeholder="Your email" />
+            <Input icon={<MailIcon />} placeholder="Your email" />
           </div>
         </Level>
         <Divider borderColor="border" my="md" />
@@ -110,13 +110,13 @@ export default function Marketing() {
           </div>
           <div>
             <Link href="/">
-              <LuFacebook />
+              <FacebookIcon />
             </Link>
             <Link href="/">
-              <LuInstagram />
+              <InstagramIcon />
             </Link>
             <Link href="/">
-              <LuTwitter />
+              <TwitterIcon />
             </Link>
           </div>
         </Level>

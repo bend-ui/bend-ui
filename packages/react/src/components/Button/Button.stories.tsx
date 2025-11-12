@@ -1,4 +1,4 @@
-import { TbArrowRight, TbCloudDownload } from 'react-icons/tb';
+import { ArrowRightIcon, CloudDownloadIcon } from 'lucide-react';
 import { button } from '@particles/styled-system/recipes';
 import { Button } from './';
 import { Stack } from '../Stack';
@@ -92,20 +92,20 @@ export const Sizes: Story = {
 
 export const WithIcon: Story = {
   args: {
-    icon: <TbCloudDownload />,
+    icon: <CloudDownloadIcon />,
   },
 };
 
 export const WithIconEnd: Story = {
   args: {
-    iconEnd: <TbArrowRight />,
+    iconEnd: <ArrowRightIcon />,
   },
 };
 
 export const IconButton: Story = {
   args: {
     children: null,
-    icon: <TbCloudDownload />,
+    icon: <CloudDownloadIcon />,
   },
 };
 

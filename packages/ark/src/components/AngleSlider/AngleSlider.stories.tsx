@@ -1,4 +1,3 @@
-import { LuChevronDown } from 'react-icons/lu';
 import { AngleSlider } from './AngleSlider';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 

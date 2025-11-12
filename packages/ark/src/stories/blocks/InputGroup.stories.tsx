@@ -1,6 +1,6 @@
 import { css, cx, sva } from '@particles/styled-system/css';
 import { visuallyHidden } from '@particles/styled-system/patterns';
-import { TbExclamationCircle } from 'react-icons/tb';
+import { AlertCircleIcon } from 'lucide-react';
 import { Paragraph } from '@particles/react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
@@ -169,7 +169,7 @@ export const WithError: StoryObj = {
       <div className={cx('group', classes.root)} data-invalid="true">
         <input className={classes.input} placeholder="Input text" type="text" />
         <div className={cx(classes.addon, classes.addonEnd)}>
-          <TbExclamationCircle />
+          <AlertCircleIcon />
         </div>
         <Paragraph>Input text</Paragraph>
       </div>

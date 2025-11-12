@@ -1,14 +1,14 @@
 import { css, sva } from '@particles/styled-system/css';
 import { stack } from '@particles/styled-system/patterns';
 import {
-  TbDashboard,
-  TbLogout,
-  TbMoon,
-  TbPlus,
-  TbSearch,
-  TbSettings,
-  TbStar,
-} from 'react-icons/tb';
+  LayoutDashboardIcon,
+  LogOutIcon,
+  MoonIcon,
+  PlusIcon,
+  SearchIcon,
+  SettingsIcon,
+  StarIcon,
+} from 'lucide-react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta = {
@@ -89,33 +89,33 @@ export const Default: StoryObj = {
         <div className={classes.content}>
           <div className={classes.list}>
             <div className={classes.item}>
-              <TbDashboard />
+              <LayoutDashboardIcon />
               Dashboard
             </div>
             <div className={classes.item}>
-              <TbSettings />
+              <SettingsIcon />
               Settings
             </div>
             <div className={classes.item}>
-              <TbSearch />
+              <SearchIcon />
               Search
             </div>
             <div className={classes.item}>
-              <TbStar />
+              <StarIcon />
               Favorites
             </div>
             <hr className={classes.divider} />
             <div className={classes.item}>
-              <TbMoon />
+              <MoonIcon />
               Dark mode
             </div>
             <hr className={classes.divider} />
             <div className={classes.item}>
-              <TbPlus />
+              <PlusIcon />
               Add account
             </div>
             <div className={classes.item}>
-              <TbLogout />
+              <LogOutIcon />
               Logout
             </div>
           </div>

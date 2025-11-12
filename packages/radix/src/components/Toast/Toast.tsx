@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { Toast as ToastPrimitives } from 'radix-ui';
-import { TbX } from 'react-icons/tb';
+import { XIcon } from 'lucide-react';
 import { cx } from '@particles/styled-system/css';
 import { toast } from '@particles/styled-system/recipes';
 import type { ComponentPropsWithoutRef, ElementRef, ReactElement } from 'react';
@@ -67,7 +67,7 @@ const Close = forwardRef<
       toast-close=""
       {...rest}
     >
-      <TbX />
+      <XIcon />
     </ToastPrimitives.Close>
   );
 });

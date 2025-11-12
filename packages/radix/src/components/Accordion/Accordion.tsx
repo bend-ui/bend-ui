@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { Accordion as AccordionPrimitive } from 'radix-ui';
-import { LuChevronDown } from 'react-icons/lu';
+import { ChevronDownIcon } from 'lucide-react';
 import { cx } from '@particles/styled-system/css';
 import { accordion } from '@particles/styled-system/recipes';
 import { createRecipeContext } from '../../utils/recipe-context';
@@ -18,7 +18,7 @@ const IndicatorPrimitive = forwardRef<HTMLDivElement, { className: string }>(
     const { className, ...rest } = props;
     return (
       <div ref={ref} className={cx('flex items-center', className)} {...rest}>
-        <LuChevronDown
+        <ChevronDownIcon
           className={cx('transform transition-transform', 'rotate-0')}
           size={16}
         />

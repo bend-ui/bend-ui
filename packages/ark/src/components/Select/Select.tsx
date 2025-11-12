@@ -1,7 +1,6 @@
 import { forwardRef } from 'react';
 import { Portal, Select as ArkSelect } from '@ark-ui/react';
 import { selectDropdown, select } from '@particles/styled-system/recipes';
-import { LuChevronDown } from 'react-icons/lu';
 import { DismissButton, Input } from '@particles/react';
 import type { SelectVariantProps } from '@particles/styled-system/recipes';
 import type { CollectionItem } from '@ark-ui/react';

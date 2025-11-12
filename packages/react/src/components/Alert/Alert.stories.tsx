@@ -1,4 +1,4 @@
-import { LuBell } from 'react-icons/lu';
+import { BellIcon } from 'lucide-react';
 import { alert } from '@particles/styled-system/recipes';
 import { ButtonGroup } from '../ButtonGroup';
 import { Button } from '../Button';
@@ -71,7 +71,7 @@ export const Palettes: Story = {
             {...args}
             palette={palette}
             title="Watch out!"
-            icon={<LuBell />}
+            icon={<BellIcon />}
           >
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
@@ -89,7 +89,7 @@ export const Palettes: Story = {
 export const WithIcon: Story = {
   ...Base,
   args: {
-    icon: <LuBell />,
+    icon: <BellIcon />,
   },
 };
 
@@ -103,7 +103,7 @@ export const WithTitle: Story = {
 export const WithIconAndTitle: Story = {
   ...Base,
   args: {
-    icon: <LuBell />,
+    icon: <BellIcon />,
     title: 'Watch out!',
   },
 };
@@ -122,7 +122,7 @@ export const WithFooter: Story = {
 export const Full: Story = {
   ...Base,
   args: {
-    icon: <LuBell />,
+    icon: <BellIcon />,
     title: 'Watch out!',
     footer: (
       <ButtonGroup>
@@ -143,7 +143,7 @@ export const Composition: Story = {
   render: (args) => (
     <Alert.Root {...args}>
       <Alert.Icon>
-        <LuBell />
+        <BellIcon />
       </Alert.Icon>
       <Alert.Title>Watch out!</Alert.Title>
       <Alert.Content>

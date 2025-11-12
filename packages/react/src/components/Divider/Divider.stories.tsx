@@ -1,4 +1,4 @@
-import { TbSatellite } from 'react-icons/tb';
+import { SatelliteIcon } from 'lucide-react';
 import { Divider } from './Divider';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
@@ -21,7 +21,7 @@ export const WithContent: Story = {
 
 export const WithIconContent: Story = {
   args: {
-    children: <TbSatellite />,
+    children: <SatelliteIcon />,
   },
 };
 

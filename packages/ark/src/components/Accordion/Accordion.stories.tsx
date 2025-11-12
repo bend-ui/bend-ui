@@ -1,4 +1,4 @@
-import { LuChevronDown } from 'react-icons/lu';
+import { ChevronDownIcon } from 'lucide-react';
 import { Accordion } from './Accordion';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
@@ -23,7 +23,7 @@ export const Base: Story = {
           <Accordion.ItemTrigger>
             What is {item}?
             <Accordion.ItemIndicator>
-              <LuChevronDown />
+              <ChevronDownIcon />
             </Accordion.ItemIndicator>
           </Accordion.ItemTrigger>
           <Accordion.ItemContent>

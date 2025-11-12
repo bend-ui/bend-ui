@@ -1,7 +1,11 @@
 import Link from 'next/link';
 import { Badge, Nav } from '@particles/radix';
 import { sva } from '@particles/styled-system/css';
-import { LuLayoutDashboard, LuSettings, LuTruck } from 'react-icons/lu';
+import {
+  LayoutDashboardIcon,
+  SettingsIcon,
+  TruckIcon,
+} from 'lucide-react';
 
 const styles = sva({
   slots: ['root', 'brand', 'nav', 'group', 'item', 'section-end'],
@@ -40,13 +44,13 @@ const Sidebar = () => {
     <div>
       <div className={classes.brand}>🧬 Particles</div>
       <Nav direction="vertical">
-        <Nav.Link icon={<LuLayoutDashboard />}>
+        <Nav.Link icon={<LayoutDashboardIcon />}>
           <Link href="/">Overview</Link>
         </Nav.Link>
-        <Nav.Link icon={<LuSettings />}>
+        <Nav.Link icon={<SettingsIcon />}>
           <Link href="/">Settings</Link>
         </Nav.Link>
-        <Nav.Link icon={<LuTruck />}>
+        <Nav.Link icon={<TruckIcon />}>
           <Link href="/">
             Orders
             <div className={classes['section-end']}>

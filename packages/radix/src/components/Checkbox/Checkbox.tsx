@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { Checkbox as CheckboxPrimitive } from 'radix-ui';
-import { TbCheck } from 'react-icons/tb';
+import { CheckIcon } from 'lucide-react';
 import { cx } from '@particles/styled-system/css';
 import { styled } from '@particles/styled-system/jsx';
 import { checkbox } from '@particles/styled-system/recipes';
@@ -24,7 +24,7 @@ const Root = forwardRef<
       {...rest}
     >
       <CheckboxPrimitive.Indicator className={cx(styles)}>
-        <TbCheck />
+        <CheckIcon />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   );
