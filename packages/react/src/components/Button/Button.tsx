@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { button, ButtonVariantProps } from '@particles/styled-system/recipes';
 import { cx } from '@particles/styled-system/css';
 import { HTMLParticlesProps, particles } from '../factory';
@@ -18,36 +18,26 @@ export interface ButtonProps
   iconEnd?: ReactNode;
 }
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (props, ref) => {
-    const [variantProps, restProps] = button.splitVariantProps(props);
-    const {
-      className,
-      children,
-      icon,
-      iconEnd,
-      isDisabled,
-      isLoading,
-      ...rest
-    } = restProps;
+export const Button = (props: ButtonProps) => {
+  const [variantProps, restProps] = button.splitVariantProps(props);
+  const { className, children, icon, iconEnd, isDisabled, isLoading, ...rest } =
+    restProps;
 
-    const classes = button(variantProps);
+  const classes = button(variantProps);
 
-    return (
-      <particles.button
-        ref={ref}
-        className={cx(classes.root, className)}
-        data-disabled={restProps.disabled || isDisabled}
-        aria-disabled={restProps.disabled || isDisabled}
-        aria-busy={isLoading}
-        {...rest}
-      >
-        {icon}
-        {!!children && <span className={classes.label}>{children}</span>}
-        {iconEnd}
-      </particles.button>
-    );
-  },
-);
+  return (
+    <particles.button
+      className={cx(classes.root, className)}
+      data-disabled={restProps.disabled || isDisabled}
+      aria-disabled={restProps.disabled || isDisabled}
+      aria-busy={isLoading}
+      {...rest}
+    >
+      {icon}
+      {!!children && <span className={classes.label}>{children}</span>}
+      {iconEnd}
+    </particles.button>
+  );
+};
 
 Button.displayName = 'Button';

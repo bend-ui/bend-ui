@@ -26,6 +26,7 @@ const useButtonGroup = (props: ButtonGroupProps): ButtonGroupContext => {
 export interface ButtonGroupProps extends HTMLParticlesProps<'div'> {
   children?: ReactNode;
   size?: ButtonGroupVariantProps['size'];
+  isAttached?: ButtonGroupVariantProps['isAttached'];
 }
 
 export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
