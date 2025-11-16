@@ -46,8 +46,8 @@
     "@particles/preset": "workspace:*"
   },
   "devDependencies": {
-    "@types/react": "^18.3.18",
-    "@types/react-dom": "^18.3.5"
+    "@types/react": "^19.2.5",
+    "@types/react-dom": "^19.2.3"
   },
   "scripts": {
     "prepare": "panda codegen"
