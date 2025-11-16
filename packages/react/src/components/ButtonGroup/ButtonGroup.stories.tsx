@@ -20,3 +20,10 @@ export const Default: Story = {
     </ButtonGroup>
   ),
 };
+
+export const Attached: Story = {
+  ...Default,
+  args: {
+    isAttached: true,
+  },
+};
