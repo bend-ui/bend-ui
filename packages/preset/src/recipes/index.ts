@@ -45,7 +45,6 @@ import { clipboardRecipe } from './clipboard';
 export const slotRecipes: Theme['slotRecipes'] = {
   // divider: dividerRecipe,
   breadcrumbs: breadcrumbsRecipe,
-  button: buttonRecipe,
   carousel: carouselRecipe,
   indicator: indicatorRecipe,
   nav: navRecipe,
@@ -66,6 +65,7 @@ export const recipes: Theme['recipes'] = {
   avatar: avatarRecipe,
   backdrop: backdropRecipe,
   badge: badgeRecipe,
+  button: buttonRecipe,
   buttonGroup: buttonGroupRecipe,
   card: cardRecipe,
   cardSection: cardSectionRecipe,

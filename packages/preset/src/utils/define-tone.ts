@@ -74,7 +74,15 @@ const generateDefaultTokens = (tone: string) =>
         value: `{colors.${tone}.700}`,
       },
       inverse: {
-        value: `{colors.${tone}.50}`,
+        strong: {
+          value: `{colors.${tone}.50}`,
+        },
+        weak: {
+          value: `{colors.${tone}.100}`,
+        },
+        disabled: {
+          value: `{colors.${tone}.200}`,
+        },
       },
       disabled: {
         value: `{colors.${tone}.400}`,
@@ -91,10 +99,7 @@ const generateDefaultTokens = (tone: string) =>
         value: `{colors.${tone}.600}`,
       },
       weak: {
-        value: `{colors.${tone}.700}`,
-      },
-      weaker: {
-        value: `{colors.${tone}.800}`,
+        value: `{colors.${tone}.200}`,
       },
       disabled: {
         value: `{colors.${tone}.400}`,
@@ -106,15 +111,34 @@ const generateDefaultTokens = (tone: string) =>
         value: `{colors.${tone}.500}`,
       },
       inverse: {
-        value: `{colors.${tone}.900}`,
+        strong: {
+          value: `{colors.${tone}.900}`,
+        },
+        weak: {
+          value: `{colors.${tone}.800}`,
+        },
+        disabled: {
+          value: `{colors.${tone}.400}`,
+        },
       },
     },
     icon: {
       DEFAULT: {
         value: `{colors.${tone}.950}`,
       },
+      disabled: {
+        value: `{colors.${tone}.400}`,
+      },
       inverse: {
-        value: `{colors.${tone}.50}`,
+        strong: {
+          value: `{colors.${tone}.50}`,
+        },
+        weak: {
+          value: `{colors.${tone}.100}`,
+        },
+        disabled: {
+          value: `{colors.${tone}.200}`,
+        },
       },
     },
   });

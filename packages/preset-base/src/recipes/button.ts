@@ -1,24 +1,29 @@
-import { defineSlotRecipe } from '@pandacss/dev';
+import { defineParts, defineRecipe } from '@pandacss/dev';
 
-export const button = defineSlotRecipe({
+const parts = defineParts({
+  root: { selector: '&' },
+  icon: { selector: '& [data-part="icon"]' },
+  label: { selector: '& [data-part="label"]' },
+});
+
+export const button = defineRecipe({
   className: 'Button',
-  slots: ['root', 'icon', 'label'],
-  base: {
+  base: parts({
     root: {
       display: 'flex',
       placeItems: 'center',
       placeContent: 'center',
       maxWidth: 'max-content',
     },
-  },
+  }),
   variants: {
     isFull: {
-      true: {
+      true: parts({
         root: {
           width: 'full',
           maxWidth: 'full',
         },
-      },
+      }),
     },
   },
 });

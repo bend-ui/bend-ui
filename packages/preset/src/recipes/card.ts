@@ -26,9 +26,9 @@ export const cardRecipe = defineRecipe({
     withBorder: {
       true: parts({
         section: {
-          borderBottom: 'base',
+          borderBottom: 'weak',
           _notFirst: {
-            borderTop: 'base',
+            borderTop: 'weak',
           },
           _last: {
             borderBottom: 'none',
@@ -58,10 +58,10 @@ export const cardSectionRecipe = defineRecipe({
     withBorder: {
       true: {
         _notFirst: {
-          borderTop: 'base',
+          borderTop: 'weak',
         },
         _notLast: {
-          borderBottom: 'base',
+          borderBottom: 'weak',
         },
       },
     },

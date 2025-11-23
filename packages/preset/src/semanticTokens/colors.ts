@@ -10,7 +10,7 @@ export const colors = defineSemanticTokens.colors({
       value: '{colors.neutral.50}',
     },
     raised: {
-      value: '{colors.neutral.50}',
+      value: '{colors.neutral.100}',
     },
     overlay: {
       value: '{colors.neutral.50}',

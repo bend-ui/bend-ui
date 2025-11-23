@@ -93,9 +93,15 @@ export const layerStyles = defineLayerStyles({
   },
   overlay: {
     value: {
-      border: 'subtle',
+      border: 'weak',
       backgroundColor: 'bg.overlay',
       boxShadow: 'overlay',
+    },
+  },
+  panel: {
+    value: {
+      border: 'weak',
+      backgroundColor: 'bg.raised',
     },
   },
 });

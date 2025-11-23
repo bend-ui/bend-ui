@@ -1,10 +1,15 @@
-import { defineSlotRecipe } from '@pandacss/dev';
+import { defineParts, defineRecipe } from '@pandacss/dev';
 
-export const buttonRecipe = defineSlotRecipe({
+const parts = defineParts({
+  root: { selector: '&' },
+  label: { selector: '& [data-part="label"]' },
+  icon: { selector: '& [data-part="icon"]' },
+});
+
+export const buttonRecipe = defineRecipe({
   description: 'Button styles',
   className: 'Button',
-  slots: ['root', 'label'],
-  base: {
+  base: parts({
     root: {
       rounded: 'md',
       borderWidth: '1px',
@@ -17,60 +22,60 @@ export const buttonRecipe = defineSlotRecipe({
     label: {
       textAlign: 'center',
     },
-  },
+  }),
   variants: {
     palette: {
-      default: {
+      default: parts({
         root: {
           colorPalette: 'neutral',
           _soft: {
             boxShadow: 'interaction.neutral',
           },
         },
-      },
-      primary: {
+      }),
+      primary: parts({
         root: {
           colorPalette: 'primary',
           _soft: {
             boxShadow: 'interaction.primary',
           },
         },
-      },
-      danger: {
+      }),
+      danger: parts({
         root: {
           colorPalette: 'error',
           _soft: {
             boxShadow: 'interaction.error',
           },
         },
-      },
-      warning: {
+      }),
+      warning: parts({
         root: {
           colorPalette: 'warning',
           _soft: {
             boxShadow: 'interaction.warning',
           },
         },
-      },
-      success: {
+      }),
+      success: parts({
         root: {
           colorPalette: 'success',
           _soft: {
             boxShadow: 'interaction.success',
           },
         },
-      },
-      info: {
+      }),
+      info: parts({
         root: {
           colorPalette: 'info',
           _soft: {
             boxShadow: 'interaction.info',
           },
         },
-      },
+      }),
     },
     variant: {
-      solid: {
+      primary: parts({
         root: {
           color: 'colorPalette.text.inverse',
           backgroundColor: 'colorPalette.fill',
@@ -85,10 +90,10 @@ export const buttonRecipe = defineSlotRecipe({
             backgroundColor: 'colorPalette.fill.focus',
           },
           _disabled: {
-            color: 'colorPalette.text.disabled',
+            color: 'colorPalette.text.inverse.disabled',
             backgroundColor: 'colorPalette.fill.disabled',
             _hover: {
-              color: 'colorPalette.text.disabled',
+              color: 'colorPalette.text.inverse.disabled',
               backgroundColor: 'colorPalette.fill.disabled',
             },
           },
@@ -103,8 +108,8 @@ export const buttonRecipe = defineSlotRecipe({
             },
           },
         },
-      },
-      outline: {
+      }),
+      secondary: parts({
         root: {
           color: 'colorPalette.text',
           backgroundColor: 'transparent',
@@ -122,79 +127,61 @@ export const buttonRecipe = defineSlotRecipe({
             },
           },
         },
-      },
-      subtle: {
+      }),
+      tertiary: parts({
         root: {
           color: 'colorPalette.text',
           backgroundColor: 'colorPalette.fill.weak',
-        },
-        _hover: {
-          backgroundColor: 'colorPalette.fill.weak.hover',
-        },
-        _disabled: {
-          color: 'colorPalette.text.disabled',
-          backgroundColor: 'colorPalette.fill.disabled',
+
           _hover: {
+            backgroundColor: 'colorPalette.fill.weak.hover',
+          },
+          _disabled: {
+            color: 'colorPalette.text.disabled',
             backgroundColor: 'colorPalette.fill.disabled',
+            _hover: {
+              backgroundColor: 'colorPalette.fill.disabled',
+            },
           },
         },
-      },
-      ghost: {
-        root: {
-          color: 'colorPalette.text',
-          backgroundColor: 'transparent',
-        },
-        _hover: {
-          backgroundColor: 'colorPalette.fill.weak.hover',
-        },
-        _disabled: {
-          color: 'colorPalette.text.disabled',
-          backgroundColor: 'colorPalette.fill.disabled',
-        },
-      },
+      }),
     },
     size: {
-      sm: {
+      sm: parts({
         root: {
           py: 'xs',
           px: 'xs',
+          gap: 'xs',
           fontSize: 'sm',
         },
-        label: {
-          px: 'xs',
-        },
-      },
-      md: {
+      }),
+      md: parts({
         root: {
           py: 'sm',
-          px: 'sm',
+          px: 'md',
+          gap: 'sm',
           fontSize: 'md',
         },
-        label: {
-          px: 'sm',
-        },
-      },
-      lg: {
+      }),
+      lg: parts({
         root: {
           py: 'md',
           px: 'lg',
+          gap: 'lg',
           fontSize: 'lg',
         },
-        label: {
-          px: 'lg',
-        },
-      },
+      }),
     },
     isRounded: {
-      true: {
+      true: parts({
         root: {
           rounded: 'full',
         },
-      },
+      }),
     },
   },
   defaultVariants: {
-    variant: 'solid',
+    variant: 'primary',
     palette: 'default',
     size: 'md',
   },

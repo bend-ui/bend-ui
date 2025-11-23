@@ -1,6 +1,7 @@
 import { definePreset } from '@pandacss/dev';
 import patterns from './patterns';
 import { recipes, slotRecipes } from './recipes';
+import { conditions } from './conditions';
 
 export default definePreset({
   name: 'particles-base',
@@ -17,10 +18,7 @@ export default definePreset({
     },
   },
   conditions: {
-    extend: {
-      notFirst: '&:not(:first-child)',
-      notLast: '&:not(:last-child)',
-    },
+    extend: conditions,
   },
 });
 
