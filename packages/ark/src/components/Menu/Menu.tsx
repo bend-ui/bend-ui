@@ -1,7 +1,6 @@
 import { Menu as ArkMenu } from '@ark-ui/react';
 import { Button } from '@particles/react';
 import { menu } from '@particles/styled-system/recipes';
-import { ElementRef, forwardRef } from 'react';
 
 type MenuRootProps = ArkMenu.RootProps;
 const MenuRoot = ArkMenu.Root;
@@ -9,33 +8,32 @@ const MenuRoot = ArkMenu.Root;
 const MenuIndicator = ArkMenu.Indicator;
 
 type MenuTriggerProps = ArkMenu.TriggerProps;
-const MenuTrigger = forwardRef<
-  ElementRef<typeof ArkMenu.Trigger>,
-  MenuTriggerProps
->((props, ref) => {
-  const { children, ...rest } = props;
+
+const MenuTrigger = (props: MenuTriggerProps) => {
+  const { children, asChild, ...rest } = props;
   return (
-    <ArkMenu.Trigger {...rest} ref={ref} asChild>
-      <Button icon={<MenuIndicator>➡️</MenuIndicator>}>{children}</Button>
+    <ArkMenu.Trigger {...rest} asChild={asChild}>
+      {!asChild ? (
+        <Button icon={<MenuIndicator />}>{children}</Button>
+      ) : (
+        children
+      )}
     </ArkMenu.Trigger>
   );
-});
+};
 MenuTrigger.displayName = 'MenuTrigger';
 
 type MenuPositionerProps = ArkMenu.PositionerProps;
 
-const MenuPositioner = forwardRef<
-  ElementRef<typeof ArkMenu.Positioner>,
-  MenuPositionerProps
->((props, ref) => {
-  const [variantProps, rest] = menu.splitVariantProps(props);
+const MenuPositioner = (props: MenuPositionerProps) => {
+  const [variantProps, restProps] = menu.splitVariantProps(props);
   const classes = menu(variantProps);
   return (
-    <ArkMenu.Positioner {...rest} ref={ref} className={classes}>
+    <ArkMenu.Positioner {...restProps} className={classes}>
       {props.children}
     </ArkMenu.Positioner>
   );
-});
+};
 MenuPositioner.displayName = 'MenuPositioner';
 
 const MenuContent = ArkMenu.Content;
