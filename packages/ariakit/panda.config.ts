@@ -15,7 +15,7 @@ export default defineConfig({
   // Files to exclude
   exclude: [path.resolve(__dirname, './src/**/*.spec.{js,jsx,ts,tsx}')],
 
-  presets: [preset],
+  presets: [preset()],
 
   importMap: '@particles/styled-system',
 

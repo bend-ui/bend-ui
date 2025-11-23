@@ -12,7 +12,7 @@ export default defineConfig({
   // Files to exclude
   exclude: [],
 
-  presets: [preset],
+  presets: [preset()],
 
   staticCss: {
     css: [
