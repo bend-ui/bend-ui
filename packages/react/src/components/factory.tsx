@@ -6,7 +6,6 @@ import {
   type JSX,
   cloneElement,
   createElement,
-  forwardRef,
   isValidElement,
   memo,
 } from 'react';
@@ -26,11 +25,12 @@ export interface PolymorphicProps {
 }
 
 type JsxElements = {
-  [E in keyof JSX.IntrinsicElements]: ParticlesForwardRefComponent<E>;
+  [E in keyof JSX.IntrinsicElements]: ParticlesComponent<E>;
 };
 
-type ParticlesForwardRefComponent<E extends React.ElementType> =
-  React.ForwardRefExoticComponent<ParticlesPropsWithRef<E>>;
+type ParticlesComponent<E extends React.ElementType> = (
+  props: ParticlesPropsWithRef<E>,
+) => React.ReactElement;
 
 type ParticlesPropsWithRef<E extends React.ElementType> = Assign<
   React.ComponentPropsWithRef<E>,
@@ -60,35 +60,31 @@ function getRef(element: React.ReactElement) {
 }
 
 const withAsChild = (Component: React.ElementType) => {
-  const Comp = memo(
-    forwardRef<unknown, ParticlesPropsWithRef<typeof Component>>(
-      (props, ref) => {
-        const { asChild, children, ...restProps } = props;
+  const Comp = memo((props: ParticlesPropsWithRef<typeof Component>) => {
+    const { ref, asChild, children, ...restProps } = props;
 
-        if (!asChild) {
-          return createElement(
-            styled(Component),
-            { ...restProps, ref },
-            children,
-          );
-        }
+    if (!asChild) {
+      return createElement(
+        styled(Component),
+        { ...restProps, ref },
+        children,
+      );
+    }
 
-        const onlyChild: React.ReactNode = Children.only(children);
+    const onlyChild: React.ReactNode = Children.only(children);
 
-        if (!isValidElement<Record<string, unknown>>(onlyChild)) {
-          return null;
-        }
+    if (!isValidElement<Record<string, unknown>>(onlyChild)) {
+      return null;
+    }
 
-        const childRef = getRef(onlyChild);
+    const childRef = getRef(onlyChild);
 
-        return cloneElement(onlyChild, {
-          ...restProps,
-          ...onlyChild.props,
-          ref: ref ? composeRefs(ref, childRef) : childRef,
-        });
-      },
-    ),
-  );
+    return cloneElement(onlyChild, {
+      ...restProps,
+      ...onlyChild.props,
+      ref: ref ? composeRefs(ref, childRef) : childRef,
+    });
+  });
 
   // @ts-expect-error - it exists
   Comp.displayName = Component.displayName || Component.name;

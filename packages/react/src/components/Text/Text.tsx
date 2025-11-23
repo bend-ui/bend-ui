@@ -2,14 +2,12 @@
 
 import { cx, css } from '@particles/styled-system/css';
 import { text } from '@particles/styled-system/recipes';
-import { forwardRef } from 'react';
 import { splitCssProps } from '@particles/styled-system/jsx';
 import type { TextVariantProps } from '@particles/styled-system/recipes';
 import type { ReactNode } from 'react';
 import {
   PolymorphicComponent,
   PolymorphicComponentPropsWithRef,
-  PolymorphicRef,
 } from '../../utils';
 import { HTMLParticlesProps } from '../factory';
 
@@ -22,11 +20,11 @@ export interface TextProps extends HTMLParticlesProps<'span'> {
 
 const TextComponent = <T extends React.ElementType = 'span'>(
   props: PolymorphicComponentPropsWithRef<T, TextProps>,
-  ref: PolymorphicRef<T>,
 ) => {
-  const [variantProps, textProps] = text.splitVariantProps(props);
+  const { ref, ...rest } = props;
+  const [variantProps, textProps] = text.splitVariantProps(rest);
   const [cssProps, otherProps] = splitCssProps(textProps);
-  const { children, className, as, ...rest } = otherProps;
+  const { children, className, as, ...elementProps } = otherProps;
   const Component = (as || 'span') as React.ElementType;
 
   const classes = text(variantProps);
@@ -35,16 +33,14 @@ const TextComponent = <T extends React.ElementType = 'span'>(
     <Component
       ref={ref}
       className={cx(classes, css(cssProps), className)}
-      {...rest}
+      {...elementProps}
     >
       {children}
     </Component>
   );
 };
 
-export const Text = forwardRef(
-  TextComponent as any,
-) as PolymorphicComponent<TextProps> & {
+export const Text = TextComponent as PolymorphicComponent<TextProps> & {
   displayName?: string;
 };
 

@@ -1,6 +1,4 @@
 'use client';
-
-import { forwardRef } from 'react';
 import {
   buttonGroup,
   ButtonGroupVariantProps,
@@ -29,26 +27,25 @@ export interface ButtonGroupProps extends HTMLParticlesProps<'div'> {
   isAttached?: ButtonGroupVariantProps['isAttached'];
 }
 
-export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
-  (props, ref) => {
-    const [variantProps, rest] = buttonGroup.splitVariantProps(props);
-    const classes = buttonGroup(variantProps);
+export const ButtonGroup = (props: ButtonGroupProps) => {
+  const { ref, ...rest } = props;
+  const [variantProps, elementProps] = buttonGroup.splitVariantProps(rest);
+  const classes = buttonGroup(variantProps);
 
-    const context = useButtonGroup(rest);
+  const context = useButtonGroup(elementProps);
 
-    return (
-      <ButtonGroupProvider value={context}>
-        <particles.div
-          ref={ref}
-          role="group"
-          {...rest}
-          className={cx(classes, rest.className)}
-        >
-          {rest.children}
-        </particles.div>
-      </ButtonGroupProvider>
-    );
-  },
-);
+  return (
+    <ButtonGroupProvider value={context}>
+      <particles.div
+        ref={ref}
+        role="group"
+        {...elementProps}
+        className={cx(classes, elementProps.className)}
+      >
+        {elementProps.children}
+      </particles.div>
+    </ButtonGroupProvider>
+  );
+};
 
 ButtonGroup.displayName = 'ButtonGroup';

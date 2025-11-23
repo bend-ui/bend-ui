@@ -1,7 +1,6 @@
 'use client';
 
 import { particles, HTMLParticlesProps } from '../factory';
-import { forwardRef } from 'react';
 import {
   grid,
   gridItem,
@@ -17,8 +16,8 @@ interface GridProps extends HTMLParticlesProps<'div'> {
   minChildWidth?: GridStyles['minChildWidth'];
 }
 
-const Root = forwardRef<HTMLDivElement, GridProps>((props, ref) => {
-  const { columns, gap, rowGap, columnGap, minChildWidth, ...rest } = props;
+const Root = (props: GridProps) => {
+  const { ref, columns, gap, rowGap, columnGap, minChildWidth, ...rest } = props;
   return (
     <particles.div
       ref={ref}
@@ -26,7 +25,7 @@ const Root = forwardRef<HTMLDivElement, GridProps>((props, ref) => {
       {...rest}
     />
   );
-});
+};
 
 interface GridItemProps extends HTMLParticlesProps<'div'> {
   colSpan?: GridItemStyles['colSpan'];
@@ -37,8 +36,8 @@ interface GridItemProps extends HTMLParticlesProps<'div'> {
   rowEnd?: GridItemStyles['rowEnd'];
 }
 
-const Item = forwardRef<HTMLDivElement, GridItemProps>((props, ref) => {
-  const { colSpan, rowSpan, colStart, rowStart, colEnd, rowEnd, ...rest } =
+const Item = (props: GridItemProps) => {
+  const { ref, colSpan, rowSpan, colStart, rowStart, colEnd, rowEnd, ...rest } =
     props;
   return (
     <particles.div
@@ -54,6 +53,6 @@ const Item = forwardRef<HTMLDivElement, GridItemProps>((props, ref) => {
       {...rest}
     />
   );
-});
+};
 
 export const Grid = Object.assign(Root, { Root, Item });

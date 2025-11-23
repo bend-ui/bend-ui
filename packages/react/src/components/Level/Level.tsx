@@ -3,17 +3,17 @@
 import { cx } from '@particles/styled-system/css';
 import { splitCssProps } from '@particles/styled-system/jsx';
 import { level } from '@particles/styled-system/patterns';
-import { forwardRef } from 'react';
 import type { LevelProps } from './Level.types';
 
-export const Level = forwardRef<HTMLDivElement, LevelProps>((props, ref) => {
-  const [cssProps, otherProps] = splitCssProps(props);
-  const { children, className, ...rest } = otherProps;
+export const Level = (props: LevelProps) => {
+  const { ref, ...rest } = props;
+  const [cssProps, otherProps] = splitCssProps(rest);
+  const { children, className, ...elementProps } = otherProps;
   return (
-    <div ref={ref} className={cx(level(cssProps), className)} {...rest}>
+    <div ref={ref} className={cx(level(cssProps), className)} {...elementProps}>
       {children}
     </div>
   );
-});
+};
 
 Level.displayName = 'Level';

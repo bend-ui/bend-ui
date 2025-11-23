@@ -1,12 +1,13 @@
 'use client';
 
-import { ComponentPropsWithoutRef, forwardRef } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 import { particles, HTMLParticlesProps } from '../factory';
 
 export type BoxProps = HTMLParticlesProps<'div'>;
 
-const Box = forwardRef<HTMLDivElement, BoxProps>((props, ref) => {
-  return <particles.div ref={ref} {...props} />;
-});
+const Box = (props: BoxProps) => {
+  const { ref, ...rest } = props;
+  return <particles.div ref={ref} {...rest} />;
+};
 
 export { Box };

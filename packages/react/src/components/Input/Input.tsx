@@ -1,5 +1,4 @@
 import { input } from '@particles/styled-system/recipes';
-import { forwardRef } from 'react';
 import type { InputVariantProps } from '@particles/styled-system/recipes';
 import type { ReactNode } from 'react';
 import { HTMLParticlesProps, particles } from '../factory';
@@ -8,62 +7,61 @@ import { cx } from '@particles/styled-system/css';
 
 export type InputRootProps = HTMLParticlesProps<'input'> & InputVariantProps;
 
-const InputRoot = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const [variantProps, rest] = input.splitVariantProps(props);
+const InputRoot = (props: InputRootProps) => {
+  const { ref, ...rest } = props;
+  const [variantProps, elementProps] = input.splitVariantProps(rest);
   const classes = input(variantProps);
   return (
     <particles.div
       ref={ref}
       data-part="root"
-      {...rest}
-      className={cx('group', classes, rest.className)}
+      {...elementProps}
+      className={cx('group', classes, elementProps.className)}
     />
   );
-});
+};
 
 export type InputWrapperProps = HTMLParticlesProps<'label'>;
 
-const InputWrapper = forwardRef<HTMLLabelElement, InputWrapperProps>(
-  (props, ref) => {
-    return <particles.label ref={ref} data-part="wrapper" {...props} />;
-  },
-);
+const InputWrapper = (props: InputWrapperProps) => {
+  const { ref, ...rest } = props;
+  return <particles.label ref={ref} data-part="wrapper" {...rest} />;
+};
 
 export type InputIconProps = HTMLParticlesProps<'div'>;
 
-const InputIcon = forwardRef<HTMLDivElement, InputIconProps>((props, ref) => {
-  return <particles.div ref={ref} data-part="icon" asChild {...props} />;
-});
+const InputIcon = (props: InputIconProps) => {
+  const { ref, ...rest } = props;
+  return <particles.div ref={ref} data-part="icon" asChild {...rest} />;
+};
 
 export type InputInputProps = HTMLParticlesProps<'input'>;
 
-const InputInput = forwardRef<HTMLInputElement, InputInputProps>(
-  (props, ref) => {
-    const { className, ...rest } = props;
-    return (
-      <particles.input
-        ref={ref}
-        data-part="input"
-        className={cx('peer', className)}
-        {...rest}
-      />
-    );
-  },
-);
+const InputInput = (props: InputInputProps) => {
+  const { ref, className, ...rest } = props;
+  return (
+    <particles.input
+      ref={ref}
+      data-part="input"
+      className={cx('peer', className)}
+      {...rest}
+    />
+  );
+};
 
 export type InputElementProps = HTMLParticlesProps<'div'>;
 
-const InputElement = forwardRef<HTMLDivElement, InputElementProps>(
-  (props, ref) => {
-    return <particles.div ref={ref} data-part="element" {...props} />;
-  },
-);
+const InputElement = (props: InputElementProps) => {
+  const { ref, ...rest } = props;
+  return <particles.div ref={ref} data-part="element" {...rest} />;
+};
 
 export type InputAddonProps = HTMLParticlesProps<'div'>;
 
-const InputAddon = forwardRef<HTMLDivElement, InputAddonProps>((props, ref) => {
-  return <particles.div ref={ref} data-part="addon" {...props} />;
-});
+const InputAddon = (props: InputAddonProps) => {
+  const { ref, ...rest } = props;
+  return <particles.div ref={ref} data-part="addon" {...rest} />;
+};
 
 export interface InputProps
   extends Assign<HTMLParticlesProps<'input'>, InputVariantProps> {
@@ -75,8 +73,9 @@ export interface InputProps
   addonEnd?: ReactNode;
 }
 
-const Component = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+const Component = (props: InputProps) => {
   const {
+    ref,
     addonStart,
     addonEnd,
     icon,
@@ -98,7 +97,7 @@ const Component = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
       {addonEnd && <InputAddon>{addonEnd}</InputAddon>}
     </InputRoot>
   );
-});
+};
 
 Component.displayName = 'Input';
 

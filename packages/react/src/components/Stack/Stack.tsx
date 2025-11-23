@@ -2,7 +2,6 @@
 
 import { stack, StackProperties } from '@particles/styled-system/patterns';
 import { particles, HTMLParticlesProps } from '../factory';
-import { forwardRef } from 'react';
 import { cx } from '@particles/styled-system/css';
 import { Assign } from '@ark-ui/react';
 
@@ -11,8 +10,9 @@ export interface StackProps
   children: React.ReactNode;
 }
 
-export const Stack = forwardRef<HTMLDivElement, StackProps>((props, ref) => {
+export const Stack = (props: StackProps) => {
   const {
+    ref,
     children,
     className,
     align,
@@ -30,4 +30,4 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>((props, ref) => {
       {children}
     </particles.div>
   );
-});
+};

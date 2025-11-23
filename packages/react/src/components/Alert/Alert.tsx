@@ -4,7 +4,6 @@ import { alert } from '@particles/styled-system/recipes';
 import type { AlertProps } from './Alert.types';
 import { particles } from '../factory';
 import { withParts, withRecipe } from '../../utils';
-import { forwardRef } from 'react';
 
 const Root = withRecipe(particles.div, alert, 'root');
 
@@ -18,8 +17,8 @@ const Footer = withParts(particles.div, 'footer');
 
 const Dismiss = withParts(particles.button, 'dismiss');
 
-const Component = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
-  const { icon, title, children, footer, onDismiss, ...rest } = props;
+const Component = (props: AlertProps) => {
+  const { ref, icon, title, children, footer, onDismiss, ...rest } = props;
   return (
     <Alert.Root ref={ref} {...rest}>
       {!!icon && <Alert.Icon>{icon}</Alert.Icon>}
@@ -31,7 +30,7 @@ const Component = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
       )}
     </Alert.Root>
   );
-});
+};
 
 export const Alert = Object.assign(Component, {
   Root,
