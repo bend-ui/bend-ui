@@ -1,17 +1,18 @@
-import { defineSlotRecipe } from '@pandacss/dev';
+import { defineParts, defineRecipe } from '@pandacss/dev';
 
-export const radioGroupRecipe = defineSlotRecipe({
+const parts = defineParts({
+  root: { selector: '&' },
+  indicator: { selector: '& [data-part="indicator"]' },
+  itemControl: { selector: '& [data-part="itemControl"]' },
+  item: { selector: '& [data-part="item"]' },
+  itemText: { selector: '& [data-part="itemText"]' },
+  itemHiddenInput: { selector: '& [data-part="itemHiddenInput"]' },
+  label: { selector: '& [data-part="label"]' },
+});
+
+export const radioGroupRecipe = defineRecipe({
   className: 'RadioGroup',
-  slots: [
-    'root',
-    'indicator',
-    'itemControl',
-    'item',
-    'itemText',
-    'itemHiddenInput',
-    'label',
-  ],
-  base: {
+  base: parts({
     root: {
       colorPalette: 'primary',
     },
@@ -59,10 +60,10 @@ export const radioGroupRecipe = defineSlotRecipe({
         color: 'fg.disabled',
       },
     },
-  },
+  }),
   variants: {
     size: {
-      sm: {
+      sm: parts({
         root: {
           gap: {
             _vertical: '3',
@@ -83,8 +84,8 @@ export const radioGroupRecipe = defineSlotRecipe({
         itemText: {
           textStyle: 'sm',
         },
-      },
-      md: {
+      }),
+      md: parts({
         root: {
           gap: {
             _vertical: '4',
@@ -105,8 +106,8 @@ export const radioGroupRecipe = defineSlotRecipe({
         itemText: {
           textStyle: 'md',
         },
-      },
-      lg: {
+      }),
+      lg: parts({
         root: {
           gap: {
             _vertical: '5',
@@ -127,7 +128,7 @@ export const radioGroupRecipe = defineSlotRecipe({
         itemText: {
           textStyle: 'lg',
         },
-      },
+      }),
     },
   },
   defaultVariants: {

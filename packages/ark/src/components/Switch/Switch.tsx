@@ -1,4 +1,3 @@
-import { forwardRef } from 'react';
 import { Switch as SwitchPrimitive } from '@ark-ui/react';
 import { switchRecipe } from '@particles/styled-system/recipes';
 import type { SwitchProps } from './Switch.types';
@@ -16,10 +15,10 @@ const Label = withPart(SwitchPrimitive.Label, 'label');
 
 const HiddenInput = SwitchPrimitive.HiddenInput;
 
-const Component = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
+const Component = (props: SwitchProps) => {
   const { label, ...rest } = props;
   return (
-    <Root ref={ref} {...rest}>
+    <Root {...rest}>
       <Control>
         <Thumb />
       </Control>
@@ -27,7 +26,7 @@ const Component = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
       <HiddenInput />
     </Root>
   );
-});
+};
 
 Component.displayName = 'Switch';
 

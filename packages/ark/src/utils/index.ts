@@ -1,2 +1,7 @@
 export * from './create-style-context';
-export * from './with-recipe';
+export {
+  withRecipe,
+  withParts,
+  createRecipeContext,
+  type ComponentWithRecipe,
+} from '@particles/react';

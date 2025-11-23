@@ -1,11 +1,10 @@
-import { forwardRef } from 'react';
 import { Checkbox as CheckboxPrimitive } from '@base-ui-components/react/checkbox';
 import {
   checkbox,
   CheckboxVariantProps,
 } from '@particles/styled-system/recipes';
 import { CheckIcon } from 'lucide-react';
-import { withParts, withRecipe } from '../../utils/with-recipe';
+import { withParts, withRecipe } from '@particles/react';
 
 export type CheckboxRootProps = CheckboxPrimitive.Root.Props;
 
@@ -22,23 +21,18 @@ const CheckboxIndicator = withParts<CheckboxIndicatorProps>(
   'indicator',
 ) as unknown as typeof CheckboxPrimitive.Indicator;
 
-const CheckboxLabel = forwardRef<
-  HTMLLabelElement,
-  React.LabelHTMLAttributes<HTMLLabelElement>
->((props, ref) => {
-  return <label {...props} ref={ref} data-part="root" />;
-});
-
-CheckboxLabel.displayName = 'Checkbox.Label';
+const CheckboxLabel = (props: React.LabelHTMLAttributes<HTMLLabelElement>) => {
+  return <label {...props} data-part="root" />;
+};
 
 export type CheckboxProps = CheckboxRootProps & CheckboxVariantProps;
 
-const Component = forwardRef<HTMLButtonElement, CheckboxProps>((props, ref) => {
+const Component = (props: CheckboxProps) => {
   const { children, size = 'md', ...rest } = props;
   const classes = checkbox({ size });
   return (
     <CheckboxLabel className={classes}>
-      <CheckboxRoot ref={ref} defaultChecked {...rest}>
+      <CheckboxRoot defaultChecked {...rest}>
         <CheckboxIndicator>
           <CheckIcon />
         </CheckboxIndicator>
@@ -46,7 +40,7 @@ const Component = forwardRef<HTMLButtonElement, CheckboxProps>((props, ref) => {
       {children}
     </CheckboxLabel>
   );
-});
+};
 
 Component.displayName = 'Checkbox';
 

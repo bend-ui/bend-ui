@@ -4,7 +4,7 @@ import {
   DialogVariantProps,
   backdrop,
 } from '@particles/styled-system/recipes';
-import { withParts, withRecipe } from '../../utils/with-recipe';
+import { withParts, withRecipe } from '@particles/react';
 import { Button, HTMLParticlesProps } from '@particles/react';
 
 export interface DialogRootProps

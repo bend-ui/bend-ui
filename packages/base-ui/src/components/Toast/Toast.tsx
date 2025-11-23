@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Toast as ToastPrimitive } from '@base-ui-components/react/toast';
-import { withParts, withRecipe } from '../../utils/with-recipe';
+import { withParts, withRecipe } from '@particles/react';
 import { toast } from '@particles/styled-system/recipes';
 
 const ToastProvider = ToastPrimitive.Provider;

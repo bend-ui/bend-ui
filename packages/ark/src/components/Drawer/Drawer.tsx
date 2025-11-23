@@ -1,7 +1,6 @@
 import { Dialog as ArkDialog, Portal as ArkPortal } from '@ark-ui/react';
 import { backdrop, drawer } from '@particles/styled-system/recipes';
-import { DismissButton } from '@particles/react';
-import { ElementRef, forwardRef } from 'react';
+import { DismissButton, withRecipe, withParts } from '@particles/react';
 import type {
   BackdropVariantProps,
   DrawerVariantProps,
@@ -18,16 +17,13 @@ DrawerTrigger.displayName = 'DrawerTrigger';
 
 type DrawerCloseTriggerProps = ArkDialog.CloseTriggerProps;
 
-const DrawerCloseTrigger = forwardRef<
-  ElementRef<typeof ArkDialog.CloseTrigger>,
-  DrawerCloseTriggerProps
->((props, ref) => {
+const DrawerCloseTrigger = (props: DrawerCloseTriggerProps) => {
   return (
-    <ArkDialog.CloseTrigger ref={ref} {...props} asChild>
-      <DismissButton variant="outline" size="sm" />
+    <ArkDialog.CloseTrigger {...props} asChild>
+      <DismissButton variant="secondary" size="sm" />
     </ArkDialog.CloseTrigger>
   );
-});
+};
 DrawerCloseTrigger.displayName = 'DrawerCloseTrigger';
 
 const DrawerPortal = ArkPortal;
@@ -35,43 +31,27 @@ const DrawerPortal = ArkPortal;
 export type DrawerBackdropProps = ArkDialog.BackdropProps &
   BackdropVariantProps;
 
-const DrawerBackdrop = forwardRef<HTMLDivElement, DrawerBackdropProps>(
-  (props, ref) => {
-    const [variantProps, rest] = backdrop.splitVariantProps(props);
-    const classes = backdrop(variantProps);
-    return <ArkDialog.Backdrop ref={ref} className={classes} {...rest} />;
-  },
-);
+const DrawerBackdrop = withRecipe(ArkDialog.Backdrop, backdrop, 'backdrop');
 DrawerBackdrop.displayName = 'DrawerBackdrop';
 
 export type DrawerPositionerProps = ArkDialog.PositionerProps &
   DrawerVariantProps;
 
-const DrawerPositioner = forwardRef<HTMLDivElement, DrawerPositionerProps>(
-  (props, ref) => {
-    const [variantProps, rest] = drawer.splitVariantProps(props);
-    const classes = drawer(variantProps);
-    return <ArkDialog.Positioner ref={ref} className={classes} {...rest} />;
-  },
-);
+const DrawerPositioner = withRecipe(ArkDialog.Positioner, drawer, 'positioner');
 DrawerPositioner.displayName = 'DrawerPositioner';
 
-const DrawerContent = ArkDialog.Content;
+const DrawerContent = withParts(ArkDialog.Content, 'content');
 DrawerContent.displayName = 'DrawerContent';
 
-const DrawerTitle = ArkDialog.Title;
+const DrawerTitle = withParts(ArkDialog.Title, 'title');
 DrawerTitle.displayName = 'DrawerTitle';
 
-const DrawerDescription = ArkDialog.Description;
+const DrawerDescription = withParts(ArkDialog.Description, 'description');
 DrawerDescription.displayName = 'DrawerDescription';
 
 export type DrawerFooterProps = HTMLParticlesProps<'div'>;
 
-const DrawerFooter = forwardRef<HTMLDivElement, DrawerFooterProps>(
-  (props, ref) => {
-    return <particles.div {...props} data-part="footer" ref={ref} />;
-  },
-);
+const DrawerFooter = withParts(particles.div, 'footer');
 DrawerFooter.displayName = 'DrawerFooter';
 
 export interface DrawerProps extends DrawerRootProps, DrawerVariantProps {
@@ -80,7 +60,7 @@ export interface DrawerProps extends DrawerRootProps, DrawerVariantProps {
   description?: string;
 }
 
-const Component = forwardRef<HTMLDivElement, DrawerProps>((props, ref) => {
+const Component = (props: DrawerProps) => {
   const { children, title, description, trigger, placement, ...rest } = props;
   return (
     <DrawerRoot {...rest}>
@@ -90,7 +70,7 @@ const Component = forwardRef<HTMLDivElement, DrawerProps>((props, ref) => {
       <DrawerPortal>
         <DrawerBackdrop />
         <DrawerPositioner placement={placement}>
-          <DrawerContent ref={ref}>
+          <DrawerContent>
             {!!title && <DrawerTitle>{title}</DrawerTitle>}
             {!!description && (
               <DrawerDescription>{description}</DrawerDescription>
@@ -102,7 +82,7 @@ const Component = forwardRef<HTMLDivElement, DrawerProps>((props, ref) => {
       </DrawerPortal>
     </DrawerRoot>
   );
-});
+};
 
 Component.displayName = 'Drawer';
 

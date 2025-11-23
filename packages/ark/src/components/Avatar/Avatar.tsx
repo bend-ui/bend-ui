@@ -1,37 +1,39 @@
 import { Avatar as ArkAvatar } from '@ark-ui/react';
+import { withParts, withRecipe } from '@particles/react';
 import {
   avatar,
   type AvatarVariantProps,
 } from '@particles/styled-system/recipes';
-import { forwardRef } from 'react';
 
 export type AvatarRootProps = ArkAvatar.RootProps & AvatarVariantProps;
 
-export const AvatarRoot = forwardRef<HTMLDivElement, AvatarRootProps>(
-  (props, ref) => {
-    const [variantProps, rest] = avatar.splitVariantProps(props);
-    const classes = avatar(variantProps);
-    return <ArkAvatar.Root {...rest} ref={ref} className={classes} />;
-  },
+export const AvatarRoot = withRecipe<AvatarRootProps>(
+  ArkAvatar.Root,
+  avatar,
+  'root',
 );
 
-const AvatarFallback = ArkAvatar.Fallback;
-const AvatarImage = ArkAvatar.Image;
+const AvatarFallback = withParts<ArkAvatar.FallbackProps>(
+  ArkAvatar.Fallback,
+  'fallback',
+);
+const AvatarImage = withParts<ArkAvatar.ImageProps>(ArkAvatar.Image, 'image');
 
 export interface AvatarProps extends AvatarRootProps {
   fallback?: string;
   src?: string;
 }
 
-const Component = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
+const Component = (props: AvatarProps) => {
   const { fallback, src, ...rest } = props;
   return (
-    <AvatarRoot {...rest} ref={ref}>
+    <AvatarRoot {...rest}>
       <AvatarFallback>{fallback}</AvatarFallback>
       <AvatarImage src={src} />
     </AvatarRoot>
   );
-});
+};
+
 Component.displayName = 'Avatar';
 
 export const Avatar = Object.assign(Component, {

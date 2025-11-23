@@ -2,31 +2,31 @@
 
 import { RadioGroup as RadioGroupPrimitive } from '@ark-ui/react';
 import { radioGroup } from '@particles/styled-system/recipes';
-import { forwardRef } from 'react';
 import type { JsxStyleProps } from '@particles/styled-system/types';
 import type { RadioGroupVariantProps } from '@particles/styled-system/recipes';
-import { createStyleContext } from '@particles/styled-system/jsx';
 import type { Assign } from '@ark-ui/react';
-
-const { withProvider, withContext } = createStyleContext(radioGroup);
+import { withParts, withRecipe } from '@particles/react';
 
 export interface RootProps
   extends Assign<JsxStyleProps, RadioGroupPrimitive.RootProps>,
     RadioGroupVariantProps {}
 
-const Root = withProvider(RadioGroupPrimitive.Root, 'root');
+const Root = withRecipe(RadioGroupPrimitive.Root, radioGroup, 'root');
 
-const Indicator = withContext(RadioGroupPrimitive.Indicator, 'indicator');
+const Indicator = withParts(RadioGroupPrimitive.Indicator, 'indicator');
 
-const ItemControl = withContext(RadioGroupPrimitive.ItemControl, 'itemControl');
+const ItemControl = withParts(RadioGroupPrimitive.ItemControl, 'itemControl');
 
-const Item = withContext(RadioGroupPrimitive.Item, 'item');
+const Item = withParts(RadioGroupPrimitive.Item, 'item');
 
-const ItemText = withContext(RadioGroupPrimitive.ItemText, 'itemText');
+const ItemText = withParts(RadioGroupPrimitive.ItemText, 'itemText');
 
-const ItemHiddenInput = RadioGroupPrimitive.ItemHiddenInput;
+const ItemHiddenInput = withParts(
+  RadioGroupPrimitive.ItemHiddenInput,
+  'itemHiddenInput',
+);
 
-const Label = withContext(RadioGroupPrimitive.Label, 'label');
+const Label = withParts(RadioGroupPrimitive.Label, 'label');
 
 export interface RadioGroupProps {
   options: {
@@ -37,7 +37,7 @@ export interface RadioGroupProps {
   }[];
 }
 
-const Component = forwardRef<HTMLDivElement, RadioGroupProps>((props, ref) => {
+const Component = (props: RadioGroupProps) => {
   const { options } = props;
   return (
     <Root>
@@ -50,7 +50,7 @@ const Component = forwardRef<HTMLDivElement, RadioGroupProps>((props, ref) => {
       ))}
     </Root>
   );
-});
+};
 
 Component.displayName = 'RadioGroup';
 

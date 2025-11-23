@@ -1,7 +1,7 @@
 import { Popover as ArkPopover } from '@ark-ui/react';
 import { popover } from '@particles/styled-system/recipes';
 import type { PopoverVariantProps } from '@particles/styled-system/recipes';
-import { withRecipe, withParts } from '../../utils';
+import { withRecipe, withParts } from '@particles/react';
 import { Button } from '@particles/react';
 
 const PopoverRoot = ArkPopover.Root;
@@ -64,7 +64,7 @@ const Component = (props: PopoverProps) => {
           {children}
           {showCloseButton && (
             <PopoverCloseTrigger asChild>
-              <Button variant="outline" size="sm">
+              <Button variant="secondary" size="sm">
                 ×
               </Button>
             </PopoverCloseTrigger>

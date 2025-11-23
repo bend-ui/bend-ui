@@ -3,7 +3,7 @@ import {
   accordion,
   AccordionVariantProps,
 } from '@particles/styled-system/recipes';
-import { withParts, withRecipe } from '../../utils/with-recipe';
+import { withParts, withRecipe } from '@particles/react';
 import { Box } from '@particles/styled-system/jsx';
 import { LucideChevronDown } from 'lucide-react';
 import { Assign } from '@particles/styled-system/types';

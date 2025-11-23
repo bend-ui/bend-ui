@@ -1,17 +1,12 @@
 import { cx } from '@particles/styled-system/css';
-import { forwardRef } from 'react';
-import type {
-  ComponentProps,
-  ElementType,
-  ForwardRefExoticComponent,
-  PropsWithoutRef,
-} from 'react';
+import type { ComponentProps, ElementType, ReactElement } from 'react';
 import type {
   SystemStyleObject,
   RecipeVariantFn,
 } from '@particles/styled-system/types';
 
-type AnyProps = Record<string, unknown>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type AnyProps = Record<string, any>;
 type Recipe = RecipeVariantFn<
   Record<string, Record<string, SystemStyleObject>>
 > & {
@@ -21,7 +16,7 @@ type Recipe = RecipeVariantFn<
 export type ComponentWithRecipe<
   T extends ElementType,
   V extends AnyProps = AnyProps,
-> = ForwardRefExoticComponent<ComponentProps<T> & V>;
+> = (props: ComponentProps<T> & V) => ReactElement;
 
 type ComponentType = ElementType & {
   displayName?: string;
@@ -39,31 +34,29 @@ export const createRecipeContext = (recipe: Recipe) => {
   const withProvider = <Props extends AnyProps>(
     Component: ComponentType,
     part: string,
+    defaultProps?: Partial<Props>,
   ) => {
-    const WrappedComponent = forwardRef<unknown, PropsWithoutRef<Props>>(
-      (props, ref) => {
-        const [variantProps, elementProps] = recipe.splitVariantProps({
-          ...props,
-          ref,
-        });
-        // @ts-expect-error Recipe accepts any variant props
-        const recipeClass = recipe(variantProps);
-        const classes = cx(
-          recipeClass as string | undefined,
-          elementProps.className as string | undefined,
-        );
+    const WrappedComponent = (props: Props) => {
+      const { ref, ...rest } = props;
+      const [variantProps, elementProps] = recipe.splitVariantProps(rest);
+      // @ts-expect-error Recipe accepts any variant props
+      const recipeClass = recipe(variantProps);
+      const classes = cx(
+        recipeClass as string | undefined,
+        elementProps.className as string | undefined,
+      );
 
-        const Comp = Component as ElementType;
-        return (
-          <Comp
-            ref={ref}
-            className={classes}
-            data-part={part}
-            {...elementProps}
-          />
-        );
-      },
-    );
+      const Comp = Component as ElementType;
+      return (
+        <Comp
+          ref={ref}
+          className={classes}
+          data-part={part}
+          {...defaultProps}
+          {...elementProps}
+        />
+      );
+    };
 
     WrappedComponent.displayName = `${Component.displayName || Component.name || 'Component'}_${part}`;
     return WrappedComponent;
@@ -75,21 +68,21 @@ export const createRecipeContext = (recipe: Recipe) => {
   const withPart = <Props extends AnyProps>(
     Component: ComponentType,
     part: string,
+    defaultProps?: Partial<Props>,
   ) => {
-    const WrappedComponent = forwardRef<unknown, PropsWithoutRef<Props>>(
-      (props, ref) => {
-        const { className, ...rest } = props;
-        const Comp = Component as ElementType;
-        return (
-          <Comp
-            ref={ref}
-            className={className as string | undefined}
-            data-part={part}
-            {...rest}
-          />
-        );
-      },
-    );
+    const WrappedComponent = (props: Props) => {
+      const { ref, className, ...rest } = props;
+      const Comp = Component as ElementType;
+      return (
+        <Comp
+          ref={ref}
+          className={className as string | undefined}
+          data-part={part}
+          {...defaultProps}
+          {...rest}
+        />
+      );
+    };
 
     WrappedComponent.displayName = `${Component.displayName || Component.name || 'Component'}_${part}`;
     return WrappedComponent;
@@ -103,15 +96,17 @@ export const withRecipe = <Props extends AnyProps>(
   Component: ComponentType,
   recipe: Recipe,
   part: string,
+  defaultProps?: Partial<Props>,
 ) => {
   const { withProvider } = createRecipeContext(recipe);
-  return withProvider<Props>(Component, part);
+  return withProvider<Props>(Component, part, defaultProps);
 };
 
 export const withParts = <Props extends AnyProps>(
   Component: ComponentType,
   part: string,
+  defaultProps?: Partial<Props>,
 ) => {
   const { withPart } = createRecipeContext({} as Recipe);
-  return withPart<Props>(Component, part);
+  return withPart<Props>(Component, part, defaultProps);
 };

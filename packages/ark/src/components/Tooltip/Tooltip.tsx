@@ -1,23 +1,22 @@
 import { Tooltip as ArkTooltip } from '@ark-ui/react';
+import { withRecipe, withParts } from '@particles/react';
 import { tooltip, TooltipVariantProps } from '@particles/styled-system/recipes';
-import { forwardRef } from 'react';
 
 const TooltipRoot = ArkTooltip.Root;
 const TooltipTrigger = ArkTooltip.Trigger;
 
-type TooltipPositionerProps = ArkTooltip.PositionerProps & TooltipVariantProps;
+export type TooltipPositionerProps = ArkTooltip.PositionerProps &
+  TooltipVariantProps;
 
-const TooltipPositioner = forwardRef<HTMLDivElement, TooltipPositionerProps>(
-  (props, ref) => {
-    const [variantProps, rest] = tooltip.splitVariantProps(props);
-    const classes = tooltip(variantProps);
-    return <ArkTooltip.Positioner ref={ref} {...rest} className={classes} />;
-  },
+const TooltipPositioner = withRecipe(
+  ArkTooltip.Positioner,
+  tooltip,
+  'positioner',
 );
 
-const TooltipContent = ArkTooltip.Content;
-const TooltipArrow = ArkTooltip.Arrow;
-const TooltipArrowTip = ArkTooltip.ArrowTip;
+const TooltipContent = withParts(ArkTooltip.Content, 'content');
+const TooltipArrow = withParts(ArkTooltip.Arrow, 'arrow');
+const TooltipArrowTip = withParts(ArkTooltip.ArrowTip, 'arrowTip');
 
 export type TooltipProps = ArkTooltip.RootProps;
 

@@ -1,32 +1,27 @@
 import { Tabs as TabsPrimitive } from '@ark-ui/react';
 import { tabs, type TabsVariantProps } from '@particles/styled-system/recipes';
-import { forwardRef } from 'react';
 import type { JsxStyleProps } from '@particles/styled-system/types';
-import { withRecipe } from '../../utils';
 import type { Assign } from '@ark-ui/react';
+import { withParts, withRecipe } from '@particles/react';
 
 export interface TabsRootProps
   extends Assign<JsxStyleProps, TabsPrimitive.RootProps>,
     TabsVariantProps {}
 
-const Root = withRecipe<TabsPrimitive.RootProps>(
-  TabsPrimitive.Root,
-  tabs,
-  'root',
-);
+const Root = withRecipe(TabsPrimitive.Root, tabs, 'root');
 
-const Content = TabsPrimitive.Content;
+const Content = withParts(TabsPrimitive.Content, 'content');
 
-const List = TabsPrimitive.List;
+const List = withParts(TabsPrimitive.List, 'list');
 
-const Trigger = TabsPrimitive.Trigger;
+const Trigger = withParts(TabsPrimitive.Trigger, 'trigger');
 
 export {
   TabsContext as Context,
   type TabsContextProps as ContextProps,
 } from '@ark-ui/react';
 
-const Component = forwardRef<HTMLDivElement, TabsRootProps>((props, ref) => (
+const Component = (props: TabsRootProps) => (
   <Root {...props}>
     <List>
       <Trigger value="react">React</Trigger>
@@ -37,7 +32,7 @@ const Component = forwardRef<HTMLDivElement, TabsRootProps>((props, ref) => (
     <Content value="vue">Vue Content</Content>
     <Content value="solid">Solid Content</Content>
   </Root>
-));
+);
 
 Component.displayName = 'Tabs';
 

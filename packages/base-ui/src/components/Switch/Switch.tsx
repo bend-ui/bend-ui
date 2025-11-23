@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Switch as SwitchPrimitive } from '@base-ui-components/react/switch';
-import { withParts, withRecipe } from '../../utils/with-recipe';
+import { withParts, withRecipe } from '@particles/react';
 import { switchRecipe } from '@particles/styled-system/recipes';
 import { styled } from '@particles/styled-system/jsx';
 import { HTMLParticlesProps } from '@particles/react';

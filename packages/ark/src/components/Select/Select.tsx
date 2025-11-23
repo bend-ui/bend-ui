@@ -1,77 +1,50 @@
-import { forwardRef } from 'react';
 import { Portal, Select as ArkSelect } from '@ark-ui/react';
 import { selectDropdown, select } from '@particles/styled-system/recipes';
-import { DismissButton, Input } from '@particles/react';
-import type { SelectVariantProps } from '@particles/styled-system/recipes';
+import { DismissButton } from '@particles/react';
 import type { CollectionItem } from '@ark-ui/react';
-import type { ElementRef } from 'react';
-import { ChevronDownIcon, XIcon } from 'lucide-react';
+import { ChevronDownIcon } from 'lucide-react';
 import { withParts, withRecipe } from '../../utils';
 
 export type SelectRootProps<T extends CollectionItem> = ArkSelect.RootProps<T>;
 
-const SelectRoot = withRecipe<SelectRootProps<any>>(
-  ArkSelect.Root,
-  select,
-  'root',
-);
+const SelectRoot = withRecipe(ArkSelect.Root, select, 'root');
 
 export type SelectLabelProps = ArkSelect.LabelProps;
 
-const SelectLabel = withParts<SelectLabelProps>(ArkSelect.Label, 'label');
+const SelectLabel = withParts(ArkSelect.Label, 'label');
 
-export type SelectControlProps = ArkSelect.ControlProps;
-
-const SelectControl = withParts<SelectControlProps>(
-  ArkSelect.Control,
-  'control',
-);
+const SelectControl = withParts(ArkSelect.Control, 'control');
 
 export type SelectTriggerProps = ArkSelect.TriggerProps;
 
-const SelectTrigger = withParts<SelectTriggerProps>(
-  ArkSelect.Trigger,
-  'trigger',
-);
+const SelectTrigger = withParts(ArkSelect.Trigger, 'trigger');
 
 export type SelectValueTextProps = ArkSelect.ValueTextProps;
 
-const SelectValueText = withParts<SelectValueTextProps>(
-  ArkSelect.ValueText,
-  'valueText',
-);
+const SelectValueText = withParts(ArkSelect.ValueText, 'valueText');
 
 type SelectIndicatorProps = ArkSelect.IndicatorProps;
 
-const SelectIndicator = withParts<SelectIndicatorProps>(
-  ArkSelect.Indicator,
-  'indicator',
-);
+const SelectIndicator = withParts(ArkSelect.Indicator, 'indicator');
 
 export type SelectClearTriggerProps = ArkSelect.ClearTriggerProps;
 
-const SelectClearTrigger = withParts<SelectClearTriggerProps>(
-  ArkSelect.ClearTrigger,
-  'clearTrigger',
-);
+const SelectClearTrigger = withParts(ArkSelect.ClearTrigger, 'clearTrigger');
 
 export type SelectItemGroupProps = ArkSelect.ItemGroupProps;
 
-const SelectItemGroup = withParts<SelectItemGroupProps>(
-  ArkSelect.ItemGroup,
-  'itemGroup',
-);
+const SelectItemGroup = withParts(ArkSelect.ItemGroup, 'itemGroup');
 
 export type SelectItemGroupLabelProps = ArkSelect.ItemGroupLabelProps;
 
-const SelectItemGroupLabel = withParts<SelectItemGroupLabelProps>(
+const SelectItemGroupLabel = withParts(
   ArkSelect.ItemGroupLabel,
   'itemGroupLabel',
 );
 
 export type SelectPositionerProps = ArkSelect.PositionerProps;
 
-const SelectPositioner = withRecipe<SelectPositionerProps>(
+const SelectPositioner = withRecipe(
   ArkSelect.Positioner,
   selectDropdown,
   'root',
@@ -79,35 +52,23 @@ const SelectPositioner = withRecipe<SelectPositionerProps>(
 
 export type SelectContentProps = ArkSelect.ContentProps;
 
-const SelectContent = withParts<SelectContentProps>(
-  ArkSelect.Content,
-  'content',
-);
+const SelectContent = withParts(ArkSelect.Content, 'content');
 
 export type SelectItemTextProps = ArkSelect.ItemTextProps;
 
 export type SelectItemProps = ArkSelect.ItemProps;
 
-const SelectItem = withParts<SelectItemProps>(ArkSelect.Item, 'item');
+const SelectItem = withParts(ArkSelect.Item, 'item');
 
-const SelectItemText = withParts<SelectItemTextProps>(
-  ArkSelect.ItemText,
-  'itemText',
-);
+const SelectItemText = withParts(ArkSelect.ItemText, 'itemText');
 
 export type SelectItemIndicatorProps = ArkSelect.ItemIndicatorProps;
 
-const SelectItemIndicator = withParts<SelectItemIndicatorProps>(
-  ArkSelect.ItemIndicator,
-  'itemIndicator',
-);
+const SelectItemIndicator = withParts(ArkSelect.ItemIndicator, 'itemIndicator');
 
 export type SelectHiddenSelectProps = ArkSelect.HiddenSelectProps;
 
-const SelectHiddenSelect = withParts<SelectHiddenSelectProps>(
-  ArkSelect.HiddenSelect,
-  'hiddenSelect',
-);
+const SelectHiddenSelect = withParts(ArkSelect.HiddenSelect, 'hiddenSelect');
 
 export interface SelectProps<T extends CollectionItem>
   extends SelectRootProps<T> {

@@ -1,7 +1,6 @@
 import { Popover as PopoverPrimitive } from '@base-ui-components/react/popover';
 import { popover } from '@particles/styled-system/recipes';
-import { forwardRef } from 'react';
-import { withParts, withRecipe } from '../../utils/with-recipe';
+import { withParts, withRecipe } from '@particles/react';
 
 const PopoverRoot = PopoverPrimitive.Root;
 const PopoverTrigger = PopoverPrimitive.Trigger;
@@ -52,10 +51,10 @@ const PopoverClose = withParts<PopoverCloseProps>(
 
 export type PopoverProps = PopoverPrimitive.Root.Props;
 
-const Component = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
+const Component = (props: PopoverProps) => {
   return (
     <PopoverRoot {...props}>
-      <PopoverTrigger ref={ref}>Trigger</PopoverTrigger>
+      <PopoverTrigger>Trigger</PopoverTrigger>
       <PopoverPortal>
         <PopoverPositioner sideOffset={8}>
           <PopoverPopup>
@@ -71,7 +70,7 @@ const Component = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
       </PopoverPortal>
     </PopoverRoot>
   );
-});
+};
 
 function ArrowSvg(props: React.ComponentProps<'svg'>) {
   return (

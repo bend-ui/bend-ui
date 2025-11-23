@@ -1,26 +1,24 @@
 import { Dialog as ArkDialog, Portal } from '@ark-ui/react';
 import { command } from '@particles/styled-system/recipes';
 import type { CommandVariantProps } from '@particles/styled-system/recipes';
-import { forwardRef } from 'react';
+import { withRecipe, withParts } from '@particles/react';
 
 export type CommandRootProps = ArkDialog.RootProps;
 const CommandRoot = ArkDialog.Root;
 const CommandBackdrop = ArkDialog.Backdrop;
 
 export type CommandPositionerProps = ArkDialog.RootProps & CommandVariantProps;
-const CommandPositioner = forwardRef<HTMLDivElement, CommandPositionerProps>(
-  (props, ref) => {
-    const [variantProps, rest] = command.splitVariantProps(props);
-    const classes = command(variantProps);
 
-    return <ArkDialog.Positioner {...rest} ref={ref} className={classes} />;
-  },
+const CommandPositioner = withRecipe<CommandPositionerProps>(
+  ArkDialog.Positioner,
+  command,
+  'positioner',
 );
 
-const CommandContent = ArkDialog.Content;
-const CommandTitle = ArkDialog.Title;
-const CommandDescription = ArkDialog.Description;
-const CommandCloseTrigger = ArkDialog.CloseTrigger;
+const CommandContent = withParts(ArkDialog.Content, 'content');
+const CommandTitle = withParts(ArkDialog.Title, 'title');
+const CommandDescription = withParts(ArkDialog.Description, 'description');
+const CommandCloseTrigger = withParts(ArkDialog.CloseTrigger, 'close-trigger');
 
 export type CommandProps = CommandRootProps & CommandVariantProps;
 

@@ -19,7 +19,8 @@ import { numberInput } from './number-input';
 import { pagination } from './pagination';
 import { popover } from './popover';
 import { progress } from './progress';
-import { radioGroup } from './radio-group';
+import { radioGroupRecipe } from './radio-group';
+import { toggleGroupRecipe } from './toggle-group';
 import { rating } from './rating';
 import { segmentedControl } from './segmented-control';
 import { selectDropdownRecipe, selectRecipe } from './select';
@@ -49,7 +50,6 @@ export const slotRecipes: Theme['slotRecipes'] = {
   hoverCard,
   numberInput,
   progress,
-  radioGroup,
   rating,
   segmentedControl,
   skeleton,
@@ -87,6 +87,8 @@ export const recipes: Theme['recipes'] = {
   tabs: tabsRecipe,
   toast: toastRecipe,
   tooltip: tooltipRecipe,
+  radioGroup: radioGroupRecipe,
+  toggleGroup: toggleGroupRecipe,
 };
 
 export * from './accordion';

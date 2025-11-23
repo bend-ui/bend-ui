@@ -1,7 +1,6 @@
-import { forwardRef } from 'react';
 import { Avatar as AvatarPrimitive } from '@base-ui-components/react/avatar';
 import { avatar, AvatarVariantProps } from '@particles/styled-system/recipes';
-import { withParts, withRecipe } from '../../utils/with-recipe';
+import { withParts, withRecipe } from '@particles/react';
 
 export type AvatarRootProps = AvatarPrimitive.Root.Props & AvatarVariantProps;
 
@@ -25,15 +24,15 @@ export interface AvatarProps extends AvatarRootProps {
   src?: string;
 }
 
-const Component = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
+const Component = (props: AvatarProps) => {
   const { src, ...rest } = props;
   return (
-    <AvatarRoot ref={ref} {...rest}>
+    <AvatarRoot {...rest}>
       <AvatarImage src={src} />
       <AvatarFallback />
     </AvatarRoot>
   );
-});
+};
 
 Component.displayName = 'Avatar';
 

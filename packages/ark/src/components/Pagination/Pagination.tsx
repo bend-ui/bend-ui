@@ -1,9 +1,12 @@
 import { Pagination as ArkPagination } from '@ark-ui/react';
-import { withParts, withRecipe } from '../../utils';
+import { withParts, withRecipe } from '@particles/react';
 import { pagination } from '@particles/styled-system/recipes';
 import { Assign, HTMLStyledProps } from '@particles/styled-system/types';
 
-export type PaginationRootProps = Assign<HTMLStyledProps<'div'>, ArkPagination.RootProps>
+export type PaginationRootProps = Assign<
+  HTMLStyledProps<'div'>,
+  ArkPagination.RootProps
+>;
 
 const PaginationRoot = withRecipe<PaginationRootProps>(
   ArkPagination.Root,
@@ -11,7 +14,10 @@ const PaginationRoot = withRecipe<PaginationRootProps>(
   'root',
 );
 
-export type PaginationPrevTriggerProps = Assign<HTMLStyledProps<'button'>, ArkPagination.PrevTriggerProps>
+export type PaginationPrevTriggerProps = Assign<
+  HTMLStyledProps<'button'>,
+  ArkPagination.PrevTriggerProps
+>;
 
 const PaginationPrevTrigger = withParts<PaginationPrevTriggerProps>(
   ArkPagination.PrevTrigger,
@@ -20,28 +26,37 @@ const PaginationPrevTrigger = withParts<PaginationPrevTriggerProps>(
 
 const PaginationContext = ArkPagination.Context;
 
-export type PaginationNextTriggerProps = Assign<HTMLStyledProps<'button'>, ArkPagination.NextTriggerProps>
+export type PaginationNextTriggerProps = Assign<
+  HTMLStyledProps<'button'>,
+  ArkPagination.NextTriggerProps
+>;
 
 const PaginationNextTrigger = withParts<PaginationNextTriggerProps>(
   ArkPagination.NextTrigger,
   'next-trigger',
 );
 
-export type PaginationItemProps = Assign<HTMLStyledProps<'button'>, ArkPagination.ItemProps>
+export type PaginationItemProps = Assign<
+  HTMLStyledProps<'button'>,
+  ArkPagination.ItemProps
+>;
 
 const PaginationItem = withParts<PaginationItemProps>(
   ArkPagination.Item,
   'item',
 );
 
-export type PaginationEllipsisProps = Assign<HTMLStyledProps<'button'>, ArkPagination.EllipsisProps>
+export type PaginationEllipsisProps = Assign<
+  HTMLStyledProps<'button'>,
+  ArkPagination.EllipsisProps
+>;
 
 const PaginationEllipsis = withParts<PaginationEllipsisProps>(
   ArkPagination.Ellipsis,
   'ellipsis',
 );
 
-export type PaginationProps = PaginationRootProps
+export type PaginationProps = PaginationRootProps;
 
 const Component = (props: PaginationProps) => (
   <PaginationRoot {...props}>

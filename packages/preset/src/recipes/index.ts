@@ -41,6 +41,7 @@ import { overlayRecipe } from './overlay';
 import { angleSliderRecipe } from './angle-slider';
 import { datePickerRecipe } from './date-picker';
 import { clipboardRecipe } from './clipboard';
+import { toggleGroupRecipe } from './toggle-group';
 
 export const slotRecipes: Theme['slotRecipes'] = {
   // divider: dividerRecipe,
@@ -48,7 +49,6 @@ export const slotRecipes: Theme['slotRecipes'] = {
   carousel: carouselRecipe,
   indicator: indicatorRecipe,
   nav: navRecipe,
-  radioGroup: radioGroupRecipe,
   rating: ratingRecipe,
   table: tableRecipe,
   tag: tagRecipe,
@@ -91,4 +91,6 @@ export const recipes: Theme['recipes'] = {
   text: textRecipe,
   toast: toastRecipe,
   tooltip: tooltipRecipe,
+  radioGroup: radioGroupRecipe,
+  toggleGroup: toggleGroupRecipe,
 };
