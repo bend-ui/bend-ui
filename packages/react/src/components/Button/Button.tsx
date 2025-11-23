@@ -2,9 +2,15 @@
 
 import { ReactNode } from 'react';
 import { button, ButtonVariantProps } from '@particles/styled-system/recipes';
-import { cx } from '@particles/styled-system/css';
 import { HTMLParticlesProps, particles } from '../factory';
 import { Assign } from '@particles/styled-system/types';
+import { withParts, withRecipe } from '../../utils';
+
+const Root = withRecipe(particles.button, button, 'root');
+
+const Icon = withParts(particles.div, 'icon');
+
+const Label = withParts(particles.span, 'label');
 
 export interface ButtonProps
   extends Assign<HTMLParticlesProps<'button'>, ButtonVariantProps> {
@@ -18,26 +24,38 @@ export interface ButtonProps
   iconEnd?: ReactNode;
 }
 
-export const Button = (props: ButtonProps) => {
-  const [variantProps, restProps] = button.splitVariantProps(props);
-  const { className, children, icon, iconEnd, isDisabled, isLoading, ...rest } =
-    restProps;
-
-  const classes = button(variantProps);
+const Component = (props: ButtonProps) => {
+  const {
+    className,
+    children,
+    icon,
+    iconEnd,
+    isDisabled,
+    isLoading,
+    isFull,
+    disabled,
+    ...rest
+  } = props;
 
   return (
-    <particles.button
-      className={cx(classes.root, className)}
-      data-disabled={restProps.disabled || isDisabled}
-      aria-disabled={restProps.disabled || isDisabled}
+    <Root
+      data-disabled={disabled || isDisabled}
+      aria-disabled={disabled || isDisabled}
       aria-busy={isLoading}
+      disabled={disabled}
       {...rest}
     >
-      {icon}
-      {!!children && <span className={classes.label}>{children}</span>}
-      {iconEnd}
-    </particles.button>
+      {icon && <Icon>{icon}</Icon>}
+      {children && <Label>{children}</Label>}
+      {iconEnd && <Icon>{iconEnd}</Icon>}
+    </Root>
   );
 };
 
-Button.displayName = 'Button';
+Component.displayName = 'Button';
+
+export const Button = Object.assign(Component, {
+  Root,
+  Icon,
+  Label,
+});

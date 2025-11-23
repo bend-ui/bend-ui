@@ -1,16 +1,17 @@
-import { ArrowRightIcon, CloudDownloadIcon } from 'lucide-react';
 import { button } from '@particles/styled-system/recipes';
-import { Button } from './';
+import { IconButton } from './';
 import { Stack } from '../Stack';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { PlusIcon } from 'lucide-react';
 
-const meta: Meta<typeof Button> = {
-  title: 'Components/Controls/Button',
-  component: Button,
+const meta: Meta<typeof IconButton> = {
+  title: 'Components/Controls/IconButton',
+  component: IconButton,
   tags: ['alpha'],
   args: {
-    children: 'Button',
+    children: 'IconButton',
+    icon: <PlusIcon />,
   },
   argTypes: {
     children: {
@@ -61,7 +62,7 @@ export const Palette: Story = {
   render: (args) => (
     <Stack align="center" gap="md">
       {button.variantMap.palette.map((palette) => (
-        <Button key={palette} {...args} palette={palette} />
+        <IconButton key={palette} {...args} palette={palette} />
       ))}
     </Stack>
   ),
@@ -71,7 +72,7 @@ export const Variants: Story = {
   render: (args) => (
     <Stack align="center" gap="md">
       {button.variantMap.variant.map((variant) => (
-        <Button key={variant} {...args} variant={variant} />
+        <IconButton key={variant} {...args} variant={variant} />
       ))}
     </Stack>
   ),
@@ -84,22 +85,10 @@ export const Sizes: Story = {
   render: (args) => (
     <Stack align="center" gap="md">
       {button.variantMap.size.map((size) => (
-        <Button key={size} {...args} size={size} />
+        <IconButton key={size} {...args} size={size} />
       ))}
     </Stack>
   ),
-};
-
-export const WithIcon: Story = {
-  args: {
-    icon: <CloudDownloadIcon />,
-  },
-};
-
-export const WithIconEnd: Story = {
-  args: {
-    iconEnd: <ArrowRightIcon />,
-  },
 };
 
 export const Disabled: Story = {
@@ -108,28 +97,22 @@ export const Disabled: Story = {
   },
 };
 
-export const FullWidth: Story = {
-  args: {
-    isFull: true,
-  },
-};
-
 export const Polymorphic: Story = {
   render: (args) => (
-    <Button {...args}>
+    <IconButton {...args}>
       <a href="https://www.google.com">Google</a>
-    </Button>
+    </IconButton>
   ),
 };
 
 export const WithCSSProp: Story = {
   args: {
     css: {
-      bg: 'fill.error',
+      bg: 'bg.danger',
     },
   },
 };
 
 export const WithSystemProp: Story = {
-  render: (args) => <Button {...args} bg="fill.error" />,
+  render: (args) => <IconButton {...args} bg="bg.danger" />,
 };
