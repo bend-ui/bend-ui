@@ -133,9 +133,7 @@ function Feature() {
     <Box padding="6" borderRadius="lg" shadow="md">
       <Stack gap="4">
         <Heading size="lg">Feature Title</Heading>
-        <Text color="gray.600">
-          Feature description goes here.
-        </Text>
+        <Text color="gray.600">Feature description goes here.</Text>
         <Button colorScheme="blue">Learn More</Button>
       </Stack>
     </Box>
@@ -232,9 +230,9 @@ Many components support variants:
 ```tsx
 import { Button } from '@particles/react';
 
-<Button variant="solid">Solid</Button>
-<Button variant="outline">Outline</Button>
-<Button variant="ghost">Ghost</Button>
+<Button variant="primary">Primary</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="tertiary">Tertiary</Button>
 <Button variant="link">Link</Button>
 ```
 
@@ -268,7 +266,7 @@ import { Box } from '@particles/react';
   borderColor="blue.200"
 >
   Custom styled box
-</Box>
+</Box>;
 ```
 
 ### CSS Classes
@@ -291,7 +289,7 @@ import { Box } from '@particles/react';
   })}
 >
   Gradient box
-</Box>
+</Box>;
 ```
 
 ## Best Practices
@@ -312,6 +310,7 @@ Explore specific component documentation:
 - [Card](/docs/components/card) - Content container
 
 Or browse by category:
+
 - [Layout Components](/docs/components/layout)
 - [Form Components](/docs/components/forms)
 - [Feedback Components](/docs/components/feedback)

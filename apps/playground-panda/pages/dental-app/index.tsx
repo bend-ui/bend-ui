@@ -18,7 +18,13 @@ import {
   Menu,
   Tabs,
 } from '@particles/ark';
-import { SearchIcon, BellIcon, CalendarIcon, HexagonIcon } from 'lucide-react';
+import {
+  SearchIcon,
+  BellIcon,
+  CalendarIcon,
+  HexagonIcon,
+  PlusIcon,
+} from 'lucide-react';
 import Link from 'next/link';
 import { AppointmentCard } from './components';
 
@@ -56,12 +62,8 @@ const DentalApp = () => {
           </Box>
           <Box>
             <ButtonGroup>
-              <IconButton>
-                <SearchIcon />
-              </IconButton>
-              <IconButton>
-                <BellIcon />
-              </IconButton>
+              <IconButton icon={<SearchIcon />}>Search</IconButton>
+              <IconButton icon={<BellIcon />}>Notifications</IconButton>
             </ButtonGroup>
             <Divider />
             <Avatar>
@@ -94,17 +96,24 @@ const DentalApp = () => {
               <Button>
                 <CalendarIcon /> January 2025
               </Button>
-              <Menu.Root>
-                <Menu.Trigger asChild>
-                  <Button>Add new appointment</Button>
-                </Menu.Trigger>
-                <Menu.Content>
-                  <Menu.Item value="add-new-appointment">
-                    Add new appointment
-                  </Menu.Item>
-                  <Menu.Item value="add-new-patient">Add new patient</Menu.Item>
-                </Menu.Content>
-              </Menu.Root>
+              <ButtonGroup isAttached>
+                <Button>Add new appointment</Button>
+                <Menu.Root>
+                  <Menu.Trigger asChild>
+                    <IconButton icon={<PlusIcon />}>
+                      Add new appointment
+                    </IconButton>
+                  </Menu.Trigger>
+                  <Menu.Content>
+                    <Menu.Item value="add-new-appointment">
+                      Add new appointment
+                    </Menu.Item>
+                    <Menu.Item value="add-new-patient">
+                      Add new patient
+                    </Menu.Item>
+                  </Menu.Content>
+                </Menu.Root>
+              </ButtonGroup>
             </ButtonGroup>
           </Level>
           <Grid columns={4}>

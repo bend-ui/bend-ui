@@ -33,9 +33,9 @@ import { Button, Stack } from '@particles/react';
 function VariantsExample() {
   return (
     <Stack direction="row" gap="4">
-      <Button variant="solid">Solid</Button>
-      <Button variant="outline">Outline</Button>
-      <Button variant="ghost">Ghost</Button>
+      <Button variant="primary">Primary</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="tertiary">Tertiary</Button>
       <Button variant="link">Link</Button>
     </Stack>
   );
@@ -44,9 +44,9 @@ function VariantsExample() {
 
 ### Variant Types
 
-- **solid** (default): Filled background with solid color
-- **outline**: Transparent background with border
-- **ghost**: Transparent background, shows on hover
+- **primary** (default): Filled background with solid color
+- **secondary**: Transparent background with border
+- **tertiary**: Transparent background, shows on hover
 - **link**: Styled as a text link
 
 ## Color Schemes
@@ -98,11 +98,7 @@ Disable interaction with the button:
 import { Button } from '@particles/react';
 
 function DisabledExample() {
-  return (
-    <Button disabled>
-      Disabled Button
-    </Button>
-  );
+  return <Button disabled>Disabled Button</Button>;
 }
 ```
 
@@ -136,12 +132,8 @@ import { PlusIcon, ArrowRightIcon } from '@particles/icons';
 function IconsExample() {
   return (
     <Stack direction="row" gap="4">
-      <Button leftIcon={<PlusIcon />}>
-        Add Item
-      </Button>
-      <Button rightIcon={<ArrowRightIcon />}>
-        Next
-      </Button>
+      <Button leftIcon={<PlusIcon />}>Add Item</Button>
+      <Button rightIcon={<ArrowRightIcon />}>Next</Button>
     </Stack>
   );
 }
@@ -237,18 +229,18 @@ function AccessibleExample() {
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `'solid' \| 'outline' \| 'ghost' \| 'link'` | `'solid'` | Visual style variant |
-| `colorScheme` | `string` | `'blue'` | Color scheme to apply |
-| `size` | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` | Button size |
-| `disabled` | `boolean` | `false` | Disable the button |
-| `isLoading` | `boolean` | `false` | Show loading state |
-| `loadingText` | `string` | - | Text to show when loading |
-| `leftIcon` | `ReactElement` | - | Icon to show on left |
-| `rightIcon` | `ReactElement` | - | Icon to show on right |
-| `width` | `string \| number` | - | Button width |
-| `onClick` | `() => void` | - | Click handler |
+| Prop          | Type                                        | Default   | Description               |
+| ------------- | ------------------------------------------- | --------- | ------------------------- |
+| `variant`     | `'solid' \| 'outline' \| 'ghost' \| 'link'` | `'solid'` | Visual style variant      |
+| `colorScheme` | `string`                                    | `'blue'`  | Color scheme to apply     |
+| `size`        | `'xs' \| 'sm' \| 'md' \| 'lg'`              | `'md'`    | Button size               |
+| `disabled`    | `boolean`                                   | `false`   | Disable the button        |
+| `isLoading`   | `boolean`                                   | `false`   | Show loading state        |
+| `loadingText` | `string`                                    | -         | Text to show when loading |
+| `leftIcon`    | `ReactElement`                              | -         | Icon to show on left      |
+| `rightIcon`   | `ReactElement`                              | -         | Icon to show on right     |
+| `width`       | `string \| number`                          | -         | Button width              |
+| `onClick`     | `() => void`                                | -         | Click handler             |
 
 ## Examples
 
