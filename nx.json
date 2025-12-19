@@ -15,10 +15,6 @@
       ],
       "cache": true
     },
-    "@nx/vite:test": {
-      "inputs": ["default", "^default", "{workspaceRoot}/jest.preset.js"],
-      "cache": true
-    },
     "@nx/jest:jest": {
       "inputs": ["default", "^default", "{workspaceRoot}/jest.preset.js"],
       "cache": true,
@@ -53,6 +49,10 @@
     "build": {
       "cache": true,
       "dependsOn": ["^build"]
+    },
+    "@nx/vitest:test": {
+      "inputs": ["default", "^default", "{workspaceRoot}/jest.preset.js"],
+      "cache": true
     }
   },
   "generators": {

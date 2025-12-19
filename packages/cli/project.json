@@ -18,7 +18,7 @@
       "dependsOn": ["build"]
     },
     "test": {
-      "executor": "@nx/vite:test",
+      "executor": "@nx/vitest:test",
       "outputs": ["{workspaceRoot}/coverage/packages/cli"],
       "options": {
         "passWithNoTests": true,
