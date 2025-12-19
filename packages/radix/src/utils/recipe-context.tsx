@@ -42,10 +42,7 @@ export const createRecipeContext = (recipe: Recipe) => {
   ) => {
     const WrappedComponent = forwardRef<unknown, PropsWithoutRef<Props>>(
       (props, ref) => {
-        const [variantProps, elementProps] = recipe.splitVariantProps({
-          ...props,
-          ref,
-        });
+        const [variantProps, elementProps] = recipe.splitVariantProps(props);
         // @ts-expect-error Recipe accepts any variant props
         const recipeClass = recipe(variantProps);
         const classes = cx(

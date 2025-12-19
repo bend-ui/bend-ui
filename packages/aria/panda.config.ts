@@ -9,7 +9,7 @@ export default defineConfig({
   preflight: true,
 
   // Where to look for your css declarations
-  include: [path.resolve(__dirname, './src/**/*.{js,jsx,ts,tsx}')],
+  include: ['./src/**/*.{js,jsx,ts,tsx}'],
 
   // Files to exclude
   exclude: [],

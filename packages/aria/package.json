@@ -18,7 +18,7 @@
     "@particles/preset": "workspace:*",
     "@particles/react": "workspace:*",
     "@particles/styled-system": "workspace:*",
-    "react-aria-components": "^1.13.0"
+    "react-aria-components": "^1.14.0"
   },
   "devDependencies": {
     "@particles/storybook": "workspace:*"

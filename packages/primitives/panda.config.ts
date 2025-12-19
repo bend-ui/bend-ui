@@ -1,6 +1,9 @@
+import path from 'path';
 import { defineConfig } from '@pandacss/dev';
 
 export default defineConfig({
+  cwd: path.resolve(__dirname),
+
   // Whether to use css reset
   preflight: true,
 

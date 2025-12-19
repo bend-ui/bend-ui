@@ -1,19 +1,11 @@
-const { FlatCompat } = require('@eslint/eslintrc');
-const js = require('@eslint/js');
-const { fixupConfigRules } = require('@eslint/compat');
 const nx = require('@nx/eslint-plugin');
 const baseConfig = require('../../eslint.config.cjs');
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-});
+const nextVitals = require('eslint-config-next/core-web-vitals');
+const nextTs = require('eslint-config-next/typescript');
 
 module.exports = [
-  ...fixupConfigRules(compat.extends('next')),
-
-  ...fixupConfigRules(compat.extends('next/core-web-vitals')),
-
+  ...nextVitals,
+  ...nextTs,
   ...baseConfig,
   ...nx.configs['flat/react-typescript'],
   {
