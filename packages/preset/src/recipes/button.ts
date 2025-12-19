@@ -18,9 +18,20 @@ export const buttonRecipe = defineRecipe({
       fontWeight: 'medium',
       position: 'relative',
       overflow: 'hidden',
+      _focusVisible: {
+        layerStyle: 'focus',
+      },
     },
     label: {
       textAlign: 'center',
+    },
+    icon: {
+      width: '1lh',
+      height: '1lh',
+      '& > svg': {
+        width: '100%',
+        height: '100%',
+      },
     },
   }),
   variants: {
@@ -28,58 +39,42 @@ export const buttonRecipe = defineRecipe({
       default: parts({
         root: {
           colorPalette: 'neutral',
-          _soft: {
-            boxShadow: 'interaction.neutral',
-          },
+          color: 'colorPalette.text',
         },
       }),
       primary: parts({
         root: {
           colorPalette: 'primary',
-          _soft: {
-            boxShadow: 'interaction.primary',
-          },
         },
       }),
       danger: parts({
         root: {
           colorPalette: 'error',
-          _soft: {
-            boxShadow: 'interaction.error',
-          },
         },
       }),
       warning: parts({
         root: {
           colorPalette: 'warning',
-          _soft: {
-            boxShadow: 'interaction.warning',
-          },
         },
       }),
       success: parts({
         root: {
           colorPalette: 'success',
-          _soft: {
-            boxShadow: 'interaction.success',
-          },
         },
       }),
       info: parts({
         root: {
           colorPalette: 'info',
-          _soft: {
-            boxShadow: 'interaction.info',
-          },
         },
       }),
     },
     variant: {
       primary: parts({
         root: {
-          color: 'colorPalette.text.inverse',
+          color: 'colorPalette.text.inverse.strong',
           backgroundColor: 'colorPalette.fill',
           borderColor: 'colorPalette.stroke',
+          boxShadow: 'xs',
           _hover: {
             backgroundColor: 'colorPalette.fill.hover',
           },
@@ -97,22 +92,12 @@ export const buttonRecipe = defineRecipe({
               backgroundColor: 'colorPalette.fill.disabled',
             },
           },
-          _soft: {
-            _before: {
-              content: '""',
-              position: 'absolute',
-              inset: 0,
-              bgGradient: 'to-b',
-              gradientFrom: 'white/16',
-              gradientTo: 'transparent',
-            },
-          },
         },
       }),
       secondary: parts({
         root: {
           color: 'colorPalette.text',
-          backgroundColor: 'transparent',
+          backgroundColor: 'colorPalette.fill/20',
           borderColor: 'colorPalette.stroke',
           boxShadow: 'revert',
           _hover: {
@@ -131,8 +116,7 @@ export const buttonRecipe = defineRecipe({
       tertiary: parts({
         root: {
           color: 'colorPalette.text',
-          backgroundColor: 'colorPalette.fill.weak',
-
+          backgroundColor: 'transparent',
           _hover: {
             backgroundColor: 'colorPalette.fill.weak.hover',
           },
@@ -150,25 +134,34 @@ export const buttonRecipe = defineRecipe({
       sm: parts({
         root: {
           py: 'xs',
-          px: 'xs',
-          gap: 'xs',
+          px: 'sm',
+          gap: '1',
           fontSize: 'sm',
+        },
+        label: {
+          px: '1',
         },
       }),
       md: parts({
         root: {
           py: 'sm',
           px: 'md',
-          gap: 'sm',
+          gap: '1',
           fontSize: 'md',
+        },
+        label: {
+          px: 'xs',
         },
       }),
       lg: parts({
         root: {
           py: 'md',
           px: 'lg',
-          gap: 'lg',
+          gap: '1',
           fontSize: 'lg',
+        },
+        label: {
+          px: 'xs',
         },
       }),
     },

@@ -1,5 +1,5 @@
 import { defineSemanticTokens } from '@pandacss/dev';
-import { SemanticToken, Token } from '@pandacss/types';
+import { SemanticToken } from '@pandacss/types';
 import merge from 'deepmerge';
 import { ColorRamp, createColorScale } from './create-color-scale';
 
@@ -11,11 +11,11 @@ type DeepPartial<T> = T extends object
 
 export interface DefineToneTokens {
   fill?: Partial<
-    Record<'default' | 'hover' | 'active' | 'disabled', SemanticToken>
+    Record<'DEFAULT' | 'hover' | 'active' | 'disabled', SemanticToken>
   >;
-  text?: Partial<Record<'default' | 'inverse' | 'disabled', SemanticToken>>;
-  stroke?: Partial<Record<'default' | 'subtle', SemanticToken>>;
-  icon?: Partial<Record<'default' | 'inverse', SemanticToken>>;
+  text?: Partial<Record<'DEFAULT' | 'inverse' | 'disabled', SemanticToken>>;
+  stroke?: Partial<Record<'DEFAULT' | 'subtle', SemanticToken>>;
+  icon?: Partial<Record<'DEFAULT' | 'inverse', SemanticToken>>;
 }
 
 export interface DefineToneOptions {
@@ -34,7 +34,7 @@ const generateDefaultTokens = (tone: string) =>
         value: `{colors.${tone}.800}`,
       },
       hover: {
-        value: `color-mix(in srgb, {colors.${tone}.fill} 100%, white 20%)`,
+        value: `color-mix(in srgb, {colors.${tone}.fill} 100%, black 20%)`,
       },
       press: {
         value: `{colors.${tone}.700}`,

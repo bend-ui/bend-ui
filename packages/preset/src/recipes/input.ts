@@ -15,12 +15,13 @@ export const inputRecipe = defineRecipe({
   base: parts({
     root: {
       rounded: 'lg',
-      border: 'strong',
       transitionProperty: 'colors, border-color, background-color',
       transitionDuration: 'fast',
       transitionTimingFunction: 'ease-in-out',
       divideX: '1px',
-      divideColor: 'border.subtle',
+      _hover: {
+        cursor: 'text',
+      },
       _focusWithin: {
         layerStyle: 'focus',
       },
@@ -36,9 +37,29 @@ export const inputRecipe = defineRecipe({
         cursor: 'text',
       },
     },
+    input: {
+      outline: 'none',
+    },
+    icon: {
+      width: '1lh',
+      height: '1lh',
+      '& > svg': {
+        width: '100%',
+        height: '100%',
+      },
+    },
   }),
   variants: {
     size: {
+      sm: parts({
+        input: {
+          height: '8',
+        },
+        wrapper: {
+          paddingInline: '2',
+          gap: '1',
+        },
+      }),
       md: parts({
         input: {
           height: '10',
@@ -56,17 +77,28 @@ export const inputRecipe = defineRecipe({
           paddingInline: '3',
         },
       }),
+      lg: parts({
+        input: {
+          height: '12',
+        },
+        wrapper: {
+          paddingInline: '4',
+          gap: '3',
+        },
+      }),
     },
     variant: {
       solid: parts({
-        root: {},
+        root: {
+          backgroundColor: 'fill',
+        },
       }),
       outline: parts({
-        root: {},
-        wrapper: {
-          _hover: {
-            backgroundColor: 'fill.hover',
-          },
+        root: {
+          backgroundColor: 'fill',
+          border: 'weak',
+          divideColor: 'stroke.weak',
+          shadow: 'xs',
         },
       }),
     },

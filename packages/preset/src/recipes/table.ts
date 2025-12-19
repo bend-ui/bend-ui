@@ -34,7 +34,7 @@ export const tableRecipe = defineSlotRecipe({
       true: {
         root: {
           border: '1px solid',
-          borderColor: 'border.base',
+          borderColor: 'stroke',
         },
       },
     },
@@ -42,11 +42,11 @@ export const tableRecipe = defineSlotRecipe({
       true: {
         head: {
           borderRight: '1px solid',
-          borderColor: 'border.base',
+          borderColor: 'stroke',
         },
         cell: {
           borderRight: '1px solid',
-          borderColor: 'border.base',
+          borderColor: 'stroke',
         },
       },
     },
@@ -54,11 +54,11 @@ export const tableRecipe = defineSlotRecipe({
       true: {
         head: {
           borderBottom: '1px solid',
-          borderColor: 'border.base',
+          borderColor: 'stroke',
         },
         cell: {
           borderBottom: '1px solid',
-          borderColor: 'border.base',
+          borderColor: 'stroke',
         },
       },
     },

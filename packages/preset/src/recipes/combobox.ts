@@ -33,7 +33,7 @@ export const comboboxRecipe = defineRecipe({
       background: 'bg.default',
       borderRadius: 'md',
       borderWidth: '1px',
-      borderColor: 'border.default',
+      borderColor: 'stroke',
       boxShadow: 'lg',
       maxHeight: '64',
       overflow: 'auto',

@@ -5,7 +5,10 @@ import { HTMLParticlesProps, particles } from '../factory';
 import { Assign } from '@particles/styled-system/types';
 import { cx } from '@particles/styled-system/css';
 
-export type InputRootProps = HTMLParticlesProps<'input'> & InputVariantProps;
+export type InputRootProps = Assign<
+  HTMLParticlesProps<'input'>,
+  InputVariantProps
+>;
 
 const InputRoot = (props: InputRootProps) => {
   const { ref, ...rest } = props;
@@ -63,8 +66,7 @@ const InputAddon = (props: InputAddonProps) => {
   return <particles.div ref={ref} data-part="addon" {...rest} />;
 };
 
-export interface InputProps
-  extends Assign<HTMLParticlesProps<'input'>, InputVariantProps> {
+export interface InputProps extends InputRootProps {
   icon?: ReactNode;
   iconEnd?: ReactNode;
   elementStart?: ReactNode;

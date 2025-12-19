@@ -34,10 +34,12 @@ export const buttonGroupRecipe = defineRecipe({
           _first: {
             roundedTopRight: '0',
             roundedBottomRight: '0',
+            borderRightWidth: '0',
           },
           _last: {
             roundedTopLeft: '0',
             roundedBottomLeft: '0',
+            borderLeftWidth: '0',
           },
           _notFirst: {
             roundedTopLeft: '0',

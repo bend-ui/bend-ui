@@ -51,6 +51,10 @@ export const layerStyles = defineLayerStyles({
     DEFAULT: {
       value: {
         boxShadow: 'focusRing',
+        outlineOffset: '2px',
+        outlineWidth: '4px',
+        outlineStyle: 'solid',
+        outlineColor: 'stroke.primary/32',
       },
     },
   },

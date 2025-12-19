@@ -4,7 +4,7 @@ import { error, info, neutral, primary, success, warning } from './tones';
 export const colors = defineSemanticTokens.colors({
   bg: {
     DEFAULT: {
-      value: '{colors.neutral.50}',
+      value: '{colors.neutral.100}',
     },
     page: {
       value: '{colors.neutral.50}',

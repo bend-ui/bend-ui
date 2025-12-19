@@ -37,7 +37,7 @@ export const radioGroupRecipe = defineRecipe({
         },
       },
       _disabled: {
-        borderColor: 'border.disabled',
+        borderColor: 'stroke.disabled',
         color: 'fg.disabled',
         _hover: {
           bg: 'initial',
