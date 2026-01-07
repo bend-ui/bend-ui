@@ -6,7 +6,7 @@ import { styled } from '@particles/styled-system/jsx';
 import { HTMLParticlesProps } from '@particles/react';
 
 const SelectRoot = withRecipe<SelectPrimitive.Root.Props<string>>(
-  styled('div'),
+  SelectPrimitive.Root,
   select,
   'root',
 ) as unknown as typeof SelectPrimitive.Root;
@@ -113,52 +113,50 @@ const Component = <Value, Multiple extends boolean | undefined = false>(
   props: SelectProps<Value, Multiple>,
 ) => {
   return (
-    <SelectPrimitive.Root {...props}>
-      <SelectRoot>
-        <SelectControl>
-          <SelectTrigger>
-            <SelectValue />
-            <SelectIcon>
-              <ChevronsUpDownIcon />
-            </SelectIcon>
-          </SelectTrigger>
-        </SelectControl>
-        <SelectPortal>
-          <SelectPositioner sideOffset={8}>
-            <SelectScrollUpArrow />
-            <SelectPopup>
-              <SelectList>
-                <SelectItem value="sans">
-                  <SelectItemText>Sans-serif</SelectItemText>
-                  <SelectItemIndicator>
-                    <CheckIcon />
-                  </SelectItemIndicator>
-                </SelectItem>
-                <SelectItem value="serif">
-                  <SelectItemText>Serif</SelectItemText>
-                  <SelectItemIndicator>
-                    <CheckIcon />
-                  </SelectItemIndicator>
-                </SelectItem>
-                <SelectItem value="mono">
-                  <SelectItemText>Monospace</SelectItemText>
-                  <SelectItemIndicator>
-                    <CheckIcon />
-                  </SelectItemIndicator>
-                </SelectItem>
-                <SelectItem value="cursive">
-                  <SelectItemText>Cursive</SelectItemText>
-                  <SelectItemIndicator>
-                    <CheckIcon />
-                  </SelectItemIndicator>
-                </SelectItem>
-              </SelectList>
-            </SelectPopup>
-            <SelectScrollDownArrow />
-          </SelectPositioner>
-        </SelectPortal>
-      </SelectRoot>
-    </SelectPrimitive.Root>
+    <SelectRoot {...props}>
+      <SelectControl>
+        <SelectTrigger>
+          <SelectValue />
+          <SelectIcon>
+            <ChevronsUpDownIcon />
+          </SelectIcon>
+        </SelectTrigger>
+      </SelectControl>
+      <SelectPortal>
+        <SelectPositioner sideOffset={8}>
+          <SelectScrollUpArrow />
+          <SelectPopup>
+            <SelectList>
+              <SelectItem value="sans">
+                <SelectItemText>Sans-serif</SelectItemText>
+                <SelectItemIndicator>
+                  <CheckIcon />
+                </SelectItemIndicator>
+              </SelectItem>
+              <SelectItem value="serif">
+                <SelectItemText>Serif</SelectItemText>
+                <SelectItemIndicator>
+                  <CheckIcon />
+                </SelectItemIndicator>
+              </SelectItem>
+              <SelectItem value="mono">
+                <SelectItemText>Monospace</SelectItemText>
+                <SelectItemIndicator>
+                  <CheckIcon />
+                </SelectItemIndicator>
+              </SelectItem>
+              <SelectItem value="cursive">
+                <SelectItemText>Cursive</SelectItemText>
+                <SelectItemIndicator>
+                  <CheckIcon />
+                </SelectItemIndicator>
+              </SelectItem>
+            </SelectList>
+          </SelectPopup>
+          <SelectScrollDownArrow />
+        </SelectPositioner>
+      </SelectPortal>
+    </SelectRoot>
   );
 };
 

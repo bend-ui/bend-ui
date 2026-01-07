@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Form as FormPrimitive } from '@base-ui/react/form';
 import { Field } from '../Field';
+import { Button } from '@particles/react';
 
 const FormRoot = FormPrimitive;
 
@@ -11,10 +12,8 @@ const Component = (props: FormProps) => {
   const [loading, setLoading] = React.useState(false);
 
   return (
-    <FormRoot
-      {...props}
+    <FormPrimitive
       errors={errors}
-      onClearErrors={setErrors}
       onSubmit={async (event) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
@@ -30,24 +29,21 @@ const Component = (props: FormProps) => {
         setLoading(false);
       }}
     >
-      <div>
-        <div>
-          <Field.Label>Homepage</Field.Label>
-          <Field.Control
-            name="url"
-            type="url"
-            required
-            defaultValue="https://example.com"
-            placeholder="https://example.com"
-            pattern="https?://.*"
-          />
-          <Field.Error />
-        </div>
-      </div>
-      <button disabled={loading} type="submit">
+      <Field.Root name="url">
+        <Field.Label>Homepage</Field.Label>
+        <Field.Control
+          type="url"
+          required
+          defaultValue="https://example.com"
+          placeholder="https://example.com"
+          pattern="https?://.*"
+        />
+        <Field.Error />
+      </Field.Root>
+      <Button type="submit" disabled={loading}>
         Submit
-      </button>
-    </FormRoot>
+      </Button>
+    </FormPrimitive>
   );
 };
 
