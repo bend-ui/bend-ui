@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tooltip as TooltipPrimitive } from '@base-ui-components/react/tooltip';
+import { Tooltip as TooltipPrimitive } from '@base-ui/react/tooltip';
 import { withParts, withRecipe } from '@particles/react';
 import { tooltip } from '@particles/styled-system/recipes';
 

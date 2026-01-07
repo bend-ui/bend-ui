@@ -1,4 +1,4 @@
-import { Slider as SliderPrimitive } from '@base-ui-components/react/slider';
+import { Slider as SliderPrimitive } from '@base-ui/react/slider';
 
 const SliderRoot = SliderPrimitive.Root;
 const SliderControl = SliderPrimitive.Control;

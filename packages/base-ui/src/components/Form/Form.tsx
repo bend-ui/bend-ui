@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form as FormPrimitive } from '@base-ui-components/react/form';
+import { Form as FormPrimitive } from '@base-ui/react/form';
 import { Field } from '../Field';
 
 const FormRoot = FormPrimitive;

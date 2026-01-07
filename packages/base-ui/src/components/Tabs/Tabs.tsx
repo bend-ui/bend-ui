@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tabs as TabsPrimitive } from '@base-ui-components/react/tabs';
+import { Tabs as TabsPrimitive } from '@base-ui/react/tabs';
 import { withParts, withRecipe } from '@particles/react';
 import { tabs } from '@particles/styled-system/recipes';
 

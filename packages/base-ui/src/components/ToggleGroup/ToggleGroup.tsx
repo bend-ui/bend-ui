@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Toggle } from '../Toggle';
-import { ToggleGroup as ToggleGroupPrimitive } from '@base-ui-components/react/toggle-group';
+import { ToggleGroup as ToggleGroupPrimitive } from '@base-ui/react/toggle-group';
 
 const ToggleGroupRoot = ToggleGroupPrimitive;
 

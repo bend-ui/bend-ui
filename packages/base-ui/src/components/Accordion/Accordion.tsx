@@ -1,4 +1,4 @@
-import { Accordion as AccordionPrimitive } from '@base-ui-components/react';
+import { Accordion as AccordionPrimitive } from '@base-ui/react';
 import {
   accordion,
   AccordionVariantProps,

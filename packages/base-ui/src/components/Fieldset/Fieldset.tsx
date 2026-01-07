@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Fieldset as FieldsetPrimitive } from '@base-ui-components/react/fieldset';
+import { Fieldset as FieldsetPrimitive } from '@base-ui/react/fieldset';
 import { Field } from '../Field';
 
 const FieldsetRoot = FieldsetPrimitive.Root;

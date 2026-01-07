@@ -1,4 +1,4 @@
-import { ContextMenu as ContextMenuPrimitive } from '@base-ui-components/react/context-menu';
+import { ContextMenu as ContextMenuPrimitive } from '@base-ui/react/context-menu';
 
 const ContextMenuRoot = ContextMenuPrimitive.Root;
 const ContextMenuTrigger = ContextMenuPrimitive.Trigger;

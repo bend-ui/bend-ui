@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { Toast as ToastPrimitive } from '@base-ui-components/react/toast';
+import { Toast as ToastPrimitive } from '@base-ui/react/toast';
 import { withParts, withRecipe } from '@particles/react';
 import { toast } from '@particles/styled-system/recipes';
 

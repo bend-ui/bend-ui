@@ -1,4 +1,4 @@
-import { Popover as PopoverPrimitive } from '@base-ui-components/react/popover';
+import { Popover as PopoverPrimitive } from '@base-ui/react/popover';
 import { popover } from '@particles/styled-system/recipes';
 import { withParts, withRecipe } from '@particles/react';
 

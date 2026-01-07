@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CheckboxGroup as CheckboxGroupPrimitive } from '@base-ui-components/react/checkbox-group';
+import { CheckboxGroup as CheckboxGroupPrimitive } from '@base-ui/react/checkbox-group';
 import { Checkbox } from '../Checkbox';
 
 const CheckboxGroupRoot = CheckboxGroupPrimitive;

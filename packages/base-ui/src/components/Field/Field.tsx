@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Field as FieldPrimitive } from '@base-ui-components/react/field';
+import { Field as FieldPrimitive } from '@base-ui/react/field';
 import { withParts, withRecipe } from '@particles/react';
 import { formField } from '@particles/styled-system/recipes';
 import { Input } from '../Input';

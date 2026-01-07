@@ -1,5 +1,5 @@
 import React from 'react';
-import { Progress as ProgressPrimitive } from '@base-ui-components/react/progress';
+import { Progress as ProgressPrimitive } from '@base-ui/react/progress';
 
 const ProgressRoot = ProgressPrimitive.Root;
 const ProgressLabel = ProgressPrimitive.Label;

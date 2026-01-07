@@ -1,4 +1,4 @@
-import { Select as SelectPrimitive } from '@base-ui-components/react/select';
+import { Select as SelectPrimitive } from '@base-ui/react/select';
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react';
 import { withParts, withRecipe } from '@particles/react';
 import { selectDropdown, select } from '@particles/styled-system/recipes';

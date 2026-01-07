@@ -1,4 +1,4 @@
-import { Avatar as AvatarPrimitive } from '@base-ui-components/react/avatar';
+import { Avatar as AvatarPrimitive } from '@base-ui/react/avatar';
 import { avatar, AvatarVariantProps } from '@particles/styled-system/recipes';
 import { withParts, withRecipe } from '@particles/react';
 

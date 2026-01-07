@@ -1,5 +1,5 @@
 import { alertDialog, overlay } from '@particles/styled-system/recipes';
-import { AlertDialog as AlertDialogPrimitive } from '@base-ui-components/react/alert-dialog';
+import { AlertDialog as AlertDialogPrimitive } from '@base-ui/react/alert-dialog';
 import { withParts, withRecipe } from '@particles/react';
 import { Button } from '@particles/react';
 

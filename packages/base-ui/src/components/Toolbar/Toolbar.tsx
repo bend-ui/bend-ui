@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toolbar as ToolbarPrimitive } from '@base-ui-components/react/toolbar';
+import { Toolbar as ToolbarPrimitive } from '@base-ui/react/toolbar';
 import { Toggle } from '../Toggle';
 import { Select } from '../Select';
 

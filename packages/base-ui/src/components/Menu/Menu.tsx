@@ -1,4 +1,4 @@
-import { Menu as MenuPrimitive } from '@base-ui-components/react/menu';
+import { Menu as MenuPrimitive } from '@base-ui/react/menu';
 import { ArrowDownIcon, ChevronDownIcon } from 'lucide-react';
 
 const MenuRoot = MenuPrimitive.Root;

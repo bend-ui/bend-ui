@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toggle as TogglePrimitive } from '@base-ui-components/react/toggle';
+import { Toggle as TogglePrimitive } from '@base-ui/react/toggle';
 
 const ToggleRoot = TogglePrimitive;
 

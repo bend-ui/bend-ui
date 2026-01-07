@@ -1,4 +1,4 @@
-import { Menubar as MenubarPrimitive } from '@base-ui-components/react/menubar';
+import { Menubar as MenubarPrimitive } from '@base-ui/react/menubar';
 import { Menu } from '../Menu';
 import { ChevronRightIcon } from 'lucide-react';
 

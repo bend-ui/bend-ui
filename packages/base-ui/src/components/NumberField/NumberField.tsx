@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { NumberField as NumberFieldPrimitive } from '@base-ui-components/react/number-field';
+import { NumberField as NumberFieldPrimitive } from '@base-ui/react/number-field';
 
 const NumberFieldRoot = NumberFieldPrimitive.Root;
 const NumberFieldScrubArea = NumberFieldPrimitive.ScrubArea;
