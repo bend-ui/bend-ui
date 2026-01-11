@@ -1,6 +1,6 @@
 import '@fontsource-variable/inter';
 import '../styles/globals.css';
-import { RootProvider } from 'fumadocs-ui/provider';
+import { RootProvider } from 'fumadocs-ui/provider/next';
 
 interface RootLayoutProps {
   children: React.ReactNode;

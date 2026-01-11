@@ -12,6 +12,11 @@
     "isolatedModules": true,
     "incremental": true,
     "moduleResolution": "Bundler",
+    "paths": {
+      "fumadocs-mdx:collections/server": [".source/server"],
+      "fumadocs-mdx:collections/dynamic": [".source/dynamic"],
+      "fumadocs-mdx:collections/browser": [".source/browser"]
+    },
     "plugins": [
       {
         "name": "next"

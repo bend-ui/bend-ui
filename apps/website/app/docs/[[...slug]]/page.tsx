@@ -16,12 +16,14 @@ export default async function Page(props: {
   const page = source.getPage(params.slug);
   if (!page) notFound();
 
-  const MDX = page.data.body;
+  // Type assertion needed due to type inference issue with toFumadocsSource
+  const pageData = page.data as any;
+  const MDX = pageData.body as React.ComponentType<any>;
 
   return (
-    <DocsPage full={page.data.full} toc={page.data.toc}>
-      <DocsTitle>{page.data.title}</DocsTitle>
-      <DocsDescription>{page.data.description}</DocsDescription>
+    <DocsPage full={pageData.full} toc={pageData.toc}>
+      <DocsTitle>{pageData.title}</DocsTitle>
+      <DocsDescription>{pageData.description}</DocsDescription>
       <DocsBody>
         <MDX components={mdxComponents} />
       </DocsBody>
@@ -40,8 +42,10 @@ export async function generateMetadata(props: {
   const page = source.getPage(params.slug);
   if (!page) notFound();
 
+  const pageData = page.data as any;
+
   return {
-    title: page.data.title,
-    description: page.data.description,
+    title: pageData.title,
+    description: pageData.description,
   };
 }
