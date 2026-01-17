@@ -1,0 +1,17 @@
+{
+  "name": "Vite Base UI-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/vite-base-ui-e2e/src",
+  "tags": [],
+  "implicitDependencies": ["Vite Base UI"],
+  "targets": {
+    "e2e": {
+      "executor": "@nx/playwright:playwright",
+      "outputs": ["{workspaceRoot}/dist/.playwright/apps/vite-base-ui-e2e"],
+      "options": {
+        "config": "apps/vite-base-ui-e2e/playwright.config.ts"
+      }
+    }
+  }
+}

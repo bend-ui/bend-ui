@@ -80,6 +80,10 @@
       "name": "🧪 Vite + Ark",
       "path": "apps/vite-ark",
     },
+    {
+      "name": "🧪 Vite + Base UI",
+      "path": "apps/vite-base-ui",
+    }
   ],
   "settings": {
     "typescript.tsdk": "🧬 particles/node_modules/typescript/lib",
