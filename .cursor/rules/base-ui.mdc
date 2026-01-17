@@ -1,0 +1,9 @@
+---
+globs: packages/base-ui/**/*.{ts,tsx,js,jsx}
+description: Rules for Base UI components
+alwaysApply: false
+---
+
+# Overview
+
+Always refer to https://base-ui.com/llms.txt for this project
