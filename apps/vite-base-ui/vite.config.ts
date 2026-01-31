@@ -3,6 +3,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
+import path from 'path';
 
 export default defineConfig(() => ({
   root: __dirname,
@@ -18,6 +19,12 @@ export default defineConfig(() => ({
   plugins: [react(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
   resolve: {
     conditions: ['source', 'import', 'module', 'browser', 'default'],
+    alias: [
+      {
+        find: /^@particles\/styled-system\/(.*)$/,
+        replacement: path.resolve(__dirname, 'styled-system/$1'),
+      },
+    ],
   },
   // Uncomment this if you are using workers.
   // worker: {
@@ -32,7 +39,7 @@ export default defineConfig(() => ({
     },
   },
   test: {
-    name: 'Vite Base UI',
+    name: 'vite-base-ui',
     watch: false,
     globals: true,
     environment: 'jsdom',

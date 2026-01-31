@@ -28,6 +28,9 @@
       "@particles/react": [
         "packages/react/src/index.ts"
       ],
+      "@particles/primitives": [
+        "packages/primitives/src/index.ts"
+      ],
       "@particles/react-utils": [
         "packages/react-utils/src/index.ts"
       ],
@@ -38,7 +41,7 @@
         "packages/preset-base/src/index.ts"
       ],
       "@particles/styled-system/*": [
-        "styled-system/*"
+        "apps/website/styled-system/*"
       ]
     },
     "plugins": [

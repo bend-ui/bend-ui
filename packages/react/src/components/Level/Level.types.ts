@@ -1,5 +1,5 @@
-import type { ComponentPropsWithoutRef, ReactNode } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 
-export interface LevelProps extends ComponentPropsWithoutRef<'div'> {
+export interface LevelProps extends ComponentProps<'div'> {
   children?: ReactNode;
 }

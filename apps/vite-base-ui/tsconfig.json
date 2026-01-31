@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "jsx": "react-jsx",
     "allowJs": false,
     "esModuleInterop": false,
@@ -21,6 +21,9 @@
       "@particles/react": [
         "packages/react/src/index.ts"
       ],
+      "@particles/primitives": [
+        "packages/primitives/src/index.ts"
+      ],
       "@particles/react-utils": [
         "packages/react-utils/src/index.ts"
       ],
@@ -31,7 +34,7 @@
         "packages/preset-base/src/index.ts"
       ],
       "@particles/styled-system/*": [
-        "packages/styled-system/*"
+        "packages/vite-base-ui/styled-system/*"
       ]
     }
   },

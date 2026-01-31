@@ -20,7 +20,7 @@ describe('App', () => {
       </BrowserRouter>,
     );
     expect(
-      getAllByText(new RegExp('Welcome Vite Base UI', 'gi')).length > 0,
+      getAllByText(new RegExp('Welcome vite-base-ui', 'gi')).length > 0,
     ).toBeTruthy();
   });
 });

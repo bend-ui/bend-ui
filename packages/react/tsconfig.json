@@ -13,6 +13,9 @@
       "~/*": [
         "packages/react/src/*"
       ],
+      "@particles/primitives": [
+        "packages/primitives/src/index.ts"
+      ],
       "@particles/react-utils": [
         "packages/react-utils/src/index.ts"
       ],
@@ -23,7 +26,7 @@
         "packages/preset-base/src/index.ts"
       ],
       "@particles/styled-system/*": [
-        "packages/styled-system/*"
+        "packages/react/styled-system/*"
       ]
     }
   },

@@ -1,5 +1,5 @@
 {
-  "name": "Vite Base UI",
+  "name": "vite-base-ui",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/vite-base-ui/src",
   "projectType": "application",
@@ -25,15 +25,15 @@
       "executor": "@nx/vite:dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "Vite Base UI:build"
+        "buildTarget": "vite-base-ui:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "Vite Base UI:build:development",
+          "buildTarget": "vite-base-ui:build:development",
           "hmr": true
         },
         "production": {
-          "buildTarget": "Vite Base UI:build:production",
+          "buildTarget": "vite-base-ui:build:production",
           "hmr": false
         }
       }
@@ -43,14 +43,14 @@
       "executor": "@nx/vite:preview-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "Vite Base UI:build"
+        "buildTarget": "vite-base-ui:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "Vite Base UI:build:development"
+          "buildTarget": "vite-base-ui:build:development"
         },
         "production": {
-          "buildTarget": "Vite Base UI:build:production"
+          "buildTarget": "vite-base-ui:build:production"
         }
       }
     },
@@ -65,7 +65,7 @@
       "executor": "@nx/web:file-server",
       "dependsOn": ["build"],
       "options": {
-        "buildTarget": "Vite Base UI:build",
+        "buildTarget": "vite-base-ui:build",
         "spa": true
       }
     }
