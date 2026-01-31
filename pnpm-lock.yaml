@@ -415,6 +415,15 @@ importers:
         specifier: ^1.1.6
         version: 1.1.16(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
 
+  apps/vite-ark:
+    dependencies:
+      '@particles/ark':
+        specifier: workspace:*
+        version: link:../../packages/ark
+      '@particles/preset':
+        specifier: workspace:*
+        version: link:../../packages/preset
+
   apps/vite-base-ui:
     dependencies:
       '@particles/base-ui':

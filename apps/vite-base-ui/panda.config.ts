@@ -4,6 +4,8 @@ import { preset } from '@particles/preset';
 export default defineConfig({
   preflight: true,
 
+  cwd: __dirname,
+
   jsxFramework: 'react',
 
   include: [

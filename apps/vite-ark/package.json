@@ -1,0 +1,13 @@
+{
+  "name": "vite-ark",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "prepare": "panda codegen"
+  },
+  "dependencies": {
+    "@particles/preset": "workspace:*",
+    "@particles/ark": "workspace:*"
+  },
+  "devDependencies": {}
+}

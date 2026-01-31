@@ -2,8 +2,6 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
     "types": [
       "node",
       "@nx/react/typings/cssmodule.d.ts",
@@ -25,5 +23,11 @@
     "vitest.config.ts",
     "vitest.config.mts"
   ],
-  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"]
+  "include": [
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "styled-system"
+  ]
 }

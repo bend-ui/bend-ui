@@ -17,7 +17,7 @@ export default defineConfig({
   // Files to exclude
   exclude: ['node_modules/@particles/react/src/**/*.stories.{js,jsx,ts,tsx}'],
 
-  presets: [preset()],
+  presets: [preset({ library: 'ark-ui' })],
 
   importMap: '@particles/styled-system',
 

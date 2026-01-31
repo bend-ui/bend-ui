@@ -1,4 +1,4 @@
-/// <reference types='vitest' />
+/// <reference types='vitest/config' />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
@@ -15,7 +15,7 @@ export default defineConfig({
     port: 4300,
     host: 'localhost',
   },
-  plugins: [react(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
+  plugins: [react({}), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
   resolve: {
     conditions: ['source', 'import', 'module', 'browser', 'default'],
   },

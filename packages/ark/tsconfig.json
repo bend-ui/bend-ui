@@ -6,15 +6,30 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "paths": {
-      "~/*": ["src/*"],
-      "@particles/preset": ["packages/preset/src/index.ts"],
-      "@particles/react": ["packages/react/src/index.ts"],
-      "@particles/styled-system/*": ["packages/styled-system/dist/*"],
-      "@particles/storybook": ["packages/storybook/src/index.ts"]
+      "~/*": [
+        "src/*"
+      ],
+      "@particles/preset": [
+        "packages/preset/src/index.ts"
+      ],
+      "@particles/react": [
+        "packages/react/src/index.ts"
+      ],
+      "@particles/styled-system/*": [
+        "packages/ark/styled-system/dist/*"
+      ],
+      "@particles/storybook": [
+        "packages/storybook/src/index.ts"
+      ]
     }
   },
   "files": [],
-  "include": ["panda.config.ts"],
+  "include": [
+    "**.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx"
+  ],
   "references": [
     {
       "path": "./tsconfig.lib.json"
