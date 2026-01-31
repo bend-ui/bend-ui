@@ -10,9 +10,7 @@ export default defineConfig({
   plugins: [react(), tsconfigPaths(), nxViteTsPaths()],
 
   test: {
-    cache: {
-      dir: '../../node_modules/.vitest/packages/aria',
-    },
+    cacheDir: '../../node_modules/.vitest/packages/aria',
     globals: true,
     environment: 'jsdom',
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],

@@ -10,6 +10,7 @@ export default defineConfig({
   plugins: [react(), tsconfigPaths()],
 
   test: {
+    cacheDir: '../../node_modules/.vitest/packages/react',
     globals: true,
     environment: 'jsdom',
     reporters: ['default'],
@@ -19,7 +20,7 @@ export default defineConfig({
     },
     // browser: {
     //   name: 'react-chromium',
-    //   provider: 'playwright',
+    //   provider: playwright(),
     //   enabled: true,
     //   headless: true,
     // },

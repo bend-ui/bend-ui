@@ -2,6 +2,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tsconfigPaths from 'vite-tsconfig-paths';
+import { cache } from 'react';
 
 export default defineConfig({
   cacheDir: '../../node_modules/.vite/packages/radix',
@@ -9,9 +10,7 @@ export default defineConfig({
   plugins: [react(), tsconfigPaths()],
 
   test: {
-    cache: {
-      dir: '../../node_modules/.vitest/packages/radix',
-    },
+    cacheDir: '../../node_modules/.vitest/packages/radix',
     globals: true,
     environment: 'jsdom',
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],

@@ -64,6 +64,8 @@ export default defineConfig({
 - [ ] Remove `coverage.ignoreEmptyLines` option
 - [ ] Remove `coverage.experimentalAstAwareRemapping` option
 - [ ] Add explicit `coverage.include` patterns based on project structure
+- [ ] Update coverage ignore hints to new format (see Vitest 4 docs)
+- [ ] Note: `coverage.ignoreClassMethods` now works with V8 provider
 - [ ] Update any documentation referencing these options
 
 #### 1.2 Pool Options Restructuring
@@ -107,6 +109,7 @@ export default defineConfig({
 - [ ] Replace `singleThread: true` or `singleFork: true` with `maxWorkers: 1, isolate: false`
 - [ ] Move all `poolOptions.*` nested options to top-level (e.g., `poolOptions.vmThreads.memoryLimit` → `vmMemoryLimit`)
 - [ ] Remove `threads.useAtomics` option
+- [ ] Remove `minWorkers` option (removed entirely in Vitest 4)
 - [ ] Update CI environment variables: `VITEST_MAX_THREADS` and `VITEST_MAX_FORKS` → `VITEST_MAX_WORKERS`
 
 #### 1.3 Workspace to Projects Rename
@@ -160,11 +163,13 @@ export default defineConfig({
 import { page } from '@vitest/browser';
 
 // ✅ AFTER (Vitest 4.0)
+import { playwright } from 'vitest/browser';
+
 export default defineConfig({
   test: {
     browser: {
       enabled: true,
-      provider: { name: 'playwright' }, // Object value
+      provider: playwright({ launchOptions: {} }), // Function call, not string
       testerHtmlPath: './test-setup.html', // Renamed from testerScripts
     },
   },
@@ -176,10 +181,10 @@ import { page } from 'vitest/browser';
 
 **Action Items**:
 
-- [ ] Convert `browser.provider` string values to object format: `{ name: 'provider-name' }`
+- [ ] Convert `browser.provider` string values to function call format: `provider: playwright({ ... })`
 - [ ] Replace `browser.testerScripts` with `browser.testerHtmlPath`
-- [ ] Update all imports from `@vitest/browser` to `vitest/browser`
-- [ ] Remove `@vitest/browser` from dependencies if no longer needed
+- [ ] Update all imports from `@vitest/browser/context` and `@vitest/browser/utils` to `vitest/browser`
+- [ ] Remove `@vitest/browser` from dependencies (Browser Mode is now built into Vitest)
 
 #### 1.5 Deprecated Configuration Options
 
@@ -216,6 +221,7 @@ export default defineConfig({
 **Action Items**:
 
 - [ ] Move `deps.*` options under `server.deps` namespace
+- [ ] Rename `deps.optimizer.web` to `deps.optimizer.client`
 - [ ] Remove `poolMatchGlobs` (use `projects` with conditions instead)
 - [ ] Remove `environmentMatchGlobs` (use `projects` with conditions instead)
 
@@ -436,7 +442,7 @@ expect(asyncMock.mock.settledResults[0]).toEqual({
 
 #### 3.1 Reporter API Changes
 
-**Search Pattern**: Custom reporters, `onCollected`, `onTaskUpdate`, `onFinished`
+**Search Pattern**: Custom reporters, `onCollected`, `onSpecsCollected`, `onPathsCollected`, `onTaskUpdate`, `onFinished`
 
 **Changes Required**:
 
@@ -445,6 +451,12 @@ expect(asyncMock.mock.settledResults[0]).toEqual({
 export default {
   onCollected(files) {
     // Handle collected files
+  },
+  onSpecsCollected(specs) {
+    // Handle specs collected
+  },
+  onPathsCollected(paths) {
+    // Handle paths collected
   },
   onTaskUpdate(task) {
     // Handle task update
@@ -510,7 +522,9 @@ reporters: ['tree']; // Use 'tree' for hierarchical output
 // If you want old behavior (don't print shadow root):
 export default defineConfig({
   test: {
-    printShadowRoot: false,
+    snapshotFormat: {
+      printShadowRoot: false,
+    },
   },
 });
 ```
@@ -519,7 +533,7 @@ export default defineConfig({
 
 - [ ] Review snapshot tests for custom elements
 - [ ] Update snapshots if shadow root contents are now included
-- [ ] Add `printShadowRoot: false` if old behavior is required
+- [ ] Add `snapshotFormat.printShadowRoot: false` if old behavior is required
 
 ### 5. Environment Variable Updates
 
@@ -566,8 +580,58 @@ import { execute } from 'vitest/execute';
 - [ ] If using `vitest/execute`, migrate to Vite Module Runner
 - [ ] Remove dependencies on `__vitest_executor`
 - [ ] Update custom pool implementations (complete rewrite needed)
+- [ ] Update custom environments: remove `transformMode`, use `viteEnvironment` instead
+- [ ] Rename `deps.optimizer.web` to `deps.optimizer.client`
 
-### 7. Type Definition Updates
+### 7. Default Exclusions Simplified
+
+**Search Pattern**: Test discovery issues, unexpected test files being found
+
+**Changes Required**:
+
+Vitest 4 now only excludes `node_modules` and `.git` by default. It **no longer** automatically excludes:
+
+- `dist`, `cypress`, `.nuxt`, `.next` folders
+- `.idea`, `.cache`, `.output`, `.temp` directories
+- Config files (`rollup.config.js`, `prettier.config.js`, etc.)
+
+```typescript
+// ✅ AFTER (Vitest 4.0) - Use test.dir to limit test discovery scope
+export default defineConfig({
+  test: {
+    dir: 'src', // Recommended: limit test discovery to source directory
+  },
+});
+```
+
+**Action Items**:
+
+- [ ] Add `test.dir` or `test.include` patterns to limit test discovery scope
+- [ ] Add explicit `test.exclude` patterns if tests in `dist`, `cypress`, etc. are being picked up
+- [ ] Review test runs for unexpected files being included
+
+### 8. Test API Changes
+
+**Search Pattern**: `test()` or `describe()` with three arguments, `--standalone` CLI flag
+
+**Changes Required**:
+
+```typescript
+// ❌ BEFORE (Vitest 3.x)
+test('my test', () => { /* ... */ }, { timeout: 5000 });
+describe('suite', () => { /* ... */ }, { timeout: 10000 });
+
+// ✅ AFTER (Vitest 4.0) - Options as third argument no longer supported
+test('my test', { timeout: 5000 }, () => { /* ... */ });
+describe('suite', { timeout: 10000 }, () => { /* ... */ });
+```
+
+**Action Items**:
+
+- [ ] Move test/describe options from third argument to second argument position
+- [ ] Note: `--standalone` with filename filter now runs matched files automatically
+
+### 9. Type Definition Updates
 
 **Search Pattern**: TypeScript imports from `vitest`, type errors after upgrade
 
@@ -649,6 +713,14 @@ nx prepush
 
 **Solution**: Check browser provider is object format and imports use `vitest/browser`
 
+### Issue: Unexpected test files discovered (dist, config files, etc.)
+
+**Solution**: Add `test.dir` or explicit `test.exclude` patterns — Vitest 4 only excludes `node_modules` and `.git` by default
+
+### Issue: Test options as third argument no longer work
+
+**Solution**: Move options from third argument to second argument: `test('name', { timeout: 5000 }, () => {})`
+
 ### Issue: TypeScript errors in test files
 
 **Solution**: Update to new type definitions and remove usage of deprecated types
@@ -714,4 +786,4 @@ When executing this migration:
 4. **Handle errors promptly**: If tests fail, fix immediately before proceeding
 5. **Update documentation**: Note any workspace-specific patterns or issues
 6. **Create meaningful commits**: Group related changes together with clear messages
-7. **Use TodoWrite tool**: Track migration progress for visibility
+7. **Use TaskCreate/TaskUpdate tools**: Track migration progress for visibility

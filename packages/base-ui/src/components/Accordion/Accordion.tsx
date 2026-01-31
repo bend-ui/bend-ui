@@ -11,7 +11,7 @@ import { HTMLParticlesProps } from '@particles/react';
 
 export interface AccordionRootProps
   extends Assign<AccordionPrimitive.Root.Props, HTMLParticlesProps<'div'>> {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   attached?: AccordionVariantProps['attached'];
 }
 
@@ -23,7 +23,7 @@ const AccordionRoot = withRecipe<AccordionRootProps>(
 
 export interface AccordionItemProps
   extends Assign<AccordionPrimitive.Item.Props, HTMLParticlesProps<'button'>> {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const AccordionItem = withParts<AccordionItemProps>(
@@ -36,7 +36,7 @@ export interface AccordionHeaderProps
     AccordionPrimitive.Header.Props,
     HTMLParticlesProps<'button'>
   > {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const AccordionHeader = withParts<AccordionHeaderProps>(
@@ -49,7 +49,7 @@ export interface AccordionTriggerProps
     AccordionPrimitive.Trigger.Props,
     HTMLParticlesProps<'button'>
   > {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const AccordionTrigger = withParts<AccordionTriggerProps>(
@@ -58,7 +58,7 @@ const AccordionTrigger = withParts<AccordionTriggerProps>(
 );
 
 export interface AccordionItemIndicatorProps extends HTMLParticlesProps<'div'> {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const AccordionIndicator = withParts<AccordionItemIndicatorProps>((props) => {

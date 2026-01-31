@@ -19,7 +19,7 @@ export default defineConfig({
     },
     // browser: {
     //   name: 'ark-chromium',
-    //   provider: 'playwright',
+    //   provider: playwright(),
     //   enabled: true,
     //   headless: true,
     // },

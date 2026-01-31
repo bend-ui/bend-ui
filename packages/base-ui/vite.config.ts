@@ -10,9 +10,7 @@ export default defineConfig({
   plugins: [react(), tsconfigPaths()],
 
   test: {
-    cache: {
-      dir: '../../node_modules/.vitest/packages/base-ui',
-    },
+    cacheDir: '../../node_modules/.vitest/packages/base-ui',
     globals: true,
     environment: 'jsdom',
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
