@@ -16,6 +16,9 @@ export default defineConfig(() => ({
     host: 'localhost',
   },
   plugins: [react(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
+  resolve: {
+    conditions: ['source', 'import', 'module', 'browser', 'default'],
+  },
   // Uncomment this if you are using workers.
   // worker: {
   //   plugins: () => [ nxViteTsPaths() ],

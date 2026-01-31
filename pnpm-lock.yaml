@@ -415,6 +415,15 @@ importers:
         specifier: ^1.1.6
         version: 1.1.16(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
 
+  apps/vite-base-ui:
+    dependencies:
+      '@particles/base-ui':
+        specifier: workspace:*
+        version: link:../../packages/base-ui
+      '@particles/preset':
+        specifier: workspace:*
+        version: link:../../packages/preset
+
   apps/website:
     dependencies:
       '@pandacss/token-dictionary':
