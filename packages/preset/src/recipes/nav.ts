@@ -19,10 +19,10 @@ export const navRecipe = defineSlotRecipe({
       textDecoration: 'none',
       rounded: 'md',
       _hover: {
-        backgroundColor: 'bg.hover',
+        backgroundColor: 'red.500',
       },
       _current: {
-        backgroundColor: 'bg.hover',
+        backgroundColor: 'red.500',
       },
     },
   },

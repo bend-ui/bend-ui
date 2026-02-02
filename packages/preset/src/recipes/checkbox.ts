@@ -29,7 +29,7 @@ export const checkboxRecipe = defineRecipe({
         outline: '2px solid transparent',
         outlineOffset: '2px',
         ringWidth: '2',
-        ringColor: 'ring',
+        ringColor: 'red.500',
         ringOffset: '2',
       },
 
@@ -38,7 +38,7 @@ export const checkboxRecipe = defineRecipe({
       },
 
       _checked: {
-        color: 'primary.fg',
+        color: 'red.500',
         bgColor: 'primary',
         borderColor: 'primary',
       },

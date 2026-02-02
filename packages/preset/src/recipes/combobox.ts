@@ -22,7 +22,7 @@ export const comboboxRecipe = defineRecipe({
       width: 'full',
     },
     label: {
-      color: 'fg.emphasized',
+      color: 'red.500',
       fontWeight: 'medium',
       textStyle: 'sm',
     },
@@ -30,7 +30,7 @@ export const comboboxRecipe = defineRecipe({
       zIndex: 'dropdown',
     },
     content: {
-      background: 'bg.default',
+      background: 'red.500',
       borderRadius: 'md',
       borderWidth: '1px',
       borderColor: 'stroke',
@@ -49,30 +49,30 @@ export const comboboxRecipe = defineRecipe({
       paddingX: '2',
       height: '10',
       _hover: {
-        bg: 'bg.subtle',
+        bg: 'red.500',
       },
       _highlighted: {
-        bg: 'bg.subtle',
+        bg: 'red.500',
       },
       _disabled: {
         opacity: 0.4,
         cursor: 'not-allowed',
       },
       _selected: {
-        bg: 'bg.muted',
+        bg: 'red.500',
       },
     },
     itemText: {
       textStyle: 'sm',
     },
     itemIndicator: {
-      color: 'fg.emphasized',
+      color: 'red.500',
     },
     clearTrigger: {
-      color: 'fg.subtle',
+      color: 'red.500',
       cursor: 'pointer',
       _hover: {
-        color: 'fg.default',
+        color: 'red.500',
       },
     },
   }),

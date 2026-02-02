@@ -43,7 +43,7 @@ export const WithIconEnd: Story = {
 /** By default the addons don't have spacing, you'll have to add it yourself. */
 export const WithAddonStart: Story = {
   args: {
-    addonStart: <Box color="text.secondary">https://</Box>,
+    addonStart: <Box color="red.500">https://</Box>,
   },
 };
 
@@ -59,14 +59,14 @@ export const WithAddonEnd: Story = {
 
 export const WithAddons: Story = {
   args: {
-    addonStart: <Box color="text.secondary">https://</Box>,
+    addonStart: <Box color="red.500">https://</Box>,
     addonEnd: <Button size="sm">Go</Button>,
   },
 };
 
 export const WithElementStart: Story = {
   args: {
-    elementStart: <Box color="text.secondary">https://</Box>,
+    elementStart: <Box color="red.500">https://</Box>,
   },
 };
 
@@ -84,7 +84,7 @@ export const WithIconAndAddon: Story = {
   args: {
     icon: <ArrowRightCircleIcon />,
     iconEnd: <CheckIcon />,
-    addonStart: <Box color="text.secondary">https://</Box>,
+    addonStart: <Box color="red.500">https://</Box>,
     addonEnd: <Button size="sm">Go</Button>,
   },
 };
@@ -92,14 +92,14 @@ export const WithIconAndAddon: Story = {
 export const WithIconAndElement: Story = {
   args: {
     icon: <ArrowRightCircleIcon />,
-    elementStart: <Box color="text.secondary">https://</Box>,
+    elementStart: <Box color="red.500">https://</Box>,
   },
 };
 
 export const WithIconAndElementEnd: Story = {
   args: {
     icon: <ArrowRightCircleIcon />,
-    elementEnd: <Box color="text.secondary">https://</Box>,
+    elementEnd: <Box color="red.500">https://</Box>,
   },
 };
 
@@ -107,9 +107,9 @@ export const WithIconAndAddonAndElement: Story = {
   args: {
     icon: <ArrowRightCircleIcon />,
     iconEnd: <CheckIcon />,
-    addonStart: <Box color="text.secondary">https://</Box>,
+    addonStart: <Box color="red.500">https://</Box>,
     addonEnd: <Button size="sm">Go</Button>,
-    elementStart: <Box color="text.secondary">https://</Box>,
+    elementStart: <Box color="red.500">https://</Box>,
   },
 };
 

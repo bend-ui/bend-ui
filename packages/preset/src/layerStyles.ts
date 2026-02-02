@@ -32,7 +32,7 @@ export const layerStyles = defineLayerStyles({
     },
     overlay: {
       value: {
-        backgroundColor: 'fill.overlay',
+        // backgroundColor: 'fill.overlay',
         border: 'base',
         borderRadius: 'md',
         boxShadow: 'md',

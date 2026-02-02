@@ -26,7 +26,7 @@ export const One = () => {
       <Stack>
         <Box>
           <Heading variant="title">Welcome!</Heading>
-          <Paragraph color="text.secondary">
+          <Paragraph color="red.500">
             Create an account to access your dashboard and settings
           </Paragraph>
         </Box>

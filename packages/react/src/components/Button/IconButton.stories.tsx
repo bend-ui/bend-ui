@@ -108,11 +108,11 @@ export const Polymorphic: Story = {
 export const WithCSSProp: Story = {
   args: {
     css: {
-      bg: 'bg.danger',
+      bg: 'red.500',
     },
   },
 };
 
 export const WithSystemProp: Story = {
-  render: (args) => <IconButton {...args} bg="bg.danger" />,
+  render: (args) => <IconButton {...args} bg="red.500" />,
 };

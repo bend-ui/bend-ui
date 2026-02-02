@@ -8,7 +8,7 @@ export const DashboardPage = () => {
     <div
       className={css({ h: 'screen', display: 'flex', flexDirection: 'row' })}
     >
-      <div className={css({ bgColor: 'bg.subtle', p: 'sm', minW: 'xs' })}>
+      <div className={css({ p: 'sm', minW: 'xs' })}>
         <h1>Ski resort</h1>
         <Nav direction="vertical">
           <Nav.Link asChild>

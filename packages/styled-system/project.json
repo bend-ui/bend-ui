@@ -9,7 +9,7 @@
       "command": "panda codegen --watch"
     },
     "build": {
-      "command": "panda codegen"
+      "command": ""
     },
     "publish": {
       "command": "node tools/scripts/publish.mjs styled-system {args.ver} {args.tag}",

@@ -18,7 +18,7 @@ export const Dashboard = () => {
     <div
       className={css({ h: 'screen', display: 'flex', flexDirection: 'row' })}
     >
-      <div className={css({ bgColor: 'bg.subtle', p: 'sm', minW: 'xs' })}>
+      <div className={css({ p: 'sm', minW: 'xs' })}>
         <h1>Ski resort</h1>
         <Nav direction="vertical">
           <Nav.Link asChild>
@@ -85,19 +85,19 @@ export const HRDashboard = () => {
           <Grid columns={3}>
             <GridItem>
               <Card>
-                <Card.Header>Annual Leave</Card.Header>
+                <Card.Section>Annual Leave</Card.Section>
                 <Card.Section>30 Days available</Card.Section>
               </Card>
             </GridItem>
             <GridItem>
               <Card>
-                <Card.Header>Sick Leave</Card.Header>
+                <Card.Section>Sick Leave</Card.Section>
                 <Card.Section>15 Days available</Card.Section>
               </Card>
             </GridItem>
             <GridItem>
               <Card>
-                <Card.Header>Casual Leave</Card.Header>
+                <Card.Section>Casual Leave</Card.Section>
                 <Card.Section>10 Days available</Card.Section>
               </Card>
             </GridItem>
@@ -107,13 +107,13 @@ export const HRDashboard = () => {
           <Grid columns={2}>
             <GridItem>
               <Card>
-                <Card.Header>Work from home</Card.Header>
+                <Card.Section>Work from home</Card.Section>
                 <Card.Section>5 Days available</Card.Section>
               </Card>
             </GridItem>
             <GridItem>
               <Card>
-                <Card.Header>Special Leave</Card.Header>
+                <Card.Section>Special Leave</Card.Section>
                 <Card.Section>5 Days available</Card.Section>
               </Card>
             </GridItem>
@@ -123,13 +123,13 @@ export const HRDashboard = () => {
           <Grid columns={2}>
             <GridItem>
               <Card>
-                <Card.Header>Work from home</Card.Header>
+                <Card.Section>Work from home</Card.Section>
                 <Card.Section>5 Days available</Card.Section>
               </Card>
             </GridItem>
             <GridItem>
               <Card>
-                <Card.Header>Special Leave</Card.Header>
+                <Card.Section>Special Leave</Card.Section>
                 <Card.Section>5 Days available</Card.Section>
               </Card>
             </GridItem>

@@ -14,7 +14,7 @@ export const tableRecipe = defineSlotRecipe({
       padding: 'md',
     },
     caption: {
-      color: 'text.subtle',
+      color: 'red.500',
     },
   },
   variants: {
@@ -23,7 +23,7 @@ export const tableRecipe = defineSlotRecipe({
         row: {
           _odd: {
             '&:has(td)': {
-              backgroundColor: 'bg.subtle',
+              backgroundColor: 'red.500',
             },
           },
         },

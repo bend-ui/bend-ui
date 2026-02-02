@@ -159,32 +159,32 @@ export function Dashboard() {
               <h2 className={css({ textStyle: 'title' })}>Pricing</h2>
               <div className={grid({ columns: 3, gap: '6' })}>
                 <Card>
-                  <Card.Header>
+                  <Card.Section>
                     <h3 className={css({ textStyle: 'title' })}>Personal</h3>
                     <h4 className={css({ textStyle: 'subtitle' })}>
                       Perfect plan for starters
                     </h4>
-                  </Card.Header>
+                  </Card.Section>
                   <p>Free</p>
                   <p>For a lifetime</p>
                 </Card>
                 <Card>
-                  <Card.Header>
+                  <Card.Section>
                     <h3 className={css({ textStyle: 'title' })}>Personal</h3>
                     <h4 className={css({ textStyle: 'subtitle' })}>
                       Perfect plan for starters
                     </h4>
-                  </Card.Header>
+                  </Card.Section>
                   <p>Free</p>
                   <p>For a lifetime</p>
                 </Card>
                 <Card>
-                  <Card.Header>
+                  <Card.Section>
                     <h3 className={css({ textStyle: 'title' })}>Personal</h3>
                     <h4 className={css({ textStyle: 'subtitle' })}>
                       Perfect plan for starters
                     </h4>
-                  </Card.Header>
+                  </Card.Section>
                   <p>Free</p>
                   <p>For a lifetime</p>
                 </Card>
