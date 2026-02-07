@@ -1,0 +1,10 @@
+{
+  "nx-console": {
+    "initialGitRef": {
+      "ref": "a5f26e0efe459db3eb6fe92425de67cc906f33cf",
+      "subject": "chore: update storybook"
+    },
+    "targetVersion": "latest",
+    "confirmedPackageUpdates": true
+  }
+}
