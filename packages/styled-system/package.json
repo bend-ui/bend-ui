@@ -42,11 +42,11 @@
     "styled-system"
   ],
   "dependencies": {
-    "@pandacss/dev": "^1.8.1",
+    "@pandacss/dev": "^1.8.2",
     "@particles/preset": "workspace:*"
   },
   "devDependencies": {
-    "@types/react": "^19.2.7",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3"
   },
   "scripts": {
