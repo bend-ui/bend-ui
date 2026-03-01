@@ -1,10 +1,21 @@
-import { Button } from '@particles/base-ui';
 import { Layout } from './components/Layout';
+import { Route, Routes } from 'react-router-dom';
+import { Clients } from './pages/clients';
+import { Events } from './pages/events';
+import { LiftStatus } from './pages/lift-status';
+import { SlopeConditions } from './pages/slope-conditions';
+import { Incidents } from './pages/incidents';
 
 export const SkiResort = () => {
   return (
     <Layout>
-      Welcome to the Ski Resort App! <Button>Click me</Button>
+      <Routes>
+        <Route path="clients" element={<Clients />} />
+        <Route path="slope-conditions" element={<SlopeConditions />} />
+        <Route path="lift-status" element={<LiftStatus />} />
+        <Route path="events" element={<Events />} />
+        <Route path="incidents" element={<Incidents />} />
+      </Routes>
     </Layout>
   );
 };

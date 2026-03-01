@@ -1,5 +1,6 @@
 import { Route, Routes, Link } from 'react-router-dom';
 import { SkiResort } from './apps/ski-resort';
+import DentalManagement from './apps/dental-management';
 
 export function App() {
   return (
@@ -16,11 +17,17 @@ export function App() {
                 <li>
                   <Link to="/ski-resort">Ski resort</Link>
                 </li>
+                <li>
+                  <Link to="/dental-management/overview">
+                    Dental management
+                  </Link>
+                </li>
               </ul>
             </div>
           }
         />
-        <Route path="/ski-resort" element={<SkiResort />} />
+        <Route path="/ski-resort/*" element={<SkiResort />} />
+        <Route path="/dental-management/*" element={<DentalManagement />} />
       </Routes>
     </div>
   );
