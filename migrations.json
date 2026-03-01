@@ -1,0 +1,10 @@
+{
+  "migrations": [],
+  "nx-console": {
+    "initialGitRef": {
+      "ref": "0f5c48493b225e575464d4fed8fe90efa69be4d9",
+      "subject": "chore: add agents skills"
+    },
+    "targetVersion": "latest"
+  }
+}
