@@ -42,6 +42,7 @@ import { angleSliderRecipe } from './angle-slider';
 import { datePickerRecipe } from './date-picker';
 import { clipboardRecipe } from './clipboard';
 import { toggleGroupRecipe } from './toggle-group';
+import { sidebarRecipe } from './sidebar';
 
 export const slotRecipes: Theme['slotRecipes'] = {
   // divider: dividerRecipe,
@@ -92,5 +93,6 @@ export const recipes: Theme['recipes'] = {
   toast: toastRecipe,
   tooltip: tooltipRecipe,
   radioGroup: radioGroupRecipe,
+  sidebar: sidebarRecipe,
   toggleGroup: toggleGroupRecipe,
 };

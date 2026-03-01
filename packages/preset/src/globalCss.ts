@@ -5,5 +5,7 @@ export const globalCss = defineGlobalStyles({
     fontFamily: 'sans',
     color: 'text',
     bg: 'bg.page',
+    minWidth: 'screen',
+    minHeight: 'screen',
   },
 });

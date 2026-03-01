@@ -41,6 +41,7 @@ import { backdropRecipe } from './backdrop';
 import { commandRecipe } from './command';
 import { datePickerRecipe } from './date-picker';
 import { clipboardRecipe } from './clipboard';
+import { sidebarRecipe } from './sidebar';
 
 export const slotRecipes: Theme['slotRecipes'] = {
   actionBar,
@@ -83,6 +84,7 @@ export const recipes: Theme['recipes'] = {
   popover,
   select: selectRecipe,
   selectDropdown: selectDropdownRecipe,
+  sidebar: sidebarRecipe,
   switchRecipe: switchRecipe,
   tabs: tabsRecipe,
   toast: toastRecipe,
@@ -111,6 +113,7 @@ export * from './radio-group';
 export * from './rating';
 export * from './segmented-control';
 export * from './select';
+export * from './sidebar';
 export * from './skeleton';
 export * from './slider';
 export * from './switch';

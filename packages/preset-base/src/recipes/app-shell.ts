@@ -22,9 +22,11 @@ export const appShellRecipe = defineRecipe({
       gridColumn: '1 / -1',
     },
     main: {
+      gridRow: '1 / -1',
       gridColumn: '2 / 2',
     },
     sidebar: {
+      gridRow: '1 / -1',
       gridColumn: '1 / 1',
       display: 'flex',
       flexDirection: 'column',
