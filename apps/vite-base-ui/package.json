@@ -6,8 +6,8 @@
     "prepare": "panda codegen"
   },
   "dependencies": {
-    "@particles/preset": "workspace:*",
-    "@particles/base-ui": "workspace:*"
-  },
-  "devDependencies": {}
+    "@fontsource-variable/inter": "^5.2.8",
+    "@particles/base-ui": "workspace:*",
+    "@particles/preset": "workspace:*"
+  }
 }
