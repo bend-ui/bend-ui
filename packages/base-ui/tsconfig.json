@@ -19,6 +19,9 @@
       ],
       "@particles/styled-system/*": [
         "packages/styled-system/dist/*"
+      ],
+      "@particles/storybook": [
+        "packages/storybook/src/index.ts"
       ]
     }
   },

@@ -7,6 +7,7 @@ export {
   Paragraph,
   Stack,
   Text,
+  IconButton,
 } from '@particles/react';
 
 export * from './Accordion';

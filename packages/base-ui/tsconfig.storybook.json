@@ -3,6 +3,7 @@
   "compilerOptions": {
     "emitDecoratorMetadata": true,
     "outDir": "",
+    "module": "ESNext",
     "moduleResolution": "bundler"
   },
   "files": [
