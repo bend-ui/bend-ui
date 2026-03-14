@@ -37,6 +37,7 @@ export * from './Radio';
 export * from './ScrollArea';
 export * from './Select';
 export * from './Separator';
+export * from './Sidebar';
 export * from './Slider';
 export * from './Switch';
 export * from './Tabs';
