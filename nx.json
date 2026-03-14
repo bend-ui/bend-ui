@@ -69,8 +69,7 @@
     "@nx/vitest:test": {
       "inputs": [
         "default",
-        "^default",
-        "{workspaceRoot}/jest.preset.js"
+        "^default"
       ],
       "cache": true
     }
@@ -102,18 +101,12 @@
   "extends": "nx/presets/npm.json",
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "nxCloudAccessToken": "NDU1YmQ4ODEtZmY4MS00Mzk4LTgxZTAtMTVhYWY2MjRiMDgyfHJlYWQtd3JpdGU=",
-  "tasksRunnerOptions": {
-    "default": {
-      "options": {}
-    }
-  },
   "defaultBase": "main",
   "release": {
     "version": {
       "preVersionCommand": "pnpm dlx nx run-many -t build"
     }
   },
-  "useLegacyCache": true,
   "plugins": [
     {
       "plugin": "@nx/storybook/plugin",
