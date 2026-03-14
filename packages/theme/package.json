@@ -16,7 +16,7 @@
     "dist"
   ],
   "devDependencies": {
-    "style-dictionary": "^5.3.2"
+    "style-dictionary": "^5.3.3"
   },
   "scripts": {
     "build": "tsup",
