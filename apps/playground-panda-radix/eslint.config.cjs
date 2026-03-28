@@ -11,4 +11,11 @@ module.exports = [
   {
     ignores: ['.next/**/*'],
   },
+  {
+    languageOptions: {
+      parserOptions: {
+        tsconfigRootDir: __dirname,
+      },
+    },
+  },
 ];

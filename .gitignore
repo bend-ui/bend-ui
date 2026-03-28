@@ -62,3 +62,6 @@ debug-storybook.log
 
 # Fumadocs generated files
 .source
+
+.claude/worktrees
+.claude/settings.local.json

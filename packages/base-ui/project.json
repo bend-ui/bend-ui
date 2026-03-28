@@ -17,7 +17,7 @@
       "executor": "@nx/vitest:test",
       "outputs": ["{options.reportsDirectory}"],
       "options": {
-        "reportsDirectory": "../../coverage/packages/base-ui"
+        "reportsDirectory": "{projectRoot}/../../coverage/packages/base-ui"
       }
     },
     "storybook": {

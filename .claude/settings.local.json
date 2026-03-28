@@ -1,7 +1,12 @@
 {
-  "enableAllProjectMcpServers": true,
-  "enabledMcpjsonServers": ["nx-mcp"],
   "permissions": {
-    "allow": ["mcp__nx-mcp__nx_project_details"]
-  }
+    "allow": [
+      "mcp__nx-mcp__nx_project_details",
+      "Bash(pnpm lint:*)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "nx-mcp"
+  ]
 }

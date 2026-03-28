@@ -22,7 +22,7 @@
       "outputs": ["{workspaceRoot}/coverage/packages/cli"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../../coverage/packages/cli"
+        "reportsDirectory": "{projectRoot}/../../coverage/packages/cli"
       }
     }
   }

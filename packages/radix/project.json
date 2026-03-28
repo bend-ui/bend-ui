@@ -18,7 +18,7 @@
       "outputs": ["{options.reportsDirectory}"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../../coverage/packages/radix"
+        "reportsDirectory": "{projectRoot}/../../coverage/packages/radix"
       }
     },
     "storybook": {
