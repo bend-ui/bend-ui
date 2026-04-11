@@ -2,17 +2,11 @@
   "mcpServers": {
     "ark-ui": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@ark-ui/mcp"
-      ]
+      "args": ["-y", "@ark-ui/mcp"]
     },
     "panda": {
       "command": "npx",
-      "args": [
-        "panda",
-        "mcp"
-      ]
+      "args": ["panda", "mcp", "--config", "packages/react/panda.config.ts"]
     }
   }
 }
