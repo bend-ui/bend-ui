@@ -21,6 +21,7 @@ export * from './Collapsible';
 export * from './Combobox';
 export * from './ContextMenu';
 export * from './Dialog';
+export * from './Drawer';
 export * from './Field';
 export * from './Fieldset';
 export * from './Form';
