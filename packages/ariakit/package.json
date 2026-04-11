@@ -10,7 +10,7 @@
     }
   },
   "dependencies": {
-    "@ariakit/react": "^0.4.24",
+    "@ariakit/react": "^0.4.25",
     "@particles/preset": "workspace:*",
     "@particles/react": "workspace:*",
     "@particles/styled-system": "workspace:*"
