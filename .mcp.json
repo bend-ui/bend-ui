@@ -7,6 +7,10 @@
     "panda": {
       "command": "npx",
       "args": ["panda", "mcp", "--config", "packages/react/panda.config.ts"]
+    },
+    "ux-components": {
+      "type": "http",
+      "url": "https://www.ux-components.com/api/mcp"
     }
   }
 }
