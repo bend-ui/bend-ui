@@ -1,5 +1,6 @@
 import { Route, Routes, Link } from 'react-router-dom';
 import { DashboardPage } from './dashboard';
+import '@fontsource-variable/inter/wght.css';
 import './index.css';
 
 export function App() {

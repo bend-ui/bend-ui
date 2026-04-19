@@ -417,6 +417,9 @@ importers:
 
   apps/vite-ark:
     dependencies:
+      '@fontsource-variable/inter':
+        specifier: ^5.2.8
+        version: 5.2.8
       '@particles/ark':
         specifier: workspace:*
         version: link:../../packages/ark
@@ -473,7 +476,7 @@ importers:
     dependencies:
       '@pandacss/dev':
         specifier: ^1
-        version: 1.9.1(jsdom@26.1.0)(typescript@5.9.3)
+        version: 1.9.1(jsdom@26.0.0)(typescript@5.9.3)
       '@particles/preset':
         specifier: workspace:*
         version: link:../preset
@@ -514,7 +517,7 @@ importers:
     devDependencies:
       '@pandacss/dev':
         specifier: ^1.10.0
-        version: 1.10.0(jsdom@26.1.0)(typescript@6.0.2)
+        version: 1.10.0(jsdom@26.0.0)(typescript@5.9.3)
 
   packages/ark:
     dependencies:
@@ -523,7 +526,7 @@ importers:
         version: 5.36.1(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       '@pandacss/dev':
         specifier: ^1
-        version: 1.9.1(jsdom@26.1.0)(typescript@5.9.3)
+        version: 1.9.1(jsdom@26.0.0)(typescript@5.9.3)
       '@particles/preset':
         specifier: workspace:*
         version: link:../preset
@@ -551,7 +554,7 @@ importers:
         version: 1.4.0(@date-fns/tz@1.4.1)(@types/react@19.2.14)(date-fns@4.1.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       '@pandacss/dev':
         specifier: ^1
-        version: 1.9.1(jsdom@26.1.0)(typescript@5.9.3)
+        version: 1.9.1(jsdom@26.0.0)(typescript@5.9.3)
       '@particles/preset':
         specifier: workspace:*
         version: link:../preset
@@ -591,7 +594,7 @@ importers:
     dependencies:
       '@pandacss/dev':
         specifier: ^1.10.0
-        version: 1.10.0(jsdom@26.1.0)(typescript@6.0.2)
+        version: 1.10.0(jsdom@26.0.0)(typescript@5.9.3)
       '@pandacss/types':
         specifier: ^1.10.0
         version: 1.10.0
@@ -606,7 +609,7 @@ importers:
     dependencies:
       '@pandacss/dev':
         specifier: ^1.10.0
-        version: 1.10.0(jsdom@26.1.0)(typescript@6.0.2)
+        version: 1.10.0(jsdom@26.0.0)(typescript@5.9.3)
       '@pandacss/types':
         specifier: ^1.10.0
         version: 1.10.0
@@ -621,7 +624,7 @@ importers:
     dependencies:
       '@pandacss/dev':
         specifier: ^1
-        version: 1.9.1(jsdom@26.1.0)(typescript@5.9.3)
+        version: 1.9.1(jsdom@26.0.0)(typescript@5.9.3)
       '@particles/preset':
         specifier: workspace:*
         version: link:../preset
@@ -655,7 +658,7 @@ importers:
         version: 0.27.19(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       '@pandacss/dev':
         specifier: ^1
-        version: 1.9.1(jsdom@26.1.0)(typescript@5.9.3)
+        version: 1.9.1(jsdom@26.0.0)(typescript@5.9.3)
       '@particles/preset':
         specifier: workspace:*
         version: link:../preset
@@ -691,7 +694,7 @@ importers:
     dependencies:
       '@pandacss/dev':
         specifier: ^1.10.0
-        version: 1.10.0(jsdom@26.1.0)(typescript@6.0.2)
+        version: 1.10.0(jsdom@26.0.0)(typescript@5.9.3)
       '@particles/preset':
         specifier: workspace:*
         version: link:../preset
@@ -18147,34 +18150,14 @@ snapshots:
       - supports-color
       - typescript
 
-  '@pandacss/dev@1.10.0(jsdom@26.1.0)(typescript@6.0.2)':
-    dependencies:
-      '@clack/prompts': 0.11.0
-      '@pandacss/config': 1.10.0
-      '@pandacss/logger': 1.10.0
-      '@pandacss/mcp': 1.10.0(jsdom@26.1.0)(typescript@6.0.2)
-      '@pandacss/node': 1.10.0(jsdom@26.1.0)(typescript@6.0.2)
-      '@pandacss/postcss': 1.10.0(jsdom@26.1.0)(typescript@6.0.2)
-      '@pandacss/preset-base': 1.10.0
-      '@pandacss/preset-panda': 1.10.0
-      '@pandacss/shared': 1.10.0
-      '@pandacss/token-dictionary': 1.10.0
-      '@pandacss/types': 1.10.0
-      cac: 6.7.14
-    transitivePeerDependencies:
-      - '@cfworker/json-schema'
-      - jsdom
-      - supports-color
-      - typescript
-
-  '@pandacss/dev@1.9.1(jsdom@26.1.0)(typescript@5.9.3)':
+  '@pandacss/dev@1.9.1(jsdom@26.0.0)(typescript@5.9.3)':
     dependencies:
       '@clack/prompts': 0.11.0
       '@pandacss/config': 1.9.1
       '@pandacss/logger': 1.9.1
-      '@pandacss/mcp': 1.9.1(jsdom@26.1.0)(typescript@5.9.3)
-      '@pandacss/node': 1.9.1(jsdom@26.1.0)(typescript@5.9.3)
-      '@pandacss/postcss': 1.9.1(jsdom@26.1.0)(typescript@5.9.3)
+      '@pandacss/mcp': 1.9.1(jsdom@26.0.0)(typescript@5.9.3)
+      '@pandacss/node': 1.9.1(jsdom@26.0.0)(typescript@5.9.3)
+      '@pandacss/postcss': 1.9.1(jsdom@26.0.0)(typescript@5.9.3)
       '@pandacss/preset-base': 1.9.1
       '@pandacss/preset-panda': 1.9.1
       '@pandacss/shared': 1.9.1
@@ -18213,28 +18196,10 @@ snapshots:
       - jsdom
       - typescript
 
-  '@pandacss/extractor@1.10.0(jsdom@26.1.0)(typescript@6.0.2)':
-    dependencies:
-      '@pandacss/shared': 1.10.0
-      ts-evaluator: 1.2.0(jsdom@26.1.0)(typescript@6.0.2)
-      ts-morph: 28.0.0
-    transitivePeerDependencies:
-      - jsdom
-      - typescript
-
   '@pandacss/extractor@1.9.1(jsdom@26.0.0)(typescript@5.9.3)':
     dependencies:
       '@pandacss/shared': 1.9.1
       ts-evaluator: 1.2.0(jsdom@26.0.0)(typescript@5.9.3)
-      ts-morph: 27.0.2
-    transitivePeerDependencies:
-      - jsdom
-      - typescript
-
-  '@pandacss/extractor@1.9.1(jsdom@26.1.0)(typescript@5.9.3)':
-    dependencies:
-      '@pandacss/shared': 1.9.1
-      ts-evaluator: 1.2.0(jsdom@26.1.0)(typescript@5.9.3)
       ts-morph: 27.0.2
     transitivePeerDependencies:
       - jsdom
@@ -18297,27 +18262,12 @@ snapshots:
       - supports-color
       - typescript
 
-  '@pandacss/mcp@1.10.0(jsdom@26.1.0)(typescript@6.0.2)':
-    dependencies:
-      '@clack/prompts': 0.11.0
-      '@modelcontextprotocol/sdk': 1.29.0(zod@4.3.6)
-      '@pandacss/logger': 1.10.0
-      '@pandacss/node': 1.10.0(jsdom@26.1.0)(typescript@6.0.2)
-      '@pandacss/token-dictionary': 1.10.0
-      '@pandacss/types': 1.10.0
-      zod: 4.3.6
-    transitivePeerDependencies:
-      - '@cfworker/json-schema'
-      - jsdom
-      - supports-color
-      - typescript
-
-  '@pandacss/mcp@1.9.1(jsdom@26.1.0)(typescript@5.9.3)':
+  '@pandacss/mcp@1.9.1(jsdom@26.0.0)(typescript@5.9.3)':
     dependencies:
       '@clack/prompts': 0.11.0
       '@modelcontextprotocol/sdk': 1.28.0(zod@4.3.6)
       '@pandacss/logger': 1.9.1
-      '@pandacss/node': 1.9.1(jsdom@26.1.0)(typescript@5.9.3)
+      '@pandacss/node': 1.9.1(jsdom@26.0.0)(typescript@5.9.3)
       '@pandacss/token-dictionary': 1.9.1
       '@pandacss/types': 1.9.1
       zod: 4.3.6
@@ -18334,44 +18284,6 @@ snapshots:
       '@pandacss/generator': 1.10.0
       '@pandacss/logger': 1.10.0
       '@pandacss/parser': 1.10.0(jsdom@26.0.0)(typescript@5.9.3)
-      '@pandacss/plugin-lightningcss': 1.10.0
-      '@pandacss/plugin-svelte': 1.10.0
-      '@pandacss/plugin-vue': 1.10.0
-      '@pandacss/reporter': 1.10.0
-      '@pandacss/shared': 1.10.0
-      '@pandacss/token-dictionary': 1.10.0
-      '@pandacss/types': 1.10.0
-      browserslist: 4.28.1
-      chokidar: 4.0.3
-      fast-glob: 3.3.3
-      fs-extra: 11.3.2
-      get-tsconfig: 4.14.0
-      glob-parent: 6.0.2
-      is-glob: 4.0.3
-      lodash.merge: 4.6.2
-      look-it-up: 2.1.0
-      outdent: 0.8.0
-      p-limit: 5.0.0
-      package-manager-detector: 1.6.0
-      perfect-debounce: 1.0.0
-      picomatch: 4.0.4
-      pkg-types: 2.3.0
-      pluralize: 8.0.0
-      postcss: 8.5.6
-      prettier: 3.2.5
-      ts-morph: 28.0.0
-      ts-pattern: 5.9.0
-    transitivePeerDependencies:
-      - jsdom
-      - typescript
-
-  '@pandacss/node@1.10.0(jsdom@26.1.0)(typescript@6.0.2)':
-    dependencies:
-      '@pandacss/config': 1.10.0
-      '@pandacss/core': 1.10.0
-      '@pandacss/generator': 1.10.0
-      '@pandacss/logger': 1.10.0
-      '@pandacss/parser': 1.10.0(jsdom@26.1.0)(typescript@6.0.2)
       '@pandacss/plugin-lightningcss': 1.10.0
       '@pandacss/plugin-svelte': 1.10.0
       '@pandacss/plugin-vue': 1.10.0
@@ -18438,41 +18350,6 @@ snapshots:
       - jsdom
       - typescript
 
-  '@pandacss/node@1.9.1(jsdom@26.1.0)(typescript@5.9.3)':
-    dependencies:
-      '@pandacss/config': 1.9.1
-      '@pandacss/core': 1.9.1
-      '@pandacss/generator': 1.9.1
-      '@pandacss/logger': 1.9.1
-      '@pandacss/parser': 1.9.1(jsdom@26.1.0)(typescript@5.9.3)
-      '@pandacss/reporter': 1.9.1
-      '@pandacss/shared': 1.9.1
-      '@pandacss/token-dictionary': 1.9.1
-      '@pandacss/types': 1.9.1
-      browserslist: 4.28.1
-      chokidar: 4.0.3
-      fast-glob: 3.3.3
-      fs-extra: 11.3.2
-      glob-parent: 6.0.2
-      is-glob: 4.0.3
-      lodash.merge: 4.6.2
-      look-it-up: 2.1.0
-      outdent: 0.8.0
-      p-limit: 5.0.0
-      package-manager-detector: 1.6.0
-      perfect-debounce: 1.0.0
-      picomatch: 4.0.3
-      pkg-types: 2.3.0
-      pluralize: 8.0.0
-      postcss: 8.5.6
-      prettier: 3.2.5
-      ts-morph: 27.0.2
-      ts-pattern: 5.9.0
-      tsconfck: 3.1.6(typescript@5.9.3)
-    transitivePeerDependencies:
-      - jsdom
-      - typescript
-
   '@pandacss/parser@1.10.0(jsdom@26.0.0)(typescript@5.9.3)':
     dependencies:
       '@pandacss/config': 1.10.0
@@ -18487,41 +18364,11 @@ snapshots:
       - jsdom
       - typescript
 
-  '@pandacss/parser@1.10.0(jsdom@26.1.0)(typescript@6.0.2)':
-    dependencies:
-      '@pandacss/config': 1.10.0
-      '@pandacss/core': 1.10.0
-      '@pandacss/extractor': 1.10.0(jsdom@26.1.0)(typescript@6.0.2)
-      '@pandacss/logger': 1.10.0
-      '@pandacss/shared': 1.10.0
-      '@pandacss/types': 1.10.0
-      ts-morph: 28.0.0
-      ts-pattern: 5.9.0
-    transitivePeerDependencies:
-      - jsdom
-      - typescript
-
   '@pandacss/parser@1.9.1(jsdom@26.0.0)(typescript@5.9.3)':
     dependencies:
       '@pandacss/config': 1.9.1
       '@pandacss/core': 1.9.1
       '@pandacss/extractor': 1.9.1(jsdom@26.0.0)(typescript@5.9.3)
-      '@pandacss/logger': 1.9.1
-      '@pandacss/shared': 1.9.1
-      '@pandacss/types': 1.9.1
-      '@vue/compiler-sfc': 3.5.25
-      magic-string: 0.30.21
-      ts-morph: 27.0.2
-      ts-pattern: 5.9.0
-    transitivePeerDependencies:
-      - jsdom
-      - typescript
-
-  '@pandacss/parser@1.9.1(jsdom@26.1.0)(typescript@5.9.3)':
-    dependencies:
-      '@pandacss/config': 1.9.1
-      '@pandacss/core': 1.9.1
-      '@pandacss/extractor': 1.9.1(jsdom@26.1.0)(typescript@5.9.3)
       '@pandacss/logger': 1.9.1
       '@pandacss/shared': 1.9.1
       '@pandacss/types': 1.9.1
@@ -18559,17 +18406,9 @@ snapshots:
       - jsdom
       - typescript
 
-  '@pandacss/postcss@1.10.0(jsdom@26.1.0)(typescript@6.0.2)':
+  '@pandacss/postcss@1.9.1(jsdom@26.0.0)(typescript@5.9.3)':
     dependencies:
-      '@pandacss/node': 1.10.0(jsdom@26.1.0)(typescript@6.0.2)
-      postcss: 8.5.6
-    transitivePeerDependencies:
-      - jsdom
-      - typescript
-
-  '@pandacss/postcss@1.9.1(jsdom@26.1.0)(typescript@5.9.3)':
-    dependencies:
-      '@pandacss/node': 1.9.1(jsdom@26.1.0)(typescript@5.9.3)
+      '@pandacss/node': 1.9.1(jsdom@26.0.0)(typescript@5.9.3)
       postcss: 8.5.6
     transitivePeerDependencies:
       - jsdom
@@ -30368,24 +30207,6 @@ snapshots:
       typescript: 5.9.3
     optionalDependencies:
       jsdom: 26.0.0
-
-  ts-evaluator@1.2.0(jsdom@26.1.0)(typescript@5.9.3):
-    dependencies:
-      ansi-colors: 4.1.3
-      crosspath: 2.0.0
-      object-path: 0.11.8
-      typescript: 5.9.3
-    optionalDependencies:
-      jsdom: 26.1.0
-
-  ts-evaluator@1.2.0(jsdom@26.1.0)(typescript@6.0.2):
-    dependencies:
-      ansi-colors: 4.1.3
-      crosspath: 2.0.0
-      object-path: 0.11.8
-      typescript: 6.0.2
-    optionalDependencies:
-      jsdom: 26.1.0
 
   ts-interface-checker@0.1.13: {}
 
