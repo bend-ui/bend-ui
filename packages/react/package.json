@@ -19,7 +19,9 @@
   ],
   "dependencies": {
     "@particles/preset": "workspace:*",
-    "@particles/styled-system": "workspace:*"
+    "@particles/styled-system": "workspace:*",
+    "lucide-react": "*",
+    "@floating-ui/react": "*"
   },
   "devDependencies": {
     "@particles/storybook": "workspace:*"

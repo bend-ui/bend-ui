@@ -29,4 +29,4 @@ export const commandRecipe = defineRecipe({
   }),
 });
 
-export const dialogParts = parts;
+export const commandParts = parts;

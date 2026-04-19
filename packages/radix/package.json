@@ -4,12 +4,6 @@
   "type": "module",
   "main": "./dist/index.cjs",
   "types": "./dist/index.d.ts",
-  ".": {
-    "source": "./src/index.ts",
-    "types": "./dist/index.d.ts",
-    "import": "./dist/index.js",
-    "require": "./dist/index.cjs"
-  },
   "sideEffects": false,
   "files": [
     "dist"
@@ -18,7 +12,8 @@
     "@particles/preset": "workspace:*",
     "@particles/react": "workspace:*",
     "@particles/styled-system": "workspace:*",
-    "radix-ui": "^1.4.2"
+    "radix-ui": "^1.4.2",
+    "lucide-react": "*"
   },
   "devDependencies": {
     "@particles/storybook": "workspace:*"
@@ -33,5 +28,14 @@
     "cli": "tsx ../cli/src/index.ts",
     "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
     "build": "tsup"
+  },
+  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
   }
 }

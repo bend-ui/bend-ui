@@ -2,24 +2,28 @@ import { defineConfig } from 'tsup';
 
 export default defineConfig({
   entry: ['src/index.ts'],
-  external: [
-    'react',
-    'react-dom',
-    '@particles/theme',
-    '@particles/styled-system',
-    '@particles/primitives',
-  ],
-  platform: 'browser',
-  format: ['cjs', 'esm'],
-  target: 'es2020',
-  skipNodeModulesBundle: true,
-  clean: true,
-  splitting: false,
+  format: ['esm', 'cjs'],
   sourcemap: true,
-  minify: false,
-  keepNames: true,
-  dts: false,
+  dts: true,
+  clean: true,
   treeshake: true,
-  bundle: true,
-  outDir: 'dist',
+  tsconfig: 'tsconfig.lib.json',
+  external: ['react', 'react-dom', 'lucide-react', '@floating-ui/react', '@particles/styled-system'],
+  esbuildOptions(options) {
+    options.jsx = 'automatic';
+    options.jsxImportSource = 'react';
+  },
+  swc: {
+    jsc: {
+      transform: {
+        react: {
+          runtime: 'automatic',
+          importSource: 'react',
+        },
+      },
+    },
+  },
+  banner: {
+    js: '"use client";',
+  },
 });
