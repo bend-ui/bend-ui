@@ -9,7 +9,7 @@ export default defineConfig({
   include: [
     '../../packages/react/src/**/*.{js,jsx,ts,tsx}',
     '../../packages/ark/src/**/*.{js,jsx,ts,tsx}',
-    './src/**/*.{tsx,ts,jsx}',
+    './lib/**/*.{tsx,ts,jsx}',
     './pages/**/*.{jsx,tsx}',
     './app/**/*.{jsx,tsx}',
     './theme.config.tsx',

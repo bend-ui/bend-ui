@@ -1,14 +1,5 @@
 import type { MDXComponents } from 'mdx/types';
-import {
-  Heading,
-  Text,
-  Box,
-  Stack,
-  Code,
-  Tabs,
-  Accordion,
-  particles,
-} from '@particles/ark';
+import { Heading, Text, Box, Stack, Tabs, Accordion } from '@particles/ark';
 
 /**
  * Custom MDX components using @particles/ark instead of fumadocs-ui defaults
@@ -16,80 +7,80 @@ import {
  */
 export const mdxComponents: MDXComponents = {
   // Headings
-  h1: (props) => (
-    <Heading
-      as="h1"
-      fontSize="4xl"
-      fontWeight="bold"
-      marginBottom="6"
-      marginTop="8"
-      lineHeight="tight"
-      {...props}
-    />
-  ),
-  h2: (props) => (
-    <Heading
-      as="h2"
-      fontSize="3xl"
-      fontWeight="bold"
-      marginBottom="4"
-      marginTop="8"
-      lineHeight="tight"
-      {...props}
-    />
-  ),
-  h3: (props) => (
-    <Heading
-      as="h3"
-      fontSize="2xl"
-      fontWeight="semibold"
-      marginBottom="3"
-      marginTop="6"
-      lineHeight="snug"
-      {...props}
-    />
-  ),
-  h4: (props) => (
-    <Heading
-      as="h4"
-      fontSize="xl"
-      fontWeight="semibold"
-      marginBottom="3"
-      marginTop="6"
-      {...props}
-    />
-  ),
-  h5: (props) => (
-    <Heading
-      as="h5"
-      fontSize="lg"
-      fontWeight="semibold"
-      marginBottom="2"
-      marginTop="4"
-      {...props}
-    />
-  ),
-  h6: (props) => (
-    <Heading
-      as="h6"
-      fontSize="md"
-      fontWeight="semibold"
-      marginBottom="2"
-      marginTop="4"
-      {...props}
-    />
-  ),
+  // h1: (props) => (
+  //   <Heading
+  //     as="h1"
+  //     fontSize="4xl"
+  //     fontWeight="bold"
+  //     marginBottom="6"
+  //     marginTop="8"
+  //     lineHeight="tight"
+  //     {...props}
+  //   />
+  // ),
+  // h2: (props) => (
+  //   <Heading
+  //     as="h2"
+  //     fontSize="3xl"
+  //     fontWeight="bold"
+  //     marginBottom="4"
+  //     marginTop="8"
+  //     lineHeight="tight"
+  //     {...props}
+  //   />
+  // ),
+  // h3: (props) => (
+  //   <Heading
+  //     as="h3"
+  //     fontSize="2xl"
+  //     fontWeight="semibold"
+  //     marginBottom="3"
+  //     marginTop="6"
+  //     lineHeight="snug"
+  //     {...props}
+  //   />
+  // ),
+  // h4: (props) => (
+  //   <Heading
+  //     as="h4"
+  //     fontSize="xl"
+  //     fontWeight="semibold"
+  //     marginBottom="3"
+  //     marginTop="6"
+  //     {...props}
+  //   />
+  // ),
+  // h5: (props) => (
+  //   <Heading
+  //     as="h5"
+  //     fontSize="lg"
+  //     fontWeight="semibold"
+  //     marginBottom="2"
+  //     marginTop="4"
+  //     {...props}
+  //   />
+  // ),
+  // h6: (props) => (
+  //   <Heading
+  //     as="h6"
+  //     fontSize="md"
+  //     fontWeight="semibold"
+  //     marginBottom="2"
+  //     marginTop="4"
+  //     {...props}
+  //   />
+  // ),
 
   // Paragraphs and text
-  p: (props) => (
-    <Text
-      fontSize="md"
-      lineHeight="relaxed"
-      marginBottom="4"
-      color="gray.700"
-      {...props}
-    />
-  ),
+  // p: (props) => (
+  //   <Text
+  //     fontSize="md"
+  //     lineHeight="relaxed"
+  //     marginBottom="4"
+  //     color="gray.700"
+  //     {...props}
+  //   />
+  // ),
 
   // Lists
   // ul: ({ ref, ...props }) => (
@@ -172,15 +163,15 @@ export const mdxComponents: MDXComponents = {
   // ),
 
   // Links
-  a: (props) => (
-    <Text
-      as="a"
-      color="blue.600"
-      textDecoration="underline"
-      _hover={{ color: 'blue.700' }}
-      {...props}
-    />
-  ),
+  // a: (props) => (
+  //   <Text
+  //     as="a"
+  //     color="blue.600"
+  //     textDecoration="underline"
+  //     _hover={{ color: 'blue.700' }}
+  //     {...props}
+  //   />
+  // ),
 
   // Tables
   // table: ({ ref, ...props }) => (
@@ -215,8 +206,8 @@ export const mdxComponents: MDXComponents = {
   // ),
 
   // Strong and emphasis
-  strong: (props) => <Text as="strong" fontWeight="semibold" {...props} />,
-  em: (props) => <Text as="em" fontStyle="italic" {...props} />,
+  // strong: (props) => <Text as="strong" fontWeight="semibold" {...props} />,
+  // em: (props) => <Text as="em" fontStyle="italic" {...props} />,
 
   // You can add custom components here
   Tabs,

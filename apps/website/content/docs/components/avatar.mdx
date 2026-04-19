@@ -1,0 +1,152 @@
+---
+title: Avatar
+description: Visual representation of a user or entity, shown as a photo, initials, or fallback icon.
+---
+
+# Avatar
+
+A visual representation of a user or entity — typically a profile photo, initials, or a fallback icon when no image is available.
+
+## Import
+
+```tsx
+import { Avatar } from '@particles/ark';
+```
+
+## Basic Usage
+
+```tsx
+import { Avatar } from '@particles/ark';
+
+function Example() {
+  return <Avatar src="/profile.jpg" fallback="JD" />;
+}
+```
+
+## Variants
+
+### Sizes
+
+```tsx
+import { Avatar, Stack } from '@particles/ark';
+
+function SizesExample() {
+  return (
+    <Stack direction="row" gap="4" align="center">
+      <Avatar src="/profile.jpg" fallback="JD" size="sm" />
+      <Avatar src="/profile.jpg" fallback="JD" size="md" />
+      <Avatar src="/profile.jpg" fallback="JD" size="lg" />
+    </Stack>
+  );
+}
+```
+
+| Size | Dimensions |
+|------|-----------|
+| `sm` | 32 × 32 px |
+| `md` | 64 × 64 px (default) |
+| `lg` | 96 × 96 px |
+
+### Fallback
+
+When `src` is empty or the image fails to load, the `fallback` text (typically initials) is shown instead.
+
+```tsx
+import { Avatar } from '@particles/ark';
+
+function FallbackExample() {
+  return <Avatar fallback="UI" src="" />;
+}
+```
+
+## Anatomy
+
+The `Avatar` compound component exposes its parts for full control:
+
+```tsx
+import { Avatar } from '@particles/ark';
+
+function ComposedExample() {
+  return (
+    <Avatar.Root size="md">
+      <Avatar.Fallback>JD</Avatar.Fallback>
+      <Avatar.Image src="/profile.jpg" />
+    </Avatar.Root>
+  );
+}
+```
+
+| Part | Description |
+|------|-------------|
+| `Avatar.Root` | Container — circular, clipped, flex-centered |
+| `Avatar.Image` | Profile photo, covers the full container |
+| `Avatar.Fallback` | Shown when image is absent or fails to load |
+
+## States
+
+| State | Description |
+|-------|-------------|
+| **Image loaded** | Profile photo fills the container |
+| **Fallback** | Image failed or not provided — initials render instead |
+
+## Usage Guidelines
+
+### Use when
+- Representing users in navigation headers, sidebars, or toolbars
+- Identifying authors in comment threads or activity feeds
+- Indicating assignees or collaborators on tasks and issues
+- Displaying participants in @mention chips or user pickers
+
+### Don't use when
+- Identity is not relevant — decorative avatars add noise
+- More context is needed — use a user card or profile panel instead
+- The display size would be under ~20 px — initials become unreadable at that scale
+
+## Accessibility
+
+- The image should have a meaningful `alt` attribute describing the user
+- When used as a fallback-only (no image), ensure the initials are readable at all sizes
+- If the avatar is interactive (e.g. opens a profile card), wrap it in a `<button>` with an `aria-label`
+
+```tsx
+<button aria-label="View Jane Doe's profile">
+  <Avatar src="/jane.jpg" fallback="JD" size="sm" />
+</button>
+```
+
+## Design System Naming
+
+| Design System | Name |
+|---|---|
+| Material Design | Avatar |
+| Ant Design | Avatar |
+| Radix / shadcn | Avatar |
+| Atlassian | Avatar |
+| Chakra UI | Avatar |
+
+## Props
+
+### Avatar (simplified)
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `src` | `string` | — | Image URL |
+| `fallback` | `string` | — | Text shown when image is unavailable |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Controls dimensions |
+
+### Avatar.Root
+
+Accepts all props from `AvatarVariantProps` and `@ark-ui/react` `Avatar.Root`.
+
+### Avatar.Image
+
+Accepts all props from `@ark-ui/react` `Avatar.Image` (including `src`, `alt`).
+
+### Avatar.Fallback
+
+Accepts all props from `@ark-ui/react` `Avatar.Fallback`.
+
+## Related Components
+
+- [Tooltip](/docs/components/tooltip) — Show the full name on hover
+- [Badge](/docs/components/badge) — Overlay a status indicator on the avatar
