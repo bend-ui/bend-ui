@@ -67,3 +67,5 @@ debug-storybook.log
 .claude/settings.local.json
 
 .nx/polygraph
+.nx/self-healing
+migrations.json

@@ -7,3 +7,5 @@
 /.nx/workspace-data
 
 /apps/website/.source
+
+.nx/self-healing
