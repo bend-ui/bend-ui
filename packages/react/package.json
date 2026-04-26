@@ -18,10 +18,10 @@
     "dist"
   ],
   "dependencies": {
+    "@floating-ui/react": "*",
     "@particles/preset": "workspace:*",
     "@particles/styled-system": "workspace:*",
-    "lucide-react": "*",
-    "@floating-ui/react": "*"
+    "lucide-react": "^1.11.0"
   },
   "devDependencies": {
     "@particles/storybook": "workspace:*"

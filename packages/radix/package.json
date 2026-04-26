@@ -12,8 +12,8 @@
     "@particles/preset": "workspace:*",
     "@particles/react": "workspace:*",
     "@particles/styled-system": "workspace:*",
-    "radix-ui": "^1.4.2",
-    "lucide-react": "*"
+    "lucide-react": "^1.11.0",
+    "radix-ui": "^1.4.2"
   },
   "devDependencies": {
     "@particles/storybook": "workspace:*"

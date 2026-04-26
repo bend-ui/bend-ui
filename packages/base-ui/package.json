@@ -18,11 +18,11 @@
     "dist"
   ],
   "dependencies": {
-    "@base-ui/react": "1.4.0",
+    "@base-ui/react": "1.4.1",
     "@particles/preset": "workspace:*",
     "@particles/react": "workspace:*",
     "@particles/styled-system": "workspace:*",
-    "lucide-react": "*"
+    "lucide-react": "^1.11.0"
   },
   "devDependencies": {
     "@particles/storybook": "workspace:*"
