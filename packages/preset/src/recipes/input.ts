@@ -26,10 +26,10 @@ export const inputRecipe = defineRecipe({
         layerStyle: 'focus',
       },
       _invalid: {
-        border: 'error',
+        border: 'danger',
       },
       _disabled: {
-        border: 'disabled',
+        opacity: 'state.disabled',
       },
     },
     wrapper: {

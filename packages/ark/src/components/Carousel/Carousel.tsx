@@ -62,6 +62,7 @@ const Component = () => {
 };
 
 export const Carousel = Object.assign(Component, {
+  RootProvider,
   Root,
   Control,
   PrevTrigger,

@@ -31,7 +31,7 @@ export const InputWithInlineLeadingAddOnAndTrailingDropdown: StoryObj = {
           pos: 'relative',
           position: 'relative',
           display: 'flex',
-          bgColor: 'bg.input',
+          bgColor: 'fill.weak',
           border: 'input',
           rounded: 'md',
           shadow: 'sm',

@@ -43,6 +43,8 @@ import { datePickerRecipe } from './date-picker';
 import { clipboardRecipe } from './clipboard';
 import { toggleGroupRecipe } from './toggle-group';
 import { sidebarRecipe } from './sidebar';
+import { hoverCard } from './hover-card';
+import { meter } from './meter';
 
 export const slotRecipes: Theme['slotRecipes'] = {
   // divider: dividerRecipe,
@@ -55,6 +57,8 @@ export const slotRecipes: Theme['slotRecipes'] = {
   tag: tagRecipe,
   tagsInput: tagsInputRecipe,
   textarea: textareaRecipe,
+  meter: meter,
+  toggleGroup: toggleGroupRecipe,
 };
 
 export const recipes: Theme['recipes'] = {
@@ -94,5 +98,5 @@ export const recipes: Theme['recipes'] = {
   tooltip: tooltipRecipe,
   radioGroup: radioGroupRecipe,
   sidebar: sidebarRecipe,
-  toggleGroup: toggleGroupRecipe,
+  hoverCard: hoverCard,
 };

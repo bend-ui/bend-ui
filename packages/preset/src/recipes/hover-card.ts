@@ -4,7 +4,6 @@ export const hoverCard = defineRecipe({
   className: 'HoverCard',
   description: 'A card that appears on hover.',
   base: {
-    position: 'relative',
-    display: 'inline-block',
+    layerStyle: 'surface.overlay',
   },
 });

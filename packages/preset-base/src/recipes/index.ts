@@ -67,6 +67,7 @@ import { tree } from './tree';
 import { avatarRecipe } from './avatar';
 import { appShellRecipe } from './app-shell';
 import { backdropRecipe } from './backdrop';
+import { meter } from './meter';
 
 export const slotRecipes: Theme['slotRecipes'] = {
   actionBar,
@@ -79,7 +80,6 @@ export const slotRecipes: Theme['slotRecipes'] = {
   fileUpload,
   floatingPanel,
   gridList,
-  hoverCard,
   imageCropper,
   listbox,
   marquee,
@@ -105,6 +105,8 @@ export const slotRecipes: Theme['slotRecipes'] = {
   toolbar,
   tour,
   tree,
+  meter,
+  toggleGroup: toggleGroupRecipe,
 };
 
 export const recipes: Theme['recipes'] = {
@@ -139,8 +141,8 @@ export const recipes: Theme['recipes'] = {
   tabs: tabsRecipe,
   toast: toastRecipe,
   toggle,
-  toggleGroup: toggleGroupRecipe,
   tooltip: tooltipRecipe,
+  hoverCard,
 };
 
 export * from './accordion';
@@ -177,6 +179,7 @@ export * from './listbox';
 export * from './marquee';
 export * from './menu';
 export * from './menubar';
+export * from './meter';
 export * from './navigation-menu';
 export * from './number-input';
 export * from './pagination';

@@ -53,4 +53,17 @@ export const colors = defineTokens.colors({
     900: { value: '#3b3a37' },
     950: { value: '#282724' },
   },
+  'dove-gray': {
+    50: { value: '#f9faf9' },
+    100: { value: '#f4f5f4' },
+    200: { value: '#e6e6e5' },
+    300: { value: '#d4d4d3' },
+    400: { value: '#a5a5a1' },
+    500: { value: '#6f6f6b' },
+    600: { value: '#545451' },
+    700: { value: '#41413f' },
+    800: { value: '#272726' },
+    900: { value: '#1a1a19' },
+    950: { value: '#0b0b0a' },
+  },
 });

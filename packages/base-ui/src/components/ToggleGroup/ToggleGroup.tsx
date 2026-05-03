@@ -1,8 +1,12 @@
 import * as React from 'react';
 import { Toggle } from '../Toggle';
 import { ToggleGroup as ToggleGroupPrimitive } from '@base-ui/react/toggle-group';
+import { toggleGroup } from '@particles/styled-system/recipes';
+import { createStyleContext } from '@particles/styled-system/jsx';
 
-const ToggleGroupRoot = ToggleGroupPrimitive;
+const { withProvider } = createStyleContext(toggleGroup);
+
+const ToggleGroupRoot = withProvider(ToggleGroupPrimitive, 'root');
 
 const Component = () => {
   return (

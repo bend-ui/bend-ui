@@ -11,5 +11,19 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  render: (args) => (
+    <Menu {...args}>
+      <Menu.Trigger>Song</Menu.Trigger>
+      <Menu.Content>
+        <Menu.Item>Add to Library</Menu.Item>
+        <Menu.Item>Add to Playlist</Menu.Item>
+        <Menu.Separator />
+        <Menu.Item>Play Next</Menu.Item>
+        <Menu.Item>Play Last</Menu.Item>
+        <Menu.Separator />
+        <Menu.Item>Favorite</Menu.Item>
+        <Menu.Item>Share</Menu.Item>
+      </Menu.Content>
+    </Menu>
+  ),
 };

@@ -13,7 +13,7 @@ export const dialogRecipe = defineRecipe({
   base: parts({
     positioner: {},
     content: {
-      layerStyle: 'surface.raised',
+      layerStyle: 'surface.overlay',
       borderRadius: 'md',
       _open: {
         animation: 'dialog-in',

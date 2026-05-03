@@ -20,7 +20,7 @@ interface ThemeOptions {
 export const createTheme = (options: ThemeOptions = {}): ThemeVariant => {
   const {
     primaryColor = 'indigo',
-    neutralColor = 'gray',
+    neutralColor = 'dove-gray',
     successColor = 'green',
     warningColor = 'yellow',
     errorColor = 'red',

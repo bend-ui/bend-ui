@@ -1,9 +1,18 @@
 import { Popover as PopoverPrimitive } from '@base-ui/react/popover';
 import { popover } from '@particles/styled-system/recipes';
 import { withParts, withRecipe } from '@particles/react';
+import { Button } from '../Button';
 
 const PopoverRoot = PopoverPrimitive.Root;
-const PopoverTrigger = PopoverPrimitive.Trigger;
+const PopoverTrigger = (props: PopoverPrimitive.Trigger.Props) => {
+  const { children, render, ...rest } = props;
+  const renderProp = render || <Button />;
+  return (
+    <PopoverPrimitive.Trigger render={renderProp} {...rest}>
+      {children}
+    </PopoverPrimitive.Trigger>
+  );
+};
 const PopoverPortal = PopoverPrimitive.Portal;
 
 export type PopoverPositionerProps = PopoverPrimitive.Positioner.Props;
@@ -49,25 +58,52 @@ const PopoverClose = withParts<PopoverCloseProps>(
   'closeTrigger',
 );
 
-export type PopoverProps = PopoverPrimitive.Root.Props;
+export interface PopoverContentProps {
+  title?: React.ReactNode;
+  description?: React.ReactNode;
+  children?: React.ReactNode;
+}
+
+const PopoverContent = (props: PopoverContentProps) => {
+  const { title, description, children } = props;
+  return (
+    <PopoverPortal>
+      <PopoverPositioner sideOffset={8}>
+        <PopoverPopup>
+          <PopoverArrow>
+            <ArrowSvg />
+          </PopoverArrow>
+          {title && <PopoverTitle>{title}</PopoverTitle>}
+          <PopoverDescription>
+            {description}
+            {children}
+          </PopoverDescription>
+        </PopoverPopup>
+      </PopoverPositioner>
+    </PopoverPortal>
+  );
+};
+
+export interface PopoverProps extends PopoverPrimitive.Root.Props {
+  trigger?: string;
+  title?: React.ReactNode;
+  description?: React.ReactNode;
+  children?: React.ReactNode;
+}
 
 const Component = (props: PopoverProps) => {
+  const { title, description, children, trigger, ...rest } = props;
   return (
-    <PopoverRoot {...props}>
-      <PopoverTrigger>Trigger</PopoverTrigger>
-      <PopoverPortal>
-        <PopoverPositioner sideOffset={8}>
-          <PopoverPopup>
-            <PopoverArrow>
-              <ArrowSvg />
-            </PopoverArrow>
-            <PopoverTitle>Notifications</PopoverTitle>
-            <PopoverDescription>
-              You are all caught up. Good job!
-            </PopoverDescription>
-          </PopoverPopup>
-        </PopoverPositioner>
-      </PopoverPortal>
+    <PopoverRoot {...rest}>
+      {trigger && <PopoverTrigger>{trigger}</PopoverTrigger>}
+      {title || description ? (
+        <PopoverContent
+          title={title}
+          description={description}
+        ></PopoverContent>
+      ) : (
+        children
+      )}
     </PopoverRoot>
   );
 };
@@ -92,4 +128,5 @@ export const Popover = Object.assign(Component, {
   Title: PopoverTitle,
   Description: PopoverDescription,
   Close: PopoverClose,
+  Content: PopoverContent,
 });

@@ -3,22 +3,23 @@ import {
   Button as StyledButton,
   ButtonProps as StyledButtonProps,
 } from '@particles/react';
-
-// Use StyledButtonProps as the base type for the public API
-// This provides all styled system props and avoids complex union types
-// ButtonPrimitive.Props properties are handled via type assertion in the implementation
-export type ButtonProps = StyledButtonProps;
+import { Assign } from '@particles/styled-system/types';
 
 const ButtonRoot = ButtonPrimitive;
 
+export interface ButtonProps
+  extends Assign<StyledButtonProps, ButtonPrimitive.Props> {
+  /**
+   * The content of the button.
+   */
+  children?: React.ReactNode;
+}
+
 const Component = (props: ButtonProps) => {
-  return (
-    <ButtonRoot
-      render={(props) => <StyledButton {...props} />}
-      {...(props as ButtonPrimitive.Props)}
-    />
-  );
+  return <ButtonRoot render={<StyledButton />} {...props} />;
 };
+
+Component.displayName = 'Button';
 
 export const Button = Object.assign(Component, {
   Root: ButtonRoot,

@@ -1,5 +1,5 @@
 import { Button } from '@particles/react';
-import { ChevronRightIcon, XIcon } from 'lucide-react';
+import { ChevronRightIcon } from 'lucide-react';
 import { Popover } from './Popover';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
@@ -104,7 +104,7 @@ export const DifferentSizes: Story = {
 export const WithCustomTrigger: Story = {
   render: () => (
     <Popover
-      trigger={<Button variant="outline">Custom Trigger</Button>}
+      trigger={<Button variant="secondary">Custom Trigger</Button>}
       title="Custom Trigger"
       description="This popover uses a custom trigger component"
     >

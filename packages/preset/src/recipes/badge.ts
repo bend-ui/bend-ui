@@ -42,7 +42,7 @@ export const badgeRecipe = defineRecipe({
       }),
       danger: parts({
         root: {
-          colorPalette: 'error',
+          colorPalette: 'danger',
         },
       }),
       warning: parts({

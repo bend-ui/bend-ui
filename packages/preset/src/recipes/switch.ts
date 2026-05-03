@@ -27,7 +27,7 @@ export const switchRecipe = defineRecipe({
       },
     },
     thumb: {
-      backgroundColor: 'red.500',
+      backgroundColor: 'fill.white',
       rounded: 'full',
       transition: 'transform 200ms',
       _checked: {

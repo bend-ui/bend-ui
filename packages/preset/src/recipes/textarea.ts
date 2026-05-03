@@ -29,7 +29,7 @@ export const textareaRecipe = defineSlotRecipe({
             backgroundColor: 'bg.input.hover',
           },
           '&:has(:invalid, [data-invalid])': {
-            borderColor: 'stroke.error',
+            borderColor: 'stroke.danger',
           },
         },
       },
@@ -37,7 +37,7 @@ export const textareaRecipe = defineSlotRecipe({
         root: {
           border: 'input',
           '&:has(:invalid, [data-invalid])': {
-            borderColor: 'stroke.error',
+            borderColor: 'stroke.danger',
           },
         },
       },

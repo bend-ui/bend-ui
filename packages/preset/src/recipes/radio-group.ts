@@ -17,32 +17,20 @@ export const radioGroupRecipe = defineRecipe({
       colorPalette: 'primary',
     },
     itemControl: {
-      background: 'transparent',
-      borderColor: 'red.500',
+      background: 'fill.weak',
+      border: 'strong',
       borderRadius: 'full',
-      borderWidth: '1px',
       transitionDuration: 'normal',
       transitionProperty: 'background',
       transitionTimingFunction: 'default',
       _hover: {
-        background: 'red.500',
+        background: 'fill.weak.hover',
       },
       _checked: {
-        background: 'colorPalette',
-        borderColor: 'colorPalette',
-        outlineColor: 'red.500',
-        outlineStyle: 'solid',
-        _hover: {
-          background: 'colorPalette.hover',
-        },
+        background: 'fill.white',
       },
       _disabled: {
-        borderColor: 'red.500',
-        color: 'red.500',
-        _hover: {
-          bg: 'initial',
-          color: 'red.500',
-        },
+        opacity: 'state.disabled',
       },
     },
     item: {
@@ -54,11 +42,8 @@ export const radioGroupRecipe = defineRecipe({
       },
     },
     itemText: {
-      color: 'red.500',
+      color: 'text',
       fontWeight: 'medium',
-      _disabled: {
-        color: 'red.500',
-      },
     },
   }),
   variants: {

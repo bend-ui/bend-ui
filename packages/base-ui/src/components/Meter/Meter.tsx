@@ -1,15 +1,24 @@
 import { Meter as MeterPrimitive } from '@base-ui/react/meter';
+import { createStyleContext } from '@particles/styled-system/jsx';
+import { meter } from '@particles/styled-system/recipes';
 
-const MeterRoot = MeterPrimitive.Root;
-const MeterLabel = MeterPrimitive.Label;
-const MeterValue = MeterPrimitive.Value;
-const MeterTrack = MeterPrimitive.Track;
-const MeterIndicator = MeterPrimitive.Indicator;
+const { withProvider, withContext } = createStyleContext(meter);
 
-const Component = () => {
+const MeterRoot = withProvider(MeterPrimitive.Root, 'root');
+const MeterLabel = withContext(MeterPrimitive.Label, 'label');
+const MeterValue = withContext(MeterPrimitive.Value, 'value');
+const MeterTrack = withContext(MeterPrimitive.Track, 'track');
+const MeterIndicator = withContext(MeterPrimitive.Indicator, 'indicator');
+
+export interface MeterProps extends MeterPrimitive.Root.Props {
+  label?: React.ReactNode;
+}
+
+const Component = (props: MeterProps) => {
+  const { label, ...rest } = props;
   return (
-    <MeterRoot value={24}>
-      <MeterLabel>Storage Used</MeterLabel>
+    <MeterRoot {...rest}>
+      <MeterLabel>{label}</MeterLabel>
       <MeterValue />
       <MeterTrack>
         <MeterIndicator />

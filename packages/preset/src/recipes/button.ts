@@ -21,6 +21,10 @@ export const buttonRecipe = defineRecipe({
       _focusVisible: {
         layerStyle: 'focus',
       },
+      _disabled: {
+        opacity: 'state.disabled',
+        cursor: 'disabled',
+      },
     },
     label: {
       textAlign: 'center',
@@ -35,98 +39,64 @@ export const buttonRecipe = defineRecipe({
     },
   }),
   variants: {
-    palette: {
-      default: parts({
-        root: {
-          colorPalette: 'neutral',
-          color: 'colorPalette.text',
-        },
-      }),
-      primary: parts({
-        root: {
-          colorPalette: 'primary',
-        },
-      }),
-      danger: parts({
-        root: {
-          colorPalette: 'error',
-        },
-      }),
-      warning: parts({
-        root: {
-          colorPalette: 'warning',
-        },
-      }),
-      success: parts({
-        root: {
-          colorPalette: 'success',
-        },
-      }),
-      info: parts({
-        root: {
-          colorPalette: 'info',
-        },
-      }),
-    },
     variant: {
       primary: parts({
         root: {
-          color: 'colorPalette.text.inverse.strong',
-          backgroundColor: 'colorPalette.fill',
-          borderColor: 'colorPalette.stroke',
+          color: 'text.primary.inverse.strong',
+          backgroundColor: 'fill.primary',
+          borderColor: 'stroke.primary',
           boxShadow: 'xs',
-          _hover: {
-            backgroundColor: 'colorPalette.fill.hover',
-          },
-          _active: {
-            backgroundColor: 'colorPalette.fill.press',
-          },
-          _focusVisible: {
-            backgroundColor: 'colorPalette.fill.focus',
-          },
-          _disabled: {
-            color: 'colorPalette.text.inverse.disabled',
-            backgroundColor: 'colorPalette.fill.disabled',
+          _notDisabled: {
             _hover: {
-              color: 'colorPalette.text.inverse.disabled',
-              backgroundColor: 'colorPalette.fill.disabled',
+              backgroundColor: 'fill.primary.fill.hover',
+            },
+            _active: {
+              backgroundColor: 'fill.primary.active',
+            },
+            _focusVisible: {
+              backgroundColor: 'fill.primary.focus',
             },
           },
         },
       }),
       secondary: parts({
         root: {
-          color: 'colorPalette.text',
-          backgroundColor: 'colorPalette.fill/20',
-          borderColor: 'colorPalette.stroke',
+          color: 'text',
+          backgroundColor: 'fill.weak',
+          borderColor: 'stroke.weak',
           boxShadow: 'revert',
-          _hover: {
-            backgroundColor: 'colorPalette.fill.hover',
-          },
-          _disabled: {
-            color: 'colorPalette.text.disabled',
-            borderColor: 'colorPalette.stroke.disabled',
+          _notDisabled: {
             _hover: {
-              color: 'colorPalette.text.disabled',
-              borderColor: 'colorPalette.stroke.disabled',
+              backgroundColor: 'fill.weak.hover',
             },
           },
         },
       }),
       tertiary: parts({
         root: {
-          color: 'colorPalette.text',
+          color: 'text',
           backgroundColor: 'transparent',
           _hover: {
-            backgroundColor: 'colorPalette.fill.weak.hover',
+            backgroundColor: 'fill.weak.hover',
           },
-          _disabled: {
-            color: 'colorPalette.text.disabled',
-            backgroundColor: 'colorPalette.fill.disabled',
+        },
+      }),
+      danger: parts({
+        root: {
+          color: 'text.danger',
+          backgroundColor: 'fill.danger',
+          _notDisabled: {
             _hover: {
-              backgroundColor: 'colorPalette.fill.disabled',
+              backgroundColor: 'fill.danger.hover',
             },
           },
+        },
+      }),
+      inverse: parts({
+        root: {
+          color: 'text.inverse.strong',
+          backgroundColor: 'fill.inverse.strong',
+          borderColor: 'stroke.inverse.strong',
         },
       }),
     },
@@ -136,7 +106,7 @@ export const buttonRecipe = defineRecipe({
           py: 'xs',
           px: 'sm',
           gap: '1',
-          fontSize: 'sm',
+          fontSize: 'xs',
         },
         label: {
           px: '1',
@@ -147,7 +117,7 @@ export const buttonRecipe = defineRecipe({
           py: 'sm',
           px: 'md',
           gap: '1',
-          fontSize: 'md',
+          fontSize: 'sm',
         },
         label: {
           px: 'xs',
@@ -174,8 +144,7 @@ export const buttonRecipe = defineRecipe({
     },
   },
   defaultVariants: {
-    variant: 'primary',
-    palette: 'default',
+    variant: 'secondary',
     size: 'md',
   },
 });

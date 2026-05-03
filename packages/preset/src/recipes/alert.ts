@@ -42,9 +42,9 @@ export const alertRecipe = defineRecipe({
           colorPalette: 'primary',
         },
       }),
-      error: parts({
+      danger: parts({
         root: {
-          colorPalette: 'error',
+          colorPalette: 'danger',
         },
       }),
       warning: parts({

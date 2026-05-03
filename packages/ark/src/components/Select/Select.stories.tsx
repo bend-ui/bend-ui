@@ -1,4 +1,5 @@
-import { createListCollection, Select } from '.';
+import { createListCollection } from '@ark-ui/react';
+import { Select } from '.';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {

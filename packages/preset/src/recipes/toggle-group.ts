@@ -1,15 +1,12 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  item: { selector: '& [data-part="item"]' },
-});
-
-export const toggleGroupRecipe = defineRecipe({
+export const toggleGroupRecipe = defineSlotRecipe({
   className: 'ToggleGroup',
-  base: parts({
+  slots: ['root', 'item'],
+  base: {
     root: {
       gap: 'md',
     },
-  }),
+    item: {},
+  },
 });

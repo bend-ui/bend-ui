@@ -1,10 +1,10 @@
 import { defineSemanticTokens } from '@pandacss/dev';
-import { error, info, neutral, primary, success, warning } from './tones';
+import { danger, info, neutral, primary, success, warning } from './tones';
 
 export const colors = defineSemanticTokens.colors({
   bg: {
     DEFAULT: {
-      value: '{colors.neutral.100}',
+      value: '{colors.neutral.50}',
     },
     page: {
       value: '{colors.neutral.50}',
@@ -13,13 +13,13 @@ export const colors = defineSemanticTokens.colors({
       value: '{colors.neutral.100}',
     },
     overlay: {
-      value: '{colors.neutral.50}',
+      value: '{colors.neutral.100}',
     },
     sunken: {
       value: '{colors.neutral.50}',
     },
     alternate: {
-      value: '{colors.neutral.50}',
+      value: '{colors.neutral.100}',
     },
     inverse: {
       value: '{colors.neutral.950}',
@@ -28,15 +28,21 @@ export const colors = defineSemanticTokens.colors({
   fill: {
     ...neutral.fill,
     primary: primary.fill,
-    error: error.fill,
+    danger: danger.fill,
     warning: warning.fill,
     success: success.fill,
     info: info.fill,
+    white: {
+      value: '{colors.white}',
+    },
+    yellow: {
+      value: '{colors.yellow.500}',
+    },
   },
   text: {
     ...neutral.text,
     primary: primary.text,
-    error: error.text,
+    danger: danger.text,
     warning: warning.text,
     success: success.text,
     info: info.text,
@@ -44,7 +50,7 @@ export const colors = defineSemanticTokens.colors({
   stroke: {
     ...neutral.stroke,
     primary: primary.stroke,
-    error: error.stroke,
+    danger: danger.stroke,
     warning: warning.stroke,
     success: success.stroke,
     info: info.stroke,
@@ -52,14 +58,14 @@ export const colors = defineSemanticTokens.colors({
   icon: {
     ...neutral.icon,
     primary: primary.icon,
-    error: error.icon,
+    danger: danger.icon,
     warning: warning.icon,
     success: success.icon,
     info: info.icon,
   },
   neutral,
   primary,
-  error,
+  danger,
   warning,
   success,
   info,

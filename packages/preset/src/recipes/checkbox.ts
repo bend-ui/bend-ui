@@ -20,25 +20,20 @@ export const checkboxRecipe = defineRecipe({
   className: 'Checkbox',
   base: parts({
     root: {},
-    label: {},
+    label: {
+      color: 'text.strong',
+    },
     control: {
       rounded: 'sm',
       border: 'base',
-
       _focusVisible: {
-        outline: '2px solid transparent',
-        outlineOffset: '2px',
-        ringWidth: '2',
-        ringColor: 'red.500',
-        ringOffset: '2',
+        boxShadow: 'focusRing',
       },
-
       _disabled: {
-        opacity: '0.5',
+        opacity: 'state.disabled',
       },
-
       _checked: {
-        color: 'red.500',
+        color: 'text.primary.inverse.strong',
         bgColor: 'primary',
         borderColor: 'primary',
       },

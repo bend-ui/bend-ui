@@ -10,12 +10,10 @@ type DeepPartial<T> = T extends object
   : T;
 
 export interface DefineToneTokens {
-  fill?: Partial<
-    Record<'DEFAULT' | 'hover' | 'active' | 'disabled', SemanticToken>
-  >;
-  text?: Partial<Record<'DEFAULT' | 'inverse' | 'disabled', SemanticToken>>;
-  stroke?: Partial<Record<'DEFAULT' | 'subtle', SemanticToken>>;
-  icon?: Partial<Record<'DEFAULT' | 'inverse', SemanticToken>>;
+  fill?: Partial<Record<string, SemanticToken>>;
+  text?: Partial<Record<string, SemanticToken>>;
+  stroke?: Partial<Record<string, SemanticToken>>;
+  icon?: Partial<Record<string, SemanticToken>>;
 }
 
 export interface DefineToneOptions {
@@ -30,13 +28,24 @@ const generateDefaultTokens = (tone: string) =>
       DEFAULT: {
         value: `{colors.${tone}.500}`,
       },
+      strong: {
+        value: `{colors.${tone}.400}`,
+      },
+      weak: {
+        DEFAULT: {
+          value: `{colors.${tone}.300}`,
+        },
+        hover: {
+          value: `{colors.${tone}.400}`,
+        },
+      },
       weaker: {
-        value: `{colors.${tone}.800}`,
+        value: `{colors.${tone}.200}`,
       },
       hover: {
-        value: `color-mix(in srgb, {colors.${tone}.fill} 100%, black 20%)`,
+        value: `{colors.${tone}.300}`,
       },
-      press: {
+      active: {
         value: `{colors.${tone}.700}`,
       },
       focus: {
@@ -48,15 +57,12 @@ const generateDefaultTokens = (tone: string) =>
       selected: {
         value: `{colors.${tone}.500}`,
       },
-      strong: {
-        value: `{colors.${tone}.600}`,
-      },
-      weak: {
-        DEFAULT: {
-          value: `{colors.${tone}.300}`,
+      inverse: {
+        strong: {
+          value: `{colors.${tone}.50}`,
         },
-        hover: {
-          value: `color-mix(in srgb, {colors.${tone}.fill.weak} 100%, white 80%)`,
+        weak: {
+          value: `{colors.${tone}.100}`,
         },
       },
     },

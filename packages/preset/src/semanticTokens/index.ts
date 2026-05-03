@@ -14,6 +14,7 @@ import { sizes } from './sizes';
 import { spacing } from './spacing';
 import { zIndex } from './zIndex';
 import { gradients } from './gradients';
+import { opacity } from './opacity';
 
 export const semanticTokens = defineSemanticTokens({
   borders,
@@ -27,7 +28,11 @@ export const semanticTokens = defineSemanticTokens({
   gradients,
   letterSpacings,
   lineHeights,
-  opacity: {},
+  opacity,
+  blurs: {},
+  cursor: {
+    disabled: { value: 'not-allowed' },
+  },
   radii,
   shadows,
   sizes,

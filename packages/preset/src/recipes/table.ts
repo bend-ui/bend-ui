@@ -14,7 +14,7 @@ export const tableRecipe = defineSlotRecipe({
       padding: 'md',
     },
     caption: {
-      color: 'red.500',
+      color: 'text.weak',
     },
   },
   variants: {
@@ -23,7 +23,7 @@ export const tableRecipe = defineSlotRecipe({
         row: {
           _odd: {
             '&:has(td)': {
-              backgroundColor: 'red.500',
+              backgroundColor: 'bg.alternate',
             },
           },
         },
@@ -33,32 +33,27 @@ export const tableRecipe = defineSlotRecipe({
     witTableBorder: {
       true: {
         root: {
-          border: '1px solid',
-          borderColor: 'stroke',
+          border: 'weak',
         },
       },
     },
     withColumnBorder: {
       true: {
         head: {
-          borderRight: '1px solid',
-          borderColor: 'stroke',
+          borderRight: 'weak',
         },
         cell: {
-          borderRight: '1px solid',
-          borderColor: 'stroke',
+          borderRight: 'weak',
         },
       },
     },
     withRowBorder: {
       true: {
         head: {
-          borderBottom: '1px solid',
-          borderColor: 'stroke',
+          borderBottom: 'weak',
         },
         cell: {
-          borderBottom: '1px solid',
-          borderColor: 'stroke',
+          borderBottom: 'weak',
         },
       },
     },

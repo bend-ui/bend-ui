@@ -21,9 +21,7 @@ const parts = defineParts({
 export const paginationRecipe = defineRecipe({
   className: 'Pagination',
   base: parts({
-    root: {
-      bg: 'red',
-    },
+    root: {},
     item: {},
     ellipsis: {},
   }),

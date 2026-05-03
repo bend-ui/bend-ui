@@ -17,12 +17,6 @@ const meta: Meta<typeof Button> = {
       description: 'The button content',
       control: 'text',
     },
-    palette: {
-      control: 'select',
-      options: button.variantMap.palette,
-      description: 'The color palette for the button',
-      defaultValue: 'default',
-    },
     variant: {
       control: 'select',
       options: button.variantMap.variant,
@@ -45,41 +39,20 @@ type Story = StoryObj<typeof meta>;
 /** The default button styles */
 export const Base: Story = {};
 
-/** Primary styles for the button */
-export const Primary: Story = {
-  args: { palette: 'primary' },
-};
-
-/** Danger styles for the button */
-export const Danger: Story = {
-  args: {
-    palette: 'danger',
-  },
-};
-
-export const Palette: Story = {
-  render: (args) => (
-    <Stack align="center" gap="md">
-      {button.variantMap.palette.map((palette) => (
-        <Button key={palette} {...args} palette={palette} />
-      ))}
-    </Stack>
-  ),
-};
-
+/** The variants of the button */
 export const Variants: Story = {
   render: (args) => (
     <Stack align="center" gap="md">
       {button.variantMap.variant.map((variant) => (
-        <Button key={variant} {...args} variant={variant} />
+        <Button key={variant} {...args} variant={variant}>
+          {variant} button
+        </Button>
       ))}
     </Stack>
   ),
-  args: {
-    palette: 'primary',
-  },
 };
 
+/** The sizes of the button */
 export const Sizes: Story = {
   render: (args) => (
     <Stack align="center" gap="md">
@@ -90,6 +63,7 @@ export const Sizes: Story = {
   ),
 };
 
+/** The button with an icon */
 export const WithIcon: Story = {
   args: {
     icon: <CloudDownloadIcon />,

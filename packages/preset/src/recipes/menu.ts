@@ -5,7 +5,6 @@ const parts = defineParts({
   arrow: { selector: '& [data-part="arrow"]' },
   arrowTip: { selector: '& [data-part="arrowTip"]' },
   checkboxItem: { selector: '& [data-part="checkboxItem"]' },
-  content: { selector: '& [data-part="content"]' },
   indicator: { selector: '& [data-part="indicator"]' },
   itemGroupLabel: { selector: '& [data-part="itemGroupLabel"]' },
   itemGroup: { selector: '& [data-part="itemGroup"]' },
@@ -17,14 +16,22 @@ const parts = defineParts({
 export const menuRecipe = defineRecipe({
   className: 'Menu',
   base: parts({
-    content: {
+    root: {
       padding: 'md',
       layerStyle: 'surface.overlay',
-      _open: {
-        animation: 'dialog-in',
-      },
-      _closed: {
-        animation: 'dialog-out',
+      // _open: {
+      //   animation: 'dialog-in',
+      // },
+      // _closed: {
+      //   animation: 'dialog-out',
+      // },
+    },
+    item: {
+      padding: 'sm',
+      borderRadius: 'sm',
+      cursor: 'pointer',
+      _hover: {
+        backgroundColor: 'fill.hover',
       },
     },
   }),

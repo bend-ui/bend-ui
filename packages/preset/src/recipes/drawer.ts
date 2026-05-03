@@ -19,8 +19,7 @@ export const drawerRecipe = defineRecipe({
     },
     header: {
       padding: 'md',
-      borderBottom: '1px solid',
-      borderColor: 'red.500',
+      borderBottom: 'weak',
     },
     closeTrigger: {
       position: 'absolute',
@@ -29,8 +28,7 @@ export const drawerRecipe = defineRecipe({
     },
     footer: {
       padding: 'md',
-      borderTop: '1px solid',
-      borderColor: 'red.500',
+      borderTop: 'weak',
     },
     title: {
       textStyle: 'title',

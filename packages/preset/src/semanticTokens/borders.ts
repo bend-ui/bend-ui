@@ -3,7 +3,7 @@ import { defineSemanticTokens } from '@pandacss/dev';
 export const borders = defineSemanticTokens.borders({
   base: { value: '1px solid {colors.stroke}' },
   primary: { value: '1px solid {colors.stroke.primary}' },
-  error: { value: '1px solid {colors.stroke.error}' },
+  danger: { value: '1px solid {colors.stroke.danger}' },
   strong: { value: '1px solid {colors.stroke.strong}' },
   weak: { value: '1px solid {colors.stroke.weak}' },
   disabled: { value: '1px solid {colors.stroke.disabled}' },

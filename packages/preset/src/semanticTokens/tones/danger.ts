@@ -1,5 +1,5 @@
 import { defineTone } from '../../utils/define-tone';
 
-export const error = defineTone('error', {
+export const danger = defineTone('danger', {
   scale: 'red',
 });

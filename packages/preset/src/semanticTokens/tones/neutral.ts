@@ -5,13 +5,13 @@ export const neutral = defineTone('neutral', {
   overrides: {
     fill: {
       DEFAULT: {
-        value: '{colors.neutral.50}',
+        value: '{colors.neutral.200}',
       },
       hover: {
-        value: 'color-mix(in srgb, {colors.neutral.fill} 100%, black 10%)',
+        value: '{colors.neutral.300}',
       },
       active: {
-        value: '{colors.neutral.300}',
+        value: '{colors.neutral.400}',
       },
       disabled: {
         value: '{colors.neutral.400}',

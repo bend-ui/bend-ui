@@ -20,8 +20,7 @@ export const modalRecipe = defineRecipe({
     overlay: {
       position: 'fixed',
       inset: 0,
-      bgColor: 'neutral.950',
-      opacity: '0.8',
+      bgColor: 'neutral.950/80',
       _open: {
         animation: 'overlay.in',
       },

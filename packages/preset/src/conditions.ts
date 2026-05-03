@@ -13,4 +13,7 @@ export const conditions: Conditions = {
   inactive: '&:is([data-inactive], [data-state=inactive])',
   checked: '&:is([data-checked], [data-state=checked])',
   unchecked: '&:is([data-unchecked], [data-state=unchecked])',
+  notDisabled: '&:not(:is([data-disabled], [aria-disabled], :disabled))',
+  disabled: '&:is([data-disabled], [aria-disabled], :disabled)',
+  focusVisible: '&:is(:focus-visible, [data-focus-visible])',
 };

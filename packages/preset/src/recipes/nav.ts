@@ -15,14 +15,14 @@ export const navRecipe = defineSlotRecipe({
       gap: 'sm',
       py: 'sm',
       px: 'md',
-      color: 'inherit',
+      color: 'text.weak',
       textDecoration: 'none',
       rounded: 'md',
       _hover: {
-        backgroundColor: 'red.500',
+        color: 'text.strong',
       },
       _current: {
-        backgroundColor: 'red.500',
+        color: 'text.strong',
       },
     },
   },

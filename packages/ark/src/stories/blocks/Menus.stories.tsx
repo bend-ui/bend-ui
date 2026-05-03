@@ -26,7 +26,7 @@ export const Default: StoryObj = {
         root: {
           maxW: 'min-content',
           minW: '320px',
-          bgColor: 'surface',
+          bgColor: 'fill.weak',
           border: 'base',
           borderRadius: 'base',
         },
@@ -50,8 +50,8 @@ export const Default: StoryObj = {
           px: 'lg',
           py: 'md',
           _hover: {
-            bgColor: 'bg.primary',
-            color: 'primary.fg',
+            bgColor: 'fill.hover',
+            color: 'text.primary',
           },
         },
         divider: {
@@ -74,7 +74,7 @@ export const Default: StoryObj = {
                 aspectRatio: 'square',
                 rounded: 'full',
                 border: 'base',
-                bgColor: 'bg.primary',
+                bgColor: 'fill.primary',
                 overflow: 'hidden',
               })}
             >

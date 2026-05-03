@@ -1,49 +1,66 @@
 import { Menu as MenuPrimitive } from '@base-ui/react/menu';
-import { ArrowDownIcon, ChevronDownIcon } from 'lucide-react';
+import { withParts, withRecipe } from '@particles/react';
+import { menu } from '@particles/styled-system/recipes';
+import { Button } from '../Button';
 
 const MenuRoot = MenuPrimitive.Root;
-const MenuTrigger = MenuPrimitive.Trigger;
-const MenuPositioner = MenuPrimitive.Positioner;
-const MenuPortal = MenuPrimitive.Portal;
-const MenuBackdrop = MenuPrimitive.Backdrop;
-const MenuPopup = MenuPrimitive.Popup;
-const MenuArrow = MenuPrimitive.Arrow;
-const MenuItem = MenuPrimitive.Item;
-const MenuGroup = MenuPrimitive.Group;
-const MenuGroupLabel = MenuPrimitive.GroupLabel;
-const MenuRadioGroup = MenuPrimitive.RadioGroup;
-const MenuRadioItem = MenuPrimitive.RadioItem;
-const MenuRadioItemIndicator = MenuPrimitive.RadioItemIndicator;
-const MenuCheckboxItem = MenuPrimitive.CheckboxItem;
-const MenuCheckboxItemIndicator = MenuPrimitive.CheckboxItemIndicator;
-const MenuSubmenuTrigger = MenuPrimitive.SubmenuTrigger;
-const MenuSeparator = MenuPrimitive.Separator;
 
-const Component = () => {
+export type MenuTriggerProps = MenuPrimitive.Trigger.Props;
+
+const MenuTrigger = (props: MenuTriggerProps) => {
+  const { render, ...rest } = props;
+  const renderProp = render || <Button />;
+  return <MenuPrimitive.Trigger render={renderProp} {...rest} />;
+};
+
+const MenuPortal = MenuPrimitive.Portal;
+const MenuPositioner = MenuPrimitive.Positioner;
+const MenuBackdrop = MenuPrimitive.Backdrop;
+const MenuPopup = withRecipe(MenuPrimitive.Popup, menu, 'root');
+const MenuArrow = withParts(MenuPrimitive.Arrow, 'arrow');
+const MenuItem = withParts(MenuPrimitive.Item, 'item');
+const MenuGroup = withParts(MenuPrimitive.Group, 'group');
+const MenuGroupLabel = withParts(MenuPrimitive.GroupLabel, 'groupLabel');
+const MenuRadioGroup = withParts(MenuPrimitive.RadioGroup, 'radioGroup');
+const MenuRadioItem = withParts(MenuPrimitive.RadioItem, 'radioItem');
+const MenuRadioItemIndicator = withParts(
+  MenuPrimitive.RadioItemIndicator,
+  'radioItemIndicator',
+);
+const MenuCheckboxItem = withParts(MenuPrimitive.CheckboxItem, 'checkboxItem');
+const MenuCheckboxItemIndicator = withParts(
+  MenuPrimitive.CheckboxItemIndicator,
+  'checkboxItemIndicator',
+);
+const MenuSubmenuTrigger = withParts(
+  MenuPrimitive.SubmenuTrigger,
+  'submenuTrigger',
+);
+const MenuSeparator = withParts(MenuPrimitive.Separator, 'separator');
+
+export interface MenuContentProps
+  extends React.ComponentPropsWithoutRef<'div'> {
+  children?: React.ReactNode;
+}
+
+const MenuContent = (props: MenuContentProps) => {
+  const { children, ...rest } = props;
   return (
-    <MenuRoot>
-      <MenuTrigger>
-        Song <ChevronDownIcon />
-      </MenuTrigger>
-      <MenuPortal>
-        <MenuPositioner sideOffset={8}>
-          <MenuPopup>
-            <MenuArrow>
-              <ArrowDownIcon />
-            </MenuArrow>
-            <MenuItem>Add to Library</MenuItem>
-            <MenuItem>Add to Playlist</MenuItem>
-            <MenuSeparator />
-            <MenuItem>Play Next</MenuItem>
-            <MenuItem>Play Last</MenuItem>
-            <MenuSeparator />
-            <MenuItem>Favorite</MenuItem>
-            <MenuItem>Share</MenuItem>
-          </MenuPopup>
-        </MenuPositioner>
-      </MenuPortal>
-    </MenuRoot>
+    <MenuPortal>
+      <MenuPositioner sideOffset={8}>
+        <MenuPopup {...rest}>{children}</MenuPopup>
+      </MenuPositioner>
+    </MenuPortal>
   );
+};
+
+export interface MenuProps extends React.ComponentPropsWithoutRef<'div'> {
+  children?: React.ReactNode;
+}
+
+const Component = (props: MenuProps) => {
+  const { children, ...rest } = props;
+  return <MenuRoot {...rest}>{children}</MenuRoot>;
 };
 
 export const Menu = Object.assign(Component, {
@@ -64,4 +81,5 @@ export const Menu = Object.assign(Component, {
   CheckboxItemIndicator: MenuCheckboxItemIndicator,
   SubmenuTrigger: MenuSubmenuTrigger,
   Separator: MenuSeparator,
+  Content: MenuContent,
 });

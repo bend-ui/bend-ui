@@ -63,7 +63,7 @@ export const tagRecipe = defineSlotRecipe({
       },
       danger: {
         root: {
-          colorPalette: 'error',
+          colorPalette: 'danger',
         },
       },
       warning: {

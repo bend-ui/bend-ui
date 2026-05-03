@@ -1,11 +1,22 @@
 import * as React from 'react';
 import { PreviewCard as PreviewCardPrimitive } from '@base-ui/react/preview-card';
+import { withRecipe } from '@particles/react';
+import { hoverCard } from '@particles/styled-system/recipes';
 
 const PreviewCardRoot = PreviewCardPrimitive.Root;
+
 const PreviewCardTrigger = PreviewCardPrimitive.Trigger;
+
 const PreviewCardPortal = PreviewCardPrimitive.Portal;
+
 const PreviewCardPositioner = PreviewCardPrimitive.Positioner;
-const PreviewCardPopup = PreviewCardPrimitive.Popup;
+
+const PreviewCardPopup = withRecipe(
+  PreviewCardPrimitive.Popup,
+  hoverCard,
+  'root',
+);
+
 const PreviewCardArrow = PreviewCardPrimitive.Arrow;
 
 const Component = () => {
