@@ -21,7 +21,7 @@
     "@floating-ui/react": "*",
     "@particles/preset": "workspace:*",
     "@particles/styled-system": "workspace:*",
-    "lucide-react": "^1.11.0"
+    "lucide-react": "^1.14.0"
   },
   "devDependencies": {
     "@particles/storybook": "workspace:*"

@@ -6,7 +6,7 @@
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
-    "@pandacss/token-dictionary": "^1.10.0",
+    "@pandacss/token-dictionary": "^1.11.0",
     "@particles/ark": "workspace:*",
     "@particles/preset": "workspace:*",
     "@particles/react": "workspace:*",
@@ -15,6 +15,6 @@
     "fumadocs-mdx": "14.2.11",
     "fumadocs-typescript": "^5.2.2",
     "fumadocs-ui": "16.7.12",
-    "tailwindcss": "4.2.2"
+    "tailwindcss": "4.2.4"
   }
 }
