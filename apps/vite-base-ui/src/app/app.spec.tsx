@@ -1,26 +1,36 @@
 import { render } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 
 import App from './app';
 
 describe('App', () => {
   it('should render successfully', () => {
     const { baseElement } = render(
-      <BrowserRouter>
+      <MemoryRouter>
         <App />
-      </BrowserRouter>,
+      </MemoryRouter>,
     );
     expect(baseElement).toBeTruthy();
   });
 
-  it('should have a greeting as the title', () => {
-    const { getAllByText } = render(
-      <BrowserRouter>
+  it('should link to the dental management demo', () => {
+    const { getByRole } = render(
+      <MemoryRouter>
         <App />
-      </BrowserRouter>,
+      </MemoryRouter>,
     );
+    expect(getByRole('link', { name: /dental management/i })).toBeTruthy();
+  });
+
+  it('should render the dental management route', () => {
+    const { getByText, getByRole } = render(
+      <MemoryRouter initialEntries={['/dental-management/overview']}>
+        <App />
+      </MemoryRouter>,
+    );
+    expect(getByText('Dental Management Overview')).toBeTruthy();
     expect(
-      getAllByText(new RegExp('Welcome vite-base-ui', 'gi')).length > 0,
+      getByRole('navigation', { name: /dental management/i }),
     ).toBeTruthy();
   });
 });

@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { Overview } from './pages/Overview';
 import { Patients } from './pages/Patients';
@@ -8,9 +8,11 @@ const DentalManagement = () => {
   return (
     <Layout>
       <Routes>
-        <Route path="/overview" element={<Overview />} />
-        <Route path="/patients" element={<Patients />} />
-        <Route path="/billing" element={<Billing />} />
+        <Route index element={<Navigate to="overview" replace />} />
+        <Route path="overview" element={<Overview />} />
+        <Route path="patients" element={<Patients />} />
+        <Route path="billing" element={<Billing />} />
+        <Route path="*" element={<Navigate to="overview" replace />} />
       </Routes>
     </Layout>
   );
