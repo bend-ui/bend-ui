@@ -1,7 +1,6 @@
 ---
-name: document-component
-description: Generate rich documentation for a UI component using the ux-components MCP. Covers anatomy, states, usage guidelines, cross-system naming, and alternatives. Use when the user asks to document a component, wants UX reference docs, or needs to understand how a component works across design systems.
-tools: mcp__ux-components__lookup, mcp__ux-components__recommend, mcp__ux-components__compare
+name: "document-component"
+description: "Generate rich documentation for a UI component using the ux-components MCP. Covers anatomy, states, usage guidelines, cross-system naming, and alternatives. Use when the user asks to document a component, wants UX reference docs, or needs to understand how a component works across design systems."
 ---
 
 # Document Component

@@ -1,0 +1,24 @@
+Migration inventory:
+  active: instruction files - 2 found
+    - CLAUDE.md
+    - AGENTS.md
+  active: skills - 3 found
+    - component-libraries
+    - document-component
+    - make-interfaces-feel-better
+  inactive: command sources - none found
+  inactive: subagents - none found
+Migration surfaces:
+  active: AGENTS.md - 1 instruction file(s) found.
+  active: skills - 3 skill(s) converted.
+  active: MCP config - 3 MCP server(s) converted into config.toml.
+  inactive: subagents - No subagents found.
+Migration report:
+  symlinked: AGENTS.md - Linked to /Users/bdeziel/Perso/particles/CLAUDE.md.
+  rewritten: .agents/skills/component-libraries/SKILL.md - Converted Claude skill.
+  rewritten: .agents/skills/document-component/SKILL.md - Converted Claude skill.
+  rewritten: .agents/skills/make-interfaces-feel-better/SKILL.md - Converted Claude skill.
+  rewritten: .codex/config.toml - Converted 3 MCP server entries.
+  overwritten: /Users/bdeziel/Perso/particles/.agents/skills/component-libraries - Existing Codex skill will be replaced.
+  overwritten: /Users/bdeziel/Perso/particles/.agents/skills/document-component - Existing Codex skill will be replaced.
+  overwritten: /Users/bdeziel/Perso/particles/.agents/skills/make-interfaces-feel-better - Existing Codex skill will be replaced.

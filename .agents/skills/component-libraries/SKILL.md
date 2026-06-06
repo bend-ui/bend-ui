@@ -1,5 +1,5 @@
 ---
-name: component-libraries
+name: "component-libraries"
 description: "Working with the Particles component library packages. USE when adding, checking, or comparing components across packages/ark (@ark-ui/react wrapper), packages/base-ui (@base-ui/react wrapper), and packages/aria (react-aria-components wrapper). Trigger words: add component, missing component, check components, ark-ui, base-ui, react-aria, @particles/ark, @particles/base-ui, @particles/aria."
 ---
 

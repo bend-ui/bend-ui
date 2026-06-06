@@ -1,0 +1,24 @@
+personality = "friendly"
+
+[marketplaces.nx-claude-plugins]
+source_type = "git"
+source = "https://github.com/nrwl/nx-ai-agents-config.git"
+
+[plugins."nx@nx-claude-plugins"]
+enabled = true
+
+[mcp_servers]
+
+[mcp_servers.ark-ui]
+enabled = false
+command = "npx"
+args = ["-y", "@ark-ui/mcp"]
+
+[mcp_servers.panda]
+enabled = false
+command = "npx"
+args = ["panda", "mcp", "--config", "packages/react/panda.config.ts"]
+
+[mcp_servers.ux-components]
+enabled = false
+url = "https://www.ux-components.com/api/mcp"
