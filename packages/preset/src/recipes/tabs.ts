@@ -1,11 +1,12 @@
-import { defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 import { tabsParts } from '@particles/preset-base';
 
 const parts = tabsParts;
 
-export const tabsRecipe = defineRecipe({
+export const tabsRecipe = defineSlotRecipe({
   className: 'Tabs',
-  base: parts({
+  slots: parts,
+  base: {
     root: {
       gap: 'md',
     },
@@ -34,5 +35,5 @@ export const tabsRecipe = defineRecipe({
     content: {
       pt: 'lg',
     },
-  }),
+  },
 });

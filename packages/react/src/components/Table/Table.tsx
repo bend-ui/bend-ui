@@ -19,6 +19,8 @@ const Row = withContext(styled.tr, 'row');
 
 const Head = withContext(styled.th, 'head');
 
+const HeaderCell = withContext(styled.td, 'headerCell');
+
 const Cell = withContext(styled.td, 'cell');
 
 export const Table = Object.assign(Root, {
@@ -30,4 +32,5 @@ export const Table = Object.assign(Root, {
   Row,
   Head,
   Cell,
+  HeaderCell,
 });

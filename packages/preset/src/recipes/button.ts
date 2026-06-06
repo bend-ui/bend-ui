@@ -18,12 +18,18 @@ export const buttonRecipe = defineRecipe({
       fontWeight: 'medium',
       position: 'relative',
       overflow: 'hidden',
+      transitionProperty: 'transform',
+      transitionDuration: 'fast',
+      transitionTimingFunction: 'ease-in-out',
       _focusVisible: {
         layerStyle: 'focus',
       },
       _disabled: {
         opacity: 'state.disabled',
         cursor: 'disabled',
+      },
+      _active: {
+        transform: 'scale(0.9)',
       },
     },
     label: {

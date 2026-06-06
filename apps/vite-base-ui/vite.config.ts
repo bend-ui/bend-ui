@@ -5,14 +5,17 @@ import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
 import path from 'path';
 
-export default defineConfig(() => ({
+export default defineConfig({
   root: __dirname,
   cacheDir: '../../node_modules/.vite/apps/vite-base-ui',
   server: {
     port: 4200,
     host: 'localhost',
     fs: {
-      allow: [searchForWorkspaceRoot(process.cwd())],
+      allow: [
+        searchForWorkspaceRoot(process.cwd()),
+        './node_modules/@fontsource-variable/inter',
+      ],
     },
   },
   preview: {
@@ -50,7 +53,7 @@ export default defineConfig(() => ({
     reporters: ['default'],
     coverage: {
       reportsDirectory: '../../coverage/apps/vite-base-ui',
-      provider: 'v8' as const,
+      provider: 'v8',
     },
   },
-}));
+});

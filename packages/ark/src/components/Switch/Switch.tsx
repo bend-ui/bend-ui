@@ -1,17 +1,17 @@
 import { Switch as SwitchPrimitive } from '@ark-ui/react';
 import { switchRecipe } from '@particles/styled-system/recipes';
 import type { SwitchProps } from './Switch.types';
-import { createRecipeContext } from '@particles/react';
+import { createStyleContext } from '@particles/styled-system/jsx';
 
-const { withProvider, withPart } = createRecipeContext(switchRecipe);
+const { withProvider, withContext } = createStyleContext(switchRecipe);
 
 const Root = withProvider(SwitchPrimitive.Root, 'root');
 
-const Control = withPart(SwitchPrimitive.Control, 'control');
+const Control = withContext(SwitchPrimitive.Control, 'control');
 
-const Thumb = withPart(SwitchPrimitive.Thumb, 'thumb');
+const Thumb = withContext(SwitchPrimitive.Thumb, 'thumb');
 
-const Label = withPart(SwitchPrimitive.Label, 'label');
+const Label = withContext(SwitchPrimitive.Label, 'label');
 
 const HiddenInput = SwitchPrimitive.HiddenInput;
 

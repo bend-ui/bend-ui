@@ -1,14 +1,10 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  section: { selector: '& [data-part="section"]' },
-});
-
-export const card = defineRecipe({
+export const card = defineSlotRecipe({
   className: 'Card',
-  base: parts({
+  slots: ['root', 'section'],
+  base: {
     root: { display: 'flex', flexDirection: 'column' },
     section: {},
-  }),
+  },
 });

@@ -106,7 +106,11 @@ export const slotRecipes: Theme['slotRecipes'] = {
   tour,
   tree,
   meter,
+  tabs: tabsRecipe,
   toggleGroup: toggleGroupRecipe,
+  sidebar: sidebarRecipe,
+  switchRecipe,
+  card,
 };
 
 export const recipes: Theme['recipes'] = {
@@ -118,7 +122,6 @@ export const recipes: Theme['recipes'] = {
   badge,
   button,
   buttonGroup,
-  card,
   checkbox,
   clipboard: clipboardRecipe,
   combobox,
@@ -136,9 +139,6 @@ export const recipes: Theme['recipes'] = {
   select: selectRecipe,
   selectDropdown: selectDropdownRecipe,
   separator,
-  sidebar: sidebarRecipe,
-  switchRecipe,
-  tabs: tabsRecipe,
   toast: toastRecipe,
   toggle,
   tooltip: tooltipRecipe,

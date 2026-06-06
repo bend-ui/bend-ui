@@ -1,11 +1,10 @@
-import { Dialog as ArkDialog, Portal } from '@ark-ui/react';
+import { Dialog as ArkDialog } from '@ark-ui/react';
 import {
   dialog,
   backdrop,
   DialogVariantProps,
 } from '@particles/styled-system/recipes';
 import { withRecipe, withParts } from '../../utils';
-import { Button } from '@particles/react';
 
 export type DialogRootProps = ArkDialog.RootProps;
 const DialogRoot = ArkDialog.Root;
@@ -48,38 +47,41 @@ const DialogCloseTrigger = withParts<DialogCloseTriggerProps>(
   'closeTrigger',
 );
 
+export type DialogPopupProps = {
+  children?: React.ReactNode;
+  title?: string;
+  description?: string;
+  closeTrigger?: string;
+};
+
+const DialogPopup = (props: DialogPopupProps) => {
+  const { children, title, description, closeTrigger } = props;
+  return (
+    <>
+      <DialogBackdrop />
+      <DialogPositioner>
+        <DialogContent>
+          {!!title && <DialogTitle>{title}</DialogTitle>}
+          {!!description && (
+            <DialogDescription>{description}</DialogDescription>
+          )}
+          {!!closeTrigger && (
+            <DialogCloseTrigger>{closeTrigger}</DialogCloseTrigger>
+          )}
+          {children}
+        </DialogContent>
+      </DialogPositioner>
+    </>
+  );
+};
+
 interface DialogProps extends ArkDialog.RootProps, DialogVariantProps {
-  children: React.ReactNode;
-  title: string;
-  description: string;
-  closeTrigger: string;
+  children?: React.ReactNode;
 }
 
 const Component = (props: DialogProps) => {
-  const [variantProps, otherProps] = dialog.splitVariantProps(props);
-  const { title, description, closeTrigger, children, ...rest } = otherProps;
-  return (
-    <DialogRoot {...rest}>
-      <DialogTrigger asChild>
-        <Button>Open Dialog</Button>
-      </DialogTrigger>
-      <Portal>
-        <DialogBackdrop />
-        <DialogPositioner {...variantProps}>
-          <DialogContent>
-            {!!title && <DialogTitle>{title}</DialogTitle>}
-            {!!description && (
-              <DialogDescription>{description}</DialogDescription>
-            )}
-            {!!closeTrigger && (
-              <DialogCloseTrigger>{closeTrigger}</DialogCloseTrigger>
-            )}
-            {children}
-          </DialogContent>
-        </DialogPositioner>
-      </Portal>
-    </DialogRoot>
-  );
+  const { children, ...rest } = props;
+  return <DialogRoot {...rest}>{children}</DialogRoot>;
 };
 
 export const Dialog = Object.assign(Component, {
@@ -91,4 +93,5 @@ export const Dialog = Object.assign(Component, {
   Title: DialogTitle,
   Description: DialogDescription,
   CloseTrigger: DialogCloseTrigger,
+  Popup: DialogPopup,
 });

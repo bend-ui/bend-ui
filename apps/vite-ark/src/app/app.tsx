@@ -1,34 +1,36 @@
 import { Route, Routes, Link } from 'react-router-dom';
-import { DashboardPage } from './dashboard';
-import '@fontsource-variable/inter/wght.css';
+import { SkiResort } from './apps/ski-resort';
+import DentalManagement from './apps/dental-management';
 import './index.css';
+import '@fontsource-variable/inter/wght.css';
 
 export function App() {
   return (
     <div>
-      <div role="navigation">
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
-        </ul>
-      </div>
       <Routes>
         <Route
           path="/"
           element={
-            <div>
-              This is the generated root route.{' '}
-              <Link to="/dashboard">Click here for dashboard.</Link>
+            <div role="navigation">
+              <ul>
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <Link to="/ski-resort">Ski resort</Link>
+                </li>
+                <li>
+                  <Link to="/dental-management/overview">
+                    Dental management
+                  </Link>
+                </li>
+              </ul>
             </div>
           }
         />
-        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/ski-resort/*" element={<SkiResort />} />
+        <Route path="/dental-management/*" element={<DentalManagement />} />
       </Routes>
-      {/* END: routes */}
     </div>
   );
 }

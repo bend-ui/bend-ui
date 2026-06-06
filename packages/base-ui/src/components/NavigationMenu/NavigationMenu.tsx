@@ -1,19 +1,44 @@
 import * as React from 'react';
 import { NavigationMenu as NavigationMenuPrimitive } from '@base-ui/react/navigation-menu';
 import { ArrowDownIcon, ChevronDownIcon } from 'lucide-react';
+import { createStyleContext } from '@particles/styled-system/jsx';
+import { navbar } from '@particles/styled-system/recipes';
 
-const NavigationMenuRoot = NavigationMenuPrimitive.Root;
-const NavigationMenuList = NavigationMenuPrimitive.List;
-const NavigationMenuItem = NavigationMenuPrimitive.Item;
-const NavigationMenuTrigger = NavigationMenuPrimitive.Trigger;
-const NavigationMenuContent = NavigationMenuPrimitive.Content;
-const NavigationMenuIcon = NavigationMenuPrimitive.Icon;
-const NavigationMenuPortal = NavigationMenuPrimitive.Portal;
-const NavigationMenuPositioner = NavigationMenuPrimitive.Positioner;
-const NavigationMenuPopup = NavigationMenuPrimitive.Popup;
-const NavigationMenuArrow = NavigationMenuPrimitive.Arrow;
-const NavigationMenuViewport = NavigationMenuPrimitive.Viewport;
-const NavigationMenuLink = NavigationMenuPrimitive.Link;
+const { withProvider, withContext } = createStyleContext(navbar);
+
+const NavigationMenuRoot = withProvider(NavigationMenuPrimitive.Root, 'root');
+const NavigationMenuList = withContext(NavigationMenuPrimitive.List, 'list');
+const NavigationMenuItem = withContext(NavigationMenuPrimitive.Item, 'item');
+
+const NavigationMenuTrigger = withContext(
+  NavigationMenuPrimitive.Trigger,
+  'trigger',
+);
+
+const NavigationMenuContent = withContext(
+  NavigationMenuPrimitive.Content,
+  'content',
+);
+
+const NavigationMenuIcon = withContext(NavigationMenuPrimitive.Icon, 'icon');
+const NavigationMenuPortal = withContext(
+  NavigationMenuPrimitive.Portal,
+  'portal',
+);
+
+const NavigationMenuPositioner = withContext(
+  NavigationMenuPrimitive.Positioner,
+  'positioner',
+);
+
+const NavigationMenuPopup = withContext(NavigationMenuPrimitive.Popup, 'popup');
+const NavigationMenuArrow = withContext(NavigationMenuPrimitive.Arrow, 'arrow');
+const NavigationMenuViewport = withContext(
+  NavigationMenuPrimitive.Viewport,
+  'viewport',
+);
+
+const NavigationMenuLink = withContext(NavigationMenuPrimitive.Link, 'link');
 
 const Component = () => {
   return (

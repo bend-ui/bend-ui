@@ -45,6 +45,8 @@ import { toggleGroupRecipe } from './toggle-group';
 import { sidebarRecipe } from './sidebar';
 import { hoverCard } from './hover-card';
 import { meter } from './meter';
+import { scrollArea } from './scroll-area';
+import { navbarRecipe } from './navbar';
 
 export const slotRecipes: Theme['slotRecipes'] = {
   // divider: dividerRecipe,
@@ -58,7 +60,13 @@ export const slotRecipes: Theme['slotRecipes'] = {
   tagsInput: tagsInputRecipe,
   textarea: textareaRecipe,
   meter: meter,
+  tabs: tabsRecipe,
   toggleGroup: toggleGroupRecipe,
+  scrollArea: scrollArea,
+  sidebar: sidebarRecipe,
+  switchRecipe: switchRecipe,
+  card: cardRecipe,
+  navbar: navbarRecipe,
 };
 
 export const recipes: Theme['recipes'] = {
@@ -72,7 +80,6 @@ export const recipes: Theme['recipes'] = {
   badge: badgeRecipe,
   button: buttonRecipe,
   buttonGroup: buttonGroupRecipe,
-  card: cardRecipe,
   cardSection: cardSectionRecipe,
   checkbox: checkboxRecipe,
   combobox: comboboxRecipe,
@@ -91,12 +98,9 @@ export const recipes: Theme['recipes'] = {
   popover: popoverRecipe,
   select: selectRecipe,
   selectDropdown: selectDropdownRecipe,
-  switchRecipe: switchRecipe,
-  tabs: tabsRecipe,
   text: textRecipe,
   toast: toastRecipe,
   tooltip: tooltipRecipe,
   radioGroup: radioGroupRecipe,
-  sidebar: sidebarRecipe,
   hoverCard: hoverCard,
 };

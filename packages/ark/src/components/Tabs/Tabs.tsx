@@ -2,43 +2,42 @@ import { Tabs as TabsPrimitive } from '@ark-ui/react';
 import { tabs, type TabsVariantProps } from '@particles/styled-system/recipes';
 import type { JsxStyleProps } from '@particles/styled-system/types';
 import type { Assign } from '@ark-ui/react';
-import { withParts, withRecipe } from '@particles/react';
+import { createStyleContext } from '@particles/styled-system/jsx';
+
+const { withProvider, withContext } = createStyleContext(tabs);
 
 export interface TabsRootProps
   extends Assign<JsxStyleProps, TabsPrimitive.RootProps>,
     TabsVariantProps {}
 
-const Root = withRecipe(TabsPrimitive.Root, tabs, 'root');
+const Root = withProvider(TabsPrimitive.Root, 'root');
 
-const Content = withParts(TabsPrimitive.Content, 'content');
+const List = withContext(TabsPrimitive.List, 'list');
 
-const List = withParts(TabsPrimitive.List, 'list');
+const Trigger = withContext(TabsPrimitive.Trigger, 'trigger');
 
-const Trigger = withParts(TabsPrimitive.Trigger, 'trigger');
+const Indicator = withContext(TabsPrimitive.Indicator, 'indicator');
+
+const Content = withContext(TabsPrimitive.Content, 'content');
 
 export {
   TabsContext as Context,
   type TabsContextProps as ContextProps,
 } from '@ark-ui/react';
 
-const Component = (props: TabsRootProps) => (
-  <Root {...props}>
-    <List>
-      <Trigger value="react">React</Trigger>
-      <Trigger value="vue">Vue</Trigger>
-      <Trigger value="solid">Solid</Trigger>
-    </List>
-    <Content value="react">React Content</Content>
-    <Content value="vue">Vue Content</Content>
-    <Content value="solid">Solid Content</Content>
-  </Root>
-);
+export type TabsProps = TabsRootProps;
+
+const Component = (props: TabsProps) => {
+  const { children, ...rest } = props;
+  return <Root {...rest}>{children}</Root>;
+};
 
 Component.displayName = 'Tabs';
 
 export const Tabs = Object.assign(Component, {
   Root,
-  Content,
   List,
   Trigger,
+  Indicator,
+  Content,
 });

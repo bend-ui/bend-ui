@@ -1,35 +1,21 @@
 import * as React from 'react';
 import { Switch as SwitchPrimitive } from '@base-ui/react/switch';
-import { withParts, withRecipe } from '@particles/react';
 import { switchRecipe } from '@particles/styled-system/recipes';
-import { styled } from '@particles/styled-system/jsx';
-import { HTMLParticlesProps } from '@particles/react';
+import { styled, createStyleContext } from '@particles/styled-system/jsx';
 
-export type SwitchRootProps = HTMLParticlesProps<'div'>;
+const { withProvider, withContext } = createStyleContext(switchRecipe);
 
-const SwitchRoot = withRecipe<SwitchRootProps>(
-  styled('div'),
-  switchRecipe,
-  'root',
-);
+const SwitchRoot = withProvider(styled('label'), 'root');
 
-const SwitchControl = withParts<SwitchPrimitive.Root.Props>(
-  SwitchPrimitive.Root,
-  'control',
-);
+const SwitchControl = withContext(SwitchPrimitive.Root, 'control');
 
-const SwitchThumb = withParts<SwitchPrimitive.Thumb.Props>(
-  SwitchPrimitive.Thumb,
-  'thumb',
-);
+const SwitchThumb = withContext(SwitchPrimitive.Thumb, 'thumb');
 
-export type SwitchLabelProps = HTMLParticlesProps<'span'>;
-
-const SwitchLabel = withParts<SwitchLabelProps>(styled('span'), 'label');
+const SwitchLabel = withContext(styled('span'), 'label');
 
 const Component = () => {
   return (
-    <SwitchRoot defaultChecked>
+    <SwitchRoot>
       <SwitchControl>
         <SwitchThumb />
       </SwitchControl>
@@ -37,6 +23,8 @@ const Component = () => {
     </SwitchRoot>
   );
 };
+
+Component.displayName = 'Switch';
 
 export const Switch = Object.assign(Component, {
   Root: SwitchRoot,

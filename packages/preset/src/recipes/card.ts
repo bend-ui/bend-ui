@@ -1,30 +1,39 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe, defineRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  section: { selector: '& [data-part="section"]' },
-});
-
-export const cardRecipe = defineRecipe({
+export const cardRecipe = defineSlotRecipe({
   className: 'Card',
-  base: parts({
+  slots: [
+    'root',
+    'header',
+    'title',
+    'description',
+    'body',
+    'footer',
+    'section',
+  ],
+  base: {
     root: { p: 'lg', rounded: '2xl', layerStyle: 'panel' },
+    header: { mb: 'md' },
+    title: { fontSize: 'lg', fontWeight: 'bold' },
+    description: { mt: 'xs', color: 'text.weak' },
+    body: { mt: 'md' },
+    footer: { mt: 'md' },
     section: {
       mx: '-lg',
       _first: { mt: '-lg' },
       _last: { mb: '-lg' },
     },
-  }),
+  },
   variants: {
     inheritPadding: {
-      true: parts({
+      true: {
         section: {
           p: 'lg',
         },
-      }),
+      },
     },
     withBorder: {
-      true: parts({
+      true: {
         section: {
           borderBottom: 'weak',
           _notFirst: {
@@ -37,7 +46,7 @@ export const cardRecipe = defineRecipe({
             borderBottom: 'none',
           },
         },
-      }),
+      },
     },
   },
   defaultVariants: {

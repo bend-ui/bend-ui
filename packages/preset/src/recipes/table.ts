@@ -2,7 +2,17 @@ import { defineSlotRecipe } from '@pandacss/dev';
 
 export const tableRecipe = defineSlotRecipe({
   className: 'Table',
-  slots: ['root', 'caption', 'row', 'cell', 'header', 'footer', 'body', 'head'],
+  slots: [
+    'root',
+    'caption',
+    'row',
+    'cell',
+    'header',
+    'footer',
+    'body',
+    'head',
+    'headerCell',
+  ],
   base: {
     root: {
       captionSide: 'bottom',

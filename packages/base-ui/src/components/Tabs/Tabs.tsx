@@ -1,32 +1,18 @@
 import { Tabs as TabsPrimitive } from '@base-ui/react/tabs';
-import { withParts, withRecipe } from '@particles/react';
 import { tabs } from '@particles/styled-system/recipes';
+import { createStyleContext } from '@particles/styled-system/jsx';
 
-const TabsRoot = withRecipe<TabsPrimitive.Root.Props>(
-  TabsPrimitive.Root,
-  tabs,
-  'root',
-);
+const { withProvider, withContext } = createStyleContext(tabs);
 
-const TabsList = withParts<TabsPrimitive.List.Props>(
-  TabsPrimitive.List,
-  'list',
-);
+const TabsRoot = withProvider(TabsPrimitive.Root, 'root');
 
-const TabsTab = withParts<TabsPrimitive.Tab.Props>(
-  TabsPrimitive.Tab,
-  'trigger',
-);
+const TabsList = withContext(TabsPrimitive.List, 'list');
 
-const TabsPanel = withParts<TabsPrimitive.Panel.Props>(
-  TabsPrimitive.Panel,
-  'panel',
-);
+const TabsTab = withContext(TabsPrimitive.Tab, 'trigger');
 
-const TabsIndicator = withParts<TabsPrimitive.Indicator.Props>(
-  TabsPrimitive.Indicator,
-  'indicator',
-);
+const TabsPanel = withContext(TabsPrimitive.Panel, 'content');
+
+const TabsIndicator = withContext(TabsPrimitive.Indicator, 'indicator');
 
 const Component = TabsRoot;
 
@@ -34,6 +20,6 @@ export const Tabs = Object.assign(Component, {
   Root: TabsRoot,
   List: TabsList,
   Tab: TabsTab,
-  Panel: TabsPanel,
   Indicator: TabsIndicator,
+  Panel: TabsPanel,
 });

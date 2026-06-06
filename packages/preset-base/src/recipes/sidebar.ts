@@ -1,14 +1,12 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  content: { selector: '& [data-part="content"]' },
-});
-
-export const sidebarRecipe = defineRecipe({
+export const sidebarRecipe = defineSlotRecipe({
   className: 'Sidebar',
-  base: parts({
+  slots: ['root', 'header', 'content', 'footer'],
+  base: {
     root: {},
+    header: {},
     content: {},
-  }),
+    footer: {},
+  },
 });

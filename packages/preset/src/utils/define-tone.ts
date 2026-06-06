@@ -74,10 +74,10 @@ const generateDefaultTokens = (tone: string) =>
         value: `{colors.${tone}.900}`,
       },
       weak: {
-        value: `{colors.${tone}.800}`,
+        value: `{colors.${tone}.700}`,
       },
       weaker: {
-        value: `{colors.${tone}.700}`,
+        value: `{colors.${tone}.600}`,
       },
       inverse: {
         strong: {

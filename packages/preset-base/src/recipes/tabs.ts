@@ -1,22 +1,18 @@
-import { defineRecipe, defineParts } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  list: { selector: '& [data-part="list"]' },
-  trigger: { selector: '& [data-part="trigger"]' },
-  content: { selector: '& [data-part="content"]' },
-});
+const slots = ['root', 'list', 'trigger', 'indicator', 'content'] as const;
 
-const tabs = defineRecipe({
+const tabs = defineSlotRecipe({
   className: 'Tabs',
-  base: parts({
+  slots: slots,
+  base: {
     root: {
       display: 'flex',
       flexDirection: 'column',
       gap: 'md',
     },
-  }),
+  },
 });
 
-export const tabsParts = parts;
+export const tabsParts = slots;
 export const tabsRecipe = tabs;

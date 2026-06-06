@@ -25,6 +25,6 @@ export default defineConfig({
 
   staticCss: {
     themes: ['*'],
-    // recipes: '*',
+    recipes: '*',
   },
 });
