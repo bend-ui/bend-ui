@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "type": "commonjs",
   "dependencies": {
-    "@clack/prompts": "1.3.0",
+    "@clack/prompts": "1.5.1",
     "boxen": "8.0.1",
-    "commander": "^14.0.3"
+    "commander": "^15.0.0"
   }
 }

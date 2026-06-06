@@ -10,12 +10,12 @@
     }
   },
   "dependencies": {
-    "@ariakit/react": "^0.4.26",
+    "@ariakit/react": "^0.4.29",
     "@particles/preset": "workspace:*",
     "@particles/react": "workspace:*",
     "@particles/styled-system": "workspace:*"
   },
   "devDependencies": {
-    "@pandacss/dev": "^1.11.0"
+    "@pandacss/dev": "^1.11.3"
   }
 }
