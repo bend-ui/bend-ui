@@ -4,6 +4,7 @@ import { workspaceRoot } from '@nx/devkit';
 
 // For CI, you may want to set BASE_URL to the deployed application.
 const baseURL = process.env['BASE_URL'] || 'http://localhost:4200';
+const hasExternalServer = Boolean(process.env['BASE_URL']);
 
 /**
  * Read environment variables from file.
@@ -24,11 +25,12 @@ export default defineConfig({
   },
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'pnpm exec nx run vite-base-ui:preview',
-    url: 'http://localhost:4200',
-    reuseExistingServer: true,
+    command: 'pnpm nx run vite-base-ui:serve --host 127.0.0.1 --port 4200',
+    url: baseURL,
+    reuseExistingServer: !process.env['CI'],
     cwd: workspaceRoot,
   },
+  ...(hasExternalServer ? { webServer: undefined } : {}),
   projects: [
     {
       name: 'chromium',

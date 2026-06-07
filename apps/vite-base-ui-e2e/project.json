@@ -12,6 +12,25 @@
       "options": {
         "config": "apps/vite-base-ui-e2e/playwright.config.ts"
       }
+    },
+    "e2e-local": {
+      "executor": "@nx/playwright:playwright",
+      "outputs": ["{workspaceRoot}/dist/.playwright/apps/vite-base-ui-e2e"],
+      "options": {
+        "config": "apps/vite-base-ui-e2e/playwright.config.ts",
+        "project": ["chromium"],
+        "skipInstall": true
+      }
+    },
+    "e2e-visual": {
+      "executor": "@nx/playwright:playwright",
+      "outputs": ["{workspaceRoot}/dist/.playwright/apps/vite-base-ui-e2e"],
+      "options": {
+        "config": "apps/vite-base-ui-e2e/playwright.config.ts",
+        "grep": "@visual",
+        "project": ["chromium"],
+        "skipInstall": true
+      }
     }
   }
 }
