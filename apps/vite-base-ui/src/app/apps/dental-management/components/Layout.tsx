@@ -1,4 +1,4 @@
-import { AppShell } from '@particles/base-ui';
+import { Sidebar as SidebarPrimitive } from '@particles/base-ui';
 import { Sidebar } from './Sidebar';
 
 export interface LayoutProps {
@@ -7,11 +7,9 @@ export interface LayoutProps {
 
 export const Layout = (props: LayoutProps) => {
   return (
-    <AppShell>
-      <AppShell.Sidebar>
-        <Sidebar />
-      </AppShell.Sidebar>
-      <AppShell.Main>{props.children}</AppShell.Main>
-    </AppShell>
+    <SidebarPrimitive.Provider>
+      <Sidebar />
+      <SidebarPrimitive.Inset>{props.children}</SidebarPrimitive.Inset>
+    </SidebarPrimitive.Provider>
   );
 };

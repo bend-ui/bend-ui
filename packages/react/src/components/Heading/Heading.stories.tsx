@@ -15,7 +15,7 @@ export default meta;
 
 type Story = StoryObj<typeof Heading>;
 
-/** By default the `Heading` component renders a span that inherit styles from its parent */
+/** By default the `Heading` component renders an h2 that inherits styles from its parent */
 export const Base: Story = {};
 
 export const Title: Story = {

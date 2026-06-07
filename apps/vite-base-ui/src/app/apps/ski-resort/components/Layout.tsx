@@ -1,4 +1,4 @@
-import { AppShell } from '@particles/base-ui';
+import { Box, Sidebar as SidebarPrimitive } from '@particles/base-ui';
 import { Sidebar } from './Sidebar';
 
 export interface LayoutProps {
@@ -7,11 +7,25 @@ export interface LayoutProps {
 
 export const Layout = (props: LayoutProps) => {
   return (
-    <AppShell>
-      <AppShell.Sidebar>
-        <Sidebar />
-      </AppShell.Sidebar>
-      <AppShell.Main>{props.children}</AppShell.Main>
-    </AppShell>
+    <SidebarPrimitive.Provider>
+      <Sidebar />
+      <SidebarPrimitive.Inset>
+        <Box
+          display="flex"
+          alignItems="center"
+          gap="2"
+          px="3"
+          py="2"
+          borderBottom="border.weak"
+          bg="bg.page"
+          position="sticky"
+          top="0"
+          zIndex="1"
+        >
+          <SidebarPrimitive.Trigger aria-label="Toggle ski resort sidebar" />
+        </Box>
+        {props.children}
+      </SidebarPrimitive.Inset>
+    </SidebarPrimitive.Provider>
   );
 };

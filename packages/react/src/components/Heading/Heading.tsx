@@ -3,7 +3,7 @@
 import { cx } from '@particles/styled-system/css';
 import { text } from '@particles/styled-system/recipes';
 import type { TextVariantProps } from '@particles/styled-system/recipes';
-import type { ReactNode } from 'react';
+import type { ElementType, ReactNode } from 'react';
 import { HTMLParticlesProps, particles } from '../factory';
 
 export interface HeadingProps extends HTMLParticlesProps<'h2'> {
@@ -16,14 +16,24 @@ export interface HeadingProps extends HTMLParticlesProps<'h2'> {
 export const Heading = (props: HeadingProps) => {
   const { ref, ...rest } = props;
   const [variantProps, otherProps] = text.splitVariantProps(rest);
-  const { children, as: Component = 'h2', className, ...elementProps } = otherProps;
+  const {
+    children,
+    as: Component = 'h2',
+    className,
+    ...elementProps
+  } = otherProps;
 
   const classes = text(variantProps);
+  const HeadingElement = particles[Component] as ElementType;
 
   return (
-    <particles.h2 ref={ref} className={cx(classes, className)} {...elementProps}>
+    <HeadingElement
+      ref={ref}
+      className={cx(classes, className)}
+      {...elementProps}
+    >
       {children}
-    </particles.h2>
+    </HeadingElement>
   );
 };
 

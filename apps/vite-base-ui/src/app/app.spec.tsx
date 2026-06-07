@@ -22,6 +22,15 @@ describe('App', () => {
     expect(getByRole('link', { name: /dental management/i })).toBeTruthy();
   });
 
+  it('should link to the ski resort demo', () => {
+    const { getByRole } = render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
+    expect(getByRole('link', { name: /ski resort/i })).toBeTruthy();
+  });
+
   it('should render the dental management route', () => {
     const { getByText, getByRole } = render(
       <MemoryRouter initialEntries={['/dental-management/overview']}>
@@ -32,5 +41,17 @@ describe('App', () => {
     expect(
       getByRole('navigation', { name: /dental management/i }),
     ).toBeTruthy();
+  });
+
+  it('should render the ski resort route', () => {
+    const { getByRole } = render(
+      <MemoryRouter initialEntries={['/ski-resort/slope-conditions']}>
+        <App />
+      </MemoryRouter>,
+    );
+    expect(
+      getByRole('heading', { name: /slope conditions/i }),
+    ).toBeTruthy();
+    expect(getByRole('navigation', { name: /ski resort/i })).toBeTruthy();
   });
 });
