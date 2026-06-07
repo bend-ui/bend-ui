@@ -4,39 +4,42 @@ import type { ComponentProps } from 'react';
 import { createStyleContext } from '@particles/styled-system/jsx';
 import { scrollArea } from '@particles/styled-system/recipes';
 
-const { withProvider, withContext } = createStyleContext(scrollArea);
+const { withProvider, withContext, withRootProvider } =
+  createStyleContext(scrollArea);
 
-export type ScrollAreaRootProps = ComponentProps<typeof ScrollAreaRoot>;
-export type ScrollAreaContentProps = ComponentProps<typeof ScrollAreaContent>;
-
-export const ScrollAreaRoot = withProvider(ScrollAreaPrimitive.Root, 'root');
-export const ScrollAreaRootProvider = withProvider(
-  ScrollAreaPrimitive.Root,
-  'root',
+const ScrollAreaRoot = withProvider(ScrollAreaPrimitive.Root, 'root');
+const ScrollAreaRootProvider = withRootProvider(
+  ScrollAreaPrimitive.RootProvider,
 );
-export const ScrollAreaContent = withContext(
-  ScrollAreaPrimitive.Content,
-  'content',
-);
-export const ScrollAreaCorner = withContext(
-  ScrollAreaPrimitive.Corner,
-  'corner',
-);
-export const ScrollAreaThumb = withContext(ScrollAreaPrimitive.Thumb, 'thumb');
-export const ScrollAreaScrollbar = withContext(
+const ScrollAreaContent = withContext(ScrollAreaPrimitive.Content, 'content');
+const ScrollAreaCorner = withContext(ScrollAreaPrimitive.Corner, 'corner');
+const ScrollAreaThumb = withContext(ScrollAreaPrimitive.Thumb, 'thumb');
+const ScrollAreaScrollbar = withContext(
   ScrollAreaPrimitive.Scrollbar,
   'scrollbar',
   {
     defaultProps: { children: <ScrollAreaThumb /> },
   },
 );
-export const ScrollAreaViewport = withContext(
+const ScrollAreaViewport = withContext(
   ScrollAreaPrimitive.Viewport,
   'viewport',
 );
 
-export interface ScrollAreaProps extends ComponentProps<typeof ScrollAreaRoot> {
-  children: React.ReactNode;
+export type ScrollAreaRootProps = ComponentProps<typeof ScrollAreaRoot>;
+export type ScrollAreaRootProviderProps = ComponentProps<
+  typeof ScrollAreaRootProvider
+>;
+export type ScrollAreaContentProps = ComponentProps<typeof ScrollAreaContent>;
+export type ScrollAreaCornerProps = ComponentProps<typeof ScrollAreaCorner>;
+export type ScrollAreaThumbProps = ComponentProps<typeof ScrollAreaThumb>;
+export type ScrollAreaScrollbarProps = ComponentProps<
+  typeof ScrollAreaScrollbar
+>;
+export type ScrollAreaViewportProps = ComponentProps<typeof ScrollAreaViewport>;
+
+export interface ScrollAreaProps extends ScrollAreaRootProps {
+  children?: React.ReactNode;
 }
 
 const Component = (props: ScrollAreaProps) => {
@@ -46,9 +49,7 @@ const Component = (props: ScrollAreaProps) => {
       <ScrollAreaViewport>
         <ScrollAreaContent>{children}</ScrollAreaContent>
       </ScrollAreaViewport>
-      <ScrollAreaScrollbar>
-        <ScrollAreaThumb />
-      </ScrollAreaScrollbar>
+      <ScrollAreaScrollbar />
       <ScrollAreaCorner />
     </ScrollAreaRoot>
   );
