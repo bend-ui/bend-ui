@@ -96,7 +96,7 @@
     "@vitest/coverage-v8": "4.0.16",
     "@vitest/ui": "4.0.16",
     "@vueless/storybook-dark-mode": "^10.0.7",
-    "autoprefixer": "10.4.21",
+    "autoprefixer": "10.5.0",
     "babel-jest": "30.0.5",
     "babel-loader": "9.2.1",
     "colorette": "^2.0.20",
