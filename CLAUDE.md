@@ -1,6 +1,11 @@
 <!-- nx configuration start-->
 <!-- Leave the start & end comments to automatically receive updates. -->
 
+# Project context
+
+- Read `CONTEXT.md` before architecture work, broad refactors, documentation planning, or adding new package adapters.
+- Use the vocabulary in `CONTEXT.md` when describing the design system, package adapters, recipes, operational patterns, and package health.
+
 # General Guidelines for working with Nx
 
 - For navigating/exploring the workspace, invoke the `nx-workspace` skill first - it has patterns for querying projects, targets, and dependencies
