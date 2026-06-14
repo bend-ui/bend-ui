@@ -12,7 +12,7 @@
     "@particles/preset": "workspace:*",
     "@particles/react": "workspace:*",
     "@particles/styled-system": "workspace:*",
-    "lucide-react": "^1.14.0",
+    "lucide-react": "^1.18.0",
     "radix-ui": "^1.5.0"
   },
   "devDependencies": {

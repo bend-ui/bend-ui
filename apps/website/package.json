@@ -10,7 +10,7 @@
     "@particles/ark": "workspace:*",
     "@particles/preset": "workspace:*",
     "@particles/react": "workspace:*",
-    "@types/mdx": "2.0.13",
+    "@types/mdx": "2.0.14",
     "fumadocs-core": "16.7.12",
     "fumadocs-mdx": "14.2.11",
     "fumadocs-typescript": "^5.2.2",
