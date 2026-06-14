@@ -34,11 +34,12 @@ Use these terms when discussing the repo.
 - **Structural preset**: `@bend-ui/preset-base`, the Panda CSS preset for structural recipe shape only. It should define parts, slots, state selectors, and minimal layout structure; it should not define product colors, padding scales, typography choices, or other visual decisions.
 - **Design preset**: `@bend-ui/preset`, the Panda CSS preset for the actual Bend UI visual language. It composes the structural preset and adds tokens, semantic tokens, colors, spacing, typography, themes, global CSS, and library-specific conditions.
 - **Styled system**: generated Panda CSS output consumed by the React packages. Do not hand-edit generated styled-system output unless a plan explicitly says so.
-- **React foundation**: `@bend-ui/react`, the local React module for styled elements, layout primitives, polymorphic `asChild` support, and shared helpers. This package may eventually be phased down or out because polymorphism differs across upstream primitive libraries and can become hard to maintain centrally.
+- **React foundation**: `@bend-ui/react`, the transitional local React module for styled elements, layout primitives, polymorphic `asChild` support, and shared helpers. This package is a removal target because public package adapters should use Panda's generated helpers and their upstream primitive library's native composition model instead.
 - **Package adapter**: a package that adapts an upstream primitive library into the Bend UI design system. Current support targets are Base UI, Ark UI, and React Aria Components.
 - **Upstream primitive**: a component primitive from an external library such as `@ark-ui/react`, `@base-ui/react`, `react-aria-components`, or `radix-ui`.
 - **Part**: a named slot in a compound module, usually exposed through a `data-part` attribute and styled by a slot recipe.
-- **Generated component**: a component copied or created in the user's project from a Bend UI source or template by CLI tooling.
+- **Component source registry**: the internal canonical source and metadata for Bend UI component templates that can be synchronized into public package adapters or copied into a user's project by CLI tooling. It is not a public runtime dependency.
+- **Generated component**: a component copied or created in the user's project from the component source registry by CLI tooling.
 - **Ejected component**: a component that started from Bend UI but is now owned and modified in the user's codebase. Ejected components should depend on the user's Panda/styled-system setup and chosen headless library, not on `@bend-ui/react`.
 - **Design-system tooling**: CLI tools, agent skills, prompts, token management, generation workflows, and maintenance workflows that help users create and evolve a design system.
 - **Operational pattern**: a higher-level UI pattern for dense application screens, such as surfaces, metrics, page headers, action rows, and timeline items.
@@ -54,16 +55,17 @@ Use these terms when discussing the repo.
 - `packages/preset`: design preset. It composes `preset-base` and adds the Bend UI visual language: tokens, semantic tokens, themes, global CSS, and library-specific conditions.
 - `packages/styled-system`: checked-in workspace package for generated Panda output used by examples and packages.
 - `packages/theme`: token-oriented package for theme assets.
-- `packages/react`: React foundation. Owns `bend`, shared layout/text modules, `withRecipe`, `withParts`, `createStyleContext`, and polymorphic rendering. Treat this as transitional unless a durable sharing model emerges; components that exist only because one upstream library lacks them may belong inside each package adapter instead.
-- `packages/primitives` and `packages/react-utils`: small shared utilities. Keep these deep enough to justify their existence; avoid pass-through helpers.
+- `packages/react`: React foundation. Owns `bend`, shared layout/text modules, `withRecipe`, `withParts`, `createStyleContext`, and polymorphic rendering. Remove this package once active package adapters no longer depend on it.
+- `packages/primitives`: prior shared utility package. Remove this package with `packages/react`; inline tiny utilities locally instead of preserving a broad shared primitive surface.
+- `packages/react-utils`: small shared utilities. Keep these deep enough to justify their existence; avoid pass-through helpers.
 
 ### Package adapters
 
 - `packages/base-ui`: Bend UI adapter over Base UI. This is the v0 focus and currently the most active adapter.
 - `packages/ark`: Bend UI adapter over Ark UI.
 - `packages/aria`: Bend UI adapter over React Aria Components.
-- `packages/radix`: prior/experimental Radix adapter. Not a current support target.
-- `packages/ariakit`: early adapter over Ariakit. Not a current support target unless explicitly revived.
+- `packages/radix`: prior/experimental Radix adapter. Remove this package and its Radix playground instead of migrating it.
+- `packages/ariakit`: early adapter over Ariakit. Keep it for possible future support, but do not treat it as a current support target unless explicitly revived.
 
 Package adapters should hide upstream primitive details where Bend UI has a clear opinion. They may expose compound parts when callers need composition, but callers should not need to relearn every upstream primitive's naming and styling quirks.
 
