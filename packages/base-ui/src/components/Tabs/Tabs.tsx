@@ -1,6 +1,6 @@
 import { Tabs as TabsPrimitive } from '@base-ui/react/tabs';
-import { tabs } from '@particles/styled-system/recipes';
-import { createStyleContext } from '@particles/styled-system/jsx';
+import { tabs } from '@bend-ui/styled-system/recipes';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
 
 const { withProvider, withContext } = createStyleContext(tabs);
 

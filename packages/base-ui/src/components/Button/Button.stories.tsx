@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
-import { button } from '@particles/styled-system/recipes';
+import { button } from '@bend-ui/styled-system/recipes';
 import { Stack } from '../';
 import { Button } from './Button';
 

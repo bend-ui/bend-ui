@@ -7,7 +7,7 @@ export default defineConfig({
   dts: true,
   clean: true,
   treeshake: true,
-  external: ['react', 'react-dom', '@ark-ui/react', '@particles/react', '@particles/styled-system'],
+  external: ['react', 'react-dom', '@ark-ui/react', '@bend-ui/react', '@bend-ui/styled-system'],
   esbuildOptions(options) {
     options.jsx = 'automatic';
     options.jsxImportSource = 'react';

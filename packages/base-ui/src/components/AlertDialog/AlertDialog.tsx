@@ -1,7 +1,7 @@
-import { alertDialog, overlay } from '@particles/styled-system/recipes';
+import { alertDialog, overlay } from '@bend-ui/styled-system/recipes';
 import { AlertDialog as AlertDialogPrimitive } from '@base-ui/react/alert-dialog';
-import { withParts, withRecipe } from '@particles/react';
-import { Button } from '@particles/react';
+import { withParts, withRecipe } from '@bend-ui/react';
+import { Button } from '@bend-ui/react';
 
 export interface AlertDialogRootProps extends AlertDialogPrimitive.Root.Props {
   children?: React.ReactNode;

@@ -15,25 +15,25 @@
       "~/*": [
         "apps/vite-base-ui/src/*"
       ],
-      "@particles/base-ui": [
+      "@bend-ui/base-ui": [
         "packages/base-ui/src/index.ts"
       ],
-      "@particles/react": [
+      "@bend-ui/react": [
         "packages/react/src/index.ts"
       ],
-      "@particles/primitives": [
+      "@bend-ui/primitives": [
         "packages/primitives/src/index.ts"
       ],
-      "@particles/react-utils": [
+      "@bend-ui/react-utils": [
         "packages/react-utils/src/index.ts"
       ],
-      "@particles/preset": [
+      "@bend-ui/preset": [
         "packages/preset/src/index.ts"
       ],
-      "@particles/preset-base": [
+      "@bend-ui/preset-base": [
         "packages/preset-base/src/index.ts"
       ],
-      "@particles/styled-system/*": [
+      "@bend-ui/styled-system/*": [
         "packages/vite-base-ui/styled-system/*"
       ]
     }

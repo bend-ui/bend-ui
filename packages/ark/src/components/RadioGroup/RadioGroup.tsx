@@ -1,11 +1,11 @@
 'use client';
 
 import { RadioGroup as RadioGroupPrimitive } from '@ark-ui/react';
-import { radioGroup } from '@particles/styled-system/recipes';
-import type { JsxStyleProps } from '@particles/styled-system/types';
-import type { RadioGroupVariantProps } from '@particles/styled-system/recipes';
+import { radioGroup } from '@bend-ui/styled-system/recipes';
+import type { JsxStyleProps } from '@bend-ui/styled-system/types';
+import type { RadioGroupVariantProps } from '@bend-ui/styled-system/recipes';
 import type { Assign } from '@ark-ui/react';
-import { withParts, withRecipe } from '@particles/react';
+import { withParts, withRecipe } from '@bend-ui/react';
 
 export interface RootProps
   extends Assign<JsxStyleProps, RadioGroupPrimitive.RootProps>,

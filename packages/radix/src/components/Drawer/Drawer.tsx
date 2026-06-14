@@ -1,7 +1,7 @@
 import { Dialog as DialogPrimitive } from 'radix-ui';
-import { drawer } from '@particles/styled-system/recipes';
-import { styled } from '@particles/styled-system/jsx';
-import type { DrawerVariantProps } from '@particles/styled-system/recipes';
+import { drawer } from '@bend-ui/styled-system/recipes';
+import { styled } from '@bend-ui/styled-system/jsx';
+import type { DrawerVariantProps } from '@bend-ui/styled-system/recipes';
 import type { ReactNode } from 'react';
 import { createRecipeContext } from '../../utils/recipe-context';
 

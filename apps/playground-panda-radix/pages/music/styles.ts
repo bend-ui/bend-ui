@@ -1,4 +1,4 @@
-import { sva } from '@particles/styled-system/css';
+import { sva } from '@bend-ui/styled-system/css';
 
 export const layout = sva({
   slots: ['root', 'menu', 'sidebar', 'main'],

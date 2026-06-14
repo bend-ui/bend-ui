@@ -1,4 +1,4 @@
-import { Box, Heading, Stack, Text } from '@particles/base-ui';
+import { Box, Heading, Stack, Text } from '@bend-ui/base-ui';
 import { MountainSnowIcon, ThermometerSnowflakeIcon, WindIcon } from 'lucide-react';
 import { resortStats, terrainZones, weatherTimeline } from '../../data';
 import {

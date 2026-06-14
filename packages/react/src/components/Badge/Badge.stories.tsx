@@ -1,4 +1,4 @@
-import { badge } from '@particles/styled-system/recipes';
+import { badge } from '@bend-ui/styled-system/recipes';
 import { Indicator } from '../Indicator';
 import { Badge } from './Badge';
 import type { Meta, StoryObj } from '@storybook/react-vite';

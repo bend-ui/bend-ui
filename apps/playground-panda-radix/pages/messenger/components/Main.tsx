@@ -1,6 +1,6 @@
-import { cx, sva } from '@particles/styled-system/css';
-import { Avatar, Button, Input } from '@particles/radix';
-import { level, scrollable } from '@particles/styled-system/patterns';
+import { cx, sva } from '@bend-ui/styled-system/css';
+import { Avatar, Button, Input } from '@bend-ui/radix';
+import { level, scrollable } from '@bend-ui/styled-system/patterns';
 import { conversations, messages, users } from '../data';
 
 const styles = sva({

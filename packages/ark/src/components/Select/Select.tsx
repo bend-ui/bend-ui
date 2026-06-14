@@ -1,6 +1,6 @@
 import { Portal, Select as ArkSelect } from '@ark-ui/react';
-import { selectDropdown, select } from '@particles/styled-system/recipes';
-import { DismissButton } from '@particles/react';
+import { selectDropdown, select } from '@bend-ui/styled-system/recipes';
+import { DismissButton } from '@bend-ui/react';
 import type { CollectionItem } from '@ark-ui/react';
 import { ChevronDownIcon } from 'lucide-react';
 import { withParts, withRecipe } from '../../utils';

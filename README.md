@@ -1,4 +1,4 @@
-# 🧬 Particles
+# 🧬 Bend UI
 
 Design system tools for React
 
@@ -6,5 +6,5 @@ Design system tools for React
 
 ## Packages
 
-- `@particles/primitives` - component primitives
-- `@particles/theme` - the default theme for Particles
+- `@bend-ui/primitives` - component primitives
+- `@bend-ui/theme` - the default theme for Bend UI

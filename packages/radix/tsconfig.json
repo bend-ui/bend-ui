@@ -5,6 +5,11 @@
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
+    "paths": {
+      "@bend-ui/styled-system/*": [
+        "packages/styled-system/dist/*"
+      ]
+    },
     "types": [
       "vite/client",
       "vitest"

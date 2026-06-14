@@ -1,17 +1,17 @@
 ---
 name: "component-libraries"
-description: "Working with the Particles component library packages. USE when adding, checking, or comparing components across packages/ark (@ark-ui/react wrapper), packages/base-ui (@base-ui/react wrapper), and packages/aria (react-aria-components wrapper). Trigger words: add component, missing component, check components, ark-ui, base-ui, react-aria, @particles/ark, @particles/base-ui, @particles/aria."
+description: "Working with the Bend UI component library packages. USE when adding, checking, or comparing components across packages/ark (@ark-ui/react wrapper), packages/base-ui (@base-ui/react wrapper), and packages/aria (react-aria-components wrapper). Trigger words: add component, missing component, check components, ark-ui, base-ui, react-aria, @bend-ui/ark, @bend-ui/base-ui, @bend-ui/aria."
 ---
 
 # Component Libraries
 
-Particles wraps three upstream component libraries. Each package lives under `packages/` and re-exports a styled or pass-through version of its upstream components.
+Bend UI wraps three upstream component libraries. Each package lives under `packages/` and re-exports a styled or pass-through version of its upstream components.
 
 | Package | Upstream | npm name |
 |---|---|---|
-| `packages/ark` | `@ark-ui/react` | `@particles/ark` |
-| `packages/base-ui` | `@base-ui/react` | `@particles/base-ui` |
-| `packages/aria` | `react-aria-components` | `@particles/aria` |
+| `packages/ark` | `@ark-ui/react` | `@bend-ui/ark` |
+| `packages/base-ui` | `@base-ui/react` | `@bend-ui/base-ui` |
+| `packages/aria` | `react-aria-components` | `@bend-ui/aria` |
 
 ---
 
@@ -54,18 +54,18 @@ packages/ark/src/
       <ComponentName>.tsx    ← implementation
       <ComponentName>.stories.tsx
       index.ts               ← export * from './<ComponentName>'
-    index.ts                 ← barrel (all components + @particles/react)
+    index.ts                 ← barrel (all components + @bend-ui/react)
   index.ts                   ← export * from './components'
 ```
 
 ### Implementation pattern
 
-Components use `withRecipe` / `withParts` from `@particles/react` and recipes from `@particles/styled-system/recipes`.
+Components use `withRecipe` / `withParts` from `@bend-ui/react` and recipes from `@bend-ui/styled-system/recipes`.
 
 ```tsx
 import { <Component> as <Component>Primitive } from '@ark-ui/react';
-import { withRecipe, withParts } from '@particles/react';
-import { <recipe> } from '@particles/styled-system/recipes';
+import { withRecipe, withParts } from '@bend-ui/react';
+import { <recipe> } from '@bend-ui/styled-system/recipes';
 
 const Root = withRecipe(<Component>Primitive.Root, <recipe>, 'root');
 const Item = withParts(<Component>Primitive.Item, 'item');
@@ -118,8 +118,8 @@ packages/base-ui/src/
 
 ```tsx
 import { <Component> } from '@base-ui/react';
-import { particles, withParts, withRecipe } from '@particles/react';
-import { <recipe> } from '@particles/styled-system/recipes';
+import { bend, withParts, withRecipe } from '@bend-ui/react';
+import { <recipe> } from '@bend-ui/styled-system/recipes';
 
 const Root = withRecipe(<Component>.Root, <recipe>, 'root');
 const Part = withParts(<Component>.Part, 'part');
@@ -166,9 +166,9 @@ Note: unlike ark/base-ui, the aria package exports directly from component files
 
 ```tsx
 import * as ReactAria from 'react-aria-components';
-import { cx } from '@particles/styled-system/css';
-import { <recipe> } from '@particles/styled-system/recipes';
-import type { <Recipe>VariantProps } from '@particles/styled-system/recipes';
+import { cx } from '@bend-ui/styled-system/css';
+import { <recipe> } from '@bend-ui/styled-system/recipes';
+import type { <Recipe>VariantProps } from '@bend-ui/styled-system/recipes';
 
 export interface <Component>Props extends ReactAria.<Component>Props, <Recipe>VariantProps {
   className?: string;

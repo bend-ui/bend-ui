@@ -6,7 +6,7 @@ import {
   Button,
   Text,
   Box,
-} from '@particles/react';
+} from '@bend-ui/react';
 import { Meta } from '@storybook/react-vite';
 import { Field } from '../../components';
 

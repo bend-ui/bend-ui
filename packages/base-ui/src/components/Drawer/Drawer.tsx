@@ -1,6 +1,6 @@
 import { Dialog } from '@base-ui/react';
-import { particles, withParts, withRecipe } from '@particles/react';
-import { drawer } from '@particles/styled-system/recipes';
+import { bend, withParts, withRecipe } from '@bend-ui/react';
+import { drawer } from '@bend-ui/styled-system/recipes';
 
 const DrawerRoot = Dialog.Root;
 
@@ -16,7 +16,7 @@ const DrawerTitle = withParts(Dialog.Title, 'title');
 
 const DrawerDescription = withParts(Dialog.Description, 'description');
 
-const DrawerContent = withParts(particles.div, 'content');
+const DrawerContent = withParts(bend.div, 'content');
 
 const DrawerClose = withParts(Dialog.Close, 'close');
 

@@ -2,7 +2,7 @@ import { ArrowRightCircleIcon, CheckIcon, UserIcon } from 'lucide-react';
 import { Button, Box } from '../';
 import { Input, SearchInput, PasswordInput } from './';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { input } from '@particles/styled-system/recipes';
+import { input } from '@bend-ui/styled-system/recipes';
 
 const meta: Meta<typeof Input> = {
   title: 'Components/Form/InputBase',

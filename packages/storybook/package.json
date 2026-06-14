@@ -1,5 +1,5 @@
 {
-  "name": "@particles/storybook",
+  "name": "@bend-ui/storybook",
   "version": "0.0.1",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -18,7 +18,7 @@
     "dist"
   ],
   "dependencies": {
-    "@particles/theme": "workspace:*",
+    "@bend-ui/theme": "workspace:*",
     "storybook": ">=10"
   },
   "scripts": {

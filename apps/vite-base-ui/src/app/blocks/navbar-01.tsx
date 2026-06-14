@@ -1,4 +1,4 @@
-import { NavigationMenu } from '@particles/base-ui';
+import { NavigationMenu } from '@bend-ui/base-ui';
 
 export const Navbar01 = () => {
   return (

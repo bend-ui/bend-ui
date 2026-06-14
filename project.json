@@ -1,5 +1,5 @@
 {
-  "name": "particles",
+  "name": "bend-ui",
   "$schema": "node_modules/nx/schemas/project-schema.json",
   "includedScripts": [],
   "targets": {

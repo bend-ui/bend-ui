@@ -1,8 +1,8 @@
 import * as ReactAria from 'react-aria-components';
 
-import { cx } from '@particles/styled-system/css';
-import { button } from '@particles/styled-system/recipes';
-import type { ButtonVariantProps } from '@particles/styled-system/recipes';
+import { cx } from '@bend-ui/styled-system/css';
+import { button } from '@bend-ui/styled-system/recipes';
+import type { ButtonVariantProps } from '@bend-ui/styled-system/recipes';
 
 export interface ButtonProps extends ReactAria.ButtonProps, ButtonVariantProps {
   className?: string;

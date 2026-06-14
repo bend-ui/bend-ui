@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactNode } from 'react';
-import { appShell } from '@particles/styled-system/recipes';
+import { appShell } from '@bend-ui/styled-system/recipes';
 
 interface AppShellProps {
   children?: ReactNode;

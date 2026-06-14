@@ -1,5 +1,5 @@
 import { ArrowRightIcon, CloudDownloadIcon } from 'lucide-react';
-import { button } from '@particles/styled-system/recipes';
+import { button } from '@bend-ui/styled-system/recipes';
 import { Button } from './';
 import { Stack } from '../Stack';
 

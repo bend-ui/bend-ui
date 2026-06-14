@@ -1,5 +1,5 @@
 import { Tabs as TabsPrimitive } from 'radix-ui';
-import { tabs } from '@particles/styled-system/recipes';
+import { tabs } from '@bend-ui/styled-system/recipes';
 import { createRecipeContext } from '../../utils/recipe-context';
 
 const { withProvider, withPart } = createRecipeContext(tabs);

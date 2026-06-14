@@ -1,6 +1,6 @@
 import { Tooltip as TooltipPrimitive } from 'radix-ui';
-import { styled } from '@particles/styled-system/jsx';
-import { tooltip } from '@particles/styled-system/recipes';
+import { styled } from '@bend-ui/styled-system/jsx';
+import { tooltip } from '@bend-ui/styled-system/recipes';
 import { createRecipeContext } from '../../utils/recipe-context';
 
 const { withProvider, withPart } = createRecipeContext(tooltip);

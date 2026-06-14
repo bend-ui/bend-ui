@@ -41,7 +41,7 @@
       ],
       "options": {
         "config-dir": ".storybook",
-        "output-dir": "../../dist/storybook/@particles/base-ui"
+        "output-dir": "../../dist/storybook/@bend-ui/base-ui"
       },
       "configurations": {
         "ci": {
@@ -59,13 +59,13 @@
       "executor": "@nx/web:file-server",
       "dependsOn": ["build-storybook"],
       "options": {
-        "buildTarget": "@particles/base-ui:build-storybook",
-        "staticFilePath": "dist/storybook/@particles/base-ui",
+        "buildTarget": "@bend-ui/base-ui:build-storybook",
+        "staticFilePath": "dist/storybook/@bend-ui/base-ui",
         "spa": true
       },
       "configurations": {
         "ci": {
-          "buildTarget": "@particles/base-ui:build-storybook:ci"
+          "buildTarget": "@bend-ui/base-ui:build-storybook:ci"
         }
       }
     }

@@ -1,5 +1,5 @@
 {
-  "name": "@particles/preset-base",
+  "name": "@bend-ui/preset-base",
   "version": "0.0.1",
   "type": "module",
   "main": "./dist/index.cjs",

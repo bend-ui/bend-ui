@@ -14,8 +14,8 @@ import {
   Assign,
   HTMLStyledProps,
   JsxStyleProps,
-} from '@particles/styled-system/types';
-import { styled } from '@particles/styled-system/jsx';
+} from '@bend-ui/styled-system/types';
+import { styled } from '@bend-ui/styled-system/jsx';
 
 export interface PolymorphicProps {
   /**
@@ -25,14 +25,14 @@ export interface PolymorphicProps {
 }
 
 type JsxElements = {
-  [E in keyof JSX.IntrinsicElements]: ParticlesComponent<E>;
+  [E in keyof JSX.IntrinsicElements]: BendUIComponent<E>;
 };
 
-type ParticlesComponent<E extends React.ElementType> = (
-  props: ParticlesPropsWithRef<E>,
+type BendUIComponent<E extends React.ElementType> = (
+  props: BendUIPropsWithRef<E>,
 ) => React.ReactElement;
 
-type ParticlesPropsWithRef<E extends React.ElementType> = Assign<
+type BendUIPropsWithRef<E extends React.ElementType> = Assign<
   React.ComponentPropsWithRef<E>,
   JsxStyleProps
 > &
@@ -60,7 +60,7 @@ function getRef(element: React.ReactElement) {
 }
 
 const withAsChild = (Component: React.ElementType) => {
-  const Comp = memo((props: ParticlesPropsWithRef<typeof Component>) => {
+  const Comp = memo((props: BendUIPropsWithRef<typeof Component>) => {
     const { ref, asChild, children, ...restProps } = props;
 
     if (!asChild) {
@@ -92,7 +92,7 @@ const withAsChild = (Component: React.ElementType) => {
   return Comp;
 };
 
-export type HTMLParticlesProps<T extends keyof JSX.IntrinsicElements> =
+export type HTMLBendUIProps<T extends keyof JSX.IntrinsicElements> =
   HTMLStyledProps<T> & PolymorphicProps & { children?: React.ReactNode };
 
 export const jsxFactory = () => {
@@ -112,4 +112,4 @@ export const jsxFactory = () => {
   }) as unknown as JsxElements;
 };
 
-export const particles = jsxFactory();
+export const bend = jsxFactory();

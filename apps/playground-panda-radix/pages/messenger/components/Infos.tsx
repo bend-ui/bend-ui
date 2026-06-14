@@ -1,6 +1,6 @@
-import { sva } from '@particles/styled-system/css';
+import { sva } from '@bend-ui/styled-system/css';
 import { PhoneIcon, VideoIcon } from 'lucide-react';
-import { Button } from '@particles/radix';
+import { Button } from '@bend-ui/radix';
 
 const styles = sva({
   slots: ['wrapper'],

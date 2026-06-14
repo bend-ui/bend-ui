@@ -16,7 +16,7 @@
 
 ## Why this matters
 
-Several packages are tagged or named like public packages, but their package metadata differs from the working pattern used by `@particles/react`, `@particles/base-ui`, and `@particles/ark`. Inconsistent `main`, `types`, `exports`, `files`, and `check-exports` metadata can produce packages that build locally but fail for consumers. Normalizing this boundary makes publishing safer and prepares CI export validation in Plan 004.
+Several packages are tagged or named like public packages, but their package metadata differs from the working pattern used by `@bend-ui/react`, `@bend-ui/base-ui`, and `@bend-ui/ark`. Inconsistent `main`, `types`, `exports`, `files`, and `check-exports` metadata can produce packages that build locally but fail for consumers. Normalizing this boundary makes publishing safer and prepares CI export validation in Plan 004.
 
 ## Current state
 
@@ -81,7 +81,7 @@ Problem examples:
 ```json
 // packages/cli/package.json:1
 {
-  "name": "@particles/cli",
+  "name": "@bend-ui/cli",
   "version": "0.0.1",
   "type": "commonjs",
   "dependencies": { ... }
@@ -126,7 +126,7 @@ At plan time, `pnpm nx show projects --withTarget check-exports --json` returned
 
 ### Step 1: Define the public package set
 
-Use `pnpm nx show projects --json` and `pnpm nx show project <name> --json` to list projects tagged `npm:public` or clearly named as publishable `@particles/*` packages. Confirm whether `ariakit`, `theme`, and `cli` are intended to be public. If any package is intentionally private/internal, document that and do not add publish metadata to it.
+Use `pnpm nx show projects --json` and `pnpm nx show project <name> --json` to list projects tagged `npm:public` or clearly named as publishable `@bend-ui/*` packages. Confirm whether `ariakit`, `theme`, and `cli` are intended to be public. If any package is intentionally private/internal, document that and do not add publish metadata to it.
 
 **Verify**: You have a short list of packages to normalize and no ambiguity remains. If ambiguity remains, STOP.
 
@@ -144,7 +144,7 @@ For each in-scope public package, align package metadata with the established wo
 - `scripts.build`
 - `scripts.check-exports`
 
-For `@particles/cli`, decide whether it should be importable, executable, or both. If executable, add `bin` metadata only if the built output has a proper executable entry and build verification passes.
+For `@bend-ui/cli`, decide whether it should be importable, executable, or both. If executable, add `bin` metadata only if the built output has a proper executable entry and build verification passes.
 
 **Verify**: `pnpm nx show project <name> --json` for each changed package shows expected package metadata and targets.
 

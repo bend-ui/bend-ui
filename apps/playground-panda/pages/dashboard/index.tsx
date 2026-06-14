@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import { Button, Card, Level, Nav } from '@particles/ark';
-import { css } from '@particles/styled-system/css';
-import { Container } from '@particles/styled-system/jsx';
+import { Button, Card, Level, Nav } from '@bend-ui/ark';
+import { css } from '@bend-ui/styled-system/css';
+import { Container } from '@bend-ui/styled-system/jsx';
 import type { NextPage } from 'next';
 
 const DashboardPage: NextPage = () => (

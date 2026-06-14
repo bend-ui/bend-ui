@@ -1,4 +1,4 @@
-import { preset } from '@particles/preset';
+import { preset } from '@bend-ui/preset';
 import { defineConfig } from '@pandacss/dev';
 
 // This panda/config only exists to generate the lightweight `outdir` (styled-system) JS runtime
@@ -12,10 +12,10 @@ export default defineConfig({
   preflight: false,
 
   outdir: 'dist',
-  // using the same module specifier `@particles/styled-system` acrosss all packages
+  // using the same module specifier `@bend-ui/styled-system` acrosss all packages
   // and by marking it as `external` in the `tsup.config.ts`
   // will make all packages use the same `styled-system` runtime
-  importMap: '@particles/styled-system',
+  importMap: '@bend-ui/styled-system',
 
   // The JSX framework to use
   jsxFramework: 'react',

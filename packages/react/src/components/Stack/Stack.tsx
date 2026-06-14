@@ -1,12 +1,12 @@
 'use client';
 
-import { stack, StackProperties } from '@particles/styled-system/patterns';
-import { particles, HTMLParticlesProps } from '../factory';
-import { cx } from '@particles/styled-system/css';
+import { stack, StackProperties } from '@bend-ui/styled-system/patterns';
+import { bend, HTMLBendUIProps } from '../factory';
+import { cx } from '@bend-ui/styled-system/css';
 import { Assign } from '@ark-ui/react';
 
 export interface StackProps
-  extends Assign<HTMLParticlesProps<'div'>, StackProperties> {
+  extends Assign<HTMLBendUIProps<'div'>, StackProperties> {
   children: React.ReactNode;
 }
 
@@ -22,12 +22,12 @@ export const Stack = (props: StackProps) => {
     ...rest
   } = props;
   return (
-    <particles.div
+    <bend.div
       className={cx(stack({ align, justify, direction, gap }), className)}
       ref={ref}
       {...rest}
     >
       {children}
-    </particles.div>
+    </bend.div>
   );
 };

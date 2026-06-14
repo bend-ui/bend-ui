@@ -6,7 +6,7 @@ import {
   Input,
   Stack,
   Text,
-} from '@particles/base-ui';
+} from '@bend-ui/base-ui';
 import {
   CalendarDaysIcon,
   DownloadIcon,

@@ -1,7 +1,7 @@
 import { Checkbox as ArkCheckbox } from '@ark-ui/react';
 import { CheckIcon } from 'lucide-react';
-import { CheckboxVariantProps } from '@particles/styled-system/recipes';
-import { checkbox } from '@particles/styled-system/recipes';
+import { CheckboxVariantProps } from '@bend-ui/styled-system/recipes';
+import { checkbox } from '@bend-ui/styled-system/recipes';
 import { withParts, withRecipe } from '../../utils';
 
 export type CheckboxRootProps = ArkCheckbox.RootProps & CheckboxVariantProps;

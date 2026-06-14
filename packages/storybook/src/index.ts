@@ -1,9 +1,9 @@
 import { create } from 'storybook/theming';
-import { theme } from '@particles/theme';
+import { theme } from '@bend-ui/theme';
 import type { ThemeVars } from 'storybook/theming';
 
 const common: Partial<ThemeVars> = {
-  brandTitle: 'Particles',
+  brandTitle: 'Bend UI',
   // colorPrimary: theme.colors.indigo500,
   // colorSecondary: theme.colors.indigo600,
 };

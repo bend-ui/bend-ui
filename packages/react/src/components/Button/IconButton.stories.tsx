@@ -1,4 +1,4 @@
-import { button } from '@particles/styled-system/recipes';
+import { button } from '@bend-ui/styled-system/recipes';
 import { IconButton } from './';
 import { Stack } from '../Stack';
 

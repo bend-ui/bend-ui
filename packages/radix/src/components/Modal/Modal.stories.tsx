@@ -1,5 +1,5 @@
-import { Stack } from '@particles/styled-system/jsx';
-import { Button, Input } from '@particles/react';
+import { Stack } from '@bend-ui/styled-system/jsx';
+import { Button, Input } from '@bend-ui/react';
 import { Modal } from './Modal';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 

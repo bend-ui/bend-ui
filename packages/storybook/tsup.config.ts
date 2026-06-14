@@ -2,7 +2,7 @@ import { defineConfig } from 'tsup';
 
 export default defineConfig({
   entry: ['src/index.ts'],
-  external: ['storybook', '@storybook/*', '@particles/theme'],
+  external: ['storybook', '@storybook/*', '@bend-ui/theme'],
   platform: 'browser',
   format: ['cjs', 'esm'],
   target: 'es2020',

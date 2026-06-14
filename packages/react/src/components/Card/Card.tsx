@@ -1,7 +1,7 @@
 'use client';
 
-import { card } from '@particles/styled-system/recipes';
-import { createStyleContext, styled } from '@particles/styled-system/jsx';
+import { card } from '@bend-ui/styled-system/recipes';
+import { createStyleContext, styled } from '@bend-ui/styled-system/jsx';
 
 const { withProvider, withContext } = createStyleContext(card);
 

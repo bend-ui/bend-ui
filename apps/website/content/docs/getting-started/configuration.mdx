@@ -1,11 +1,11 @@
 ---
 title: Configuration
-description: Configure Particles Design System to match your project needs
+description: Configure Bend UI Design System to match your project needs
 ---
 
 # Configuration
 
-Learn how to configure Particles Design System for your specific needs.
+Learn how to configure Bend UI Design System for your specific needs.
 
 ## Panda CSS Configuration
 
@@ -15,20 +15,20 @@ The main configuration happens in your `panda.config.ts` file.
 
 ```typescript
 import { defineConfig } from '@pandacss/dev';
-import particlesPreset from '@particles/preset';
+import bendPreset from '@bend-ui/preset';
 
 export default defineConfig({
   // Apply browser reset styles
   preflight: true,
 
-  // Use the Particles preset
-  presets: [particlesPreset],
+  // Use the Bend UI preset
+  presets: [bendPreset],
 
   // Files to scan for styles
   include: [
     './src/**/*.{js,jsx,ts,tsx}',
     './app/**/*.{js,jsx,ts,tsx}',
-    './node_modules/@particles/react/**/*.{js,jsx,ts,tsx}',
+    './node_modules/@bend-ui/react/**/*.{js,jsx,ts,tsx}',
   ],
 
   // Files to exclude
@@ -45,10 +45,10 @@ You can extend or override the default theme:
 
 ```typescript
 import { defineConfig } from '@pandacss/dev';
-import particlesPreset from '@particles/preset';
+import bendPreset from '@bend-ui/preset';
 
 export default defineConfig({
-  presets: [particlesPreset],
+  presets: [bendPreset],
 
   theme: {
     extend: {
@@ -95,7 +95,7 @@ For Next.js projects, update your `next.config.js`:
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  transpilePackages: ['@particles/react'],
+  transpilePackages: ['@bend-ui/react'],
 };
 
 module.exports = nextConfig;
@@ -112,7 +112,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
-    include: ['@particles/react'],
+    include: ['@bend-ui/react'],
   },
 });
 ```
@@ -122,7 +122,7 @@ export default defineConfig({
 ```typescript
 // remix.config.js
 export default {
-  serverDependenciesToBundle: ['@particles/react'],
+  serverDependenciesToBundle: ['@bend-ui/react'],
 };
 ```
 
@@ -157,10 +157,10 @@ For production builds, enable optimizations:
 
 ```typescript
 import { defineConfig } from '@pandacss/dev';
-import particlesPreset from '@particles/preset';
+import bendPreset from '@bend-ui/preset';
 
 export default defineConfig({
-  presets: [particlesPreset],
+  presets: [bendPreset],
   minify: true,
   hash: true,
   optimize: true,

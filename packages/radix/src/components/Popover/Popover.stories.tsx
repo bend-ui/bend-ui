@@ -1,4 +1,4 @@
-import { Button } from '@particles/react';
+import { Button } from '@bend-ui/react';
 import { Popover } from './Popover';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 

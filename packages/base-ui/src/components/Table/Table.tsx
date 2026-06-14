@@ -1,5 +1,5 @@
-import { createStyleContext, styled } from '@particles/styled-system/jsx';
-import { table } from '@particles/styled-system/recipes';
+import { createStyleContext, styled } from '@bend-ui/styled-system/jsx';
+import { table } from '@bend-ui/styled-system/recipes';
 import type { ComponentProps } from 'react';
 
 const { withProvider, withContext } = createStyleContext(table);

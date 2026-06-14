@@ -5,7 +5,7 @@ description: Learn about design tokens and how they create consistency across th
 
 # Design Tokens
 
-Design tokens are the foundational elements of the Particles design system. They are the named values that represent design decisions, such as colors, typography, spacing, and more.
+Design tokens are the foundational elements of the Bend UI design system. They are the named values that represent design decisions, such as colors, typography, spacing, and more.
 
 ## What are Design Tokens?
 
@@ -169,18 +169,18 @@ function Card() {
 }
 ```
 
-### With Particles Components
+### With Bend UI Components
 
-Particles components accept token values directly:
+Bend UI components accept token values directly:
 
 ```tsx
-import { Box, Text } from '@particles/react';
+import { Box, Text } from '@bend-ui/react';
 
 function Example() {
   return (
     <Box bg="blue.50" padding="8" borderRadius="lg">
       <Text fontSize="2xl" fontWeight="bold" color="blue.900">
-        Hello Particles
+        Hello Bend UI
       </Text>
     </Box>
   );
@@ -193,10 +193,10 @@ You can extend or override tokens in your `panda.config.ts`:
 
 ```typescript
 import { defineConfig } from '@pandacss/dev';
-import particlesPreset from '@particles/preset';
+import bendPreset from '@bend-ui/preset';
 
 export default defineConfig({
-  presets: [particlesPreset],
+  presets: [bendPreset],
   theme: {
     extend: {
       tokens: {

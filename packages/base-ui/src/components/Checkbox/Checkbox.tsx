@@ -2,9 +2,9 @@ import { Checkbox as CheckboxPrimitive } from '@base-ui/react/checkbox';
 import {
   checkbox,
   CheckboxVariantProps,
-} from '@particles/styled-system/recipes';
+} from '@bend-ui/styled-system/recipes';
 import { CheckIcon } from 'lucide-react';
-import { withParts, withRecipe } from '@particles/react';
+import { withParts, withRecipe } from '@bend-ui/react';
 
 export type CheckboxRootProps = CheckboxPrimitive.Root.Props;
 

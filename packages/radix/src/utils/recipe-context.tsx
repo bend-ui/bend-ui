@@ -1,4 +1,4 @@
-import { cx } from '@particles/styled-system/css';
+import { cx } from '@bend-ui/styled-system/css';
 import { forwardRef } from 'react';
 import type {
   ComponentProps,
@@ -9,7 +9,7 @@ import type {
 import type {
   SystemStyleObject,
   RecipeVariantFn,
-} from '@particles/styled-system/types';
+} from '@bend-ui/styled-system/types';
 
 type AnyProps = Record<string, unknown>;
 type Recipe = RecipeVariantFn<

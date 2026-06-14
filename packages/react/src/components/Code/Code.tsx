@@ -1,8 +1,8 @@
-import { HTMLParticlesProps, particles } from '../factory';
+import { HTMLBendUIProps, bend } from '../factory';
 
-export type CodeProps = HTMLParticlesProps<'code'>;
+export type CodeProps = HTMLBendUIProps<'code'>;
 
 export const Code = (props: CodeProps) => {
   const { ref, ...rest } = props;
-  return <particles.code {...rest} ref={ref} />;
+  return <bend.code {...rest} ref={ref} />;
 };

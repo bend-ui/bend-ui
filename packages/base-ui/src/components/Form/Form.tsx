@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Form as FormPrimitive } from '@base-ui/react/form';
 import { Field } from '../Field';
-import { Button } from '@particles/react';
+import { Button } from '@bend-ui/react';
 
 const FormRoot = FormPrimitive;
 

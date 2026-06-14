@@ -1,4 +1,4 @@
-import { cx, sva } from '@particles/styled-system/css';
+import { cx, sva } from '@bend-ui/styled-system/css';
 import * as MenubarPrimitive from '@radix-ui/react-menubar';
 import type { ComponentProps, ComponentPropsWithoutRef } from 'react';
 

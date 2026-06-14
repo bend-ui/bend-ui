@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 import { Checkbox } from './Checkbox';
-import { checkbox } from '@particles/styled-system/recipes';
+import { checkbox } from '@bend-ui/styled-system/recipes';
 
 const meta: Meta<typeof Checkbox> = {
   title: 'Components/Form/Checkbox',

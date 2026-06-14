@@ -1,8 +1,8 @@
-import type { AlertVariantProps } from '@particles/styled-system/recipes';
-import type { HTMLParticlesProps } from '../factory';
+import type { AlertVariantProps } from '@bend-ui/styled-system/recipes';
+import type { HTMLBendUIProps } from '../factory';
 import { ReactNode } from 'react';
 
-export interface AlertRootProps extends HTMLParticlesProps<'div'> {
+export interface AlertRootProps extends HTMLBendUIProps<'div'> {
   /** The alert color palette */
   palette?: AlertVariantProps['palette'];
   /** The alert variant */

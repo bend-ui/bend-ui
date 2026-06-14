@@ -1,19 +1,19 @@
 'use client';
 
 import { ReactNode } from 'react';
-import { button, ButtonVariantProps } from '@particles/styled-system/recipes';
-import { HTMLParticlesProps, particles } from '../factory';
-import { Assign } from '@particles/styled-system/types';
+import { button, ButtonVariantProps } from '@bend-ui/styled-system/recipes';
+import { HTMLBendUIProps, bend } from '../factory';
+import { Assign } from '@bend-ui/styled-system/types';
 import { withParts, withRecipe } from '../../utils';
 
-const Root = withRecipe(particles.button, button, 'root');
+const Root = withRecipe(bend.button, button, 'root');
 
-const Icon = withParts(particles.div, 'icon');
+const Icon = withParts(bend.div, 'icon');
 
-const Label = withParts(particles.span, 'label');
+const Label = withParts(bend.span, 'label');
 
 export interface ButtonProps
-  extends Assign<HTMLParticlesProps<'button'>, ButtonVariantProps> {
+  extends Assign<HTMLBendUIProps<'button'>, ButtonVariantProps> {
   /** Disable the button */
   isDisabled?: boolean;
   /** Set the button in a loading state */

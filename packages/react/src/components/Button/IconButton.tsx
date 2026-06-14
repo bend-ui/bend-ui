@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Button } from './Button';
 import type { ButtonProps } from './Button';
-import { visuallyHidden } from '@particles/styled-system/patterns';
+import { visuallyHidden } from '@bend-ui/styled-system/patterns';
 
 export interface IconButtonProps extends Omit<ButtonProps, 'icon' | 'iconEnd'> {
   /** The icon to display inside the button */

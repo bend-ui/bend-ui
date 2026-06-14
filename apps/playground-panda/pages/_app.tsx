@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { ThemeProvider } from 'next-themes';
 import '@fontsource-variable/inter';
-import { Button, Dialog } from '@particles/ark';
+import { Button, Dialog } from '@bend-ui/ark';
 
 import type { AppProps } from 'next/app';
 import './styles.css';

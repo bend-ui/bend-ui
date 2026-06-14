@@ -6,10 +6,10 @@ import boxen from 'boxen';
 import { AddCommand } from './commands/add';
 
 export async function run() {
-  p.intro('Welcome to Particles CLI 🎨');
+  p.intro('Welcome to Bend UI CLI 🎨');
 
   const program = new Command()
-    .name('particles')
+    .name('bend-ui')
     .version('1.0.0')
     .description('Generate React Components CLI');
 
@@ -17,7 +17,7 @@ export async function run() {
 
   p.log.step(
     boxen('Generate React Components CLI', {
-      title: 'Particles CLI',
+      title: 'Bend UI CLI',
       borderColor: 'green',
       padding: 1,
     }),

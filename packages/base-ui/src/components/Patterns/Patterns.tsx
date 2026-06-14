@@ -6,8 +6,8 @@ import {
   IconButton,
   Stack,
   Text,
-  type HTMLParticlesProps,
-} from '@particles/react';
+  type HTMLBendUIProps,
+} from '@bend-ui/react';
 import { MoreHorizontalIcon } from 'lucide-react';
 import { Badge, type BadgeProps } from '../Badge';
 import { Avatar } from '../Avatar';
@@ -19,7 +19,7 @@ export type OperationalTone =
   | 'danger'
   | 'info';
 
-type PatternBoxProps = Omit<HTMLParticlesProps<'div'>, 'direction' | 'title'>;
+type PatternBoxProps = Omit<HTMLBendUIProps<'div'>, 'direction' | 'title'>;
 
 export interface SurfaceProps extends PatternBoxProps {
   children?: ReactNode;
@@ -181,7 +181,7 @@ export const PanelHeader = (props: PanelHeaderProps) => {
   );
 };
 
-export interface ResponsiveGridProps extends HTMLParticlesProps<'div'> {
+export interface ResponsiveGridProps extends HTMLBendUIProps<'div'> {
   children?: ReactNode;
   min?: string;
 }
@@ -267,7 +267,7 @@ export const TimelineItem = (props: TimelineItemProps) => {
   );
 };
 
-export interface ActionItemProps extends HTMLParticlesProps<'div'> {
+export interface ActionItemProps extends HTMLBendUIProps<'div'> {
   children?: ReactNode;
   description?: ReactNode;
   icon?: ReactNode;

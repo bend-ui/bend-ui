@@ -1,12 +1,12 @@
 'use client';
 
-import { cx } from '@particles/styled-system/css';
-import { text } from '@particles/styled-system/recipes';
-import type { TextVariantProps } from '@particles/styled-system/recipes';
+import { cx } from '@bend-ui/styled-system/css';
+import { text } from '@bend-ui/styled-system/recipes';
+import type { TextVariantProps } from '@bend-ui/styled-system/recipes';
 import type { ElementType, ReactNode } from 'react';
-import { HTMLParticlesProps, particles } from '../factory';
+import { HTMLBendUIProps, bend } from '../factory';
 
-export interface HeadingProps extends HTMLParticlesProps<'h2'> {
+export interface HeadingProps extends HTMLBendUIProps<'h2'> {
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   children?: ReactNode;
   /** The style of the heading */
@@ -24,7 +24,7 @@ export const Heading = (props: HeadingProps) => {
   } = otherProps;
 
   const classes = text(variantProps);
-  const HeadingElement = particles[Component] as ElementType;
+  const HeadingElement = bend[Component] as ElementType;
 
   return (
     <HeadingElement

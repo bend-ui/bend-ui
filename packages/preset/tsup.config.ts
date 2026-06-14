@@ -2,7 +2,7 @@ import { defineConfig } from 'tsup';
 
 export default defineConfig({
   entry: ['src/index.ts'],
-  external: ['@particles/theme', '@particles/styled-system'],
+  external: ['@bend-ui/theme', '@bend-ui/styled-system'],
   platform: 'browser',
   format: ['cjs', 'esm'],
   target: 'es2020',

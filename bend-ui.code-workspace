@@ -1,63 +1,63 @@
 {
   "folders": [
     {
-      "name": "🧬 particles",
+      "name": "🧬 bend-ui",
       "path": ".",
     },
     {
-      "name": "📦 @particles/primitives",
+      "name": "📦 @bend-ui/primitives",
       "path": "packages/primitives",
     },
     {
-      "name": "📦 @particles/theme",
+      "name": "📦 @bend-ui/theme",
       "path": "packages/theme",
     },
     {
-      "name": "📦 @particles/react",
+      "name": "📦 @bend-ui/react",
       "path": "packages/react",
     },
     {
-      "name": "📦 @particles/radix",
+      "name": "📦 @bend-ui/radix",
       "path": "packages/radix",
     },
     {
-      "name": "📦 @particles/aria",
+      "name": "📦 @bend-ui/aria",
       "path": "packages/aria",
     },
     {
-      "name": "📦 @particles/ark",
+      "name": "📦 @bend-ui/ark",
       "path": "packages/ark",
     },
     {
-      "name": "📦 @particles/base-ui",
+      "name": "📦 @bend-ui/base-ui",
       "path": "packages/base-ui",
     },
     {
-      "name": "📦 @particles/ariakit",
+      "name": "📦 @bend-ui/ariakit",
       "path": "packages/ariakit",
     },
     {
-      "name": "🎨 @particles/preset-base",
+      "name": "🎨 @bend-ui/preset-base",
       "path": "packages/preset-base",
     },
     {
-      "name": "🎨 @particles/preset",
+      "name": "🎨 @bend-ui/preset",
       "path": "packages/preset",
     },
     {
-      "name": "🛠️ @particles/styled-system",
+      "name": "🛠️ @bend-ui/styled-system",
       "path": "packages/styled-system",
     },
     {
-      "name": "🛠️ @particles/react-utils",
+      "name": "🛠️ @bend-ui/react-utils",
       "path": "packages/react-utils",
     },
     {
-      "name": "🛠️ @particles/cli",
+      "name": "🛠️ @bend-ui/cli",
       "path": "packages/cli",
     },
     {
-      "name": "🛠️ @particles/storybook",
+      "name": "🛠️ @bend-ui/storybook",
       "path": "packages/storybook",
     },
     {
@@ -87,7 +87,7 @@
   ],
   "settings": {
     "eslint.useFlatConfig": true,
-    "js/ts.tsdk.path": "🧬 particles/node_modules/typescript/lib",
+    "js/ts.tsdk.path": "🧬 bend-ui/node_modules/typescript/lib",
   },
   "extensions": {
     "recommendations": ["chakra-ui.panda-css-vscode", "nrwl.angular-console"],

@@ -1,4 +1,4 @@
-import { Box, Heading, Stack, Text } from '@particles/base-ui';
+import { Box, Heading, Stack, Text } from '@bend-ui/base-ui';
 import { BadgeDollarSignIcon, ContactIcon, GraduationCapIcon } from 'lucide-react';
 import { clients } from '../../data';
 import {

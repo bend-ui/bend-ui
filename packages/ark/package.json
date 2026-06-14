@@ -1,5 +1,5 @@
 {
-  "name": "@particles/ark",
+  "name": "@bend-ui/ark",
   "version": "0.0.1",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -19,12 +19,12 @@
   ],
   "dependencies": {
     "@ark-ui/react": "^5.37.2",
-    "@particles/preset": "workspace:*",
-    "@particles/react": "workspace:*",
-    "@particles/styled-system": "workspace:*"
+    "@bend-ui/preset": "workspace:*",
+    "@bend-ui/react": "workspace:*",
+    "@bend-ui/styled-system": "workspace:*"
   },
   "devDependencies": {
-    "@particles/storybook": "workspace:*"
+    "@bend-ui/storybook": "workspace:*"
   },
   "peerDependencies": {
     "@pandacss/dev": "^1",

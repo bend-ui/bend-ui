@@ -1,4 +1,4 @@
-import { Box, Heading, Stack, Text } from '@particles/base-ui';
+import { Box, Heading, Stack, Text } from '@bend-ui/base-ui';
 import { AlertTriangleIcon, RadioIcon, ShieldCheckIcon } from 'lucide-react';
 import { incidents, radioLog } from '../../data';
 import {

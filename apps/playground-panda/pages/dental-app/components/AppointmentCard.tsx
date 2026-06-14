@@ -5,7 +5,7 @@ import {
   Grid,
   Heading,
   Paragraph,
-} from '@particles/ark';
+} from '@bend-ui/ark';
 
 interface AppointmentCardProps {
   data: any;

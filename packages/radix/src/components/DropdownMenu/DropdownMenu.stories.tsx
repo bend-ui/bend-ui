@@ -1,4 +1,4 @@
-import { Button } from '@particles/react';
+import { Button } from '@bend-ui/react';
 import { DropdownMenu } from './DropdownMenu';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 

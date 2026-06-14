@@ -1,5 +1,5 @@
 import { defineConfig } from '@pandacss/dev';
-import { preset } from '@particles/preset';
+import { preset } from '@bend-ui/preset';
 import path from 'path';
 
 export default defineConfig({
@@ -19,7 +19,7 @@ export default defineConfig({
 
   presets: ['@pandacss/dev/presets', preset({ library: 'base-ui' })],
 
-  importMap: '@particles/styled-system',
+  importMap: '@bend-ui/styled-system',
 
   lightningcss: true,
 

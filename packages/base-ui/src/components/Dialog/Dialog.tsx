@@ -3,10 +3,10 @@ import {
   dialog,
   DialogVariantProps,
   backdrop,
-} from '@particles/styled-system/recipes';
-import { withParts, withRecipe } from '@particles/react';
-import { Button, ButtonProps, HTMLParticlesProps } from '@particles/react';
-import { Assign } from '@particles/styled-system/types';
+} from '@bend-ui/styled-system/recipes';
+import { withParts, withRecipe } from '@bend-ui/react';
+import { Button, ButtonProps, HTMLBendUIProps } from '@bend-ui/react';
+import { Assign } from '@bend-ui/styled-system/types';
 
 export interface DialogRootProps
   extends DialogPrimitive.Root.Props,
@@ -41,7 +41,7 @@ const DialogBackdrop = withRecipe<DialogBackdropProps>(
   'backdrop',
 );
 
-export type DialogPositionerProps = HTMLParticlesProps<'div'>;
+export type DialogPositionerProps = HTMLBendUIProps<'div'>;
 
 const DialogPositioner = withRecipe<DialogPositionerProps>(
   'div',

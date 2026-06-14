@@ -1,4 +1,4 @@
-import { text } from '@particles/styled-system/recipes';
+import { text } from '@bend-ui/styled-system/recipes';
 import { Paragraph } from '.';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 

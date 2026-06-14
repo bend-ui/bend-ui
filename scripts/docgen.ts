@@ -12,7 +12,7 @@ const generateDeclarations = (path) => {
   return docs;
 };
 
-console.log(green('Welcome to Particles Docs Generator'));
+console.log(green('Welcome to Bend UI Docs Generator'));
 
 const reactPackage = path.join(__dirname, '../packages/react/src/index.ts');
 

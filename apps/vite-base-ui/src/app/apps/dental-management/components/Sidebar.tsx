@@ -1,4 +1,4 @@
-import { Sidebar as SidebarPrimitive } from '@particles/base-ui';
+import { Sidebar as SidebarPrimitive } from '@bend-ui/base-ui';
 import { NavLink } from 'react-router-dom';
 import { CreditCardIcon, LayoutDashboardIcon, UsersIcon } from 'lucide-react';
 

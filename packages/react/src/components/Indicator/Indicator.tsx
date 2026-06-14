@@ -1,8 +1,8 @@
 'use client';
 
-import { styled } from '@particles/styled-system/jsx';
-import { indicator } from '@particles/styled-system/recipes';
-import type { IndicatorVariantProps } from '@particles/styled-system/recipes';
+import { styled } from '@bend-ui/styled-system/jsx';
+import { indicator } from '@bend-ui/styled-system/recipes';
+import type { IndicatorVariantProps } from '@bend-ui/styled-system/recipes';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 export interface IndicatorProps extends ComponentPropsWithoutRef<'span'> {

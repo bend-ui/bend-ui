@@ -1,21 +1,21 @@
 'use client';
 
-import { alert } from '@particles/styled-system/recipes';
+import { alert } from '@bend-ui/styled-system/recipes';
 import type { AlertProps } from './Alert.types';
-import { particles } from '../factory';
+import { bend } from '../factory';
 import { withParts, withRecipe } from '../../utils';
 
-const Root = withRecipe(particles.div, alert, 'root');
+const Root = withRecipe(bend.div, alert, 'root');
 
-const Icon = withParts(particles.div, 'icon');
+const Icon = withParts(bend.div, 'icon');
 
-const Title = withParts(particles.div, 'title');
+const Title = withParts(bend.div, 'title');
 
-const Content = withParts(particles.div, 'content');
+const Content = withParts(bend.div, 'content');
 
-const Footer = withParts(particles.div, 'footer');
+const Footer = withParts(bend.div, 'footer');
 
-const Dismiss = withParts(particles.button, 'dismiss');
+const Dismiss = withParts(bend.button, 'dismiss');
 
 const Component = (props: AlertProps) => {
   const { ref, icon, title, children, footer, onDismiss, ...rest } = props;

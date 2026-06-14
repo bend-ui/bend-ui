@@ -2,10 +2,10 @@ import { Combobox as ArkCombobox } from '@ark-ui/react';
 import {
   combobox,
   type ComboboxVariantProps,
-} from '@particles/styled-system/recipes';
+} from '@bend-ui/styled-system/recipes';
 import { Input } from '../..';
 import { ChevronDownIcon } from 'lucide-react';
-import { createRecipeContext } from '@particles/react';
+import { createRecipeContext } from '@bend-ui/react';
 
 const { withProvider, withPart } = createRecipeContext(combobox);
 

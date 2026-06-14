@@ -1,14 +1,14 @@
 'use client';
 
-import { particles, HTMLParticlesProps } from '../factory';
+import { bend, HTMLBendUIProps } from '../factory';
 import {
   grid,
   gridItem,
   type GridStyles,
   type GridItemStyles,
-} from '@particles/styled-system/patterns';
+} from '@bend-ui/styled-system/patterns';
 
-interface GridProps extends HTMLParticlesProps<'div'> {
+interface GridProps extends HTMLBendUIProps<'div'> {
   columns?: GridStyles['columns'];
   gap?: GridStyles['gap'];
   rowGap?: GridStyles['rowGap'];
@@ -19,7 +19,7 @@ interface GridProps extends HTMLParticlesProps<'div'> {
 const Root = (props: GridProps) => {
   const { ref, columns, gap, rowGap, columnGap, minChildWidth, ...rest } = props;
   return (
-    <particles.div
+    <bend.div
       ref={ref}
       className={grid({ columns, gap, rowGap, columnGap, minChildWidth })}
       {...rest}
@@ -27,7 +27,7 @@ const Root = (props: GridProps) => {
   );
 };
 
-interface GridItemProps extends HTMLParticlesProps<'div'> {
+interface GridItemProps extends HTMLBendUIProps<'div'> {
   colSpan?: GridItemStyles['colSpan'];
   rowSpan?: GridItemStyles['rowSpan'];
   colStart?: GridItemStyles['colStart'];
@@ -40,7 +40,7 @@ const Item = (props: GridItemProps) => {
   const { ref, colSpan, rowSpan, colStart, rowStart, colEnd, rowEnd, ...rest } =
     props;
   return (
-    <particles.div
+    <bend.div
       ref={ref}
       className={gridItem({
         colSpan,

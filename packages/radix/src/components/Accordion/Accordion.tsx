@@ -1,8 +1,8 @@
 import { forwardRef } from 'react';
 import { Accordion as AccordionPrimitive } from 'radix-ui';
 import { ChevronDownIcon } from 'lucide-react';
-import { cx } from '@particles/styled-system/css';
-import { accordion } from '@particles/styled-system/recipes';
+import { cx } from '@bend-ui/styled-system/css';
+import { accordion } from '@bend-ui/styled-system/recipes';
 import { createRecipeContext } from '../../utils/recipe-context';
 
 const { withProvider, withPart } = createRecipeContext(accordion);

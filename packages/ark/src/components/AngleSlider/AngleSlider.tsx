@@ -1,6 +1,6 @@
 import { AngleSlider as ArkAngleSlider } from '@ark-ui/react';
 import { withParts, withRecipe } from '../../utils';
-import { angleSlider } from '@particles/styled-system/recipes';
+import { angleSlider } from '@bend-ui/styled-system/recipes';
 
 export interface AngleSliderRootProps extends ArkAngleSlider.RootProps {
   children?: React.ReactNode;

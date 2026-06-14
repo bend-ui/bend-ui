@@ -1,5 +1,5 @@
 {
-  "name": "@particles/styled-system",
+  "name": "@bend-ui/styled-system",
   "version": "0.0.0",
   "sideEffects": false,
   "type": "module",
@@ -35,7 +35,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/particles-ui/particles",
+    "url": "https://github.com/bend-ui/bend-ui",
     "directory": "packages/styled-system"
   },
   "files": [
@@ -43,7 +43,7 @@
   ],
   "dependencies": {
     "@pandacss/dev": "^1.11.3",
-    "@particles/preset": "workspace:*"
+    "@bend-ui/preset": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "^19.2.14",

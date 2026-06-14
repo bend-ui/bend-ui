@@ -1,5 +1,5 @@
 {
-  "name": "@particles/primitives",
+  "name": "@bend-ui/primitives",
   "version": "0.0.1",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -18,7 +18,7 @@
     "dist"
   ],
   "devDependencies": {
-    "@particles/storybook": "workspace:*"
+    "@bend-ui/storybook": "workspace:*"
   },
   "scripts": {
     "generate": "pnpm dlx generate-react-cli",

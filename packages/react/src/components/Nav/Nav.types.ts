@@ -1,5 +1,5 @@
-import type { NavVariantProps } from '@particles/styled-system/recipes';
-import type { HTMLStyledProps } from '@particles/styled-system/types';
+import type { NavVariantProps } from '@bend-ui/styled-system/recipes';
+import type { HTMLStyledProps } from '@bend-ui/styled-system/types';
 import type { ReactNode } from 'react';
 import type { AsChildProps } from '../Slot';
 

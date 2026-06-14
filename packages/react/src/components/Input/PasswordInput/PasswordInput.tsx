@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Input, InputProps } from '../Input';
-import { particles } from '../../factory';
+import { bend } from '../../factory';
 import { EyeIcon } from 'lucide-react';
 
 export interface PasswordInputProps extends Omit<InputProps, 'onToggle'> {
@@ -23,11 +23,11 @@ const Component = (props: PasswordInputProps) => {
     <Input.Root {...rest}>
       <Input.Wrapper>
         <Input.Input ref={ref} type={showPassword ? 'text' : 'password'} />
-        <particles.button onClick={handleToggle}>
+        <bend.button onClick={handleToggle}>
           <Input.Icon>
             <EyeIcon />
           </Input.Icon>
-        </particles.button>
+        </bend.button>
       </Input.Wrapper>
     </Input.Root>
   );

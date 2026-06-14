@@ -1,5 +1,5 @@
 import { defineSlotRecipe } from '@pandacss/dev';
-import { switchRecipe as baseSwitchRecipe } from '@particles/preset-base';
+import { switchRecipe as baseSwitchRecipe } from '@bend-ui/preset-base';
 
 export const switchRecipe = defineSlotRecipe({
   className: 'Switch',

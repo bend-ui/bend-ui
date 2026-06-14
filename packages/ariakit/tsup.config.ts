@@ -5,9 +5,9 @@ export default defineConfig({
   external: [
     'react',
     'react-dom',
-    '@particles/theme',
-    '@particles/styled-system',
-    '@particles/primitives',
+    '@bend-ui/theme',
+    '@bend-ui/styled-system',
+    '@bend-ui/primitives',
     'ariakit',
   ],
   platform: 'browser',

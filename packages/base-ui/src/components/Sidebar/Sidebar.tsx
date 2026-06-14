@@ -2,9 +2,9 @@
 
 import * as React from 'react';
 import { PanelLeftIcon } from 'lucide-react';
-import { HTMLParticlesProps, particles } from '@particles/react';
-import { createStyleContext } from '@particles/styled-system/jsx';
-import { sidebar } from '@particles/styled-system/recipes';
+import { HTMLBendUIProps, bend } from '@bend-ui/react';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { sidebar } from '@bend-ui/styled-system/recipes';
 import { ScrollArea } from '../ScrollArea';
 
 const { withProvider, withContext } = createStyleContext(sidebar);
@@ -57,13 +57,13 @@ const useIsMobile = () => {
   return isMobile;
 };
 
-type SidebarProviderElementProps = HTMLParticlesProps<'div'> & {
+type SidebarProviderElementProps = HTMLBendUIProps<'div'> & {
   defaultOpen?: boolean;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
 };
 
-const SidebarProviderElement = withProvider(particles.div, 'provider');
+const SidebarProviderElement = withProvider(bend.div, 'provider');
 
 const SidebarProvider = (props: SidebarProviderElementProps) => {
   const {
@@ -151,15 +151,15 @@ const SidebarProvider = (props: SidebarProviderElementProps) => {
   );
 };
 
-export interface SidebarRootProps extends HTMLParticlesProps<'aside'> {
+export interface SidebarRootProps extends HTMLBendUIProps<'aside'> {
   children?: React.ReactNode;
   side?: 'left' | 'right';
   variant?: 'sidebar' | 'floating' | 'inset';
   collapsible?: 'offcanvas' | 'icon' | 'none';
 }
 
-const SidebarRootElement = withContext(particles.aside, 'root');
-const SidebarOverlay = withContext(particles.div, 'overlay');
+const SidebarRootElement = withContext(bend.aside, 'root');
+const SidebarOverlay = withContext(bend.div, 'overlay');
 
 const SidebarRoot = (props: SidebarRootProps) => {
   const {
@@ -192,17 +192,17 @@ const SidebarRoot = (props: SidebarRootProps) => {
   );
 };
 
-export interface SidebarInsetProps extends HTMLParticlesProps<'main'> {
+export interface SidebarInsetProps extends HTMLBendUIProps<'main'> {
   children?: React.ReactNode;
 }
 
-const SidebarInset = withContext(particles.main, 'inset');
+const SidebarInset = withContext(bend.main, 'inset');
 
-export interface SidebarTriggerProps extends HTMLParticlesProps<'button'> {
+export interface SidebarTriggerProps extends HTMLBendUIProps<'button'> {
   children?: React.ReactNode;
 }
 
-const SidebarTriggerElement = withContext(particles.button, 'trigger');
+const SidebarTriggerElement = withContext(bend.button, 'trigger');
 
 const SidebarTrigger = (props: SidebarTriggerProps) => {
   const { children, type = 'button', onClick, ...rest } = props;
@@ -223,29 +223,29 @@ const SidebarTrigger = (props: SidebarTriggerProps) => {
   );
 };
 
-const SidebarHeader = withContext(particles.div, 'header');
+const SidebarHeader = withContext(bend.div, 'header');
 const SidebarContent = withContext(ScrollArea, 'content');
-const SidebarFooter = withContext(particles.div, 'footer');
-const SidebarLabel = withContext(particles.span, 'label');
-const SidebarGroup = withContext(particles.div, 'group');
-const SidebarGroupLabel = withContext(particles.div, 'groupLabel');
-const SidebarGroupAction = withContext(particles.button, 'groupAction');
-const SidebarGroupContent = withContext(particles.div, 'groupContent');
-const SidebarMenu = withContext(particles.ul, 'menu');
-const SidebarMenuItem = withContext(particles.li, 'menuItem');
-const SidebarMenuAction = withContext(particles.button, 'menuAction');
-const SidebarMenuBadge = withContext(particles.div, 'menuBadge');
-const SidebarMenuSub = withContext(particles.ul, 'menuSub');
-const SidebarMenuSubItem = withContext(particles.li, 'menuSubItem');
-const SidebarMenuSubButton = withContext(particles.a, 'menuSubButton');
-const SidebarRailElement = withContext(particles.button, 'rail');
+const SidebarFooter = withContext(bend.div, 'footer');
+const SidebarLabel = withContext(bend.span, 'label');
+const SidebarGroup = withContext(bend.div, 'group');
+const SidebarGroupLabel = withContext(bend.div, 'groupLabel');
+const SidebarGroupAction = withContext(bend.button, 'groupAction');
+const SidebarGroupContent = withContext(bend.div, 'groupContent');
+const SidebarMenu = withContext(bend.ul, 'menu');
+const SidebarMenuItem = withContext(bend.li, 'menuItem');
+const SidebarMenuAction = withContext(bend.button, 'menuAction');
+const SidebarMenuBadge = withContext(bend.div, 'menuBadge');
+const SidebarMenuSub = withContext(bend.ul, 'menuSub');
+const SidebarMenuSubItem = withContext(bend.li, 'menuSubItem');
+const SidebarMenuSubButton = withContext(bend.a, 'menuSubButton');
+const SidebarRailElement = withContext(bend.button, 'rail');
 
-export interface SidebarMenuButtonProps extends HTMLParticlesProps<'button'> {
+export interface SidebarMenuButtonProps extends HTMLBendUIProps<'button'> {
   isActive?: boolean;
   tooltip?: string;
 }
 
-const SidebarMenuButtonElement = withContext(particles.button, 'menuButton');
+const SidebarMenuButtonElement = withContext(bend.button, 'menuButton');
 
 const SidebarMenuButton = (props: SidebarMenuButtonProps) => {
   const { isActive, tooltip, title, ...rest } = props;
@@ -259,7 +259,7 @@ const SidebarMenuButton = (props: SidebarMenuButtonProps) => {
   );
 };
 
-export interface SidebarRailProps extends HTMLParticlesProps<'button'> {
+export interface SidebarRailProps extends HTMLBendUIProps<'button'> {
   children?: React.ReactNode;
 }
 

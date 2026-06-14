@@ -1,8 +1,8 @@
 'use client';
 
 import { Carousel as CarouselPrimitive } from '@ark-ui/react';
-import { carousel } from '@particles/styled-system/recipes';
-import { createStyleContext } from '@particles/styled-system/jsx';
+import { carousel } from '@bend-ui/styled-system/recipes';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
 import type { ComponentProps } from 'react';
 
 const { withProvider, withContext, withRootProvider } =

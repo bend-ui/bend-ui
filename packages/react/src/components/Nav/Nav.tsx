@@ -1,7 +1,7 @@
 'use client';
 
-import { nav } from '@particles/styled-system/recipes';
-import { styled, createStyleContext } from '@particles/styled-system/jsx';
+import { nav } from '@bend-ui/styled-system/recipes';
+import { styled, createStyleContext } from '@bend-ui/styled-system/jsx';
 import { NavLink } from './NavLink';
 
 const { withProvider, withContext } = createStyleContext(nav);

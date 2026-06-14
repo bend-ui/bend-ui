@@ -1,8 +1,8 @@
 'use client';
 
-import { badge } from '@particles/styled-system/recipes';
+import { badge } from '@bend-ui/styled-system/recipes';
 import { withRecipe } from '../../utils';
-import { styled } from '@particles/styled-system/jsx';
+import { styled } from '@bend-ui/styled-system/jsx';
 
 const Root = withRecipe(styled('div'), badge, 'root');
 

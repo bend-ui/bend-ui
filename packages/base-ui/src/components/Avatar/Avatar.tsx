@@ -1,6 +1,6 @@
 import { Avatar as AvatarPrimitive } from '@base-ui/react/avatar';
-import { avatar, AvatarVariantProps } from '@particles/styled-system/recipes';
-import { withParts, withRecipe } from '@particles/react';
+import { avatar, AvatarVariantProps } from '@bend-ui/styled-system/recipes';
+import { withParts, withRecipe } from '@bend-ui/react';
 import type { ReactNode } from 'react';
 
 export type AvatarRootProps = AvatarPrimitive.Root.Props & AvatarVariantProps;

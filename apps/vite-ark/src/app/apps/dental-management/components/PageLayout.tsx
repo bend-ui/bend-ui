@@ -1,4 +1,4 @@
-import { styled } from '@particles/styled-system/jsx';
+import { styled } from '@bend-ui/styled-system/jsx';
 
 const PageLayoutRoot = styled('div', {});
 

@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 import { Dialog } from './Dialog';
-import { dialog } from '@particles/styled-system/recipes';
+import { dialog } from '@bend-ui/styled-system/recipes';
 
 const meta: Meta<typeof Dialog> = {
   title: 'Dialog',

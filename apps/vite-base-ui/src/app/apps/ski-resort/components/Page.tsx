@@ -5,7 +5,7 @@ import {
   IconButton,
   Stack,
   Text,
-} from '@particles/base-ui';
+} from '@bend-ui/base-ui';
 import { MoreHorizontalIcon } from 'lucide-react';
 
 export type Tone = 'success' | 'warning' | 'danger' | 'info' | 'neutral';

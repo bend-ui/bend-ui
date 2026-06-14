@@ -1,5 +1,5 @@
 {
-  "name": "@particles/radix",
+  "name": "@bend-ui/radix",
   "version": "0.0.1",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -9,14 +9,14 @@
     "dist"
   ],
   "dependencies": {
-    "@particles/preset": "workspace:*",
-    "@particles/react": "workspace:*",
-    "@particles/styled-system": "workspace:*",
+    "@bend-ui/preset": "workspace:*",
+    "@bend-ui/react": "workspace:*",
+    "@bend-ui/styled-system": "workspace:*",
     "lucide-react": "^1.18.0",
     "radix-ui": "^1.5.0"
   },
   "devDependencies": {
-    "@particles/storybook": "workspace:*"
+    "@bend-ui/storybook": "workspace:*"
   },
   "peerDependencies": {
     "@pandacss/dev": "^1",

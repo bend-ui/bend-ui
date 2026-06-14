@@ -1,11 +1,11 @@
 ---
 title: Spacing
-description: Learn about the spacing system in Particles Design System
+description: Learn about the spacing system in Bend UI Design System
 ---
 
 # Spacing
 
-Consistent spacing creates visual rhythm and hierarchy in your designs. Particles uses a systematic spacing scale based on a 4px base unit.
+Consistent spacing creates visual rhythm and hierarchy in your designs. Bend UI uses a systematic spacing scale based on a 4px base unit.
 
 ## Spacing Scale
 
@@ -33,7 +33,7 @@ The spacing scale uses a numeric system where each unit represents a multiple of
 Add internal spacing to elements:
 
 ```tsx
-import { Box } from '@particles/react';
+import { Box } from '@bend-ui/react';
 
 <Box padding="4">
   Padding on all sides (16px)
@@ -53,7 +53,7 @@ import { Box } from '@particles/react';
 Add external spacing between elements:
 
 ```tsx
-import { Box } from '@particles/react';
+import { Box } from '@bend-ui/react';
 
 <Box margin="4">
   Margin on all sides (16px)
@@ -73,7 +73,7 @@ import { Box } from '@particles/react';
 Space between flex or grid children:
 
 ```tsx
-import { Stack, Flex } from '@particles/react';
+import { Stack, Flex } from '@bend-ui/react';
 
 // Vertical stack with gap
 <Stack gap="4">
@@ -97,7 +97,7 @@ import { Stack, Flex } from '@particles/react';
 Use consistent padding within components:
 
 ```tsx
-import { Box, Text } from '@particles/react';
+import { Box, Text } from '@bend-ui/react';
 
 // Card component
 <Box
@@ -120,7 +120,7 @@ import { Box, Text } from '@particles/react';
 Space between sections:
 
 ```tsx
-import { Stack, Box } from '@particles/react';
+import { Stack, Box } from '@bend-ui/react';
 
 <Stack gap="12">
   <Box as="section">Section 1</Box>
@@ -134,7 +134,7 @@ import { Stack, Box } from '@particles/react';
 Consistent spacing in forms:
 
 ```tsx
-import { Stack, FormControl, FormLabel, Input, Button } from '@particles/react';
+import { Stack, FormControl, FormLabel, Input, Button } from '@bend-ui/react';
 
 <Stack gap="6">
   <FormControl>
@@ -172,7 +172,7 @@ import { css } from 'styled-system/css';
 ### Container Spacing
 
 ```tsx
-import { Container } from '@particles/react';
+import { Container } from '@bend-ui/react';
 
 <Container
   maxW="container.xl"
@@ -191,7 +191,7 @@ import { Container } from '@particles/react';
 Pull elements closer or overlap:
 
 ```tsx
-import { Box } from '@particles/react';
+import { Box } from '@bend-ui/react';
 
 <Box marginTop="-4">
   Negative margin pulls this up
@@ -208,7 +208,7 @@ Use for tight relationships:
 - Badge spacing
 
 ```tsx
-import { Flex, Icon, Text } from '@particles/react';
+import { Flex, Icon, Text } from '@bend-ui/react';
 
 <Flex align="center" gap="2">
   <Icon name="check" />
@@ -224,7 +224,7 @@ Use for component internal spacing:
 - Card padding
 
 ```tsx
-import { Button } from '@particles/react';
+import { Button } from '@bend-ui/react';
 
 <Button paddingX="6" paddingY="3">
   Click Me
@@ -239,7 +239,7 @@ Use for grouping related content:
 - List items
 
 ```tsx
-import { Stack } from '@particles/react';
+import { Stack } from '@bend-ui/react';
 
 <Stack gap="8">
   <section>Group 1</section>
@@ -255,7 +255,7 @@ Use for page-level spacing:
 - Footer spacing
 
 ```tsx
-import { Stack } from '@particles/react';
+import { Stack } from '@bend-ui/react';
 
 <Stack gap="16">
   <section>Hero</section>
@@ -283,7 +283,7 @@ Stick to the spacing scale for consistency:
 Maintain consistent vertical spacing:
 
 ```tsx
-import { Stack } from '@particles/react';
+import { Stack } from '@bend-ui/react';
 
 <Stack gap="4">
   <h2>Heading</h2>
@@ -297,7 +297,7 @@ import { Stack } from '@particles/react';
 Sometimes visual balance requires adjusting spacing:
 
 ```tsx
-import { Box } from '@particles/react';
+import { Box } from '@bend-ui/react';
 
 // Icons might need slight adjustment
 <Box marginTop="-0.5">
@@ -311,10 +311,10 @@ Extend the spacing scale:
 
 ```typescript
 import { defineConfig } from '@pandacss/dev';
-import particlesPreset from '@particles/preset';
+import bendPreset from '@bend-ui/preset';
 
 export default defineConfig({
-  presets: [particlesPreset],
+  presets: [bendPreset],
   theme: {
     extend: {
       tokens: {

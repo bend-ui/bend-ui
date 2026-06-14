@@ -10,13 +10,13 @@ A visual representation of a user or entity — typically a profile photo, initi
 ## Import
 
 ```tsx
-import { Avatar } from '@particles/ark';
+import { Avatar } from '@bend-ui/ark';
 ```
 
 ## Basic Usage
 
 ```tsx
-import { Avatar } from '@particles/ark';
+import { Avatar } from '@bend-ui/ark';
 
 function Example() {
   return <Avatar src="/profile.jpg" fallback="JD" />;
@@ -28,7 +28,7 @@ function Example() {
 ### Sizes
 
 ```tsx
-import { Avatar, Stack } from '@particles/ark';
+import { Avatar, Stack } from '@bend-ui/ark';
 
 function SizesExample() {
   return (
@@ -52,7 +52,7 @@ function SizesExample() {
 When `src` is empty or the image fails to load, the `fallback` text (typically initials) is shown instead.
 
 ```tsx
-import { Avatar } from '@particles/ark';
+import { Avatar } from '@bend-ui/ark';
 
 function FallbackExample() {
   return <Avatar fallback="UI" src="" />;
@@ -64,7 +64,7 @@ function FallbackExample() {
 The `Avatar` compound component exposes its parts for full control:
 
 ```tsx
-import { Avatar } from '@particles/ark';
+import { Avatar } from '@bend-ui/ark';
 
 function ComposedExample() {
   return (

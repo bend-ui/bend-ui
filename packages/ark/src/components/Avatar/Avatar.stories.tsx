@@ -1,4 +1,4 @@
-import { avatar } from '@particles/styled-system/recipes';
+import { avatar } from '@bend-ui/styled-system/recipes';
 import { Avatar } from './Avatar';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 const meta = {

@@ -8,7 +8,14 @@ export default defineConfig({
   clean: true,
   treeshake: true,
   tsconfig: 'tsconfig.lib.json',
-  external: ['react', 'react-dom', 'lucide-react', '@floating-ui/react', '@particles/styled-system'],
+  external: [
+    'react',
+    'react-dom',
+    'lucide-react',
+    '@floating-ui/react',
+    '@bend-ui/primitives',
+    '@bend-ui/styled-system',
+  ],
   esbuildOptions(options) {
     options.jsx = 'automatic';
     options.jsxImportSource = 'react';

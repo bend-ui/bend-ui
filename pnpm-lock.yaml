@@ -417,42 +417,42 @@ importers:
 
   apps/vite-ark:
     dependencies:
+      '@bend-ui/ark':
+        specifier: workspace:*
+        version: link:../../packages/ark
+      '@bend-ui/preset':
+        specifier: workspace:*
+        version: link:../../packages/preset
       '@fontsource-variable/inter':
         specifier: ^5.2.8
         version: 5.2.8
-      '@particles/ark':
-        specifier: workspace:*
-        version: link:../../packages/ark
-      '@particles/preset':
-        specifier: workspace:*
-        version: link:../../packages/preset
 
   apps/vite-base-ui:
     dependencies:
+      '@bend-ui/base-ui':
+        specifier: workspace:*
+        version: link:../../packages/base-ui
+      '@bend-ui/preset':
+        specifier: workspace:*
+        version: link:../../packages/preset
       '@fontsource-variable/inter':
         specifier: ^5.2.8
         version: 5.2.8
-      '@particles/base-ui':
-        specifier: workspace:*
-        version: link:../../packages/base-ui
-      '@particles/preset':
-        specifier: workspace:*
-        version: link:../../packages/preset
 
   apps/website:
     dependencies:
+      '@bend-ui/ark':
+        specifier: workspace:*
+        version: link:../../packages/ark
+      '@bend-ui/preset':
+        specifier: workspace:*
+        version: link:../../packages/preset
+      '@bend-ui/react':
+        specifier: workspace:*
+        version: link:../../packages/react
       '@pandacss/token-dictionary':
         specifier: ^1.11.0
         version: 1.11.3
-      '@particles/ark':
-        specifier: workspace:*
-        version: link:../../packages/ark
-      '@particles/preset':
-        specifier: workspace:*
-        version: link:../../packages/preset
-      '@particles/react':
-        specifier: workspace:*
-        version: link:../../packages/react
       '@types/mdx':
         specifier: 2.0.14
         version: 2.0.14
@@ -474,18 +474,18 @@ importers:
 
   packages/aria:
     dependencies:
+      '@bend-ui/preset':
+        specifier: workspace:*
+        version: link:../preset
+      '@bend-ui/react':
+        specifier: workspace:*
+        version: link:../react
+      '@bend-ui/styled-system':
+        specifier: workspace:*
+        version: link:../styled-system
       '@pandacss/dev':
         specifier: ^1
         version: 1.11.3(jsdom@26.1.0)(typescript@6.0.2)
-      '@particles/preset':
-        specifier: workspace:*
-        version: link:../preset
-      '@particles/react':
-        specifier: workspace:*
-        version: link:../react
-      '@particles/styled-system':
-        specifier: workspace:*
-        version: link:../styled-system
       react:
         specifier: ^19
         version: 19.2.7
@@ -496,7 +496,7 @@ importers:
         specifier: ^19
         version: 19.2.7(react@19.2.7)
     devDependencies:
-      '@particles/storybook':
+      '@bend-ui/storybook':
         specifier: workspace:*
         version: link:../storybook
 
@@ -505,13 +505,13 @@ importers:
       '@ariakit/react':
         specifier: ^0.4.29
         version: 0.4.29(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
-      '@particles/preset':
+      '@bend-ui/preset':
         specifier: workspace:*
         version: link:../preset
-      '@particles/react':
+      '@bend-ui/react':
         specifier: workspace:*
         version: link:../react
-      '@particles/styled-system':
+      '@bend-ui/styled-system':
         specifier: workspace:*
         version: link:../styled-system
     devDependencies:
@@ -524,18 +524,18 @@ importers:
       '@ark-ui/react':
         specifier: ^5.37.2
         version: 5.37.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      '@bend-ui/preset':
+        specifier: workspace:*
+        version: link:../preset
+      '@bend-ui/react':
+        specifier: workspace:*
+        version: link:../react
+      '@bend-ui/styled-system':
+        specifier: workspace:*
+        version: link:../styled-system
       '@pandacss/dev':
         specifier: ^1
         version: 1.11.3(jsdom@26.1.0)(typescript@6.0.2)
-      '@particles/preset':
-        specifier: workspace:*
-        version: link:../preset
-      '@particles/react':
-        specifier: workspace:*
-        version: link:../react
-      '@particles/styled-system':
-        specifier: workspace:*
-        version: link:../styled-system
       react:
         specifier: ^19
         version: 19.2.7
@@ -543,7 +543,7 @@ importers:
         specifier: ^19
         version: 19.2.7(react@19.2.7)
     devDependencies:
-      '@particles/storybook':
+      '@bend-ui/storybook':
         specifier: workspace:*
         version: link:../storybook
 
@@ -552,18 +552,18 @@ importers:
       '@base-ui/react':
         specifier: 1.5.0
         version: 1.5.0(@date-fns/tz@1.4.1)(@types/react@19.2.14)(date-fns@4.1.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      '@bend-ui/preset':
+        specifier: workspace:*
+        version: link:../preset
+      '@bend-ui/react':
+        specifier: workspace:*
+        version: link:../react
+      '@bend-ui/styled-system':
+        specifier: workspace:*
+        version: link:../styled-system
       '@pandacss/dev':
         specifier: ^1
         version: 1.11.3(jsdom@26.1.0)(typescript@6.0.2)
-      '@particles/preset':
-        specifier: workspace:*
-        version: link:../preset
-      '@particles/react':
-        specifier: workspace:*
-        version: link:../react
-      '@particles/styled-system':
-        specifier: workspace:*
-        version: link:../styled-system
       lucide-react:
         specifier: ^1.18.0
         version: 1.18.0(react@19.2.7)
@@ -574,7 +574,7 @@ importers:
         specifier: ^19
         version: 19.2.7(react@19.2.7)
     devDependencies:
-      '@particles/storybook':
+      '@bend-ui/storybook':
         specifier: workspace:*
         version: link:../storybook
 
@@ -592,15 +592,15 @@ importers:
 
   packages/preset:
     dependencies:
+      '@bend-ui/preset-base':
+        specifier: workspace:*
+        version: link:../preset-base
       '@pandacss/dev':
         specifier: ^1.11.3
         version: 1.11.3(jsdom@26.1.0)(typescript@6.0.2)
       '@pandacss/types':
         specifier: ^1.11.3
         version: 1.11.3
-      '@particles/preset-base':
-        specifier: workspace:*
-        version: link:../preset-base
       tslib:
         specifier: ^2.5.3
         version: 2.8.1
@@ -616,24 +616,24 @@ importers:
 
   packages/primitives:
     devDependencies:
-      '@particles/storybook':
+      '@bend-ui/storybook':
         specifier: workspace:*
         version: link:../storybook
 
   packages/radix:
     dependencies:
+      '@bend-ui/preset':
+        specifier: workspace:*
+        version: link:../preset
+      '@bend-ui/react':
+        specifier: workspace:*
+        version: link:../react
+      '@bend-ui/styled-system':
+        specifier: workspace:*
+        version: link:../styled-system
       '@pandacss/dev':
         specifier: ^1
         version: 1.11.3(jsdom@26.1.0)(typescript@6.0.2)
-      '@particles/preset':
-        specifier: workspace:*
-        version: link:../preset
-      '@particles/react':
-        specifier: workspace:*
-        version: link:../react
-      '@particles/styled-system':
-        specifier: workspace:*
-        version: link:../styled-system
       lucide-react:
         specifier: ^1.18.0
         version: 1.18.0(react@19.2.7)
@@ -647,24 +647,27 @@ importers:
         specifier: ^19
         version: 19.2.7(react@19.2.7)
     devDependencies:
-      '@particles/storybook':
+      '@bend-ui/storybook':
         specifier: workspace:*
         version: link:../storybook
 
   packages/react:
     dependencies:
+      '@bend-ui/preset':
+        specifier: workspace:*
+        version: link:../preset
+      '@bend-ui/primitives':
+        specifier: workspace:*
+        version: link:../primitives
+      '@bend-ui/styled-system':
+        specifier: workspace:*
+        version: link:../styled-system
       '@floating-ui/react':
         specifier: '*'
         version: 0.27.19(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@pandacss/dev':
         specifier: ^1
         version: 1.11.3(jsdom@26.1.0)(typescript@6.0.2)
-      '@particles/preset':
-        specifier: workspace:*
-        version: link:../preset
-      '@particles/styled-system':
-        specifier: workspace:*
-        version: link:../styled-system
       lucide-react:
         specifier: ^1.18.0
         version: 1.18.0(react@19.2.7)
@@ -675,7 +678,7 @@ importers:
         specifier: ^19
         version: 19.2.7(react@19.2.7)
     devDependencies:
-      '@particles/storybook':
+      '@bend-ui/storybook':
         specifier: workspace:*
         version: link:../storybook
 
@@ -683,7 +686,7 @@ importers:
 
   packages/storybook:
     dependencies:
-      '@particles/theme':
+      '@bend-ui/theme':
         specifier: workspace:*
         version: link:../theme
       storybook:
@@ -692,12 +695,12 @@ importers:
 
   packages/styled-system:
     dependencies:
+      '@bend-ui/preset':
+        specifier: workspace:*
+        version: link:../preset
       '@pandacss/dev':
         specifier: ^1.11.3
         version: 1.11.3(jsdom@26.1.0)(typescript@6.0.2)
-      '@particles/preset':
-        specifier: workspace:*
-        version: link:../preset
     devDependencies:
       '@types/react':
         specifier: ^19.2.14

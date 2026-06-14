@@ -1,20 +1,20 @@
 ---
 title: Typography
-description: Typography system in Particles Design System
+description: Typography system in Bend UI Design System
 ---
 
 # Typography
 
-Typography is a critical part of any design system. Particles provides a comprehensive type system that ensures consistency and readability.
+Typography is a critical part of any design system. Bend UI provides a comprehensive type system that ensures consistency and readability.
 
 ## Font Families
 
 ### Default Fonts
 
-Particles uses system font stacks for optimal performance:
+Bend UI uses system font stacks for optimal performance:
 
 ```tsx
-import { Text } from '@particles/react';
+import { Text } from '@bend-ui/react';
 
 // Body text (default)
 <Text fontFamily="body">
@@ -44,10 +44,10 @@ font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo,
 
 ### Scale
 
-Particles uses a modular scale for font sizes:
+Bend UI uses a modular scale for font sizes:
 
 ```tsx
-import { Text, Stack } from '@particles/react';
+import { Text, Stack } from '@bend-ui/react';
 
 <Stack gap="4">
   <Text fontSize="xs">Extra small text (0.75rem / 12px)</Text>
@@ -72,7 +72,7 @@ import { Text, Stack } from '@particles/react';
 ## Font Weights
 
 ```tsx
-import { Text, Stack } from '@particles/react';
+import { Text, Stack } from '@bend-ui/react';
 
 <Stack gap="2">
   <Text fontWeight="normal">Normal weight (400)</Text>
@@ -94,7 +94,7 @@ import { Text, Stack } from '@particles/react';
 Line height affects readability and visual density:
 
 ```tsx
-import { Text, Stack } from '@particles/react';
+import { Text, Stack } from '@bend-ui/react';
 
 <Stack gap="4">
   <Text lineHeight="tight">
@@ -120,7 +120,7 @@ import { Text, Stack } from '@particles/react';
 ## Letter Spacing
 
 ```tsx
-import { Text } from '@particles/react';
+import { Text } from '@bend-ui/react';
 
 <Text letterSpacing="wide" textTransform="uppercase" fontSize="sm">
   Uppercase with tracking
@@ -132,7 +132,7 @@ import { Text } from '@particles/react';
 ### Semantic Headings
 
 ```tsx
-import { Heading, Stack } from '@particles/react';
+import { Heading, Stack } from '@bend-ui/react';
 
 <Stack gap="4">
   <Heading as="h1" size="4xl">Heading 1</Heading>
@@ -209,7 +209,7 @@ import { css } from 'styled-system/css';
 ### Example with Good Contrast
 
 ```tsx
-import { Box, Text } from '@particles/react';
+import { Box, Text } from '@bend-ui/react';
 
 <Box bg="gray.900" padding="8">
   <Text color="white" fontSize="lg">
@@ -223,7 +223,7 @@ import { Box, Text } from '@particles/react';
 For displaying code:
 
 ```tsx
-import { Code, CodeBlock } from '@particles/react';
+import { Code, CodeBlock } from '@bend-ui/react';
 
 // Inline code
 <Text>

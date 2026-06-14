@@ -1,11 +1,11 @@
 ---
 title: Colors
-description: Understanding the color system in Particles Design System
+description: Understanding the color system in Bend UI Design System
 ---
 
 # Colors
 
-Particles uses a comprehensive color system designed for flexibility, accessibility, and consistency.
+Bend UI uses a comprehensive color system designed for flexibility, accessibility, and consistency.
 
 ## Color Palette
 
@@ -32,7 +32,7 @@ Each brand color includes 10 shades from 50 (lightest) to 900 (darkest):
 Primary brand color, used for interactive elements:
 
 ```tsx
-import { Box } from '@particles/react';
+import { Box } from '@bend-ui/react';
 
 <Box bg="blue.500" color="white" padding="4">
   Primary Action
@@ -43,7 +43,7 @@ import { Box } from '@particles/react';
 Used for errors, warnings, and destructive actions:
 
 ```tsx
-import { Box } from '@particles/react';
+import { Box } from '@bend-ui/react';
 
 <Box bg="red.500" color="white" padding="4">
   Error Message
@@ -54,7 +54,7 @@ import { Box } from '@particles/react';
 Used for success states and positive feedback:
 
 ```tsx
-import { Box } from '@particles/react';
+import { Box } from '@bend-ui/react';
 
 <Box bg="green.500" color="white" padding="4">
   Success Message
@@ -65,7 +65,7 @@ import { Box } from '@particles/react';
 Used for warnings and attention:
 
 ```tsx
-import { Box } from '@particles/react';
+import { Box } from '@bend-ui/react';
 
 <Box bg="yellow.500" color="white" padding="4">
   Warning Message
@@ -76,7 +76,7 @@ import { Box } from '@particles/react';
 Used for secondary branding and special features:
 
 ```tsx
-import { Box } from '@particles/react';
+import { Box } from '@bend-ui/react';
 
 <Box bg="purple.500" color="white" padding="4">
   Special Feature
@@ -90,7 +90,7 @@ Semantic tokens provide context-aware colors that adapt to themes:
 ### Text Colors
 
 ```tsx
-import { Text } from '@particles/react';
+import { Text } from '@bend-ui/react';
 
 <Text color="text.primary">Primary text</Text>
 <Text color="text.secondary">Secondary text</Text>
@@ -101,7 +101,7 @@ import { Text } from '@particles/react';
 ### Background Colors
 
 ```tsx
-import { Box } from '@particles/react';
+import { Box } from '@bend-ui/react';
 
 <Box bg="background.default">Default background</Box>
 <Box bg="background.subtle">Subtle background</Box>
@@ -111,7 +111,7 @@ import { Box } from '@particles/react';
 ### Border Colors
 
 ```tsx
-import { Box } from '@particles/react';
+import { Box } from '@bend-ui/react';
 
 <Box borderWidth="1px" borderColor="border.default">
   Default border
@@ -124,7 +124,7 @@ import { Box } from '@particles/react';
 ### Interactive Colors
 
 ```tsx
-import { Box } from '@particles/react';
+import { Box } from '@bend-ui/react';
 
 <Box bg="interactive.default" _hover={{ bg: 'interactive.hover' }}>
   Hover me
@@ -138,7 +138,7 @@ import { Box } from '@particles/react';
 Ensure sufficient contrast for accessibility:
 
 ```tsx
-import { Box, Text } from '@particles/react';
+import { Box, Text } from '@bend-ui/react';
 
 // Good: High contrast
 <Box bg="blue.600">
@@ -156,7 +156,7 @@ import { Box, Text } from '@particles/react';
 Use consistent color schemes for components:
 
 ```tsx
-import { Button, Stack } from '@particles/react';
+import { Button, Stack } from '@bend-ui/react';
 
 <Stack direction="row" gap="4">
   <Button colorScheme="blue">Primary</Button>
@@ -189,7 +189,7 @@ All color combinations are designed to meet WCAG 2.1 AA standards:
 Colors automatically adapt in dark mode using semantic tokens:
 
 ```tsx
-import { Box, Text } from '@particles/react';
+import { Box, Text } from '@bend-ui/react';
 
 <Box bg="background.default" color="text.primary">
   This adapts to dark mode automatically
@@ -202,10 +202,10 @@ Extend the color palette in `panda.config.ts`:
 
 ```typescript
 import { defineConfig } from '@pandacss/dev';
-import particlesPreset from '@particles/preset';
+import bendPreset from '@bend-ui/preset';
 
 export default defineConfig({
-  presets: [particlesPreset],
+  presets: [bendPreset],
   theme: {
     extend: {
       tokens: {

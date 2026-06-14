@@ -1,6 +1,6 @@
 import { Menu as MenuPrimitive } from '@base-ui/react/menu';
-import { withParts, withRecipe } from '@particles/react';
-import { menu } from '@particles/styled-system/recipes';
+import { withParts, withRecipe } from '@bend-ui/react';
+import { menu } from '@bend-ui/styled-system/recipes';
 import { Button } from '../Button';
 
 const MenuRoot = MenuPrimitive.Root;

@@ -63,7 +63,7 @@ const config: StorybookConfig = {
       //   if (prop.parent) {
       //     if (
       //       prop.parent.fileName.match(/@ark-ui/) ||
-      //       prop.parent.fileName.match(/@particles/)
+      //       prop.parent.fileName.match(/@bend-ui/)
       //     ) {
       //       return true;
       //     } else {
@@ -85,7 +85,7 @@ const config: StorybookConfig = {
         // Filter out styled-system package (both relative and absolute paths)
         if (
           /packages\/styled-system/.test(fileName) ||
-          /@particles\/styled-system/.test(fileName)
+          /@bend-ui\/styled-system/.test(fileName)
         ) {
           return false;
         }

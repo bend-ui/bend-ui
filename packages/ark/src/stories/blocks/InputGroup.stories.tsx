@@ -1,7 +1,7 @@
-import { css, cx, sva } from '@particles/styled-system/css';
-import { visuallyHidden } from '@particles/styled-system/patterns';
+import { css, cx, sva } from '@bend-ui/styled-system/css';
+import { visuallyHidden } from '@bend-ui/styled-system/patterns';
 import { AlertCircleIcon } from 'lucide-react';
-import { Paragraph } from '@particles/react';
+import { Paragraph } from '@bend-ui/react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta = { title: 'Blocks/InputGroup' };

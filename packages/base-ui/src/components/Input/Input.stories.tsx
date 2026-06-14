@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 import { Input } from './Input';
 import { SearchIcon } from 'lucide-react';
-import { Box, Stack } from '@particles/react';
+import { Box, Stack } from '@bend-ui/react';
 
 const meta: Meta<typeof Input> = {
   title: 'Components/Form/Input',

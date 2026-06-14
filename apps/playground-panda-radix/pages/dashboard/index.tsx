@@ -5,10 +5,10 @@ import {
   grid,
   level,
   stack,
-} from '@particles/styled-system/patterns';
-import { appShell } from '@particles/styled-system/recipes';
-import { css, cx } from '@particles/styled-system/css';
-import { Avatar, Button, Card, Modal, Tabs } from '@particles/radix';
+} from '@bend-ui/styled-system/patterns';
+import { appShell } from '@bend-ui/styled-system/recipes';
+import { css, cx } from '@bend-ui/styled-system/css';
+import { Avatar, Button, Card, Modal, Tabs } from '@bend-ui/radix';
 import Sidebar from './components/sidebar';
 
 export function Dashboard() {

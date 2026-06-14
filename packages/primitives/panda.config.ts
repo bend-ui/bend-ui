@@ -15,7 +15,7 @@ export default defineConfig({
 
   presets: ['@pandacss/dev/presets'],
 
-  importMap: '@particles/styled-system',
+  importMap: '@bend-ui/styled-system',
 
   jsxFramework: 'react',
 });

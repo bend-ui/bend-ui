@@ -1,4 +1,4 @@
-import { AppShell } from '@particles/ark';
+import { AppShell } from '@bend-ui/ark';
 import { SidebarComponent } from './Sidebar';
 
 export interface LayoutProps {

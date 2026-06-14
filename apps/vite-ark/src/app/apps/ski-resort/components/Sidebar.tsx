@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { Sidebar } from '@particles/ark';
+import { Sidebar } from '@bend-ui/ark';
 import {
   CableCarIcon,
   CalendarDaysIcon,

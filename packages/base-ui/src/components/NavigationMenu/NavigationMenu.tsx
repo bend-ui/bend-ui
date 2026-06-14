@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { NavigationMenu as NavigationMenuPrimitive } from '@base-ui/react/navigation-menu';
 import { ArrowDownIcon, ChevronDownIcon } from 'lucide-react';
-import { createStyleContext } from '@particles/styled-system/jsx';
-import { navbar } from '@particles/styled-system/recipes';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { navbar } from '@bend-ui/styled-system/recipes';
 
 const { withProvider, withContext } = createStyleContext(navbar);
 

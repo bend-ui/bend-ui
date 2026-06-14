@@ -1,12 +1,12 @@
 import { Dialog as ArkDialog, Portal as ArkPortal } from '@ark-ui/react';
-import { backdrop, drawer } from '@particles/styled-system/recipes';
-import { DismissButton, withRecipe, withParts } from '@particles/react';
+import { backdrop, drawer } from '@bend-ui/styled-system/recipes';
+import { DismissButton, withRecipe, withParts } from '@bend-ui/react';
 import type {
   BackdropVariantProps,
   DrawerVariantProps,
-} from '@particles/styled-system/recipes';
+} from '@bend-ui/styled-system/recipes';
 import { Button } from '..';
-import { HTMLParticlesProps, particles } from '@particles/react';
+import { HTMLBendUIProps, bend } from '@bend-ui/react';
 
 type DrawerRootProps = ArkDialog.RootProps;
 
@@ -49,9 +49,9 @@ DrawerTitle.displayName = 'DrawerTitle';
 const DrawerDescription = withParts(ArkDialog.Description, 'description');
 DrawerDescription.displayName = 'DrawerDescription';
 
-export type DrawerFooterProps = HTMLParticlesProps<'div'>;
+export type DrawerFooterProps = HTMLBendUIProps<'div'>;
 
-const DrawerFooter = withParts(particles.div, 'footer');
+const DrawerFooter = withParts(bend.div, 'footer');
 DrawerFooter.displayName = 'DrawerFooter';
 
 export interface DrawerProps extends DrawerRootProps, DrawerVariantProps {

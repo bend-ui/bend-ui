@@ -1,3 +1,3 @@
-import { createTheme } from '@particles/storybook';
+import { createTheme } from '@bend-ui/storybook';
 
-export const theme = createTheme({ brandTitle: 'Particles - AriaKit' });
+export const theme = createTheme({ brandTitle: 'Bend UI - AriaKit' });

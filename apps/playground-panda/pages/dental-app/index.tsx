@@ -17,7 +17,7 @@ import {
   Paragraph,
   Menu,
   Tabs,
-} from '@particles/ark';
+} from '@bend-ui/ark';
 import {
   SearchIcon,
   BellIcon,

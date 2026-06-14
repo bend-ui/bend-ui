@@ -1,8 +1,8 @@
 'use client';
-import { tag } from '@particles/styled-system/recipes';
-import { styled } from '@particles/styled-system/jsx';
-import type { TagVariantProps } from '@particles/styled-system/recipes';
-import type { HTMLStyledProps } from '@particles/styled-system/types';
+import { tag } from '@bend-ui/styled-system/recipes';
+import { styled } from '@bend-ui/styled-system/jsx';
+import type { TagVariantProps } from '@bend-ui/styled-system/recipes';
+import type { HTMLStyledProps } from '@bend-ui/styled-system/types';
 
 export type TagRootProps = HTMLStyledProps<'div'> & TagVariantProps;
 

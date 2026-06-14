@@ -1,4 +1,4 @@
-import { Box, Sidebar as SidebarPrimitive } from '@particles/base-ui';
+import { Box, Sidebar as SidebarPrimitive } from '@bend-ui/base-ui';
 import { Sidebar } from './Sidebar';
 
 export interface LayoutProps {

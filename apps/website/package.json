@@ -7,9 +7,9 @@
   },
   "dependencies": {
     "@pandacss/token-dictionary": "^1.11.0",
-    "@particles/ark": "workspace:*",
-    "@particles/preset": "workspace:*",
-    "@particles/react": "workspace:*",
+    "@bend-ui/ark": "workspace:*",
+    "@bend-ui/preset": "workspace:*",
+    "@bend-ui/react": "workspace:*",
     "@types/mdx": "2.0.14",
     "fumadocs-core": "16.7.12",
     "fumadocs-mdx": "14.2.11",

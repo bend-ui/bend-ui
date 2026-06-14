@@ -2,8 +2,8 @@ import { Button as ButtonPrimitive } from '@base-ui/react/button';
 import {
   Button as StyledButton,
   ButtonProps as StyledButtonProps,
-} from '@particles/react';
-import { Assign } from '@particles/styled-system/types';
+} from '@bend-ui/react';
+import { Assign } from '@bend-ui/styled-system/types';
 
 const ButtonRoot = ButtonPrimitive;
 

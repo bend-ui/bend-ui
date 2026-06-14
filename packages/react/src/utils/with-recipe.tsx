@@ -1,9 +1,9 @@
-import { cx } from '@particles/styled-system/css';
+import { cx } from '@bend-ui/styled-system/css';
 import type { ComponentProps, ElementType, ReactElement } from 'react';
 import type {
   SystemStyleObject,
   RecipeVariantFn,
-} from '@particles/styled-system/types';
+} from '@bend-ui/styled-system/types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type AnyProps = Record<string, any>;

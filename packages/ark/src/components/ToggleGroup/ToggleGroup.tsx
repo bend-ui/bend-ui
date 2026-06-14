@@ -1,6 +1,6 @@
 import { ToggleGroup as ToggleGroupPrimitive } from '@ark-ui/react';
-import { withRecipe, withParts } from '@particles/react';
-import { toggleGroup } from '@particles/styled-system/recipes';
+import { withRecipe, withParts } from '@bend-ui/react';
+import { toggleGroup } from '@bend-ui/styled-system/recipes';
 
 const ToggleGroupRoot = withRecipe(
   ToggleGroupPrimitive.Root,

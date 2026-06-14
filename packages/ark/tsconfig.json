@@ -9,16 +9,13 @@
       "~/*": [
         "src/*"
       ],
-      "@particles/preset": [
+      "@bend-ui/preset": [
         "packages/preset/src/index.ts"
       ],
-      "@particles/react": [
-        "packages/react/src/index.ts"
-      ],
-      "@particles/styled-system/*": [
+      "@bend-ui/styled-system/*": [
         "packages/ark/styled-system/dist/*"
       ],
-      "@particles/storybook": [
+      "@bend-ui/storybook": [
         "packages/storybook/src/index.ts"
       ]
     }

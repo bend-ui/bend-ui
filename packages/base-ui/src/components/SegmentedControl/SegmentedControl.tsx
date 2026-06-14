@@ -1,7 +1,7 @@
 import { Radio as RadioPrimitive } from '@base-ui/react/radio';
 import { RadioGroup as RadioGroupPrimitive } from '@base-ui/react/radio-group';
-import { createStyleContext } from '@particles/styled-system/jsx';
-import { segmentedControl } from '@particles/styled-system/recipes';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { segmentedControl } from '@bend-ui/styled-system/recipes';
 
 const { withProvider, withContext } = createStyleContext(segmentedControl);
 

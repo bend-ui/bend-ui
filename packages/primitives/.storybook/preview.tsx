@@ -1,11 +1,11 @@
 import './styles.css';
 import '@fontsource-variable/inter';
-import { createTheme } from '@particles/storybook';
+import { createTheme } from '@bend-ui/storybook';
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
 import { Container } from './decorators';
 import type { Preview } from '@storybook/react-vite';
 
-const theme = createTheme({ brandTitle: 'Particles - Primitives' });
+const theme = createTheme({ brandTitle: 'Bend UI - Primitives' });
 
 const preview: Preview = {
   parameters: {

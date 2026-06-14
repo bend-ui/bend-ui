@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Toggle } from '../Toggle';
 import { ToggleGroup as ToggleGroupPrimitive } from '@base-ui/react/toggle-group';
-import { toggleGroup } from '@particles/styled-system/recipes';
-import { createStyleContext } from '@particles/styled-system/jsx';
+import { toggleGroup } from '@bend-ui/styled-system/recipes';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
 
 const { withProvider } = createStyleContext(toggleGroup);
 

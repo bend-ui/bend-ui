@@ -1,9 +1,9 @@
 import { forwardRef } from 'react';
 import { DropdownMenu as DropdownMenuPrimitive } from 'radix-ui';
 import { CheckIcon, ChevronRightIcon, CircleIcon } from 'lucide-react';
-import { styled } from '@particles/styled-system/jsx';
-import { css, cx } from '@particles/styled-system/css';
-import { menu, icon } from '@particles/styled-system/recipes';
+import { styled } from '@bend-ui/styled-system/jsx';
+import { css, cx } from '@bend-ui/styled-system/css';
+import { menu, icon } from '@bend-ui/styled-system/recipes';
 import type {
   ComponentProps,
   ComponentPropsWithoutRef,

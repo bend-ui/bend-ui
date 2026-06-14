@@ -1,11 +1,11 @@
 import './index.css';
 import '@fontsource-variable/inter';
-import { createTheme } from '@particles/storybook';
+import { createTheme } from '@bend-ui/storybook';
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
 import { Container } from './decorators';
 import type { Preview } from '@storybook/react-vite';
 
-const theme = createTheme({ brandTitle: 'Particles - AriaKit' });
+const theme = createTheme({ brandTitle: 'Bend UI - AriaKit' });
 
 const preview: Preview = {
   parameters: {

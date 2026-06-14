@@ -1,6 +1,6 @@
 import { Meter as MeterPrimitive } from '@base-ui/react/meter';
-import { createStyleContext } from '@particles/styled-system/jsx';
-import { meter } from '@particles/styled-system/recipes';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { meter } from '@bend-ui/styled-system/recipes';
 
 const { withProvider, withContext } = createStyleContext(meter);
 

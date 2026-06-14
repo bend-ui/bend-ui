@@ -5,11 +5,11 @@ import {
   withRecipe,
   type InputProps,
   type TextareaProps,
-} from '@particles/react';
+} from '@bend-ui/react';
 import {
   formField,
   type FormFieldVariantProps,
-} from '@particles/styled-system/recipes';
+} from '@bend-ui/styled-system/recipes';
 
 export type FieldRootProps = ArkField.RootProps & FormFieldVariantProps;
 

@@ -1,4 +1,4 @@
-import { Box, Center, Stack } from '@particles/styled-system/jsx';
+import { Box, Center, Stack } from '@bend-ui/styled-system/jsx';
 import {
   Button,
   FormField,
@@ -6,7 +6,7 @@ import {
   Input,
   Level,
   Paragraph,
-} from '@particles/react';
+} from '@bend-ui/react';
 import { Checkbox } from '../../components';
 import type { Meta } from '@storybook/react-vite';
 

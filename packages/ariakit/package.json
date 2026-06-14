@@ -1,5 +1,5 @@
 {
-  "name": "@particles/ariakit",
+  "name": "@bend-ui/ariakit",
   "version": "0.0.1",
   "main": "./index.js",
   "types": "./index.d.ts",
@@ -11,9 +11,9 @@
   },
   "dependencies": {
     "@ariakit/react": "^0.4.29",
-    "@particles/preset": "workspace:*",
-    "@particles/react": "workspace:*",
-    "@particles/styled-system": "workspace:*"
+    "@bend-ui/preset": "workspace:*",
+    "@bend-ui/react": "workspace:*",
+    "@bend-ui/styled-system": "workspace:*"
   },
   "devDependencies": {
     "@pandacss/dev": "^1.11.3"

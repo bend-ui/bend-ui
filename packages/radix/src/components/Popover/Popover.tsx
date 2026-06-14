@@ -1,6 +1,6 @@
 import { Popover as PopoverPrimitive } from 'radix-ui';
-import { popover } from '@particles/styled-system/recipes';
-import { styled } from '@particles/styled-system/jsx';
+import { popover } from '@bend-ui/styled-system/recipes';
+import { styled } from '@bend-ui/styled-system/jsx';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { createRecipeContext } from '../../utils/recipe-context';
 

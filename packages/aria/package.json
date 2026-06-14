@@ -1,5 +1,5 @@
 {
-  "name": "@particles/aria",
+  "name": "@bend-ui/aria",
   "version": "0.0.1",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -9,13 +9,13 @@
     "dist"
   ],
   "dependencies": {
-    "@particles/preset": "workspace:*",
-    "@particles/react": "workspace:*",
-    "@particles/styled-system": "workspace:*",
+    "@bend-ui/preset": "workspace:*",
+    "@bend-ui/react": "workspace:*",
+    "@bend-ui/styled-system": "workspace:*",
     "react-aria-components": "^1.18.0"
   },
   "devDependencies": {
-    "@particles/storybook": "workspace:*"
+    "@bend-ui/storybook": "workspace:*"
   },
   "peerDependencies": {
     "@pandacss/dev": "^1",

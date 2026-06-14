@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import { center, splitLayout, stack } from '@particles/styled-system/patterns';
-import { css, cx } from '@particles/styled-system/css';
-import { Button, Input } from '@particles/radix';
+import { center, splitLayout, stack } from '@bend-ui/styled-system/patterns';
+import { css, cx } from '@bend-ui/styled-system/css';
+import { Button, Input } from '@bend-ui/radix';
 
 const AuthPage = () => (
   <div className={splitLayout()}>

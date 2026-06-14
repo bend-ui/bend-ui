@@ -1,5 +1,5 @@
 import { BellIcon } from 'lucide-react';
-import { alert } from '@particles/styled-system/recipes';
+import { alert } from '@bend-ui/styled-system/recipes';
 import { ButtonGroup } from '../ButtonGroup';
 import { Button } from '../Button';
 import { Alert } from './Alert';

@@ -3,6 +3,6 @@
   "projectId": "Project:695de44bc4fcdeb9e9f2e97a",
   "storybookBaseDir": "packages/base-ui",
   "buildCommand": "nx run base-ui:build-storybook",
-  "outputDir": "../../dist/storybook/@particles/base-ui",
+  "outputDir": "../../dist/storybook/@bend-ui/base-ui",
   "zip": true
 }

@@ -1,6 +1,6 @@
-import { scrollable } from '@particles/styled-system/patterns';
-import { cx, sva } from '@particles/styled-system/css';
-import { Avatar, Button } from '@particles/radix';
+import { scrollable } from '@bend-ui/styled-system/patterns';
+import { cx, sva } from '@bend-ui/styled-system/css';
+import { Avatar, Button } from '@bend-ui/radix';
 import { useTheme } from 'next-themes';
 import { conversations, users } from '../data';
 

@@ -1,12 +1,12 @@
-import { input } from '@particles/styled-system/recipes';
-import type { InputVariantProps } from '@particles/styled-system/recipes';
+import { input } from '@bend-ui/styled-system/recipes';
+import type { InputVariantProps } from '@bend-ui/styled-system/recipes';
 import type { ReactNode } from 'react';
-import { HTMLParticlesProps, particles } from '../factory';
-import { Assign } from '@particles/styled-system/types';
-import { cx } from '@particles/styled-system/css';
+import { HTMLBendUIProps, bend } from '../factory';
+import { Assign } from '@bend-ui/styled-system/types';
+import { cx } from '@bend-ui/styled-system/css';
 
 export type InputRootProps = Assign<
-  HTMLParticlesProps<'input'>,
+  HTMLBendUIProps<'input'>,
   InputVariantProps
 >;
 
@@ -15,7 +15,7 @@ const InputRoot = (props: InputRootProps) => {
   const [variantProps, elementProps] = input.splitVariantProps(rest);
   const classes = input(variantProps);
   return (
-    <particles.div
+    <bend.div
       ref={ref}
       data-part="root"
       {...elementProps}
@@ -24,26 +24,26 @@ const InputRoot = (props: InputRootProps) => {
   );
 };
 
-export type InputWrapperProps = HTMLParticlesProps<'label'>;
+export type InputWrapperProps = HTMLBendUIProps<'label'>;
 
 const InputWrapper = (props: InputWrapperProps) => {
   const { ref, ...rest } = props;
-  return <particles.label ref={ref} data-part="wrapper" {...rest} />;
+  return <bend.label ref={ref} data-part="wrapper" {...rest} />;
 };
 
-export type InputIconProps = HTMLParticlesProps<'div'>;
+export type InputIconProps = HTMLBendUIProps<'div'>;
 
 const InputIcon = (props: InputIconProps) => {
   const { ref, ...rest } = props;
-  return <particles.div ref={ref} data-part="icon" asChild {...rest} />;
+  return <bend.div ref={ref} data-part="icon" asChild {...rest} />;
 };
 
-export type InputInputProps = HTMLParticlesProps<'input'>;
+export type InputInputProps = HTMLBendUIProps<'input'>;
 
 const InputInput = (props: InputInputProps) => {
   const { ref, className, ...rest } = props;
   return (
-    <particles.input
+    <bend.input
       ref={ref}
       data-part="input"
       className={cx('peer', className)}
@@ -52,18 +52,18 @@ const InputInput = (props: InputInputProps) => {
   );
 };
 
-export type InputElementProps = HTMLParticlesProps<'div'>;
+export type InputElementProps = HTMLBendUIProps<'div'>;
 
 const InputElement = (props: InputElementProps) => {
   const { ref, ...rest } = props;
-  return <particles.div ref={ref} data-part="element" {...rest} />;
+  return <bend.div ref={ref} data-part="element" {...rest} />;
 };
 
-export type InputAddonProps = HTMLParticlesProps<'div'>;
+export type InputAddonProps = HTMLBendUIProps<'div'>;
 
 const InputAddon = (props: InputAddonProps) => {
   const { ref, ...rest } = props;
-  return <particles.div ref={ref} data-part="addon" {...rest} />;
+  return <bend.div ref={ref} data-part="addon" {...rest} />;
 };
 
 export interface InputProps extends InputRootProps {

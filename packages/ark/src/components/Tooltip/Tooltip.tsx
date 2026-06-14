@@ -1,6 +1,6 @@
 import { Tooltip as ArkTooltip } from '@ark-ui/react';
-import { withRecipe, withParts } from '@particles/react';
-import { tooltip, TooltipVariantProps } from '@particles/styled-system/recipes';
+import { withRecipe, withParts } from '@bend-ui/react';
+import { tooltip, TooltipVariantProps } from '@bend-ui/styled-system/recipes';
 
 const TooltipRoot = ArkTooltip.Root;
 const TooltipTrigger = ArkTooltip.Trigger;

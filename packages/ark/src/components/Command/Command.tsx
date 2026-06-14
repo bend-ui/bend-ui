@@ -1,7 +1,7 @@
 import { Dialog as ArkDialog, Portal } from '@ark-ui/react';
-import { command } from '@particles/styled-system/recipes';
-import type { CommandVariantProps } from '@particles/styled-system/recipes';
-import { withRecipe, withParts } from '@particles/react';
+import { command } from '@bend-ui/styled-system/recipes';
+import type { CommandVariantProps } from '@bend-ui/styled-system/recipes';
+import { withRecipe, withParts } from '@bend-ui/react';
 
 export type CommandRootProps = ArkDialog.RootProps;
 const CommandRoot = ArkDialog.Root;

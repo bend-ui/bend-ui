@@ -1,7 +1,7 @@
 import { SearchIcon, XIcon } from 'lucide-react';
 import { Input } from '../Input';
 import type { InputProps } from '../Input';
-import { particles } from '../../factory';
+import { bend } from '../../factory';
 
 export interface SearchInputProps extends InputProps {
   onClear?: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -22,11 +22,11 @@ const Component = (props: SearchInputProps) => {
           <SearchIcon />
         </Input.Icon>
         <Input.Input ref={ref} />
-        <particles.button onClick={handleClear}>
+        <bend.button onClick={handleClear}>
           <Input.Icon>
             <XIcon />
           </Input.Icon>
-        </particles.button>
+        </bend.button>
       </Input.Wrapper>
     </Input.Root>
   );

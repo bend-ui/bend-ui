@@ -1,4 +1,4 @@
-export * from '@particles/react';
+export * from '@bend-ui/react';
 
 export * from './Accordion';
 export * from './AngleSlider';

@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { DARK_MODE_EVENT_NAME } from '@vueless/storybook-dark-mode';
 import { DocsContainer } from '@storybook/addon-docs/blocks';
-import { createTheme } from '@particles/storybook';
+import { createTheme } from '@bend-ui/storybook';
 import type React from 'react';
 import type { DocsContextProps } from '@storybook/addon-docs/blocks';
 import type { ThemeVars } from 'storybook/theming';
 
-const theme = createTheme({ brandTitle: 'Particles - Primitives' });
+const theme = createTheme({ brandTitle: 'Bend UI - Primitives' });
 
 const LOCAL_STORAGE_KEY = '_tmp-dark-mode-hack';
 
@@ -37,4 +37,3 @@ export const Container = (props: {
 
   return <DocsContainer {...props} theme={isDark ? theme.dark : theme.light} />;
 };
-

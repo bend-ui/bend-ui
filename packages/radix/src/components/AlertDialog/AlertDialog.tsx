@@ -1,6 +1,6 @@
 import { AlertDialog as AlertDialogPrimitive } from 'radix-ui';
-import { styled, createStyleContext } from '@particles/styled-system/jsx';
-import { modal } from '@particles/styled-system/recipes';
+import { styled, createStyleContext } from '@bend-ui/styled-system/jsx';
+import { modal } from '@bend-ui/styled-system/recipes';
 import type { ReactNode } from 'react';
 import { createRecipeContext } from '../../utils/recipe-context';
 

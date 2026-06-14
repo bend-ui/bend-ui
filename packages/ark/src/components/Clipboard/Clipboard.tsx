@@ -2,8 +2,8 @@ import { Clipboard as ClipboardPrimitive } from '@ark-ui/react';
 import { CheckIcon, ClipboardCopyIcon } from 'lucide-react';
 
 import { withRecipe, withParts } from '../../utils';
-import { Assign, HTMLStyledProps } from '@particles/styled-system/types';
-import { clipboard } from '@particles/styled-system/recipes';
+import { Assign, HTMLStyledProps } from '@bend-ui/styled-system/types';
+import { clipboard } from '@bend-ui/styled-system/recipes';
 
 export type ClipboardRootProps = Assign<
   HTMLStyledProps<'div'>,

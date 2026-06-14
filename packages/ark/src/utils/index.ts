@@ -3,4 +3,4 @@ export {
   withParts,
   createRecipeContext,
   type ComponentWithRecipe,
-} from '@particles/react';
+} from '@bend-ui/react';

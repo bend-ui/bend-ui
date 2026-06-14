@@ -15,10 +15,10 @@ import {
   Input,
   Level,
   Paragraph,
-} from '@particles/ark';
-import { Divider, Grid, GridItem } from '@particles/styled-system/jsx';
-import { container } from '@particles/styled-system/patterns';
-import { css } from '@particles/styled-system/css';
+} from '@bend-ui/ark';
+import { Divider, Grid, GridItem } from '@bend-ui/styled-system/jsx';
+import { container } from '@bend-ui/styled-system/patterns';
+import { css } from '@bend-ui/styled-system/css';
 
 export default function Marketing() {
   const { theme, setTheme } = useTheme();

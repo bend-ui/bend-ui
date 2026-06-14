@@ -1,7 +1,7 @@
 import { Pagination as ArkPagination } from '@ark-ui/react';
-import { withParts, withRecipe } from '@particles/react';
-import { pagination } from '@particles/styled-system/recipes';
-import { Assign, HTMLStyledProps } from '@particles/styled-system/types';
+import { withParts, withRecipe } from '@bend-ui/react';
+import { pagination } from '@bend-ui/styled-system/recipes';
+import { Assign, HTMLStyledProps } from '@bend-ui/styled-system/types';
 
 export type PaginationRootProps = Assign<
   HTMLStyledProps<'div'>,

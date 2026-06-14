@@ -1,12 +1,12 @@
-import { styled } from '@particles/styled-system/jsx';
+import { styled } from '@bend-ui/styled-system/jsx';
 
 export const PageWrapper = styled('div', {
   base: {
-    '--particles-page-padding': '{spacing.lg}',
+    '--bend-ui-page-padding': '{spacing.lg}',
     display: 'flex',
     flexDirection: 'column',
     gap: 'lg',
-    padding: 'var(--particles-page-padding)',
+    padding: 'var(--bend-ui-page-padding)',
     minHeight: 'full',
   },
 });

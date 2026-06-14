@@ -1,7 +1,7 @@
 'use client';
 
-import { styled } from '@particles/styled-system/jsx';
-import { formField } from '@particles/styled-system/recipes';
+import { styled } from '@bend-ui/styled-system/jsx';
+import { formField } from '@bend-ui/styled-system/recipes';
 
 const Root = styled('div', formField);
 

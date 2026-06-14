@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Switch as SwitchPrimitive } from '@base-ui/react/switch';
-import { switchRecipe } from '@particles/styled-system/recipes';
-import { styled, createStyleContext } from '@particles/styled-system/jsx';
+import { switchRecipe } from '@bend-ui/styled-system/recipes';
+import { styled, createStyleContext } from '@bend-ui/styled-system/jsx';
 
 const { withProvider, withContext } = createStyleContext(switchRecipe);
 

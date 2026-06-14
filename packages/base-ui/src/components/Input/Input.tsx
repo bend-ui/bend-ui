@@ -2,7 +2,7 @@ import { Input as InputPrimitive } from '@base-ui/react/input';
 import {
   Input as StyledInput,
   InputProps as StyledInputProps,
-} from '@particles/react';
+} from '@bend-ui/react';
 
 const InputRoot = InputPrimitive;
 

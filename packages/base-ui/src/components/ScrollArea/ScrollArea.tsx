@@ -1,6 +1,6 @@
 import { ScrollArea as ScrollAreaPrimitive } from '@base-ui/react/scroll-area';
-import { createStyleContext } from '@particles/styled-system/jsx';
-import { scrollArea } from '@particles/styled-system/recipes';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { scrollArea } from '@bend-ui/styled-system/recipes';
 import type { ComponentProps } from 'react';
 
 const { withProvider, withContext } = createStyleContext(scrollArea);

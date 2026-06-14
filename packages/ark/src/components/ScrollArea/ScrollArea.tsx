@@ -1,8 +1,8 @@
 'use client';
 import { ScrollArea as ScrollAreaPrimitive } from '@ark-ui/react/scroll-area';
 import type { ComponentProps } from 'react';
-import { createStyleContext } from '@particles/styled-system/jsx';
-import { scrollArea } from '@particles/styled-system/recipes';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { scrollArea } from '@bend-ui/styled-system/recipes';
 
 const { withProvider, withContext, withRootProvider } =
   createStyleContext(scrollArea);

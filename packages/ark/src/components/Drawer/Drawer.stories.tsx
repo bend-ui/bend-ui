@@ -1,6 +1,6 @@
-import { Button } from '@particles/react';
-import { drawer } from '@particles/styled-system/recipes';
-import { Stack } from '@particles/styled-system/jsx';
+import { Button } from '@bend-ui/react';
+import { drawer } from '@bend-ui/styled-system/recipes';
+import { Stack } from '@bend-ui/styled-system/jsx';
 import { Drawer } from './Drawer';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 

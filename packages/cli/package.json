@@ -1,5 +1,5 @@
 {
-  "name": "@particles/cli",
+  "name": "@bend-ui/cli",
   "version": "0.0.1",
   "type": "commonjs",
   "dependencies": {

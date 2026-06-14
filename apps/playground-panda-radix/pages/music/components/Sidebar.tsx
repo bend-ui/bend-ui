@@ -1,5 +1,5 @@
-import { Nav } from '@particles/radix';
-import { sva } from '@particles/styled-system/css';
+import { Nav } from '@bend-ui/radix';
+import { sva } from '@bend-ui/styled-system/css';
 import Link from 'next/link';
 
 const styles = sva({

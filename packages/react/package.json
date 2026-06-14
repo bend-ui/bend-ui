@@ -1,5 +1,5 @@
 {
-  "name": "@particles/react",
+  "name": "@bend-ui/react",
   "version": "0.0.1",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -19,12 +19,13 @@
   ],
   "dependencies": {
     "@floating-ui/react": "*",
-    "@particles/preset": "workspace:*",
-    "@particles/styled-system": "workspace:*",
+    "@bend-ui/preset": "workspace:*",
+    "@bend-ui/primitives": "workspace:*",
+    "@bend-ui/styled-system": "workspace:*",
     "lucide-react": "^1.18.0"
   },
   "devDependencies": {
-    "@particles/storybook": "workspace:*"
+    "@bend-ui/storybook": "workspace:*"
   },
   "peerDependencies": {
     "@pandacss/dev": "^1",

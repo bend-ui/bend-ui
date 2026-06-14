@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { Badge, Nav } from '@particles/radix';
-import { sva } from '@particles/styled-system/css';
+import { Badge, Nav } from '@bend-ui/radix';
+import { sva } from '@bend-ui/styled-system/css';
 import {
   LayoutDashboardIcon,
   SettingsIcon,
@@ -42,7 +42,7 @@ const Sidebar = () => {
   const classes = styles();
   return (
     <div>
-      <div className={classes.brand}>🧬 Particles</div>
+      <div className={classes.brand}>🧬 Bend UI</div>
       <Nav direction="vertical">
         <Nav.Link icon={<LayoutDashboardIcon />}>
           <Link href="/">Overview</Link>

@@ -1,24 +1,24 @@
-import { particles } from '@particles/react';
-import { createStyleContext } from '@particles/styled-system/jsx';
-import { sidebar } from '@particles/styled-system/recipes';
+import { bend } from '@bend-ui/react';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { sidebar } from '@bend-ui/styled-system/recipes';
 import type { ComponentProps } from 'react';
 import { ScrollArea } from '../ScrollArea';
 
 const { withProvider, withContext } = createStyleContext(sidebar);
 
-const SidebarRoot = withProvider(particles.div, 'root');
+const SidebarRoot = withProvider(bend.div, 'root');
 
-const SidebarHeader = withContext(particles.div, 'header');
+const SidebarHeader = withContext(bend.div, 'header');
 
 const SidebarContent = withContext(ScrollArea, 'content');
 
-const SidebarFooter = withContext(particles.div, 'footer');
+const SidebarFooter = withContext(bend.div, 'footer');
 
-const SidebarItem = withContext(particles.div, 'item');
+const SidebarItem = withContext(bend.div, 'item');
 
-const SidebarLabel = withContext(particles.div, 'label');
+const SidebarLabel = withContext(bend.div, 'label');
 
-const SidebarLink = withContext(particles.a, 'link');
+const SidebarLink = withContext(bend.a, 'link');
 
 export type SidebarRootProps = ComponentProps<typeof SidebarRoot>;
 export type SidebarHeaderProps = ComponentProps<typeof SidebarHeader>;

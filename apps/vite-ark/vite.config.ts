@@ -27,7 +27,7 @@ export default defineConfig({
     conditions: ['source', 'import', 'module', 'browser', 'default'],
     alias: [
       {
-        find: /^@particles\/styled-system\/(.*)$/,
+        find: /^@bend-ui\/styled-system\/(.*)$/,
         replacement: path.resolve(__dirname, 'styled-system/$1'),
       },
     ],

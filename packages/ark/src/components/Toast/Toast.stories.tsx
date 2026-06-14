@@ -1,4 +1,4 @@
-import { Button, DismissButton } from '@particles/react';
+import { Button, DismissButton } from '@bend-ui/react';
 import { createToaster, Toast, Toaster } from '.';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 

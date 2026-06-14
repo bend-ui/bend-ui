@@ -1,11 +1,11 @@
 ---
 title: Components Overview
-description: Explore the component library in Particles Design System
+description: Explore the component library in Bend UI Design System
 ---
 
 # Components Overview
 
-Particles provides a comprehensive collection of accessible, customizable React components built with TypeScript and Panda CSS.
+Bend UI provides a comprehensive collection of accessible, customizable React components built with TypeScript and Panda CSS.
 
 ## Component Categories
 
@@ -126,7 +126,7 @@ Full TypeScript support:
 Components are designed to work together:
 
 ```tsx
-import { Box, Stack, Heading, Text, Button } from '@particles/react';
+import { Box, Stack, Heading, Text, Button } from '@bend-ui/react';
 
 function Feature() {
   return (
@@ -147,17 +147,17 @@ function Feature() {
 
 ```tsx
 // Named imports
-import { Button, Input, Stack } from '@particles/react';
+import { Button, Input, Stack } from '@bend-ui/react';
 
 // Or import specific components
-import { Button } from '@particles/react/button';
-import { Input } from '@particles/react/input';
+import { Button } from '@bend-ui/react/button';
+import { Input } from '@bend-ui/react/input';
 ```
 
 ### Basic Example
 
 ```tsx
-import { Stack, Input, Button } from '@particles/react';
+import { Stack, Input, Button } from '@bend-ui/react';
 
 function SearchForm() {
   return (
@@ -173,7 +173,7 @@ function SearchForm() {
 
 ```tsx
 import { css } from 'styled-system/css';
-import { Box, Heading } from '@particles/react';
+import { Box, Heading } from '@bend-ui/react';
 
 function Card() {
   return (
@@ -228,7 +228,7 @@ interface CommonProps {
 Many components support variants:
 
 ```tsx
-import { Button } from '@particles/react';
+import { Button } from '@bend-ui/react';
 
 <Button variant="primary">Primary</Button>
 <Button variant="secondary">Secondary</Button>
@@ -241,7 +241,7 @@ import { Button } from '@particles/react';
 Components often have size variants:
 
 ```tsx
-import { Button } from '@particles/react';
+import { Button } from '@bend-ui/react';
 
 <Button size="xs">Extra Small</Button>
 <Button size="sm">Small</Button>
@@ -256,7 +256,7 @@ import { Button } from '@particles/react';
 Use Panda CSS style props:
 
 ```tsx
-import { Box } from '@particles/react';
+import { Box } from '@bend-ui/react';
 
 <Box
   bg="blue.50"
@@ -275,7 +275,7 @@ Use the `css` function for complex styling:
 
 ```tsx
 import { css } from 'styled-system/css';
-import { Box } from '@particles/react';
+import { Box } from '@bend-ui/react';
 
 <Box
   className={css({

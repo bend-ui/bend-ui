@@ -1,7 +1,7 @@
 import {
   Badge as StyledBadge,
   type BadgeProps as StyledBadgeProps,
-} from '@particles/react';
+} from '@bend-ui/react';
 
 export interface BadgeProps extends StyledBadgeProps {
   tone?: 'neutral' | 'success' | 'warning' | 'danger' | 'info';

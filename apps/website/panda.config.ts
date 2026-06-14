@@ -1,5 +1,5 @@
 import { defineConfig } from '@pandacss/dev';
-import { preset } from '@particles/preset';
+import { preset } from '@bend-ui/preset';
 
 export default defineConfig({
   // Whether to use css reset
@@ -20,7 +20,7 @@ export default defineConfig({
 
   presets: [preset({ library: 'ark-ui' })],
 
-  importMap: '@particles/styled-system',
+  importMap: '@bend-ui/styled-system',
 
   jsxFramework: 'react',
 });

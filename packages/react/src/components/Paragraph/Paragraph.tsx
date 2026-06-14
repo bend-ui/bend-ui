@@ -1,10 +1,10 @@
 'use client';
 
-import { css, cx } from '@particles/styled-system/css';
-import { text } from '@particles/styled-system/recipes';
-import { splitCssProps } from '@particles/styled-system/jsx';
-import type { JsxStyleProps } from '@particles/styled-system/types';
-import type { TextVariantProps } from '@particles/styled-system/recipes';
+import { css, cx } from '@bend-ui/styled-system/css';
+import { text } from '@bend-ui/styled-system/recipes';
+import { splitCssProps } from '@bend-ui/styled-system/jsx';
+import type { JsxStyleProps } from '@bend-ui/styled-system/types';
+import type { TextVariantProps } from '@bend-ui/styled-system/recipes';
 import type { ComponentProps, ReactNode } from 'react';
 
 export type Assign<T, U> = Omit<T, keyof U> & U;

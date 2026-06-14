@@ -3,7 +3,7 @@ import {
   dialog,
   backdrop,
   DialogVariantProps,
-} from '@particles/styled-system/recipes';
+} from '@bend-ui/styled-system/recipes';
 import { withRecipe, withParts } from '../../utils';
 
 export type DialogRootProps = ArkDialog.RootProps;

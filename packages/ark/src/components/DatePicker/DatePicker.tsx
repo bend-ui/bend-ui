@@ -1,11 +1,11 @@
 import { DatePicker as DatePickerPrimitive, Portal } from '@ark-ui/react';
-import { Input } from '@particles/react';
+import { Input } from '@bend-ui/react';
 import { withRecipe, withParts } from '../../utils';
 import {
   datePicker,
   DatePickerVariantProps,
-} from '@particles/styled-system/recipes';
-import { Assign, HTMLStyledProps } from '@particles/styled-system/types';
+} from '@bend-ui/styled-system/recipes';
+import { Assign, HTMLStyledProps } from '@bend-ui/styled-system/types';
 
 export interface DatePickerRootProps
   extends Assign<HTMLStyledProps<'div'>, DatePickerPrimitive.RootProps>,

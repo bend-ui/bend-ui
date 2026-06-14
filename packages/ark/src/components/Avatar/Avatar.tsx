@@ -1,9 +1,9 @@
 import { Avatar as ArkAvatar } from '@ark-ui/react';
-import { withParts, withRecipe } from '@particles/react';
+import { withParts, withRecipe } from '@bend-ui/react';
 import {
   avatar,
   type AvatarVariantProps,
-} from '@particles/styled-system/recipes';
+} from '@bend-ui/styled-system/recipes';
 
 export type AvatarRootProps = ArkAvatar.RootProps & AvatarVariantProps;
 

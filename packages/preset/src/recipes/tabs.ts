@@ -1,5 +1,5 @@
 import { defineSlotRecipe } from '@pandacss/dev';
-import { tabsParts } from '@particles/preset-base';
+import { tabsParts } from '@bend-ui/preset-base';
 
 const parts = tabsParts;
 

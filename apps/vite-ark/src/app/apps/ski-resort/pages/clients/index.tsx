@@ -1,4 +1,4 @@
-import { Card, Table, Input } from '@particles/ark';
+import { Card, Table, Input } from '@bend-ui/ark';
 import { PageHeader } from '../../components/PageHeader';
 import { PageWrapper } from '../../components/PageWrapper';
 import { clients } from '../../data';

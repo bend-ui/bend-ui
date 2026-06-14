@@ -1,7 +1,7 @@
 import { create } from 'storybook/theming';
-import { theme } from '@particles/theme';
+import { theme } from '@bend-ui/theme';
 
-const common = { brandTitle: 'Particles - Primitives' };
+const common = { brandTitle: 'Bend UI - Primitives' };
 
 export const themeLight = create({
   base: 'light',

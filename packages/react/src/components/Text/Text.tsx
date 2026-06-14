@@ -1,17 +1,17 @@
 'use client';
 
-import { cx, css } from '@particles/styled-system/css';
-import { text } from '@particles/styled-system/recipes';
-import { splitCssProps } from '@particles/styled-system/jsx';
-import type { TextVariantProps } from '@particles/styled-system/recipes';
+import { cx, css } from '@bend-ui/styled-system/css';
+import { text } from '@bend-ui/styled-system/recipes';
+import { splitCssProps } from '@bend-ui/styled-system/jsx';
+import type { TextVariantProps } from '@bend-ui/styled-system/recipes';
 import type { ReactNode } from 'react';
 import {
   PolymorphicComponent,
   PolymorphicComponentPropsWithRef,
 } from '../../utils';
-import { HTMLParticlesProps } from '../factory';
+import { HTMLBendUIProps } from '../factory';
 
-export interface TextProps extends HTMLParticlesProps<'span'> {
+export interface TextProps extends HTMLBendUIProps<'span'> {
   children?: ReactNode;
   /** The style of the text */
   variant?: TextVariantProps['variant'];

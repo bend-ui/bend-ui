@@ -2,6 +2,7 @@ import { defineConfig } from 'tsup';
 
 export default defineConfig({
   entry: ['src/index.ts'],
+  tsconfig: 'tsconfig.lib.json',
   platform: 'node',
   format: ['cjs'],
   target: 'node16',

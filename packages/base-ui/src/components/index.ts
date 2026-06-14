@@ -8,7 +8,7 @@ export {
   Stack,
   Text,
   IconButton,
-} from '@particles/react';
+} from '@bend-ui/react';
 
 export * from './Accordion';
 export * from './AlertDialog';

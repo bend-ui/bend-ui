@@ -1,6 +1,6 @@
-import { level } from '@particles/styled-system/patterns';
-import { cx, sva } from '@particles/styled-system/css';
-import { Button, Input } from '@particles/radix';
+import { level } from '@bend-ui/styled-system/patterns';
+import { cx, sva } from '@bend-ui/styled-system/css';
+import { Button, Input } from '@bend-ui/radix';
 
 const styles = sva({
   slots: ['wrapper'],

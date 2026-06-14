@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { center, container, grid } from '@particles/styled-system/patterns';
-import { Button, ButtonGroup, Card, Heading, Paragraph } from '@particles/ark';
+import { center, container, grid } from '@bend-ui/styled-system/patterns';
+import { Button, ButtonGroup, Card, Heading, Paragraph } from '@bend-ui/ark';
 
 export function Index() {
   const [theme, setTheme] = useState('quark');

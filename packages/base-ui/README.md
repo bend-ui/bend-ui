@@ -1,11 +1,11 @@
-# @particles/base-ui
+# @bend-ui/base-ui
 
 A comprehensive React component library built on top of [Base UI](https://base-ui.com/) and styled with [Panda CSS](https://panda-css.com/).
 
 ## Installation
 
 ```bash
-npm install @particles/base-ui
+npm install @bend-ui/base-ui
 ```
 
 ## Peer Dependencies
@@ -55,7 +55,7 @@ This package provides the following components:
 ## Usage
 
 ```tsx
-import { Accordion, Dialog, Button } from '@particles/base-ui';
+import { Accordion, Dialog, Button } from '@bend-ui/base-ui';
 
 function App() {
   return (
@@ -74,13 +74,13 @@ function App() {
 ### Build
 
 ```bash
-nx build @particles/base-ui
+nx build @bend-ui/base-ui
 ```
 
 ### Test
 
 ```bash
-nx test @particles/base-ui
+nx test @bend-ui/base-ui
 ```
 
 ### Storybook
@@ -88,22 +88,22 @@ nx test @particles/base-ui
 Run Storybook to view and interact with components:
 
 ```bash
-nx storybook @particles/base-ui
+nx storybook @bend-ui/base-ui
 ```
 
 Build static Storybook:
 
 ```bash
-nx build-storybook @particles/base-ui
+nx build-storybook @bend-ui/base-ui
 ```
 
 ## Related Packages
 
-- `@particles/react` - React utilities and helpers
-- `@particles/styled-system` - Styling system with Panda CSS
-- `@particles/preset` - Design system presets
-- `@particles/theme` - Theme configuration
+- `@bend-ui/react` - React utilities and helpers
+- `@bend-ui/styled-system` - Styling system with Panda CSS
+- `@bend-ui/preset` - Design system presets
+- `@bend-ui/theme` - Theme configuration
 
 ## License
 
-This package is part of the Particles design system.
+This package is part of the Bend UI design system.

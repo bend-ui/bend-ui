@@ -1,6 +1,6 @@
 import path from 'path';
 import { defineConfig } from '@pandacss/dev';
-import { preset } from '@particles/preset';
+import { preset } from '@bend-ui/preset';
 
 export default defineConfig({
   cwd: path.resolve(__dirname),
@@ -26,7 +26,7 @@ export default defineConfig({
     themes: ['*'],
   },
 
-  importMap: '@particles/styled-system',
+  importMap: '@bend-ui/styled-system',
 
   jsxFramework: 'react',
 });

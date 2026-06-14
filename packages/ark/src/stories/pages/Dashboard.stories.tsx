@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/react-vite';
-import { css } from '@particles/styled-system/css';
-import { Container, Grid, GridItem } from '@particles/styled-system/jsx';
+import { css } from '@bend-ui/styled-system/css';
+import { Container, Grid, GridItem } from '@bend-ui/styled-system/jsx';
 import { AppShell, Button, Card, Level, Nav } from '../../components';
 
 const meta: Meta = {

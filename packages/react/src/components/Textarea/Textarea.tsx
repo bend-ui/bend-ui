@@ -1,9 +1,9 @@
 'use client';
 
-import { splitCssProps } from '@particles/styled-system/jsx';
-import { css, cx } from '@particles/styled-system/css';
-import { textarea } from '@particles/styled-system/recipes';
-import type { TextareaVariantProps } from '@particles/styled-system/recipes';
+import { splitCssProps } from '@bend-ui/styled-system/jsx';
+import { css, cx } from '@bend-ui/styled-system/css';
+import { textarea } from '@bend-ui/styled-system/recipes';
+import type { TextareaVariantProps } from '@bend-ui/styled-system/recipes';
 import type { ComponentProps } from 'react';
 
 export type TextareaProps = ComponentProps<'textarea'> & TextareaVariantProps;

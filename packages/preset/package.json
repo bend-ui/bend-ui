@@ -1,5 +1,5 @@
 {
-  "name": "@particles/preset",
+  "name": "@bend-ui/preset",
   "version": "0.0.1",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -24,7 +24,7 @@
   "dependencies": {
     "@pandacss/dev": "^1.11.3",
     "@pandacss/types": "^1.11.3",
-    "@particles/preset-base": "workspace:*",
+    "@bend-ui/preset-base": "workspace:*",
     "tslib": "^2.5.3"
   }
 }

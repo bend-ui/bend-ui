@@ -1,8 +1,8 @@
 import { Tabs as TabsPrimitive } from '@ark-ui/react';
-import { tabs, type TabsVariantProps } from '@particles/styled-system/recipes';
-import type { JsxStyleProps } from '@particles/styled-system/types';
+import { tabs, type TabsVariantProps } from '@bend-ui/styled-system/recipes';
+import type { JsxStyleProps } from '@bend-ui/styled-system/types';
 import type { Assign } from '@ark-ui/react';
-import { createStyleContext } from '@particles/styled-system/jsx';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
 
 const { withProvider, withContext } = createStyleContext(tabs);
 

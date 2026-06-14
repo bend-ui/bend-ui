@@ -1,8 +1,8 @@
 import type { MDXComponents } from 'mdx/types';
-import { Heading, Text, Box, Stack, Tabs, Accordion } from '@particles/ark';
+import { Heading, Text, Box, Stack, Tabs, Accordion } from '@bend-ui/ark';
 
 /**
- * Custom MDX components using @particles/ark instead of fumadocs-ui defaults
+ * Custom MDX components using @bend-ui/ark instead of fumadocs-ui defaults
  * This provides a consistent look with your design system
  */
 export const mdxComponents: MDXComponents = {
@@ -84,7 +84,7 @@ export const mdxComponents: MDXComponents = {
 
   // Lists
   // ul: ({ ref, ...props }) => (
-  //   <particles.ul
+  //   <bend.ul
   //     marginLeft="6"
   //     marginBottom="4"
   //     listStyleType="disc"
@@ -92,7 +92,7 @@ export const mdxComponents: MDXComponents = {
   //   />
   // ),
   // ol: ({ ref, ...props }) => (
-  //   <particles.ol
+  //   <bend.ol
   //     marginLeft="6"
   //     marginBottom="4"
   //     listStyleType="decimal"
@@ -100,7 +100,7 @@ export const mdxComponents: MDXComponents = {
   //   />
   // ),
   // li: ({ ref, ...props }) => (
-  //   <particles.li
+  //   <bend.li
   //     fontSize="md"
   //     lineHeight="relaxed"
   //     marginBottom="2"
@@ -126,7 +126,7 @@ export const mdxComponents: MDXComponents = {
   //   return <code {...props} />;
   // },
   // pre: ({ ref, ...props }) => (
-  //   <particles.pre
+  //   <bend.pre
   //     bg="gray.900"
   //     color="gray.100"
   //     padding="4"
@@ -141,7 +141,7 @@ export const mdxComponents: MDXComponents = {
 
   // Blockquotes
   // blockquote: ({ ref, ...props }) => (
-  //   <particles.blockquote
+  //   <bend.blockquote
   //     borderLeft="4px"
   //     borderColor="blue.500"
   //     paddingLeft="4"
@@ -154,7 +154,7 @@ export const mdxComponents: MDXComponents = {
 
   // Horizontal rule
   // hr: () => (
-  //   <particles.hr
+  //   <bend.hr
   //     borderWidth="0"
   //     borderTop="1px"
   //     borderColor="gray.200"
@@ -175,7 +175,7 @@ export const mdxComponents: MDXComponents = {
 
   // Tables
   // table: ({ ref, ...props }) => (
-  //   <particles.table
+  //   <bend.table
   //     width="full"
   //     marginBottom="6"
   //     borderWidth="1px"
@@ -185,10 +185,10 @@ export const mdxComponents: MDXComponents = {
   //     {...props}
   //   />
   // ),
-  // thead: ({ ref, ...props }) => <particles.thead bg="gray.50" {...props} />,
-  // tbody: ({ ref, ...props }) => <particles.tbody {...props} />,
+  // thead: ({ ref, ...props }) => <bend.thead bg="gray.50" {...props} />,
+  // tbody: ({ ref, ...props }) => <bend.tbody {...props} />,
   // tr: ({ ref, ...props }) => (
-  //   <particles.tr borderBottom="1px" borderColor="gray.200" {...props} />
+  //   <bend.tr borderBottom="1px" borderColor="gray.200" {...props} />
   // ),
   // th: (props) => (
   //   <Text

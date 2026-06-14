@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Field as FieldPrimitive } from '@base-ui/react/field';
-import { withParts, withRecipe } from '@particles/react';
-import { formField } from '@particles/styled-system/recipes';
+import { withParts, withRecipe } from '@bend-ui/react';
+import { formField } from '@bend-ui/styled-system/recipes';
 import { Input } from '../Input';
-import { HTMLParticlesProps } from '@particles/react';
-import { styled } from '@particles/styled-system/jsx';
+import { HTMLBendUIProps } from '@bend-ui/react';
+import { styled } from '@bend-ui/styled-system/jsx';
 
 export type FieldRootProps = FieldPrimitive.Root.Props;
 const FieldRoot = withRecipe(FieldPrimitive.Root, formField, 'root');
@@ -30,7 +30,7 @@ const FieldDescription = withParts<FieldDescriptionProps>(
   'description',
 );
 
-export type FieldHelperProps = HTMLParticlesProps<'div'>;
+export type FieldHelperProps = HTMLBendUIProps<'div'>;
 const FieldHelper = withParts<FieldHelperProps>(styled('div'), 'helper');
 
 export type FieldValidityProps = FieldPrimitive.Validity.Props;

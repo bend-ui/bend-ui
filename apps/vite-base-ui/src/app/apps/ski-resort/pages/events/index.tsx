@@ -1,4 +1,4 @@
-import { Box, Heading, Stack, Text } from '@particles/base-ui';
+import { Box, Heading, Stack, Text } from '@bend-ui/base-ui';
 import { CalendarCheckIcon, ClipboardCheckIcon, UsersRoundIcon } from 'lucide-react';
 import { eventTasks, events } from '../../data';
 import {

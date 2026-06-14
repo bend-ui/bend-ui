@@ -1,5 +1,5 @@
-import { css, sva } from '@particles/styled-system/css';
-import { stack } from '@particles/styled-system/patterns';
+import { css, sva } from '@bend-ui/styled-system/css';
+import { stack } from '@bend-ui/styled-system/patterns';
 import {
   LayoutDashboardIcon,
   LogOutIcon,

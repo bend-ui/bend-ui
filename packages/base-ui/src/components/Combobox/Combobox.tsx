@@ -1,10 +1,10 @@
 import { Combobox as ComboboxPrimitive } from '@base-ui/react/combobox';
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react';
-import { withParts, withRecipe } from '@particles/react';
-import { selectDropdown, select } from '@particles/styled-system/recipes';
-import { styled } from '@particles/styled-system/jsx';
-import { HTMLParticlesProps } from '@particles/react';
-import { Input as StyledInput } from '@particles/react';
+import { withParts, withRecipe } from '@bend-ui/react';
+import { selectDropdown, select } from '@bend-ui/styled-system/recipes';
+import { styled } from '@bend-ui/styled-system/jsx';
+import { HTMLBendUIProps } from '@bend-ui/react';
+import { Input as StyledInput } from '@bend-ui/react';
 
 const ComboboxRoot = withRecipe<ComboboxPrimitive.Root.Props<string>>(
   ComboboxPrimitive.Root,
@@ -12,7 +12,7 @@ const ComboboxRoot = withRecipe<ComboboxPrimitive.Root.Props<string>>(
   'root',
 ) as unknown as typeof ComboboxPrimitive.Root;
 
-const ComboboxControl = withParts<HTMLParticlesProps<'div'>>(
+const ComboboxControl = withParts<HTMLBendUIProps<'div'>>(
   styled('div'),
   'control',
 );
@@ -70,7 +70,7 @@ const ComboboxItem = withParts<ComboboxPrimitive.Item.Props>(
   'item',
 );
 
-const ComboboxItemText = withParts<HTMLParticlesProps<'span'>>(
+const ComboboxItemText = withParts<HTMLBendUIProps<'span'>>(
   styled('span'),
   'itemText',
 );

@@ -1,6 +1,6 @@
 'use client';
-import { splitCssProps } from '@particles/styled-system/jsx';
-import { css, cx } from '@particles/styled-system/css';
+import { splitCssProps } from '@bend-ui/styled-system/jsx';
+import { css, cx } from '@bend-ui/styled-system/css';
 import { Slot } from '../Slot';
 import type { NavLinkProps } from './Nav.types';
 

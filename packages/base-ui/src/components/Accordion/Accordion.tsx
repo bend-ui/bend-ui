@@ -2,15 +2,15 @@ import { Accordion as AccordionPrimitive } from '@base-ui/react';
 import {
   accordion,
   AccordionVariantProps,
-} from '@particles/styled-system/recipes';
-import { withParts, withRecipe } from '@particles/react';
-import { Box } from '@particles/styled-system/jsx';
+} from '@bend-ui/styled-system/recipes';
+import { withParts, withRecipe } from '@bend-ui/react';
+import { Box } from '@bend-ui/styled-system/jsx';
 import { LucideChevronDown } from 'lucide-react';
-import { Assign } from '@particles/styled-system/types';
-import { HTMLParticlesProps } from '@particles/react';
+import { Assign } from '@bend-ui/styled-system/types';
+import { HTMLBendUIProps } from '@bend-ui/react';
 
 export interface AccordionRootProps
-  extends Assign<AccordionPrimitive.Root.Props, HTMLParticlesProps<'div'>> {
+  extends Assign<AccordionPrimitive.Root.Props, HTMLBendUIProps<'div'>> {
   children?: React.ReactNode;
   attached?: AccordionVariantProps['attached'];
 }
@@ -22,7 +22,7 @@ const AccordionRoot = withRecipe<AccordionRootProps>(
 );
 
 export interface AccordionItemProps
-  extends Assign<AccordionPrimitive.Item.Props, HTMLParticlesProps<'button'>> {
+  extends Assign<AccordionPrimitive.Item.Props, HTMLBendUIProps<'button'>> {
   children?: React.ReactNode;
 }
 
@@ -34,7 +34,7 @@ const AccordionItem = withParts<AccordionItemProps>(
 export interface AccordionHeaderProps
   extends Assign<
     AccordionPrimitive.Header.Props,
-    HTMLParticlesProps<'button'>
+    HTMLBendUIProps<'button'>
   > {
   children?: React.ReactNode;
 }
@@ -47,7 +47,7 @@ const AccordionHeader = withParts<AccordionHeaderProps>(
 export interface AccordionTriggerProps
   extends Assign<
     AccordionPrimitive.Trigger.Props,
-    HTMLParticlesProps<'button'>
+    HTMLBendUIProps<'button'>
   > {
   children?: React.ReactNode;
 }
@@ -57,7 +57,7 @@ const AccordionTrigger = withParts<AccordionTriggerProps>(
   'item-trigger',
 );
 
-export interface AccordionItemIndicatorProps extends HTMLParticlesProps<'div'> {
+export interface AccordionItemIndicatorProps extends HTMLBendUIProps<'div'> {
   children?: React.ReactNode;
 }
 
@@ -70,7 +70,7 @@ const AccordionIndicator = withParts<AccordionItemIndicatorProps>((props) => {
 }, 'item-indicator');
 
 export interface AccordionPanelProps
-  extends Assign<AccordionPrimitive.Panel.Props, HTMLParticlesProps<'div'>> {
+  extends Assign<AccordionPrimitive.Panel.Props, HTMLBendUIProps<'div'>> {
   children: React.ReactNode;
 }
 

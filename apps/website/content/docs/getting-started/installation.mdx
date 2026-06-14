@@ -1,15 +1,15 @@
 ---
 title: Installation
-description: Learn how to install and set up Particles Design System in your project
+description: Learn how to install and set up Bend UI Design System in your project
 ---
 
 # Installation
 
-Get started with Particles by installing the necessary packages in your project.
+Get started with Bend UI by installing the necessary packages in your project.
 
 ## Prerequisites
 
-Before installing Particles, ensure you have:
+Before installing Bend UI, ensure you have:
 
 - **Node.js**: Version 18 or higher
 - **Package Manager**: npm, yarn, or pnpm
@@ -19,39 +19,39 @@ Before installing Particles, ensure you have:
 
 ### 1. Install Packages
 
-Install the core Particles packages:
+Install the core Bend UI packages:
 
 ```bash
-npm install @particles/react @particles/preset
+npm install @bend-ui/react @bend-ui/preset
 ```
 
 Or using yarn:
 
 ```bash
-yarn add @particles/react @particles/preset
+yarn add @bend-ui/react @bend-ui/preset
 ```
 
 Or using pnpm:
 
 ```bash
-pnpm add @particles/react @particles/preset
+pnpm add @bend-ui/react @bend-ui/preset
 ```
 
 ### 2. Configure Panda CSS
 
-Particles uses Panda CSS for styling. Create or update your `panda.config.ts`:
+Bend UI uses Panda CSS for styling. Create or update your `panda.config.ts`:
 
 ```typescript
 import { defineConfig } from '@pandacss/dev';
-import particlesPreset from '@particles/preset';
+import bendPreset from '@bend-ui/preset';
 
 export default defineConfig({
   preflight: true,
-  presets: [particlesPreset],
+  presets: [bendPreset],
   include: [
     './src/**/*.{js,jsx,ts,tsx}',
     './app/**/*.{js,jsx,ts,tsx}',
-    './node_modules/@particles/react/**/*.{js,jsx,ts,tsx}',
+    './node_modules/@bend-ui/react/**/*.{js,jsx,ts,tsx}',
   ],
   exclude: [],
   outdir: 'styled-system',
@@ -92,15 +92,15 @@ import 'styled-system/styles.css';
 Create a test component to verify everything is working:
 
 ```tsx
-import { Button } from '@particles/react';
+import { Button } from '@bend-ui/react';
 
 export default function App() {
-  return <Button>Hello Particles!</Button>;
+  return <Button>Hello Bend UI!</Button>;
 }
 ```
 
 ## Next Steps
 
-- [Quick Start](/docs/getting-started/quick-start) - Build your first page with Particles
+- [Quick Start](/docs/getting-started/quick-start) - Build your first page with Bend UI
 - [Configuration](/docs/getting-started/configuration) - Customize your setup
 - [Theming](/docs/foundation/theming) - Learn about customizing the design system

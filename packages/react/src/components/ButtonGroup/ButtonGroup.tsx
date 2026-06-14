@@ -2,11 +2,11 @@
 import {
   buttonGroup,
   ButtonGroupVariantProps,
-} from '@particles/styled-system/recipes';
+} from '@bend-ui/styled-system/recipes';
 import type { ReactNode } from 'react';
-import { cx } from '@particles/styled-system/css';
-import { createContext } from '@particles/primitives';
-import { HTMLParticlesProps, particles } from '../factory';
+import { cx } from '@bend-ui/styled-system/css';
+import { createContext } from '@bend-ui/primitives';
+import { HTMLBendUIProps, bend } from '../factory';
 
 export interface ButtonGroupContext {
   size?: ButtonGroupVariantProps['size'];
@@ -21,7 +21,7 @@ const useButtonGroup = (props: ButtonGroupProps): ButtonGroupContext => {
   };
 };
 
-export interface ButtonGroupProps extends HTMLParticlesProps<'div'> {
+export interface ButtonGroupProps extends HTMLBendUIProps<'div'> {
   children?: ReactNode;
   size?: ButtonGroupVariantProps['size'];
   isAttached?: ButtonGroupVariantProps['isAttached'];
@@ -36,14 +36,14 @@ export const ButtonGroup = (props: ButtonGroupProps) => {
 
   return (
     <ButtonGroupProvider value={context}>
-      <particles.div
+      <bend.div
         ref={ref}
         role="group"
         {...elementProps}
         className={cx(classes, elementProps.className)}
       >
         {elementProps.children}
-      </particles.div>
+      </bend.div>
     </ButtonGroupProvider>
   );
 };

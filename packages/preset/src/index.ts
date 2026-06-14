@@ -1,5 +1,5 @@
 import { definePreset } from '@pandacss/dev';
-import basePreset from '@particles/preset-base';
+import basePreset from '@bend-ui/preset-base';
 import * as patterns from './patterns';
 import { tokens } from './tokens';
 import { semanticTokens } from './semanticTokens';
@@ -22,7 +22,7 @@ const libraries = {
 
 export const preset = (options: PresetOptions = { library: 'base-ui' }) =>
   definePreset({
-    name: 'particles',
+    name: 'bend-ui',
     presets: [basePreset],
     conditions: {
       extend: {

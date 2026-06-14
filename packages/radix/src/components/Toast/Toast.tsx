@@ -1,8 +1,8 @@
 import { forwardRef } from 'react';
 import { Toast as ToastPrimitives } from 'radix-ui';
 import { XIcon } from 'lucide-react';
-import { cx } from '@particles/styled-system/css';
-import { toast } from '@particles/styled-system/recipes';
+import { cx } from '@bend-ui/styled-system/css';
+import { toast } from '@bend-ui/styled-system/recipes';
 import type { ComponentPropsWithoutRef, ElementRef, ReactElement } from 'react';
 
 const ToastProvider = ToastPrimitives.Provider;

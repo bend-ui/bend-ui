@@ -4,7 +4,7 @@ import { recipes, slotRecipes } from './recipes';
 import { conditions } from './conditions';
 
 export default definePreset({
-  name: 'particles-base',
+  name: 'bend-ui-base',
   presets: ['@pandacss/dev/presets'],
 
   patterns: {
