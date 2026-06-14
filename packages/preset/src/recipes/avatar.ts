@@ -16,6 +16,11 @@ export const avatarRecipe = defineRecipe({
       justifyContent: 'center',
       overflow: 'hidden',
     },
+    image: {
+      w: 'full',
+      h: 'full',
+      objectFit: 'cover',
+    },
     fallback: {
       backgroundColor: 'fill',
     },

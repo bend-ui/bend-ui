@@ -5,7 +5,8 @@ import {
   backdrop,
 } from '@particles/styled-system/recipes';
 import { withParts, withRecipe } from '@particles/react';
-import { Button, HTMLParticlesProps } from '@particles/react';
+import { Button, ButtonProps, HTMLParticlesProps } from '@particles/react';
+import { Assign } from '@particles/styled-system/types';
 
 export interface DialogRootProps
   extends DialogPrimitive.Root.Props,
@@ -15,7 +16,10 @@ const DialogRoot = (props: DialogRootProps) => {
   return <DialogPrimitive.Root {...props} />;
 };
 
-export type DialogTriggerProps = DialogPrimitive.Trigger.Props;
+export type DialogTriggerProps = Assign<
+  ButtonProps,
+  DialogPrimitive.Trigger.Props
+>;
 
 const DialogTrigger = withParts<DialogTriggerProps>(
   DialogPrimitive.Trigger,

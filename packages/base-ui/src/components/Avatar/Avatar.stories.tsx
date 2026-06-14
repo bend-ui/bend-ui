@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 import { Avatar } from './Avatar';
 import { avatar } from '@particles/styled-system/recipes';
+import { Stack } from '@particles/react';
 
 const meta: Meta<typeof Avatar> = {
   title: 'Components/Media/Avatar',
@@ -19,17 +20,30 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: (args) => (
-    <div>
-      <Avatar.Root {...args}>
-        <Avatar.Image
-          src="https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?w=128&h=128&dpr=2&q=80"
-          width="48"
-          height="48"
-        />
-        <Avatar.Fallback>LT</Avatar.Fallback>
-      </Avatar.Root>
-      <Avatar.Root {...args}>LT</Avatar.Root>
-    </div>
+    <Stack direction="row" gap="3" align="center">
+      <Avatar
+        {...args}
+        alt="Lena Torres"
+        fallback="LT"
+        src="https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?w=128&h=128&dpr=2&q=80"
+      />
+      <Avatar {...args} alt="Ari Singh" fallback="AS" />
+      <Avatar {...args} alt="Noah Patel" fallback="NP" shape="square" />
+    </Stack>
   ),
   args: {},
+};
+
+export const AccessibleInitials: Story = {
+  render: () => (
+    <Stack direction="row" gap="3" align="center">
+      {[
+        ['Maya Chen', 'MC'],
+        ['Owen Brooks', 'OB'],
+        ['Priya Shah', 'PS'],
+      ].map(([name, initials]) => (
+        <Avatar key={name} alt={name} fallback={initials} size="sm" />
+      ))}
+    </Stack>
+  ),
 };

@@ -1,6 +1,7 @@
 import { Avatar as AvatarPrimitive } from '@base-ui/react/avatar';
 import { avatar, AvatarVariantProps } from '@particles/styled-system/recipes';
 import { withParts, withRecipe } from '@particles/react';
+import type { ReactNode } from 'react';
 
 export type AvatarRootProps = AvatarPrimitive.Root.Props & AvatarVariantProps;
 
@@ -21,15 +22,24 @@ const AvatarFallback = withParts<AvatarPrimitive.Fallback.Props>(
 ) as unknown as typeof AvatarPrimitive.Fallback;
 
 export interface AvatarProps extends AvatarRootProps {
+  alt?: string;
+  fallback?: ReactNode;
+  shape?: 'circle' | 'square';
   src?: string;
 }
 
 const Component = (props: AvatarProps) => {
-  const { src, ...rest } = props;
+  const { alt = '', fallback, shape = 'circle', src, style, ...rest } = props;
   return (
-    <AvatarRoot {...rest}>
-      <AvatarImage src={src} />
-      <AvatarFallback />
+    <AvatarRoot
+      style={{
+        borderRadius: shape === 'circle' ? '9999px' : '8px',
+        ...style,
+      }}
+      {...rest}
+    >
+      <AvatarImage alt={alt} src={src} />
+      <AvatarFallback>{fallback}</AvatarFallback>
     </AvatarRoot>
   );
 };
