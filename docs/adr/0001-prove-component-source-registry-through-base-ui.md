@@ -11,3 +11,9 @@ Because Bend UI packages have not been released to npm, `@bend-ui/react` and `@b
 The prior Radix adapter and Radix playground may be removed as part of this cleanup. The Ariakit adapter should remain in the workspace for possible future support, but it should not preserve a dependency on `@bend-ui/react` or `@bend-ui/primitives`.
 
 `@bend-ui/react-utils` should remain available for future use, but it should not become a replacement runtime foundation. Keep it only for small React utilities that are deep enough to share.
+
+Component creation plans should start from each upstream primitive library's catalog, not from a Bend-first parity matrix. Each adapter should expose an adapter-native component catalog that follows its upstream library's names, composition model, and API shape while sharing Bend UI visual intent through recipes where appropriate.
+
+The upstream-first catalog plan should cover Base UI, Ark UI, and React Aria Components together, but implementation should start with Base UI as the v0 adapter. Ark UI and React Aria Components should be mapped and classified before their implementation work begins.
+
+The catalog matrix should track product intent, implementation progress, and quality coverage separately. Product intent should use `v0`, `planned`, `defer`, `exclude`, `primitive-only`, and `covered-by-pattern`; implementation progress should use `missing`, `partial`, and `implemented`; quality coverage should use values such as `untested`, `tested`, `storybook`, `documented`, and `demoed`.

@@ -36,6 +36,7 @@ Use these terms when discussing the repo.
 - **Styled system**: generated Panda CSS output consumed by the React packages. Do not hand-edit generated styled-system output unless a plan explicitly says so.
 - **React foundation**: `@bend-ui/react`, the transitional local React module for styled elements, layout primitives, polymorphic `asChild` support, and shared helpers. This package is a removal target because public package adapters should use Panda's generated helpers and their upstream primitive library's native composition model instead.
 - **Package adapter**: a package that adapts an upstream primitive library into the Bend UI design system. Current support targets are Base UI, Ark UI, and React Aria Components.
+- **Adapter-native component catalog**: the set of Bend-styled components an adapter exposes by following its upstream primitive library's names, composition model, and API shape. It should share Bend UI visual intent without forcing identical component parity across adapters.
 - **Upstream primitive**: a component primitive from an external library such as `@ark-ui/react`, `@base-ui/react`, `react-aria-components`, or `radix-ui`.
 - **Part**: a named slot in a compound module, usually exposed through a `data-part` attribute and styled by a slot recipe.
 - **Component source registry**: the internal canonical source and metadata for Bend UI component templates that can be synchronized into public package adapters or copied into a user's project by CLI tooling. It is not a public runtime dependency.
