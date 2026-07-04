@@ -11,7 +11,6 @@ export default defineConfig({
   plugins: [react(), tsconfigPaths()],
 
   test: {
-    cacheDir: '../../node_modules/.vitest/packages/ariakit',
     globals: true,
     environment: 'jsdom',
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],

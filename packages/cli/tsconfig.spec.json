@@ -2,6 +2,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "types": ["vitest/globals", "vitest/importMeta", "vite/client", "node"]
   },
   "include": [
@@ -14,6 +16,7 @@
     "src/**/*.spec.js",
     "src/**/*.test.jsx",
     "src/**/*.spec.jsx",
-    "src/**/*.d.ts"
+    "src/**/*.d.ts",
+    "../../tools/typings/vite8-vitest.d.ts"
   ]
 }
