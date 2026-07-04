@@ -1,11 +1,6 @@
 <!-- nx configuration start-->
 <!-- Leave the start & end comments to automatically receive updates. -->
 
-# Project context
-
-- Read `CONTEXT.md` before architecture work, broad refactors, documentation planning, or adding new package adapters.
-- Use the vocabulary in `CONTEXT.md` when describing the design system, package adapters, recipes, operational patterns, and package health.
-
 # General Guidelines for working with Nx
 
 - For navigating/exploring the workspace, invoke the `nx-workspace` skill first - it has patterns for querying projects, targets, and dependencies
@@ -24,19 +19,5 @@
 - USE for: advanced config options, unfamiliar flags, migration guides, plugin configuration, edge cases
 - DON'T USE for: basic generator syntax (`nx g @nx/react:app`), standard commands, things you already know
 - The `nx-generate` skill handles generator discovery internally - don't call nx_docs just to look up generator syntax
-
-## Agent skills
-
-### Issue tracker
-
-Issues and PRDs live in GitHub Issues for `bend-ui/bend-ui`. See `docs/agents/issue-tracker.md`.
-
-### Triage labels
-
-Use the default triage label vocabulary: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, and `wontfix`. See `docs/agents/triage-labels.md`.
-
-### Domain docs
-
-This is a single-context repo with root `CONTEXT.md` and root `docs/adr/`. See `docs/agents/domain.md`.
 
 <!-- nx configuration end-->

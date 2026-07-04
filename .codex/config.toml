@@ -7,18 +7,27 @@ source = "https://github.com/nrwl/nx-ai-agents-config.git"
 [plugins."nx@nx-claude-plugins"]
 enabled = true
 
-[mcp_servers]
-
 [mcp_servers.ark-ui]
 enabled = false
 command = "npx"
-args = ["-y", "@ark-ui/mcp"]
+args = [ "-y", "@ark-ui/mcp" ]
 
 [mcp_servers.panda]
 enabled = false
 command = "npx"
-args = ["panda", "mcp", "--config", "packages/react/panda.config.ts"]
+args = [ "panda", "mcp", "--config", "packages/react/panda.config.ts" ]
 
 [mcp_servers.ux-components]
 enabled = false
 url = "https://www.ux-components.com/api/mcp"
+
+[mcp_servers.nx-mcp]
+command = "npx"
+args = [ "nx", "mcp" ]
+
+[features]
+multi_agent = true
+
+[agents.ci-monitor-subagent]
+description = "CI helper for /monitor-ci. Fetches CI status, retrieves fix details, or updates self-healing fixes. Executes one MCP tool call and returns the result."
+config_file = "agents/ci-monitor-subagent.toml"
