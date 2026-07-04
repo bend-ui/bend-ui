@@ -12,7 +12,7 @@
     "@bend-ui/preset": "workspace:*",
     "@bend-ui/react": "workspace:*",
     "@bend-ui/styled-system": "workspace:*",
-    "react-aria-components": "^1.18.0"
+    "react-aria-components": "^1.19.0"
   },
   "devDependencies": {
     "@bend-ui/storybook": "workspace:*"

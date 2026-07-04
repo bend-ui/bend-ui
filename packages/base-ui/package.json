@@ -18,7 +18,7 @@
     "dist"
   ],
   "dependencies": {
-    "@base-ui/react": "1.5.0",
+    "@base-ui/react": "1.6.0",
     "@bend-ui/preset": "workspace:*",
     "@bend-ui/react": "workspace:*",
     "@bend-ui/styled-system": "workspace:*",
