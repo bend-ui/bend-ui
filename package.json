@@ -95,7 +95,7 @@
     "@typescript-eslint/utils": "8.44.0",
     "@vitejs/plugin-react": "6.0.3",
     "@vitejs/plugin-react-swc": "^4.2.2",
-    "@vitest/browser": "4.0.16",
+    "@vitest/browser-playwright": "4.0.16",
     "@vitest/coverage-v8": "4.0.16",
     "@vitest/ui": "4.0.16",
     "@vueless/storybook-dark-mode": "^10.0.8",
