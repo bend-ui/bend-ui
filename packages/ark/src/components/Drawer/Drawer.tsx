@@ -1,12 +1,13 @@
 import { Dialog as ArkDialog, Portal as ArkPortal } from '@ark-ui/react';
 import { backdrop, drawer } from '@bend-ui/styled-system/recipes';
-import { DismissButton, withRecipe, withParts } from '@bend-ui/react';
+import { DismissButton } from '@bend-ui/react';
+import { withRecipe, withParts } from '@bend-ui/react/factory';
 import type {
   BackdropVariantProps,
   DrawerVariantProps,
 } from '@bend-ui/styled-system/recipes';
 import { Button } from '..';
-import { HTMLBendUIProps, bend } from '@bend-ui/react';
+import { HTMLBendUIProps, bend } from '@bend-ui/react/factory';
 
 type DrawerRootProps = ArkDialog.RootProps;
 

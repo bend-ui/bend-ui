@@ -5,7 +5,7 @@ import {
 } from '@bend-ui/styled-system/recipes';
 import { Input } from '../..';
 import { ChevronDownIcon } from 'lucide-react';
-import { createRecipeContext } from '@bend-ui/react';
+import { createRecipeContext } from '@bend-ui/react/factory';
 
 const { withProvider, withPart } = createRecipeContext(combobox);
 

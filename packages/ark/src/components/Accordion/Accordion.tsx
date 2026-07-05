@@ -1,7 +1,7 @@
 import { Accordion as ArkAccordion } from '@ark-ui/react';
 import { accordion } from '@bend-ui/styled-system/recipes';
 import type { AccordionVariantProps } from '@bend-ui/styled-system/recipes';
-import { withParts, withRecipe } from '@bend-ui/react';
+import { withParts, withRecipe } from '@bend-ui/react/factory';
 
 export interface AccordionRootProps extends ArkAccordion.RootProps {
   children: React.ReactNode;

@@ -1,4 +1,5 @@
 export * from './components/Autocomplete/Autocomplete';
+export * from './components/AppShell/AppShell';
 export * from './components/Breadcrumbs/Breadcrumbs';
 export * from './components/Button/Button';
 export * from './components/Calendar/Calendar';

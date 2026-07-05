@@ -1,6 +1,6 @@
 import { alertDialog, overlay } from '@bend-ui/styled-system/recipes';
 import { AlertDialog as AlertDialogPrimitive } from '@base-ui/react/alert-dialog';
-import { withParts, withRecipe } from '@bend-ui/react';
+import { withParts, withRecipe } from '@bend-ui/react/factory';
 import { Button } from '@bend-ui/react';
 
 export interface AlertDialogRootProps extends AlertDialogPrimitive.Root.Props {

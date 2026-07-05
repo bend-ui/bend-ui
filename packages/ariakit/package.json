@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@ariakit/react": "^0.4.32",
+    "@bend-ui/internal": "workspace:*",
     "@bend-ui/preset": "workspace:*",
     "@bend-ui/react": "workspace:*",
     "@bend-ui/styled-system": "workspace:*"

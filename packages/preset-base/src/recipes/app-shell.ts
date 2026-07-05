@@ -33,9 +33,7 @@ export const appShellRecipe = defineRecipe({
     },
     scrollArea: {
       flex: 1,
-      overflow: 'auto',
-      scrollbarWidth: 'thin',
-      scrollbarColor: '{colors.border.weak}',
+      minH: 0,
     },
     main: {
       display: 'flex',

@@ -1,5 +1,5 @@
 import { Dialog } from '@base-ui/react';
-import { bend, withParts, withRecipe } from '@bend-ui/react';
+import { bend, withParts, withRecipe } from '@bend-ui/react/factory';
 import { drawer } from '@bend-ui/styled-system/recipes';
 
 const DrawerRoot = Dialog.Root;

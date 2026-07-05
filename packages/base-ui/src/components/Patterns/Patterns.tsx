@@ -6,8 +6,8 @@ import {
   IconButton,
   Stack,
   Text,
-  type HTMLBendUIProps,
 } from '@bend-ui/react';
+import type { HTMLBendUIProps } from '@bend-ui/react/factory';
 import { MoreHorizontalIcon } from 'lucide-react';
 import { Badge, type BadgeProps } from '../Badge';
 import { Avatar } from '../Avatar';

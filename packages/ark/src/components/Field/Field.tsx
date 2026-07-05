@@ -1,11 +1,13 @@
 'use client';
 import { Field as ArkField } from '@ark-ui/react';
 import {
-  withParts,
-  withRecipe,
   type InputProps,
   type TextareaProps,
 } from '@bend-ui/react';
+import {
+  withParts,
+  withRecipe,
+} from '@bend-ui/react/factory';
 import {
   formField,
   type FormFieldVariantProps,

@@ -1,0 +1,30 @@
+{
+  "name": "@bend-ui/internal",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@bend-ui/styled-system": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "scripts": {
+    "build": "tsup"
+  }
+}

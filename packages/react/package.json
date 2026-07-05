@@ -11,6 +11,12 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
+    },
+    "./factory": {
+      "source": "./src/factory.ts",
+      "types": "./dist/factory.d.ts",
+      "import": "./dist/factory.js",
+      "require": "./dist/factory.cjs"
     }
   },
   "sideEffects": false,
@@ -19,6 +25,7 @@
   ],
   "dependencies": {
     "@floating-ui/react": "*",
+    "@bend-ui/internal": "workspace:*",
     "@bend-ui/preset": "workspace:*",
     "@bend-ui/primitives": "workspace:*",
     "@bend-ui/styled-system": "workspace:*",

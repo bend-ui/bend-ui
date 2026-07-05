@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect } from 'storybook/test';
-import AppShell from './AppShell';
+import { AppShell } from './AppShell';
 
 const meta = {
   component: AppShell,

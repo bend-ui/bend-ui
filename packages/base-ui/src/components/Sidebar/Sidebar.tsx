@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { PanelLeftIcon } from 'lucide-react';
-import { HTMLBendUIProps, bend } from '@bend-ui/react';
+import { HTMLBendUIProps, bend } from '@bend-ui/react/factory';
 import { createStyleContext } from '@bend-ui/styled-system/jsx';
 import { sidebar } from '@bend-ui/styled-system/recipes';
 import { ScrollArea } from '../ScrollArea';

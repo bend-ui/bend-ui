@@ -1,6 +1,6 @@
 import { Popover as PopoverPrimitive } from '@base-ui/react/popover';
 import { popover } from '@bend-ui/styled-system/recipes';
-import { withParts, withRecipe } from '@bend-ui/react';
+import { withParts, withRecipe } from '@bend-ui/react/factory';
 import { Button } from '../Button';
 
 const PopoverRoot = PopoverPrimitive.Root;

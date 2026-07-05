@@ -3,7 +3,7 @@ export {
   withParts,
   createRecipeContext,
   type ComponentWithRecipe,
-} from '@bend-ui/react';
+} from '@bend-ui/react/factory';
 
 export {
   CSPProvider,

@@ -1,6 +1,7 @@
 export * from '@bend-ui/react';
 
 export * from './Accordion';
+export * from './AppShell';
 export * from './AngleSlider';
 export * from './Avatar';
 export * from './Carousel';

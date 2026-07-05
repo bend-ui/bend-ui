@@ -1,5 +1,4 @@
 export {
-  AppShell,
   Box,
   Card,
   Grid,
@@ -12,6 +11,7 @@ export {
 
 export * from './Accordion';
 export * from './AlertDialog';
+export * from './AppShell';
 export * from './Autocomplete';
 export * from './Avatar';
 export * from './Badge';

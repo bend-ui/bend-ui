@@ -1,7 +1,7 @@
 import { createToaster, Toaster, Toast as ArkToast } from '@ark-ui/react';
 import { toast, ToastVariantProps } from '@bend-ui/styled-system/recipes';
 import { Button, DismissButton } from '..';
-import { withParts, withRecipe } from '@bend-ui/react';
+import { withParts, withRecipe } from '@bend-ui/react/factory';
 
 export type ToastRootProps = ArkToast.RootProps & ToastVariantProps;
 
