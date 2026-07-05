@@ -5,12 +5,29 @@ import type { StorybookConfig } from '@storybook/react-vite';
 
 const require = createRequire(import.meta.url);
 
+const aiGeneratedStories = [
+  '../../../packages/react/src/components/Box/Box.stories.tsx',
+  '../../../packages/react/src/components/Grid/Grid.stories.tsx',
+  '../../../packages/react/src/components/Code/Code.stories.tsx',
+  '../../../packages/react/src/components/Textarea/Textarea.stories.tsx',
+  '../../../packages/react/src/components/FormField/FormField.stories.tsx',
+  '../../../packages/react/src/components/AppShell/AppShell.stories.tsx',
+  '../../../packages/react/src/components/Stack/Stack.stories.tsx',
+  '../../../packages/react/src/components/DismissButton/DismissButton.stories.tsx',
+  '../../../packages/react/src/components/Slot/Slot.stories.tsx',
+  '../../../packages/react/src/components/Input/PasswordInput/PasswordInput.stories.tsx',
+];
+
 const config: StorybookConfig = {
-  stories: ['../src/**/*.@(js|jsx|ts|tsx|mdx)'],
+  stories: ['../src/**/*.@(js|jsx|ts|tsx|mdx)', ...aiGeneratedStories],
+
+  staticDirs: ['../public'],
 
   addons: [
     getAbsolutePath('@vueless/storybook-dark-mode'),
+    getAbsolutePath('@storybook/addon-themes'),
     getAbsolutePath('@storybook/addon-a11y'),
+    getAbsolutePath('@storybook/addon-docs'),
     getAbsolutePath('@chromatic-com/storybook'),
     getAbsolutePath('@storybook/addon-vitest'),
   ],
