@@ -1,14 +1,13 @@
 import { Box, Center, Stack } from '@bend-ui/styled-system/jsx';
-import {
-  Button,
-  FormField,
-  Heading,
-  Input,
-  Level,
-  Paragraph,
-} from '@bend-ui/base-ui';
-import { Checkbox } from '../../components';
+import { styled } from '@bend-ui/styled-system/jsx';
+import { Button, Checkbox, Field as FormField, Input } from '../../components';
 import type { Meta } from '@storybook/react-vite';
+
+const Heading = styled('h1');
+const Paragraph = styled('p');
+const Level = styled('div', {
+  base: { display: 'flex', alignItems: 'center', justifyContent: 'space-between' },
+});
 
 const meta: Meta = {
   title: 'Blocks/Forms',
@@ -32,16 +31,16 @@ export const Signup = () => (
           <FormField>
             <FormField.Label>Email</FormField.Label>
             <Input type="email" />
-            <FormField.Description>
+            <FormField.HelperText>
               We&apos;ll never share your email
-            </FormField.Description>
+            </FormField.HelperText>
           </FormField>
           <FormField>
             <FormField.Label>Password</FormField.Label>
             <Input type="password" />
-            <FormField.Description>
+            <FormField.HelperText>
               Password must be at least 8 characters
-            </FormField.Description>
+            </FormField.HelperText>
           </FormField>
           <Level>
             <Checkbox id="remember" name="remember" />

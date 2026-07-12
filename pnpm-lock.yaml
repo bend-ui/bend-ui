@@ -563,9 +563,6 @@ importers:
         specifier: ^19
         version: 19.2.7(react@19.2.7)
     devDependencies:
-      '@bend-ui/base-ui':
-        specifier: workspace:*
-        version: link:../base-ui
       '@bend-ui/storybook':
         specifier: workspace:*
         version: link:../storybook

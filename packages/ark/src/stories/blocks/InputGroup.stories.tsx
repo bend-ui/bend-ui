@@ -1,8 +1,10 @@
 import { css, cx, sva } from '@bend-ui/styled-system/css';
 import { visuallyHidden } from '@bend-ui/styled-system/patterns';
 import { AlertCircleIcon } from 'lucide-react';
-import { Paragraph } from '@bend-ui/base-ui';
+import { styled } from '@bend-ui/styled-system/jsx';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+
+const Paragraph = styled('p');
 
 const meta: Meta = { title: 'Blocks/InputGroup' };
 export default meta;

@@ -24,7 +24,6 @@
     "@bend-ui/styled-system": "workspace:*"
   },
   "devDependencies": {
-    "@bend-ui/base-ui": "workspace:*",
     "@bend-ui/storybook": "workspace:*"
   },
   "peerDependencies": {

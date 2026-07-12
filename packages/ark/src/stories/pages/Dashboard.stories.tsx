@@ -1,7 +1,17 @@
 import { Meta } from '@storybook/react-vite';
 import { css } from '@bend-ui/styled-system/css';
-import { Container, Grid, GridItem } from '@bend-ui/styled-system/jsx';
-import { AppShell, Button, Card, Level, Nav } from '../../components';
+import { Container, Grid, GridItem, styled } from '@bend-ui/styled-system/jsx';
+import { AppShell, Button } from '../../components';
+
+const CardRoot = styled('div', {
+  base: { layerStyle: 'panel', p: 'lg', rounded: '2xl' },
+});
+const CardSection = styled('div');
+const Card = Object.assign(CardRoot, { Section: CardSection });
+const Level = styled('div', {
+  base: { display: 'flex', alignItems: 'center', justifyContent: 'space-between' },
+});
+const Nav = styled('nav', { base: { display: 'flex', flexDirection: 'column' } });
 
 const meta: Meta = {
   title: 'Pages/Dashboard',
@@ -20,13 +30,9 @@ export const Dashboard = () => {
     >
       <div className={css({ p: 'sm', minW: 'xs' })}>
         <h1>Ski resort</h1>
-        <Nav direction="vertical">
-          <Nav.Link asChild>
-            <a href="/dashboard/clients">Clients</a>
-          </Nav.Link>
-          <Nav.Link asChild>
-            <a href="/dashboard/profile">Profile</a>
-          </Nav.Link>
+        <Nav>
+          <a href="/dashboard/clients">Clients</a>
+          <a href="/dashboard/profile">Profile</a>
         </Nav>
       </div>
       <div
@@ -62,16 +68,10 @@ export const HRDashboard = () => {
     <AppShell>
       <AppShell.Sidebar>
         <div>Brand name</div>
-        <Nav direction="vertical">
-          <Nav.Link asChild>
-            <a href="/">Home</a>
-          </Nav.Link>
-          <Nav.Link asChild>
-            <a href="/dashboard/profile">My Profile</a>
-          </Nav.Link>
-          <Nav.Link asChild>
-            <a href="/dashboard/time-off">Time off</a>
-          </Nav.Link>
+        <Nav>
+          <a href="/">Home</a>
+          <a href="/dashboard/profile">My Profile</a>
+          <a href="/dashboard/time-off">Time off</a>
         </Nav>
       </AppShell.Sidebar>
       <AppShell.Main>

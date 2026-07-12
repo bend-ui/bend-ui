@@ -1,14 +1,15 @@
-import {
-  Heading,
-  Stack,
-  Card,
-  Paragraph,
-  Button,
-  Text,
-  Box,
-} from '@bend-ui/base-ui';
+import { Box, Stack, styled } from '@bend-ui/styled-system/jsx';
 import { Meta } from '@storybook/react-vite';
-import { Field } from '../../components';
+import { Button, Field } from '../../components';
+
+const Card = styled('div', {
+  base: { layerStyle: 'panel', p: 'lg', rounded: '2xl' },
+});
+const Heading = styled('h1', {
+  base: { fontSize: '2xl', fontWeight: 'bold' },
+});
+const Paragraph = styled('p', { base: { color: 'text.weak' } });
+const Text = styled('span', { base: { fontSize: 'sm' } });
 
 const meta: Meta = {
   title: 'Blocks/AuthCard',
@@ -25,7 +26,7 @@ export const One = () => {
     <Card>
       <Stack>
         <Box>
-          <Heading variant="title">Welcome!</Heading>
+          <Heading>Welcome!</Heading>
           <Paragraph color="red.500">
             Create an account to access your dashboard and settings
           </Paragraph>
@@ -41,7 +42,7 @@ export const One = () => {
         <Text textStyle="body.sm">
           Forgot your password? <a href="#">Reset it</a>
         </Text>
-        <Button isFull palette="primary">
+        <Button isFull variant="primary">
           Sign in
         </Button>
         <Text textStyle="body.sm">

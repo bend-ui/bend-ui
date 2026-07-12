@@ -10,21 +10,27 @@ import {
 
 export type FieldRootProps = ArkField.RootProps & FormFieldVariantProps;
 
-const FieldRoot = withRecipe(ArkField.Root, formField, 'root');
+const FieldRoot = withRecipe<FieldRootProps>(ArkField.Root, formField, 'root');
 
 const FieldLabel = ArkField.Label;
 
 export type FieldInputProps = ArkField.InputProps & InputProps;
 
-const FieldInput = withParts(ArkField.Input, 'input');
+const FieldInput = withParts<FieldInputProps>(ArkField.Input, 'input');
 
 export type FieldTextareaProps = ArkField.TextareaProps & HTMLStyledProps<'textarea'>;
 
-const FieldTextarea = withParts(ArkField.Textarea, 'textarea');
+const FieldTextarea = withParts<FieldTextareaProps>(ArkField.Textarea, 'textarea');
 
-const FieldHelperText = withParts(ArkField.HelperText, 'helper');
+const FieldHelperText = withParts<ArkField.HelperTextProps>(
+  ArkField.HelperText,
+  'helper',
+);
 
-const FieldErrorText = withParts(ArkField.ErrorText, 'error');
+const FieldErrorText = withParts<ArkField.ErrorTextProps>(
+  ArkField.ErrorText,
+  'error',
+);
 
 export interface FieldProps extends FieldRootProps {
   label?: string;
