@@ -24,7 +24,6 @@
       "@bend-ui/preset": ["packages/preset/src/index.ts"],
       "@bend-ui/preset-base": ["packages/preset-base/src/index.ts"],
       "@bend-ui/primitives": ["packages/primitives/src/index.ts"],
-      "@bend-ui/radix": ["packages/radix/src/index.ts"],
       "@bend-ui/internal": ["packages/internal/src/index.ts"],
       "@bend-ui/react": ["packages/react/src/index.ts"],
       "@bend-ui/react/factory": ["packages/react/src/factory.ts"],

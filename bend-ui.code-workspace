@@ -17,10 +17,6 @@
       "path": "packages/react",
     },
     {
-      "name": "📦 @bend-ui/radix",
-      "path": "packages/radix",
-    },
-    {
       "name": "📦 @bend-ui/aria",
       "path": "packages/aria",
     },
@@ -71,10 +67,6 @@
     {
       "name": "🧪 Playground (Panda + Ark)",
       "path": "apps/playground-panda",
-    },
-    {
-      "name": "🧪 Playground (Panda + Radix)",
-      "path": "apps/playground-panda-radix",
     },
     {
       "name": "🧪 Vite + Ark",

@@ -20,7 +20,7 @@ Current supported adapter direction:
 - Ark UI
 - React Aria Components
 
-Radix UI exists in the workspace as prior/experimental code, but it is not a support target for now. Do not treat Radix parity as a goal unless that decision changes.
+The prior experimental Radix UI adapter has been removed. Do not treat Radix parity as a goal unless that decision changes.
 
 Initial v0 scope: ship a minimal but complete design system around Base UI first. Base UI is the first supported adapter because it has current ecosystem momentum and is already the most active package in this workspace. V0 should include a good design preset and a basic documentation site. CLI generation/ejection can wait until after the first design-system slice is coherent.
 
@@ -65,7 +65,6 @@ Use these terms when discussing the repo.
 - `packages/base-ui`: Bend UI adapter over Base UI. This is the v0 focus and currently the most active adapter.
 - `packages/ark`: Bend UI adapter over Ark UI.
 - `packages/aria`: Bend UI adapter over React Aria Components.
-- `packages/radix`: prior/experimental Radix adapter. Remove this package and its Radix playground instead of migrating it.
 - `packages/ariakit`: early adapter over Ariakit. Keep it for possible future support, but do not treat it as a current support target unless explicitly revived.
 
 Package adapters should hide upstream primitive details where Bend UI has a clear opinion. They may expose compound parts when callers need composition, but callers should not need to relearn every upstream primitive's naming and styling quirks.
@@ -82,7 +81,7 @@ Do not assume shared React foundation modules are the long-term answer for every
 - `apps/website`: documentation site. For v0, this should explain the Base UI adapter, the design preset, installation, and basic usage.
 - `apps/vite-base-ui`: Base UI demo app with dental management and ski resort operations.
 - `apps/vite-base-ui-e2e`: Playwright coverage for the Base UI demo.
-- `apps/vite-ark`, `apps/playground-panda`, `apps/playground-panda-radix`: playground and proof surfaces.
+- `apps/vite-ark`, `apps/playground-panda`: playground and proof surfaces.
 
 ### Tooling and plans
 

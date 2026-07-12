@@ -105,7 +105,6 @@
         "packages/base-ui/**/*",
         "packages/ariakit/**/*",
         "packages/aria/**/*",
-        "packages/radix/**/*",
         "packages/primitives/**/*"
       ]
     },

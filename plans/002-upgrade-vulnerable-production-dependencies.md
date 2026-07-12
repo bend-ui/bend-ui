@@ -75,7 +75,7 @@ Important constraint: do not paste any secret values from config files into issu
 
 Run `pnpm audit --prod`. Group advisories by top-level package and by whether they are reachable from a deployed app or published package.
 
-Treat direct `next` advisories as high priority because the workspace has Next apps (`apps/website`, `apps/playground-panda`, `apps/playground-panda-radix`). Treat deeply transitive Panda/Fumadocs advisories as fixable through package upgrades or lockfile overrides only if the upgrade path is clean.
+Treat direct `next` advisories as high priority because the workspace has Next apps (`apps/website`, `apps/playground-panda`). Treat deeply transitive Panda/Fumadocs advisories as fixable through package upgrades or lockfile overrides only if the upgrade path is clean.
 
 **Verify**: `pnpm audit --prod` prints the current advisory list; save no secret values.
 

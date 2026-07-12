@@ -37,10 +37,6 @@ const config: StorybookConfig = {
       title: 'Panda',
       url: 'http://localhost:4402',
     },
-    radix: {
-      title: 'Panda + Radix',
-      url: 'http://localhost:4403',
-    },
   },
 
   docs: {},
