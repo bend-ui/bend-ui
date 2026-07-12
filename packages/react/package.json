@@ -24,12 +24,12 @@
     "dist"
   ],
   "dependencies": {
-    "@floating-ui/react": "*",
     "@bend-ui/internal": "workspace:*",
     "@bend-ui/preset": "workspace:*",
     "@bend-ui/primitives": "workspace:*",
     "@bend-ui/styled-system": "workspace:*",
-    "lucide-react": "^1.18.0"
+    "@floating-ui/react": "^0.27.20",
+    "lucide-react": "^1.24.0"
   },
   "devDependencies": {
     "@bend-ui/storybook": "workspace:*"

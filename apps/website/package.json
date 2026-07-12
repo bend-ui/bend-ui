@@ -6,10 +6,10 @@
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
-    "@pandacss/token-dictionary": "^1.11.0",
     "@bend-ui/ark": "workspace:*",
     "@bend-ui/preset": "workspace:*",
     "@bend-ui/react": "workspace:*",
+    "@pandacss/token-dictionary": "^1.11.4",
     "@types/mdx": "2.0.14",
     "fumadocs-core": "16.7.12",
     "fumadocs-mdx": "14.2.11",

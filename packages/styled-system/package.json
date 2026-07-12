@@ -42,8 +42,8 @@
     "styled-system"
   ],
   "dependencies": {
-    "@pandacss/dev": "^1.11.3",
-    "@bend-ui/preset": "workspace:*"
+    "@bend-ui/preset": "workspace:*",
+    "@pandacss/dev": "^1.11.4"
   },
   "devDependencies": {
     "@types/react": "^19.2.14",

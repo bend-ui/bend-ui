@@ -17,6 +17,6 @@
     "@bend-ui/styled-system": "workspace:*"
   },
   "devDependencies": {
-    "@pandacss/dev": "^1.11.3"
+    "@pandacss/dev": "^1.11.4"
   }
 }
