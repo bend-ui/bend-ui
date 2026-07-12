@@ -99,7 +99,6 @@ nx build-storybook @bend-ui/base-ui
 
 ## Related Packages
 
-- `@bend-ui/react` - React utilities and helpers
 - `@bend-ui/styled-system` - Styling system with Panda CSS
 - `@bend-ui/preset` - Design system presets
 - `@bend-ui/theme` - Theme configuration

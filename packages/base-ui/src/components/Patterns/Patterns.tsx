@@ -1,16 +1,17 @@
-import type { ReactNode } from 'react';
-import {
-  Box,
-  Button,
-  Heading,
-  IconButton,
-  Stack,
-  Text,
-} from '@bend-ui/react';
-import type { HTMLBendUIProps } from '@bend-ui/react/factory';
+import * as React from 'react';
+import type { ComponentProps, ReactNode } from 'react';
+import { styled } from '@bend-ui/styled-system/jsx';
 import { MoreHorizontalIcon } from 'lucide-react';
 import { Badge, type BadgeProps } from '../Badge';
 import { Avatar } from '../Avatar';
+import { Button } from '../Button';
+import { Heading } from '../Heading';
+import { IconButton } from '../IconButton';
+import { Stack } from '../Stack';
+import { Text } from '../Text';
+
+const Box = styled('div');
+const ActionButton = styled('button');
 
 export type OperationalTone =
   | 'neutral'
@@ -19,7 +20,7 @@ export type OperationalTone =
   | 'danger'
   | 'info';
 
-type PatternBoxProps = Omit<HTMLBendUIProps<'div'>, 'direction' | 'title'>;
+type PatternBoxProps = Omit<ComponentProps<typeof Box>, 'direction' | 'title'>;
 
 export interface SurfaceProps extends PatternBoxProps {
   children?: ReactNode;
@@ -181,7 +182,7 @@ export const PanelHeader = (props: PanelHeaderProps) => {
   );
 };
 
-export interface ResponsiveGridProps extends HTMLBendUIProps<'div'> {
+export interface ResponsiveGridProps extends ComponentProps<typeof Box> {
   children?: ReactNode;
   min?: string;
 }
@@ -267,7 +268,7 @@ export const TimelineItem = (props: TimelineItemProps) => {
   );
 };
 
-export interface ActionItemProps extends HTMLBendUIProps<'div'> {
+export interface ActionItemProps extends ComponentProps<typeof ActionButton> {
   children?: ReactNode;
   description?: ReactNode;
   icon?: ReactNode;
@@ -276,8 +277,8 @@ export interface ActionItemProps extends HTMLBendUIProps<'div'> {
 export const ActionItem = (props: ActionItemProps) => {
   const { children, description, icon, ...rest } = props;
   return (
-    <Box
-      asChild
+    <ActionButton
+      type="button"
       display="flex"
       alignItems="center"
       gap="3"
@@ -288,19 +289,17 @@ export const ActionItem = (props: ActionItemProps) => {
       _hover={{ backgroundColor: 'bg.subtle' }}
       {...rest}
     >
-      <button type="button">
-        {icon ? <Box display="inline-flex">{icon}</Box> : null}
-        <Stack gap="0" flex="1">
-          <Text as="span" fontSize="sm" fontWeight="medium">
-            {children}
+      {icon ? <Box display="inline-flex">{icon}</Box> : null}
+      <Stack gap="0" flex="1">
+        <Text as="span" fontSize="sm" fontWeight="medium">
+          {children}
+        </Text>
+        {description ? (
+          <Text as="span" color="fg.muted" fontSize="sm">
+            {description}
           </Text>
-          {description ? (
-            <Text as="span" color="fg.muted" fontSize="sm">
-              {description}
-            </Text>
-          ) : null}
-        </Stack>
-      </button>
-    </Box>
+        ) : null}
+      </Stack>
+    </ActionButton>
   );
 };

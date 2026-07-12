@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 import { Dialog } from './Dialog';
 import { BellIcon, PlusIcon } from 'lucide-react';
-import { Stack } from '@bend-ui/react';
+import { Stack } from '@bend-ui/styled-system/jsx';
 
 const meta: Meta<typeof Dialog> = {
   title: 'Components/Overlays/Dialog',

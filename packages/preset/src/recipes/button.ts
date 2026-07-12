@@ -1,15 +1,10 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  label: { selector: '& [data-part="label"]' },
-  icon: { selector: '& [data-part="icon"]' },
-});
-
-export const buttonRecipe = defineRecipe({
+export const buttonRecipe = defineSlotRecipe({
   description: 'Button styles',
   className: 'Button',
-  base: parts({
+  slots: ['root', 'label', 'icon', 'spinner'],
+  base: {
     root: {
       rounded: 'md',
       borderWidth: '1px',
@@ -43,10 +38,14 @@ export const buttonRecipe = defineRecipe({
         height: '100%',
       },
     },
-  }),
+    spinner: {
+      width: '1lh',
+      height: '1lh',
+    },
+  },
   variants: {
     variant: {
-      primary: parts({
+      primary: {
         root: {
           color: 'text.primary.inverse.strong',
           backgroundColor: 'fill.primary',
@@ -64,8 +63,8 @@ export const buttonRecipe = defineRecipe({
             },
           },
         },
-      }),
-      secondary: parts({
+      },
+      secondary: {
         root: {
           color: 'text',
           backgroundColor: 'fill.weak',
@@ -77,8 +76,8 @@ export const buttonRecipe = defineRecipe({
             },
           },
         },
-      }),
-      tertiary: parts({
+      },
+      tertiary: {
         root: {
           color: 'text',
           backgroundColor: 'transparent',
@@ -86,8 +85,8 @@ export const buttonRecipe = defineRecipe({
             backgroundColor: 'fill.weak.hover',
           },
         },
-      }),
-      danger: parts({
+      },
+      danger: {
         root: {
           color: 'text.danger',
           backgroundColor: 'fill.danger',
@@ -97,17 +96,17 @@ export const buttonRecipe = defineRecipe({
             },
           },
         },
-      }),
-      inverse: parts({
+      },
+      inverse: {
         root: {
           color: 'text.inverse.strong',
           backgroundColor: 'fill.inverse.strong',
           borderColor: 'stroke.inverse.strong',
         },
-      }),
+      },
     },
     size: {
-      sm: parts({
+      sm: {
         root: {
           py: 'xs',
           px: 'sm',
@@ -117,8 +116,8 @@ export const buttonRecipe = defineRecipe({
         label: {
           px: '1',
         },
-      }),
-      md: parts({
+      },
+      md: {
         root: {
           py: 'sm',
           px: 'md',
@@ -128,8 +127,8 @@ export const buttonRecipe = defineRecipe({
         label: {
           px: 'xs',
         },
-      }),
-      lg: parts({
+      },
+      lg: {
         root: {
           py: 'md',
           px: 'lg',
@@ -139,14 +138,14 @@ export const buttonRecipe = defineRecipe({
         label: {
           px: 'xs',
         },
-      }),
+      },
     },
     isRounded: {
-      true: parts({
+      true: {
         root: {
           rounded: 'full',
         },
-      }),
+      },
     },
   },
   defaultVariants: {

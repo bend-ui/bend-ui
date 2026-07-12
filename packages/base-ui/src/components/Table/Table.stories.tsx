@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 import { MoreHorizontalIcon } from 'lucide-react';
 import { Badge } from '../Badge';
-import { IconButton } from '@bend-ui/react';
+import { IconButton } from '../IconButton';
 import { Table } from './Table';
 
 const meta: Meta<typeof Table> = {

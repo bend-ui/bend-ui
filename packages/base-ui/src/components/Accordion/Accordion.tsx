@@ -3,11 +3,11 @@ import {
   accordion,
   AccordionVariantProps,
 } from '@bend-ui/styled-system/recipes';
-import { withParts, withRecipe } from '@bend-ui/react/factory';
+import { withParts, withRecipe } from '@bend-ui/internal';
 import { Box } from '@bend-ui/styled-system/jsx';
 import { LucideChevronDown } from 'lucide-react';
 import { Assign } from '@bend-ui/styled-system/types';
-import { HTMLBendUIProps } from '@bend-ui/react/factory';
+import { HTMLBendUIProps } from '@bend-ui/internal';
 
 export interface AccordionRootProps
   extends Assign<AccordionPrimitive.Root.Props, HTMLBendUIProps<'div'>> {

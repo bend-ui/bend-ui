@@ -1,12 +1,15 @@
 'use client';
 import React from 'react';
 import { Toast as ToastPrimitive } from '@base-ui/react/toast';
-import { withParts, withRecipe } from '@bend-ui/react/factory';
+import { withParts, withRecipe } from '@bend-ui/internal';
 import { toast } from '@bend-ui/styled-system/recipes';
 
-const ToastProvider = ToastPrimitive.Provider;
-const ToastPortal = ToastPrimitive.Portal;
-const ToastViewport = ToastPrimitive.Viewport;
+const ToastProvider: React.ComponentType<ToastPrimitive.Provider.Props> =
+  ToastPrimitive.Provider;
+const ToastPortal: React.ComponentType<ToastPrimitive.Portal.Props> =
+  ToastPrimitive.Portal;
+const ToastViewport: React.ComponentType<ToastPrimitive.Viewport.Props> =
+  ToastPrimitive.Viewport;
 const ToastRoot = withRecipe<ToastPrimitive.Root.Props>(
   ToastPrimitive.Root,
   toast,
@@ -97,7 +100,18 @@ function XIcon(props: React.ComponentProps<'svg'>) {
   );
 }
 
-export const Toast = Object.assign(Component, {
+export interface ToastComponent extends React.FC {
+  Provider: typeof ToastProvider;
+  Portal: typeof ToastPortal;
+  Viewport: typeof ToastViewport;
+  Root: typeof ToastRoot;
+  Title: typeof ToastTitle;
+  Description: typeof ToastDescription;
+  Action: typeof ToastAction;
+  Close: typeof ToastClose;
+}
+
+export const Toast: ToastComponent = Object.assign(Component, {
   Provider: ToastProvider,
   Portal: ToastPortal,
   Viewport: ToastViewport,

@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 import { button } from '@bend-ui/styled-system/recipes';
-import { Stack } from '../';
+import { Stack } from '@bend-ui/styled-system/jsx';
 import { Button } from './Button';
 
 const meta: Meta<typeof Button> = {

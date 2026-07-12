@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { PreviewCard as PreviewCardPrimitive } from '@base-ui/react/preview-card';
-import { withRecipe } from '@bend-ui/react/factory';
+import { withRecipe } from '@bend-ui/internal';
 import { hoverCard } from '@bend-ui/styled-system/recipes';
 
 const PreviewCardRoot = PreviewCardPrimitive.Root;
@@ -11,7 +11,7 @@ const PreviewCardPortal = PreviewCardPrimitive.Portal;
 
 const PreviewCardPositioner = PreviewCardPrimitive.Positioner;
 
-const PreviewCardPopup = withRecipe(
+const PreviewCardPopup = withRecipe<PreviewCardPrimitive.Popup.Props>(
   PreviewCardPrimitive.Popup,
   hoverCard,
   'root',

@@ -1,5 +1,5 @@
 import { Menu as MenuPrimitive } from '@base-ui/react/menu';
-import { withParts, withRecipe } from '@bend-ui/react/factory';
+import { withParts, withRecipe } from '@bend-ui/internal';
 import { menu } from '@bend-ui/styled-system/recipes';
 import { Button } from '../Button';
 
@@ -16,7 +16,11 @@ const MenuTrigger = (props: MenuTriggerProps) => {
 const MenuPortal = MenuPrimitive.Portal;
 const MenuPositioner = MenuPrimitive.Positioner;
 const MenuBackdrop = MenuPrimitive.Backdrop;
-const MenuPopup = withRecipe(MenuPrimitive.Popup, menu, 'root');
+const MenuPopup = withRecipe<MenuPrimitive.Popup.Props>(
+  MenuPrimitive.Popup,
+  menu,
+  'root',
+);
 const MenuArrow = withParts(MenuPrimitive.Arrow, 'arrow');
 const MenuItem = withParts(MenuPrimitive.Item, 'item');
 const MenuGroup = withParts(MenuPrimitive.Group, 'group');

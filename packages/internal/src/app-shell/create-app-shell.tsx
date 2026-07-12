@@ -1,6 +1,7 @@
 'use client';
 
 import { css, cx } from '@bend-ui/styled-system/css';
+import * as React from 'react';
 import type { ComponentType, ReactNode } from 'react';
 import { appShell } from '@bend-ui/styled-system/recipes';
 
@@ -67,31 +68,31 @@ export const createScrollAreaPart = <P extends AppShellScrollAreaProps>(
   return ScrollAreaPart;
 };
 
-interface AppShellProps {
+export interface AppShellProps {
   children?: ReactNode;
 }
 
-interface AppShellBannerProps {
+export interface AppShellBannerProps {
   children?: ReactNode;
 }
 
-interface AppShellHeaderProps {
+export interface AppShellHeaderProps {
   children?: ReactNode;
 }
 
-interface AppShellSidebarProps {
+export interface AppShellSidebarProps {
   children?: ReactNode;
 }
 
-interface AppShellBodyProps {
+export interface AppShellBodyProps {
   children?: ReactNode;
 }
 
-interface AppShellMainProps {
+export interface AppShellMainProps {
   children?: ReactNode;
 }
 
-interface AppShellFooterProps {
+export interface AppShellFooterProps {
   children?: ReactNode;
 }
 
@@ -166,3 +167,5 @@ export const createAppShell = (options: CreateAppShellOptions) => {
     Footer,
   });
 };
+
+export type AppShell = ReturnType<typeof createAppShell>;

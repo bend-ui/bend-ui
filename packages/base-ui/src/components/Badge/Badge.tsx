@@ -1,9 +1,11 @@
-import {
-  Badge as StyledBadge,
-  type BadgeProps as StyledBadgeProps,
-} from '@bend-ui/react';
+import { badge, type BadgeVariantProps } from '@bend-ui/styled-system/recipes';
+import { css, cx } from '@bend-ui/styled-system/css';
+import { splitCssProps } from '@bend-ui/styled-system/jsx';
+import type { ComponentProps } from 'react';
 
-export interface BadgeProps extends StyledBadgeProps {
+export interface BadgeProps
+  extends ComponentProps<'span'>,
+    BadgeVariantProps {
   tone?: 'neutral' | 'success' | 'warning' | 'danger' | 'info';
 }
 
@@ -19,11 +21,16 @@ const tonePalette: Record<
 };
 
 const Component = (props: BadgeProps) => {
-  const { tone, palette, ...rest } = props;
+  const { tone, palette, className, ...rest } = props;
+  const [variantProps, remainingProps] = badge.splitVariantProps({
+    ...rest,
+    palette: palette ?? (tone ? tonePalette[tone] : undefined),
+  });
+  const [styleProps, elementProps] = splitCssProps(remainingProps);
   return (
-    <StyledBadge
-      palette={palette ?? (tone ? tonePalette[tone] : undefined)}
-      {...rest}
+    <span
+      className={cx(badge(variantProps), css(styleProps), className)}
+      {...elementProps}
     />
   );
 };
@@ -31,5 +38,5 @@ const Component = (props: BadgeProps) => {
 Component.displayName = 'Badge';
 
 export const Badge = Object.assign(Component, {
-  Root: StyledBadge,
+  Root: Component,
 });

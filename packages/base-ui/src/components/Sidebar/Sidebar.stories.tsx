@@ -6,7 +6,7 @@ import {
   CloudSnowIcon,
   ContactIcon,
 } from 'lucide-react';
-import { Box, Heading, Stack, Text } from '../';
+import { Box, Stack } from '@bend-ui/styled-system/jsx';
 import { Sidebar } from './Sidebar';
 
 const meta: Meta<typeof Sidebar> = {
@@ -55,13 +55,13 @@ export const Default: Story = {
         <Sidebar.Trigger />
         <Box p="6">
           <Stack gap="2">
-            <Heading as="h1" fontSize="3xl">
+            <Box as="h1" fontSize="3xl" fontWeight="bold">
               Sidebar inset
-            </Heading>
-            <Text color="fg.muted">
+            </Box>
+            <Box as="p" color="fg.muted">
               Main content stays in the inset while the sidebar collapses or
               opens as an off-canvas panel on small screens.
-            </Text>
+            </Box>
           </Stack>
         </Box>
       </Sidebar.Inset>

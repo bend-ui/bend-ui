@@ -1,10 +1,10 @@
 import { Autocomplete as AutocompletePrimitive } from '@base-ui/react/autocomplete';
 import { ChevronsUpDownIcon } from 'lucide-react';
-import { withParts, withRecipe } from '@bend-ui/react/factory';
+import { withParts, withRecipe } from '@bend-ui/internal';
 import { selectDropdown, select } from '@bend-ui/styled-system/recipes';
 import { styled } from '@bend-ui/styled-system/jsx';
-import { HTMLBendUIProps } from '@bend-ui/react/factory';
-import { Input as StyledInput } from '@bend-ui/react';
+import { HTMLBendUIProps } from '@bend-ui/internal';
+import { Input as StyledInput } from '../Input';
 
 const AutocompleteRoot = withRecipe<AutocompletePrimitive.Root.Props<string>>(
   AutocompletePrimitive.Root,

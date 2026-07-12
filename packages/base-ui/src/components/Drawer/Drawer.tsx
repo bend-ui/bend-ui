@@ -1,5 +1,5 @@
 import { Dialog } from '@base-ui/react';
-import { bend, withParts, withRecipe } from '@bend-ui/react/factory';
+import { bend, withParts, withRecipe } from '@bend-ui/internal';
 import { drawer } from '@bend-ui/styled-system/recipes';
 
 const DrawerRoot = Dialog.Root;
@@ -10,7 +10,7 @@ const DrawerPortal = Dialog.Portal;
 
 const DrawerBackdrop = Dialog.Backdrop;
 
-const DrawerPopup = withRecipe(Dialog.Popup, drawer, 'root');
+const DrawerPopup = withRecipe<Dialog.Popup.Props>(Dialog.Popup, drawer, 'root');
 
 const DrawerTitle = withParts(Dialog.Title, 'title');
 

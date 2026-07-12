@@ -502,7 +502,7 @@ importers:
         version: link:../styled-system
       '@pandacss/dev':
         specifier: ^1
-        version: 1.11.3(jsdom@26.1.0)(typescript@6.0.2)
+        version: 1.11.3(jsdom@26.0.0)(typescript@5.9.3)
       react:
         specifier: ^19
         version: 19.2.7
@@ -537,7 +537,7 @@ importers:
     devDependencies:
       '@pandacss/dev':
         specifier: ^1.11.3
-        version: 1.11.3(jsdom@26.1.0)(typescript@6.0.2)
+        version: 1.11.3(jsdom@26.0.0)(typescript@5.9.3)
 
   packages/ark:
     dependencies:
@@ -558,7 +558,7 @@ importers:
         version: link:../styled-system
       '@pandacss/dev':
         specifier: ^1
-        version: 1.11.3(jsdom@26.1.0)(typescript@6.0.2)
+        version: 1.11.3(jsdom@26.0.0)(typescript@5.9.3)
       react:
         specifier: ^19
         version: 19.2.7
@@ -581,9 +581,6 @@ importers:
       '@bend-ui/preset':
         specifier: workspace:*
         version: link:../preset
-      '@bend-ui/react':
-        specifier: workspace:*
-        version: link:../react
       '@bend-ui/styled-system':
         specifier: workspace:*
         version: link:../styled-system
@@ -632,7 +629,7 @@ importers:
         version: link:../preset-base
       '@pandacss/dev':
         specifier: ^1.11.3
-        version: 1.11.3(jsdom@26.1.0)(typescript@6.0.2)
+        version: 1.11.3(jsdom@26.0.0)(typescript@5.9.3)
       '@pandacss/types':
         specifier: ^1.11.3
         version: 1.11.3
@@ -644,7 +641,7 @@ importers:
     dependencies:
       '@pandacss/dev':
         specifier: ^1.11.3
-        version: 1.11.3(jsdom@26.1.0)(typescript@6.0.2)
+        version: 1.11.3(jsdom@26.0.0)(typescript@5.9.3)
       '@pandacss/types':
         specifier: ^1.11.3
         version: 1.11.3
@@ -668,7 +665,7 @@ importers:
         version: link:../styled-system
       '@pandacss/dev':
         specifier: ^1
-        version: 1.11.3(jsdom@26.1.0)(typescript@6.0.2)
+        version: 1.11.3(jsdom@26.0.0)(typescript@5.9.3)
       lucide-react:
         specifier: ^1.18.0
         version: 1.18.0(react@19.2.7)
@@ -705,7 +702,7 @@ importers:
         version: 0.27.19(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@pandacss/dev':
         specifier: ^1
-        version: 1.11.3(jsdom@26.1.0)(typescript@6.0.2)
+        version: 1.11.3(jsdom@26.0.0)(typescript@5.9.3)
       lucide-react:
         specifier: ^1.18.0
         version: 1.18.0(react@19.2.7)
@@ -729,7 +726,7 @@ importers:
         version: link:../theme
       storybook:
         specifier: '>=10'
-        version: 10.4.4(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@testing-library/dom@10.4.1)(@types/react@19.2.14)(prettier@3.8.4)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+        version: 10.4.4(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@testing-library/dom@10.4.1)(@types/react@19.2.14)(prettier@3.8.4)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
 
   packages/styled-system:
     dependencies:
@@ -738,7 +735,7 @@ importers:
         version: link:../preset
       '@pandacss/dev':
         specifier: ^1.11.3
-        version: 1.11.3(jsdom@26.1.0)(typescript@6.0.2)
+        version: 1.11.3(jsdom@26.0.0)(typescript@5.9.3)
     devDependencies:
       '@types/react':
         specifier: ^19.2.14
@@ -19500,14 +19497,6 @@ snapshots:
       - '@emnapi/runtime'
     optional: true
 
-  '@oxc-resolver/binding-wasm32-wasi@11.19.1(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)':
-    dependencies:
-      '@napi-rs/wasm-runtime': 1.1.4(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)
-    transitivePeerDependencies:
-      - '@emnapi/core'
-      - '@emnapi/runtime'
-    optional: true
-
   '@oxc-resolver/binding-win32-arm64-msvc@11.19.1':
     optional: true
 
@@ -29844,32 +29833,6 @@ snapshots:
       - '@emnapi/core'
       - '@emnapi/runtime'
 
-  oxc-resolver@11.19.1(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2):
-    optionalDependencies:
-      '@oxc-resolver/binding-android-arm-eabi': 11.19.1
-      '@oxc-resolver/binding-android-arm64': 11.19.1
-      '@oxc-resolver/binding-darwin-arm64': 11.19.1
-      '@oxc-resolver/binding-darwin-x64': 11.19.1
-      '@oxc-resolver/binding-freebsd-x64': 11.19.1
-      '@oxc-resolver/binding-linux-arm-gnueabihf': 11.19.1
-      '@oxc-resolver/binding-linux-arm-musleabihf': 11.19.1
-      '@oxc-resolver/binding-linux-arm64-gnu': 11.19.1
-      '@oxc-resolver/binding-linux-arm64-musl': 11.19.1
-      '@oxc-resolver/binding-linux-ppc64-gnu': 11.19.1
-      '@oxc-resolver/binding-linux-riscv64-gnu': 11.19.1
-      '@oxc-resolver/binding-linux-riscv64-musl': 11.19.1
-      '@oxc-resolver/binding-linux-s390x-gnu': 11.19.1
-      '@oxc-resolver/binding-linux-x64-gnu': 11.19.1
-      '@oxc-resolver/binding-linux-x64-musl': 11.19.1
-      '@oxc-resolver/binding-openharmony-arm64': 11.19.1
-      '@oxc-resolver/binding-wasm32-wasi': 11.19.1(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)
-      '@oxc-resolver/binding-win32-arm64-msvc': 11.19.1
-      '@oxc-resolver/binding-win32-ia32-msvc': 11.19.1
-      '@oxc-resolver/binding-win32-x64-msvc': 11.19.1
-    transitivePeerDependencies:
-      - '@emnapi/core'
-      - '@emnapi/runtime'
-
   p-cancelable@2.1.1: {}
 
   p-cancelable@4.0.1: {}
@@ -31896,35 +31859,6 @@ snapshots:
       open: 10.2.0
       oxc-parser: 0.127.0
       oxc-resolver: 11.19.1(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)
-      recast: 0.23.11
-      semver: 7.8.2
-      use-sync-external-store: 1.6.0(react@19.2.7)
-      ws: 8.18.3
-    optionalDependencies:
-      '@types/react': 19.2.14
-      prettier: 3.8.4
-    transitivePeerDependencies:
-      - '@emnapi/core'
-      - '@emnapi/runtime'
-      - '@testing-library/dom'
-      - bufferutil
-      - react
-      - react-dom
-      - utf-8-validate
-
-  storybook@10.4.4(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@testing-library/dom@10.4.1)(@types/react@19.2.14)(prettier@3.8.4)(react-dom@19.2.7(react@19.2.7))(react@19.2.7):
-    dependencies:
-      '@storybook/global': 5.0.0
-      '@storybook/icons': 2.0.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
-      '@testing-library/jest-dom': 6.9.1
-      '@testing-library/user-event': 14.6.1(@testing-library/dom@10.4.1)
-      '@vitest/expect': 3.2.4
-      '@vitest/spy': 3.2.4
-      '@webcontainer/env': 1.1.1
-      esbuild: 0.19.5
-      open: 10.2.0
-      oxc-parser: 0.127.0
-      oxc-resolver: 11.19.1(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)
       recast: 0.23.11
       semver: 7.8.2
       use-sync-external-store: 1.6.0(react@19.2.7)

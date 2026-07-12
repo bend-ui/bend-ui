@@ -16,7 +16,7 @@ import {
 } from './Patterns';
 import { Badge } from '../Badge';
 import { Input } from '../Input';
-import { Stack } from '@bend-ui/react';
+import { Stack } from '@bend-ui/styled-system/jsx';
 
 const meta: Meta<typeof Surface> = {
   title: 'Patterns/Operational',

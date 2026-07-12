@@ -1,13 +1,17 @@
 import * as React from 'react';
 import { Field as FieldPrimitive } from '@base-ui/react/field';
-import { withParts, withRecipe } from '@bend-ui/react/factory';
+import { withParts, withRecipe } from '@bend-ui/internal';
 import { formField } from '@bend-ui/styled-system/recipes';
 import { Input } from '../Input';
-import { HTMLBendUIProps } from '@bend-ui/react/factory';
+import { HTMLBendUIProps } from '@bend-ui/internal';
 import { styled } from '@bend-ui/styled-system/jsx';
 
 export type FieldRootProps = FieldPrimitive.Root.Props;
-const FieldRoot = withRecipe(FieldPrimitive.Root, formField, 'root');
+const FieldRoot = withRecipe<FieldRootProps>(
+  FieldPrimitive.Root,
+  formField,
+  'root',
+);
 
 export type FieldLabelProps = FieldPrimitive.Label.Props;
 const FieldLabel = withParts<FieldLabelProps>(FieldPrimitive.Label, 'label');

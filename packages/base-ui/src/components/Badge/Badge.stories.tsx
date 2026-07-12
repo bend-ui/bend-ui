@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 import { Badge } from './Badge';
-import { Stack } from '@bend-ui/react';
+import { Stack } from '@bend-ui/styled-system/jsx';
 
 const meta: Meta<typeof Badge> = {
   title: 'Components/Data Display/Badge',

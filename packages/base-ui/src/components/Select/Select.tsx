@@ -1,9 +1,9 @@
 import { Select as SelectPrimitive } from '@base-ui/react/select';
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react';
-import { withParts, withRecipe } from '@bend-ui/react/factory';
+import { withParts, withRecipe } from '@bend-ui/internal';
 import { selectDropdown, select } from '@bend-ui/styled-system/recipes';
 import { styled } from '@bend-ui/styled-system/jsx';
-import { HTMLBendUIProps } from '@bend-ui/react/factory';
+import { HTMLBendUIProps } from '@bend-ui/internal';
 
 const SelectRoot = withRecipe<SelectPrimitive.Root.Props<string>>(
   SelectPrimitive.Root,

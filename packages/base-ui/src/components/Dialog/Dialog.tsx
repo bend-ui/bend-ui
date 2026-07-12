@@ -4,9 +4,9 @@ import {
   DialogVariantProps,
   backdrop,
 } from '@bend-ui/styled-system/recipes';
-import { withParts, withRecipe } from '@bend-ui/react/factory';
-import { Button, ButtonProps } from '@bend-ui/react';
-import type { HTMLBendUIProps } from '@bend-ui/react/factory';
+import { withParts, withRecipe } from '@bend-ui/internal';
+import { Button, type ButtonProps } from '../Button';
+import type { HTMLBendUIProps } from '@bend-ui/internal';
 import { Assign } from '@bend-ui/styled-system/types';
 
 export interface DialogRootProps

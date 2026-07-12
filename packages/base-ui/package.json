@@ -21,7 +21,6 @@
     "@base-ui/react": "1.6.0",
     "@bend-ui/internal": "workspace:*",
     "@bend-ui/preset": "workspace:*",
-    "@bend-ui/react": "workspace:*",
     "@bend-ui/styled-system": "workspace:*",
     "lucide-react": "^1.18.0"
   },

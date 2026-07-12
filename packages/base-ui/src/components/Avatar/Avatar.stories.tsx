@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 import { Avatar } from './Avatar';
 import { avatar } from '@bend-ui/styled-system/recipes';
-import { Stack } from '@bend-ui/react';
+import { Stack } from '@bend-ui/styled-system/jsx';
 
 const meta: Meta<typeof Avatar> = {
   title: 'Components/Media/Avatar',
