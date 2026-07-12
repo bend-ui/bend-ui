@@ -1,4 +1,4 @@
-import { Button } from '@bend-ui/react';
+import { Button } from '../Button';
 import { ChevronRightIcon } from 'lucide-react';
 import { Popover } from './Popover';
 import type { Meta, StoryObj } from '@storybook/react-vite';

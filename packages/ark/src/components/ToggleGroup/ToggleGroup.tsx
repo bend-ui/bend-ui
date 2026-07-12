@@ -1,13 +1,10 @@
 import { ToggleGroup as ToggleGroupPrimitive } from '@ark-ui/react';
-import { withRecipe, withParts } from '@bend-ui/react/factory';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
 import { toggleGroup } from '@bend-ui/styled-system/recipes';
 
-const ToggleGroupRoot = withRecipe(
-  ToggleGroupPrimitive.Root,
-  toggleGroup,
-  'root',
-);
-const ToggleGroupItem = withParts(ToggleGroupPrimitive.Item, 'item');
+const { withProvider, withContext } = createStyleContext(toggleGroup);
+const ToggleGroupRoot = withProvider(ToggleGroupPrimitive.Root, 'root');
+const ToggleGroupItem = withContext(ToggleGroupPrimitive.Item, 'item');
 
 const Component = () => {
   return (

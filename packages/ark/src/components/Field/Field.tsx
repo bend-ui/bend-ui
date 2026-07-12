@@ -1,13 +1,8 @@
 'use client';
 import { Field as ArkField } from '@ark-ui/react';
-import {
-  type InputProps,
-  type TextareaProps,
-} from '@bend-ui/react';
-import {
-  withParts,
-  withRecipe,
-} from '@bend-ui/react/factory';
+import type { HTMLStyledProps } from '@bend-ui/styled-system/types';
+import { withParts, withRecipe } from '@bend-ui/internal';
+import type { InputProps } from '../Input';
 import {
   formField,
   type FormFieldVariantProps,
@@ -23,7 +18,7 @@ export type FieldInputProps = ArkField.InputProps & InputProps;
 
 const FieldInput = withParts(ArkField.Input, 'input');
 
-export type FieldTextareaProps = ArkField.TextareaProps & TextareaProps;
+export type FieldTextareaProps = ArkField.TextareaProps & HTMLStyledProps<'textarea'>;
 
 const FieldTextarea = withParts(ArkField.Textarea, 'textarea');
 

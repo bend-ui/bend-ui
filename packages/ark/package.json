@@ -21,10 +21,10 @@
     "@ark-ui/react": "^5.37.2",
     "@bend-ui/internal": "workspace:*",
     "@bend-ui/preset": "workspace:*",
-    "@bend-ui/react": "workspace:*",
     "@bend-ui/styled-system": "workspace:*"
   },
   "devDependencies": {
+    "@bend-ui/base-ui": "workspace:*",
     "@bend-ui/storybook": "workspace:*"
   },
   "peerDependencies": {

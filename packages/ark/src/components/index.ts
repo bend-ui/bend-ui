@@ -1,9 +1,8 @@
-export * from '@bend-ui/react';
-
 export * from './Accordion';
 export * from './AppShell';
 export * from './AngleSlider';
 export * from './Avatar';
+export * from './Button';
 export * from './Carousel';
 export * from './Checkbox';
 export * from './Clipboard';
@@ -24,6 +23,7 @@ export * from './FileUpload';
 export * from './FocusTrap';
 export * from './Format';
 export * from './HoverCard';
+export * from './Input';
 export * from './Locale';
 export * from './Menu';
 export * from './Pagination';

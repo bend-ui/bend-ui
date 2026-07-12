@@ -1,13 +1,13 @@
 import { Dialog as ArkDialog, Portal as ArkPortal } from '@ark-ui/react';
 import { backdrop, drawer } from '@bend-ui/styled-system/recipes';
-import { DismissButton } from '@bend-ui/react';
-import { withRecipe, withParts } from '@bend-ui/react/factory';
+import { DismissButton } from '../Button';
+import { withRecipe, withParts } from '@bend-ui/internal';
 import type {
   BackdropVariantProps,
   DrawerVariantProps,
 } from '@bend-ui/styled-system/recipes';
 import { Button } from '..';
-import { HTMLBendUIProps, bend } from '@bend-ui/react/factory';
+import { HTMLBendUIProps, bend } from '@bend-ui/internal';
 
 type DrawerRootProps = ArkDialog.RootProps;
 
@@ -32,22 +32,33 @@ const DrawerPortal = ArkPortal;
 export type DrawerBackdropProps = ArkDialog.BackdropProps &
   BackdropVariantProps;
 
-const DrawerBackdrop = withRecipe(ArkDialog.Backdrop, backdrop, 'backdrop');
+const DrawerBackdrop = withRecipe<DrawerBackdropProps>(
+  ArkDialog.Backdrop,
+  backdrop,
+  'backdrop',
+);
 DrawerBackdrop.displayName = 'DrawerBackdrop';
 
 export type DrawerPositionerProps = ArkDialog.PositionerProps &
   DrawerVariantProps;
 
-const DrawerPositioner = withRecipe(ArkDialog.Positioner, drawer, 'positioner');
+const DrawerPositioner = withRecipe<DrawerPositionerProps>(
+  ArkDialog.Positioner,
+  drawer,
+  'positioner',
+);
 DrawerPositioner.displayName = 'DrawerPositioner';
 
-const DrawerContent = withParts(ArkDialog.Content, 'content');
+const DrawerContent = withParts<ArkDialog.ContentProps>(ArkDialog.Content, 'content');
 DrawerContent.displayName = 'DrawerContent';
 
-const DrawerTitle = withParts(ArkDialog.Title, 'title');
+const DrawerTitle = withParts<ArkDialog.TitleProps>(ArkDialog.Title, 'title');
 DrawerTitle.displayName = 'DrawerTitle';
 
-const DrawerDescription = withParts(ArkDialog.Description, 'description');
+const DrawerDescription = withParts<ArkDialog.DescriptionProps>(
+  ArkDialog.Description,
+  'description',
+);
 DrawerDescription.displayName = 'DrawerDescription';
 
 export type DrawerFooterProps = HTMLBendUIProps<'div'>;

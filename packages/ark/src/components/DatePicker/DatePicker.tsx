@@ -1,5 +1,5 @@
 import { DatePicker as DatePickerPrimitive, Portal } from '@ark-ui/react';
-import { Input } from '@bend-ui/react';
+import { Input } from '../Input';
 import { withRecipe, withParts } from '../../utils';
 import {
   datePicker,

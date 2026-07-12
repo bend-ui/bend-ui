@@ -1,5 +1,5 @@
 import { Menu as ArkMenu } from '@ark-ui/react';
-import { Button } from '@bend-ui/react';
+import { Button } from '../Button';
 import { menu } from '@bend-ui/styled-system/recipes';
 
 type MenuRootProps = ArkMenu.RootProps;

@@ -5,28 +5,28 @@ import { radioGroup } from '@bend-ui/styled-system/recipes';
 import type { JsxStyleProps } from '@bend-ui/styled-system/types';
 import type { RadioGroupVariantProps } from '@bend-ui/styled-system/recipes';
 import type { Assign } from '@ark-ui/react';
-import { withParts, withRecipe } from '@bend-ui/react/factory';
+import { withParts, withRecipe } from '@bend-ui/internal';
 
 export interface RootProps
   extends Assign<JsxStyleProps, RadioGroupPrimitive.RootProps>,
     RadioGroupVariantProps {}
 
-const Root = withRecipe(RadioGroupPrimitive.Root, radioGroup, 'root');
+const Root = withRecipe<RootProps>(RadioGroupPrimitive.Root, radioGroup, 'root');
 
-const Indicator = withParts(RadioGroupPrimitive.Indicator, 'indicator');
+const Indicator = withParts<RadioGroupPrimitive.IndicatorProps>(RadioGroupPrimitive.Indicator, 'indicator');
 
-const ItemControl = withParts(RadioGroupPrimitive.ItemControl, 'itemControl');
+const ItemControl = withParts<RadioGroupPrimitive.ItemControlProps>(RadioGroupPrimitive.ItemControl, 'itemControl');
 
-const Item = withParts(RadioGroupPrimitive.Item, 'item');
+const Item = withParts<RadioGroupPrimitive.ItemProps>(RadioGroupPrimitive.Item, 'item');
 
-const ItemText = withParts(RadioGroupPrimitive.ItemText, 'itemText');
+const ItemText = withParts<RadioGroupPrimitive.ItemTextProps>(RadioGroupPrimitive.ItemText, 'itemText');
 
-const ItemHiddenInput = withParts(
+const ItemHiddenInput = withParts<RadioGroupPrimitive.ItemHiddenInputProps>(
   RadioGroupPrimitive.ItemHiddenInput,
   'itemHiddenInput',
 );
 
-const Label = withParts(RadioGroupPrimitive.Label, 'label');
+const Label = withParts<RadioGroupPrimitive.LabelProps>(RadioGroupPrimitive.Label, 'label');
 
 export interface RadioGroupProps {
   options: {

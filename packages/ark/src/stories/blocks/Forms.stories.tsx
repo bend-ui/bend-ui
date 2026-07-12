@@ -6,7 +6,7 @@ import {
   Input,
   Level,
   Paragraph,
-} from '@bend-ui/react';
+} from '@bend-ui/base-ui';
 import { Checkbox } from '../../components';
 import type { Meta } from '@storybook/react-vite';
 

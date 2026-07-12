@@ -1,4 +1,4 @@
-import { bend } from '@bend-ui/react/factory';
+import { bend } from '@bend-ui/internal';
 import { createStyleContext } from '@bend-ui/styled-system/jsx';
 import { sidebar } from '@bend-ui/styled-system/recipes';
 import type { ComponentProps } from 'react';

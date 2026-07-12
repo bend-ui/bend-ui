@@ -86,7 +86,7 @@ export const createButton = <RootComponent extends ElementType = 'button'>(
         data-disabled={isActuallyDisabled || undefined}
         aria-disabled={isActuallyDisabled || undefined}
         aria-busy={isLoading || undefined}
-        disabled={disabled}
+        disabled={isActuallyDisabled}
         {...rest}
       >
         {isLoading && <ButtonSpinner data-loading="" />}

@@ -1,8 +1,8 @@
 import { Popover as ArkPopover } from '@ark-ui/react';
 import { popover } from '@bend-ui/styled-system/recipes';
 import type { PopoverVariantProps } from '@bend-ui/styled-system/recipes';
-import { withRecipe, withParts } from '@bend-ui/react/factory';
-import { Button } from '@bend-ui/react';
+import { withRecipe, withParts } from '@bend-ui/internal';
+import { Button } from '../Button';
 
 const PopoverRoot = ArkPopover.Root;
 const PopoverAnchor = ArkPopover.Anchor;
@@ -12,15 +12,23 @@ const PopoverArrow = ArkPopover.Arrow;
 const PopoverArrowTip = ArkPopover.ArrowTip;
 const PopoverCloseTrigger = ArkPopover.CloseTrigger;
 
-const PopoverPositioner = withRecipe(
+const PopoverPositioner = withRecipe<
+  ArkPopover.PositionerProps & PopoverVariantProps
+>(
   ArkPopover.Positioner,
   popover,
   'positioner',
 );
 
-const PopoverContent = withParts(ArkPopover.Content, 'content');
-const PopoverTitle = withParts(ArkPopover.Title, 'title');
-const PopoverDescription = withParts(ArkPopover.Description, 'description');
+const PopoverContent = withParts<ArkPopover.ContentProps>(
+  ArkPopover.Content,
+  'content',
+);
+const PopoverTitle = withParts<ArkPopover.TitleProps>(ArkPopover.Title, 'title');
+const PopoverDescription = withParts<ArkPopover.DescriptionProps>(
+  ArkPopover.Description,
+  'description',
+);
 
 export interface PopoverProps
   extends ArkPopover.RootProps,

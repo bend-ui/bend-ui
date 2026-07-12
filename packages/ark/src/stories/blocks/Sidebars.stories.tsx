@@ -1,4 +1,4 @@
-import { Box } from '@bend-ui/react';
+import { Box } from '@bend-ui/base-ui';
 import { Meta, StoryObj } from '@storybook/react-vite';
 import { Input } from '../../components';
 

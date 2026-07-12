@@ -1,4 +1,4 @@
-import { Button } from '@bend-ui/react';
+import { Button } from '../Button';
 import { drawer } from '@bend-ui/styled-system/recipes';
 import { Stack } from '@bend-ui/styled-system/jsx';
 import { Drawer } from './Drawer';

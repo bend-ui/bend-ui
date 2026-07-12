@@ -1,7 +1,7 @@
 import { css, cx, sva } from '@bend-ui/styled-system/css';
 import { visuallyHidden } from '@bend-ui/styled-system/patterns';
 import { AlertCircleIcon } from 'lucide-react';
-import { Paragraph } from '@bend-ui/react';
+import { Paragraph } from '@bend-ui/base-ui';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta = { title: 'Blocks/InputGroup' };
