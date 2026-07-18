@@ -1,7 +1,16 @@
 import { describe, it, expect, vi } from 'vitest';
 import { definePreset } from '@pandacss/dev';
+import { bendHooks } from './bend-hooks';
 import * as composeHooksModule from './compose-hooks';
 import { createBendConfig } from './index';
+
+const { bendHook } = vi.hoisted(() => ({
+  bendHook: vi.fn(() => 'bend-css'),
+}));
+
+vi.mock('./bend-hooks', () => ({
+  bendHooks: { 'cssgen:done': bendHook },
+}));
 
 /**
  * Seam B — config builder unit tests.
@@ -46,12 +55,13 @@ describe('createBendConfig', () => {
     expect(config.presets).toContain(consumerPreset);
   });
 
-  it("composes the consumer's hooks without clobbering them", () => {
+  it("runs Bend's hooks alongside the consumer's without clobbering either", () => {
     const consumerHook = vi.fn(() => 'consumer-css');
     const config = createBendConfig({ hooks: { 'cssgen:done': consumerHook } });
 
     const result = config.hooks?.['cssgen:done']?.({ artifact: 'global', content: 'a' });
 
+    expect(bendHook).toHaveBeenCalledTimes(1);
     expect(consumerHook).toHaveBeenCalledTimes(1);
     expect(result).toBe('consumer-css');
   });
@@ -62,7 +72,7 @@ describe('createBendConfig', () => {
 
     const config = createBendConfig({ hooks: consumerHooks });
 
-    expect(composeHooksSpy).toHaveBeenCalledWith(expect.any(Object), consumerHooks);
+    expect(composeHooksSpy).toHaveBeenCalledWith(bendHooks, consumerHooks);
     expect(config.hooks).toBe(composeHooksSpy.mock.results[0]?.value);
 
     composeHooksSpy.mockRestore();

@@ -1,15 +1,8 @@
 import { defineConfig } from '@pandacss/dev';
 import type { Config } from '@pandacss/dev';
-import type { PandaHooks } from '@pandacss/types';
 import { createBendPreset } from '@bend-ui/preset';
+import { bendHooks } from './bend-hooks';
 import { composeHooks } from './compose-hooks';
-
-/**
- * Hooks Bend UI itself needs composed into every consumer config. Empty in
- * v0: this package ships only the hook-composition plumbing, no shipped
- * hook behaviors.
- */
-const bendHooks: Partial<PandaHooks> = {};
 
 const BEND_DEFAULTS = {
   preflight: true,
@@ -36,5 +29,3 @@ export function createBendConfig(config: Config = {}): Config {
     hooks: composeHooks(bendHooks, hooks),
   });
 }
-
-export { composeHooks };
