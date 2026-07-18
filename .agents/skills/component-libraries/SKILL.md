@@ -42,9 +42,6 @@ node -e "console.log(Object.keys(require('@ark-ui/react')).sort().join('\n'))"
 - **The generated styled-system** for recipes, tokens, and conditions:
   `packages/styled-system/recipes`, `.../tokens`, `.../css`, `.../jsx`.
 
-(The `user-maestro` MCP documents LANDR's Maestro design system — unrelated to these
-upstream libraries. Do not use it for adapter work.)
-
 ---
 
 ## Implementation patterns
