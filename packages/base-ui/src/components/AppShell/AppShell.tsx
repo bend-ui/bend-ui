@@ -5,7 +5,7 @@ import {
   createAppShell,
   createScrollAreaPart,
   type AppShellScrollAreaProps,
-} from '@bend-ui/internal';
+} from '@bend-ui/core';
 import { ScrollArea, type ScrollAreaProps } from '../ScrollArea';
 
 export const AppShell = createAppShell({

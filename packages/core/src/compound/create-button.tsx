@@ -1,7 +1,10 @@
 'use client';
 
 import type { Assign, JsxStyleProps } from '@bend-ui/styled-system/types';
-import { button, type ButtonVariantProps } from '@bend-ui/styled-system/recipes';
+import {
+  button,
+  type ButtonVariantProps,
+} from '@bend-ui/styled-system/recipes';
 import * as React from 'react';
 import type {
   ComponentProps,
@@ -63,9 +66,7 @@ export const createButton = <RootComponent extends ElementType = 'button'>(
   >;
   const ButtonIcon = slots.Icon as ComponentType<{ children?: ReactNode }>;
   const ButtonLabel = slots.Label as ComponentType<{ children?: ReactNode }>;
-  const ButtonSpinner = slots.Spinner as ComponentType<
-    Record<string, unknown>
-  >;
+  const ButtonSpinner = slots.Spinner as ComponentType<Record<string, unknown>>;
 
   const Component = (props: ButtonProps<RootComponent>) => {
     const {

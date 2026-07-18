@@ -1,5 +1,5 @@
 import { cx } from '@bend-ui/styled-system/css';
-import { bend, type HTMLBendUIProps } from '@bend-ui/internal';
+import { bend, type HTMLBendUIProps } from '@bend-ui/core';
 import { input, type InputVariantProps } from '@bend-ui/styled-system/recipes';
 import type { Assign } from '@bend-ui/styled-system/types';
 import type { ReactNode } from 'react';

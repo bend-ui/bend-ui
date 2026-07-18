@@ -1,10 +1,7 @@
 'use client';
 
 import { createStyleContext } from '@bend-ui/styled-system/jsx';
-import type {
-  Assign,
-  JsxStyleProps,
-} from '@bend-ui/styled-system/types';
+import type { Assign, JsxStyleProps } from '@bend-ui/styled-system/types';
 import type { ComponentProps, ComponentType, ElementType } from 'react';
 
 type AnySlotRecipe = {
@@ -28,8 +25,7 @@ export type CompoundSlotProps<
   Variants,
 > = Assign<
   ComponentProps<Definition['component']>,
-  JsxStyleProps &
-    (Definition extends { provider: true } ? Variants : object)
+  JsxStyleProps & (Definition extends { provider: true } ? Variants : object)
 >;
 
 export type CompoundComponent<

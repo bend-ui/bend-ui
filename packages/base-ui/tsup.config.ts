@@ -13,7 +13,7 @@ export default defineConfig({
     'react-dom',
     '@base-ui/react',
     'lucide-react',
-    '@bend-ui/internal',
+    '@bend-ui/core',
     '@bend-ui/styled-system',
   ],
   esbuildOptions(options) {

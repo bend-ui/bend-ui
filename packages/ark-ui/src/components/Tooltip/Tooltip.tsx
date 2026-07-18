@@ -1,5 +1,5 @@
 import { Tooltip as ArkTooltip } from '@ark-ui/react';
-import { withRecipe, withParts } from '@bend-ui/internal';
+import { withRecipe, withParts } from '@bend-ui/core';
 import { tooltip, TooltipVariantProps } from '@bend-ui/styled-system/recipes';
 
 const TooltipRoot = ArkTooltip.Root;

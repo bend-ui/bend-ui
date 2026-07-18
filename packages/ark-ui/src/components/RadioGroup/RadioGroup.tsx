@@ -5,7 +5,7 @@ import { radioGroup } from '@bend-ui/styled-system/recipes';
 import type { JsxStyleProps } from '@bend-ui/styled-system/types';
 import type { RadioGroupVariantProps } from '@bend-ui/styled-system/recipes';
 import type { Assign } from '@ark-ui/react';
-import { withParts, withRecipe } from '@bend-ui/internal';
+import { withParts, withRecipe } from '@bend-ui/core';
 
 export interface RootProps
   extends

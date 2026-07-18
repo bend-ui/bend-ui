@@ -1,5 +1,5 @@
 {
-  "name": "@bend-ui/internal",
+  "name": "@bend-ui/core",
   "version": "0.0.1",
   "private": true,
   "type": "module",

@@ -12,7 +12,7 @@ export default defineConfig({
     'react',
     'react-dom',
     'react-aria-components',
-    '@bend-ui/internal',
+    '@bend-ui/core',
     '@bend-ui/react',
     '@bend-ui/styled-system',
   ],

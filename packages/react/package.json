@@ -24,7 +24,7 @@
     "dist"
   ],
   "dependencies": {
-    "@bend-ui/internal": "workspace:*",
+    "@bend-ui/core": "workspace:*",
     "@bend-ui/preset": "workspace:*",
     "@bend-ui/primitives": "workspace:*",
     "@bend-ui/styled-system": "workspace:*",

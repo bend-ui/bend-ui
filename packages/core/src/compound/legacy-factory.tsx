@@ -51,7 +51,7 @@ export const createRecipeContext = (recipe: Recipe) => {
   const withProvider = <Props extends AnyProps>(
     Component: ComponentType,
     part: string,
-      defaultProps?: Partial<Props>,
+    defaultProps?: Partial<Props>,
   ) => {
     const StyledComponent = styled(Component);
     const WrappedComponent = (props: Props) => {
@@ -64,9 +64,9 @@ export const createRecipeContext = (recipe: Recipe) => {
       )(variantProps);
       const classes = cx(
         recipeClass,
-        (defaultProps as Record<string, unknown> | undefined)?.[
-          'className'
-        ] as string | undefined,
+        (defaultProps as Record<string, unknown> | undefined)?.['className'] as
+          | string
+          | undefined,
         (elementProps as Record<string, unknown>)['className'] as
           | string
           | undefined,
@@ -146,13 +146,13 @@ export const withParts = <Props extends AnyProps>(
         ref={ref}
         data-part={part}
         {...defaultProps}
-      {...rest}
-      className={cx(
+        {...rest}
+        className={cx(
           (defaultProps as Record<string, unknown> | undefined)?.[
             'className'
           ] as string | undefined,
           className as string | undefined,
-      )}
+        )}
       />
     );
   };

@@ -1,6 +1,6 @@
 'use client';
 
-import { createButton, type ButtonProps } from '@bend-ui/internal';
+import { createButton, type ButtonProps } from '@bend-ui/core';
 import { XIcon } from 'lucide-react';
 
 export type { ButtonProps };

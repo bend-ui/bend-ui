@@ -489,9 +489,9 @@ importers:
       '@ariakit/react':
         specifier: ^0.4.34
         version: 0.4.34(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
-      '@bend-ui/internal':
+      '@bend-ui/core':
         specifier: workspace:*
-        version: link:../internal
+        version: link:../core
       '@bend-ui/preset':
         specifier: workspace:*
         version: link:../preset
@@ -511,9 +511,9 @@ importers:
       '@ark-ui/react':
         specifier: ^5.37.2
         version: 5.37.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
-      '@bend-ui/internal':
+      '@bend-ui/core':
         specifier: workspace:*
-        version: link:../internal
+        version: link:../core
       '@bend-ui/preset':
         specifier: workspace:*
         version: link:../preset
@@ -539,9 +539,9 @@ importers:
       '@base-ui/react':
         specifier: 1.6.0
         version: 1.6.0(@date-fns/tz@1.4.1)(@types/react@19.2.14)(date-fns@4.1.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
-      '@bend-ui/internal':
+      '@bend-ui/core':
         specifier: workspace:*
-        version: link:../internal
+        version: link:../core
       '@bend-ui/preset':
         specifier: workspace:*
         version: link:../preset
@@ -577,7 +577,7 @@ importers:
         specifier: ^15.0.0
         version: 15.0.0
 
-  packages/internal:
+  packages/core:
     dependencies:
       '@bend-ui/styled-system':
         specifier: workspace:*
@@ -618,9 +618,9 @@ importers:
 
   packages/react:
     dependencies:
-      '@bend-ui/internal':
+      '@bend-ui/core':
         specifier: workspace:*
-        version: link:../internal
+        version: link:../core
       '@bend-ui/preset':
         specifier: workspace:*
         version: link:../preset
@@ -652,9 +652,9 @@ importers:
 
   packages/react-aria:
     dependencies:
-      '@bend-ui/internal':
+      '@bend-ui/core':
         specifier: workspace:*
-        version: link:../internal
+        version: link:../core
       '@bend-ui/preset':
         specifier: workspace:*
         version: link:../preset

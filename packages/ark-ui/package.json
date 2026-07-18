@@ -19,7 +19,7 @@
   ],
   "dependencies": {
     "@ark-ui/react": "^5.37.2",
-    "@bend-ui/internal": "workspace:*",
+    "@bend-ui/core": "workspace:*",
     "@bend-ui/preset": "workspace:*",
     "@bend-ui/styled-system": "workspace:*"
   },

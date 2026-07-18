@@ -4,14 +4,13 @@ import {
   DialogVariantProps,
   backdrop,
 } from '@bend-ui/styled-system/recipes';
-import { withParts, withRecipe } from '@bend-ui/internal';
+import { withParts, withRecipe } from '@bend-ui/core';
 import { Button, type ButtonProps } from '../Button';
-import type { HTMLBendUIProps } from '@bend-ui/internal';
+import type { HTMLBendUIProps } from '@bend-ui/core';
 import { Assign } from '@bend-ui/styled-system/types';
 
 export interface DialogRootProps
-  extends DialogPrimitive.Root.Props,
-    DialogVariantProps {}
+  extends DialogPrimitive.Root.Props, DialogVariantProps {}
 
 const DialogRoot = (props: DialogRootProps) => {
   return <DialogPrimitive.Root {...props} />;
