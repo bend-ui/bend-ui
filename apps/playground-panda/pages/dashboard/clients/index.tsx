@@ -1,4 +1,4 @@
-import { Button, Input, Table } from '@bend-ui/ark';
+import { Button, Input, Table } from '@bend-ui/ark-ui';
 
 const Clients = () => (
   <div>

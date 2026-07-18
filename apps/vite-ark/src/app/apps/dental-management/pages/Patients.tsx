@@ -1,4 +1,4 @@
-import { Button, IconButton, Input, Dialog, Tabs } from '@bend-ui/ark';
+import { Button, IconButton, Input, Dialog, Tabs } from '@bend-ui/ark-ui';
 import { Ellipsis, FilterIcon, SearchIcon } from 'lucide-react';
 import { data, Patient } from '../data';
 

@@ -8,7 +8,7 @@ export default defineConfig({
   // Where to look for your css declarations
   include: [
     '../../packages/react/src/**/*.{js,jsx,ts,tsx}',
-    '../../packages/ark/src/**/*.{js,jsx,ts,tsx}',
+    '../../packages/ark-ui/src/**/*.{js,jsx,ts,tsx}',
     './lib/**/*.{tsx,ts,jsx}',
     './pages/**/*.{jsx,tsx}',
     './app/**/*.{jsx,tsx}',

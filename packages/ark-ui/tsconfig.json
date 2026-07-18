@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "allowJs": false,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "paths": {
+      "~/*": ["src/*"],
+      "@bend-ui/preset": ["packages/preset/src/index.ts"],
+      "@bend-ui/styled-system/*": ["packages/ark-ui/styled-system/dist/*"],
+      "@bend-ui/storybook": ["packages/storybook/src/index.ts"]
+    },
+    "ignoreDeprecations": "6.0"
+  },
+  "files": [],
+  "include": ["**.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./tsconfig.storybook.json"
+    }
+  ],
+  "extends": "../../tsconfig.base.json"
+}

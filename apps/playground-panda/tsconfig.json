@@ -18,7 +18,7 @@
     ],
     "types": ["jest", "node"],
     "paths": {
-      "@bend-ui/ark": ["packages/ark/src/index.ts"],
+      "@bend-ui/ark-ui": ["packages/ark-ui/src/index.ts"],
       "@bend-ui/preset": ["packages/preset/src/index.ts"],
       "@bend-ui/preset-base": ["packages/preset-base/src/index.ts"],
       "@bend-ui/primitives": ["packages/primitives/src/index.ts"],

@@ -1,0 +1,8 @@
+{
+  "onlyChanged": true,
+  "projectId": "Project:65ad3240c6b315a60048a796",
+  "storybookBaseDir": "packages/ark-ui",
+  "buildCommand": "nx run ark-ui:build-storybook",
+  "outputDir": "../../dist/storybook/ark-ui",
+  "zip": true
+}

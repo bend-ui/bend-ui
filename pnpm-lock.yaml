@@ -429,9 +429,9 @@ importers:
 
   apps/vite-ark:
     dependencies:
-      '@bend-ui/ark':
+      '@bend-ui/ark-ui':
         specifier: workspace:*
-        version: link:../../packages/ark
+        version: link:../../packages/ark-ui
       '@bend-ui/preset':
         specifier: workspace:*
         version: link:../../packages/preset
@@ -453,9 +453,9 @@ importers:
 
   apps/website:
     dependencies:
-      '@bend-ui/ark':
+      '@bend-ui/ark-ui':
         specifier: workspace:*
-        version: link:../../packages/ark
+        version: link:../../packages/ark-ui
       '@bend-ui/preset':
         specifier: workspace:*
         version: link:../../packages/preset
@@ -484,37 +484,6 @@ importers:
         specifier: 4.2.4
         version: 4.2.4
 
-  packages/aria:
-    dependencies:
-      '@bend-ui/internal':
-        specifier: workspace:*
-        version: link:../internal
-      '@bend-ui/preset':
-        specifier: workspace:*
-        version: link:../preset
-      '@bend-ui/react':
-        specifier: workspace:*
-        version: link:../react
-      '@bend-ui/styled-system':
-        specifier: workspace:*
-        version: link:../styled-system
-      '@pandacss/dev':
-        specifier: ^1
-        version: 1.11.4(jsdom@26.1.0)(typescript@6.0.3)
-      react:
-        specifier: ^19
-        version: 19.2.7
-      react-aria-components:
-        specifier: ^1.19.0
-        version: 1.19.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
-      react-dom:
-        specifier: ^19
-        version: 19.2.7(react@19.2.7)
-    devDependencies:
-      '@bend-ui/storybook':
-        specifier: workspace:*
-        version: link:../storybook
-
   packages/ariakit:
     dependencies:
       '@ariakit/react':
@@ -537,7 +506,7 @@ importers:
         specifier: ^1.11.4
         version: 1.11.4(jsdom@26.1.0)(typescript@6.0.3)
 
-  packages/ark:
+  packages/ark-ui:
     dependencies:
       '@ark-ui/react':
         specifier: ^5.37.2
@@ -673,6 +642,37 @@ importers:
       react:
         specifier: ^19
         version: 19.2.7
+      react-dom:
+        specifier: ^19
+        version: 19.2.7(react@19.2.7)
+    devDependencies:
+      '@bend-ui/storybook':
+        specifier: workspace:*
+        version: link:../storybook
+
+  packages/react-aria:
+    dependencies:
+      '@bend-ui/internal':
+        specifier: workspace:*
+        version: link:../internal
+      '@bend-ui/preset':
+        specifier: workspace:*
+        version: link:../preset
+      '@bend-ui/react':
+        specifier: workspace:*
+        version: link:../react
+      '@bend-ui/styled-system':
+        specifier: workspace:*
+        version: link:../styled-system
+      '@pandacss/dev':
+        specifier: ^1
+        version: 1.11.4(jsdom@26.1.0)(typescript@6.0.3)
+      react:
+        specifier: ^19
+        version: 19.2.7
+      react-aria-components:
+        specifier: ^1.19.0
+        version: 1.19.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       react-dom:
         specifier: ^19
         version: 19.2.7(react@19.2.7)

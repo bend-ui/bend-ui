@@ -17,7 +17,7 @@ import {
   Paragraph,
   Menu,
   Tabs,
-} from '@bend-ui/ark';
+} from '@bend-ui/ark-ui';
 import {
   SearchIcon,
   BellIcon,

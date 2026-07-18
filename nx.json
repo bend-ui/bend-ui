@@ -100,11 +100,11 @@
         "testStorybookTargetName": "test-storybook"
       },
       "include": [
-        "packages/ark/**/*",
+        "packages/ark-ui/**/*",
         "packages/react/**/*",
         "packages/base-ui/**/*",
         "packages/ariakit/**/*",
-        "packages/aria/**/*",
+        "packages/react-aria/**/*",
         "packages/primitives/**/*"
       ]
     },

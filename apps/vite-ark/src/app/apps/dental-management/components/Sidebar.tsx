@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { Sidebar } from '@bend-ui/ark';
+import { Sidebar } from '@bend-ui/ark-ui';
 
 const navItems = [
   { to: 'overview', label: 'Overview' },

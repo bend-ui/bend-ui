@@ -17,12 +17,12 @@
       "path": "packages/react",
     },
     {
-      "name": "📦 @bend-ui/aria",
-      "path": "packages/aria",
+      "name": "📦 @bend-ui/react-aria",
+      "path": "packages/react-aria",
     },
     {
-      "name": "📦 @bend-ui/ark",
-      "path": "packages/ark",
+      "name": "📦 @bend-ui/ark-ui",
+      "path": "packages/ark-ui",
     },
     {
       "name": "📦 @bend-ui/base-ui",

@@ -15,7 +15,7 @@ import {
   Input,
   Level,
   Paragraph,
-} from '@bend-ui/ark';
+} from '@bend-ui/ark-ui';
 import { Divider, Grid, GridItem } from '@bend-ui/styled-system/jsx';
 import { container } from '@bend-ui/styled-system/patterns';
 import { css } from '@bend-ui/styled-system/css';

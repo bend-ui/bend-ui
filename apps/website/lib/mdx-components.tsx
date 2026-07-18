@@ -1,8 +1,8 @@
 import type { MDXComponents } from 'mdx/types';
-import { Heading, Text, Box, Stack, Tabs, Accordion } from '@bend-ui/ark';
+import { Heading, Text, Box, Stack, Tabs, Accordion } from '@bend-ui/ark-ui';
 
 /**
- * Custom MDX components using @bend-ui/ark instead of fumadocs-ui defaults
+ * Custom MDX components using @bend-ui/ark-ui instead of fumadocs-ui defaults
  * This provides a consistent look with your design system
  */
 export const mdxComponents: MDXComponents = {

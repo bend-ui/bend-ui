@@ -1,4 +1,4 @@
-import { Button, Input } from '@bend-ui/ark';
+import { Button, Input } from '@bend-ui/ark-ui';
 import { PlusIcon, SearchIcon } from 'lucide-react';
 import { data } from '../data';
 import { PageLayout } from '../components/PageLayout';

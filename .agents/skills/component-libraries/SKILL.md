@@ -1,6 +1,6 @@
 ---
 name: "component-libraries"
-description: "Working with the Bend UI package adapters. USE when adding, checking, or comparing components across packages/base-ui (@base-ui/react wrapper), packages/ark (@ark-ui/react wrapper), and packages/aria (react-aria-components wrapper). Trigger words: add component, missing component, check components, base-ui, ark-ui, react-aria, @bend-ui/base-ui, @bend-ui/ark, @bend-ui/aria, adapter."
+description: "Working with the Bend UI package adapters. USE when adding, checking, or comparing components across packages/base-ui (@base-ui/react wrapper), packages/ark-ui (@ark-ui/react wrapper), and packages/react-aria (react-aria-components wrapper). Trigger words: add component, missing component, check components, base-ui, ark-ui, react-aria, @bend-ui/base-ui, @bend-ui/ark-ui, @bend-ui/react-aria, adapter."
 ---
 
 # Component Libraries
@@ -11,14 +11,10 @@ Bend UI wraps three upstream primitive libraries. Each package adapter lives und
 | Package (folder) | Upstream | npm name |
 |---|---|---|
 | `packages/base-ui` | `@base-ui/react` | `@bend-ui/base-ui` |
-| `packages/ark` | `@ark-ui/react` | `@bend-ui/ark` |
-| `packages/aria` | `react-aria-components` | `@bend-ui/aria` |
+| `packages/ark-ui` | `@ark-ui/react` | `@bend-ui/ark-ui` |
+| `packages/react-aria` | `react-aria-components` | `@bend-ui/react-aria` |
 
 `packages/ariakit` is parked and not a support target.
-
-> **Pending rename (issue #110):** `@bend-ui/ark` → `@bend-ui/ark-ui` (`packages/ark-ui`)
-> and `@bend-ui/aria` → `@bend-ui/react-aria` (`packages/react-aria`). The folders above
-> are the real ones today; update this table when the rename lands.
 
 For each adapter's upstream identity and pinned version, see that package's `AGENTS.md`.
 For per-component intent, progress, and quality coverage, see the **Component catalog
@@ -118,7 +114,7 @@ export const Button = ({ className, variant, size, ...props }: ButtonProps) => {
 
 ## Package layouts
 
-### `packages/base-ui` and `packages/ark`
+### `packages/base-ui` and `packages/ark-ui`
 
 ```
 packages/<pkg>/src/
@@ -140,10 +136,10 @@ packages/<pkg>/src/
 **Register a new component:** create the folder, then add
 `export * from './<ComponentName>';` to `components/index.ts` in alphabetical order.
 
-### `packages/aria`
+### `packages/react-aria`
 
 ```
-packages/aria/src/
+packages/react-aria/src/
   components/
     <ComponentName>/
       <ComponentName>.tsx    ← styled implementation (cx + recipe)
@@ -153,14 +149,14 @@ packages/aria/src/
   index.ts                   ← direct exports: export * from './components/<Name>/<Name>'
 ```
 
-Unlike base-ui/ark, aria exports directly from component files in `index.ts` — there is no
-intermediate `components/index.ts`.
+Unlike base-ui/ark-ui, react-aria exports directly from component files in `index.ts` —
+there is no intermediate `components/index.ts`.
 
 **Register a new component:** create the folder, then add
 `export * from './components/<ComponentName>/<ComponentName>';` to
-`packages/aria/src/index.ts` in alphabetical order.
+`packages/react-aria/src/index.ts` in alphabetical order.
 
-Special groupings in the aria package:
+Special groupings in the react-aria package:
 - `Primitives/` — `Section`, `Header`, `Heading`, `Text`, `Keyboard`, `VisuallyHidden`, `FieldError`, `Pressable`, `Focusable`
 - `Providers/` — `I18nProvider`, `Provider`, `RouterProvider`, `SSRProvider`
 - `Hooks/` — `useAsyncList`, `useDrag`, `useDragAndDrop`, `useDrop`, `useFilter`, `useListData`, `useLocale`, `useTreeData`

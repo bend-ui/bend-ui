@@ -1,8 +1,0 @@
-{
-  "onlyChanged": true,
-  "projectId": "Project:65ad3240c6b315a60048a796",
-  "storybookBaseDir": "packages/ark",
-  "buildCommand": "nx run ark:build-storybook",
-  "outputDir": "../../dist/storybook/ark",
-  "zip": true
-}

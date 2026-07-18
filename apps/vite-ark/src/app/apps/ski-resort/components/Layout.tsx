@@ -1,4 +1,4 @@
-import { AppShell } from '@bend-ui/ark';
+import { AppShell } from '@bend-ui/ark-ui';
 import { SidebarComponent } from './Sidebar';
 
 export interface LayoutProps {

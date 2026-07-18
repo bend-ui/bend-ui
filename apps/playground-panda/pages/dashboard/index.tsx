@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Button, Card, Level, Nav } from '@bend-ui/ark';
+import { Button, Card, Level, Nav } from '@bend-ui/ark-ui';
 import { css } from '@bend-ui/styled-system/css';
 import { Container } from '@bend-ui/styled-system/jsx';
 import type { NextPage } from 'next';

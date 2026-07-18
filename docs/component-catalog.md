@@ -122,11 +122,7 @@ AppShell/Sidebar operational patterns).
 Biggest gaps: unit tests (only Accordion and Button) and Docs-site pages (only Avatar and
 Button). Untested/unstoried items are layout/typography primitives plus Card and IconButton.
 
-## Ark UI — `@bend-ui/ark` (`packages/ark`)
-
-> **Pending rename (issue #110):** this adapter is scheduled to become
-> `@bend-ui/ark-ui` (`packages/ark-ui`), which is why `CONTEXT.md` already uses the
-> target name. Update this heading and package references once the rename lands.
+## Ark UI — `@bend-ui/ark-ui` (`packages/ark-ui`)
 
 **Verified against upstream:** `@ark-ui/react` `^5.37.2`.
 
@@ -181,11 +177,7 @@ what is implemented today.
 
 **Ark UI summary:** 42 components implemented · 1 tested · 30 with Storybook · 0 documented.
 
-## React Aria — `@bend-ui/aria` (`packages/aria`)
-
-> **Pending rename (issue #110):** this adapter is scheduled to become
-> `@bend-ui/react-aria` (`packages/react-aria`), which is why `CONTEXT.md` already uses
-> the target name. Update this heading and package references once the rename lands.
+## React Aria — `@bend-ui/react-aria` (`packages/react-aria`)
 
 **Verified against upstream:** `react-aria-components` `^1.19.0`.
 
