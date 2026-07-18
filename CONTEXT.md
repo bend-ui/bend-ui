@@ -48,7 +48,8 @@ Use these terms when discussing the repo.
 - **Ejected component**: a component that started from Bend UI but is now owned and modified in the user's codebase. Ejected components should depend on the user's Panda/styled-system setup and chosen headless library, not on `@bend-ui/react`.
 - **Design-system tooling**: CLI tools, agent skills, prompts, token management, generation workflows, and maintenance workflows that help users create and evolve a design system.
 - **Operational pattern**: a higher-level UI pattern for dense application screens, such as surfaces, metrics, page headers, action rows, and timeline items.
-- **Demo app**: an app that proves package adapters and operational patterns in realistic screens. Current demos include dental management and ski resort operations.
+- **Demo app**: an app that proves a single package adapter and operational patterns in realistic screens. Every adapter demo implements the same canonical scenarios (dental management and ski resort operations) so adapters stay visibly comparable. Pure scenario data is shared via the `demo-data` lib; page composition stays per-adapter because upstream composition differs. Demos are sequenced behind each adapter's implementation — the Base UI demo is the reference; other demos follow when their adapter is implemented.
+- **Customization harness**: a consuming app that proves consumer-side design-system customization from the outside. It consumes a package adapter (Base UI for v0) but wires its own Panda config, demonstrating Level 2 (override tokens, extend the design preset, swap themes) and Level 3 (compose the structural preset with a custom design preset that replaces `@bend-ui/preset`) — all without changing component code. It is a visual proof surface, not a realistic operational demo.
 - **Docs site**: the Next/Fumadocs application that explains installation, foundations, and selected modules.
 - **Package health**: the build, export, metadata, dependency, and CI checks that determine whether a public package is safe to publish.
 
@@ -84,9 +85,13 @@ Do not assume shared React foundation modules are the long-term answer for every
 
 - `apps/storybook`: central Storybook surface.
 - `apps/website`: documentation site. For v0, this should explain the Base UI adapter, the design preset, installation, and basic usage.
-- `apps/vite-base-ui`: Base UI demo app with dental management and ski resort operations.
+- `apps/vite-base-ui`: Base UI demo app with dental management and ski resort operations. This is the reference demo; other adapter demos follow its contract.
 - `apps/vite-base-ui-e2e`: Playwright coverage for the Base UI demo.
-- `apps/vite-ark`, `apps/playground-panda`: playground and proof surfaces.
+- `apps/vite-base-ui-theming`: customization harness. Consumes the Base UI adapter but wires its own Panda config to prove Level 2 and Level 3 design-system customization; renders a curated component gallery. Verified as a visual proof surface plus a renderability smoke test, riding the existing visual-review workflow.
+- `apps/vite-ark-ui`: Ark UI demo (renamed from `vite-ark`). Keep it building, but do not invest until Ark UI adapter work resumes.
+- `apps/playground-panda`: Panda proof surface.
+- `demo-data`: private, unscoped workspace lib holding shared demo scenario fixtures and types (dental management, ski resort). No adapter or product dependencies; consumed by adapter demos and the customization harness.
+- Future `apps/vite-react-aria`: React Aria demo, added when the React Aria adapter is implemented.
 
 ### Tooling and plans
 
@@ -119,9 +124,17 @@ Open question: decide whether generation should also copy/eject recipes, or whet
 
 ### Demo flow
 
-1. Demo data lives beside the demo app.
-2. Demo pages compose package adapter modules and operational patterns.
-3. E2E and visual tests should verify user-visible flows rather than upstream primitive internals.
+1. Shared scenario data and types live in the `demo-data` lib; every adapter demo consumes the same fixtures.
+2. Demo pages compose package adapter modules and operational patterns. Page composition stays per-adapter because upstream composition differs; only the data is shared.
+3. Adapter demos implement the same canonical scenarios so the same screen can be compared across adapters.
+4. E2E and visual tests should verify user-visible flows rather than upstream primitive internals.
+
+### Customization flow
+
+1. The customization harness (`apps/vite-base-ui-theming`) consumes the Base UI adapter but owns its Panda config.
+2. Level 2: it overrides tokens, extends the design preset, or swaps bundled themes without touching component code.
+3. Level 3: it composes the structural preset with a custom design preset that replaces `@bend-ui/preset`, proving the visual language can be replaced wholesale.
+4. It renders a curated component gallery and is verified as a visual proof surface plus a renderability smoke test.
 
 ## Architectural Direction
 
