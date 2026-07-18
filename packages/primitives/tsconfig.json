@@ -10,30 +10,16 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "~/*": [
-        "packages/react/src/*"
-      ],
-      "@bend-ui/react-utils": [
-        "packages/react-utils/src/index.ts"
-      ],
-      "@bend-ui/preset": [
-        "packages/preset/src/index.ts"
-      ],
-      "@bend-ui/preset-base": [
-        "packages/preset-base/src/index.ts"
-      ],
-      "@bend-ui/styled-system/*": [
-        "packages/primitives/styled-system/*"
-      ]
-    }
+      "~/*": ["packages/react/src/*"],
+      "@bend-ui/react-utils": ["packages/react-utils/src/index.ts"],
+      "@bend-ui/preset": ["packages/preset/src/index.ts"],
+      "@bend-ui/preset-base": ["packages/preset-base/src/index.ts"],
+      "@bend-ui/styled-system/*": ["packages/primitives/styled-system/*"]
+    },
+    "ignoreDeprecations": "6.0"
   },
   "files": [],
-  "include": [
-    "**.ts",
-    "**/*.tsx",
-    "**/*.js",
-    "**/*.jsx"
-  ],
+  "include": ["**.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
   "references": [
     {
       "path": "./tsconfig.lib.json"

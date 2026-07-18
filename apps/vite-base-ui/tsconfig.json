@@ -7,44 +7,21 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "types": [
-      "vite/client",
-      "vitest"
-    ],
+    "types": ["vite/client", "vitest"],
     "paths": {
-      "~/*": [
-        "apps/vite-base-ui/src/*"
-      ],
-      "@bend-ui/base-ui": [
-        "packages/base-ui/src/index.ts"
-      ],
-      "@bend-ui/react": [
-        "packages/react/src/index.ts"
-      ],
-      "@bend-ui/primitives": [
-        "packages/primitives/src/index.ts"
-      ],
-      "@bend-ui/react-utils": [
-        "packages/react-utils/src/index.ts"
-      ],
-      "@bend-ui/preset": [
-        "packages/preset/src/index.ts"
-      ],
-      "@bend-ui/preset-base": [
-        "packages/preset-base/src/index.ts"
-      ],
-      "@bend-ui/styled-system/*": [
-        "packages/vite-base-ui/styled-system/*"
-      ]
-    }
+      "~/*": ["apps/vite-base-ui/src/*"],
+      "@bend-ui/base-ui": ["packages/base-ui/src/index.ts"],
+      "@bend-ui/react": ["packages/react/src/index.ts"],
+      "@bend-ui/primitives": ["packages/primitives/src/index.ts"],
+      "@bend-ui/react-utils": ["packages/react-utils/src/index.ts"],
+      "@bend-ui/preset": ["packages/preset/src/index.ts"],
+      "@bend-ui/preset-base": ["packages/preset-base/src/index.ts"],
+      "@bend-ui/styled-system/*": ["packages/vite-base-ui/styled-system/*"]
+    },
+    "ignoreDeprecations": "6.0"
   },
   "files": [],
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.js",
-    "**/*.jsx"
-  ],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
   "references": [
     {
       "path": "./tsconfig.app.json"

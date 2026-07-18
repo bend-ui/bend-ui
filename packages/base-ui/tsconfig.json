@@ -8,27 +8,15 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "paths": {
-      "~/*": [
-        "packages/base-ui/src/*"
-      ],
-      "@bend-ui/preset": [
-        "packages/preset/src/index.ts"
-      ],
-      "@bend-ui/styled-system/*": [
-        "packages/styled-system/dist/*"
-      ],
-      "@bend-ui/storybook": [
-        "packages/storybook/src/index.ts"
-      ]
-    }
+      "~/*": ["packages/base-ui/src/*"],
+      "@bend-ui/preset": ["packages/preset/src/index.ts"],
+      "@bend-ui/styled-system/*": ["packages/styled-system/dist/*"],
+      "@bend-ui/storybook": ["packages/storybook/src/index.ts"]
+    },
+    "ignoreDeprecations": "6.0"
   },
   "files": [],
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.js",
-    "**/*.jsx"
-  ],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
   "references": [
     {
       "path": "./tsconfig.lib.json"

@@ -28,7 +28,8 @@
       "@bend-ui/styled-system/*": ["packages/styled-system/dist/*"],
       "@bend-ui/theme": ["packages/theme/src/index.ts"],
       "@/*": ["apps/playground-panda/*"]
-    }
+    },
+    "ignoreDeprecations": "6.0"
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "next-env.d.ts"],
   "exclude": [

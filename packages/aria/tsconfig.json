@@ -5,18 +5,11 @@
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "types": [
-      "vite/client",
-      "vitest"
-    ]
+    "types": ["vite/client", "vitest"],
+    "ignoreDeprecations": "6.0"
   },
   "files": [],
-  "include": [
-    "**.ts",
-    "**/*.tsx",
-    "**/*.js",
-    "**/*.jsx"
-  ],
+  "include": ["**.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
   "references": [
     {
       "path": "./tsconfig.lib.json"
