@@ -8,6 +8,6 @@
   "dependencies": {
     "@fontsource-variable/inter": "^5.2.8",
     "@bend-ui/base-ui": "workspace:*",
-    "@bend-ui/preset": "workspace:*"
+    "@bend-ui/config": "workspace:*"
   }
 }
