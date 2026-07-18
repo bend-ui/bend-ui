@@ -29,7 +29,7 @@
     "@bend-ui/primitives": "workspace:*",
     "@bend-ui/styled-system": "workspace:*",
     "@floating-ui/react": "^0.27.20",
-    "lucide-react": "^1.24.0"
+    "lucide-react": "^1.25.0"
   },
   "devDependencies": {
     "@bend-ui/storybook": "workspace:*"
