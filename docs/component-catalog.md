@@ -46,8 +46,9 @@ marker below. There is no separate drift detector.
 Coverage is tracked as independent signals rather than a single rung, mapping to the
 `untested` → `tested` → `storybook` → `documented` → `demoed` ladder:
 
-- **Tested** — has a unit/spec test (`*.test.tsx` / `*.spec.tsx`). A component with no
-  test and nothing else is `untested`.
+- **Tested** — has a unit/spec test. New tests use `*.spec.tsx`; existing `*.test.tsx`
+  files remain supported during migration. See [Testing conventions](testing.md). A
+  component with no test and nothing else is `untested`.
 - **Storybook** — has a `*.stories.tsx` in Storybook.
 - **Documented** — has a page on the Docs site (`apps/website`).
 - **Demoed** — appears in an adapter demo app. _Not yet tracked per component; the Base
