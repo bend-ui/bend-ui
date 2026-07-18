@@ -53,6 +53,10 @@
       "path": "packages/cli",
     },
     {
+      "name": "🛠️ @bend-ui/core",
+      "path": "packages/core",
+    },
+    {
       "name": "🛠️ @bend-ui/storybook",
       "path": "packages/storybook",
     },

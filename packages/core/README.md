@@ -1,4 +1,4 @@
-# @bend-ui/internal
+# @bend-ui/core
 
 Workspace-only tooling for authoring package adapters. Not published.
 
@@ -9,7 +9,7 @@ Hosts shared component factories (e.g. `createAppShell`) that adapters wire to t
 ## Usage
 
 ```tsx
-import { createAppShell, createScrollAreaPart } from '@bend-ui/internal';
+import { createAppShell, createScrollAreaPart } from '@bend-ui/core';
 import { ScrollArea } from '../ScrollArea';
 
 export const AppShell = createAppShell({

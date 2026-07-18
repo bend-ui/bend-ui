@@ -11,4 +11,4 @@ export {
   type CompoundSlotProps,
   type CreateButtonOptions,
   type CreateCompoundComponentOptions,
-} from '@bend-ui/internal';
+} from '@bend-ui/core';

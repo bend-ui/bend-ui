@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Field as FieldPrimitive } from '@base-ui/react/field';
-import { withParts, withRecipe } from '@bend-ui/internal';
+import { withParts, withRecipe } from '@bend-ui/core';
 import { formField } from '@bend-ui/styled-system/recipes';
 import { Input } from '../Input';
-import { HTMLBendUIProps } from '@bend-ui/internal';
+import { HTMLBendUIProps } from '@bend-ui/core';
 import { styled } from '@bend-ui/styled-system/jsx';
 
 export type FieldRootProps = FieldPrimitive.Root.Props;

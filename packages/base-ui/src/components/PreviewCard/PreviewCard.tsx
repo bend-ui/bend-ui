@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { PreviewCard as PreviewCardPrimitive } from '@base-ui/react/preview-card';
-import { withRecipe } from '@bend-ui/internal';
+import { withRecipe } from '@bend-ui/core';
 import { hoverCard } from '@bend-ui/styled-system/recipes';
 
 const PreviewCardRoot = PreviewCardPrimitive.Root;

@@ -1,7 +1,7 @@
 import { Popover as ArkPopover } from '@ark-ui/react';
 import { popover } from '@bend-ui/styled-system/recipes';
 import type { PopoverVariantProps } from '@bend-ui/styled-system/recipes';
-import { withRecipe, withParts } from '@bend-ui/internal';
+import { withRecipe, withParts } from '@bend-ui/core';
 import { Button } from '../Button';
 
 const PopoverRoot = ArkPopover.Root;

@@ -1,6 +1,6 @@
 import { alertDialog, overlay } from '@bend-ui/styled-system/recipes';
 import { AlertDialog as AlertDialogPrimitive } from '@base-ui/react/alert-dialog';
-import { withParts, withRecipe } from '@bend-ui/internal';
+import { withParts, withRecipe } from '@bend-ui/core';
 import { Button } from '../Button';
 
 export interface AlertDialogRootProps extends AlertDialogPrimitive.Root.Props {
@@ -26,8 +26,9 @@ export interface AlertDialogPortalProps
 }
 const AlertDialogPortal = AlertDialogPrimitive.Portal;
 
-export interface AlertDialogBackdropProps
-  extends React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Backdrop> {
+export interface AlertDialogBackdropProps extends React.ComponentPropsWithoutRef<
+  typeof AlertDialogPrimitive.Backdrop
+> {
   children?: React.ReactNode;
 }
 const AlertDialogBackdrop = withRecipe<AlertDialogBackdropProps>(

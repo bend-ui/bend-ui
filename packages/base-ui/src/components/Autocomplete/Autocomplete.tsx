@@ -1,9 +1,9 @@
 import { Autocomplete as AutocompletePrimitive } from '@base-ui/react/autocomplete';
 import { ChevronsUpDownIcon } from 'lucide-react';
-import { withParts, withRecipe } from '@bend-ui/internal';
+import { withParts, withRecipe } from '@bend-ui/core';
 import { selectDropdown, select } from '@bend-ui/styled-system/recipes';
 import { styled } from '@bend-ui/styled-system/jsx';
-import { HTMLBendUIProps } from '@bend-ui/internal';
+import { HTMLBendUIProps } from '@bend-ui/core';
 import { Input as StyledInput } from '../Input';
 
 const AutocompleteRoot = withRecipe<AutocompletePrimitive.Root.Props<string>>(
@@ -87,8 +87,7 @@ const AutocompleteSeparator = withParts<AutocompletePrimitive.Separator.Props>(
   'separator',
 );
 
-export type AutocompleteProps<T = string> =
-  AutocompletePrimitive.Root.Props<T>;
+export type AutocompleteProps<T = string> = AutocompletePrimitive.Root.Props<T>;
 
 const Component = <Value extends string = string>(
   props: AutocompleteProps<Value>,

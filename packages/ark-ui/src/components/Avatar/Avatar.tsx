@@ -1,5 +1,5 @@
 import { Avatar as ArkAvatar } from '@ark-ui/react';
-import { withParts, withRecipe } from '@bend-ui/internal';
+import { withParts, withRecipe } from '@bend-ui/core';
 import {
   avatar,
   type AvatarVariantProps,

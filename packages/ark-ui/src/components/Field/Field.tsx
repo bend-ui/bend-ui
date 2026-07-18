@@ -1,7 +1,7 @@
 'use client';
 import { Field as ArkField } from '@ark-ui/react';
 import type { HTMLStyledProps } from '@bend-ui/styled-system/types';
-import { withParts, withRecipe } from '@bend-ui/internal';
+import { withParts, withRecipe } from '@bend-ui/core';
 import type { InputProps } from '../Input';
 import {
   formField,

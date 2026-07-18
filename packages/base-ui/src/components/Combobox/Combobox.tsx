@@ -1,9 +1,9 @@
 import { Combobox as ComboboxPrimitive } from '@base-ui/react/combobox';
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react';
-import { withParts, withRecipe } from '@bend-ui/internal';
+import { withParts, withRecipe } from '@bend-ui/core';
 import { selectDropdown, select } from '@bend-ui/styled-system/recipes';
 import { styled } from '@bend-ui/styled-system/jsx';
-import { HTMLBendUIProps } from '@bend-ui/internal';
+import { HTMLBendUIProps } from '@bend-ui/core';
 import { Input as StyledInput } from '../Input';
 
 const ComboboxRoot = withRecipe<ComboboxPrimitive.Root.Props<string>>(

@@ -42,7 +42,7 @@ node -e "console.log(Object.keys(require('@ark-ui/react')).sort().join('\n'))"
 
 ## Implementation patterns
 
-Styling helpers come from the generated styled-system and from `@bend-ui/internal` — **not**
+Styling helpers come from the generated styled-system and from `@bend-ui/core` — **not**
 from the removed `@bend-ui/react` foundation.
 
 ### Pattern A — `createStyleContext` (preferred for multi-part / slot recipes)
@@ -70,12 +70,12 @@ export const Button = Object.assign(Component, {
 
 ### Pattern B — `withRecipe` / `withParts` (single-recipe root + attribute-only parts)
 
-From `@bend-ui/internal`. Use `withRecipe` for the styled root that owns the recipe, and
+From `@bend-ui/core`. Use `withRecipe` for the styled root that owns the recipe, and
 `withParts` for parts that only need a `data-part` (styled by the slot recipe).
 
 ```tsx
 import { Menu as MenuPrimitive } from '@base-ui/react/menu';
-import { withParts, withRecipe } from '@bend-ui/internal';
+import { withParts, withRecipe } from '@bend-ui/core';
 import { menu } from '@bend-ui/styled-system/recipes';
 
 const MenuPopup = withRecipe<MenuPrimitive.Popup.Props>(MenuPrimitive.Popup, menu, 'root');
@@ -129,7 +129,7 @@ packages/<pkg>/src/
 ```
 
 `packages/base-ui/src/utils/index.ts` re-exports `withRecipe`, `withParts`,
-`createRecipeContext` from `@bend-ui/internal` and the Base UI providers
+`createRecipeContext` from `@bend-ui/core` and the Base UI providers
 (`CSPProvider`, `DirectionProvider`, `useDirection`, `mergeProps`, `mergePropsN`,
 `useRender`) from `@base-ui/react`.
 

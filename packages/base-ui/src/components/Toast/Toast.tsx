@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Toast as ToastPrimitive } from '@base-ui/react/toast';
-import { withParts, withRecipe } from '@bend-ui/internal';
+import { withParts, withRecipe } from '@bend-ui/core';
 import { toast } from '@bend-ui/styled-system/recipes';
 
 const ToastProvider: React.ComponentType<ToastPrimitive.Provider.Props> =

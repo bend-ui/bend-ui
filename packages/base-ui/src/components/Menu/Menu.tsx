@@ -1,5 +1,5 @@
 import { Menu as MenuPrimitive } from '@base-ui/react/menu';
-import { withParts, withRecipe } from '@bend-ui/internal';
+import { withParts, withRecipe } from '@bend-ui/core';
 import { menu } from '@bend-ui/styled-system/recipes';
 import { Button } from '../Button';
 
@@ -42,8 +42,7 @@ const MenuSubmenuTrigger = withParts(
 );
 const MenuSeparator = withParts(MenuPrimitive.Separator, 'separator');
 
-export interface MenuContentProps
-  extends React.ComponentPropsWithoutRef<'div'> {
+export interface MenuContentProps extends React.ComponentPropsWithoutRef<'div'> {
   children?: React.ReactNode;
 }
 

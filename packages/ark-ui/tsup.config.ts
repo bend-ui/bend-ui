@@ -12,7 +12,7 @@ export default defineConfig({
     'react',
     'react-dom',
     '@ark-ui/react',
-    '@bend-ui/internal',
+    '@bend-ui/core',
     '@bend-ui/styled-system',
   ],
   esbuildOptions(options) {

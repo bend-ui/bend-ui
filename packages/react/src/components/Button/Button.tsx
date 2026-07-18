@@ -3,7 +3,7 @@
 import {
   createButton,
   type ButtonProps as InternalButtonProps,
-} from '@bend-ui/internal';
+} from '@bend-ui/core';
 
 export type ButtonProps = InternalButtonProps;
 

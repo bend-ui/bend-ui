@@ -3,14 +3,16 @@ import {
   accordion,
   AccordionVariantProps,
 } from '@bend-ui/styled-system/recipes';
-import { withParts, withRecipe } from '@bend-ui/internal';
+import { withParts, withRecipe } from '@bend-ui/core';
 import { Box } from '@bend-ui/styled-system/jsx';
 import { LucideChevronDown } from 'lucide-react';
 import { Assign } from '@bend-ui/styled-system/types';
-import { HTMLBendUIProps } from '@bend-ui/internal';
+import { HTMLBendUIProps } from '@bend-ui/core';
 
-export interface AccordionRootProps
-  extends Assign<AccordionPrimitive.Root.Props, HTMLBendUIProps<'div'>> {
+export interface AccordionRootProps extends Assign<
+  AccordionPrimitive.Root.Props,
+  HTMLBendUIProps<'div'>
+> {
   children?: React.ReactNode;
   attached?: AccordionVariantProps['attached'];
 }
@@ -21,8 +23,10 @@ const AccordionRoot = withRecipe<AccordionRootProps>(
   'root',
 );
 
-export interface AccordionItemProps
-  extends Assign<AccordionPrimitive.Item.Props, HTMLBendUIProps<'button'>> {
+export interface AccordionItemProps extends Assign<
+  AccordionPrimitive.Item.Props,
+  HTMLBendUIProps<'button'>
+> {
   children?: React.ReactNode;
 }
 
@@ -31,11 +35,10 @@ const AccordionItem = withParts<AccordionItemProps>(
   'item',
 );
 
-export interface AccordionHeaderProps
-  extends Assign<
-    AccordionPrimitive.Header.Props,
-    HTMLBendUIProps<'button'>
-  > {
+export interface AccordionHeaderProps extends Assign<
+  AccordionPrimitive.Header.Props,
+  HTMLBendUIProps<'button'>
+> {
   children?: React.ReactNode;
 }
 
@@ -44,11 +47,10 @@ const AccordionHeader = withParts<AccordionHeaderProps>(
   'header',
 );
 
-export interface AccordionTriggerProps
-  extends Assign<
-    AccordionPrimitive.Trigger.Props,
-    HTMLBendUIProps<'button'>
-  > {
+export interface AccordionTriggerProps extends Assign<
+  AccordionPrimitive.Trigger.Props,
+  HTMLBendUIProps<'button'>
+> {
   children?: React.ReactNode;
 }
 
@@ -69,8 +71,10 @@ const AccordionIndicator = withParts<AccordionItemIndicatorProps>((props) => {
   );
 }, 'item-indicator');
 
-export interface AccordionPanelProps
-  extends Assign<AccordionPrimitive.Panel.Props, HTMLBendUIProps<'div'>> {
+export interface AccordionPanelProps extends Assign<
+  AccordionPrimitive.Panel.Props,
+  HTMLBendUIProps<'div'>
+> {
   children: React.ReactNode;
 }
 
