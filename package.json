@@ -6,10 +6,11 @@
   "scripts": {
     "build": "nx run-many --target=build --all=true",
     "build:affected": "nx affected --target=build",
-    "build:packages": "nx affected --target=build --projects=tag:ui,tag:utils,tag:preset",
-    "build:apps": "nx affected --target=build --projects=tag:app",
+    "build:packages": "nx affected --target=build --exclude='*,!tag:ui,!tag:utils,!tag:preset'",
+    "build:apps": "nx affected --target=build --exclude='*,!tag:app'",
     "lint": "nx run-many --target=lint --all=true",
     "test": "nx run-many --target=test --all=true",
+    "test:packages": "nx affected --target=test --exclude='*,!tag:ui,!tag:utils,!tag:preset'",
     "build-storybook": "nx run-many --target=build-storybook",
     "docgen": "tsx scripts/docgen.ts",
     "cli": "tsx packages/cli/src/index.ts",

@@ -311,10 +311,10 @@ Extend the spacing scale:
 
 ```typescript
 import { defineConfig } from '@pandacss/dev';
-import bendPreset from '@bend-ui/preset';
+import { createBendPreset } from '@bend-ui/preset';
 
 export default defineConfig({
-  presets: [bendPreset],
+  presets: [createBendPreset()],
   theme: {
     extend: {
       tokens: {

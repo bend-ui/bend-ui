@@ -1,5 +1,5 @@
 import { defineConfig } from '@pandacss/dev';
-import { preset } from '@bend-ui/preset';
+import { createBendPreset } from '@bend-ui/preset';
 
 export default defineConfig({
   // Whether to use css reset
@@ -18,7 +18,7 @@ export default defineConfig({
   // Files to exclude
   exclude: [],
 
-  presets: [preset({ library: 'ark-ui' })],
+  presets: [createBendPreset()],
 
   importMap: '@bend-ui/styled-system',
 

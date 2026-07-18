@@ -17,6 +17,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Derive Nx affected SHAs
+        uses: nrwl/nx-set-shas@v4
+
       - name: Install Node.js
         uses: actions/setup-node@v6
         with:
@@ -32,4 +35,4 @@ jobs:
         run: pnpm build:packages
 
       - name: Test affected packages
-        run: pnpm exec nx affected --target=test
+        run: pnpm test:packages

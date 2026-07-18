@@ -1,6 +1,6 @@
 import path from 'path';
 import { defineConfig } from '@pandacss/dev';
-import { preset } from '@bend-ui/preset';
+import { createBendPreset } from '@bend-ui/preset';
 
 export default defineConfig({
   cwd: path.resolve(__dirname),
@@ -14,7 +14,7 @@ export default defineConfig({
   // Files to exclude
   exclude: [],
 
-  presets: [preset()],
+  presets: [createBendPreset()],
 
   staticCss: {
     css: [
