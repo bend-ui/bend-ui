@@ -76,14 +76,14 @@ AppShell/Sidebar operational patterns).
 | Box | primitive-only | implemented | — | — | — |
 | Button | v0 | implemented | ✓ | ✓ | ✓ |
 | Card | v0 | implemented | — | — | — |
-| Checkbox | v0 | implemented | — | ✓ | — |
+| Checkbox | v0 | implemented | ✓ | ✓ | — |
 | CheckboxGroup | v0 | implemented | — | ✓ | — |
 | Collapsible | v0 | implemented | — | ✓ | — |
 | Combobox | v0 | implemented | — | ✓ | — |
 | ContextMenu | v0 | implemented | — | ✓ | — |
 | Dialog | v0 | implemented | — | ✓ | — |
 | Drawer | v0 | implemented | — | ✓ | — |
-| Field | v0 | implemented | — | ✓ | — |
+| Field | v0 | implemented | ✓ | ✓ | — |
 | Fieldset | v0 | implemented | — | ✓ | — |
 | Form | v0 | implemented | — | ✓ | — |
 | Grid | primitive-only | implemented | — | — | — |
@@ -110,7 +110,7 @@ AppShell/Sidebar operational patterns).
 | Stack | primitive-only | implemented | — | — | — |
 | Switch | v0 | implemented | — | ✓ | — |
 | Table | v0 | implemented | — | ✓ | — |
-| Tabs | v0 | implemented | — | ✓ | — |
+| Tabs | v0 | implemented | ✓ | ✓ | — |
 | Text | primitive-only | implemented | — | — | — |
 | Toast | v0 | implemented | — | ✓ | — |
 | Toggle | v0 | implemented | — | ✓ | — |
@@ -118,9 +118,9 @@ AppShell/Sidebar operational patterns).
 | Toolbar | v0 | implemented | — | ✓ | — |
 | Tooltip | v0 | implemented | — | ✓ | — |
 
-**Base UI summary:** 50 components implemented · 2 tested · 42 with Storybook · 2 documented.
-Biggest gaps: unit tests (only Accordion and Button) and Docs-site pages (only Avatar and
-Button). Untested/unstoried items are layout/typography primitives plus Card and IconButton.
+**Base UI summary:** 50 components implemented · 5 tested · 42 with Storybook · 2 documented.
+Biggest gaps: unit tests and Docs-site pages (only Avatar and Button). Untested/unstoried
+items are layout/typography primitives plus Card and IconButton.
 
 ## Ark UI — `@bend-ui/ark-ui` (`packages/ark-ui`)
 
