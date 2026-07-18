@@ -1,4 +1,4 @@
-import { preset } from '@bend-ui/preset';
+import { createBendPreset } from '@bend-ui/preset';
 import { defineConfig } from '@pandacss/dev';
 
 // This panda/config only exists to generate the lightweight `outdir` (styled-system) JS runtime
@@ -6,7 +6,7 @@ import { defineConfig } from '@pandacss/dev';
 // ex: `{ color: "red.300" }` => `text_red_300`
 
 export default defineConfig({
-  presets: ['@pandacss/dev/presets', preset()],
+  presets: ['@pandacss/dev/presets', createBendPreset()],
 
   // Whether to use css reset
   preflight: false,

@@ -43,11 +43,11 @@ Bend UI uses Panda CSS for styling. Create or update your `panda.config.ts`:
 
 ```typescript
 import { defineConfig } from '@pandacss/dev';
-import bendPreset from '@bend-ui/preset';
+import { createBendPreset } from '@bend-ui/preset';
 
 export default defineConfig({
   preflight: true,
-  presets: [bendPreset],
+  presets: [createBendPreset()],
   include: [
     './src/**/*.{js,jsx,ts,tsx}',
     './app/**/*.{js,jsx,ts,tsx}',

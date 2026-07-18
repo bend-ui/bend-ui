@@ -13,6 +13,13 @@
         "cwd": "packages/preset"
       }
     },
+    "test": {
+      "executor": "@nx/vitest:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "{projectRoot}/../../coverage/packages/preset"
+      }
+    },
     "publish": {
       "command": "node tools/scripts/publish.mjs preset {args.ver} {args.tag}",
       "dependsOn": ["build"]

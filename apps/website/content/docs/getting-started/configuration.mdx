@@ -15,14 +15,14 @@ The main configuration happens in your `panda.config.ts` file.
 
 ```typescript
 import { defineConfig } from '@pandacss/dev';
-import bendPreset from '@bend-ui/preset';
+import { createBendPreset } from '@bend-ui/preset';
 
 export default defineConfig({
   // Apply browser reset styles
   preflight: true,
 
   // Use the Bend UI preset
-  presets: [bendPreset],
+  presets: [createBendPreset()],
 
   // Files to scan for styles
   include: [
@@ -45,10 +45,10 @@ You can extend or override the default theme:
 
 ```typescript
 import { defineConfig } from '@pandacss/dev';
-import bendPreset from '@bend-ui/preset';
+import { createBendPreset } from '@bend-ui/preset';
 
 export default defineConfig({
-  presets: [bendPreset],
+  presets: [createBendPreset()],
 
   theme: {
     extend: {
@@ -157,10 +157,10 @@ For production builds, enable optimizations:
 
 ```typescript
 import { defineConfig } from '@pandacss/dev';
-import bendPreset from '@bend-ui/preset';
+import { createBendPreset } from '@bend-ui/preset';
 
 export default defineConfig({
-  presets: [bendPreset],
+  presets: [createBendPreset()],
   minify: true,
   hash: true,
   optimize: true,
