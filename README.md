@@ -8,3 +8,7 @@ Design system tools for React
 
 - `@bend-ui/primitives` - component primitives
 - `@bend-ui/theme` - the default theme for Bend UI
+
+## Development
+
+- [Testing conventions](docs/testing.md)
