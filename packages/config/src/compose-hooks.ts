@@ -9,6 +9,9 @@ type HookFn = (...args: unknown[]) => unknown;
  * synchronously by Panda's pipeline (e.g. `cssgen:done` feeds its return
  * value straight into `css = hook(...) ?? css` with no `await`), so those
  * must stay sync here too instead of being wrapped in an async function.
+ * Mirrors the `syncHooks` list Panda's own hook merger uses internally
+ * (`@pandacss/config`'s `merge-hooks.ts`, pinned via `@pandacss/dev@^1.11.4`)
+ * — re-check this list on a Panda upgrade.
  */
 const SYNC_HOOK_KEYS: Array<keyof PandaHooks> = [
   'context:created',
