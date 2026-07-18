@@ -32,13 +32,17 @@ Use these terms when discussing the repo.
 - **Token system**: named design values such as colors, spacing, typography, shadows, radii, and semantic tones.
 - **Recipe**: a Panda CSS style module for one visual pattern. Recipes may be single-part or slot-based.
 - **Structural preset**: `@bend-ui/preset-base`, the Panda CSS preset for structural recipe shape only. It should define parts, slots, state selectors, and minimal layout structure; it should not define product colors, padding scales, typography choices, or other visual decisions.
-- **Design preset**: `@bend-ui/preset`, the Panda CSS preset for the actual Bend UI visual language. It composes the structural preset and adds tokens, semantic tokens, colors, spacing, typography, themes, global CSS, and library-specific conditions.
+- **Design preset**: `@bend-ui/preset`, the Panda CSS preset for the actual Bend UI visual language. It composes the structural preset and adds tokens, semantic tokens, colors, spacing, typography, themes, global CSS, and the canonical state-attribute conditions.
+- **Theme**: a single swappable brand variant registered under Panda's `themes:` key inside the design preset (e.g. `default`, `proton`, `neutron`, `quark`). Reserve "theme" for this concept only. Do not use "theme preset" to mean the whole visual layer — that is the **Design preset**.
 - **Styled system**: generated Panda CSS output consumed by the React packages. Do not hand-edit generated styled-system output unless a plan explicitly says so.
 - **React foundation**: `@bend-ui/react`, the transitional local React module for styled elements, layout primitives, polymorphic `asChild` support, and shared helpers. This package is a removal target because public package adapters should use Panda's generated helpers and their upstream primitive library's native composition model instead.
 - **Package adapter**: a package that adapts an upstream primitive library into the Bend UI design system. Current support targets are Base UI, Ark UI, and React Aria Components.
 - **Adapter-native component catalog**: the set of Bend-styled components an adapter exposes by following its upstream primitive library's names, composition model, and API shape. It should share Bend UI visual intent without forcing identical component parity across adapters.
 - **Upstream primitive**: a component primitive from an external library such as `@ark-ui/react`, `@base-ui/react`, `react-aria-components`, or `radix-ui`.
 - **Part**: a named slot in a compound module, usually exposed through a `data-part` attribute and styled by a slot recipe.
+- **State-attribute contract**: the canonical, discrete-boolean DOM state attributes (`data-open`, `data-checked`, `data-disabled`, `data-selected`, `data-invalid`, `data-readonly`, `data-highlighted`, …) that recipes style against. Panda conditions match every supported library's native attributes via `:is()` unions (e.g. `open: '&:is([data-open], [data-state="open"])'`), so a single conditions set is implementation-agnostic. Runtime normalization inside an adapter component is a last resort, only for states where a union selector is ambiguous. See `docs/adr/0002`.
+- **`createBendPreset()`**: the preset builder in `@bend-ui/preset` (evolved from the old `preset()` factory). Composes the structural and design presets and merges consumer extensions. It has no per-library option — the state-attribute contract makes one conditions set serve all adapters.
+- **`createBendConfig()`**: the setup builder in `@bend-ui/config`. Sugar over Panda's `defineConfig()` that installs the Bend preset, sets defaults, and composes consumer hooks without replacing them.
 - **Component source registry**: the internal canonical source and metadata for Bend UI component templates that can be synchronized into public package adapters or copied into a user's project by CLI tooling. It is not a public runtime dependency.
 - **Generated component**: a component copied or created in the user's project from the component source registry by CLI tooling.
 - **Ejected component**: a component that started from Bend UI but is now owned and modified in the user's codebase. Ejected components should depend on the user's Panda/styled-system setup and chosen headless library, not on `@bend-ui/react`.
@@ -53,7 +57,8 @@ Use these terms when discussing the repo.
 ### Foundation packages
 
 - `packages/preset-base`: structural preset. It should describe component anatomy and state structure without product styling such as colors, padding, typography, or theme decisions.
-- `packages/preset`: design preset. It composes `preset-base` and adds the Bend UI visual language: tokens, semantic tokens, themes, global CSS, and library-specific conditions.
+- `packages/preset`: design preset. It composes `preset-base` and adds the Bend UI visual language: tokens, semantic tokens, themes, global CSS, and the canonical state-attribute conditions. Exposes `createBendPreset()` (the former `preset()` factory, minus the per-library option).
+- `packages/config`: `@bend-ui/config`. Thin setup package exposing `createBendConfig()`, sugar over Panda's `defineConfig()` that installs the Bend preset, sets defaults, and composes consumer hooks without clobbering them. `defineConfig()` remains usable directly.
 - `packages/styled-system`: checked-in workspace package for generated Panda output used by examples and packages.
 - `packages/theme`: token-oriented package for theme assets.
 - `packages/react`: React foundation. Owns `bend`, shared layout/text modules, `withRecipe`, `withParts`, `createStyleContext`, and polymorphic rendering. Remove this package once active package adapters no longer depend on it.
@@ -63,8 +68,8 @@ Use these terms when discussing the repo.
 ### Package adapters
 
 - `packages/base-ui`: Bend UI adapter over Base UI. This is the v0 focus and currently the most active adapter.
-- `packages/ark`: Bend UI adapter over Ark UI.
-- `packages/aria`: Bend UI adapter over React Aria Components.
+- `packages/ark-ui`: Bend UI adapter over Ark UI (`@bend-ui/ark-ui`).
+- `packages/react-aria`: Bend UI adapter over React Aria Components (`@bend-ui/react-aria`).
 - `packages/ariakit`: early adapter over Ariakit. Keep it for possible future support, but do not treat it as a current support target unless explicitly revived.
 
 Package adapters should hide upstream primitive details where Bend UI has a clear opinion. They may expose compound parts when callers need composition, but callers should not need to relearn every upstream primitive's naming and styling quirks.
@@ -95,7 +100,7 @@ Do not assume shared React foundation modules are the long-term answer for every
 ### Styling flow
 
 1. `packages/preset-base` defines structural recipe anatomy and state shape.
-2. `packages/preset` composes `preset-base` and adds visual design decisions: tokens, semantic tokens, themes, global CSS, and library-specific conditions.
+2. `packages/preset` composes `preset-base` and adds visual design decisions: tokens, semantic tokens, themes, global CSS, and the canonical state-attribute conditions.
 3. Panda CSS generates styled-system artifacts for packages and apps.
 4. `@bend-ui/react` wraps styled-system primitives and exposes shared React foundation modules.
 5. Package adapters compose upstream primitives with Bend UI recipes and parts.
