@@ -35,4 +35,4 @@ jobs:
         run: pnpm build:packages
 
       - name: Test affected packages
-        run: pnpm exec nx affected --target=test
+        run: pnpm test:packages
