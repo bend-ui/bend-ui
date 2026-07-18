@@ -19,7 +19,7 @@
     },
     "build-storybook": {
       "executor": "@nx/storybook:build",
-      "outputs": ["{options.outputDir}"],
+      "outputs": ["{workspaceRoot}/dist/storybook/storybook"],
       "options": {
         "outputDir": "dist/storybook/storybook",
         "configDir": "apps/storybook/.storybook"
