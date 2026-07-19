@@ -7,7 +7,6 @@ export default defineConfig({
     'react-dom',
     '@bend-ui/theme',
     '@bend-ui/styled-system',
-    '@bend-ui/primitives',
     'ariakit',
   ],
   platform: 'browser',
