@@ -1,42 +1,37 @@
 import { Accordion as ArkAccordion } from '@ark-ui/react';
 import { accordion } from '@bend-ui/styled-system/recipes';
 import type { AccordionVariantProps } from '@bend-ui/styled-system/recipes';
-import { withParts, withRecipe } from '@bend-ui/core';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
+
+const { withProvider, withContext } = createStyleContext(accordion);
 
 export interface AccordionRootProps extends ArkAccordion.RootProps {
   children: React.ReactNode;
   attached?: AccordionVariantProps['attached'];
 }
 
-const AccordionRoot = withRecipe<AccordionRootProps>(
-  ArkAccordion.Root,
-  accordion,
-  'root',
-);
+const AccordionRoot = withProvider(ArkAccordion.Root, 'root');
 export interface AccordionItemProps extends ArkAccordion.ItemProps {
   children: React.ReactNode;
 }
 
-const AccordionItem = withParts<AccordionItemProps>(ArkAccordion.Item, 'item');
+const AccordionItem = withContext(ArkAccordion.Item, 'item');
 
 export interface AccordionItemTriggerProps
   extends ArkAccordion.ItemTriggerProps {
   children: React.ReactNode;
 }
 
-const AccordionItemTrigger = withParts<AccordionItemTriggerProps>(
-  ArkAccordion.ItemTrigger,
-  'item-trigger',
-);
+const AccordionItemTrigger = withContext(ArkAccordion.ItemTrigger, 'trigger');
 
 export interface AccordionItemIndicatorProps
   extends ArkAccordion.ItemIndicatorProps {
   children: React.ReactNode;
 }
 
-const AccordionItemIndicator = withParts<AccordionItemIndicatorProps>(
+const AccordionItemIndicator = withContext(
   ArkAccordion.ItemIndicator,
-  'item-indicator',
+  'indicator',
 );
 
 export interface AccordionItemContentProps
@@ -44,10 +39,7 @@ export interface AccordionItemContentProps
   children: React.ReactNode;
 }
 
-const AccordionItemContent = withParts<AccordionItemContentProps>(
-  ArkAccordion.ItemContent,
-  'item-content',
-);
+const AccordionItemContent = withContext(ArkAccordion.ItemContent, 'content');
 
 export const Accordion = Object.assign(AccordionRoot, {
   Root: AccordionRoot,

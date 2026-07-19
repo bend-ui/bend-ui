@@ -5,16 +5,22 @@ import {
 } from '@bend-ui/styled-system/recipes';
 import { Input } from '../..';
 import { ChevronDownIcon } from 'lucide-react';
-import { createRecipeContext } from '@bend-ui/core';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
 
-const { withProvider, withPart } = createRecipeContext(combobox);
+const { withProvider, withContext, withRootProvider } =
+  createStyleContext(combobox);
 
 type ComboboxRootProps = ArkCombobox.RootProps<ArkCombobox.CollectionItem> &
   ComboboxVariantProps;
 
-const ComboboxRoot = withProvider<ComboboxRootProps>(ArkCombobox.Root, 'root');
+const ComboboxRoot = withProvider(
+  ArkCombobox.Root,
+  'root',
+) as ArkCombobox.RootComponent<ComboboxVariantProps>;
 
-const ComboboxRootProvider = ArkCombobox.RootProvider;
+const ComboboxRootProvider = withRootProvider(
+  ArkCombobox.RootProvider,
+) as ArkCombobox.RootProviderComponent<ComboboxVariantProps>;
 
 export interface ComboboxLabelProps extends React.ComponentProps<
   typeof ArkCombobox.Label
@@ -22,7 +28,7 @@ export interface ComboboxLabelProps extends React.ComponentProps<
   children?: React.ReactNode;
 }
 
-const ComboboxLabel = withPart<ComboboxLabelProps>(ArkCombobox.Label, 'label');
+const ComboboxLabel = withContext(ArkCombobox.Label, 'label');
 
 export type ComboboxInputProps = React.ComponentProps<typeof ArkCombobox.Input>;
 
@@ -32,7 +38,7 @@ export interface ComboboxControlProps extends React.ComponentProps<
   children?: React.ReactNode;
 }
 
-export const ComboboxControl = (props: ComboboxControlProps) => {
+const ComboboxControlBase = (props: ComboboxControlProps) => {
   const { children, ...rest } = props;
 
   return (
@@ -43,14 +49,16 @@ export const ComboboxControl = (props: ComboboxControlProps) => {
     </ArkCombobox.Control>
   );
 };
+export const ComboboxControl = withContext(ComboboxControlBase, 'control');
 
-const ComboboxInput = (props: ComboboxInputProps) => {
+const ComboboxInputBase = (props: ComboboxInputProps) => {
   return (
     <ArkCombobox.Input asChild {...props}>
       <Input.Input />
     </ArkCombobox.Input>
   );
 };
+const ComboboxInput = withContext(ComboboxInputBase, 'input');
 
 export interface ComboboxTriggerProps extends React.ComponentProps<
   typeof ArkCombobox.Trigger
@@ -58,7 +66,7 @@ export interface ComboboxTriggerProps extends React.ComponentProps<
   children?: React.ReactNode;
 }
 
-const ComboboxTrigger = (props: ComboboxTriggerProps) => {
+const ComboboxTriggerBase = (props: ComboboxTriggerProps) => {
   return (
     <ArkCombobox.Trigger asChild {...props}>
       <Input.Icon>
@@ -67,6 +75,7 @@ const ComboboxTrigger = (props: ComboboxTriggerProps) => {
     </ArkCombobox.Trigger>
   );
 };
+const ComboboxTrigger = withContext(ComboboxTriggerBase, 'trigger');
 
 export interface ComboboxContentProps extends React.ComponentProps<
   typeof ArkCombobox.Content
@@ -74,10 +83,7 @@ export interface ComboboxContentProps extends React.ComponentProps<
   children?: React.ReactNode;
 }
 
-export const ComboboxContent = withPart<ComboboxContentProps>(
-  ArkCombobox.Content,
-  'content',
-);
+export const ComboboxContent = withContext(ArkCombobox.Content, 'content');
 
 export interface ComboboxPositionerProps extends React.ComponentProps<
   typeof ArkCombobox.Positioner
@@ -85,7 +91,7 @@ export interface ComboboxPositionerProps extends React.ComponentProps<
   children?: React.ReactNode;
 }
 
-export const ComboboxPositioner = withPart<ComboboxPositionerProps>(
+export const ComboboxPositioner = withContext(
   ArkCombobox.Positioner,
   'positioner',
 );
@@ -96,7 +102,7 @@ export interface ComboboxItemProps extends React.ComponentProps<
   children?: React.ReactNode;
 }
 
-const ComboboxItem = withPart<ComboboxItemProps>(ArkCombobox.Item, 'item');
+const ComboboxItem = withContext(ArkCombobox.Item, 'item');
 
 export interface ComboboxItemTextProps extends React.ComponentProps<
   typeof ArkCombobox.ItemText
@@ -104,10 +110,7 @@ export interface ComboboxItemTextProps extends React.ComponentProps<
   children?: React.ReactNode;
 }
 
-const ComboboxItemText = withPart<ComboboxItemTextProps>(
-  ArkCombobox.ItemText,
-  'item-text',
-);
+const ComboboxItemText = withContext(ArkCombobox.ItemText, 'itemText');
 
 export interface ComboboxItemIndicatorProps extends React.ComponentProps<
   typeof ArkCombobox.ItemIndicator
@@ -115,9 +118,9 @@ export interface ComboboxItemIndicatorProps extends React.ComponentProps<
   children?: React.ReactNode;
 }
 
-const ComboboxItemIndicator = withPart<ComboboxItemIndicatorProps>(
+const ComboboxItemIndicator = withContext(
   ArkCombobox.ItemIndicator,
-  'item-indicator',
+  'itemIndicator',
 );
 
 export interface ComboboxClearTriggerProps extends React.ComponentProps<
@@ -126,9 +129,9 @@ export interface ComboboxClearTriggerProps extends React.ComponentProps<
   children?: React.ReactNode;
 }
 
-const ComboboxClearTrigger = withPart<ComboboxClearTriggerProps>(
+const ComboboxClearTrigger = withContext(
   ArkCombobox.ClearTrigger,
-  'clear-trigger',
+  'clearTrigger',
 );
 
 export interface ComboboxProps extends ComboboxRootProps {

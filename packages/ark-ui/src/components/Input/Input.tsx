@@ -1,50 +1,58 @@
-import { cx } from '@bend-ui/styled-system/css';
 import { bend, type HTMLBendUIProps } from '@bend-ui/core';
+import { cx } from '@bend-ui/styled-system/css';
 import { input, type InputVariantProps } from '@bend-ui/styled-system/recipes';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
 import type { Assign } from '@bend-ui/styled-system/types';
-import type { ReactNode } from 'react';
+import { forwardRef, type ReactNode } from 'react';
+
+const { withProvider, withContext } = createStyleContext(input);
 
 export type InputRootProps = Assign<HTMLBendUIProps<'div'>, InputVariantProps>;
 
-const InputRoot = (props: InputRootProps) => {
-  const [variantProps, elementProps] = input.splitVariantProps(props);
+const StyledInputRoot = withProvider(bend.div, 'root', {
+  defaultProps: { 'data-part': 'root' },
+});
+const InputRoot = forwardRef<HTMLDivElement, InputRootProps>((props, ref) => {
+  const { className, ...rest } = props;
   return (
-    <bend.div
-      data-part="root"
-      {...elementProps}
-      className={cx('group', input(variantProps), elementProps.className)}
+    <StyledInputRoot
+      {...rest}
+      className={cx('group', className)}
+      ref={ref}
     />
   );
-};
+});
 
 export type InputWrapperProps = HTMLBendUIProps<'label'>;
-const InputWrapper = (props: InputWrapperProps) => (
-  <bend.label data-part="wrapper" {...props} />
-);
+const InputWrapper = withContext(bend.label, 'wrapper', {
+  defaultProps: { 'data-part': 'wrapper' },
+});
 
 export type InputIconProps = HTMLBendUIProps<'div'>;
-const InputIcon = (props: InputIconProps) => (
-  <bend.div data-part="icon" asChild {...props} />
-);
+const InputIcon = withContext(bend.div, 'icon', {
+  defaultProps: { 'data-part': 'icon', asChild: true },
+});
 
 export type InputInputProps = HTMLBendUIProps<'input'>;
-const InputInput = (props: InputInputProps) => (
-  <bend.input
-    data-part="input"
-    {...props}
-    className={cx('peer', props.className)}
-  />
-);
+const StyledInput = withContext(bend.input, 'input', {
+  defaultProps: { 'data-part': 'input' },
+});
+const InputInput = forwardRef<HTMLInputElement, InputInputProps>((props, ref) => {
+  const { className, ...rest } = props;
+  return (
+    <StyledInput {...rest} className={cx('peer', className)} ref={ref} />
+  );
+});
 
 export type InputElementProps = HTMLBendUIProps<'div'>;
-const InputElement = (props: InputElementProps) => (
-  <bend.div data-part="element" {...props} />
-);
+const InputElement = withContext(bend.div, 'element', {
+  defaultProps: { 'data-part': 'element' },
+});
 
 export type InputAddonProps = HTMLBendUIProps<'div'>;
-const InputAddon = (props: InputAddonProps) => (
-  <bend.div data-part="addon" {...props} />
-);
+const InputAddon = withContext(bend.div, 'addon', {
+  defaultProps: { 'data-part': 'addon' },
+});
 
 export interface InputOwnProps {
   icon?: ReactNode;

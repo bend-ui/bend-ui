@@ -1,15 +1,18 @@
 import { Menu as ArkMenu } from '@ark-ui/react';
 import { Button } from '../Button';
 import { menu } from '@bend-ui/styled-system/recipes';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
+
+const { withRootProvider, withContext } = createStyleContext(menu);
 
 type MenuRootProps = ArkMenu.RootProps;
-const MenuRoot = ArkMenu.Root;
+const MenuRoot = withRootProvider(ArkMenu.Root);
 
-const MenuIndicator = ArkMenu.Indicator;
+const MenuIndicator = withContext(ArkMenu.Indicator, 'indicator');
 
 type MenuTriggerProps = ArkMenu.TriggerProps;
 
-const MenuTrigger = (props: MenuTriggerProps) => {
+const MenuTriggerBase = (props: MenuTriggerProps) => {
   const { children, asChild, ...rest } = props;
   return (
     <ArkMenu.Trigger {...rest} asChild={asChild}>
@@ -21,24 +24,18 @@ const MenuTrigger = (props: MenuTriggerProps) => {
     </ArkMenu.Trigger>
   );
 };
+const MenuTrigger = withContext(MenuTriggerBase, 'trigger');
 MenuTrigger.displayName = 'MenuTrigger';
 
-type MenuPositionerProps = ArkMenu.PositionerProps;
-
-const MenuPositioner = (props: MenuPositionerProps) => {
-  const [variantProps, restProps] = menu.splitVariantProps(props);
-  const classes = menu(variantProps);
-  return (
-    <ArkMenu.Positioner {...restProps} className={classes}>
-      {props.children}
-    </ArkMenu.Positioner>
-  );
-};
+const MenuPositioner = withContext(
+  withContext(ArkMenu.Positioner, 'positioner'),
+  'root',
+);
 MenuPositioner.displayName = 'MenuPositioner';
 
-const MenuContent = ArkMenu.Content;
+const MenuContent = withContext(ArkMenu.Content, 'content');
 
-const MenuItem = ArkMenu.Item;
+const MenuItem = withContext(ArkMenu.Item, 'item');
 
 export interface MenuProps extends MenuRootProps {
   trigger: React.ReactNode;

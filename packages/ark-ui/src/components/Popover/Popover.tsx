@@ -1,30 +1,27 @@
 import { Popover as ArkPopover } from '@ark-ui/react';
 import { popover } from '@bend-ui/styled-system/recipes';
 import type { PopoverVariantProps } from '@bend-ui/styled-system/recipes';
-import { withRecipe, withParts } from '@bend-ui/core';
 import { Button } from '../Button';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
+
+const { withRootProvider, withContext } = createStyleContext(popover);
 
 const PopoverRoot = ArkPopover.Root;
 const PopoverAnchor = ArkPopover.Anchor;
 const PopoverTrigger = ArkPopover.Trigger;
 const PopoverIndicator = ArkPopover.Indicator;
-const PopoverArrow = ArkPopover.Arrow;
-const PopoverArrowTip = ArkPopover.ArrowTip;
-const PopoverCloseTrigger = ArkPopover.CloseTrigger;
-
-const PopoverPositioner = withRecipe<
-  ArkPopover.PositionerProps & PopoverVariantProps
->(ArkPopover.Positioner, popover, 'positioner');
-
-const PopoverContent = withParts<ArkPopover.ContentProps>(
-  ArkPopover.Content,
-  'content',
+const PopoverArrow = withContext(ArkPopover.Arrow, 'arrow');
+const PopoverArrowTip = withContext(ArkPopover.ArrowTip, 'arrowTip');
+const PopoverCloseTrigger = withContext(
+  ArkPopover.CloseTrigger,
+  'closeTrigger',
 );
-const PopoverTitle = withParts<ArkPopover.TitleProps>(
-  ArkPopover.Title,
-  'title',
-);
-const PopoverDescription = withParts<ArkPopover.DescriptionProps>(
+
+const PopoverPositioner = withRootProvider(ArkPopover.Positioner);
+
+const PopoverContent = withContext(ArkPopover.Content, 'content');
+const PopoverTitle = withContext(ArkPopover.Title, 'title');
+const PopoverDescription = withContext(
   ArkPopover.Description,
   'description',
 );

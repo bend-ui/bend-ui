@@ -139,7 +139,7 @@ what is implemented today.
 | Avatar | planned | implemented | ✓ | ✓ | — |
 | Button | planned | implemented | — | — | — |
 | Carousel | planned | implemented | — | ✓ | — |
-| Checkbox | planned | implemented | — | ✓ | — |
+| Checkbox | planned | implemented | ✓ | ✓ | — |
 | ClientOnly | primitive-only | implemented | — | — | — |
 | Clipboard | planned | implemented | — | ✓ | — |
 | Collapsible | planned | implemented | — | ✓ | — |
@@ -158,9 +158,9 @@ what is implemented today.
 | FocusTrap | primitive-only | implemented | — | — | — |
 | Format | primitive-only | implemented | — | — | — |
 | HoverCard | planned | implemented | — | ✓ | — |
-| Input | planned | implemented | — | — | — |
+| Input | planned | implemented | ✓ | — | — |
 | Locale | primitive-only | implemented | — | — | — |
-| Menu | planned | implemented | — | ✓ | — |
+| Menu | planned | implemented | ✓ | ✓ | — |
 | Pagination | planned | implemented | — | ✓ | — |
 | Popover | planned | implemented | — | ✓ | — |
 | Portal | primitive-only | implemented | — | — | — |
@@ -176,7 +176,12 @@ what is implemented today.
 | ToggleGroup | planned | implemented | — | ✓ | — |
 | Tooltip | planned | implemented | — | ✓ | — |
 
-**Ark UI summary:** 42 components implemented · 1 tested · 30 with Storybook · 0 documented.
+**Ark UI summary:** 42 components implemented · 4 tested · 30 with Storybook · 0 documented.
+
+**Style-context audit (2026-07-19):** Every Ark UI component that imports a
+generated recipe now uses its generated `createStyleContext` contract. The
+remaining `withRecipe` uses apply only the regular backdrop recipe, and the
+remaining `withParts` uses are parts that are not generated recipe slots.
 
 ## React Aria — `@bend-ui/react-aria` (`packages/react-aria`)
 

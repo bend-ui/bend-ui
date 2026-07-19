@@ -1,23 +1,29 @@
 import { createToaster, Toaster, Toast as ArkToast } from '@ark-ui/react';
 import { toast, ToastVariantProps } from '@bend-ui/styled-system/recipes';
 import { Button, DismissButton } from '..';
-import { withParts, withRecipe } from '@bend-ui/core';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
+
+const { withProvider, withContext } = createStyleContext(toast);
 
 export type ToastRootProps = ArkToast.RootProps & ToastVariantProps;
 
-const ToastRoot = withRecipe(ArkToast.Root, toast, 'root');
-const ToastTitle = withParts(ArkToast.Title, 'title');
-const ToastDescription = withParts(ArkToast.Description, 'description');
+const ToastRoot = withProvider(ArkToast.Root, 'root');
+const ToastTitle = withContext(ArkToast.Title, 'title');
+const ToastDescription = withContext(ArkToast.Description, 'description');
 
 type ToastCloseTriggerProps = ArkToast.CloseTriggerProps;
 
-const ToastCloseTrigger = (props: ToastCloseTriggerProps) => {
+const ToastCloseTriggerBase = (props: ToastCloseTriggerProps) => {
   return (
     <ArkToast.CloseTrigger {...props} asChild>
       <DismissButton variant="secondary" size="sm" />
     </ArkToast.CloseTrigger>
   );
 };
+const ToastCloseTrigger = withContext(
+  ToastCloseTriggerBase,
+  'closeTrigger',
+);
 
 type ToastActionTriggerProps = ArkToast.ActionTriggerProps;
 

@@ -1,59 +1,42 @@
 import { AngleSlider as ArkAngleSlider } from '@ark-ui/react';
-import { withParts, withRecipe } from '../../utils';
 import { angleSlider } from '@bend-ui/styled-system/recipes';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
+
+const { withProvider, withContext } = createStyleContext(angleSlider);
 
 export interface AngleSliderRootProps extends ArkAngleSlider.RootProps {
   children?: React.ReactNode;
 }
 
-const Root = withRecipe<AngleSliderRootProps>(
-  ArkAngleSlider.Root,
-  angleSlider,
-  'root',
-);
+const Root = withProvider(ArkAngleSlider.Root, 'root');
 
 export type AngleSliderLabelProps = ArkAngleSlider.LabelProps;
 
-const Label = withParts<AngleSliderLabelProps>(ArkAngleSlider.Label, 'label');
+const Label = withContext(ArkAngleSlider.Label, 'label');
 
 export type AngleSliderThumbProps = ArkAngleSlider.ThumbProps;
 
-const Thumb = withParts<AngleSliderThumbProps>(ArkAngleSlider.Thumb, 'thumb');
+const Thumb = withContext(ArkAngleSlider.Thumb, 'thumb');
 
 export type AngleSliderMarkerGroupProps = ArkAngleSlider.MarkerGroupProps;
 
-const MarkerGroup = withParts<AngleSliderMarkerGroupProps>(
-  ArkAngleSlider.MarkerGroup,
-  'marker-group',
-);
+const MarkerGroup = withContext(ArkAngleSlider.MarkerGroup, 'markerGroup');
 
 export type AngleSliderMarkerProps = ArkAngleSlider.MarkerProps;
 
-const Marker = withParts<AngleSliderMarkerProps>(
-  ArkAngleSlider.Marker,
-  'marker',
-);
+const Marker = withContext(ArkAngleSlider.Marker, 'marker');
 
 export type AngleSliderValueTextProps = ArkAngleSlider.ValueTextProps;
 
-const ValueText = withParts<AngleSliderValueTextProps>(
-  ArkAngleSlider.ValueText,
-  'value-text',
-);
+const ValueText = ArkAngleSlider.ValueText;
 
 export type AngleSliderHiddenInputProps = ArkAngleSlider.HiddenInputProps;
 
-const HiddenInput = withParts<AngleSliderHiddenInputProps>(
-  ArkAngleSlider.HiddenInput,
-  'hidden-input',
-);
+const HiddenInput = ArkAngleSlider.HiddenInput;
 
 export type AngleSliderControlProps = ArkAngleSlider.ControlProps;
 
-const Control = withParts<AngleSliderControlProps>(
-  ArkAngleSlider.Control,
-  'control',
-);
+const Control = withContext(ArkAngleSlider.Control, 'control');
 
 const Component = () => {
   return (

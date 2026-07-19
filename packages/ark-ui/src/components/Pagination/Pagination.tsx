@@ -1,27 +1,28 @@
 import { Pagination as ArkPagination } from '@ark-ui/react';
-import { withParts, withRecipe } from '@bend-ui/core';
 import { pagination } from '@bend-ui/styled-system/recipes';
 import { Assign, HTMLStyledProps } from '@bend-ui/styled-system/types';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
+
+const { withProvider, withContext } = createStyleContext(pagination);
 
 export type PaginationRootProps = Assign<
   HTMLStyledProps<'div'>,
   ArkPagination.RootProps
 >;
 
-const PaginationRoot = withRecipe<PaginationRootProps>(
+const PaginationRoot = withProvider(
   ArkPagination.Root,
-  pagination,
   'root',
-);
+) as React.ComponentType<PaginationRootProps>;
 
 export type PaginationPrevTriggerProps = Assign<
   HTMLStyledProps<'button'>,
   ArkPagination.PrevTriggerProps
 >;
 
-const PaginationPrevTrigger = withParts<PaginationPrevTriggerProps>(
+const PaginationPrevTrigger = withContext(
   ArkPagination.PrevTrigger,
-  'prev-trigger',
+  'prevTrigger',
 );
 
 const PaginationContext = ArkPagination.Context;
@@ -31,9 +32,9 @@ export type PaginationNextTriggerProps = Assign<
   ArkPagination.NextTriggerProps
 >;
 
-const PaginationNextTrigger = withParts<PaginationNextTriggerProps>(
+const PaginationNextTrigger = withContext(
   ArkPagination.NextTrigger,
-  'next-trigger',
+  'nextTrigger',
 );
 
 export type PaginationItemProps = Assign<
@@ -41,20 +42,14 @@ export type PaginationItemProps = Assign<
   ArkPagination.ItemProps
 >;
 
-const PaginationItem = withParts<PaginationItemProps>(
-  ArkPagination.Item,
-  'item',
-);
+const PaginationItem = withContext(ArkPagination.Item, 'item');
 
 export type PaginationEllipsisProps = Assign<
   HTMLStyledProps<'button'>,
   ArkPagination.EllipsisProps
 >;
 
-const PaginationEllipsis = withParts<PaginationEllipsisProps>(
-  ArkPagination.Ellipsis,
-  'ellipsis',
-);
+const PaginationEllipsis = withContext(ArkPagination.Ellipsis, 'ellipsis');
 
 export type PaginationProps = PaginationRootProps;
 

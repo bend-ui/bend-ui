@@ -1,23 +1,18 @@
 import { Avatar as ArkAvatar } from '@ark-ui/react';
-import { withParts, withRecipe } from '@bend-ui/core';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
 import {
   avatar,
   type AvatarVariantProps,
 } from '@bend-ui/styled-system/recipes';
 
+const { withProvider, withContext } = createStyleContext(avatar);
+
 export type AvatarRootProps = ArkAvatar.RootProps & AvatarVariantProps;
 
-export const AvatarRoot = withRecipe<AvatarRootProps>(
-  ArkAvatar.Root,
-  avatar,
-  'root',
-);
+export const AvatarRoot = withProvider(ArkAvatar.Root, 'root');
 
-const AvatarFallback = withParts<ArkAvatar.FallbackProps>(
-  ArkAvatar.Fallback,
-  'fallback',
-);
-const AvatarImage = withParts<ArkAvatar.ImageProps>(ArkAvatar.Image, 'image');
+const AvatarFallback = withContext(ArkAvatar.Fallback, 'fallback');
+const AvatarImage = withContext(ArkAvatar.Image, 'image');
 
 export interface AvatarProps extends AvatarRootProps {
   fallback?: string;
