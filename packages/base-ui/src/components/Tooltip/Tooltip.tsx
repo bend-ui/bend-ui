@@ -1,22 +1,16 @@
 import React from 'react';
 import { Tooltip as TooltipPrimitive } from '@base-ui/react/tooltip';
-import { withParts, withRecipe } from '@bend-ui/core';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
 import { tooltip } from '@bend-ui/styled-system/recipes';
 
 const TooltipProvider = TooltipPrimitive.Provider;
-const TooltipRoot = TooltipPrimitive.Root;
-const TooltipTrigger = TooltipPrimitive.Trigger;
+const { withRootProvider, withContext } = createStyleContext(tooltip);
+const TooltipRoot = withRootProvider(TooltipPrimitive.Root);
+const TooltipTrigger = withContext(TooltipPrimitive.Trigger, 'trigger');
 const TooltipPortal = TooltipPrimitive.Portal;
 const TooltipPositioner = TooltipPrimitive.Positioner;
-const TooltipPopup = withRecipe<TooltipPrimitive.Popup.Props>(
-  TooltipPrimitive.Popup,
-  tooltip,
-  'popup',
-);
-const TooltipArrow = withParts<TooltipPrimitive.Arrow.Props>(
-  TooltipPrimitive.Arrow,
-  'arrow',
-);
+const TooltipPopup = withContext(TooltipPrimitive.Popup, 'content');
+const TooltipArrow = withContext(TooltipPrimitive.Arrow, 'arrow');
 
 const Component = () => {
   return (

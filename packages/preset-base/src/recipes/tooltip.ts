@@ -1,16 +1,9 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  arrow: { selector: '& [data-part="arrow"]' },
-  arrowTip: { selector: '& [data-part="arrow-tip"]' },
-  trigger: { selector: '& [data-part="trigger"]' },
-  content: { selector: '& [data-part="content"]' },
-});
-
-export const tooltipRecipe = defineRecipe({
+export const tooltipRecipe = defineSlotRecipe({
+  slots: ['root', 'arrow', 'arrowTip', 'trigger', 'content'],
   className: 'Tooltip',
-  base: parts({
+  base: {
     content: {},
-  }),
+  },
 });

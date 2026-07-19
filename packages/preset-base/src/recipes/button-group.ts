@@ -1,17 +1,13 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  button: { selector: '& button' },
-});
-
-export const buttonGroup = defineRecipe({
+export const buttonGroup = defineSlotRecipe({
+  slots: ['root', 'button'],
   className: 'ButtonGroup',
-  base: parts({
+  base: {
     root: {
       display: 'flex',
       flexDirection: 'row',
       gap: 'md',
     },
-  }),
+  },
 });

@@ -1,16 +1,9 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  content: { selector: '& [data-part="content"]' },
-  title: { selector: '& [data-part="title"]' },
-  description: { selector: '& [data-part="description"]' },
-  closeTrigger: { selector: '& [data-part="close-trigger"]' },
-});
-
-export const commandRecipe = defineRecipe({
+export const commandRecipe = defineSlotRecipe({
+  slots: ['root', 'content', 'title', 'description', 'closeTrigger'],
   className: 'Command',
-  base: parts({
+  base: {
     root: {},
     content: {
       layerStyle: 'surface.overlay',
@@ -33,24 +26,24 @@ export const commandRecipe = defineRecipe({
       top: 'sm',
       right: 'sm',
     },
-  }),
+  },
   variants: {
     size: {
-      sm: parts({
+      sm: {
         content: { minWidth: 'sm', padding: 2 },
         title: { textStyle: 'title' },
         description: { textStyle: 'body' },
-      }),
-      md: parts({
+      },
+      md: {
         content: { minWidth: 'md', padding: 4 },
         title: { textStyle: 'title' },
         description: { textStyle: 'subtitle' },
-      }),
-      lg: parts({
+      },
+      lg: {
         content: { minWidth: 'lg', padding: 6 },
         title: { textStyle: 'title' },
         description: { textStyle: 'subtitle' },
-      }),
+      },
     },
   },
   defaultVariants: {

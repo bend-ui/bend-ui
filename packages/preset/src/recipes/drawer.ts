@@ -1,18 +1,17 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  content: { selector: '& [data-part="content"]' },
-  header: { selector: '& [data-part="header"]' },
-  closeTrigger: { selector: '& [data-part="close-trigger"]' },
-  footer: { selector: '& [data-part="footer"]' },
-  title: { selector: '& [data-part="title"]' },
-  description: { selector: '& [data-part="description"]' },
-});
-
-export const drawerRecipe = defineRecipe({
+export const drawerRecipe = defineSlotRecipe({
+  slots: [
+    'root',
+    'content',
+    'header',
+    'closeTrigger',
+    'footer',
+    'title',
+    'description',
+  ],
   className: 'Drawer',
-  base: parts({
+  base: {
     content: {
       padding: 'lg',
       layerStyle: 'surface.overlay',
@@ -36,10 +35,10 @@ export const drawerRecipe = defineRecipe({
     description: {
       textStyle: 'body',
     },
-  }),
+  },
   variants: {
     placement: {
-      left: parts({
+      left: {
         content: {
           roundedRight: 'lg',
           roundedLeft: '0',
@@ -53,8 +52,8 @@ export const drawerRecipe = defineRecipe({
             animation: 'drawer-out-left',
           },
         },
-      }),
-      right: parts({
+      },
+      right: {
         content: {
           roundedLeft: 'lg',
           roundedRight: '0',
@@ -68,8 +67,8 @@ export const drawerRecipe = defineRecipe({
             animation: 'drawer-out-right',
           },
         },
-      }),
-      top: parts({
+      },
+      top: {
         content: {
           width: 'screen',
           height: '90vw',
@@ -81,8 +80,8 @@ export const drawerRecipe = defineRecipe({
             animation: 'drawer-out-top',
           },
         },
-      }),
-      bottom: parts({
+      },
+      bottom: {
         content: {
           width: 'screen',
           height: '90vw',
@@ -94,7 +93,7 @@ export const drawerRecipe = defineRecipe({
             animation: 'drawer-out-bottom',
           },
         },
-      }),
+      },
     },
   },
   defaultVariants: {

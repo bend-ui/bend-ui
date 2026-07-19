@@ -29,7 +29,7 @@ const Component = (props: BadgeProps) => {
   const [styleProps, elementProps] = splitCssProps(remainingProps);
   return (
     <span
-      className={cx(badge(variantProps), css(styleProps), className)}
+      className={cx(badge(variantProps).root, css(styleProps), className)}
       {...elementProps}
     />
   );

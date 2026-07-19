@@ -1,35 +1,36 @@
 import { Autocomplete as AutocompletePrimitive } from '@base-ui/react/autocomplete';
 import { ChevronsUpDownIcon } from 'lucide-react';
-import { withParts, withRecipe } from '@bend-ui/core';
+import { withParts } from '@bend-ui/core';
 import { selectDropdown, select } from '@bend-ui/styled-system/recipes';
-import { styled } from '@bend-ui/styled-system/jsx';
-import { HTMLBendUIProps } from '@bend-ui/core';
+import { createStyleContext, styled } from '@bend-ui/styled-system/jsx';
 import { Input as StyledInput } from '../Input';
 
-const AutocompleteRoot = withRecipe<AutocompletePrimitive.Root.Props<string>>(
+const {
+  withRootProvider: withSelectRootProvider,
+  withContext: withSelectContext,
+} = createStyleContext(select);
+const { withProvider: withDropdownProvider, withContext: withDropdownContext } =
+  createStyleContext(selectDropdown);
+
+const AutocompleteRoot = withSelectRootProvider(
   AutocompletePrimitive.Root,
-  select,
-  'root',
 ) as unknown as typeof AutocompletePrimitive.Root;
 
-const AutocompleteControl = withParts<HTMLBendUIProps<'div'>>(
-  styled('div'),
-  'control',
-);
+const AutocompleteControl = withSelectContext(styled('div'), 'control');
 
 const AutocompleteInput = withParts<AutocompletePrimitive.Input.Props>(
   AutocompletePrimitive.Input,
   'input',
 );
 
-const AutocompleteTrigger = withParts<AutocompletePrimitive.Trigger.Props>(
+const AutocompleteTrigger = withSelectContext(
   AutocompletePrimitive.Trigger,
   'trigger',
 );
 
-const AutocompleteIcon = withParts<AutocompletePrimitive.Icon.Props>(
+const AutocompleteIcon = withSelectContext(
   AutocompletePrimitive.Icon,
-  'icon',
+  'indicator',
 );
 
 const AutocompleteBackdrop = withParts<AutocompletePrimitive.Backdrop.Props>(
@@ -39,19 +40,19 @@ const AutocompleteBackdrop = withParts<AutocompletePrimitive.Backdrop.Props>(
 
 const AutocompletePortal = AutocompletePrimitive.Portal;
 
-const AutocompletePositioner =
-  withRecipe<AutocompletePrimitive.Positioner.Props>(
-    AutocompletePrimitive.Positioner,
-    selectDropdown,
-    'root',
-  );
+const AutocompletePositioner = withDropdownProvider(
+  AutocompletePrimitive.Positioner,
+  'positioner',
+);
 
-const AutocompletePopup = withParts<AutocompletePrimitive.Popup.Props>(
+const AutocompletePopup = withDropdownContext(
   AutocompletePrimitive.Popup,
   'content',
   {
-    style: {
-      width: 'var(--anchor-width)',
+    defaultProps: {
+      style: {
+        width: 'var(--anchor-width)',
+      },
     },
   },
 );
@@ -66,21 +67,20 @@ const AutocompleteList = withParts<AutocompletePrimitive.List.Props>(
   'list',
 );
 
-const AutocompleteItem = withParts<AutocompletePrimitive.Item.Props>(
+const AutocompleteItem = withDropdownContext(
   AutocompletePrimitive.Item,
   'item',
 );
 
-const AutocompleteGroup = withParts<AutocompletePrimitive.Group.Props>(
+const AutocompleteGroup = withDropdownContext(
   AutocompletePrimitive.Group,
-  'group',
+  'itemGroup',
 );
 
-const AutocompleteGroupLabel =
-  withParts<AutocompletePrimitive.GroupLabel.Props>(
-    AutocompletePrimitive.GroupLabel,
-    'groupLabel',
-  );
+const AutocompleteGroupLabel = withDropdownContext(
+  AutocompletePrimitive.GroupLabel,
+  'itemGroupLabel',
+);
 
 const AutocompleteSeparator = withParts<AutocompletePrimitive.Separator.Props>(
   AutocompletePrimitive.Separator,

@@ -1,23 +1,24 @@
 import { Avatar as AvatarPrimitive } from '@base-ui/react/avatar';
 import { avatar, AvatarVariantProps } from '@bend-ui/styled-system/recipes';
-import { withParts, withRecipe } from '@bend-ui/core';
-import * as React from 'react';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import type { ComponentType } from 'react';
 import type { ReactNode } from 'react';
 
 export type AvatarRootProps = AvatarPrimitive.Root.Props & AvatarVariantProps;
 
-const AvatarRoot = withRecipe<AvatarRootProps>(
-  AvatarPrimitive.Root,
-  avatar,
-  'root',
-) as unknown as typeof AvatarPrimitive.Root;
+const { withProvider, withContext } = createStyleContext(avatar);
 
-const AvatarImage = withParts<AvatarPrimitive.Image.Props>(
+const AvatarRoot = withProvider(
+  AvatarPrimitive.Root,
+  'root',
+) as unknown as ComponentType<AvatarRootProps>;
+
+const AvatarImage = withContext(
   AvatarPrimitive.Image,
   'image',
 ) as unknown as typeof AvatarPrimitive.Image;
 
-const AvatarFallback = withParts<AvatarPrimitive.Fallback.Props>(
+const AvatarFallback = withContext(
   AvatarPrimitive.Fallback,
   'fallback',
 ) as unknown as typeof AvatarPrimitive.Fallback;

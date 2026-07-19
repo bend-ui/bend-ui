@@ -1,7 +1,7 @@
 'use client';
 
 import { css, cx } from '@bend-ui/styled-system/css';
-import * as React from 'react';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
 import type { ComponentType, ReactNode } from 'react';
 import { appShell } from '@bend-ui/styled-system/recipes';
 
@@ -22,9 +22,14 @@ const nativeScrollAreaClassName = css({
 /** Default scroll region using native overflow — for packages without a ScrollArea primitive. */
 export const createNativeScrollArea = () => {
   const NativeScrollArea = (props: AppShellScrollAreaProps) => {
-    const { children } = props;
+    const { children, className } = props as AppShellScrollAreaProps & {
+      className?: string;
+    };
     return (
-      <div data-part="scroll-area" className={nativeScrollAreaClassName}>
+      <div
+        data-part="scroll-area"
+        className={cx(nativeScrollAreaClassName, className)}
+      >
         {children}
       </div>
     );
@@ -53,10 +58,13 @@ export const createScrollAreaPart = <P extends AppShellScrollAreaProps>(
       className?: string;
     };
     return (
-      <div data-part="scroll-area" className={scrollAreaHostClassName}>
+      <div
+        data-part="scroll-area"
+        className={cx(scrollAreaHostClassName, className)}
+      >
         <ScrollAreaComponent
           {...(rest as P)}
-          className={cx(scrollAreaFillClassName, className)}
+          className={scrollAreaFillClassName}
         >
           {children}
         </ScrollAreaComponent>
@@ -96,65 +104,48 @@ export interface AppShellFooterProps {
   children?: ReactNode;
 }
 
+const { withProvider, withContext } = createStyleContext(appShell);
+
 export const createAppShell = (options: CreateAppShellOptions) => {
   const { ScrollArea } = options;
 
   /** Full-page layout shell. Positions child regions only — does not render navigation, headers, or sidebar UI. */
-  const Root = (props: AppShellProps) => {
-    const { children } = props;
-    const classes = appShell();
-    return <div className={classes}>{children}</div>;
-  };
+  const Root = withProvider('div', 'root');
 
   Root.displayName = 'AppShell';
 
   /** Top-of-page placement region for app-wide notifications. Provide your own banner content (alerts, announcements, etc.). */
-  const Banner = (props: AppShellBannerProps) => {
-    const { children } = props;
-    return <div data-part="banner">{children}</div>;
-  };
+  const Banner = withContext('div', 'banner');
 
   Banner.displayName = 'AppShell.Banner';
 
   /** Top placement region. Provide your own header content (title bar, toolbar, etc.). */
-  const Header = (props: AppShellHeaderProps) => {
-    const { children } = props;
-    return <header data-part="header">{children}</header>;
-  };
+  const Header = withContext('header', 'header');
 
   Header.displayName = 'AppShell.Header';
 
   /** Left placement region. Renders an `<aside>` — provide your own sidebar content (navigation, filters, etc.), not a pre-built sidebar component. */
-  const Sidebar = (props: AppShellSidebarProps) => {
-    const { children } = props;
-    return <aside data-part="sidebar">{children}</aside>;
-  };
+  const Sidebar = withContext('aside', 'sidebar');
 
   Sidebar.displayName = 'AppShell.Sidebar';
 
   /** Horizontal body row that grows to fill remaining vertical space. Wraps `Sidebar` and `Main` side by side. */
-  const Body = (props: AppShellBodyProps) => {
-    const { children } = props;
-    return <div data-part="body">{children}</div>;
-  };
+  const Body = withContext('div', 'body');
 
   Body.displayName = 'AppShell.Body';
 
   /** Primary content column. Renders `<main>` — use once per page and do not nest another `<main>` inside. May contain nested shell regions (`Header`, `ScrollArea`, `Footer`). */
-  const Main = (props: AppShellMainProps) => {
-    const { children } = props;
-    return <main data-part="main">{children}</main>;
-  };
+  const Main = withContext('main', 'main');
 
   Main.displayName = 'AppShell.Main';
 
   /** Bottom placement region. Provide your own footer content. */
-  const Footer = (props: AppShellFooterProps) => {
-    const { children } = props;
-    return <footer data-part="footer">{children}</footer>;
-  };
+  const Footer = withContext('footer', 'footer');
 
   Footer.displayName = 'AppShell.Footer';
+
+  const AppShellScrollArea = withContext(ScrollArea, 'scrollArea');
+  AppShellScrollArea.displayName = 'AppShell.ScrollArea';
 
   return Object.assign(Root, {
     Root,
@@ -163,7 +154,7 @@ export const createAppShell = (options: CreateAppShellOptions) => {
     Sidebar,
     Body,
     Main,
-    ScrollArea,
+    ScrollArea: AppShellScrollArea,
     Footer,
   });
 };

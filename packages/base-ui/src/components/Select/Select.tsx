@@ -1,35 +1,27 @@
 import { Select as SelectPrimitive } from '@base-ui/react/select';
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react';
-import { withParts, withRecipe } from '@bend-ui/core';
+import { withParts } from '@bend-ui/core';
 import { selectDropdown, select } from '@bend-ui/styled-system/recipes';
-import { styled } from '@bend-ui/styled-system/jsx';
-import { HTMLBendUIProps } from '@bend-ui/core';
+import { createStyleContext, styled } from '@bend-ui/styled-system/jsx';
 
-const SelectRoot = withRecipe<SelectPrimitive.Root.Props<string>>(
+const {
+  withRootProvider: withSelectRootProvider,
+  withContext: withSelectContext,
+} = createStyleContext(select);
+const { withProvider: withDropdownProvider, withContext: withDropdownContext } =
+  createStyleContext(selectDropdown);
+
+const SelectRoot = withSelectRootProvider(
   SelectPrimitive.Root,
-  select,
-  'root',
 ) as unknown as typeof SelectPrimitive.Root;
 
-const SelectControl = withParts<HTMLBendUIProps<'div'>>(
-  styled('div'),
-  'control',
-);
+const SelectControl = withSelectContext(styled('div'), 'control');
 
-const SelectTrigger = withParts<SelectPrimitive.Trigger.Props>(
-  SelectPrimitive.Trigger,
-  'trigger',
-);
+const SelectTrigger = withSelectContext(SelectPrimitive.Trigger, 'trigger');
 
-const SelectValue = withParts<SelectPrimitive.Value.Props>(
-  SelectPrimitive.Value,
-  'valueText',
-);
+const SelectValue = withSelectContext(SelectPrimitive.Value, 'valueText');
 
-const SelectIcon = withParts<SelectPrimitive.Icon.Props>(
-  SelectPrimitive.Icon,
-  'icon',
-);
+const SelectIcon = withSelectContext(SelectPrimitive.Icon, 'indicator');
 
 const SelectBackdrop = withParts<SelectPrimitive.Backdrop.Props>(
   SelectPrimitive.Backdrop,
@@ -38,21 +30,18 @@ const SelectBackdrop = withParts<SelectPrimitive.Backdrop.Props>(
 
 const SelectPortal = SelectPrimitive.Portal;
 
-const SelectPositioner = withRecipe<SelectPrimitive.Positioner.Props>(
+const SelectPositioner = withDropdownProvider(
   SelectPrimitive.Positioner,
-  selectDropdown,
-  'root',
+  'positioner',
 );
 
-const SelectPopup = withParts<SelectPrimitive.Popup.Props>(
-  SelectPrimitive.Popup,
-  'content',
-  {
+const SelectPopup = withDropdownContext(SelectPrimitive.Popup, 'content', {
+  defaultProps: {
     style: {
       width: 'var(--anchor-width)',
     },
   },
-);
+});
 
 const SelectArrow = withParts<SelectPrimitive.Arrow.Props>(
   SelectPrimitive.Arrow,
@@ -64,29 +53,23 @@ const SelectList = withParts<SelectPrimitive.List.Props>(
   'list',
 );
 
-const SelectItem = withParts<SelectPrimitive.Item.Props>(
-  SelectPrimitive.Item,
-  'item',
-);
+const SelectItem = withDropdownContext(SelectPrimitive.Item, 'item');
 
-const SelectItemText = withParts<SelectPrimitive.ItemText.Props>(
+const SelectItemText = withDropdownContext(
   SelectPrimitive.ItemText,
   'itemText',
 );
 
-const SelectItemIndicator = withParts<SelectPrimitive.ItemIndicator.Props>(
+const SelectItemIndicator = withDropdownContext(
   SelectPrimitive.ItemIndicator,
   'itemIndicator',
 );
 
-const SelectGroup = withParts<SelectPrimitive.Group.Props>(
-  SelectPrimitive.Group,
-  'group',
-);
+const SelectGroup = withDropdownContext(SelectPrimitive.Group, 'itemGroup');
 
-const SelectGroupLabel = withParts<SelectPrimitive.GroupLabel.Props>(
+const SelectGroupLabel = withDropdownContext(
   SelectPrimitive.GroupLabel,
-  'groupLabel',
+  'itemGroupLabel',
 );
 
 const SelectSeparator = withParts<SelectPrimitive.Separator.Props>(

@@ -1,13 +1,12 @@
-import { Accordion as AccordionPrimitive } from '@base-ui/react';
+import { Accordion as AccordionPrimitive } from '@base-ui/react/accordion';
 import {
   accordion,
   AccordionVariantProps,
 } from '@bend-ui/styled-system/recipes';
-import { withParts, withRecipe } from '@bend-ui/core';
-import { Box } from '@bend-ui/styled-system/jsx';
+import { Box, createStyleContext } from '@bend-ui/styled-system/jsx';
 import { LucideChevronDown } from 'lucide-react';
 import { Assign } from '@bend-ui/styled-system/types';
-import { HTMLBendUIProps } from '@bend-ui/core';
+import { HTMLBendUIProps, withParts } from '@bend-ui/core';
 
 export interface AccordionRootProps extends Assign<
   AccordionPrimitive.Root.Props,
@@ -17,11 +16,11 @@ export interface AccordionRootProps extends Assign<
   attached?: AccordionVariantProps['attached'];
 }
 
-const AccordionRoot = withRecipe<AccordionRootProps>(
-  AccordionPrimitive.Root,
-  accordion,
-  'root',
-);
+const { withProvider, withContext } = createStyleContext(accordion);
+
+const AccordionRoot = withProvider(AccordionPrimitive.Root, 'root', {
+  defaultProps: { 'data-part': 'root' },
+}) as unknown as React.ComponentType<AccordionRootProps>;
 
 export interface AccordionItemProps extends Assign<
   AccordionPrimitive.Item.Props,
@@ -30,10 +29,9 @@ export interface AccordionItemProps extends Assign<
   children?: React.ReactNode;
 }
 
-const AccordionItem = withParts<AccordionItemProps>(
-  AccordionPrimitive.Item,
-  'item',
-);
+const AccordionItem = withContext(AccordionPrimitive.Item, 'item', {
+  defaultProps: { 'data-part': 'item' },
+});
 
 export interface AccordionHeaderProps extends Assign<
   AccordionPrimitive.Header.Props,
@@ -54,22 +52,25 @@ export interface AccordionTriggerProps extends Assign<
   children?: React.ReactNode;
 }
 
-const AccordionTrigger = withParts<AccordionTriggerProps>(
-  AccordionPrimitive.Trigger,
-  'item-trigger',
-);
+const AccordionTrigger = withContext(AccordionPrimitive.Trigger, 'trigger', {
+  defaultProps: { 'data-part': 'item-trigger' },
+});
 
 export interface AccordionItemIndicatorProps extends HTMLBendUIProps<'div'> {
   children?: React.ReactNode;
 }
 
-const AccordionIndicator = withParts<AccordionItemIndicatorProps>((props) => {
-  return (
-    <Box {...props}>
-      <LucideChevronDown />
-    </Box>
-  );
-}, 'item-indicator');
+const AccordionIndicator = withContext(
+  (props: AccordionItemIndicatorProps) => {
+    return (
+      <Box {...props}>
+        <LucideChevronDown />
+      </Box>
+    );
+  },
+  'indicator',
+  { defaultProps: { 'data-part': 'item-indicator' } },
+);
 
 export interface AccordionPanelProps extends Assign<
   AccordionPrimitive.Panel.Props,
@@ -78,10 +79,9 @@ export interface AccordionPanelProps extends Assign<
   children: React.ReactNode;
 }
 
-const AccordionPanel = withParts<AccordionPanelProps>(
-  AccordionPrimitive.Panel,
-  'item-content',
-);
+const AccordionPanel = withContext(AccordionPrimitive.Panel, 'content', {
+  defaultProps: { 'data-part': 'item-content' },
+});
 
 export type AccordionProps = AccordionRootProps;
 

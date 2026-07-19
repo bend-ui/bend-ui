@@ -84,6 +84,7 @@
   "settings": {
     "eslint.useFlatConfig": true,
     "js/ts.tsdk.path": "🧬 bend-ui/node_modules/typescript/lib",
+    "jest.enable": false,
   },
   "extensions": {
     "recommendations": ["chakra-ui.panda-css-vscode", "nrwl.angular-console"],

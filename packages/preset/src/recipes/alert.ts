@@ -1,17 +1,9 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  icon: { selector: '& [data-part="icon"]' },
-  title: { selector: '& [data-part="title"]' },
-  content: { selector: '& [data-part="content"]' },
-  footer: { selector: '& [data-part="footer"]' },
-  dismiss: { selector: '& [data-part="dismiss"]' },
-});
-
-export const alertRecipe = defineRecipe({
+export const alertRecipe = defineSlotRecipe({
+  slots: ['root', 'icon', 'title', 'content', 'footer', 'dismiss'],
   className: 'Alert',
-  base: parts({
+  base: {
     root: {
       padding: 'md',
       borderRadius: 'base',
@@ -29,56 +21,56 @@ export const alertRecipe = defineRecipe({
     content: {},
     footer: {},
     dismiss: {},
-  }),
+  },
   variants: {
     palette: {
-      default: parts({
+      default: {
         root: {
           colorPalette: 'neutral',
         },
-      }),
-      primary: parts({
+      },
+      primary: {
         root: {
           colorPalette: 'primary',
         },
-      }),
-      danger: parts({
+      },
+      danger: {
         root: {
           colorPalette: 'danger',
         },
-      }),
-      warning: parts({
+      },
+      warning: {
         root: {
           colorPalette: 'warning',
         },
-      }),
-      success: parts({
+      },
+      success: {
         root: {
           colorPalette: 'success',
         },
-      }),
-      info: parts({
+      },
+      info: {
         root: {
           colorPalette: 'info',
         },
-      }),
+      },
     },
     variant: {
-      solid: parts({
+      solid: {
         root: {
           color: 'colorPalette.text.inverse',
           backgroundColor: 'colorPalette.fill',
           borderColor: 'colorPalette.stroke',
         },
-      }),
-      subtle: parts({
+      },
+      subtle: {
         root: {
           color: 'colorPalette.text',
           backgroundColor: 'colorPalette.fill.weak',
           borderColor: 'colorPalette.stroke',
         },
-      }),
-      outline: parts({
+      },
+      outline: {
         root: {
           borderColor: 'colorPalette.stroke',
         },
@@ -88,7 +80,7 @@ export const alertRecipe = defineRecipe({
         title: {
           color: 'colorPalette',
         },
-      }),
+      },
     },
   },
   defaultVariants: {

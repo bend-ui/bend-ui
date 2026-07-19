@@ -1,32 +1,28 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  button: { selector: '& button' },
-});
-
-export const buttonGroupRecipe = defineRecipe({
+export const buttonGroupRecipe = defineSlotRecipe({
+  slots: ['root', 'button'],
   className: 'ButtonGroup',
   variants: {
     size: {
-      sm: parts({
+      sm: {
         root: {
           gap: 'sm',
         },
-      }),
-      md: parts({
+      },
+      md: {
         root: {
           gap: 'md',
         },
-      }),
-      lg: parts({
+      },
+      lg: {
         root: {
           gap: 'lg',
         },
-      }),
+      },
     },
     isAttached: {
-      true: parts({
+      true: {
         root: {
           gap: '0',
         },
@@ -50,7 +46,7 @@ export const buttonGroupRecipe = defineRecipe({
             roundedBottomRight: '0',
           },
         },
-      }),
+      },
     },
   },
   defaultVariants: {

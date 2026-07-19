@@ -1,26 +1,25 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  control: { selector: '&  [data-part="control"]' },
-  trigger: { selector: '&  [data-part="trigger"]' },
-  valueText: { selector: '&  [data-part="valueText"]' },
-  clearTrigger: { selector: '&  [data-part="clearTrigger"]' },
-  content: { selector: '&  [data-part="content"]' },
-  indicator: { selector: '&  [data-part="indicator"]' },
-  itemGroupLabel: { selector: '&  [data-part="itemGroupLabel"]' },
-  itemGroup: { selector: '&  [data-part="itemGroup"]' },
-  item: { selector: '&  [data-part="item"]' },
-  itemText: { selector: '&  [data-part="itemText"]' },
-  itemIndicator: { selector: '&  [data-part="itemIndicator"]' },
-  label: { selector: '&  [data-part="label"]' },
-  positioner: { selector: '&  [data-part="positioner"]' },
-});
-
-export const selectRecipe = defineRecipe({
+export const selectRecipe = defineSlotRecipe({
+  slots: [
+    'root',
+    'control',
+    'trigger',
+    'valueText',
+    'clearTrigger',
+    'content',
+    'indicator',
+    'itemGroupLabel',
+    'itemGroup',
+    'item',
+    'itemText',
+    'itemIndicator',
+    'label',
+    'positioner',
+  ],
   description: '',
   className: 'Select',
-  base: parts({
+  base: {
     control: {
       gap: 'sm',
       rounded: 'md',
@@ -44,12 +43,28 @@ export const selectRecipe = defineRecipe({
     clearTrigger: {
       flex: 'none',
     },
-  }),
+  },
 });
 
-export const selectDropdownRecipe = defineRecipe({
+export const selectDropdownRecipe = defineSlotRecipe({
+  slots: [
+    'root',
+    'control',
+    'trigger',
+    'valueText',
+    'clearTrigger',
+    'content',
+    'indicator',
+    'itemGroupLabel',
+    'itemGroup',
+    'item',
+    'itemText',
+    'itemIndicator',
+    'label',
+    'positioner',
+  ],
   className: 'SelectDropdown',
-  base: parts({
+  base: {
     content: {
       rounded: 'md',
       layerStyle: 'overlay',
@@ -71,5 +86,5 @@ export const selectDropdownRecipe = defineRecipe({
         backgroundColor: 'fill.hover',
       },
     },
-  }),
+  },
 });

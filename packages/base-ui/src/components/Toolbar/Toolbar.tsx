@@ -1,11 +1,15 @@
 import * as React from 'react';
 import { Toolbar as ToolbarPrimitive } from '@base-ui/react/toolbar';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { toolbar } from '@bend-ui/styled-system/recipes';
 import { Toggle } from '../Toggle';
 import { Select } from '../Select';
 
-const ToolbarRoot = ToolbarPrimitive.Root;
+const { withProvider, withContext } = createStyleContext(toolbar);
+
+const ToolbarRoot = withProvider(ToolbarPrimitive.Root, 'root');
 const ToolbarGroup = ToolbarPrimitive.Group;
-const ToolbarSeparator = ToolbarPrimitive.Separator;
+const ToolbarSeparator = withContext(ToolbarPrimitive.Separator, 'separator');
 const ToolbarButton = ToolbarPrimitive.Button;
 const ToolbarLink = ToolbarPrimitive.Link;
 

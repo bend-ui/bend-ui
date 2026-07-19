@@ -1,19 +1,17 @@
 import { Checkbox as CheckboxPrimitive } from '@base-ui/react/checkbox';
 import { checkbox, CheckboxVariantProps } from '@bend-ui/styled-system/recipes';
 import { CheckIcon } from 'lucide-react';
-import { withParts, withRecipe } from '@bend-ui/core';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
 
 export type CheckboxRootProps = CheckboxPrimitive.Root.Props;
 
-const CheckboxRoot = withRecipe<CheckboxRootProps>(
-  CheckboxPrimitive.Root,
-  checkbox,
-  'control',
-) as unknown as typeof CheckboxPrimitive.Root;
+const { withProvider, withContext } = createStyleContext(checkbox);
+
+const CheckboxRoot = withProvider(CheckboxPrimitive.Root, 'control');
 
 export type CheckboxIndicatorProps = CheckboxPrimitive.Indicator.Props;
 
-const CheckboxIndicator = withParts<CheckboxIndicatorProps>(
+const CheckboxIndicator = withContext(
   CheckboxPrimitive.Indicator,
   'indicator',
 ) as unknown as typeof CheckboxPrimitive.Indicator;
@@ -28,8 +26,8 @@ const Component = (props: CheckboxProps) => {
   const { children, size = 'md', ...rest } = props;
   const classes = checkbox({ size });
   return (
-    <CheckboxLabel className={classes}>
-      <CheckboxRoot defaultChecked {...rest}>
+    <CheckboxLabel className={classes.root}>
+      <CheckboxRoot defaultChecked size={size} {...rest}>
         <CheckboxIndicator>
           <CheckIcon />
         </CheckboxIndicator>

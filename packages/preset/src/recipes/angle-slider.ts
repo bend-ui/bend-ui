@@ -1,17 +1,9 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  label: { selector: '& [data-part="label"]' },
-  control: { selector: '& [data-part="control"]' },
-  thumb: { selector: '& [data-part="thumb"]' },
-  markerGroup: { selector: '& [data-part="marker-group"]' },
-  marker: { selector: '& [data-part="marker"]' },
-});
-
-export const angleSliderRecipe = defineRecipe({
+export const angleSliderRecipe = defineSlotRecipe({
+  slots: ['root', 'label', 'control', 'thumb', 'markerGroup', 'marker'],
   className: 'AngleSlider',
-  base: parts({
+  base: {
     root: {
       display: 'flex',
       flexDirection: 'column',
@@ -97,5 +89,5 @@ export const angleSliderRecipe = defineRecipe({
         '--marker-color': 'hsl(218, 23.1%, 22.9%)',
       },
     },
-  }),
+  },
 });

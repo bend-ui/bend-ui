@@ -1,25 +1,24 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  clearTrigger: { selector: '&  [data-part="clearTrigger"]' },
-  content: { selector: '&  [data-part="content"]' },
-  control: { selector: '&  [data-part="control"]' },
-  indicator: { selector: '&  [data-part="indicator"]' },
-  itemGroupLabel: { selector: '&  [data-part="itemGroupLabel"]' },
-  itemGroup: { selector: '&  [data-part="itemGroup"]' },
-  item: { selector: '&  [data-part="item"]' },
-  itemText: { selector: '&  [data-part="itemText"]' },
-  itemIndicator: { selector: '&  [data-part="itemIndicator"]' },
-  label: { selector: '&  [data-part="label"]' },
-  positioner: { selector: '&  [data-part="positioner"]' },
-  trigger: { selector: '&  [data-part="trigger"]' },
-  valueText: { selector: '&  [data-part="valueText"]' },
-});
-
-export const selectRecipe = defineRecipe({
+export const selectRecipe = defineSlotRecipe({
+  slots: [
+    'root',
+    'clearTrigger',
+    'content',
+    'control',
+    'indicator',
+    'itemGroupLabel',
+    'itemGroup',
+    'item',
+    'itemText',
+    'itemIndicator',
+    'label',
+    'positioner',
+    'trigger',
+    'valueText',
+  ],
   className: 'Select',
-  base: parts({
+  base: {
     root: {
       display: 'flex',
       flexDirection: 'column',
@@ -48,12 +47,28 @@ export const selectRecipe = defineRecipe({
       pointerEvents: 'none',
       flex: 'none',
     },
-  }),
+  },
 });
 
-export const selectDropdownRecipe = defineRecipe({
+export const selectDropdownRecipe = defineSlotRecipe({
+  slots: [
+    'root',
+    'clearTrigger',
+    'content',
+    'control',
+    'indicator',
+    'itemGroupLabel',
+    'itemGroup',
+    'item',
+    'itemText',
+    'itemIndicator',
+    'label',
+    'positioner',
+    'trigger',
+    'valueText',
+  ],
   className: 'SelectDropdown',
-  base: parts({
+  base: {
     content: {
       width: 'full',
       // width: 'full',
@@ -63,5 +78,5 @@ export const selectDropdownRecipe = defineRecipe({
       //   display: 'none',
       // },
     },
-  }),
+  },
 });

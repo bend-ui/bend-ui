@@ -5,6 +5,7 @@ import {
   backdrop,
 } from '@bend-ui/styled-system/recipes';
 import { withParts, withRecipe } from '@bend-ui/core';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
 import { Button, type ButtonProps } from '../Button';
 import type { HTMLBendUIProps } from '@bend-ui/core';
 import { Assign } from '@bend-ui/styled-system/types';
@@ -12,9 +13,8 @@ import { Assign } from '@bend-ui/styled-system/types';
 export interface DialogRootProps
   extends DialogPrimitive.Root.Props, DialogVariantProps {}
 
-const DialogRoot = (props: DialogRootProps) => {
-  return <DialogPrimitive.Root {...props} />;
-};
+const { withRootProvider, withContext } = createStyleContext(dialog);
+const DialogRoot = withRootProvider(DialogPrimitive.Root);
 
 export type DialogTriggerProps = Assign<
   ButtonProps,
@@ -43,36 +43,26 @@ const DialogBackdrop = withRecipe<DialogBackdropProps>(
 
 export type DialogPositionerProps = HTMLBendUIProps<'div'>;
 
-const DialogPositioner = withRecipe<DialogPositionerProps>(
-  'div',
-  dialog,
-  'positioner',
-);
+const DialogPositioner = withContext('div', 'positioner');
 
 export type DialogPopupProps = DialogPrimitive.Popup.Props;
 
-const DialogPopup = withParts<DialogPopupProps>(
-  DialogPrimitive.Popup,
-  'content',
-);
+const DialogPopup = withContext(DialogPrimitive.Popup, 'content');
 
 export type DialogTitleProps = DialogPrimitive.Title.Props;
 
-const DialogTitle = withParts<DialogTitleProps>(DialogPrimitive.Title, 'title');
+const DialogTitle = withContext(DialogPrimitive.Title, 'title');
 
 export type DialogDescriptionProps = DialogPrimitive.Description.Props;
 
-const DialogDescription = withParts<DialogDescriptionProps>(
+const DialogDescription = withContext(
   DialogPrimitive.Description,
   'description',
 );
 
 export type DialogCloseProps = DialogPrimitive.Close.Props;
 
-const DialogClose = withParts<DialogCloseProps>(
-  DialogPrimitive.Close,
-  'close-trigger',
-);
+const DialogClose = withContext(DialogPrimitive.Close, 'closeTrigger');
 
 export interface DialogProps extends DialogRootProps {
   title?: string;

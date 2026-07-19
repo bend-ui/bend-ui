@@ -1,9 +1,10 @@
 import { Popover as PopoverPrimitive } from '@base-ui/react/popover';
 import { popover } from '@bend-ui/styled-system/recipes';
-import { withParts, withRecipe } from '@bend-ui/core';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
 import { Button } from '../Button';
 
-const PopoverRoot = PopoverPrimitive.Root;
+const { withRootProvider, withContext } = createStyleContext(popover);
+const PopoverRoot = withRootProvider(PopoverPrimitive.Root);
 const PopoverTrigger = (props: PopoverPrimitive.Trigger.Props) => {
   const { children, render, ...rest } = props;
   const renderProp = render || <Button />;
@@ -17,46 +18,30 @@ const PopoverPortal = PopoverPrimitive.Portal;
 
 export type PopoverPositionerProps = PopoverPrimitive.Positioner.Props;
 
-const PopoverPositioner = withRecipe<PopoverPositionerProps>(
-  PopoverPrimitive.Positioner,
-  popover,
-  'root',
-);
+const PopoverPositioner = PopoverPrimitive.Positioner;
 
 export type PopoverPopupProps = PopoverPrimitive.Popup.Props;
 
-const PopoverPopup = withParts<PopoverPopupProps>(
-  PopoverPrimitive.Popup,
-  'content',
-);
+const PopoverPopup = withContext(PopoverPrimitive.Popup, 'content');
 
 export type PopoverArrowProps = PopoverPrimitive.Arrow.Props;
 
-const PopoverArrow = withParts<PopoverArrowProps>(
-  PopoverPrimitive.Arrow,
-  'arrow',
-);
+const PopoverArrow = withContext(PopoverPrimitive.Arrow, 'arrow');
 
 export type PopoverTitleProps = PopoverPrimitive.Title.Props;
 
-const PopoverTitle = withParts<PopoverTitleProps>(
-  PopoverPrimitive.Title,
-  'title',
-);
+const PopoverTitle = withContext(PopoverPrimitive.Title, 'title');
 
 export type PopoverDescriptionProps = PopoverPrimitive.Description.Props;
 
-const PopoverDescription = withParts<PopoverDescriptionProps>(
+const PopoverDescription = withContext(
   PopoverPrimitive.Description,
   'description',
 );
 
 export type PopoverCloseProps = PopoverPrimitive.Close.Props;
 
-const PopoverClose = withParts<PopoverCloseProps>(
-  PopoverPrimitive.Close,
-  'closeTrigger',
-);
+const PopoverClose = withContext(PopoverPrimitive.Close, 'closeTrigger');
 
 export interface PopoverContentProps {
   title?: React.ReactNode;
