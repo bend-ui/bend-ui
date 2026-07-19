@@ -1,18 +1,10 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  banner: { selector: '& [data-part="banner"]' },
-  header: { selector: '& [data-part="header"]' },
-  footer: { selector: '& [data-part="footer"]' },
-  main: { selector: '& [data-part="main"]' },
-  sidebar: { selector: '& [data-part="sidebar"]' },
-});
-
-export const appShellRecipe = defineRecipe({
+export const appShellRecipe = defineSlotRecipe({
+  slots: ['root', 'banner', 'header', 'footer', 'main', 'sidebar'],
   description: '',
   className: 'AppShell',
-  base: parts({
+  base: {
     banner: {
       borderBottom: 'weak',
     },
@@ -25,5 +17,5 @@ export const appShellRecipe = defineRecipe({
     footer: {
       borderTop: 'weak',
     },
-  }),
+  },
 });

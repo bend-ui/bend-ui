@@ -20,6 +20,7 @@ import { dialogRecipe } from './dialog';
 import { drawer } from './drawer';
 import { editable } from './editable';
 import { fileUpload } from './file-upload';
+import { fieldset } from './fieldset';
 import { floatingPanel } from './floating-panel';
 import { gridList } from './grid-list';
 import { highlight } from './highlight';
@@ -33,6 +34,15 @@ import { menu } from './menu';
 import { menubar } from './menubar';
 import { navigationMenu } from './navigation-menu';
 import { numberInput } from './number-input';
+import {
+  actionItem,
+  metric,
+  pageHeader,
+  panelHeader,
+  responsiveGrid,
+  surface,
+  timelineItem,
+} from './operational-patterns';
 import { pagination } from './pagination';
 import { pinInput } from './pin-input';
 import { popover } from './popover';
@@ -70,28 +80,51 @@ import { backdropRecipe } from './backdrop';
 import { meter } from './meter';
 
 export const slotRecipes: Theme['slotRecipes'] = {
+  accordion,
   actionBar,
+  alert,
+  appShell: appShellRecipe,
+  avatar: avatarRecipe,
+  badge,
   breadcrumb,
+  button,
+  buttonGroup,
   calendar,
   carousel,
+  checkbox,
+  clipboard: clipboardRecipe,
   collapsible,
   colorPicker,
+  combobox,
+  command: commandRecipe,
+  datePicker: datePickerRecipe,
+  dialog: dialogRecipe,
+  drawer,
   editable,
+  fieldset,
   fileUpload,
   floatingPanel,
   gridList,
+  hoverCard,
   imageCropper,
+  input: inputRecipe,
   listbox,
   marquee,
+  menu,
   menubar,
   navigationMenu,
   numberInput,
+  pagination,
   pinInput,
+  popover,
   progress,
   qrCode,
+  radioGroup: radioGroupRecipe,
   rating,
   scrollArea,
   segmentedControl,
+  select: selectRecipe,
+  selectDropdown: selectDropdownRecipe,
   signaturePad,
   skeleton,
   slider,
@@ -102,7 +135,9 @@ export const slotRecipes: Theme['slotRecipes'] = {
   tagsInput,
   textarea,
   timePicker,
+  toast: toastRecipe,
   toolbar,
+  tooltip: tooltipRecipe,
   tour,
   tree,
   meter,
@@ -114,35 +149,18 @@ export const slotRecipes: Theme['slotRecipes'] = {
 };
 
 export const recipes: Theme['recipes'] = {
-  accordion,
-  alert,
-  appShell: appShellRecipe,
-  avatar: avatarRecipe,
   backdrop: backdropRecipe,
-  badge,
-  button,
-  buttonGroup,
-  checkbox,
-  clipboard: clipboardRecipe,
-  combobox,
-  command: commandRecipe,
-  datePicker: datePickerRecipe,
-  dialog: dialogRecipe,
-  drawer,
   highlight,
-  input: inputRecipe,
   link,
-  menu,
-  pagination,
-  popover,
-  radioGroup: radioGroupRecipe,
-  select: selectRecipe,
-  selectDropdown: selectDropdownRecipe,
+  actionItem,
+  metric,
+  pageHeader,
+  panelHeader,
+  responsiveGrid,
   separator,
-  toast: toastRecipe,
+  surface,
+  timelineItem,
   toggle,
-  tooltip: tooltipRecipe,
-  hoverCard,
 };
 
 export * from './accordion';
@@ -168,6 +186,7 @@ export * from './dialog';
 export * from './drawer';
 export * from './editable';
 export * from './file-upload';
+export * from './fieldset';
 export * from './floating-panel';
 export * from './grid-list';
 export * from './highlight';
@@ -182,6 +201,7 @@ export * from './menubar';
 export * from './meter';
 export * from './navigation-menu';
 export * from './number-input';
+export * from './operational-patterns';
 export * from './pagination';
 export * from './pin-input';
 export * from './popover';

@@ -1,9 +1,13 @@
 import * as React from 'react';
 import { Collapsible as CollapsiblePrimitive } from '@base-ui/react/collapsible';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { collapsible } from '@bend-ui/styled-system/recipes';
 
-const CollapsibleRoot = CollapsiblePrimitive.Root;
-const CollapsibleTrigger = CollapsiblePrimitive.Trigger;
-const CollapsiblePanel = CollapsiblePrimitive.Panel;
+const { withProvider, withContext } = createStyleContext(collapsible);
+
+const CollapsibleRoot = withProvider(CollapsiblePrimitive.Root, 'root');
+const CollapsibleTrigger = withContext(CollapsiblePrimitive.Trigger, 'trigger');
+const CollapsiblePanel = withContext(CollapsiblePrimitive.Panel, 'content');
 
 const Component = () => {
   return (

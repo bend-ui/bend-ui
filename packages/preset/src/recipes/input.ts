@@ -1,18 +1,10 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  wrapper: { selector: '& [data-part="wrapper"]' },
-  input: { selector: '& [data-part="input"]' },
-  icon: { selector: '& [data-part="icon"]' },
-  element: { selector: '& [data-part="element"]' },
-  addon: { selector: '& [data-part="addon"]' },
-});
-
-export const inputRecipe = defineRecipe({
+export const inputRecipe = defineSlotRecipe({
+  slots: ['root', 'wrapper', 'input', 'icon', 'element', 'addon'],
   description: 'Input styles',
   className: 'Input',
-  base: parts({
+  base: {
     root: {
       rounded: 'lg',
       transitionProperty: 'colors, border-color, background-color',
@@ -48,10 +40,10 @@ export const inputRecipe = defineRecipe({
         height: '100%',
       },
     },
-  }),
+  },
   variants: {
     size: {
-      sm: parts({
+      sm: {
         input: {
           height: '8',
         },
@@ -59,8 +51,8 @@ export const inputRecipe = defineRecipe({
           paddingInline: '2',
           gap: '1',
         },
-      }),
-      md: parts({
+      },
+      md: {
         input: {
           height: '10',
         },
@@ -76,8 +68,8 @@ export const inputRecipe = defineRecipe({
         addon: {
           paddingInline: '3',
         },
-      }),
-      lg: parts({
+      },
+      lg: {
         input: {
           height: '12',
         },
@@ -85,22 +77,22 @@ export const inputRecipe = defineRecipe({
           paddingInline: '4',
           gap: '3',
         },
-      }),
+      },
     },
     variant: {
-      solid: parts({
+      solid: {
         root: {
           backgroundColor: 'fill',
         },
-      }),
-      outline: parts({
+      },
+      outline: {
         root: {
           backgroundColor: 'fill',
           border: 'weak',
           divideColor: 'stroke.weak',
           shadow: 'xs',
         },
-      }),
+      },
     },
   },
   defaultVariants: {

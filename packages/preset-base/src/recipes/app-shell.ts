@@ -1,20 +1,20 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  banner: { selector: '& [data-part="banner"]' },
-  header: { selector: '& [data-part="header"]' },
-  footer: { selector: '& [data-part="footer"]' },
-  main: { selector: '& [data-part="main"]' },
-  scrollArea: { selector: '& [data-part="scroll-area"]' },
-  sidebar: { selector: '& [data-part="sidebar"]' },
-  body: { selector: '& [data-part="body"]' },
-});
-
-export const appShellRecipe = defineRecipe({
+export const appShellRecipe = defineSlotRecipe({
+  slots: [
+    'root',
+    'banner',
+    'header',
+    'footer',
+    'main',
+    'scrollArea',
+    'sidebar',
+    'body',
+  ],
   className: 'AppShell',
-  description: 'Full-page layout shell. Positions child regions only — does not render navigation, headers, or sidebar UI.',
-  base: parts({
+  description:
+    'Full-page layout shell. Positions child regions only — does not render navigation, headers, or sidebar UI.',
+  base: {
     root: {
       display: 'flex',
       flexDirection: 'column',
@@ -52,5 +52,5 @@ export const appShellRecipe = defineRecipe({
       flex: 0,
       flexShrink: 0,
     },
-  }),
+  },
 });

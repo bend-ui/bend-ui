@@ -1,6 +1,5 @@
-import { styled } from '@bend-ui/styled-system/jsx';
-import type { ComponentProps } from 'react';
+import { bend, type HTMLBendUIProps } from '@bend-ui/core';
 
-export type BoxProps = ComponentProps<typeof styled.div>;
+export type BoxProps = HTMLBendUIProps<'div'>;
 
-export const Box = styled.div;
+export const Box = bend.div;

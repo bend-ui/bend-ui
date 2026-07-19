@@ -1,14 +1,9 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  image: { selector: '& [data-part="image"]' },
-  fallback: { selector: '& [data-part="fallback"]' },
-});
-
-export const avatarRecipe = defineRecipe({
+export const avatarRecipe = defineSlotRecipe({
+  slots: ['root', 'image', 'fallback'],
   className: 'Avatar',
-  base: parts({
+  base: {
     root: {
       display: 'inline-flex',
       alignItems: 'center',
@@ -27,5 +22,5 @@ export const avatarRecipe = defineRecipe({
       alignItems: 'center',
       justifyContent: 'center',
     },
-  }),
+  },
 });

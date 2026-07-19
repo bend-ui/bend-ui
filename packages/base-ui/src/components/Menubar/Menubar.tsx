@@ -1,8 +1,12 @@
 import { Menubar as MenubarPrimitive } from '@base-ui/react/menubar';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { menubar } from '@bend-ui/styled-system/recipes';
 import { Menu } from '../Menu';
 import { ChevronRightIcon } from 'lucide-react';
 
-const MenubarRoot = MenubarPrimitive;
+const { withProvider } = createStyleContext(menubar);
+
+const MenubarRoot = withProvider(MenubarPrimitive, 'root');
 
 const Component = () => {
   return (

@@ -13,6 +13,16 @@ export default defineConfig({
     options.jsx = 'automatic';
     options.jsxImportSource = 'react';
   },
+  swc: {
+    jsc: {
+      transform: {
+        react: {
+          runtime: 'automatic',
+          importSource: 'react',
+        },
+      },
+    },
+  },
   banner: {
     js: '"use client";',
   },

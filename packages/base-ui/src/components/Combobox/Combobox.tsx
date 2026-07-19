@@ -1,36 +1,31 @@
 import { Combobox as ComboboxPrimitive } from '@base-ui/react/combobox';
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react';
-import { withParts, withRecipe } from '@bend-ui/core';
+import { withParts } from '@bend-ui/core';
 import { selectDropdown, select } from '@bend-ui/styled-system/recipes';
-import { styled } from '@bend-ui/styled-system/jsx';
-import { HTMLBendUIProps } from '@bend-ui/core';
+import { createStyleContext, styled } from '@bend-ui/styled-system/jsx';
 import { Input as StyledInput } from '../Input';
 
-const ComboboxRoot = withRecipe<ComboboxPrimitive.Root.Props<string>>(
+const {
+  withRootProvider: withSelectRootProvider,
+  withContext: withSelectContext,
+} = createStyleContext(select);
+const { withProvider: withDropdownProvider, withContext: withDropdownContext } =
+  createStyleContext(selectDropdown);
+
+const ComboboxRoot = withSelectRootProvider(
   ComboboxPrimitive.Root,
-  select,
-  'root',
 ) as unknown as typeof ComboboxPrimitive.Root;
 
-const ComboboxControl = withParts<HTMLBendUIProps<'div'>>(
-  styled('div'),
-  'control',
-);
+const ComboboxControl = withSelectContext(styled('div'), 'control');
 
 const ComboboxInput = withParts<ComboboxPrimitive.Input.Props>(
   ComboboxPrimitive.Input,
   'input',
 );
 
-const ComboboxTrigger = withParts<ComboboxPrimitive.Trigger.Props>(
-  ComboboxPrimitive.Trigger,
-  'trigger',
-);
+const ComboboxTrigger = withSelectContext(ComboboxPrimitive.Trigger, 'trigger');
 
-const ComboboxIcon = withParts<ComboboxPrimitive.Icon.Props>(
-  ComboboxPrimitive.Icon,
-  'icon',
-);
+const ComboboxIcon = withSelectContext(ComboboxPrimitive.Icon, 'indicator');
 
 const ComboboxBackdrop = withParts<ComboboxPrimitive.Backdrop.Props>(
   ComboboxPrimitive.Backdrop,
@@ -39,21 +34,18 @@ const ComboboxBackdrop = withParts<ComboboxPrimitive.Backdrop.Props>(
 
 const ComboboxPortal = ComboboxPrimitive.Portal;
 
-const ComboboxPositioner = withRecipe<ComboboxPrimitive.Positioner.Props>(
+const ComboboxPositioner = withDropdownProvider(
   ComboboxPrimitive.Positioner,
-  selectDropdown,
-  'root',
+  'positioner',
 );
 
-const ComboboxPopup = withParts<ComboboxPrimitive.Popup.Props>(
-  ComboboxPrimitive.Popup,
-  'content',
-  {
+const ComboboxPopup = withDropdownContext(ComboboxPrimitive.Popup, 'content', {
+  defaultProps: {
     style: {
       width: 'var(--anchor-width)',
     },
   },
-);
+});
 
 const ComboboxArrow = withParts<ComboboxPrimitive.Arrow.Props>(
   ComboboxPrimitive.Arrow,
@@ -65,29 +57,20 @@ const ComboboxList = withParts<ComboboxPrimitive.List.Props>(
   'list',
 );
 
-const ComboboxItem = withParts<ComboboxPrimitive.Item.Props>(
-  ComboboxPrimitive.Item,
-  'item',
-);
+const ComboboxItem = withDropdownContext(ComboboxPrimitive.Item, 'item');
 
-const ComboboxItemText = withParts<HTMLBendUIProps<'span'>>(
-  styled('span'),
-  'itemText',
-);
+const ComboboxItemText = withDropdownContext(styled('span'), 'itemText');
 
-const ComboboxItemIndicator = withParts<ComboboxPrimitive.ItemIndicator.Props>(
+const ComboboxItemIndicator = withDropdownContext(
   ComboboxPrimitive.ItemIndicator,
   'itemIndicator',
 );
 
-const ComboboxGroup = withParts<ComboboxPrimitive.Group.Props>(
-  ComboboxPrimitive.Group,
-  'group',
-);
+const ComboboxGroup = withDropdownContext(ComboboxPrimitive.Group, 'itemGroup');
 
-const ComboboxGroupLabel = withParts<ComboboxPrimitive.GroupLabel.Props>(
+const ComboboxGroupLabel = withDropdownContext(
   ComboboxPrimitive.GroupLabel,
-  'groupLabel',
+  'itemGroupLabel',
 );
 
 const ComboboxSeparator = withParts<ComboboxPrimitive.Separator.Props>(

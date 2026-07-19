@@ -1,16 +1,9 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  label: { selector: '& [data-part="label"]' },
-  description: { selector: '& [data-part="description"]' },
-  error: { selector: '& [data-part="error"]' },
-  helper: { selector: '& [data-part="helper"]' },
-});
-
-export const formFieldRecipe = defineRecipe({
+export const formFieldRecipe = defineSlotRecipe({
+  slots: ['root', 'label', 'description', 'error', 'helper'],
   className: 'FormField',
-  base: parts({
+  base: {
     root: {
       display: 'flex',
       flexDirection: 'column',
@@ -21,5 +14,5 @@ export const formFieldRecipe = defineRecipe({
       fontWeight: 'medium',
       color: 'text.primary',
     },
-  }),
+  },
 });

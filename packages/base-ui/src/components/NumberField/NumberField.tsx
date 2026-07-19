@@ -1,13 +1,29 @@
 import * as React from 'react';
 import { NumberField as NumberFieldPrimitive } from '@base-ui/react/number-field';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { numberInput } from '@bend-ui/styled-system/recipes';
 
-const NumberFieldRoot = NumberFieldPrimitive.Root;
-const NumberFieldScrubArea = NumberFieldPrimitive.ScrubArea;
-const NumberFieldScrubAreaCursor = NumberFieldPrimitive.ScrubAreaCursor;
-const NumberFieldGroup = NumberFieldPrimitive.Group;
-const NumberFieldDecrement = NumberFieldPrimitive.Decrement;
-const NumberFieldInput = NumberFieldPrimitive.Input;
-const NumberFieldIncrement = NumberFieldPrimitive.Increment;
+const { withProvider, withContext } = createStyleContext(numberInput);
+
+const NumberFieldRoot = withProvider(NumberFieldPrimitive.Root, 'root');
+const NumberFieldScrubArea = withContext(
+  NumberFieldPrimitive.ScrubArea,
+  'scrubArea',
+);
+const NumberFieldScrubAreaCursor = withContext(
+  NumberFieldPrimitive.ScrubAreaCursor,
+  'scrubAreaCursor',
+);
+const NumberFieldGroup = withContext(NumberFieldPrimitive.Group, 'group');
+const NumberFieldDecrement = withContext(
+  NumberFieldPrimitive.Decrement,
+  'decrementTrigger',
+);
+const NumberFieldInput = withContext(NumberFieldPrimitive.Input, 'input');
+const NumberFieldIncrement = withContext(
+  NumberFieldPrimitive.Increment,
+  'incrementTrigger',
+);
 
 const Component = () => {
   const id = React.useId();

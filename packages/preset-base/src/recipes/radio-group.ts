@@ -1,19 +1,18 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  indicator: { selector: '& [data-part="indicator"]' },
-  itemControl: { selector: '& [data-part="itemControl"]' },
-  item: { selector: '& [data-part="item"]' },
-  itemText: { selector: '& [data-part="itemText"]' },
-  itemHiddenInput: { selector: '& [data-part="itemHiddenInput"]' },
-  label: { selector: '& [data-part="label"]' },
-});
-
-export const radioGroupRecipe = defineRecipe({
+export const radioGroupRecipe = defineSlotRecipe({
+  slots: [
+    'root',
+    'indicator',
+    'itemControl',
+    'item',
+    'itemText',
+    'itemHiddenInput',
+    'label',
+  ],
   className: 'RadioGroup',
 
-  base: parts({
+  base: {
     root: {
       display: 'flex',
       flexDirection: {
@@ -21,5 +20,5 @@ export const radioGroupRecipe = defineRecipe({
         _horizontal: 'row',
       },
     },
-  }),
+  },
 });

@@ -4,22 +4,23 @@ import { ToggleGroup as ToggleGroupPrimitive } from '@base-ui/react/toggle-group
 import { toggleGroup } from '@bend-ui/styled-system/recipes';
 import { createStyleContext } from '@bend-ui/styled-system/jsx';
 
-const { withProvider } = createStyleContext(toggleGroup);
+const { withProvider, withContext } = createStyleContext(toggleGroup);
 
 const ToggleGroupRoot = withProvider(ToggleGroupPrimitive, 'root');
+const ToggleGroupItem = withContext(Toggle.Root, 'item');
 
 const Component = () => {
   return (
     <ToggleGroupRoot defaultValue={['left']}>
-      <Toggle aria-label="Align left" value="left">
+      <ToggleGroupItem aria-label="Align left" value="left">
         <AlignLeftIcon />
-      </Toggle>
-      <Toggle aria-label="Align center" value="center">
+      </ToggleGroupItem>
+      <ToggleGroupItem aria-label="Align center" value="center">
         <AlignCenterIcon />
-      </Toggle>
-      <Toggle aria-label="Align right" value="right">
+      </ToggleGroupItem>
+      <ToggleGroupItem aria-label="Align right" value="right">
         <AlignRightIcon />
-      </Toggle>
+      </ToggleGroupItem>
     </ToggleGroupRoot>
   );
 };
@@ -80,4 +81,5 @@ function AlignRightIcon(props: React.ComponentProps<'svg'>) {
 
 export const ToggleGroup = Object.assign(Component, {
   Root: ToggleGroupRoot,
+  Item: ToggleGroupItem,
 });

@@ -1,39 +1,27 @@
 'use client';
 import React from 'react';
 import { Toast as ToastPrimitive } from '@base-ui/react/toast';
-import { withParts, withRecipe } from '@bend-ui/core';
+import { withParts } from '@bend-ui/core';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
 import { toast } from '@bend-ui/styled-system/recipes';
 
 const ToastProvider: React.ComponentType<ToastPrimitive.Provider.Props> =
   ToastPrimitive.Provider;
 const ToastPortal: React.ComponentType<ToastPrimitive.Portal.Props> =
   ToastPrimitive.Portal;
-const ToastViewport: React.ComponentType<ToastPrimitive.Viewport.Props> =
-  ToastPrimitive.Viewport;
-const ToastRoot = withRecipe<ToastPrimitive.Root.Props>(
-  ToastPrimitive.Root,
-  toast,
-  'root',
-);
-const ToastTitle = withParts<ToastPrimitive.Title.Props>(
-  ToastPrimitive.Title,
-  'title',
-);
+const { withProvider, withContext } = createStyleContext(toast);
+const ToastViewport = withProvider(ToastPrimitive.Viewport, 'viewport');
+const ToastRoot = withProvider(ToastPrimitive.Root, 'root');
+const ToastTitle = withContext(ToastPrimitive.Title, 'title');
 
-const ToastDescription = withParts<ToastPrimitive.Description.Props>(
-  ToastPrimitive.Description,
-  'description',
-);
+const ToastDescription = withContext(ToastPrimitive.Description, 'description');
 
 const ToastAction = withParts<ToastPrimitive.Action.Props>(
   ToastPrimitive.Action,
   'action',
 );
 
-const ToastClose = withParts<ToastPrimitive.Close.Props>(
-  ToastPrimitive.Close,
-  'close',
-);
+const ToastClose = withContext(ToastPrimitive.Close, 'closeTrigger');
 
 const Component = () => {
   return (

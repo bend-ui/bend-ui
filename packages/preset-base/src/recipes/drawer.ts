@@ -1,13 +1,9 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  content: { selector: '& [data-part="content"]' },
-});
-
-export const drawer = defineRecipe({
+export const drawer = defineSlotRecipe({
+  slots: ['root', 'content'],
   className: 'Drawer',
-  base: parts({
+  base: {
     root: {
       alignItems: 'center',
       display: 'flex',
@@ -23,37 +19,37 @@ export const drawer = defineRecipe({
     content: {
       position: 'fixed',
     },
-  }),
+  },
   variants: {
     placement: {
-      left: parts({
+      left: {
         content: {
           top: 0,
           left: 0,
           bottom: 0,
         },
-      }),
-      right: parts({
+      },
+      right: {
         content: {
           top: 0,
           right: 0,
           bottom: 0,
         },
-      }),
-      top: parts({
+      },
+      top: {
         content: {
           top: 0,
           left: 0,
           right: 0,
         },
-      }),
-      bottom: parts({
+      },
+      bottom: {
         content: {
           left: 0,
           right: 0,
           bottom: 0,
         },
-      }),
+      },
     },
   },
   defaultVariants: {

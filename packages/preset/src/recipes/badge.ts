@@ -1,12 +1,9 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-});
-
-export const badgeRecipe = defineRecipe({
+export const badgeRecipe = defineSlotRecipe({
+  slots: ['root'],
   className: 'Badge',
-  base: parts({
+  base: {
     root: {
       fontSize: 'xs',
       lineHeight: 'none',
@@ -16,50 +13,50 @@ export const badgeRecipe = defineRecipe({
       paddingY: 'xs',
       color: 'white',
     },
-  }),
+  },
   variants: {
     variant: {
-      solid: parts({
+      solid: {
         root: { backgroundColor: 'colorPalette.fill' },
-      }),
-      subtle: parts({
+      },
+      subtle: {
         root: { backgroundColor: 'colorPalette.fill.weak' },
-      }),
-      outline: parts({
+      },
+      outline: {
         root: { borderColor: 'colorPalette.stroke' },
-      }),
+      },
     },
     palette: {
-      default: parts({
+      default: {
         root: {
           colorPalette: 'neutral',
         },
-      }),
-      primary: parts({
+      },
+      primary: {
         root: {
           colorPalette: 'primary',
         },
-      }),
-      danger: parts({
+      },
+      danger: {
         root: {
           colorPalette: 'danger',
         },
-      }),
-      warning: parts({
+      },
+      warning: {
         root: {
           colorPalette: 'warning',
         },
-      }),
-      success: parts({
+      },
+      success: {
         root: {
           colorPalette: 'success',
         },
-      }),
-      info: parts({
+      },
+      info: {
         root: {
           colorPalette: 'info',
         },
-      }),
+      },
     },
   },
   defaultVariants: {

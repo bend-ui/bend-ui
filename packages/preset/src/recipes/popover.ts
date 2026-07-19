@@ -1,17 +1,16 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  content: { selector: '& [data-part="content"]' },
-  title: { selector: '& [data-part="title"]' },
-  description: { selector: '& [data-part="description"]' },
-  arrow: { selector: '& [data-part="arrow"]' },
-  arrowTip: { selector: '& [data-part="arrowTip"]' },
-  closeTrigger: { selector: '& [data-part="closeTrigger"]' },
-});
-
-export const popoverRecipe = defineRecipe({
+export const popoverRecipe = defineSlotRecipe({
+  slots: [
+    'content',
+    'title',
+    'description',
+    'arrow',
+    'arrowTip',
+    'closeTrigger',
+  ],
   className: 'Popover',
-  base: parts({
+  base: {
     content: {
       layerStyle: 'surface.overlay',
       borderRadius: 'md',
@@ -30,18 +29,18 @@ export const popoverRecipe = defineRecipe({
       fontSize: 'sm',
       color: 'gray.500',
     },
-  }),
+  },
   variants: {
     size: {
-      sm: parts({
+      sm: {
         content: { padding: 'sm' },
-      }),
-      md: parts({
+      },
+      md: {
         content: { padding: 'md' },
-      }),
-      lg: parts({
+      },
+      lg: {
         content: { padding: 'lg' },
-      }),
+      },
     },
   },
   defaultVariants: {

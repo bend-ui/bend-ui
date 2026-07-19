@@ -1,12 +1,14 @@
-import { alertDialog, overlay } from '@bend-ui/styled-system/recipes';
+import { alertDialog } from '@bend-ui/styled-system/recipes';
 import { AlertDialog as AlertDialogPrimitive } from '@base-ui/react/alert-dialog';
-import { withParts, withRecipe } from '@bend-ui/core';
+import { withParts } from '@bend-ui/core';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
 import { Button } from '../Button';
 
 export interface AlertDialogRootProps extends AlertDialogPrimitive.Root.Props {
   children?: React.ReactNode;
 }
-const AlertDialogRoot = AlertDialogPrimitive.Root;
+const { withRootProvider, withContext } = createStyleContext(alertDialog);
+const AlertDialogRoot = withRootProvider(AlertDialogPrimitive.Root);
 
 export interface AlertDialogTriggerProps
   extends AlertDialogPrimitive.Trigger.Props {
@@ -31,36 +33,28 @@ export interface AlertDialogBackdropProps extends React.ComponentPropsWithoutRef
 > {
   children?: React.ReactNode;
 }
-const AlertDialogBackdrop = withRecipe<AlertDialogBackdropProps>(
+const AlertDialogBackdrop = withContext(
   AlertDialogPrimitive.Backdrop,
-  overlay,
-  'root',
+  'overlay',
 );
 
 export interface AlertDialogPopupProps
   extends AlertDialogPrimitive.Popup.Props {
   children?: React.ReactNode;
 }
-const AlertDialogPopup = withRecipe<AlertDialogPopupProps>(
-  AlertDialogPrimitive.Popup,
-  alertDialog,
-  'content',
-);
+const AlertDialogPopup = withContext(AlertDialogPrimitive.Popup, 'content');
 
 export interface AlertDialogTitleProps
   extends AlertDialogPrimitive.Title.Props {
   children?: React.ReactNode;
 }
-const AlertDialogTitle = withParts<AlertDialogTitleProps>(
-  AlertDialogPrimitive.Title,
-  'title',
-);
+const AlertDialogTitle = withContext(AlertDialogPrimitive.Title, 'title');
 
 export interface AlertDialogDescriptionProps
   extends AlertDialogPrimitive.Description.Props {
   children?: React.ReactNode;
 }
-const AlertDialogDescription = withParts<AlertDialogDescriptionProps>(
+const AlertDialogDescription = withContext(
   AlertDialogPrimitive.Description,
   'description',
 );
@@ -69,10 +63,7 @@ export interface AlertDialogCloseProps
   extends AlertDialogPrimitive.Close.Props {
   children?: React.ReactNode;
 }
-const AlertDialogClose = withParts<AlertDialogCloseProps>(
-  AlertDialogPrimitive.Close,
-  'close',
-);
+const AlertDialogClose = withContext(AlertDialogPrimitive.Close, 'close');
 
 export interface AlertDialogProps extends AlertDialogRootProps {
   title?: React.ReactNode;

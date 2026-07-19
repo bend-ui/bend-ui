@@ -1,16 +1,17 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  content: { selector: '& [data-part="content"]' },
-  title: { selector: '& [data-part="title"]' },
-  description: { selector: '& [data-part="description"]' },
-  closeTrigger: { selector: '& [data-part="close"]' },
-});
+const slots = [
+  'root',
+  'content',
+  'title',
+  'description',
+  'closeTrigger',
+] as const;
 
-export const commandRecipe = defineRecipe({
+export const commandRecipe = defineSlotRecipe({
+  slots,
   className: 'Command',
-  base: parts({
+  base: {
     root: {
       alignItems: 'center',
       display: 'flex',
@@ -26,7 +27,7 @@ export const commandRecipe = defineRecipe({
     content: {
       position: 'relative',
     },
-  }),
+  },
 });
 
-export const commandParts = parts;
+export const commandParts = slots;

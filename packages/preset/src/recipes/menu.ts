@@ -1,21 +1,20 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  arrow: { selector: '& [data-part="arrow"]' },
-  arrowTip: { selector: '& [data-part="arrowTip"]' },
-  checkboxItem: { selector: '& [data-part="checkboxItem"]' },
-  indicator: { selector: '& [data-part="indicator"]' },
-  itemGroupLabel: { selector: '& [data-part="itemGroupLabel"]' },
-  itemGroup: { selector: '& [data-part="itemGroup"]' },
-  itemIndicator: { selector: '& [data-part="itemIndicator"]' },
-  item: { selector: '& [data-part="item"]' },
-  itemText: { selector: '& [data-part="itemText"]' },
-});
-
-export const menuRecipe = defineRecipe({
+export const menuRecipe = defineSlotRecipe({
+  slots: [
+    'root',
+    'arrow',
+    'arrowTip',
+    'checkboxItem',
+    'indicator',
+    'itemGroupLabel',
+    'itemGroup',
+    'itemIndicator',
+    'item',
+    'itemText',
+  ],
   className: 'Menu',
-  base: parts({
+  base: {
     root: {
       padding: 'md',
       layerStyle: 'surface.overlay',
@@ -34,5 +33,5 @@ export const menuRecipe = defineRecipe({
         backgroundColor: 'fill.hover',
       },
     },
-  }),
+  },
 });
