@@ -1,336 +1,76 @@
 ---
 title: Spacing
-description: Learn about the spacing system in Bend UI Design System
+description: Build consistent layouts with generated Panda elements and patterns
 ---
 
 # Spacing
 
-Consistent spacing creates visual rhythm and hierarchy in your designs. Bend UI uses a systematic spacing scale based on a 4px base unit.
+Use the generated styled-system elements for layout. Their spacing props resolve through the Bend UI token system.
 
-## Spacing Scale
-
-The spacing scale uses a numeric system where each unit represents a multiple of the base unit:
-
-| Token | Value | Pixels | Common Use |
-|-------|-------|--------|------------|
-| `0` | 0 | 0px | No spacing |
-| `1` | 0.25rem | 4px | Tight spacing |
-| `2` | 0.5rem | 8px | Small spacing |
-| `3` | 0.75rem | 12px | Medium-small spacing |
-| `4` | 1rem | 16px | Base spacing |
-| `5` | 1.25rem | 20px | Medium spacing |
-| `6` | 1.5rem | 24px | Medium-large spacing |
-| `8` | 2rem | 32px | Large spacing |
-| `10` | 2.5rem | 40px | Extra large spacing |
-| `12` | 3rem | 48px | Section spacing |
-| `16` | 4rem | 64px | Page section spacing |
-| `20` | 5rem | 80px | Large section spacing |
-
-## Using Spacing
-
-### Padding
-
-Add internal spacing to elements:
+## Add space inside a surface
 
 ```tsx
-import { Box } from '@bend-ui/react';
+import { Box } from 'styled-system/jsx';
 
-<Box padding="4">
-  Padding on all sides (16px)
-</Box>
-
-<Box paddingX="6" paddingY="4">
-  Horizontal: 24px, Vertical: 16px
-</Box>
-
-<Box paddingTop="8" paddingBottom="4" paddingLeft="6" paddingRight="6">
-  Individual sides
-</Box>
+export function Panel({ children }: { children: React.ReactNode }) {
+  return (
+    <Box padding="6" borderWidth="1px" borderRadius="lg">
+      {children}
+    </Box>
+  );
+}
 ```
 
-### Margin
-
-Add external spacing between elements:
+## Stack content vertically
 
 ```tsx
-import { Box } from '@bend-ui/react';
+import { Button, Heading, Text } from '@bend-ui/base-ui';
+import { Stack } from 'styled-system/jsx';
 
-<Box margin="4">
-  Margin on all sides (16px)
-</Box>
-
-<Box marginBottom="8">
-  Bottom margin only (32px)
-</Box>
-
-<Box marginX="auto">
-  Centered horizontally
-</Box>
+export function EmptyState() {
+  return (
+    <Stack gap="4" alignItems="start">
+      <Heading as="h2">No projects yet</Heading>
+      <Text as="p">Create a project to begin.</Text>
+      <Button variant="primary">Create project</Button>
+    </Stack>
+  );
+}
 ```
 
-### Gap
-
-Space between flex or grid children:
+## Arrange actions horizontally
 
 ```tsx
-import { Stack, Flex } from '@bend-ui/react';
+import { Button } from '@bend-ui/base-ui';
+import { Flex } from 'styled-system/jsx';
 
-// Vertical stack with gap
-<Stack gap="4">
-  <div>Item 1</div>
-  <div>Item 2</div>
-  <div>Item 3</div>
-</Stack>
-
-// Horizontal flex with gap
-<Flex gap="6">
-  <div>Item 1</div>
-  <div>Item 2</div>
-  <div>Item 3</div>
-</Flex>
+export function FormActions() {
+  return (
+    <Flex gap="3" justifyContent="end" flexWrap="wrap">
+      <Button variant="secondary">Cancel</Button>
+      <Button variant="primary">Save</Button>
+    </Flex>
+  );
+}
 ```
 
-## Spacing Patterns
-
-### Component Internal Spacing
-
-Use consistent padding within components:
+## Constrain page content
 
 ```tsx
-import { Box, Text } from '@bend-ui/react';
+import { Container, Stack } from 'styled-system/jsx';
 
-// Card component
-<Box
-  bg="white"
-  padding="6"
-  borderRadius="lg"
-  shadow="md"
->
-  <Text fontSize="xl" fontWeight="bold" marginBottom="4">
-    Card Title
-  </Text>
-  <Text color="gray.600">
-    Card content
-  </Text>
-</Box>
+export function Page({ children }: { children: React.ReactNode }) {
+  return (
+    <Container maxWidth="7xl" paddingX="6" paddingY="8">
+      <Stack gap="8">{children}</Stack>
+    </Container>
+  );
+}
 ```
 
-### Layout Spacing
+## Guidelines
 
-Space between sections:
-
-```tsx
-import { Stack, Box } from '@bend-ui/react';
-
-<Stack gap="12">
-  <Box as="section">Section 1</Box>
-  <Box as="section">Section 2</Box>
-  <Box as="section">Section 3</Box>
-</Stack>
-```
-
-### Form Spacing
-
-Consistent spacing in forms:
-
-```tsx
-import { Stack, FormControl, FormLabel, Input, Button } from '@bend-ui/react';
-
-<Stack gap="6">
-  <FormControl>
-    <FormLabel marginBottom="2">Email</FormLabel>
-    <Input />
-  </FormControl>
-
-  <FormControl>
-    <FormLabel marginBottom="2">Password</FormLabel>
-    <Input type="password" />
-  </FormControl>
-
-  <Button width="full">Submit</Button>
-</Stack>
-```
-
-## Responsive Spacing
-
-Adjust spacing for different screen sizes:
-
-```tsx
-import { css } from 'styled-system/css';
-
-<div className={css({
-  padding: {
-    base: '4',    // 16px on mobile
-    md: '8',      // 32px on tablet
-    lg: '12',     // 48px on desktop
-  },
-})}>
-  Responsive padding
-</div>
-```
-
-### Container Spacing
-
-```tsx
-import { Container } from '@bend-ui/react';
-
-<Container
-  maxW="container.xl"
-  paddingX={{
-    base: '4',
-    md: '6',
-    lg: '8',
-  }}
->
-  Container content
-</Container>
-```
-
-## Negative Spacing
-
-Pull elements closer or overlap:
-
-```tsx
-import { Box } from '@bend-ui/react';
-
-<Box marginTop="-4">
-  Negative margin pulls this up
-</Box>
-```
-
-## Spacing Guidelines
-
-### Micro Spacing (0-2)
-
-Use for tight relationships:
-- Icon and label spacing
-- Checkbox and label
-- Badge spacing
-
-```tsx
-import { Flex, Icon, Text } from '@bend-ui/react';
-
-<Flex align="center" gap="2">
-  <Icon name="check" />
-  <Text>Completed</Text>
-</Flex>
-```
-
-### Base Spacing (3-6)
-
-Use for component internal spacing:
-- Button padding
-- Input padding
-- Card padding
-
-```tsx
-import { Button } from '@bend-ui/react';
-
-<Button paddingX="6" paddingY="3">
-  Click Me
-</Button>
-```
-
-### Section Spacing (8-12)
-
-Use for grouping related content:
-- Form field groups
-- Card sections
-- List items
-
-```tsx
-import { Stack } from '@bend-ui/react';
-
-<Stack gap="8">
-  <section>Group 1</section>
-  <section>Group 2</section>
-</Stack>
-```
-
-### Layout Spacing (16-20)
-
-Use for page-level spacing:
-- Between major sections
-- Hero section padding
-- Footer spacing
-
-```tsx
-import { Stack } from '@bend-ui/react';
-
-<Stack gap="16">
-  <section>Hero</section>
-  <section>Features</section>
-  <section>Testimonials</section>
-</Stack>
-```
-
-## Best Practices
-
-### 1. Use the Scale
-
-Stick to the spacing scale for consistency:
-
-```tsx
-// Good
-<Box padding="6" />
-
-// Avoid
-<Box padding="23px" />
-```
-
-### 2. Vertical Rhythm
-
-Maintain consistent vertical spacing:
-
-```tsx
-import { Stack } from '@bend-ui/react';
-
-<Stack gap="4">
-  <h2>Heading</h2>
-  <p>Paragraph</p>
-  <p>Another paragraph</p>
-</Stack>
-```
-
-### 3. Optical Alignment
-
-Sometimes visual balance requires adjusting spacing:
-
-```tsx
-import { Box } from '@bend-ui/react';
-
-// Icons might need slight adjustment
-<Box marginTop="-0.5">
-  <Icon name="arrow-up" />
-</Box>
-```
-
-## Custom Spacing
-
-Extend the spacing scale:
-
-```typescript
-import { defineConfig } from '@pandacss/dev';
-import { createBendPreset } from '@bend-ui/preset';
-
-export default defineConfig({
-  presets: [createBendPreset()],
-  theme: {
-    extend: {
-      tokens: {
-        spacing: {
-          '18': { value: '4.5rem' },
-          '22': { value: '5.5rem' },
-        },
-      },
-    },
-  },
-});
-```
-
-## Next Steps
-
-- [Layout](/docs/foundation/layout) - Learn about layout patterns
-- [Design Tokens](/docs/foundation/design-tokens) - Understand all tokens
-- [Components](/docs/components) - See spacing in components
-- [Responsive Design](/docs/foundation/responsive) - Responsive spacing
+- Use `gap` on layout containers instead of margins between their children.
+- Use `Stack` for one-dimensional groups and `Flex` when alignment or wrapping matters.
+- Use `Container` to constrain page width and `Box` for a styled semantic-neutral surface.
+- Choose token values before introducing one-off literal measurements.

@@ -1,132 +1,63 @@
 ---
 title: Quick Start
-description: Get up and running with Bend UI in minutes
+description: Build a small page with the Base UI adapter and generated layouts
 ---
 
 # Quick Start
 
-This guide will help you build your first page using Bend UI Design System.
+This tutorial builds a small sign-in card using adapter components for behavior and generated Panda elements for layout.
 
-## Your First Component
-
-After [installation](/docs/getting-started/installation), you can start using Bend UI components immediately.
-
-### Basic Example
+## Create the page
 
 ```tsx
-import { Button, Stack, Text } from '@bend-ui/react';
+import { Button, Field } from '@bend-ui/base-ui';
+import { Box, Stack } from 'styled-system/jsx';
 
-export default function HomePage() {
+export function SignIn() {
   return (
-    <Stack gap="4" padding="8">
-      <Text fontSize="2xl" fontWeight="bold">
-        Welcome to Bend UI
-      </Text>
-      <Text color="gray.600">
-        Start building beautiful interfaces with our design system.
-      </Text>
-      <Button colorScheme="blue" size="lg">
-        Get Started
-      </Button>
-    </Stack>
-  );
-}
-```
+    <Box maxWidth="md" marginX="auto" padding="8">
+      <Stack gap="6">
+        <Stack gap="2">
+          <h1>Sign in</h1>
+          <p>Use your work email to continue.</p>
+        </Stack>
 
-## Using Design Tokens
+        <Field.Root>
+          <Field.Label>Email</Field.Label>
+          <Field.Control type="email" autoComplete="email" required />
+          <Field.Error match="valueMissing">Enter your email address.</Field.Error>
+        </Field.Root>
 
-Bend UI provides design tokens through Panda CSS:
-
-```tsx
-import { css } from 'styled-system/css';
-import { Box } from '@bend-ui/react';
-
-export default function Card() {
-  return (
-    <Box
-      className={css({
-        bg: 'white',
-        borderRadius: 'lg',
-        padding: '6',
-        shadow: 'md',
-      })}
-    >
-      <h2>Card Title</h2>
-      <p>Card content goes here.</p>
+        <Button type="submit" variant="primary" isFull>
+          Continue
+        </Button>
+      </Stack>
     </Box>
   );
 }
 ```
 
-## Building a Layout
+`Field` and `Button` come from the Base UI package adapter, so their behavior follows the upstream primitives. `Box` and `Stack` come from the generated styled system, so the application owns their output and styling API.
 
-Combine components to create complex layouts:
+## Add custom styling
+
+Use `css` when you need a class instead of a generated JSX element:
 
 ```tsx
-import { Box, Container, Stack, Flex, Button, Text } from '@bend-ui/react';
+import { Button } from '@bend-ui/base-ui';
+import { css } from 'styled-system/css';
 
-export default function Layout() {
+export function QuietAction() {
   return (
-    <Container maxW="container.xl">
-      <Flex justify="space-between" align="center" padding="4">
-        <Text fontSize="xl" fontWeight="bold">
-          Bend UI
-        </Text>
-        <Stack direction="row" gap="4">
-          <Button variant="ghost">Docs</Button>
-          <Button variant="ghost">Components</Button>
-          <Button colorScheme="blue">Sign In</Button>
-        </Stack>
-      </Flex>
-
-      <Box padding="8">
-        <Stack gap="6">
-          <Text fontSize="3xl" fontWeight="bold">
-            Build faster with Bend UI
-          </Text>
-          <Text fontSize="lg" color="gray.600">
-            A comprehensive design system for modern web applications.
-          </Text>
-        </Stack>
-      </Box>
-    </Container>
+    <Button className={css({ alignSelf: 'start' })} variant="tertiary">
+      Skip for now
+    </Button>
   );
 }
 ```
 
-## Common Patterns
+## Next steps
 
-### Form Example
-
-```tsx
-import { Stack, Input, Button, FormControl, FormLabel } from '@bend-ui/react';
-
-export default function LoginForm() {
-  return (
-    <Stack gap="4" maxW="md">
-      <FormControl>
-        <FormLabel>Email</FormLabel>
-        <Input type="email" placeholder="Enter your email" />
-      </FormControl>
-
-      <FormControl>
-        <FormLabel>Password</FormLabel>
-        <Input type="password" placeholder="Enter your password" />
-      </FormControl>
-
-      <Button colorScheme="blue" width="full">
-        Sign In
-      </Button>
-    </Stack>
-  );
-}
-```
-
-## Next Steps
-
-Now that you've created your first components, explore more:
-
-- [Components](/docs/components) - Browse all available components
-- [Design Tokens](/docs/foundation/design-tokens) - Learn about the design system foundation
-- [Theming](/docs/foundation/theming) - Customize the design system
-- [Examples](/docs/examples) - View complete examples and patterns
+- [Components](/docs/components)
+- [Spacing](/docs/foundation/spacing)
+- [Typography](/docs/foundation/typography)
