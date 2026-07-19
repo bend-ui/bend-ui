@@ -22,23 +22,22 @@ const TableCaption = styled('caption', {
   },
 });
 
+const tableCellStyles = {
+  px: 'sm',
+  py: 'sm',
+  borderBottomWidth: '1px',
+  borderBottomStyle: 'solid',
+} as const;
+
 const TableHeader = styled('th', {
   base: {
-    px: 'sm',
-    py: 'sm',
-    borderBottomWidth: '1px',
-    borderBottomStyle: 'solid',
+    ...tableCellStyles,
     textAlign: 'left',
   },
 });
 
 const TableCell = styled('td', {
-  base: {
-    px: 'sm',
-    py: 'sm',
-    borderBottomWidth: '1px',
-    borderBottomStyle: 'solid',
-  },
+  base: tableCellStyles,
 });
 
 const Clients = () => (
