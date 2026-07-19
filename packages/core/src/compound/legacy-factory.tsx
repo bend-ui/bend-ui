@@ -15,7 +15,6 @@ import type {
   ReactElement,
   ReactNode,
 } from 'react';
-import * as React from 'react';
 
 type AnyProps = object;
 type Recipe = RecipeVariantFn<

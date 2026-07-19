@@ -5,7 +5,6 @@ import {
   button,
   type ButtonVariantProps,
 } from '@bend-ui/styled-system/recipes';
-import * as React from 'react';
 import type {
   ComponentProps,
   ComponentType,
