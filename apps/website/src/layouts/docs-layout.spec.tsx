@@ -34,6 +34,11 @@ jest.mock('next-themes', () => ({
   useTheme: () => ({ resolvedTheme: 'light', setTheme: mockSetTheme }),
 }));
 
+jest.mock('../../styled-system/css/index.mjs', () => ({
+  ...jest.requireActual('../../styled-system/css/index.mjs'),
+  css: (styles: unknown) => JSON.stringify(styles),
+}));
+
 const tree: Root = {
   type: 'root',
   name: 'Documentation',
@@ -104,7 +109,14 @@ describe('Docs route layout', () => {
     );
 
     expect(screen.getByRole('navigation', { name: 'On this page' })).toBeTruthy();
-    expect(screen.getByRole('link', { name: 'Props' })).toBeTruthy();
+    const tocLink = screen.getByRole('link', { name: 'Props' });
+    const tocLinkStyles = JSON.parse(tocLink.className);
+
+    expect(tocLinkStyles.color).toBe('text.weak');
+    expect(tocLinkStyles['&[data-active="true"]']).toMatchObject({
+      borderLeftColor: 'stroke.primary',
+      color: 'text.primary',
+    });
     expect(screen.getByRole('link', { name: /previous.*introduction/i })).toBeTruthy();
     expect(screen.getByRole('link', { name: /next.*avatar/i })).toBeTruthy();
   });

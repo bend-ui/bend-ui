@@ -410,17 +410,23 @@ export const DocsPage = ({
                       <TOCItem
                         href={item.url}
                         className={css({
-                          display: 'block',
-                          color: 'fg.muted',
+                          display: 'flex',
+                          alignItems: 'center',
+                          minHeight: '10',
+                          color: 'text.weak',
                           fontSize: 'sm',
-                          paddingBlock: '1.5',
-                          paddingLeft: item.depth > 2 ? '4' : '0',
+                          paddingBlock: '1',
+                          paddingLeft: item.depth > 2 ? '7' : '3',
+                          borderLeftWidth: '2px',
+                          borderLeftStyle: 'solid',
+                          borderLeftColor: 'stroke.weak',
                           textDecoration: 'none',
-                          transitionProperty: 'color',
+                          transitionProperty: 'color, border-color',
                           transitionDuration: 'fast',
-                          _hover: { color: 'fg.default' },
+                          _hover: { color: 'text.strong' },
                           '&[data-active="true"]': {
-                            color: 'fg.default',
+                            color: 'text.primary',
+                            borderLeftColor: 'stroke.primary',
                             fontWeight: 'semibold',
                           },
                         })}
