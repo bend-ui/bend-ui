@@ -1,6 +1,6 @@
 import '@fontsource-variable/inter';
 import '../styles/globals.css';
-import { RootProvider } from 'fumadocs-ui/provider/next';
+import { RootProvider } from '../src/providers/root-provider';
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -9,7 +9,7 @@ interface RootLayoutProps {
 const RootLayout = (props: RootLayoutProps) => {
   const { children } = props;
   return (
-    <html lang="en">
+    <html lang="en" data-panda-theme="default" suppressHydrationWarning>
       <body>
         <RootProvider>{children}</RootProvider>
       </body>
