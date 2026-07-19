@@ -19,6 +19,10 @@ export default defineConfig({
 
   presets: [createBendPreset()],
 
+  staticCss: {
+    themes: ['default'],
+  },
+
   importMap: '@bend-ui/styled-system',
 
   jsxFramework: 'react',
