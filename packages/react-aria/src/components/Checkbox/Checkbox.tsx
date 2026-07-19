@@ -5,22 +5,24 @@ import { cx } from '@bend-ui/styled-system/css';
 import type { CheckboxVariantProps } from '@bend-ui/styled-system/recipes';
 
 export interface CheckboxProps
-  extends ReactAria.CheckboxProps, CheckboxVariantProps {
-  className?: string;
-}
+  extends ReactAria.CheckboxProps, CheckboxVariantProps {}
 
 export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
   (props, ref) => {
-    const { className, ...rest } = props;
-    const classes = checkbox();
+    const [variantProps, checkboxProps] = checkbox.splitVariantProps(props);
+    const { className, ...rest } = checkboxProps;
+    const classes = checkbox(variantProps);
+
     return (
       <ReactAria.Checkbox
         ref={ref}
         data-part="root"
-        className={cx(classes, className)}
+        className={ReactAria.composeRenderProps(className, (className) =>
+          cx(classes.root, className),
+        )}
         {...rest}
       >
-        <div data-part="indicator">
+        <div className={classes.indicator} data-part="indicator">
           <svg aria-hidden="true" viewBox="0 0 18 18">
             <polyline points="1 9 7 14 15 4" />
           </svg>

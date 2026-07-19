@@ -704,9 +704,6 @@ importers:
       '@bend-ui/preset':
         specifier: workspace:*
         version: link:../preset
-      '@bend-ui/react':
-        specifier: workspace:*
-        version: link:../react
       '@bend-ui/styled-system':
         specifier: workspace:*
         version: link:../styled-system

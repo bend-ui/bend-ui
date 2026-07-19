@@ -13,7 +13,6 @@ export default defineConfig({
     'react-dom',
     'react-aria-components',
     '@bend-ui/core',
-    '@bend-ui/react',
     '@bend-ui/styled-system',
   ],
   esbuildOptions(options) {
