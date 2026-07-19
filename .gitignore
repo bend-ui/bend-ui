@@ -45,6 +45,7 @@ Thumbs.db
 # NX
 .nx/cache
 .nx/workspace-data
+nx-cloud.env
 
 # Panda
 styled-system
