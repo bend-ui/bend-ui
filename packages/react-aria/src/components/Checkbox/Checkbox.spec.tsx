@@ -29,6 +29,8 @@ describe('Checkbox', () => {
       'custom',
     ]);
     expect([...indicator.classList]).toEqual([
+      'Checkbox__control',
+      'Checkbox__control--size_sm',
       'Checkbox__indicator',
       'Checkbox__indicator--size_sm',
     ]);

@@ -22,7 +22,10 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
         )}
         {...rest}
       >
-        <div className={classes.indicator} data-part="indicator">
+        <div
+          className={cx(classes.control, classes.indicator)}
+          data-part="indicator"
+        >
           <svg aria-hidden="true" viewBox="0 0 18 18">
             <polyline points="1 9 7 14 15 4" />
           </svg>
