@@ -6,8 +6,9 @@
     "prepare": "panda codegen"
   },
   "dependencies": {
-    "@fontsource-variable/inter": "^5.2.8",
     "@bend-ui/base-ui": "workspace:*",
-    "@bend-ui/config": "workspace:*"
+    "@bend-ui/config": "workspace:*",
+    "@fontsource-variable/inter": "^5.2.8",
+    "demo-data": "workspace:*"
   }
 }

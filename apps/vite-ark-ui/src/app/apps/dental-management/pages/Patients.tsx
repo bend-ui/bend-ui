@@ -1,4 +1,4 @@
-import { Button, IconButton, Input, Dialog, Tabs } from '@bend-ui/ark-ui';
+import { Button, Input, Dialog, Tabs } from '@bend-ui/ark-ui';
 import { Ellipsis, FilterIcon, SearchIcon } from 'lucide-react';
 import { data, Patient } from '../data';
 
@@ -28,7 +28,9 @@ export const Patients = () => {
               <td>{patient.status}</td>
               <td>{patient.lastVisit}</td>
               <td>
-                <IconButton icon={<Ellipsis />}>More</IconButton>
+                <Button icon={<Ellipsis />} aria-label="More">
+                  More
+                </Button>
                 <PatientProfile patient={patient} />
               </td>
             </tr>

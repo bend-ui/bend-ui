@@ -51,9 +51,24 @@ export const terrainZones = [
 
 export const weatherTimeline = [
   { time: '09:00', condition: 'Light snow', visibility: 'Good', temp: '-7 C' },
-  { time: '12:00', condition: 'Cloud breaks', visibility: 'Excellent', temp: '-5 C' },
-  { time: '15:00', condition: 'Ridge wind', visibility: 'Moderate', temp: '-8 C' },
-  { time: '18:00', condition: 'Snow showers', visibility: 'Fair', temp: '-9 C' },
+  {
+    time: '12:00',
+    condition: 'Cloud breaks',
+    visibility: 'Excellent',
+    temp: '-5 C',
+  },
+  {
+    time: '15:00',
+    condition: 'Ridge wind',
+    visibility: 'Moderate',
+    temp: '-8 C',
+  },
+  {
+    time: '18:00',
+    condition: 'Snow showers',
+    visibility: 'Fair',
+    temp: '-9 C',
+  },
 ] as const;
 
 export const lifts = [
@@ -96,9 +111,24 @@ export const lifts = [
 ] as const;
 
 export const maintenanceQueue = [
-  { asset: 'Tower 7 sensor', lift: 'Eagle Express', priority: 'Today', owner: 'Lift electrical' },
-  { asset: 'Grip inspection', lift: 'Meadow Quad', priority: 'Tonight', owner: 'Mechanical' },
-  { asset: 'Haul rope ice', lift: 'Summit Tram', priority: 'Active', owner: 'Mountain ops' },
+  {
+    asset: 'Tower 7 sensor',
+    lift: 'Eagle Express',
+    priority: 'Today',
+    owner: 'Lift electrical',
+  },
+  {
+    asset: 'Grip inspection',
+    lift: 'Meadow Quad',
+    priority: 'Tonight',
+    owner: 'Mechanical',
+  },
+  {
+    asset: 'Haul rope ice',
+    lift: 'Summit Tram',
+    priority: 'Active',
+    owner: 'Mountain ops',
+  },
 ] as const;
 
 export const events = [
@@ -195,7 +225,19 @@ export const incidents = [
 ] as const;
 
 export const radioLog = [
-  { time: '09:18', channel: 'Patrol', note: 'Sled team clear of Summit Bowl traverse.' },
-  { time: '09:26', channel: 'Lift ops', note: 'Tram hold extended until next wind reading.' },
-  { time: '09:33', channel: 'Guest services', note: 'Family reunification desk notified for PAT-1048.' },
+  {
+    time: '09:18',
+    channel: 'Patrol',
+    note: 'Sled team clear of Summit Bowl traverse.',
+  },
+  {
+    time: '09:26',
+    channel: 'Lift ops',
+    note: 'Tram hold extended until next wind reading.',
+  },
+  {
+    time: '09:33',
+    channel: 'Guest services',
+    note: 'Family reunification desk notified for PAT-1048.',
+  },
 ] as const;

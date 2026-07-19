@@ -17,7 +17,7 @@ import {
   UserPlusIcon,
   UsersIcon,
 } from 'lucide-react';
-import { data, Staff } from '../data';
+import { data, Staff } from 'demo-data';
 
 const todaySchedule = [
   {

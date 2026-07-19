@@ -49,6 +49,7 @@ nx-cloud.env
 
 # Panda
 styled-system
+styled-system-level2
 !packages/styled-system
 
 

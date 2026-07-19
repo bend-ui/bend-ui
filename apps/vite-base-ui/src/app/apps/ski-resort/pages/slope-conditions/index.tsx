@@ -1,6 +1,6 @@
 import { Box, Heading, Stack, Text } from '@bend-ui/base-ui';
 import { MountainSnowIcon, ThermometerSnowflakeIcon, WindIcon } from 'lucide-react';
-import { resortStats, terrainZones, weatherTimeline } from '../../data';
+import { resortStats, terrainZones, weatherTimeline } from 'demo-data';
 import {
   Metric,
   Page,

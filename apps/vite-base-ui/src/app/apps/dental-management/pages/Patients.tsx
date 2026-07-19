@@ -25,7 +25,7 @@ import {
   VideoIcon,
   XIcon,
 } from 'lucide-react';
-import { data, Patient } from '../data';
+import { data, Patient } from 'demo-data';
 
 const queuePatients = [
   ...data.patients,

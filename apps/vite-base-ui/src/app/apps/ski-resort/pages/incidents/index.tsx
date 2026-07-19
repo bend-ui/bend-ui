@@ -1,6 +1,6 @@
 import { Box, Heading, Stack, Text } from '@bend-ui/base-ui';
 import { AlertTriangleIcon, RadioIcon, ShieldCheckIcon } from 'lucide-react';
-import { incidents, radioLog } from '../../data';
+import { incidents, radioLog } from 'demo-data';
 import {
   Metric,
   Page,

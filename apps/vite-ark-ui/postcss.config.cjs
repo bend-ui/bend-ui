@@ -6,4 +6,4 @@ module.exports = {
       configPath: path.resolve(__dirname, 'panda.config.ts'),
     },
   },
-}
+};

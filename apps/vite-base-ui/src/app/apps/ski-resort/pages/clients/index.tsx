@@ -1,6 +1,6 @@
 import { Box, Heading, Stack, Text } from '@bend-ui/base-ui';
 import { BadgeDollarSignIcon, ContactIcon, GraduationCapIcon } from 'lucide-react';
-import { clients } from '../../data';
+import { clients } from 'demo-data';
 import {
   Metric,
   Page,

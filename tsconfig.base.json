@@ -31,7 +31,8 @@
       "@bend-ui/storybook": ["packages/storybook/src/index.ts"],
       "@bend-ui/styled-system/*": ["packages/styled-system/dist/*"],
       "@bend-ui/theme": ["packages/theme/src/index.ts"],
-      "@bend-ui/core": ["packages/core/src/index.ts"]
+      "@bend-ui/core": ["packages/core/src/index.ts"],
+      "demo-data": ["./demo-data/src/index.ts"]
     },
     "strict": false,
     "noUncheckedSideEffectImports": false,

@@ -7,7 +7,7 @@ import path from 'path';
 
 export default defineConfig({
   root: __dirname,
-  cacheDir: '../../node_modules/.vite/apps/vite-ark',
+  cacheDir: '../../node_modules/.vite/apps/vite-ark-ui',
   server: {
     port: 4200,
     host: 'localhost',
@@ -37,7 +37,7 @@ export default defineConfig({
   //  plugins: [ nxViteTsPaths() ],
   // },
   build: {
-    outDir: '../../dist/apps/vite-ark',
+    outDir: '../../dist/apps/vite-ark-ui',
     emptyOutDir: true,
     reportCompressedSize: true,
     commonjsOptions: {
@@ -51,7 +51,7 @@ export default defineConfig({
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     reporters: ['default'],
     coverage: {
-      reportsDirectory: '../../coverage/apps/vite-ark',
+      reportsDirectory: '../../coverage/apps/vite-ark-ui',
       provider: 'v8',
     },
   },
