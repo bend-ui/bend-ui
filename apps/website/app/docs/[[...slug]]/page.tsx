@@ -1,12 +1,7 @@
-import {
-  DocsBody,
-  DocsDescription,
-  DocsPage,
-  DocsTitle,
-} from 'fumadocs-ui/page';
 import { notFound } from 'next/navigation';
 import { mdxComponents } from '../../../lib/mdx-components';
 import { source } from '../../../lib/source';
+import { DocsPage } from '../../../src/layouts/docs-layout';
 // import { metadataImage } from '@/lib/metadata';
 
 export default async function Page(props: {
@@ -21,12 +16,14 @@ export default async function Page(props: {
   const MDX = pageData.body as React.ComponentType<any>;
 
   return (
-    <DocsPage full={pageData.full} toc={pageData.toc}>
-      <DocsTitle>{pageData.title}</DocsTitle>
-      <DocsDescription>{pageData.description}</DocsDescription>
-      <DocsBody>
-        <MDX components={mdxComponents} />
-      </DocsBody>
+    <DocsPage
+      title={pageData.title}
+      description={pageData.description}
+      toc={pageData.toc}
+      tree={source.pageTree}
+      url={page.url}
+    >
+      <MDX components={mdxComponents} />
     </DocsPage>
   );
 }

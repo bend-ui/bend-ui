@@ -7,12 +7,11 @@ export default defineConfig({
 
   // Where to look for your css declarations
   include: [
-    '../../packages/react/src/**/*.{js,jsx,ts,tsx}',
-    '../../packages/ark-ui/src/**/*.{js,jsx,ts,tsx}',
+    '../../packages/base-ui/src/**/*.{js,jsx,ts,tsx}',
+    './src/**/*.{tsx,ts,jsx}',
     './lib/**/*.{tsx,ts,jsx}',
     './pages/**/*.{jsx,tsx}',
     './app/**/*.{jsx,tsx}',
-    './theme.config.tsx',
   ],
 
   // Files to exclude
