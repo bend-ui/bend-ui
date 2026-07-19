@@ -33,13 +33,7 @@
       }
     },
     "build-storybook": {
-      "outputs": [
-        "{projectRoot}/{options.output-dir}",
-        "{projectRoot}/storybook-static",
-        "{options.output-dir}",
-        "{options.outputDir}",
-        "{options.o}"
-      ],
+      "outputs": ["{workspaceRoot}/dist/storybook/react"],
       "options": {
         "config-dir": ".storybook",
         "output-dir": "../../dist/storybook/react"
