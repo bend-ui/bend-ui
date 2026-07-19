@@ -57,7 +57,31 @@ export default defineConfig({
 });
 ```
 
-## 3. Generate the styled system
+## 3. Connect Panda to your CSS build
+
+Create `postcss.config.cjs` so Panda emits the styles it discovers:
+
+```javascript
+module.exports = {
+  plugins: {
+    '@pandacss/dev/postcss': {},
+  },
+};
+```
+
+Create a CSS entry with Panda's layer order:
+
+```css
+@layer reset, base, tokens, recipes, utilities;
+```
+
+Import that CSS entry from your application root. For example, in a Next.js App Router layout:
+
+```tsx
+import '../styles/globals.css';
+```
+
+## 4. Generate the styled system
 
 Add Panda code generation to `package.json`:
 
@@ -75,7 +99,7 @@ Then generate the local `styled-system` directory:
 pnpm prepare
 ```
 
-## 4. Render a component
+## 5. Render a component
 
 ```tsx
 import { Button } from '@bend-ui/base-ui';
