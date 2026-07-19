@@ -1,64 +1,47 @@
 import { Clipboard as ClipboardPrimitive } from '@ark-ui/react';
 import { CheckIcon, ClipboardCopyIcon } from 'lucide-react';
 
-import { withRecipe, withParts } from '../../utils';
 import { Assign, HTMLStyledProps } from '@bend-ui/styled-system/types';
 import { clipboard } from '@bend-ui/styled-system/recipes';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
+
+const { withProvider, withContext } = createStyleContext(clipboard);
 
 export type ClipboardRootProps = Assign<
   HTMLStyledProps<'div'>,
   ClipboardPrimitive.RootProps
 >;
-const ClipboardRoot = withRecipe<ClipboardRootProps>(
-  ClipboardPrimitive.Root,
-  clipboard,
-  'root',
-);
+const ClipboardRoot = withProvider(ClipboardPrimitive.Root, 'root');
 
 export type ClipboardLabelProps = Assign<
   HTMLStyledProps<'label'>,
   ClipboardPrimitive.LabelProps
 >;
-const ClipboardLabel = withParts<ClipboardLabelProps>(
-  ClipboardPrimitive.Label,
-  'label',
-);
+const ClipboardLabel = withContext(ClipboardPrimitive.Label, 'label');
 
 export type ClipboardControlProps = Assign<
   HTMLStyledProps<'div'>,
   ClipboardPrimitive.ControlProps
 >;
-const ClipboardControl = withParts<ClipboardControlProps>(
-  ClipboardPrimitive.Control,
-  'control',
-);
+const ClipboardControl = withContext(ClipboardPrimitive.Control, 'control');
 
 export type ClipboardInputProps = Assign<
   HTMLStyledProps<'input'>,
   ClipboardPrimitive.InputProps
 >;
-const ClipboardInput = withParts<ClipboardInputProps>(
-  ClipboardPrimitive.Input,
-  'input',
-);
+const ClipboardInput = withContext(ClipboardPrimitive.Input, 'input');
 
 export type ClipboardTriggerProps = Assign<
   HTMLStyledProps<'button'>,
   ClipboardPrimitive.TriggerProps
 >;
-const ClipboardTrigger = withParts<ClipboardTriggerProps>(
-  ClipboardPrimitive.Trigger,
-  'trigger',
-);
+const ClipboardTrigger = withContext(ClipboardPrimitive.Trigger, 'trigger');
 
 export type ClipboardIndicatorProps = Assign<
   HTMLStyledProps<'div'>,
   ClipboardPrimitive.IndicatorProps
 >;
-const ClipboardIndicator = withParts<ClipboardIndicatorProps>(
-  ClipboardPrimitive.Indicator,
-  'indicator',
-);
+const ClipboardIndicator = withContext(ClipboardPrimitive.Indicator, 'indicator');
 
 export type ClipboardProps = ClipboardRootProps;
 

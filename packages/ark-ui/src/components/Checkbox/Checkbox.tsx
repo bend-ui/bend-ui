@@ -2,40 +2,29 @@ import { Checkbox as ArkCheckbox } from '@ark-ui/react';
 import { CheckIcon } from 'lucide-react';
 import { CheckboxVariantProps } from '@bend-ui/styled-system/recipes';
 import { checkbox } from '@bend-ui/styled-system/recipes';
-import { withParts, withRecipe } from '../../utils';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
+
+const { withProvider, withContext } = createStyleContext(checkbox);
 
 export type CheckboxRootProps = ArkCheckbox.RootProps & CheckboxVariantProps;
 
-const CheckboxRoot = withRecipe<CheckboxRootProps>(
-  ArkCheckbox.Root,
-  checkbox,
-  'root',
-);
+const CheckboxRoot = withProvider(ArkCheckbox.Root, 'root');
 
 export type CheckboxLabelProps = ArkCheckbox.LabelProps;
 
-const CheckboxLabel = withParts<CheckboxLabelProps>(ArkCheckbox.Label, 'label');
+const CheckboxLabel = withContext(ArkCheckbox.Label, 'label');
 
 export type CheckboxControlProps = ArkCheckbox.ControlProps;
 
-const CheckboxControl = withParts<CheckboxControlProps>(
-  ArkCheckbox.Control,
-  'control',
-);
+const CheckboxControl = withContext(ArkCheckbox.Control, 'control');
 
 export type CheckboxIndicatorProps = ArkCheckbox.IndicatorProps;
 
-const CheckboxIndicator = withParts<CheckboxIndicatorProps>(
-  ArkCheckbox.Indicator,
-  'indicator',
-);
+const CheckboxIndicator = withContext(ArkCheckbox.Indicator, 'indicator');
 
 export type CheckboxHiddenInputProps = ArkCheckbox.HiddenInputProps;
 
-const CheckboxHiddenInput = withParts<CheckboxHiddenInputProps>(
-  ArkCheckbox.HiddenInput,
-  'hiddenInput',
-);
+const CheckboxHiddenInput = ArkCheckbox.HiddenInput;
 
 export type CheckboxProps = CheckboxRootProps;
 

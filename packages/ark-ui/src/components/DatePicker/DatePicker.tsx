@@ -1,128 +1,109 @@
 import { DatePicker as DatePickerPrimitive, Portal } from '@ark-ui/react';
 import { Input } from '../Input';
-import { withRecipe, withParts } from '../../utils';
+import { withParts } from '../../utils';
 import {
   datePicker,
   DatePickerVariantProps,
 } from '@bend-ui/styled-system/recipes';
 import { Assign, HTMLStyledProps } from '@bend-ui/styled-system/types';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
+
+const { withProvider, withContext } = createStyleContext(datePicker);
 
 export interface DatePickerRootProps
   extends
     Assign<HTMLStyledProps<'div'>, DatePickerPrimitive.RootProps>,
     DatePickerVariantProps {}
-const DatePickerRoot = withRecipe<DatePickerRootProps>(
-  DatePickerPrimitive.Root,
-  datePicker,
-  'root',
-);
+const DatePickerRoot = withProvider(DatePickerPrimitive.Root, 'root');
 
 export type DatePickerLabelProps = Assign<
   HTMLStyledProps<'label'>,
   DatePickerPrimitive.LabelProps
 >;
-const DatePickerLabel = withParts<DatePickerLabelProps>(
-  DatePickerPrimitive.Label,
-  'label',
-);
+const DatePickerLabel = withContext(DatePickerPrimitive.Label, 'label');
 
 export type DatePickerControlProps = Assign<
   HTMLStyledProps<'div'>,
   DatePickerPrimitive.ControlProps
 >;
-const DatePickerControl = withParts<DatePickerControlProps>(
-  DatePickerPrimitive.Control,
-  'control',
-);
+const DatePickerControl = withContext(DatePickerPrimitive.Control, 'control');
 
 export type DatePickerInputProps = Assign<
   HTMLStyledProps<'input'>,
   DatePickerPrimitive.InputProps
 >;
-const DatePickerInput = withParts<DatePickerInputProps>(
-  DatePickerPrimitive.Input,
-  'input',
-);
+const DatePickerInput = withContext(DatePickerPrimitive.Input, 'input');
 
 export type DatePickerTriggerProps = Assign<
   HTMLStyledProps<'button'>,
   DatePickerPrimitive.TriggerProps
 >;
-const DatePickerTrigger = withParts<DatePickerTriggerProps>(
-  DatePickerPrimitive.Trigger,
-  'trigger',
-);
+const DatePickerTrigger = withContext(DatePickerPrimitive.Trigger, 'trigger');
 
 export type DatePickerClearTriggerProps = Assign<
   HTMLStyledProps<'button'>,
   DatePickerPrimitive.ClearTriggerProps
 >;
-const DatePickerClearTrigger = withParts<DatePickerClearTriggerProps>(
+const DatePickerClearTrigger = withContext(
   DatePickerPrimitive.ClearTrigger,
-  'clear-trigger',
+  'clearTrigger',
 );
 
 export type DatePickerViewProps = Assign<
   HTMLStyledProps<'div'>,
   DatePickerPrimitive.ViewProps
 >;
-const DatePickerView = withParts<DatePickerViewProps>(
-  DatePickerPrimitive.View,
-  'view',
-);
+const DatePickerView = withContext(DatePickerPrimitive.View, 'view');
 
 export type DatePickerContextProps = Assign<
   HTMLStyledProps<'div'>,
   DatePickerPrimitive.ContextProps
 >;
-const DatePickerContext = withParts<DatePickerContextProps>(
-  DatePickerPrimitive.Context,
-  'context',
-);
+const DatePickerContext = withContext(DatePickerPrimitive.Context, 'context');
 
 export type DatePickerViewControlProps = Assign<
   HTMLStyledProps<'div'>,
   DatePickerPrimitive.ViewControlProps
 >;
-const DatePickerViewControl = withParts<DatePickerViewControlProps>(
+const DatePickerViewControl = withContext(
   DatePickerPrimitive.ViewControl,
-  'view-control',
+  'viewControl',
 );
 
 export type DatePickerPrevTriggerProps = Assign<
   HTMLStyledProps<'button'>,
   DatePickerPrimitive.PrevTriggerProps
 >;
-const DatePickerPrevTrigger = withParts<DatePickerPrevTriggerProps>(
+const DatePickerPrevTrigger = withContext(
   DatePickerPrimitive.PrevTrigger,
-  'prev-trigger',
+  'prevTrigger',
 );
 
 export type DatePickerViewTriggerProps = Assign<
   HTMLStyledProps<'button'>,
   DatePickerPrimitive.ViewTriggerProps
 >;
-const DatePickerViewTrigger = withParts<DatePickerViewTriggerProps>(
+const DatePickerViewTrigger = withContext(
   DatePickerPrimitive.ViewTrigger,
-  'view-trigger',
+  'viewTrigger',
 );
 
 export type DatePickerNextTriggerProps = Assign<
   HTMLStyledProps<'button'>,
   DatePickerPrimitive.NextTriggerProps
 >;
-const DatePickerNextTrigger = withParts<DatePickerNextTriggerProps>(
+const DatePickerNextTrigger = withContext(
   DatePickerPrimitive.NextTrigger,
-  'next-trigger',
+  'nextTrigger',
 );
 
 export type DatePickerRangeTextProps = Assign<
   HTMLStyledProps<'span'>,
   DatePickerPrimitive.RangeTextProps
 >;
-const DatePickerRangeText = withParts<DatePickerRangeTextProps>(
+const DatePickerRangeText = withContext(
   DatePickerPrimitive.RangeText,
-  'range-text',
+  'rangeText',
 );
 
 export type DatePickerTableProps = Assign<

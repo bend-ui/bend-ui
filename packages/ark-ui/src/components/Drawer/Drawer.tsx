@@ -1,13 +1,16 @@
 import { Dialog as ArkDialog, Portal as ArkPortal } from '@ark-ui/react';
 import { backdrop, drawer } from '@bend-ui/styled-system/recipes';
 import { DismissButton } from '../Button';
-import { withRecipe, withParts } from '@bend-ui/core';
+import { withRecipe } from '@bend-ui/core';
 import type {
   BackdropVariantProps,
   DrawerVariantProps,
 } from '@bend-ui/styled-system/recipes';
 import { Button } from '..';
 import { HTMLBendUIProps, bend } from '@bend-ui/core';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
+
+const { withProvider, withContext } = createStyleContext(drawer);
 
 type DrawerRootProps = ArkDialog.RootProps;
 
@@ -18,13 +21,17 @@ DrawerTrigger.displayName = 'DrawerTrigger';
 
 type DrawerCloseTriggerProps = ArkDialog.CloseTriggerProps;
 
-const DrawerCloseTrigger = (props: DrawerCloseTriggerProps) => {
+const DrawerCloseTriggerBase = (props: DrawerCloseTriggerProps) => {
   return (
     <ArkDialog.CloseTrigger {...props} asChild>
       <DismissButton variant="secondary" size="sm" />
     </ArkDialog.CloseTrigger>
   );
 };
+const DrawerCloseTrigger = withContext(
+  DrawerCloseTriggerBase,
+  'closeTrigger',
+);
 DrawerCloseTrigger.displayName = 'DrawerCloseTrigger';
 
 const DrawerPortal = ArkPortal;
@@ -42,31 +49,21 @@ DrawerBackdrop.displayName = 'DrawerBackdrop';
 export type DrawerPositionerProps = ArkDialog.PositionerProps &
   DrawerVariantProps;
 
-const DrawerPositioner = withRecipe<DrawerPositionerProps>(
-  ArkDialog.Positioner,
-  drawer,
-  'positioner',
-);
+const DrawerPositioner = withProvider(ArkDialog.Positioner, 'root');
 DrawerPositioner.displayName = 'DrawerPositioner';
 
-const DrawerContent = withParts<ArkDialog.ContentProps>(
-  ArkDialog.Content,
-  'content',
-);
+const DrawerContent = withContext(ArkDialog.Content, 'content');
 DrawerContent.displayName = 'DrawerContent';
 
-const DrawerTitle = withParts<ArkDialog.TitleProps>(ArkDialog.Title, 'title');
+const DrawerTitle = withContext(ArkDialog.Title, 'title');
 DrawerTitle.displayName = 'DrawerTitle';
 
-const DrawerDescription = withParts<ArkDialog.DescriptionProps>(
-  ArkDialog.Description,
-  'description',
-);
+const DrawerDescription = withContext(ArkDialog.Description, 'description');
 DrawerDescription.displayName = 'DrawerDescription';
 
 export type DrawerFooterProps = HTMLBendUIProps<'div'>;
 
-const DrawerFooter = withParts(bend.div, 'footer');
+const DrawerFooter = withContext(bend.div, 'footer');
 DrawerFooter.displayName = 'DrawerFooter';
 
 export interface DrawerProps extends DrawerRootProps, DrawerVariantProps {

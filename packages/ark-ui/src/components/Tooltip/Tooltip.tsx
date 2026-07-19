@@ -1,22 +1,20 @@
 import { Tooltip as ArkTooltip } from '@ark-ui/react';
-import { withRecipe, withParts } from '@bend-ui/core';
 import { tooltip, TooltipVariantProps } from '@bend-ui/styled-system/recipes';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
 
-const TooltipRoot = ArkTooltip.Root;
-const TooltipTrigger = ArkTooltip.Trigger;
+const { withProvider, withContext } = createStyleContext(tooltip);
+
+const TooltipRoot = withProvider(ArkTooltip.Root, 'root');
+const TooltipTrigger = withContext(ArkTooltip.Trigger, 'trigger');
 
 export type TooltipPositionerProps = ArkTooltip.PositionerProps &
   TooltipVariantProps;
 
-const TooltipPositioner = withRecipe(
-  ArkTooltip.Positioner,
-  tooltip,
-  'positioner',
-);
+const TooltipPositioner = ArkTooltip.Positioner;
 
-const TooltipContent = withParts(ArkTooltip.Content, 'content');
-const TooltipArrow = withParts(ArkTooltip.Arrow, 'arrow');
-const TooltipArrowTip = withParts(ArkTooltip.ArrowTip, 'arrowTip');
+const TooltipContent = withContext(ArkTooltip.Content, 'content');
+const TooltipArrow = withContext(ArkTooltip.Arrow, 'arrow');
+const TooltipArrowTip = withContext(ArkTooltip.ArrowTip, 'arrowTip');
 
 export type TooltipProps = ArkTooltip.RootProps;
 

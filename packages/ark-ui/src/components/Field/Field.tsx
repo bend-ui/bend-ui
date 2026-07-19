@@ -1,18 +1,21 @@
 'use client';
 import { Field as ArkField } from '@ark-ui/react';
 import type { HTMLStyledProps } from '@bend-ui/styled-system/types';
-import { withParts, withRecipe } from '@bend-ui/core';
+import { withParts } from '@bend-ui/core';
 import type { InputProps } from '../Input';
 import {
   formField,
   type FormFieldVariantProps,
 } from '@bend-ui/styled-system/recipes';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
+
+const { withProvider, withContext } = createStyleContext(formField);
 
 export type FieldRootProps = ArkField.RootProps & FormFieldVariantProps;
 
-const FieldRoot = withRecipe<FieldRootProps>(ArkField.Root, formField, 'root');
+const FieldRoot = withProvider(ArkField.Root, 'root');
 
-const FieldLabel = ArkField.Label;
+const FieldLabel = withContext(ArkField.Label, 'label');
 
 export type FieldInputProps = ArkField.InputProps & InputProps;
 
@@ -26,15 +29,9 @@ const FieldTextarea = withParts<FieldTextareaProps>(
   'textarea',
 );
 
-const FieldHelperText = withParts<ArkField.HelperTextProps>(
-  ArkField.HelperText,
-  'helper',
-);
+const FieldHelperText = withContext(ArkField.HelperText, 'helper');
 
-const FieldErrorText = withParts<ArkField.ErrorTextProps>(
-  ArkField.ErrorText,
-  'error',
-);
+const FieldErrorText = withContext(ArkField.ErrorText, 'error');
 
 export interface FieldProps extends FieldRootProps {
   label?: string;

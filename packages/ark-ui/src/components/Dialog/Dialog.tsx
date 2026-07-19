@@ -4,10 +4,13 @@ import {
   backdrop,
   DialogVariantProps,
 } from '@bend-ui/styled-system/recipes';
-import { withRecipe, withParts } from '../../utils';
+import { withRecipe } from '../../utils';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
 
-export type DialogRootProps = ArkDialog.RootProps;
-const DialogRoot = ArkDialog.Root;
+const { withRootProvider, withContext } = createStyleContext(dialog);
+
+export type DialogRootProps = ArkDialog.RootProps & DialogVariantProps;
+const DialogRoot = withRootProvider(ArkDialog.Root);
 
 export type DialogTriggerProps = ArkDialog.TriggerProps;
 const DialogTrigger = ArkDialog.Trigger;
@@ -20,32 +23,19 @@ const DialogBackdrop = withRecipe<DialogBackdropProps>(
 );
 
 export type DialogPositionerProps = ArkDialog.PositionerProps;
-const DialogPositioner = withRecipe<DialogPositionerProps>(
-  ArkDialog.Positioner,
-  dialog,
-  'positioner',
-);
+const DialogPositioner = withContext(ArkDialog.Positioner, 'positioner');
 
 export type DialogContentProps = ArkDialog.ContentProps;
-const DialogContent = withParts<DialogContentProps>(
-  ArkDialog.Content,
-  'content',
-);
+const DialogContent = withContext(ArkDialog.Content, 'content');
 
 export type DialogTitleProps = ArkDialog.TitleProps;
-const DialogTitle = withParts<DialogTitleProps>(ArkDialog.Title, 'title');
+const DialogTitle = withContext(ArkDialog.Title, 'title');
 
 export type DialogDescriptionProps = ArkDialog.DescriptionProps;
-const DialogDescription = withParts<DialogDescriptionProps>(
-  ArkDialog.Description,
-  'description',
-);
+const DialogDescription = withContext(ArkDialog.Description, 'description');
 
 export type DialogCloseTriggerProps = ArkDialog.CloseTriggerProps;
-const DialogCloseTrigger = withParts<DialogCloseTriggerProps>(
-  ArkDialog.CloseTrigger,
-  'closeTrigger',
-);
+const DialogCloseTrigger = withContext(ArkDialog.CloseTrigger, 'closeTrigger');
 
 export type DialogPopupProps = {
   children?: React.ReactNode;
@@ -75,7 +65,7 @@ const DialogPopup = (props: DialogPopupProps) => {
   );
 };
 
-interface DialogProps extends ArkDialog.RootProps, DialogVariantProps {
+interface DialogProps extends DialogRootProps {
   children?: React.ReactNode;
 }
 

@@ -1,34 +1,34 @@
 import { Dialog as ArkDialog, Portal } from '@ark-ui/react';
 import { command } from '@bend-ui/styled-system/recipes';
 import type { CommandVariantProps } from '@bend-ui/styled-system/recipes';
-import { withRecipe, withParts } from '@bend-ui/core';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
 
-export type CommandRootProps = ArkDialog.RootProps;
-const CommandRoot = ArkDialog.Root;
+const { withProvider, withContext } = createStyleContext(command);
+
+export type CommandRootProps = ArkDialog.RootProps & CommandVariantProps;
+const CommandRoot = withProvider(ArkDialog.Root, 'root');
 const CommandBackdrop = ArkDialog.Backdrop;
 
-export type CommandPositionerProps = ArkDialog.RootProps & CommandVariantProps;
+export type CommandPositionerProps = ArkDialog.PositionerProps;
 
-const CommandPositioner = withRecipe<CommandPositionerProps>(
-  ArkDialog.Positioner,
-  command,
-  'positioner',
+const CommandPositioner = ArkDialog.Positioner;
+
+const CommandContent = withContext(ArkDialog.Content, 'content');
+const CommandTitle = withContext(ArkDialog.Title, 'title');
+const CommandDescription = withContext(ArkDialog.Description, 'description');
+const CommandCloseTrigger = withContext(
+  ArkDialog.CloseTrigger,
+  'closeTrigger',
 );
-
-const CommandContent = withParts(ArkDialog.Content, 'content');
-const CommandTitle = withParts(ArkDialog.Title, 'title');
-const CommandDescription = withParts(ArkDialog.Description, 'description');
-const CommandCloseTrigger = withParts(ArkDialog.CloseTrigger, 'close-trigger');
 
 export type CommandProps = CommandRootProps & CommandVariantProps;
 
 const Component = (props: CommandProps) => {
-  const [variantProps, rest] = command.splitVariantProps(props);
   return (
-    <CommandRoot open {...rest}>
+    <CommandRoot open {...props}>
       <Portal>
         <CommandBackdrop />
-        <CommandPositioner {...variantProps}>
+        <CommandPositioner>
           <CommandContent>
             <CommandTitle>Dialog Title</CommandTitle>
             <CommandDescription>Dialog Description</CommandDescription>
