@@ -6,6 +6,7 @@
   },
   "targetDefaults": {
     "build-storybook": {
+      "dependsOn": ["^build"],
       "inputs": [
         "default",
         "^default",
