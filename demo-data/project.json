@@ -1,0 +1,19 @@
+{
+  "name": "demo-data",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "demo-data/src",
+  "projectType": "library",
+  "tags": ["utils"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/demo-data",
+        "main": "demo-data/src/index.ts",
+        "tsConfig": "demo-data/tsconfig.lib.json",
+        "assets": []
+      }
+    }
+  }
+}

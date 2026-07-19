@@ -1,6 +1,6 @@
 import { Box, Heading, Stack, Text } from '@bend-ui/base-ui';
 import { CableIcon, ClockIcon, WrenchIcon } from 'lucide-react';
-import { lifts, maintenanceQueue } from '../../data';
+import { lifts, maintenanceQueue } from 'demo-data';
 import {
   Metric,
   Page,

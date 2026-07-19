@@ -16,7 +16,7 @@ import {
   SearchIcon,
   UserIcon,
 } from 'lucide-react';
-import { data, Invoice } from '../data';
+import { data, Invoice } from 'demo-data';
 
 export const Billing = () => {
   const selectedInvoice = data.invoices[0];

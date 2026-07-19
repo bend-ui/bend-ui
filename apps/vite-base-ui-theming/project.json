@@ -1,0 +1,116 @@
+{
+  "name": "vite-base-ui-theming",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/vite-base-ui-theming/src",
+  "projectType": "application",
+  "tags": ["app"],
+  "targets": {
+    "build": {
+      "executor": "@nx/vite:build",
+      "dependsOn": ["prepare-level3"],
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/vite-base-ui-theming"
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "vite-base-ui-theming:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "vite-base-ui-theming:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "vite-base-ui-theming:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "preview": {
+      "dependsOn": ["build"],
+      "executor": "@nx/vite:preview-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "vite-base-ui-theming:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "vite-base-ui-theming:build:development"
+        },
+        "production": {
+          "buildTarget": "vite-base-ui-theming:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/vitest:test",
+      "dependsOn": ["prepare-level3"],
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "coverage/apps/vite-base-ui-theming"
+      }
+    },
+    "test-level2": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["prepare-level2"],
+      "options": {
+        "cwd": "apps/vite-base-ui-theming",
+        "command": "vitest run --mode level2"
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "vite-base-ui-theming:build",
+        "spa": true
+      }
+    },
+    "prepare-level3": {
+      "executor": "nx:run-commands",
+      "outputs": ["{projectRoot}/styled-system"],
+      "options": {
+        "cwd": "apps/vite-base-ui-theming",
+        "parallel": false,
+        "commands": [
+          "panda codegen --config panda.config.ts --clean",
+          "panda cssgen --config panda.config.ts --outfile styled-system/styles.css"
+        ]
+      }
+    },
+    "prepare-level2": {
+      "executor": "nx:run-commands",
+      "outputs": ["{projectRoot}/styled-system-level2"],
+      "options": {
+        "cwd": "apps/vite-base-ui-theming",
+        "parallel": false,
+        "commands": [
+          "panda codegen --config panda.level2.config.ts --clean",
+          "panda cssgen --config panda.level2.config.ts --outfile styled-system-level2/styles.css"
+        ]
+      }
+    },
+    "build-level2": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["prepare-level2"],
+      "outputs": ["{workspaceRoot}/dist/apps/vite-base-ui-theming-level2"],
+      "options": {
+        "cwd": "apps/vite-base-ui-theming",
+        "command": "vite build --mode level2"
+      }
+    }
+  }
+}

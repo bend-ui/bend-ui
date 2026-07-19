@@ -1,7 +1,7 @@
 {
-  "name": "vite-ark",
+  "name": "vite-ark-ui",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/vite-ark/src",
+  "sourceRoot": "apps/vite-ark-ui/src",
   "projectType": "application",
   "tags": ["example", "app"],
   "targets": {
@@ -10,7 +10,7 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/apps/vite-ark"
+        "outputPath": "dist/apps/vite-ark-ui"
       },
       "configurations": {
         "development": {
@@ -25,15 +25,15 @@
       "executor": "@nx/vite:dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "vite-ark:build"
+        "buildTarget": "vite-ark-ui:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "vite-ark:build:development",
+          "buildTarget": "vite-ark-ui:build:development",
           "hmr": true
         },
         "production": {
-          "buildTarget": "vite-ark:build:production",
+          "buildTarget": "vite-ark-ui:build:production",
           "hmr": false
         }
       }
@@ -43,14 +43,14 @@
       "executor": "@nx/vite:preview-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "vite-ark:build"
+        "buildTarget": "vite-ark-ui:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "vite-ark:build:development"
+          "buildTarget": "vite-ark-ui:build:development"
         },
         "production": {
-          "buildTarget": "vite-ark:build:production"
+          "buildTarget": "vite-ark-ui:build:production"
         }
       }
     },
@@ -58,14 +58,14 @@
       "executor": "@nx/vitest:test",
       "outputs": ["{options.reportsDirectory}"],
       "options": {
-        "reportsDirectory": "{projectRoot}/../../coverage/apps/vite-ark"
+        "reportsDirectory": "{projectRoot}/../../coverage/apps/vite-ark-ui"
       }
     },
     "serve-static": {
       "executor": "@nx/web:file-server",
       "dependsOn": ["build"],
       "options": {
-        "buildTarget": "vite-ark:build",
+        "buildTarget": "vite-ark-ui:build",
         "spa": true
       }
     }

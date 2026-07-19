@@ -1,0 +1,17 @@
+{
+  "name": "vite-base-ui-theming",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "prepare": "panda codegen --config panda.config.ts && panda cssgen --config panda.config.ts --outfile styled-system/styles.css"
+  },
+  "devDependencies": {
+    "@pandacss/dev": "^1.11.4"
+  },
+  "dependencies": {
+    "@bend-ui/base-ui": "workspace:*",
+    "@bend-ui/config": "workspace:*",
+    "@bend-ui/preset-base": "workspace:*",
+    "demo-data": "workspace:*"
+  }
+}

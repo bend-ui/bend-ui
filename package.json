@@ -127,6 +127,7 @@
     "jest-util": "30.0.5",
     "jiti": "2.7.0",
     "jsdom": "26.0.0",
+    "jsonc-eslint-parser": "^2.1.0",
     "lucide-react": "^1.25.0",
     "mockdate": "^3.0.5",
     "msw": "^2.14.6",
