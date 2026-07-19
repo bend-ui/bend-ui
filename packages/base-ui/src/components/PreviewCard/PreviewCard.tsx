@@ -1,23 +1,24 @@
 import * as React from 'react';
 import { PreviewCard as PreviewCardPrimitive } from '@base-ui/react/preview-card';
-import { withRecipe } from '@bend-ui/core';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
 import { hoverCard } from '@bend-ui/styled-system/recipes';
 
-const PreviewCardRoot = PreviewCardPrimitive.Root;
+const { withRootProvider, withContext } = createStyleContext(hoverCard);
 
-const PreviewCardTrigger = PreviewCardPrimitive.Trigger;
+const PreviewCardRoot = withRootProvider(PreviewCardPrimitive.Root);
+
+const PreviewCardTrigger = withContext(PreviewCardPrimitive.Trigger, 'trigger');
 
 const PreviewCardPortal = PreviewCardPrimitive.Portal;
 
-const PreviewCardPositioner = PreviewCardPrimitive.Positioner;
-
-const PreviewCardPopup = withRecipe<PreviewCardPrimitive.Popup.Props>(
-  PreviewCardPrimitive.Popup,
-  hoverCard,
-  'root',
+const PreviewCardPositioner = withContext(
+  PreviewCardPrimitive.Positioner,
+  'positioner',
 );
 
-const PreviewCardArrow = PreviewCardPrimitive.Arrow;
+const PreviewCardPopup = withContext(PreviewCardPrimitive.Popup, 'content');
+
+const PreviewCardArrow = withContext(PreviewCardPrimitive.Arrow, 'arrow');
 
 const Component = () => {
   return (

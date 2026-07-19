@@ -1,20 +1,19 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  label: { selector: '& [data-part="label"]' },
-  positioner: { selector: '& [data-part="positioner"]' },
-  content: { selector: '& [data-part="content"]' },
-  item: { selector: '& [data-part="item"]' },
-  itemText: { selector: '& [data-part="itemText"]' },
-  itemIndicator: { selector: '& [data-part="itemIndicator"]' },
-  clearTrigger: { selector: '& [data-part="clearTrigger"]' },
-});
-
-export const comboboxRecipe = defineRecipe({
+export const comboboxRecipe = defineSlotRecipe({
+  slots: [
+    'root',
+    'label',
+    'positioner',
+    'content',
+    'item',
+    'itemText',
+    'itemIndicator',
+    'clearTrigger',
+  ],
   className: 'Combobox',
   description: 'A combobox style',
-  base: parts({
+  base: {
     root: {
       display: 'flex',
       flexDirection: 'column',
@@ -65,18 +64,18 @@ export const comboboxRecipe = defineRecipe({
       color: 'icon.strong',
     },
     clearTrigger: {},
-  }),
+  },
   variants: {
     size: {
-      sm: parts({
+      sm: {
         item: { height: '8', fontSize: 'sm' },
-      }),
-      md: parts({
+      },
+      md: {
         item: { height: '10', fontSize: 'md' },
-      }),
-      lg: parts({
+      },
+      lg: {
         item: { height: '12', fontSize: 'lg' },
-      }),
+      },
     },
   },
   defaultVariants: {

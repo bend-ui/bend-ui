@@ -1,6 +1,16 @@
 import * as React from 'react';
 import type { ComponentProps, ReactNode } from 'react';
 import { styled } from '@bend-ui/styled-system/jsx';
+import { cx } from '@bend-ui/styled-system/css';
+import {
+  actionItem,
+  metric,
+  pageHeader,
+  panelHeader,
+  responsiveGrid,
+  surface,
+  timelineItem,
+} from '@bend-ui/styled-system/recipes';
 import { MoreHorizontalIcon } from 'lucide-react';
 import { Badge, type BadgeProps } from '../Badge';
 import { Avatar } from '../Avatar';
@@ -28,16 +38,9 @@ export interface SurfaceProps extends PatternBoxProps {
 }
 
 export const Surface = (props: SurfaceProps) => {
-  const { children, elevation = 'none', ...rest } = props;
+  const { children, className, elevation = 'none', ...rest } = props;
   return (
-    <Box
-      bg="bg.raised"
-      border="border.weak"
-      borderRadius="8px"
-      boxShadow={elevation === 'raised' ? 'sm' : undefined}
-      p="4"
-      {...rest}
-    >
+    <Box className={cx(surface({ elevation }), className)} {...rest}>
       {children}
     </Box>
   );
@@ -57,13 +60,14 @@ export const Metric = (props: MetricProps) => {
     detail,
     icon,
     label,
+    className,
     tone = 'neutral',
     trend,
     value,
     ...rest
   } = props;
   return (
-    <Surface {...rest}>
+    <Surface className={cx(metric(), className)} {...rest}>
       <Stack gap="3">
         <Stack direction="row" align="center" justify="space-between" gap="3">
           <Text as="span" color="fg.muted" fontSize="sm" fontWeight="medium">
@@ -116,15 +120,9 @@ export interface PageHeaderProps extends PatternBoxProps {
 }
 
 export const PageHeader = (props: PageHeaderProps) => {
-  const { action, description, eyebrow, title, ...rest } = props;
+  const { action, className, description, eyebrow, title, ...rest } = props;
   return (
-    <Stack
-      direction={{ base: 'column', lg: 'row' }}
-      align={{ base: 'stretch', lg: 'center' }}
-      justify="space-between"
-      gap="4"
-      {...rest}
-    >
+    <Stack className={cx(pageHeader(), className)} {...rest}>
       <Stack gap="1">
         {eyebrow ? (
           <Text
@@ -158,15 +156,9 @@ export interface PanelHeaderProps extends PatternBoxProps {
 }
 
 export const PanelHeader = (props: PanelHeaderProps) => {
-  const { action, description, title, ...rest } = props;
+  const { action, className, description, title, ...rest } = props;
   return (
-    <Stack
-      direction="row"
-      justify="space-between"
-      align="start"
-      gap="3"
-      {...rest}
-    >
+    <Stack className={cx(panelHeader(), className)} {...rest}>
       <Stack gap="1">
         <Heading as="h2" fontSize="xl">
           {title}
@@ -188,11 +180,10 @@ export interface ResponsiveGridProps extends ComponentProps<typeof Box> {
 }
 
 export const ResponsiveGrid = (props: ResponsiveGridProps) => {
-  const { children, min = '220px', style, ...rest } = props;
+  const { children, className, min = '220px', style, ...rest } = props;
   return (
     <Box
-      display="grid"
-      gap="4"
+      className={cx(responsiveGrid(), className)}
       style={{
         gridTemplateColumns: `repeat(auto-fit, minmax(${min}, 1fr))`,
         ...style,
@@ -222,6 +213,7 @@ export const TimelineItem = (props: TimelineItemProps) => {
     avatarAlt,
     avatarFallback,
     avatarSrc,
+    className,
     description,
     leading,
     metadata,
@@ -243,7 +235,7 @@ export const TimelineItem = (props: TimelineItemProps) => {
     ) : null);
 
   return (
-    <Stack direction="row" align="center" gap="3" py="2" {...rest}>
+    <Stack className={cx(timelineItem(), className)} {...rest}>
       {lead}
       <Stack gap="1" flex="1" minW="0">
         <Stack direction="row" align="center" gap="2" flexWrap="wrap">
@@ -275,18 +267,11 @@ export interface ActionItemProps extends ComponentProps<typeof ActionButton> {
 }
 
 export const ActionItem = (props: ActionItemProps) => {
-  const { children, description, icon, ...rest } = props;
+  const { children, className, description, icon, ...rest } = props;
   return (
     <ActionButton
       type="button"
-      display="flex"
-      alignItems="center"
-      gap="3"
-      width="full"
-      borderRadius="8px"
-      padding="3"
-      textAlign="left"
-      _hover={{ backgroundColor: 'bg.subtle' }}
+      className={cx(actionItem(), className)}
       {...rest}
     >
       {icon ? <Box display="inline-flex">{icon}</Box> : null}

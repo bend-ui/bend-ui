@@ -1,7 +1,13 @@
 import * as React from 'react';
 import { Toggle as TogglePrimitive } from '@base-ui/react/toggle';
+import { withRecipe } from '@bend-ui/core';
+import { toggle } from '@bend-ui/styled-system/recipes';
 
-const ToggleRoot = TogglePrimitive;
+const ToggleRoot = withRecipe<TogglePrimitive.Props>(
+  TogglePrimitive,
+  toggle,
+  'root',
+);
 
 const Component = (props: TogglePrimitive.Props) => {
   return (

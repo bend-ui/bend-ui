@@ -1,16 +1,9 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  viewport: { selector: '& [data-part="viewport"]' },
-  title: { selector: '& [data-part="title"]' },
-  description: { selector: '& [data-part="description"]' },
-  closeTrigger: { selector: '& [data-part="close-trigger"]' },
-});
-
-export const toastRecipe = defineRecipe({
+export const toastRecipe = defineSlotRecipe({
+  slots: ['root', 'viewport', 'title', 'description', 'closeTrigger'],
   className: 'Toast',
-  base: parts({
+  base: {
     root: {},
-  }),
+  },
 });

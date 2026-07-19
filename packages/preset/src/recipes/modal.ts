@@ -1,22 +1,21 @@
-import { defineRecipe, defineParts } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  overlay: { selector: '[data-pat="overlay"]' },
-  content: { selector: '&' },
-  header: { selector: '& [data-part="header"]' },
-  close: { selector: '& [data-part="close"]' },
-  footer: { selector: '& [data-part="footer"]' },
-  title: { selector: '& [data-part="title"]' },
-  description: { selector: '& [data-part="description"]' },
-  positioner: { selector: '& [data-part="positioner"]' },
-  action: { selector: '& [data-part="action"]' },
-  cancel: { selector: '& [data-part="cancel"]' },
-});
-
-export const modalRecipe = defineRecipe({
+export const modalRecipe = defineSlotRecipe({
+  slots: [
+    'overlay',
+    'content',
+    'header',
+    'close',
+    'footer',
+    'title',
+    'description',
+    'positioner',
+    'action',
+    'cancel',
+  ],
   description: 'Modal styles',
   className: 'Modal',
-  base: parts({
+  base: {
     overlay: {
       position: 'fixed',
       inset: 0,
@@ -64,6 +63,6 @@ export const modalRecipe = defineRecipe({
     description: {
       textStyle: 'body',
     },
-  }),
+  },
   jsx: ['Modal', 'AlertDialog', 'Dialog'],
 });

@@ -1,7 +1,13 @@
 import * as React from 'react';
 import { Separator as SeparatorPrimitive } from '@base-ui/react/separator';
+import { withRecipe } from '@bend-ui/core';
+import { separator } from '@bend-ui/styled-system/recipes';
 
-const SeparatorRoot = SeparatorPrimitive;
+const SeparatorRoot = withRecipe<SeparatorPrimitive.Props>(
+  SeparatorPrimitive,
+  separator,
+  'root',
+);
 
 const Component = () => {
   return (

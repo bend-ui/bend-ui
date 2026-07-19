@@ -1,14 +1,9 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  image: { selector: '& [data-part="image"]' },
-  fallback: { selector: '& [data-part="fallback"]' },
-});
-
-export const avatarRecipe = defineRecipe({
+export const avatarRecipe = defineSlotRecipe({
+  slots: ['root', 'image', 'fallback'],
   className: 'Avatar',
-  base: parts({
+  base: {
     root: {
       rounded: 'full',
       display: 'inline-flex',
@@ -24,27 +19,27 @@ export const avatarRecipe = defineRecipe({
     fallback: {
       backgroundColor: 'fill',
     },
-  }),
+  },
   variants: {
     size: {
-      sm: parts({
+      sm: {
         root: {
           w: '8',
           h: '8',
         },
-      }),
-      md: parts({
+      },
+      md: {
         root: {
           w: '16',
           h: '16',
         },
-      }),
-      lg: parts({
+      },
+      lg: {
         root: {
           w: '24',
           h: '24',
         },
-      }),
+      },
     },
   },
   defaultVariants: {

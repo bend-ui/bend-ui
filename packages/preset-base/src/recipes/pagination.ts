@@ -1,26 +1,9 @@
-import { defineRecipe, defineParts } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: {
-    selector: '&',
-  },
-  item: {
-    selector: '& [data-part="item"]',
-  },
-  nextTrigger: {
-    selector: '& [data-part="next-trigger"]',
-  },
-  prevTrigger: {
-    selector: '& [data-part="prev-trigger"]',
-  },
-  ellipsis: {
-    selector: '& [data-part="ellipsis"]',
-  },
-});
-
-export const pagination = defineRecipe({
+export const pagination = defineSlotRecipe({
+  slots: ['root', 'item', 'nextTrigger', 'prevTrigger', 'ellipsis'],
   className: 'Pagination',
-  base: parts({
+  base: {
     root: {
       display: 'flex',
     },
@@ -40,5 +23,5 @@ export const pagination = defineRecipe({
       display: 'inline-flex',
       alignItems: 'center',
     },
-  }),
+  },
 });

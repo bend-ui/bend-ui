@@ -1,9 +1,10 @@
 import { Menu as MenuPrimitive } from '@base-ui/react/menu';
-import { withParts, withRecipe } from '@bend-ui/core';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
 import { menu } from '@bend-ui/styled-system/recipes';
 import { Button } from '../Button';
 
-const MenuRoot = MenuPrimitive.Root;
+const { withRootProvider, withContext } = createStyleContext(menu);
+const MenuRoot = withRootProvider(MenuPrimitive.Root);
 
 export type MenuTriggerProps = MenuPrimitive.Trigger.Props;
 
@@ -14,33 +15,29 @@ const MenuTrigger = (props: MenuTriggerProps) => {
 };
 
 const MenuPortal = MenuPrimitive.Portal;
-const MenuPositioner = MenuPrimitive.Positioner;
+const MenuPositioner = withContext(MenuPrimitive.Positioner, 'positioner');
 const MenuBackdrop = MenuPrimitive.Backdrop;
-const MenuPopup = withRecipe<MenuPrimitive.Popup.Props>(
-  MenuPrimitive.Popup,
-  menu,
-  'root',
-);
-const MenuArrow = withParts(MenuPrimitive.Arrow, 'arrow');
-const MenuItem = withParts(MenuPrimitive.Item, 'item');
-const MenuGroup = withParts(MenuPrimitive.Group, 'group');
-const MenuGroupLabel = withParts(MenuPrimitive.GroupLabel, 'groupLabel');
-const MenuRadioGroup = withParts(MenuPrimitive.RadioGroup, 'radioGroup');
-const MenuRadioItem = withParts(MenuPrimitive.RadioItem, 'radioItem');
-const MenuRadioItemIndicator = withParts(
+const MenuPopup = withContext(MenuPrimitive.Popup, 'root');
+const MenuArrow = withContext(MenuPrimitive.Arrow, 'arrow');
+const MenuItem = withContext(MenuPrimitive.Item, 'item');
+const MenuGroup = withContext(MenuPrimitive.Group, 'itemGroup');
+const MenuGroupLabel = withContext(MenuPrimitive.GroupLabel, 'itemGroupLabel');
+const MenuRadioGroup = withContext(MenuPrimitive.RadioGroup, 'radioGroup');
+const MenuRadioItem = withContext(MenuPrimitive.RadioItem, 'item');
+const MenuRadioItemIndicator = withContext(
   MenuPrimitive.RadioItemIndicator,
-  'radioItemIndicator',
+  'itemIndicator',
 );
-const MenuCheckboxItem = withParts(MenuPrimitive.CheckboxItem, 'checkboxItem');
-const MenuCheckboxItemIndicator = withParts(
+const MenuCheckboxItem = withContext(
+  MenuPrimitive.CheckboxItem,
+  'checkboxItem',
+);
+const MenuCheckboxItemIndicator = withContext(
   MenuPrimitive.CheckboxItemIndicator,
-  'checkboxItemIndicator',
+  'indicator',
 );
-const MenuSubmenuTrigger = withParts(
-  MenuPrimitive.SubmenuTrigger,
-  'submenuTrigger',
-);
-const MenuSeparator = withParts(MenuPrimitive.Separator, 'separator');
+const MenuSubmenuTrigger = withContext(MenuPrimitive.SubmenuTrigger, 'item');
+const MenuSeparator = withContext(MenuPrimitive.Separator, 'separator');
 
 export interface MenuContentProps extends React.ComponentPropsWithoutRef<'div'> {
   children?: React.ReactNode;

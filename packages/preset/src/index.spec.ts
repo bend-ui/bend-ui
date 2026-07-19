@@ -20,20 +20,76 @@ type Library = 'base-ui' | 'ark-ui' | 'react-aria';
  * discrete attribute for it). Verified against the pinned upstream versions.
  */
 const STATE_CONTRACT: Record<string, Record<Library, string | null>> = {
-  open: { 'base-ui': '[data-open]', 'ark-ui': '[data-state="open"]', 'react-aria': '[data-open]' },
-  closed: { 'base-ui': '[data-closed]', 'ark-ui': '[data-state="closed"]', 'react-aria': null },
-  expanded: { 'base-ui': '[data-expanded]', 'ark-ui': '[data-expanded]', 'react-aria': '[data-expanded]' },
-  checked: { 'base-ui': '[data-checked]', 'ark-ui': '[data-state="checked"]', 'react-aria': null },
-  unchecked: { 'base-ui': '[data-unchecked]', 'ark-ui': '[data-state="unchecked"]', 'react-aria': null },
-  selected: { 'base-ui': '[data-selected]', 'ark-ui': '[data-selected]', 'react-aria': '[data-selected]' },
-  disabled: { 'base-ui': '[data-disabled]', 'ark-ui': '[data-disabled]', 'react-aria': '[data-disabled]' },
-  invalid: { 'base-ui': '[data-invalid]', 'ark-ui': '[data-invalid]', 'react-aria': '[data-invalid]' },
-  readonly: { 'base-ui': '[data-readonly]', 'ark-ui': '[data-readonly]', 'react-aria': '[data-readonly]' },
-  required: { 'base-ui': '[data-required]', 'ark-ui': '[data-required]', 'react-aria': '[data-required]' },
-  highlighted: { 'base-ui': '[data-highlighted]', 'ark-ui': '[data-highlighted]', 'react-aria': null },
-  pressed: { 'base-ui': null, 'ark-ui': '[data-pressed]', 'react-aria': '[data-pressed]' },
-  hover: { 'base-ui': null, 'ark-ui': '[data-hover]', 'react-aria': '[data-hovered]' },
-  focus: { 'base-ui': '[data-focused]', 'ark-ui': '[data-focus]', 'react-aria': '[data-focused]' },
+  open: {
+    'base-ui': '[data-open]',
+    'ark-ui': '[data-state="open"]',
+    'react-aria': '[data-open]',
+  },
+  closed: {
+    'base-ui': '[data-closed]',
+    'ark-ui': '[data-state="closed"]',
+    'react-aria': null,
+  },
+  expanded: {
+    'base-ui': '[data-expanded]',
+    'ark-ui': '[data-expanded]',
+    'react-aria': '[data-expanded]',
+  },
+  checked: {
+    'base-ui': '[data-checked]',
+    'ark-ui': '[data-state="checked"]',
+    'react-aria': null,
+  },
+  unchecked: {
+    'base-ui': '[data-unchecked]',
+    'ark-ui': '[data-state="unchecked"]',
+    'react-aria': null,
+  },
+  selected: {
+    'base-ui': '[data-selected]',
+    'ark-ui': '[data-selected]',
+    'react-aria': '[data-selected]',
+  },
+  disabled: {
+    'base-ui': '[data-disabled]',
+    'ark-ui': '[data-disabled]',
+    'react-aria': '[data-disabled]',
+  },
+  invalid: {
+    'base-ui': '[data-invalid]',
+    'ark-ui': '[data-invalid]',
+    'react-aria': '[data-invalid]',
+  },
+  readonly: {
+    'base-ui': '[data-readonly]',
+    'ark-ui': '[data-readonly]',
+    'react-aria': '[data-readonly]',
+  },
+  required: {
+    'base-ui': '[data-required]',
+    'ark-ui': '[data-required]',
+    'react-aria': '[data-required]',
+  },
+  highlighted: {
+    'base-ui': '[data-highlighted]',
+    'ark-ui': '[data-highlighted]',
+    'react-aria': null,
+  },
+  pressed: {
+    'base-ui': null,
+    'ark-ui': '[data-pressed]',
+    'react-aria': '[data-pressed]',
+  },
+  hover: {
+    'base-ui': null,
+    'ark-ui': '[data-hover]',
+    'react-aria': '[data-hovered]',
+  },
+  focus: {
+    'base-ui': '[data-focused]',
+    'ark-ui': '[data-focus]',
+    'react-aria': '[data-focused]',
+  },
   focusVisible: {
     'base-ui': '[data-focus-visible]',
     'ark-ui': '[data-focus-visible]',
@@ -50,6 +106,61 @@ const STATE_CONTRACT: Record<string, Record<Library, string | null>> = {
     'react-aria': '[data-exiting]',
   },
 };
+
+const BASE_MIGRATED_SLOT_RECIPES = [
+  'accordion',
+  'alert',
+  'appShell',
+  'avatar',
+  'badge',
+  'button',
+  'buttonGroup',
+  'checkbox',
+  'clipboard',
+  'combobox',
+  'command',
+  'datePicker',
+  'dialog',
+  'drawer',
+  'input',
+  'menu',
+  'pagination',
+  'popover',
+  'radioGroup',
+  'select',
+  'selectDropdown',
+  'toast',
+  'tooltip',
+] as const;
+
+const DESIGN_MIGRATED_SLOT_RECIPES = [
+  'accordion',
+  'alert',
+  'alertDialog',
+  'angleSlider',
+  'appShell',
+  'avatar',
+  'badge',
+  'buttonGroup',
+  'checkbox',
+  'clipboard',
+  'combobox',
+  'command',
+  'datePicker',
+  'dialog',
+  'drawer',
+  'formField',
+  'input',
+  'menu',
+  'modal',
+  'pagination',
+  'popover',
+  'radioGroup',
+  'select',
+  'selectDropdown',
+  'toast',
+  'tooltip',
+] as const;
 
 describe('canonical conditions set', () => {
   it('is a single flat set of string selectors (no per-library variants)', () => {
@@ -108,6 +219,51 @@ describe('createBendPreset', () => {
     const preset = createBendPreset(extension);
 
     expect(preset.presets).toContain(extension);
-    expect(preset.presets?.some((p) => (p as { name?: string }).name === 'bend-ui')).toBe(true);
+    expect(
+      preset.presets?.some((p) => (p as { name?: string }).name === 'bend-ui'),
+    ).toBe(true);
+  });
+
+  it('registers every migrated selector recipe as a slot recipe', () => {
+    const baseTheme = basePreset.theme?.extend;
+    const designTheme = createBendPreset().theme?.extend;
+    const baseSlotRecipeKeys = Object.keys(baseTheme?.slotRecipes ?? {});
+    const baseRecipeKeys = Object.keys(baseTheme?.recipes ?? {});
+    const designSlotRecipeKeys = Object.keys(designTheme?.slotRecipes ?? {});
+    const designRecipeKeys = Object.keys(designTheme?.recipes ?? {});
+
+    expect(baseSlotRecipeKeys).toEqual(
+      expect.arrayContaining([...BASE_MIGRATED_SLOT_RECIPES]),
+    );
+    expect(baseRecipeKeys).not.toEqual(
+      expect.arrayContaining([...BASE_MIGRATED_SLOT_RECIPES]),
+    );
+    expect(designSlotRecipeKeys).toEqual(
+      expect.arrayContaining([...DESIGN_MIGRATED_SLOT_RECIPES]),
+    );
+    expect(designRecipeKeys).not.toEqual(
+      expect.arrayContaining([...DESIGN_MIGRATED_SLOT_RECIPES]),
+    );
+  });
+
+  it('preserves slot variants in their native slot-object shape', () => {
+    const baseDrawer = basePreset.theme?.extend?.slotRecipes?.drawer;
+    const designAccordion =
+      createBendPreset().theme?.extend?.slotRecipes?.accordion;
+
+    expect(baseDrawer?.slots).toEqual(['root', 'content']);
+    expect(baseDrawer?.variants?.placement?.right).toMatchObject({
+      content: { top: 0, right: 0, bottom: 0 },
+    });
+    expect(baseDrawer?.defaultVariants).toEqual({ placement: 'right' });
+
+    expect(designAccordion?.slots).toEqual([
+      'root',
+      'item',
+      'trigger',
+      'indicator',
+      'content',
+    ]);
+    expect(designAccordion?.variants?.attached?.true).toHaveProperty('item');
   });
 });

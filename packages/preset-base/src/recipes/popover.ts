@@ -1,20 +1,19 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  content: { selector: '& [data-part="content"]' },
-  title: { selector: '& [data-part="title"]' },
-  description: { selector: '& [data-part="description"]' },
-  arrow: { selector: '& [data-part="arrow"]' },
-  arrowTip: { selector: '& [data-part="arrowTip"]' },
-  closeTrigger: { selector: '& [data-part="closeTrigger"]' },
-});
-
-export const popover = defineRecipe({
+export const popover = defineSlotRecipe({
+  slots: [
+    'content',
+    'title',
+    'description',
+    'arrow',
+    'arrowTip',
+    'closeTrigger',
+  ],
   className: 'Popover',
-  base: parts({
+  base: {
     content: {
       display: 'flex',
       flexDirection: 'column',
     },
-  }),
+  },
 });

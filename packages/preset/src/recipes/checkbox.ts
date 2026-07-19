@@ -1,24 +1,10 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: {
-    selector: '&',
-  },
-  label: {
-    selector: '& [data-part="label"]',
-  },
-  control: {
-    selector: '& [data-part="control"]',
-  },
-  indicator: {
-    selector: '& [data-part="indicator"]',
-  },
-});
-
-export const checkboxRecipe = defineRecipe({
+export const checkboxRecipe = defineSlotRecipe({
+  slots: ['root', 'label', 'control', 'indicator'],
   description: 'Styles for the Checkbox component',
   className: 'Checkbox',
-  base: parts({
+  base: {
     root: {},
     label: {
       color: 'text.strong',
@@ -39,27 +25,27 @@ export const checkboxRecipe = defineRecipe({
       },
     },
     indicator: {},
-  }),
+  },
   variants: {
     size: {
-      sm: parts({
+      sm: {
         control: {
           h: '3',
           w: '3',
         },
-      }),
-      md: parts({
+      },
+      md: {
         control: {
           h: '4',
           w: '4',
         },
-      }),
-      lg: parts({
+      },
+      lg: {
         control: {
           h: '5',
           w: '5',
         },
-      }),
+      },
     },
   },
   defaultVariants: {

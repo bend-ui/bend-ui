@@ -1,11 +1,14 @@
 import * as React from 'react';
 import { Radio as RadioPrimitive } from '@base-ui/react/radio';
 import { RadioGroup as RadioGroupPrimitive } from '@base-ui/react/radio-group';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { radioGroup } from '@bend-ui/styled-system/recipes';
 
-const RadioGroupRoot = RadioGroupPrimitive;
+const { withProvider, withContext } = createStyleContext(radioGroup);
 
-const RadioRoot = RadioPrimitive.Root;
-const RadioIndicator = RadioPrimitive.Indicator;
+const RadioGroupRoot = withProvider(RadioGroupPrimitive, 'root');
+const RadioRoot = withContext(RadioPrimitive.Root, 'itemControl');
+const RadioIndicator = withContext(RadioPrimitive.Indicator, 'indicator');
 
 const Component = () => {
   return (

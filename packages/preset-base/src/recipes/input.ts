@@ -1,17 +1,9 @@
-import { defineParts, defineRecipe } from '@pandacss/dev';
+import { defineSlotRecipe } from '@pandacss/dev';
 
-const parts = defineParts({
-  root: { selector: '&' },
-  wrapper: { selector: '& [data-part="wrapper"]' },
-  input: { selector: '& [data-part="input"]' },
-  icon: { selector: '& [data-part="icon"]' },
-  element: { selector: '& [data-part="element"]' },
-  addon: { selector: '& [data-part="addon"]' },
-});
-
-export const inputRecipe = defineRecipe({
+export const inputRecipe = defineSlotRecipe({
+  slots: ['root', 'wrapper', 'input', 'icon', 'element', 'addon'],
   className: 'Input',
-  base: parts({
+  base: {
     root: {
       position: 'relative',
       display: 'flex',
@@ -49,5 +41,5 @@ export const inputRecipe = defineRecipe({
       justifyContent: 'center',
       truncate: true,
     },
-  }),
+  },
 });

@@ -1,19 +1,41 @@
 import { ContextMenu as ContextMenuPrimitive } from '@base-ui/react/context-menu';
+import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { menu } from '@bend-ui/styled-system/recipes';
 
-const ContextMenuRoot = ContextMenuPrimitive.Root;
-const ContextMenuTrigger = ContextMenuPrimitive.Trigger;
+const { withRootProvider, withContext } = createStyleContext(menu);
+
+const ContextMenuRoot = withRootProvider(ContextMenuPrimitive.Root);
+const ContextMenuTrigger = withContext(ContextMenuPrimitive.Trigger, 'trigger');
 const ContextMenuPortal = ContextMenuPrimitive.Portal;
 const ContextMenuBackdrop = ContextMenuPrimitive.Backdrop;
-const ContextMenuPositioner = ContextMenuPrimitive.Positioner;
-const ContextMenuPopup = ContextMenuPrimitive.Popup;
-const ContextMenuArrow = ContextMenuPrimitive.Arrow;
-const ContextMenuItem = ContextMenuPrimitive.Item;
-const ContextMenuGroup = ContextMenuPrimitive.Group;
-const ContextMenuGroupLabel = ContextMenuPrimitive.GroupLabel;
-const ContextMenuRadioGroup = ContextMenuPrimitive.RadioGroup;
-const ContextMenuRadioItem = ContextMenuPrimitive.RadioItem;
-const ContextMenuCheckboxItem = ContextMenuPrimitive.CheckboxItem;
-const ContextMenuSeparator = ContextMenuPrimitive.Separator;
+const ContextMenuPositioner = withContext(
+  ContextMenuPrimitive.Positioner,
+  'positioner',
+);
+const ContextMenuPopup = withContext(ContextMenuPrimitive.Popup, 'root');
+const ContextMenuArrow = withContext(ContextMenuPrimitive.Arrow, 'arrow');
+const ContextMenuItem = withContext(ContextMenuPrimitive.Item, 'item');
+const ContextMenuGroup = withContext(ContextMenuPrimitive.Group, 'itemGroup');
+const ContextMenuGroupLabel = withContext(
+  ContextMenuPrimitive.GroupLabel,
+  'itemGroupLabel',
+);
+const ContextMenuRadioGroup = withContext(
+  ContextMenuPrimitive.RadioGroup,
+  'radioGroup',
+);
+const ContextMenuRadioItem = withContext(
+  ContextMenuPrimitive.RadioItem,
+  'item',
+);
+const ContextMenuCheckboxItem = withContext(
+  ContextMenuPrimitive.CheckboxItem,
+  'checkboxItem',
+);
+const ContextMenuSeparator = withContext(
+  ContextMenuPrimitive.Separator,
+  'separator',
+);
 
 const Component = () => {
   return (
