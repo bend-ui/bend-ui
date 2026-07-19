@@ -16,6 +16,7 @@ jest.mock('@iconify/react', () => ({
 
 jest.mock('fumadocs-core/toc', () => ({
   AnchorProvider: ({ children }: { children: React.ReactNode }) => children,
+  ScrollProvider: ({ children }: { children: React.ReactNode }) => children,
   TOCItem: (props: React.ComponentProps<'a'>) => <a {...props} />,
 }));
 
@@ -87,7 +88,7 @@ describe('Docs route layout', () => {
     expect(screen.getByText('Compiled MDX content')).toBeTruthy();
   });
 
-  it('renders the page table of contents and its actual tree neighbours', () => {
+  it('renders the page table of contents and pager neighbour labels', () => {
     render(
       <DocsPage
         title="Button"

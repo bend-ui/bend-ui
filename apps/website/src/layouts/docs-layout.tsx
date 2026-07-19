@@ -10,11 +10,23 @@ import {
   type Node,
   type Root,
 } from 'fumadocs-core/page-tree';
-import { AnchorProvider, TOCItem, type TableOfContents } from 'fumadocs-core/toc';
-import { useSyncExternalStore, type ReactNode } from 'react';
+import {
+  AnchorProvider,
+  ScrollProvider,
+  TOCItem,
+  type TableOfContents,
+} from 'fumadocs-core/toc';
+import { useRef, useSyncExternalStore, type ReactNode } from 'react';
 import { useTheme } from 'next-themes';
 
-import { arrowLeftIcon, arrowRightIcon, moonIcon, sunIcon } from '../icons';
+import {
+  arrowLeftIcon,
+  arrowRightIcon,
+  externalLinkIcon,
+  moonIcon,
+  sidebarIcon,
+  sunIcon,
+} from '../icons';
 import { css } from '../../styled-system/css/index.mjs';
 
 interface DocsLayoutProps {
@@ -35,6 +47,7 @@ const normalizePath = (path: string) => path.replace(/\/$/, '') || '/';
 
 const PageLink = ({ item, pathname }: { item: Item; pathname: string }) => {
   const active = normalizePath(item.url) === normalizePath(pathname);
+  const external = item.external ?? /^[a-z][a-z\d+.-]*:/i.test(item.url);
 
   return (
     <Sidebar.MenuItem>
@@ -44,6 +57,7 @@ const PageLink = ({ item, pathname }: { item: Item; pathname: string }) => {
         aria-current={active ? 'page' : undefined}
       >
         <Sidebar.Label>{item.name}</Sidebar.Label>
+        {external ? <Icon icon={externalLinkIcon} aria-hidden="true" /> : null}
       </Sidebar.MenuSubButton>
     </Sidebar.MenuItem>
   );
@@ -186,7 +200,9 @@ export const DocsLayout = ({ children, tree }: DocsLayoutProps) => {
             borderBottom: 'border.weak',
           })}
         >
-          <Sidebar.Trigger className={css({ display: { base: 'inline-flex', md: 'none' } })} />
+          <Sidebar.Trigger className={css({ display: { base: 'inline-flex', md: 'none' } })}>
+            <Icon icon={sidebarIcon} aria-hidden="true" />
+          </Sidebar.Trigger>
           <span className={css({ display: { base: 'none', md: 'block' } })} />
           <ThemeToggle />
         </header>
@@ -299,6 +315,7 @@ export const DocsPage = ({
   tree,
   url,
 }: DocsPageProps) => {
+  const tocRef = useRef<HTMLElement>(null);
   const neighbours = tree && url ? findNeighbour(tree, url) : {};
 
   return (
@@ -378,37 +395,43 @@ export const DocsPage = ({
           })}
         >
           <AnchorProvider toc={toc} single>
-            <nav aria-label="On this page">
-              <Text as="p" fontSize="sm" fontWeight="semibold" marginBottom="3">
-                On this page
-              </Text>
-              <ul className={css({ listStyle: 'none', margin: '0', padding: '0' })}>
-                {toc.map((item) => (
-                  <li key={item.url}>
-                    <TOCItem
-                      href={item.url}
-                      className={css({
-                        display: 'block',
-                        color: 'fg.muted',
-                        fontSize: 'sm',
-                        paddingBlock: '1.5',
-                        paddingLeft: item.depth > 2 ? '4' : '0',
-                        textDecoration: 'none',
-                        transitionProperty: 'color',
-                        transitionDuration: 'fast',
-                        _hover: { color: 'fg.default' },
-                        '&[data-active="true"]': {
-                          color: 'fg.default',
-                          fontWeight: 'semibold',
-                        },
-                      })}
-                    >
-                      {item.title}
-                    </TOCItem>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+            <ScrollProvider containerRef={tocRef}>
+              <nav
+                ref={tocRef}
+                aria-label="On this page"
+                className={css({ maxHeight: 'calc(100vh - 8rem)', overflowY: 'auto' })}
+              >
+                <Text as="p" fontSize="sm" fontWeight="semibold" marginBottom="3">
+                  On this page
+                </Text>
+                <ul className={css({ listStyle: 'none', margin: '0', padding: '0' })}>
+                  {toc.map((item) => (
+                    <li key={item.url}>
+                      <TOCItem
+                        href={item.url}
+                        className={css({
+                          display: 'block',
+                          color: 'fg.muted',
+                          fontSize: 'sm',
+                          paddingBlock: '1.5',
+                          paddingLeft: item.depth > 2 ? '4' : '0',
+                          textDecoration: 'none',
+                          transitionProperty: 'color',
+                          transitionDuration: 'fast',
+                          _hover: { color: 'fg.default' },
+                          '&[data-active="true"]': {
+                            color: 'fg.default',
+                            fontWeight: 'semibold',
+                          },
+                        })}
+                      >
+                        {item.title}
+                      </TOCItem>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </ScrollProvider>
           </AnchorProvider>
         </aside>
       ) : null}

@@ -12,6 +12,18 @@ export const arrowRightIcon: IconifyIcon = {
   height: 24,
 };
 
+export const externalLinkIcon: IconifyIcon = {
+  body: '<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M14 5h5v5m0-5l-7 7"/><path d="M11 5H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5"/></g>',
+  width: 24,
+  height: 24,
+};
+
+export const sidebarIcon: IconifyIcon = {
+  body: '<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></g>',
+  width: 24,
+  height: 24,
+};
+
 export const sunIcon: IconifyIcon = {
   body: '<g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 12a5 5 0 1 1-10 0a5 5 0 0 1 10 0Z"/><path stroke-linecap="round" d="M12 2v1.5m0 17V22m7.07-2.929l-1.06-1.06M5.99 5.989L4.928 4.93M22 12h-1.5m-17 0H2m17.071-7.071l-1.06 1.06M5.99 18.011l-1.06 1.06"/></g>',
   width: 24,
