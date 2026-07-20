@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 0
 
       - name: Derive Nx affected SHAs
-        uses: nrwl/nx-set-shas@v4
+        uses: nrwl/nx-set-shas@v5
 
       - name: Install Node.js
         uses: actions/setup-node@v6
