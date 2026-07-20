@@ -1,45 +1,44 @@
 ---
 title: Installation
-description: Learn how to install and set up Bend UI Design System in your project
+description: Install the Base UI adapter and generate the Panda styled system
 ---
 
 # Installation
 
-Get started with Bend UI by installing the necessary packages in your project.
+Install the Base UI package adapter, the Bend UI design preset, and Panda CSS. The adapter provides accessible components; Panda generates the layout and styling helpers used by your application.
 
 ## Prerequisites
 
-Before installing Bend UI, ensure you have:
+- Node.js 18 or later
+- React 19
+- A project configured for Panda CSS
 
-- **Node.js**: Version 18 or higher
-- **Package Manager**: npm, yarn, or pnpm
-- **React**: Version 18 or higher
+## 1. Install the packages
 
-## Installation Steps
-
-### 1. Install Packages
-
-Install the core Bend UI packages:
+### pnpm
 
 ```bash
-npm install @bend-ui/react @bend-ui/preset
+pnpm add @bend-ui/base-ui @bend-ui/preset
+pnpm add -D @pandacss/dev
 ```
 
-Or using yarn:
+### npm
 
 ```bash
-yarn add @bend-ui/react @bend-ui/preset
+npm install @bend-ui/base-ui @bend-ui/preset
+npm install --save-dev @pandacss/dev
 ```
 
-Or using pnpm:
+### Yarn
 
 ```bash
-pnpm add @bend-ui/react @bend-ui/preset
+yarn add @bend-ui/base-ui @bend-ui/preset
+yarn add --dev @pandacss/dev
 ```
 
-### 2. Configure Panda CSS
+## 2. Configure Panda CSS
 
-Bend UI uses Panda CSS for styling. Create or update your `panda.config.ts`:
+Create `panda.config.ts`:
 
 ```typescript
 import { defineConfig } from '@pandacss/dev';
@@ -51,56 +50,75 @@ export default defineConfig({
   include: [
     './src/**/*.{js,jsx,ts,tsx}',
     './app/**/*.{js,jsx,ts,tsx}',
-    './node_modules/@bend-ui/react/**/*.{js,jsx,ts,tsx}',
+    './node_modules/@bend-ui/base-ui/**/*.{js,jsx,ts,tsx}',
   ],
-  exclude: [],
   outdir: 'styled-system',
+  jsxFramework: 'react',
 });
 ```
 
-### 3. Add Panda CSS Scripts
+## 3. Connect Panda to your CSS build
 
-Add the following scripts to your `package.json`:
+Create `postcss.config.cjs` so Panda emits the styles it discovers:
+
+```javascript
+module.exports = {
+  plugins: {
+    '@pandacss/dev/postcss': {},
+  },
+};
+```
+
+Create a CSS entry with Panda's layer order:
+
+```css
+@layer reset, base, tokens, recipes, utilities;
+```
+
+Import that CSS entry from your application root. For example, in a Next.js App Router layout:
+
+```tsx
+import '../styles/globals.css';
+```
+
+## 4. Generate the styled system
+
+Add Panda code generation to `package.json`:
 
 ```json
 {
   "scripts": {
-    "prepare": "panda codegen",
-    "dev": "panda --watch & next dev"
+    "prepare": "panda codegen"
   }
 }
 ```
 
-### 4. Generate Styles
-
-Run the Panda CSS codegen:
+Then generate the local `styled-system` directory:
 
 ```bash
-npm run prepare
+pnpm prepare
 ```
 
-### 5. Import Styles
-
-Import the generated Panda CSS styles in your app:
-
-```typescript
-import 'styled-system/styles.css';
-```
-
-## Verify Installation
-
-Create a test component to verify everything is working:
+## 5. Render a component
 
 ```tsx
-import { Button } from '@bend-ui/react';
+import { Button } from '@bend-ui/base-ui';
+import { Stack } from 'styled-system/jsx';
 
-export default function App() {
-  return <Button>Hello Bend UI!</Button>;
+export function App() {
+  return (
+    <Stack gap="4">
+      <h1>Welcome to Bend UI</h1>
+      <Button variant="primary">Get started</Button>
+    </Stack>
+  );
 }
 ```
 
-## Next Steps
+Use `@bend-ui/base-ui` for interactive adapter components. Use your generated `styled-system/jsx`, `styled-system/css`, and `styled-system/patterns` modules for layout and custom styling.
 
-- [Quick Start](/docs/getting-started/quick-start) - Build your first page with Bend UI
-- [Configuration](/docs/getting-started/configuration) - Customize your setup
-- [Theming](/docs/foundation/theming) - Learn about customizing the design system
+## Next steps
+
+- [Quick Start](/docs/getting-started/quick-start)
+- [Configuration](/docs/getting-started/configuration)
+- [Components](/docs/components)

@@ -1,316 +1,78 @@
 ---
 title: Components Overview
-description: Explore the component library in Bend UI Design System
+description: Compose Base UI adapter components with generated Panda layouts
 ---
 
 # Components Overview
 
-Bend UI provides a comprehensive collection of accessible, customizable React components built with TypeScript and Panda CSS.
+The Base UI package adapter combines accessible upstream behavior with Bend UI recipes. Import interactive components from `@bend-ui/base-ui`; import layout elements and styling helpers from the styled system generated in your application.
 
-## Component Categories
-
-### Layout
-
-Components for structuring your application:
-
-- **Box** - The fundamental building block
-- **Container** - Centered content container with max-width
-- **Stack** - Vertical or horizontal stacking with gap
-- **Flex** - Flexible box layout
-- **Grid** - Grid layout system
-- **Divider** - Visual separator
-
-### Typography
-
-Components for text content:
-
-- **Text** - Generic text component
-- **Heading** - Semantic heading component
-- **Code** - Inline code display
-- **CodeBlock** - Multi-line code blocks
-
-### Forms
-
-Interactive form components:
-
-- **Input** - Text input field
-- **Textarea** - Multi-line text input
-- **Select** - Dropdown selection
-- **Checkbox** - Binary choice
-- **Radio** - Single choice from options
-- **Switch** - Toggle switch
-- **FormControl** - Form field wrapper
-- **FormLabel** - Field label
-- **FormHelperText** - Helper text
-- **FormErrorMessage** - Error feedback
-
-### Buttons
-
-Action components:
-
-- **Button** - Primary action button
-- **IconButton** - Button with icon only
-- **ButtonGroup** - Group of related buttons
-
-### Feedback
-
-Components for user feedback:
-
-- **Alert** - Contextual feedback messages
-- **Toast** - Temporary notification
-- **Spinner** - Loading indicator
-- **Progress** - Progress indicator
-- **Skeleton** - Loading placeholder
-
-### Overlay
-
-Components that overlay content:
-
-- **Modal** - Dialog overlay
-- **Drawer** - Side panel
-- **Popover** - Floating content
-- **Tooltip** - Contextual hint
-- **Menu** - Dropdown menu
-
-### Data Display
-
-Components for displaying data:
-
-- **Table** - Data table
-- **List** - List of items
-- **Card** - Content container
-- **Badge** - Status indicator
-- **Tag** - Label or category
-- **Avatar** - User profile image
-
-### Navigation
-
-Components for navigation:
-
-- **Tabs** - Tab navigation
-- **Breadcrumb** - Hierarchical navigation
-- **Pagination** - Page navigation
-- **Link** - Navigation link
-
-## Component Features
-
-### Accessibility
-
-All components follow WAI-ARIA standards:
-
-- Keyboard navigation support
-- Screen reader compatibility
-- Focus management
-- ARIA attributes
-
-### Theming
-
-Components support theming through:
-
-- Color schemes
-- Size variants
-- Custom styling
-- Design tokens
-
-### TypeScript
-
-Full TypeScript support:
-
-- Type definitions
-- IntelliSense
-- Prop validation
-- Generic types
-
-### Composability
-
-Components are designed to work together:
+## Import components and layouts
 
 ```tsx
-import { Box, Stack, Heading, Text, Button } from '@bend-ui/react';
+import { Button, Heading, Input, Text } from '@bend-ui/base-ui';
+import { Box, Stack } from 'styled-system/jsx';
+```
 
-function Feature() {
+`@bend-ui/base-ui` exposes a named-import catalog. It does not require a separate foundation package or per-component subpath imports.
+
+## Compose a card
+
+```tsx
+import { Button, Heading, Text } from '@bend-ui/base-ui';
+import { Box, Stack } from 'styled-system/jsx';
+
+export function FeatureCard() {
   return (
-    <Box padding="6" borderRadius="lg" shadow="md">
+    <Box padding="6" borderWidth="1px" borderRadius="lg">
       <Stack gap="4">
-        <Heading size="lg">Feature Title</Heading>
-        <Text color="gray.600">Feature description goes here.</Text>
-        <Button colorScheme="blue">Learn More</Button>
+        <Heading as="h2">Foundation-free composition</Heading>
+        <Text as="p">Behavior and layout come from separate, focused modules.</Text>
+        <Button variant="primary">Learn more</Button>
       </Stack>
     </Box>
   );
 }
 ```
 
-## Usage Patterns
+## Build a form field
 
-### Import Components
-
-```tsx
-// Named imports
-import { Button, Input, Stack } from '@bend-ui/react';
-
-// Or import specific components
-import { Button } from '@bend-ui/react/button';
-import { Input } from '@bend-ui/react/input';
-```
-
-### Basic Example
+Compound components follow Base UI's composition model:
 
 ```tsx
-import { Stack, Input, Button } from '@bend-ui/react';
+import { Button, Field } from '@bend-ui/base-ui';
+import { Stack } from 'styled-system/jsx';
 
-function SearchForm() {
+export function SearchForm() {
   return (
-    <Stack direction="row" gap="4">
-      <Input placeholder="Search..." />
-      <Button colorScheme="blue">Search</Button>
+    <Stack as="form" gap="4">
+      <Field.Root>
+        <Field.Label>Search</Field.Label>
+        <Field.Control placeholder="Search components" />
+      </Field.Root>
+      <Button type="submit" variant="primary">
+        Search
+      </Button>
     </Stack>
   );
 }
 ```
 
-### With Styling
+## Choose the right import
 
-```tsx
-import { css } from 'styled-system/css';
-import { Box, Heading } from '@bend-ui/react';
+| Need | Import from |
+| --- | --- |
+| Interactive component or compound part | `@bend-ui/base-ui` |
+| Layout element such as `Box`, `Stack`, `Flex`, or `Grid` | `styled-system/jsx` |
+| A class for custom styling | `styled-system/css` |
+| A layout class rather than a JSX element | `styled-system/patterns` |
 
-function Card() {
-  return (
-    <Box
-      className={css({
-        bg: 'white',
-        padding: '6',
-        borderRadius: 'lg',
-        _hover: { shadow: 'lg' },
-      })}
-    >
-      <Heading size="md">Card Title</Heading>
-    </Box>
-  );
-}
-```
+## Accessibility
 
-## Component Props
+Adapter components preserve the semantics and keyboard behavior of their Base UI primitives. Supply accessible names and application-specific ARIA relationships where the component's content does not provide them.
 
-### Common Props
+## Next steps
 
-Most components accept these common props:
-
-```typescript
-interface CommonProps {
-  // Styling
-  className?: string;
-  style?: CSSProperties;
-
-  // Layout
-  width?: string | number;
-  height?: string | number;
-  padding?: string;
-  margin?: string;
-
-  // Display
-  display?: 'block' | 'inline' | 'flex' | 'grid' | 'none';
-
-  // Colors
-  bg?: string;
-  color?: string;
-
-  // Events
-  onClick?: () => void;
-  onFocus?: () => void;
-  onBlur?: () => void;
-}
-```
-
-### Variant Props
-
-Many components support variants:
-
-```tsx
-import { Button } from '@bend-ui/react';
-
-<Button variant="primary">Primary</Button>
-<Button variant="secondary">Secondary</Button>
-<Button variant="tertiary">Tertiary</Button>
-<Button variant="link">Link</Button>
-```
-
-### Size Props
-
-Components often have size variants:
-
-```tsx
-import { Button } from '@bend-ui/react';
-
-<Button size="xs">Extra Small</Button>
-<Button size="sm">Small</Button>
-<Button size="md">Medium</Button>
-<Button size="lg">Large</Button>
-```
-
-## Customization
-
-### Style Props
-
-Use Panda CSS style props:
-
-```tsx
-import { Box } from '@bend-ui/react';
-
-<Box
-  bg="blue.50"
-  padding="8"
-  borderRadius="lg"
-  borderWidth="1px"
-  borderColor="blue.200"
->
-  Custom styled box
-</Box>;
-```
-
-### CSS Classes
-
-Use the `css` function for complex styling:
-
-```tsx
-import { css } from 'styled-system/css';
-import { Box } from '@bend-ui/react';
-
-<Box
-  className={css({
-    bg: 'gradient.to.r',
-    from: 'blue.500',
-    to: 'purple.500',
-    _hover: {
-      from: 'blue.600',
-      to: 'purple.600',
-    },
-  })}
->
-  Gradient box
-</Box>;
-```
-
-## Best Practices
-
-1. **Use Semantic Components**: Choose components based on their semantic meaning
-2. **Maintain Consistency**: Use the same patterns throughout your app
-3. **Follow Accessibility**: Ensure proper ARIA labels and keyboard navigation
-4. **Leverage Theming**: Use color schemes and variants for consistency
-5. **Compose Components**: Build complex UIs from simple components
-
-## Next Steps
-
-Explore specific component documentation:
-
-- [Button](/docs/components/button) - Interactive button component
-- [Input](/docs/components/input) - Text input field
-- [Modal](/docs/components/modal) - Dialog overlay
-- [Card](/docs/components/card) - Content container
-
-Or browse by category:
-
-- [Layout Components](/docs/components/layout)
-- [Form Components](/docs/components/forms)
-- [Feedback Components](/docs/components/feedback)
+- [Button](/docs/components/button)
+- [Design Tokens](/docs/foundation/design-tokens)
+- [Spacing](/docs/foundation/spacing)

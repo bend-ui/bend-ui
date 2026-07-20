@@ -1,280 +1,72 @@
 ---
 title: Typography
-description: Typography system in Bend UI Design System
+description: Render semantic text with Base UI components and Panda styles
 ---
 
 # Typography
 
-Typography is a critical part of any design system. Bend UI provides a comprehensive type system that ensures consistency and readability.
+Use semantic HTML first. The Base UI adapter provides `Heading` and `Text` components that combine semantic elements with the Bend UI text recipe.
 
-## Font Families
+## Headings
 
-### Default Fonts
-
-Bend UI uses system font stacks for optimal performance:
+Choose the HTML level with `as`:
 
 ```tsx
-import { Text } from '@bend-ui/react';
+import { Heading } from '@bend-ui/base-ui';
+import { Stack } from 'styled-system/jsx';
 
-// Body text (default)
-<Text fontFamily="body">
-  This is body text using the system font stack
-</Text>
-
-// Monospace for code
-<Text fontFamily="mono">
-  const example = 'monospace font';
-</Text>
-```
-
-### Font Stack
-
-```css
-/* Body */
-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-  'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-  'Helvetica Neue', sans-serif;
-
-/* Monospace */
-font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo,
-  Consolas, 'Liberation Mono', monospace;
-```
-
-## Font Sizes
-
-### Scale
-
-Bend UI uses a modular scale for font sizes:
-
-```tsx
-import { Text, Stack } from '@bend-ui/react';
-
-<Stack gap="4">
-  <Text fontSize="xs">Extra small text (0.75rem / 12px)</Text>
-  <Text fontSize="sm">Small text (0.875rem / 14px)</Text>
-  <Text fontSize="md">Medium text (1rem / 16px)</Text>
-  <Text fontSize="lg">Large text (1.125rem / 18px)</Text>
-  <Text fontSize="xl">Extra large text (1.25rem / 20px)</Text>
-  <Text fontSize="2xl">2XL text (1.5rem / 24px)</Text>
-  <Text fontSize="3xl">3XL text (1.875rem / 30px)</Text>
-  <Text fontSize="4xl">4XL text (2.25rem / 36px)</Text>
-  <Text fontSize="5xl">5XL text (3rem / 48px)</Text>
-</Stack>
-```
-
-### Usage Guidelines
-
-- **Body text**: Use `md` (16px) for most content
-- **Small text**: Use `sm` (14px) for secondary information
-- **Headings**: Use `2xl` and above
-- **Captions**: Use `xs` or `sm`
-
-## Font Weights
-
-```tsx
-import { Text, Stack } from '@bend-ui/react';
-
-<Stack gap="2">
-  <Text fontWeight="normal">Normal weight (400)</Text>
-  <Text fontWeight="medium">Medium weight (500)</Text>
-  <Text fontWeight="semibold">Semibold weight (600)</Text>
-  <Text fontWeight="bold">Bold weight (700)</Text>
-</Stack>
-```
-
-### Weight Guidelines
-
-- **Normal (400)**: Body text
-- **Medium (500)**: Emphasized text
-- **Semibold (600)**: Subheadings, buttons
-- **Bold (700)**: Headings, strong emphasis
-
-## Line Heights
-
-Line height affects readability and visual density:
-
-```tsx
-import { Text, Stack } from '@bend-ui/react';
-
-<Stack gap="4">
-  <Text lineHeight="tight">
-    Tight line height (1.25) - Good for headings
-  </Text>
-  <Text lineHeight="normal">
-    Normal line height (1.5) - Good for body text
-  </Text>
-  <Text lineHeight="relaxed">
-    Relaxed line height (1.75) - Good for long-form content
-  </Text>
-</Stack>
-```
-
-### Line Height Scale
-
-- `tight`: 1.25
-- `snug`: 1.375
-- `normal`: 1.5
-- `relaxed`: 1.75
-- `loose`: 2
-
-## Letter Spacing
-
-```tsx
-import { Text } from '@bend-ui/react';
-
-<Text letterSpacing="wide" textTransform="uppercase" fontSize="sm">
-  Uppercase with tracking
-</Text>
-```
-
-## Heading System
-
-### Semantic Headings
-
-```tsx
-import { Heading, Stack } from '@bend-ui/react';
-
-<Stack gap="4">
-  <Heading as="h1" size="4xl">Heading 1</Heading>
-  <Heading as="h2" size="3xl">Heading 2</Heading>
-  <Heading as="h3" size="2xl">Heading 3</Heading>
-  <Heading as="h4" size="xl">Heading 4</Heading>
-  <Heading as="h5" size="lg">Heading 5</Heading>
-  <Heading as="h6" size="md">Heading 6</Heading>
-</Stack>
-```
-
-## Text Styles
-
-### Predefined Styles
-
-```tsx
-import { css } from 'styled-system/css';
-
-// Heading style
-<h1 className={css({
-  fontSize: '4xl',
-  fontWeight: 'bold',
-  lineHeight: 'tight',
-  letterSpacing: 'tight',
-})}>
-  Page Title
-</h1>
-
-// Body style
-<p className={css({
-  fontSize: 'md',
-  lineHeight: 'relaxed',
-  color: 'text.secondary',
-})}>
-  Body text content
-</p>
-
-// Caption style
-<span className={css({
-  fontSize: 'sm',
-  color: 'text.tertiary',
-})}>
-  Caption text
-</span>
-```
-
-## Responsive Typography
-
-Scale typography for different screen sizes:
-
-```tsx
-import { css } from 'styled-system/css';
-
-<h1 className={css({
-  fontSize: {
-    base: '2xl',
-    md: '3xl',
-    lg: '4xl',
-  },
-})}>
-  Responsive Heading
-</h1>
-```
-
-## Accessibility
-
-### Guidelines
-
-1. **Minimum Size**: Don't use text smaller than 12px
-2. **Contrast**: Ensure sufficient contrast (4.5:1 for normal text)
-3. **Line Length**: Keep lines between 45-75 characters
-4. **Hierarchy**: Use semantic HTML headings (h1-h6)
-
-### Example with Good Contrast
-
-```tsx
-import { Box, Text } from '@bend-ui/react';
-
-<Box bg="gray.900" padding="8">
-  <Text color="white" fontSize="lg">
-    High contrast white text on dark background
-  </Text>
-</Box>
-```
-
-## Code Typography
-
-For displaying code:
-
-```tsx
-import { Code, CodeBlock } from '@bend-ui/react';
-
-// Inline code
-<Text>
-  Use the <Code>console.log()</Code> function
-</Text>
-
-// Code block
-<CodeBlock language="typescript">
-  {`const greeting = 'Hello World';
-console.log(greeting);`}
-</CodeBlock>
-```
-
-## Custom Fonts
-
-To use custom fonts, add them in your app:
-
-```typescript
-// app/layout.tsx
-import { Inter } from 'next/font/google';
-
-const inter = Inter({ subsets: ['latin'] });
-
-export default function RootLayout({ children }) {
+export function Headings() {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <Stack gap="3">
+      <Heading as="h1">Account settings</Heading>
+      <Heading as="h2">Profile</Heading>
+      <Heading as="h3">Contact details</Heading>
+    </Stack>
   );
 }
 ```
 
-Update your Panda config:
+Keep heading levels in document order. Change visual emphasis with style or recipe props rather than skipping semantic levels.
 
-```typescript
-export default defineConfig({
-  theme: {
-    extend: {
-      tokens: {
-        fonts: {
-          body: { value: 'Inter, sans-serif' },
-        },
-      },
-    },
-  },
-});
+## Body text
+
+```tsx
+import { Text } from '@bend-ui/base-ui';
+import { Stack } from 'styled-system/jsx';
+
+export function Description() {
+  return (
+    <Stack gap="2">
+      <Text as="p">Changes are saved automatically.</Text>
+      <Text as="p" color="text.weak">
+        Last saved a minute ago.
+      </Text>
+    </Stack>
+  );
+}
 ```
 
-## Next Steps
+`Text` renders a `span` by default. Set `as="p"` for a paragraph or choose another element that matches the content's meaning.
 
-- [Colors](/docs/foundation/colors) - Learn about the color system
-- [Spacing](/docs/foundation/spacing) - Understand spacing
-- [Components](/docs/components) - See typography in components
-- [Accessibility](/docs/foundation/accessibility) - Typography accessibility
+## Style native text
+
+Use the generated `css` helper for semantic elements that do not need an adapter component:
+
+```tsx
+import { css } from 'styled-system/css';
+
+export function KeyboardHint() {
+  return (
+    <p>
+      Press <kbd className={css({ fontFamily: 'mono', fontSize: 'sm' })}>Esc</kbd> to close.
+    </p>
+  );
+}
+```
+
+## Guidelines
+
+- Select elements for meaning, then apply visual styles.
+- Keep body text at a readable line length.
+- Use semantic color tokens such as `text` and `text.weak`.
+- Preserve the user's font-size preferences; avoid fixed pixel sizes for long-form text.

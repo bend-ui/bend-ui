@@ -1,242 +1,74 @@
 ---
 title: Colors
-description: Understanding the color system in Bend UI Design System
+description: Use Bend UI semantic color tokens in generated Panda styles
 ---
 
 # Colors
 
-Bend UI uses a comprehensive color system designed for flexibility, accessibility, and consistency.
+The design preset exposes semantic color tokens for text, fills, and strokes. Prefer semantic names so components continue to work when the active theme changes.
 
-## Color Palette
+## Use semantic colors
 
-### Gray Scale
-
-The gray scale is used for text, backgrounds, borders, and other UI elements:
-
-- `gray.50` - Lightest gray
-- `gray.100` - Very light gray
-- `gray.200` - Light gray
-- `gray.300` - Medium-light gray
-- `gray.400` - Medium gray
-- `gray.500` - Base gray
-- `gray.600` - Medium-dark gray
-- `gray.700` - Dark gray
-- `gray.800` - Very dark gray
-- `gray.900` - Darkest gray
-
-### Brand Colors
-
-Each brand color includes 10 shades from 50 (lightest) to 900 (darkest):
-
-#### Blue
-Primary brand color, used for interactive elements:
+Generated Panda elements accept semantic token names as style props:
 
 ```tsx
-import { Box } from '@bend-ui/react';
+import { Box, Stack } from 'styled-system/jsx';
 
-<Box bg="blue.500" color="white" padding="4">
-  Primary Action
-</Box>
+export function StatusPanel() {
+  return (
+    <Box
+      backgroundColor="fill.weak"
+      color="text"
+      borderColor="stroke.weak"
+      borderWidth="1px"
+      borderRadius="md"
+      padding="6"
+    >
+      <Stack gap="2">
+        <strong>System status</strong>
+        <span>All services are operational.</span>
+      </Stack>
+    </Box>
+  );
+}
 ```
 
-#### Red
-Used for errors, warnings, and destructive actions:
+## Style a native element
+
+Use the generated `css` helper when a JSX element is not appropriate:
 
 ```tsx
-import { Box } from '@bend-ui/react';
+import { css } from 'styled-system/css';
 
-<Box bg="red.500" color="white" padding="4">
-  Error Message
-</Box>
+export function MutedNote() {
+  return <p className={css({ color: 'text.weak' })}>Updated a minute ago</p>;
+}
 ```
 
-#### Green
-Used for success states and positive feedback:
+## Use component variants
+
+Adapter components already map their variants to semantic colors. Choose the variant that expresses intent instead of overriding its fill directly.
 
 ```tsx
-import { Box } from '@bend-ui/react';
+import { Button } from '@bend-ui/base-ui';
+import { Flex } from 'styled-system/jsx';
 
-<Box bg="green.500" color="white" padding="4">
-  Success Message
-</Box>
+export function Actions() {
+  return (
+    <Flex gap="3">
+      <Button variant="primary">Confirm</Button>
+      <Button variant="secondary">Cancel</Button>
+      <Button variant="danger">Delete</Button>
+    </Flex>
+  );
+}
 ```
 
-#### Yellow
-Used for warnings and attention:
+## Guidelines
 
-```tsx
-import { Box } from '@bend-ui/react';
+- Use text tokens for foreground content, fill tokens for backgrounds, and stroke tokens for borders.
+- Prefer semantic tokens over literal palette values in product UI.
+- Do not use color as the only way to communicate state.
+- Check focus, hover, disabled, and high-contrast states when extending component styles.
 
-<Box bg="yellow.500" color="white" padding="4">
-  Warning Message
-</Box>
-```
-
-#### Purple
-Used for secondary branding and special features:
-
-```tsx
-import { Box } from '@bend-ui/react';
-
-<Box bg="purple.500" color="white" padding="4">
-  Special Feature
-</Box>
-```
-
-## Semantic Colors
-
-Semantic tokens provide context-aware colors that adapt to themes:
-
-### Text Colors
-
-```tsx
-import { Text } from '@bend-ui/react';
-
-<Text color="text.primary">Primary text</Text>
-<Text color="text.secondary">Secondary text</Text>
-<Text color="text.tertiary">Tertiary text</Text>
-<Text color="text.disabled">Disabled text</Text>
-```
-
-### Background Colors
-
-```tsx
-import { Box } from '@bend-ui/react';
-
-<Box bg="background.default">Default background</Box>
-<Box bg="background.subtle">Subtle background</Box>
-<Box bg="background.elevated">Elevated background</Box>
-```
-
-### Border Colors
-
-```tsx
-import { Box } from '@bend-ui/react';
-
-<Box borderWidth="1px" borderColor="border.default">
-  Default border
-</Box>
-<Box borderWidth="1px" borderColor="border.muted">
-  Muted border
-</Box>
-```
-
-### Interactive Colors
-
-```tsx
-import { Box } from '@bend-ui/react';
-
-<Box bg="interactive.default" _hover={{ bg: 'interactive.hover' }}>
-  Hover me
-</Box>
-```
-
-## Color Usage Guidelines
-
-### Text on Backgrounds
-
-Ensure sufficient contrast for accessibility:
-
-```tsx
-import { Box, Text } from '@bend-ui/react';
-
-// Good: High contrast
-<Box bg="blue.600">
-  <Text color="white">Readable text</Text>
-</Box>
-
-// Good: Using semantic tokens
-<Box bg="background.default">
-  <Text color="text.primary">Readable text</Text>
-</Box>
-```
-
-### Color Schemes
-
-Use consistent color schemes for components:
-
-```tsx
-import { Button, Stack } from '@bend-ui/react';
-
-<Stack direction="row" gap="4">
-  <Button colorScheme="blue">Primary</Button>
-  <Button colorScheme="red">Danger</Button>
-  <Button colorScheme="green">Success</Button>
-</Stack>
-```
-
-## Accessibility
-
-All color combinations are designed to meet WCAG 2.1 AA standards:
-
-- Text colors have at least 4.5:1 contrast ratio
-- Large text has at least 3:1 contrast ratio
-- Interactive elements have clear visual states
-
-### Testing Contrast
-
-```tsx
-// Good contrast examples
-<Box bg="blue.600" color="white" />      // 7.2:1 ratio
-<Box bg="gray.100" color="gray.900" />   // 15.3:1 ratio
-
-// Avoid low contrast
-// <Box bg="gray.200" color="gray.300" /> // Too low contrast
-```
-
-## Dark Mode
-
-Colors automatically adapt in dark mode using semantic tokens:
-
-```tsx
-import { Box, Text } from '@bend-ui/react';
-
-<Box bg="background.default" color="text.primary">
-  This adapts to dark mode automatically
-</Box>
-```
-
-## Custom Colors
-
-Extend the color palette in `panda.config.ts`:
-
-```typescript
-import { defineConfig } from '@pandacss/dev';
-import { createBendPreset } from '@bend-ui/preset';
-
-export default defineConfig({
-  presets: [createBendPreset()],
-  theme: {
-    extend: {
-      tokens: {
-        colors: {
-          brand: {
-            50: { value: '#eff6ff' },
-            100: { value: '#dbeafe' },
-            200: { value: '#bfdbfe' },
-            300: { value: '#93c5fd' },
-            400: { value: '#60a5fa' },
-            500: { value: '#3b82f6' },
-            600: { value: '#2563eb' },
-            700: { value: '#1d4ed8' },
-            800: { value: '#1e40af' },
-            900: { value: '#1e3a8a' },
-          },
-        },
-      },
-      semanticTokens: {
-        colors: {
-          primary: { value: '{colors.brand.500}' },
-        },
-      },
-    },
-  },
-});
-```
-
-## Next Steps
-
-- [Typography](/docs/foundation/typography) - Learn about text styling
-- [Design Tokens](/docs/foundation/design-tokens) - Understand all design tokens
-- [Theming](/docs/foundation/theming) - Create custom themes
-- [Accessibility](/docs/foundation/accessibility) - Learn about accessibility
+See [Design Tokens](/docs/foundation/design-tokens) for configuration and extension examples.

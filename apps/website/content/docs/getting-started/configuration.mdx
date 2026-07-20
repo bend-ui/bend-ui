@@ -1,47 +1,38 @@
 ---
 title: Configuration
-description: Configure Bend UI Design System to match your project needs
+description: Configure the Bend UI preset and generated Panda helpers
 ---
 
 # Configuration
 
-Learn how to configure Bend UI Design System for your specific needs.
+Bend UI separates component behavior from application styling:
 
-## Panda CSS Configuration
+- `@bend-ui/base-ui` provides the Base UI package adapter.
+- `@bend-ui/preset` provides Bend UI tokens, recipes, themes, and conditions.
+- Panda generates application-owned styling helpers in `styled-system`.
 
-The main configuration happens in your `panda.config.ts` file.
-
-### Basic Configuration
+## Basic Panda configuration
 
 ```typescript
 import { defineConfig } from '@pandacss/dev';
 import { createBendPreset } from '@bend-ui/preset';
 
 export default defineConfig({
-  // Apply browser reset styles
   preflight: true,
-
-  // Use the Bend UI preset
   presets: [createBendPreset()],
-
-  // Files to scan for styles
   include: [
     './src/**/*.{js,jsx,ts,tsx}',
     './app/**/*.{js,jsx,ts,tsx}',
-    './node_modules/@bend-ui/react/**/*.{js,jsx,ts,tsx}',
+    './node_modules/@bend-ui/base-ui/**/*.{js,jsx,ts,tsx}',
   ],
-
-  // Files to exclude
-  exclude: [],
-
-  // Output directory for generated files
   outdir: 'styled-system',
+  jsxFramework: 'react',
 });
 ```
 
-### Extending the Theme
+## Extend design tokens
 
-You can extend or override the default theme:
+Pass Panda configuration alongside the design preset when your product needs additional tokens:
 
 ```typescript
 import { defineConfig } from '@pandacss/dev';
@@ -49,22 +40,14 @@ import { createBendPreset } from '@bend-ui/preset';
 
 export default defineConfig({
   presets: [createBendPreset()],
-
   theme: {
     extend: {
       tokens: {
         colors: {
           brand: {
-            50: { value: '#eff6ff' },
-            100: { value: '#dbeafe' },
             500: { value: '#3b82f6' },
-            900: { value: '#1e3a8a' },
+            700: { value: '#1d4ed8' },
           },
-        },
-      },
-      semanticTokens: {
-        colors: {
-          primary: { value: '{colors.brand.500}' },
         },
       },
     },
@@ -72,9 +55,9 @@ export default defineConfig({
 });
 ```
 
-## TypeScript Configuration
+## Configure TypeScript aliases
 
-Ensure your `tsconfig.json` includes the generated styled-system:
+If your build does not resolve the generated directory automatically, add a path alias:
 
 ```json
 {
@@ -87,88 +70,30 @@ Ensure your `tsconfig.json` includes the generated styled-system:
 }
 ```
 
-## Next.js Configuration
+## Use generated helpers
 
-For Next.js projects, update your `next.config.js`:
+Generated JSX elements accept Panda style props. The `css` helper creates classes for native or adapter components.
 
-```javascript
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  transpilePackages: ['@bend-ui/react'],
-};
+```tsx
+import { Button } from '@bend-ui/base-ui';
+import { css } from 'styled-system/css';
+import { Box, Stack } from 'styled-system/jsx';
 
-module.exports = nextConfig;
-```
-
-## Framework-Specific Setup
-
-### Vite
-
-```typescript
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-
-export default defineConfig({
-  plugins: [react()],
-  optimizeDeps: {
-    include: ['@bend-ui/react'],
-  },
-});
-```
-
-### Remix
-
-```typescript
-// remix.config.js
-export default {
-  serverDependenciesToBundle: ['@bend-ui/react'],
-};
-```
-
-## Environment Variables
-
-You can configure certain behaviors through environment variables:
-
-```bash
-# .env.local
-NEXT_PUBLIC_THEME_MODE=light
-NEXT_PUBLIC_PRIMARY_COLOR=blue
-```
-
-## IDE Integration
-
-### VS Code
-
-Install the Panda CSS extension for better developer experience:
-
-1. Install "Panda CSS IntelliSense" extension
-2. Configure in `.vscode/settings.json`:
-
-```json
-{
-  "pandacss.configPath": "panda.config.ts"
+export function Example() {
+  return (
+    <Box padding="6" borderWidth="1px" borderRadius="lg">
+      <Stack gap="4">
+        <p>Configuration is working.</p>
+        <Button className={css({ alignSelf: 'start' })}>Continue</Button>
+      </Stack>
+    </Box>
+  );
 }
 ```
 
-## Production Optimization
+Regenerate the styled system after changing the Panda configuration.
 
-For production builds, enable optimizations:
+## Next steps
 
-```typescript
-import { defineConfig } from '@pandacss/dev';
-import { createBendPreset } from '@bend-ui/preset';
-
-export default defineConfig({
-  presets: [createBendPreset()],
-  minify: true,
-  hash: true,
-  optimize: true,
-});
-```
-
-## Next Steps
-
-- [Theming](/docs/foundation/theming) - Customize the design system appearance
-- [Design Tokens](/docs/foundation/design-tokens) - Learn about design tokens
-- [Components](/docs/components) - Start using components
+- [Design Tokens](/docs/foundation/design-tokens)
+- [Components](/docs/components)

@@ -28,15 +28,16 @@ function Example() {
 ### Sizes
 
 ```tsx
-import { Avatar, Stack } from '@bend-ui/base-ui';
+import { Avatar } from '@bend-ui/base-ui';
+import { Flex } from 'styled-system/jsx';
 
 function SizesExample() {
   return (
-    <Stack direction="row" gap="4" align="center">
+    <Flex gap="4" alignItems="center">
       <Avatar src="/profile.jpg" fallback="JD" size="sm" />
       <Avatar src="/profile.jpg" fallback="JD" size="md" />
       <Avatar src="/profile.jpg" fallback="JD" size="lg" />
-    </Stack>
+    </Flex>
   );
 }
 ```
@@ -136,15 +137,15 @@ function ComposedExample() {
 
 ### Avatar.Root
 
-Accepts all props from `AvatarVariantProps` and `@ark-ui/react` `Avatar.Root`.
+Accepts the Bend UI avatar variant props and Base UI `Avatar.Root` props.
 
 ### Avatar.Image
 
-Accepts all props from `@ark-ui/react` `Avatar.Image` (including `src`, `alt`).
+Accepts Base UI `Avatar.Image` props, including `src` and `alt`.
 
 ### Avatar.Fallback
 
-Accepts all props from `@ark-ui/react` `Avatar.Fallback`.
+Accepts Base UI `Avatar.Fallback` props.
 
 ## Related Components
 
