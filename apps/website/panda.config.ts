@@ -20,7 +20,7 @@ export default defineConfig({
   presets: [createBendPreset()],
 
   staticCss: {
-    themes: ['default'],
+    themes: ['default', 'stratus', 'solstice', 'volt', 'nebula', 'canopy', 'aster'],
   },
 
   importMap: '@bend-ui/styled-system',

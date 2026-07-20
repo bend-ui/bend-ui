@@ -31,7 +31,7 @@ jest.mock('fumadocs-core/page-tree', () => ({
 }));
 
 jest.mock('next-themes', () => ({
-  useTheme: () => ({ resolvedTheme: 'light', setTheme: mockSetTheme }),
+  useTheme: () => ({ theme: 'system', setTheme: mockSetTheme }),
 }));
 
 jest.mock('../../styled-system/css/index.mjs', () => ({
@@ -121,14 +121,16 @@ describe('Docs route layout', () => {
     expect(screen.getByRole('link', { name: /next.*avatar/i })).toBeTruthy();
   });
 
-  it('lets the reader switch color scheme', async () => {
+  it('lets the reader choose an independent color mode', async () => {
     render(
       <DocsLayout tree={tree}>
         <p>Current page</p>
       </DocsLayout>,
     );
 
-    fireEvent.click(await screen.findByRole('button', { name: 'Switch to dark theme' }));
+    fireEvent.change(await screen.findByRole('combobox', { name: 'Color mode' }), {
+      target: { value: 'dark' },
+    });
 
     expect(mockSetTheme).toHaveBeenCalledWith('dark');
   });

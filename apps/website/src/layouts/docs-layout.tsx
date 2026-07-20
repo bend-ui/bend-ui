@@ -1,6 +1,6 @@
 'use client';
 
-import { Heading, IconButton, Sidebar, Text } from '@bend-ui/base-ui';
+import { Heading, Sidebar, Text } from '@bend-ui/base-ui';
 import { Icon } from '@iconify/react';
 import { Link, usePathname } from 'fumadocs-core/framework';
 import {
@@ -23,11 +23,10 @@ import {
   arrowLeftIcon,
   arrowRightIcon,
   externalLinkIcon,
-  moonIcon,
   sidebarIcon,
-  sunIcon,
 } from '../icons';
 import { css } from '../../styled-system/css/index.mjs';
+import { ThemePersonalitySwitcherPrototype } from '../../lib/theme-personality-switcher-prototype';
 
 interface DocsLayoutProps {
   children: ReactNode;
@@ -93,62 +92,40 @@ const TreeNode = ({ node, pathname }: { node: Node; pathname: string }) => {
   );
 };
 
-const ThemeToggle = () => {
+const ColorModeControl = () => {
   const mounted = useSyncExternalStore(
     () => () => undefined,
     () => true,
     () => false,
   );
-  const { resolvedTheme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
 
   if (!mounted) {
     return <span aria-hidden="true" className={css({ width: '10', height: '10' })} />;
   }
 
-  const dark = resolvedTheme === 'dark';
-  const label = `Switch to ${dark ? 'light' : 'dark'} theme`;
-
   return (
-    <IconButton
-      size="md"
-      variant="tertiary"
-      _active={{ transform: 'scale(0.96)' }}
-      onClick={() => setTheme(dark ? 'light' : 'dark')}
-      icon={
-        <span className={css({ position: 'relative', width: '5', height: '5' })}>
-          <Icon
-            icon={sunIcon}
-            aria-hidden="true"
-            className={css({
-              position: 'absolute',
-              inset: '0',
-              opacity: dark ? '0' : '1',
-              scale: dark ? '0.25' : '1',
-              filter: dark ? 'blur(4px)' : 'blur(0)',
-              transitionProperty: 'opacity, scale, filter',
-              transitionDuration: 'fast',
-              transitionTimingFunction: 'cubic-bezier(0.2, 0, 0, 1)',
-            })}
-          />
-          <Icon
-            icon={moonIcon}
-            aria-hidden="true"
-            className={css({
-              position: 'absolute',
-              inset: '0',
-              opacity: dark ? '1' : '0',
-              scale: dark ? '1' : '0.25',
-              filter: dark ? 'blur(0)' : 'blur(4px)',
-              transitionProperty: 'opacity, scale, filter',
-              transitionDuration: 'fast',
-              transitionTimingFunction: 'cubic-bezier(0.2, 0, 0, 1)',
-            })}
-          />
-        </span>
-      }
-    >
-      {label}
-    </IconButton>
+    <label className={css({ display: 'inline-flex', alignItems: 'center', gap: '2', fontSize: 'sm' })}>
+      <span className={css({ color: 'fg.muted' })}>Color mode</span>
+      <select
+        aria-label="Color mode"
+        value={theme ?? 'system'}
+        onChange={(event) => setTheme(event.target.value)}
+        className={css({
+          minHeight: '10',
+          paddingInline: '2',
+          border: 'border.weak',
+          borderRadius: 'md',
+          background: 'bg.page',
+          color: 'fg.default',
+          _focusVisible: { outline: '2px solid', outlineColor: 'stroke.primary', outlineOffset: '2px' },
+        })}
+      >
+        <option value="system">System</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </label>
   );
 };
 
@@ -204,8 +181,11 @@ export const DocsLayout = ({ children, tree }: DocsLayoutProps) => {
             <Icon icon={sidebarIcon} aria-hidden="true" />
           </Sidebar.Trigger>
           <span className={css({ display: { base: 'none', md: 'block' } })} />
-          <ThemeToggle />
+          <ColorModeControl />
         </header>
+        {pathname === '/docs/foundation/themes' ? (
+          <ThemePersonalitySwitcherPrototype />
+        ) : null}
         {children}
       </Sidebar.Inset>
     </Sidebar.Provider>
