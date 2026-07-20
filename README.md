@@ -6,8 +6,11 @@ Design system tools for React
 
 ## Packages
 
-- `@bend-ui/primitives` - component primitives
-- `@bend-ui/theme` - the default theme for Bend UI
+- `@bend-ui/base-ui` - the Base UI package adapter
+- `@bend-ui/preset` - the Bend UI design preset
+- `@bend-ui/config` - Panda configuration helpers
+- `@bend-ui/styled-system` - generated Panda runtime helpers
+- `@bend-ui/theme` - theme assets
 
 ## Development
 

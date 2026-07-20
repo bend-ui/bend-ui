@@ -647,46 +647,6 @@ importers:
         specifier: ^1.11.4
         version: 1.11.4
 
-  packages/primitives:
-    devDependencies:
-      '@bend-ui/storybook':
-        specifier: workspace:*
-        version: link:../storybook
-
-  packages/react:
-    dependencies:
-      '@bend-ui/core':
-        specifier: workspace:*
-        version: link:../core
-      '@bend-ui/preset':
-        specifier: workspace:*
-        version: link:../preset
-      '@bend-ui/primitives':
-        specifier: workspace:*
-        version: link:../primitives
-      '@bend-ui/styled-system':
-        specifier: workspace:*
-        version: link:../styled-system
-      '@floating-ui/react':
-        specifier: ^0.27.20
-        version: 0.27.20(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
-      '@pandacss/dev':
-        specifier: ^1
-        version: 1.11.4(jsdom@26.0.0)(typescript@6.0.3)
-      lucide-react:
-        specifier: ^1.25.0
-        version: 1.25.0(react@19.2.7)
-      react:
-        specifier: ^19
-        version: 19.2.7
-      react-dom:
-        specifier: ^19
-        version: 19.2.7(react@19.2.7)
-    devDependencies:
-      '@bend-ui/storybook':
-        specifier: workspace:*
-        version: link:../storybook
-
   packages/react-aria:
     dependencies:
       '@bend-ui/core':

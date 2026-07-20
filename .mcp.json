@@ -6,7 +6,7 @@
     },
     "panda": {
       "command": "npx",
-      "args": ["panda", "mcp", "--config", "packages/react/panda.config.ts"]
+      "args": ["panda", "mcp", "--config", "packages/styled-system/panda.config.ts"]
     },
     "ux-components": {
       "type": "http",

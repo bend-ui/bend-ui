@@ -14,15 +14,13 @@ const generateDeclarations = (path) => {
 
 console.log(green('Welcome to Bend UI Docs Generator'));
 
-const reactPackage = path.join(__dirname, '../packages/react/src/index.ts');
+const baseUiPackage = path.join(__dirname, '../packages/base-ui/src/index.ts');
 
-console.log(blue(`Getting packages from ${reactPackage}`));
-
-const PATHS = path.join(__dirname, '../packages/ui/src/lib/Ui.tsx');
+console.log(blue(`Getting packages from ${baseUiPackage}`));
 
 fs.ensureDirSync(path.join(__dirname, '../docs/.docgen'));
 
 fs.writeJSONSync(
   path.join(__dirname, '../docs/.docgen/docgen.json'),
-  generateDeclarations(PATHS),
+  generateDeclarations(baseUiPackage),
 );

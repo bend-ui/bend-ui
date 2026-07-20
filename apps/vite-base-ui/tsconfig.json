@@ -11,8 +11,6 @@
     "paths": {
       "~/*": ["apps/vite-base-ui/src/*"],
       "@bend-ui/base-ui": ["packages/base-ui/src/index.ts"],
-      "@bend-ui/react": ["packages/react/src/index.ts"],
-      "@bend-ui/primitives": ["packages/primitives/src/index.ts"],
       "@bend-ui/react-utils": ["packages/react-utils/src/index.ts"],
       "@bend-ui/config": ["packages/config/src/index.ts"],
       "@bend-ui/preset": ["packages/preset/src/index.ts"],

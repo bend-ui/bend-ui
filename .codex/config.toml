@@ -15,7 +15,7 @@ args = [ "-y", "@ark-ui/mcp" ]
 [mcp_servers.panda]
 enabled = false
 command = "npx"
-args = [ "panda", "mcp", "--config", "packages/react/panda.config.ts" ]
+args = [ "panda", "mcp", "--config", "packages/styled-system/panda.config.ts" ]
 
 [mcp_servers.ux-components]
 enabled = false

@@ -101,11 +101,9 @@
       },
       "include": [
         "packages/ark-ui/**/*",
-        "packages/react/**/*",
         "packages/base-ui/**/*",
         "packages/ariakit/**/*",
-        "packages/react-aria/**/*",
-        "packages/primitives/**/*"
+        "packages/react-aria/**/*"
       ]
     },
     {

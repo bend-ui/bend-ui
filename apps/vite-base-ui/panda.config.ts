@@ -6,7 +6,6 @@ export default createBendConfig({
 
   include: [
     path.resolve(__dirname, './src/**/*.{js,jsx,ts,tsx}'),
-    path.resolve(__dirname, '../../packages/react/src/**/*.{js,jsx,ts,tsx}'),
     path.resolve(__dirname, '../../packages/base-ui/src/**/*.{js,jsx,ts,tsx}'),
   ],
 

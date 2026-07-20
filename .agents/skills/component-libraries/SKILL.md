@@ -42,8 +42,8 @@ node -e "console.log(Object.keys(require('@ark-ui/react')).sort().join('\n'))"
 
 ## Implementation patterns
 
-Styling helpers come from the generated styled-system and from `@bend-ui/core` — **not**
-from the removed `@bend-ui/react` foundation.
+Styling helpers come from the generated styled-system and from `@bend-ui/core`, not
+from a shared React foundation package.
 
 ### Pattern A — `createStyleContext` (preferred for multi-part / slot recipes)
 

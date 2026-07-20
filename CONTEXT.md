@@ -35,7 +35,7 @@ Use these terms when discussing the repo.
 - **Design preset**: `@bend-ui/preset`, the Panda CSS preset for the actual Bend UI visual language. It composes the structural preset and adds tokens, semantic tokens, colors, spacing, typography, themes, global CSS, and the canonical state-attribute conditions.
 - **Theme**: a single swappable brand variant registered under Panda's `themes:` key inside the design preset (e.g. `default`, `proton`, `neutron`, `quark`). Reserve "theme" for this concept only. Do not use "theme preset" to mean the whole visual layer — that is the **Design preset**.
 - **Styled system**: generated Panda CSS output consumed by the React packages. Do not hand-edit generated styled-system output unless a plan explicitly says so.
-- **React foundation**: `@bend-ui/react`, the transitional local React module for styled elements, layout primitives, polymorphic `asChild` support, and shared helpers. This package is a removal target because public package adapters should use Panda's generated helpers and their upstream primitive library's native composition model instead.
+- **React foundation**: the removed transitional module that previously centralized styled elements, layout primitives, polymorphic composition, and shared helpers. Package adapters now use Panda's generated helpers and their upstream primitive library's native composition model instead.
 - **Package adapter**: a package that adapts an upstream primitive library into the Bend UI design system. Current support targets are Base UI, Ark UI, and React Aria Components.
 - **Adapter-native component catalog**: the set of Bend-styled components an adapter exposes by following its upstream primitive library's names, composition model, and API shape. It should share Bend UI visual intent without forcing identical component parity across adapters.
 - **Component catalog matrix**: the single central document (`docs/component-catalog.md`) that tracks, per adapter, product intent (`v0`, `planned`, `defer`, `exclude`, `primitive-only`, `covered-by-pattern`), implementation progress (`missing`, `partial`, `implemented`), and quality coverage (`untested`, `tested`, `storybook`, `documented`, `demoed`). It covers Base UI, Ark UI, and React Aria together and is the source of truth for "how up to date are we." API drift is caught by TypeScript when the upstream version is bumped (adapters extend upstream prop types), recorded as a per-adapter "verified against upstream vX" marker; there is no separate drift detector.
@@ -46,7 +46,7 @@ Use these terms when discussing the repo.
 - **`createBendConfig()`**: the setup builder in `@bend-ui/config`. Sugar over Panda's `defineConfig()` that installs the Bend preset, sets defaults, and composes consumer hooks without replacing them.
 - **Component source registry**: the internal canonical source and metadata for Bend UI component templates that can be synchronized into public package adapters or copied into a user's project by CLI tooling. It is not a public runtime dependency.
 - **Generated component**: a component copied or created in the user's project from the component source registry by CLI tooling.
-- **Ejected component**: a component that started from Bend UI but is now owned and modified in the user's codebase. Ejected components should depend on the user's Panda/styled-system setup and chosen headless library, not on `@bend-ui/react`.
+- **Ejected component**: a component that started from Bend UI but is now owned and modified in the user's codebase. Ejected components should depend on the user's Panda/styled-system setup and chosen headless library, not on a Bend UI runtime foundation.
 - **Design-system tooling**: CLI tools, agent skills, prompts, token management, generation workflows, and maintenance workflows that help users create and evolve a design system.
 - **Operational pattern**: a higher-level UI pattern for dense application screens, such as surfaces, metrics, page headers, action rows, and timeline items.
 - **Demo app**: an app that proves a single package adapter and operational patterns in realistic screens. Every adapter demo implements the same canonical scenarios (dental management and ski resort operations) so adapters stay visibly comparable. Pure scenario data is shared via the `demo-data` lib; page composition stays per-adapter because upstream composition differs. Demos are sequenced behind each adapter's implementation — the Base UI demo is the reference; other demos follow when their adapter is implemented.
@@ -63,8 +63,6 @@ Use these terms when discussing the repo.
 - `packages/config`: `@bend-ui/config`. Thin setup package exposing `createBendConfig()`, sugar over Panda's `defineConfig()` that installs the Bend preset, sets defaults, and composes consumer hooks without clobbering them. `defineConfig()` remains usable directly.
 - `packages/styled-system`: checked-in workspace package for generated Panda output used by examples and packages.
 - `packages/theme`: token-oriented package for theme assets.
-- `packages/react`: React foundation. Owns `bend`, shared layout/text modules, `withRecipe`, `withParts`, `createStyleContext`, and polymorphic rendering. Remove this package once active package adapters no longer depend on it.
-- `packages/primitives`: prior shared utility package. Remove this package with `packages/react`; inline tiny utilities locally instead of preserving a broad shared primitive surface.
 - `packages/react-utils`: small shared utilities. Keep these deep enough to justify their existence; avoid pass-through helpers.
 
 ### Package adapters
@@ -80,7 +78,7 @@ Adapters should stay flexible: users may consume them as packages, generate comp
 
 Adapter naming should generally follow the upstream primitive library. Authors may already know Base UI, Ark UI, or React Aria naming, so matching upstream anatomy is more important than forcing identical Bend UI part names across all adapters.
 
-Do not assume shared React foundation modules are the long-term answer for every adapter. Polymorphism and missing primitive coverage may need to live per adapter unless a genuinely deep shared module emerges.
+Do not introduce a replacement shared React foundation for the package adapters. Polymorphism and missing primitive coverage should live per adapter unless a genuinely deep shared module emerges.
 
 ### Apps and docs
 
@@ -111,9 +109,8 @@ Do not assume shared React foundation modules are the long-term answer for every
 1. `packages/preset-base` defines structural recipe anatomy and state shape.
 2. `packages/preset` composes `preset-base` and adds visual design decisions: tokens, semantic tokens, themes, global CSS, and the canonical state-attribute conditions.
 3. Panda CSS generates styled-system artifacts for packages and apps.
-4. `@bend-ui/react` wraps styled-system primitives and exposes shared React foundation modules.
-5. Package adapters compose upstream primitives with Bend UI recipes and parts.
-6. Storybook, docs, and demos exercise the adapters.
+4. Package adapters compose upstream primitives with Bend UI recipes, generated helpers, and small utilities from `@bend-ui/core` where appropriate.
+5. Storybook, docs, and demos exercise the adapters.
 
 ### Adapter flow
 
@@ -122,7 +119,7 @@ Do not assume shared React foundation modules are the long-term answer for every
 3. It exports a compound Bend UI module.
 4. Apps and docs import the Bend UI module, not the upstream primitive.
 5. CLI generation/ejection tooling may copy the module shape into a user's project while keeping recipe-driven styling.
-6. Ejected components become local code and should not require `@bend-ui/react`.
+6. Ejected components become local code and should not require a Bend UI runtime foundation.
 
 Open question: decide whether generation should also copy/eject recipes, or whether generated components should assume the user installed `@bend-ui/preset`.
 

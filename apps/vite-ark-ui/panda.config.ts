@@ -11,7 +11,6 @@ export default defineConfig({
 
   include: [
     path.resolve(__dirname, './src/**/*.{js,jsx,ts,tsx}'),
-    path.resolve(__dirname, '../../packages/react/src/**/*.{js,jsx,ts,tsx}'),
     path.resolve(__dirname, '../../packages/ark-ui/src/**/*.{js,jsx,ts,tsx}'),
   ],
 

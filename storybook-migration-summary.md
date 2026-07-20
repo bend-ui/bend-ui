@@ -1,5 +1,7 @@
 # Storybook 9 Migration Summary
 
+> Historical migration record. Some package paths and commands below refer to workspace surfaces that have since been removed.
+
 ## Upgrade Storybook packages
 
 The following command was ran to upgrade the Storybook packages:

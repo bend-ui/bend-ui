@@ -5,16 +5,8 @@
       "path": ".",
     },
     {
-      "name": "📦 @bend-ui/primitives",
-      "path": "packages/primitives",
-    },
-    {
       "name": "📦 @bend-ui/theme",
       "path": "packages/theme",
-    },
-    {
-      "name": "📦 @bend-ui/react",
-      "path": "packages/react",
     },
     {
       "name": "📦 @bend-ui/react-aria",

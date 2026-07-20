@@ -1,8 +1,0 @@
-{
-  "onlyChanged": true,
-  "projectId": "Project:65be78ddf8d5a6bf37b355a2",
-  "storybookBaseDir": "packages/react",
-  "buildCommand": "nx run react:build-storybook",
-  "outputDir": "../../dist/storybook/react",
-  "zip": true
-}
