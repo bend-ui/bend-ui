@@ -139,9 +139,11 @@ Prefer tests near each component. Avoid snapshots and exact DOM-depth assertions
 
 ### Step 6: Delete React foundation packages
 
-Delete `packages/react` and `packages/primitives`. Remove their package-manager workspace entries, Nx project references, tsconfig path aliases, package manifest dependencies, tsup externals, and README references.
+Delete `packages/react` and `packages/primitives`. Remove their package-manager workspace entries, Nx project references, tsconfig path aliases, package manifest dependencies, tsup externals, README references, and GitHub Actions workflow references.
 
 Delete `packages/radix` and `apps/playground-panda-radix` if they still depend on `@bend-ui/react` or otherwise block removal.
+
+Delete stale GitHub Actions workflows that build or publish Chromatic projects for the removed React foundation package, Radix UI adapter, or Radix playground, and remove deleted package or project names from retained workflow commands, triggers, and path filters. Keep Chromatic workflows only for the supported Base UI, Ark UI, and React Aria adapter Storybooks.
 
 Keep `packages/ariakit`, but remove its dependency on `@bend-ui/react` and `@bend-ui/primitives`. If Ariakit has no meaningful implementation left after dependency cleanup, leave a minimal package shell only if it continues to build and its future status is obvious from local docs.
 
@@ -150,7 +152,9 @@ Keep `packages/react-utils`, but remove stale tsconfig aliases from apps or pack
 **Verify**:
 
 - `pnpm nx show projects --json` does not include `react` or `primitives`.
-- `rg '@bend-ui/react|@bend-ui/primitives|packages/react|packages/primitives|@bend-ui/radix|packages/radix|playground-panda-radix' . -g '*.{ts,tsx,json,md}'` only returns historical notes in this plan or ADR.
+- `rg '@bend-ui/react|@bend-ui/primitives|packages/react|packages/primitives|@bend-ui/radix|packages/radix|playground-panda-radix' . -g '*.{ts,tsx,json,md,yml,yaml}'` only returns historical notes in this plan or ADR.
+- `rg 'nx (run|run-many).*(react|primitives|radix|playground-panda-radix)|packages/(react|primitives|radix)|playground-panda-radix' .github/workflows -g '*.{yml,yaml}'` finds no active CI command, trigger, or path filter for a deleted project.
+- Every remaining Chromatic workflow targets the Base UI, Ark UI, or React Aria adapter Storybook.
 
 ### Step 7: Build and package-check active packages
 
@@ -181,6 +185,8 @@ Run build and export checks after the migration.
 - [ ] `packages/radix` and `apps/playground-panda-radix` are deleted.
 - [ ] `packages/ariakit` remains in the workspace without depending on `@bend-ui/react` or `@bend-ui/primitives`.
 - [ ] Nx and TypeScript configuration no longer reference `react` or `primitives` projects.
+- [ ] GitHub Actions no longer target the deleted React foundation package, Radix UI adapter, Radix playground, or their paths.
+- [ ] Remaining Chromatic workflows correspond only to the supported Base UI, Ark UI, and React Aria adapter Storybooks.
 - [ ] New or updated tests cover the migrated public component behavior.
 - [ ] `pnpm nx run base-ui:test` exits 0.
 - [ ] `pnpm nx run base-ui:build` exits 0.
