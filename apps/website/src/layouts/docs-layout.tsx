@@ -26,7 +26,7 @@ import {
   sidebarIcon,
 } from '../icons';
 import { css } from '../../styled-system/css/index.mjs';
-import { ThemePersonalitySwitcherPrototype } from '../../lib/theme-personality-switcher-prototype';
+import { ThemePersonalitySwitcher } from '../../lib/theme-personality-switcher-prototype';
 
 interface DocsLayoutProps {
   children: ReactNode;
@@ -181,11 +181,19 @@ export const DocsLayout = ({ children, tree }: DocsLayoutProps) => {
             <Icon icon={sidebarIcon} aria-hidden="true" />
           </Sidebar.Trigger>
           <span className={css({ display: { base: 'none', md: 'block' } })} />
-          <ColorModeControl />
+          <div
+            className={css({
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              justifyContent: 'flex-end',
+              gap: '2',
+            })}
+          >
+            <ColorModeControl />
+            <ThemePersonalitySwitcher />
+          </div>
         </header>
-        {pathname === '/docs/foundation/themes' ? (
-          <ThemePersonalitySwitcherPrototype />
-        ) : null}
         {children}
       </Sidebar.Inset>
     </Sidebar.Provider>

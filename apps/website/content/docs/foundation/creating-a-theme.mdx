@@ -1,0 +1,270 @@
+---
+title: Create a Theme Personality
+description: Add a canonical Bend UI theme with named OKLCH ramps, semantic mappings, personality tokens, tests, and documentation
+---
+
+# Create a Theme Personality
+
+Use this guide when adding a canonical theme to `@bend-ui/preset`. A canonical
+theme changes the complete visual personality—color, typography, shape,
+elevation, density, and motion—while preserving component anatomy and semantic
+token names.
+
+This is a contributor workflow. Product teams extending Bend UI for one
+application should use the preset extension mechanism described in
+[Design Tokens](/docs/foundation/design-tokens#extend-the-token-system).
+
+## Before you start
+
+Prepare:
+
+- a stable theme identifier and public name;
+- one named primary color and one named secondary color;
+- a short personality statement;
+- an initial opinion about typography, shape, density, elevation, and motion.
+
+Keep the supplied color names and source hex values unchanged. The source value
+records the design decision; semantic tokens may select another step from its
+ramp when an interface state requires more contrast.
+
+## 1. Write the personality brief
+
+Describe the theme before assigning individual tokens. Keep the brief short
+enough to resolve later choices.
+
+| Decision | Example |
+| --- | --- |
+| Identifier | `canopy` |
+| Public name | Canopy |
+| Primary | Emerald Ink `#064E3B` |
+| Secondary | Champagne `#F8E7C9` |
+| Character | Premium, organic, editorial, and timeless |
+| Interface consequences | Serif headings, restrained radii, warm hairlines, calm motion |
+
+Use the brief as a constraint. If a shadow, radius, or transition does not
+reinforce it, reconsider that value rather than adding an exception.
+
+**Complete when:** the theme has a stable identifier, two named anchors, one
+personality sentence, and an interface consequence for every personality axis.
+
+## 2. Generate each named color ramp
+
+Add colors to
+`packages/preset/src/tokens/theme-colors.ts`. Each entry preserves the source
+value and provides an 11-step OKLCH scale:
+
+```ts
+export const namedThemeColors = {
+  'emerald-ink': {
+    name: 'Emerald Ink',
+    source: '#064E3B',
+    sourceOklch: 'oklch(0.378 0.073 168.94)',
+    scale: {
+      50: 'oklch(0.778 0.15 168.94)',
+      100: 'oklch(0.705 0.136 168.94)',
+      // 200 through 900
+      950: 'oklch(0.05 0.01 168.94)',
+    },
+  },
+} as const;
+```
+
+Generate the ramp from the exact OKLCH conversion of the source color:
+
+1. Calculate the anchor's `L`, `C`, and `H` values.
+2. Calculate its chroma as a percentage of the maximum sRGB chroma available at
+   the same lightness and hue.
+3. Calculate the lightness bounds:
+
+   ```text
+   minL = max(0.05, anchorL - 0.4)
+   maxL = min(0.95, anchorL + 0.4)
+   ```
+
+4. Distribute lightness evenly across `50`, `100`, `200`, `300`, `400`, `500`,
+   `600`, `700`, `800`, `900`, and `950`.
+5. At every step, apply the same percentage of that lightness and hue's maximum
+   sRGB chroma.
+6. Format `L` and `C` to three decimal places and `H` to at most three decimal
+   places.
+7. Check gamut again after formatting. Rounding can push a boundary color just
+   outside sRGB; reduce only `C` by the smallest useful safety margin.
+
+The anchor does not have to occupy step `500`. Bright anchors such as Butter
+Yellow naturally sit near the light end, while dark anchors such as Night Violet
+sit near the dark end. Preserve the exact anchor in `source` and `sourceOklch`
+instead of distorting the scale to force a particular label.
+
+**Complete when:** the source name and hex are preserved, all 11 steps share one
+hue, every formatted value is inside sRGB, and lightness decreases from `50` to
+`950`.
+
+## 3. Define the full personality manifest
+
+Add an entry to `themePersonalities` in
+`packages/preset/src/themes/personalities.ts`:
+
+```ts
+canopy: {
+  name: 'Canopy',
+  description: 'Premium, organic, editorial, and timeless.',
+  primary: 'emerald-ink',
+  secondary: 'champagne',
+  lightColor: 'champagne',
+  darkColor: 'emerald-ink',
+  primaryStates: {
+    default: '500',
+    hover: '600',
+    active: '700',
+    focus: '700',
+  },
+  secondaryShade: '50',
+  onPrimary: { color: 'champagne', shade: '50' },
+  // typography, shape, elevation, density, and motion follow
+},
+```
+
+Define every axis:
+
+| Axis | Required decisions |
+| --- | --- |
+| Color | Primary, secondary, light partner, dark partner, interaction steps, primary foreground |
+| Typography | Heading, body, and code stacks plus heading tracking |
+| Shape | Control, surface, and overlay radii plus border width |
+| Elevation | Surface, raised, and overlay shadows |
+| Density | Control height and `xs`, `sm`, `md`, and `lg` spacing aliases |
+| Motion | Character statement; fast, normal, and slow durations; default, entrance, and exit easing |
+
+Prefer installed or system font stacks. A personality manifest must remain
+usable without silently depending on a font the application never loads.
+
+Use concentric radii where surfaces nest closely. For example, a surface with
+`8px` of inset space around a `12px` control should use a `20px` outer radius.
+
+**Complete when:** the TypeScript entry satisfies `ThemePersonality` without a
+cast and every axis expresses the personality brief.
+
+## 4. Map the pair into semantic roles
+
+`createPersonalityTheme` converts the manifest into a Panda theme variant. It:
+
+- maps the named primary and secondary ramps to semantic color scales;
+- builds the neutral scale from the theme's light and dark partners;
+- maps primary interaction states to explicit ramp steps;
+- assigns the primary foreground to text and icon roles;
+- exposes the personality's typography, radii, shadows, spacing, sizes,
+  durations, and easing tokens.
+
+Choose `lightColor` and `darkColor` by role, not by whether they were listed as
+primary or secondary. Canopy uses Champagne as its light partner and Emerald Ink
+as its dark partner. Solstice uses Butter Yellow as its light partner and Royal
+Iris as its dark partner.
+
+Component recipes continue to consume names such as `fill.primary`,
+`text.primary.inverse.strong`, `radii.base`, and `durations.normal`. They do not
+import named palette values directly.
+
+**Complete when:** page, surface, text, inverse text, and primary interaction
+roles resolve entirely through semantic tokens.
+
+## 5. Verify contrast for every interaction state
+
+Check the foreground against the actual background used for `default`, `hover`,
+`active`, and `focus`—not only against the source anchor.
+
+Use these thresholds:
+
+| Content | APCA target | WCAG 2 target when required |
+| --- | ---: | ---: |
+| Normal text | `|Lc| ≥ 60` | `4.5:1` |
+| Large text | `|Lc| ≥ 45` | `3:1` |
+| UI components | `|Lc| ≥ 30` | `3:1` |
+
+When a pair fails, select a lighter or darker step by changing the semantic
+mapping. Keep the named source color intact. Contrast is primarily controlled by
+OKLCH lightness, so preserve hue and adjust the lightness distance first.
+
+Nebula demonstrates this branch: the exact Dragonfruit source remains in its
+ramp, while text-bearing primary surfaces use a lighter Dragonfruit step so
+Night Violet text clears the normal-text threshold.
+
+**Complete when:** every text-bearing primary state reaches `|Lc| ≥ 60`, and any
+required WCAG 2 checks also pass.
+
+## 6. Confirm automatic registration and documentation
+
+The preset derives `personalityThemes` from every entry in `themePersonalities`,
+and the docs catalog reads the same manifests. Adding one valid manifest should
+therefore make the new identifier available in both places without copying its
+values.
+
+Confirm that:
+
+- `createBendPreset().themes` contains the new identifier;
+- `/docs/foundation/themes` renders its card;
+- the card shows the correct color names, source hex values, ramps, and
+  personality properties.
+
+Keep prose about the process in this guide and values in the manifests. This
+keeps theme values in one authoritative place.
+
+**Complete when:** the preset and documentation both expose the theme from the
+same manifest.
+
+## 7. Run the verification gate
+
+Run tasks through Nx from the workspace root:
+
+```bash
+pnpm nx run preset:test
+pnpm nx run preset:lint
+pnpm nx run preset:build
+pnpm nx run website:lint
+pnpm nx run website:build:production
+```
+
+The preset tests verify:
+
+- every supplied name and source value;
+- all 11 ramp labels;
+- constant hue across each ramp;
+- sRGB gamut after OKLCH formatting;
+- Panda theme registration;
+- APCA contrast for every primary interaction state.
+
+Finally inspect `/docs/foundation/themes` at desktop and mobile widths. Check for
+horizontal overflow, clipped ramps, unreadable labels, unsuitable font
+fallbacks, and personality details that disappear in either color mode.
+
+**Complete when:** every Nx task passes, the page has no console errors or
+horizontal overflow, and every theme remains legible at desktop and mobile
+widths.
+
+## Common corrections
+
+| Before | After |
+| --- | --- |
+| Hex used directly in component recipes | Component recipe uses a semantic token |
+| Same absolute chroma used for every hue | Each hue uses the same percentage of its available maximum chroma |
+| Formatted OKLCH value clips outside sRGB | Chroma reduced slightly after three-decimal formatting |
+| Bright source forced into step `500` | Exact source preserved separately; ramp follows perceptual lightness |
+| One foreground checked only against the default state | Foreground checked against default, hover, active, and focus backgrounds |
+| Accent mutated to repair contrast | Semantic state selects a more suitable lightness step |
+| Theme adds only two color ramps | Theme defines color, typography, shape, elevation, density, and motion |
+| Docs repeat manifest values manually | Docs render directly from `themePersonalities` |
+
+## Completion checklist
+
+- [ ] Stable identifier, name, anchors, and personality brief
+- [ ] Exact source names, hex values, and OKLCH conversions preserved
+- [ ] Two constant-hue, 11-step, sRGB-safe ramps
+- [ ] Complete personality manifest across all six axes
+- [ ] Semantic light, dark, primary, interaction, and foreground mappings
+- [ ] APCA checks for every text-bearing primary state
+- [ ] Automatic preset registration and generated documentation card
+- [ ] Passing preset tests, lint, and declaration build
+- [ ] Passing website lint and production build
+- [ ] Desktop and mobile visual verification
+
+See [Theme Personalities](/docs/foundation/themes) for the generated catalog and
+current canonical themes.

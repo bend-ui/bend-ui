@@ -2,6 +2,8 @@
   "title": "Foundation",
   "pages": [
     "design-tokens",
+    "themes",
+    "creating-a-theme",
     "colors",
     "typography",
     "spacing"

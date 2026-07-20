@@ -1,7 +1,11 @@
 'use client';
 
-import { namedThemeColors, themePersonalities } from '@bend-ui/preset';
-import { useEffect, useMemo, useState } from 'react';
+import {
+  namedThemeColors,
+  themePersonalities,
+  type ThemePersonalityName,
+} from '@bend-ui/preset';
+import { useEffect, useMemo, useState, useSyncExternalStore } from 'react';
 import { css } from '../styled-system/css/index.mjs';
 
 const personalityIds = Object.keys(themePersonalities) as Array<
@@ -15,6 +19,24 @@ const variants: Array<{ id: Variant; label: string }> = [
   { id: 'sidebar', label: 'Sidebar panel' },
   { id: 'palette', label: 'Floating palette' },
 ];
+
+const personalityStorageKey = 'bend-ui-theme-personality';
+
+const isPersonalityName = (value: string | null): value is ThemePersonalityName =>
+  value !== null && value in themePersonalities;
+
+const getStoredPersonality = (): ThemePersonalityName => {
+  if (typeof window === 'undefined') return 'stratus';
+  const stored = window.localStorage.getItem(personalityStorageKey);
+  return isPersonalityName(stored) ? stored : 'stratus';
+};
+
+const personalityChangeEvent = 'bend-ui-theme-personality-change';
+
+const subscribeToPersonality = (onChange: () => void) => {
+  window.addEventListener(personalityChangeEvent, onChange);
+  return () => window.removeEventListener(personalityChangeEvent, onChange);
+};
 
 const getInitialVariant = (): Variant => {
   if (typeof window === 'undefined') return 'header';
@@ -55,9 +77,11 @@ const ThemeSwatch = ({ id }: { id: keyof typeof themePersonalities }) => {
 
 const ThemeOption = ({
   id,
+  selected,
   onSelect,
 }: {
   id: keyof typeof themePersonalities;
+  selected: boolean;
   onSelect: (id: keyof typeof themePersonalities) => void;
 }) => {
   const personality = themePersonalities[id];
@@ -65,7 +89,11 @@ const ThemeOption = ({
   return (
     <button
       type="button"
-      onClick={() => onSelect(id)}
+      aria-pressed={selected}
+      onClick={(event) => {
+        onSelect(id);
+        event.currentTarget.closest('details')?.removeAttribute('open');
+      }}
       className={css({
         display: 'flex',
         alignItems: 'center',
@@ -79,7 +107,11 @@ const ThemeOption = ({
         color: 'fg.default',
         textAlign: 'left',
         cursor: 'pointer',
+        transitionProperty: 'background-color, color, transform',
+        transitionDuration: 'fast',
+        background: selected ? 'fill.muted' : 'transparent',
         _hover: { background: 'fill.hover' },
+        _active: { transform: 'scale(0.96)' },
         _focusVisible: {
           outline: '2px solid',
           outlineColor: 'stroke.primary',
@@ -110,6 +142,7 @@ const HeaderVariant = ({
   return (
     <details className={css({ position: 'relative', width: { base: '100%', sm: 'auto' } })}>
       <summary
+        aria-label={`Theme personality: ${personality.name}`}
         className={css({
           display: 'flex',
           alignItems: 'center',
@@ -147,7 +180,7 @@ const HeaderVariant = ({
         })}
       >
         {personalityIds.map((id) => (
-          <ThemeOption key={id} id={id} onSelect={onSelect} />
+          <ThemeOption key={id} id={id} selected={selected === id} onSelect={onSelect} />
         ))}
       </div>
     </details>
@@ -367,4 +400,23 @@ export const ThemePersonalitySwitcherPrototype = () => {
       </div>
     </section>
   );
+};
+
+export const ThemePersonalitySwitcher = () => {
+  const selected = useSyncExternalStore(
+    subscribeToPersonality,
+    getStoredPersonality,
+    () => 'stratus' as ThemePersonalityName,
+  );
+
+  useEffect(() => {
+    document.documentElement.dataset.pandaTheme = selected;
+  }, [selected]);
+
+  const onSelect = (next: ThemePersonalityName) => {
+    window.localStorage.setItem(personalityStorageKey, next);
+    window.dispatchEvent(new Event(personalityChangeEvent));
+  };
+
+  return <HeaderVariant selected={selected} onSelect={onSelect} />;
 };

@@ -1,6 +1,8 @@
 import { defineTokens } from '@pandacss/dev';
+import { namedThemeColorTokens } from './theme-colors';
 
 export const colors = defineTokens.colors({
+  ...namedThemeColorTokens,
   shark: {
     50: { value: '#f7f8f8' },
     100: { value: '#ededf1' },

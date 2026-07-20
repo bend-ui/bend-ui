@@ -9,7 +9,7 @@ import { textStyles } from './textStyles';
 import { layerStyles } from './layerStyles';
 import { keyframes } from './keyframes';
 import { globalCss } from './globalCss';
-import { createTheme } from './themes';
+import { createTheme, personalityThemes } from './themes';
 import { conditions } from './conditions';
 
 const bendPreset = definePreset({
@@ -55,6 +55,7 @@ const bendPreset = definePreset({
       defaultPrimaryColor: '500',
       defaultNeutralColor: '500',
     }),
+    ...personalityThemes,
   },
 });
 
@@ -74,3 +75,14 @@ export const createBendPreset = (extend?: Preset): Preset =>
     : bendPreset;
 
 export { conditions };
+export {
+  namedThemeColors,
+  type NamedThemeColor,
+} from './tokens/theme-colors';
+export {
+  personalityThemes,
+  themePersonalities,
+  themePersonalityCatalog,
+  type ThemePersonality,
+  type ThemePersonalityName,
+} from './themes';

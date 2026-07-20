@@ -1,0 +1,65 @@
+---
+title: Theme Personalities
+description: Explore the canonical color, typography, shape, elevation, density, and motion decisions behind each Bend UI theme
+---
+
+import { ThemePersonalityCatalog } from '../../../lib/theme-personality-catalog';
+
+# Theme Personalities
+
+Each Bend UI theme is a complete visual personality rather than a color swap. The
+same component anatomy and semantic roles remain stable while color, typography,
+shape, elevation, density, and motion change together.
+
+<ThemePersonalityCatalog />
+
+## Canonical source
+
+The specimens above render directly from the manifests exported by
+`@bend-ui/preset`. They are not a second, documentation-only copy of the theme
+values.
+
+```ts
+import {
+  namedThemeColors,
+  personalityThemes,
+  themePersonalities,
+} from '@bend-ui/preset';
+```
+
+`namedThemeColors` preserves the supplied name, source hex, exact OKLCH
+conversion, and 11-step gamut-safe scale for every color. Components should use
+semantic tokens supplied by `personalityThemes`, not these palette values
+directly.
+
+## Apply a personality
+
+Register the theme names during Panda generation, then select one with
+`data-panda-theme`:
+
+```tsx
+export function ProductShell({ children }: { children: React.ReactNode }) {
+  return <div data-panda-theme="canopy">{children}</div>;
+}
+```
+
+Available identifiers are `stratus`, `solstice`, `volt`, `nebula`, `canopy`, and
+`aster`.
+
+## Theme contract
+
+Every personality defines:
+
+- two named OKLCH color ramps and a paired light/dark neutral scale;
+- body, heading, and code font roles;
+- control, surface, and overlay radii;
+- surface, raised, and overlay elevation;
+- control height and semantic spacing aliases;
+- fast, normal, and slow durations plus entrance and exit easing.
+
+The primary foreground is selected from the paired color and stored as a semantic
+token. This is especially important for light accents such as **Butter Yellow**
+and **Lime Spark**, where a dark foreground is required.
+
+See [Create a Theme Personality](/docs/foundation/creating-a-theme) for the
+contributor workflow, completion criteria, and verification gate.
