@@ -41,6 +41,7 @@ Thumbs.db
 
 # Next.js
 .next
+*.tsbuildinfo
 
 # NX
 .nx/cache
