@@ -16,7 +16,7 @@ export default defineConfig({
   staticCss: {
     css: [{ properties: { colorPalette: ['*'] } }],
     recipes: '*',
-    themes: ['*'],
+    themes: ['default', 'stratus', 'solstice', 'volt', 'nebula', 'canopy', 'aster'],
   },
   importMap: '@bend-ui/styled-system',
   jsxFramework: 'react',

@@ -37,19 +37,21 @@ const preview: Preview = {
   decorators: [
     withThemeByDataAttribute({
       themes: {
-        Default: 'default',
-        Proton: 'proton',
-        Neutron: 'neutron',
-        Quark: 'quark',
+        Stratus: 'stratus',
+        Solstice: 'solstice',
+        Volt: 'volt',
+        Nebula: 'nebula',
+        Canopy: 'canopy',
+        Aster: 'aster',
       },
-      defaultTheme: 'Default',
+      defaultTheme: 'Stratus',
       attributeName: 'data-panda-theme',
     }),
   ],
   loaders: [mswLoader],
   tags: ['autodocs'],
   async beforeEach() {
-    document.documentElement.setAttribute('data-panda-theme', 'default');
+    document.documentElement.setAttribute('data-panda-theme', 'stratus');
   },
 };
 

@@ -24,6 +24,6 @@ export default defineConfig({
 
   staticCss: {
     recipes: '*',
-    themes: ['*'],
+    themes: ['default', 'stratus', 'solstice', 'volt', 'nebula', 'canopy', 'aster'],
   },
 });
