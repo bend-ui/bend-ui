@@ -1,4 +1,6 @@
 import { defineSemanticTokens } from '@pandacss/dev';
+import { stratusPersonality } from '../themes/personalities/stratus';
+import { borderWidths } from './border-widths';
 import { borders } from './borders';
 import { colors } from './colors';
 import {
@@ -18,10 +20,18 @@ import { opacity } from './opacity';
 
 export const semanticTokens = defineSemanticTokens({
   borders,
-  borderWidths: {},
+  borderWidths,
   colors,
-  durations: {},
-  easings: {},
+  durations: {
+    fast: { value: stratusPersonality.motion.duration.fast },
+    normal: { value: stratusPersonality.motion.duration.normal },
+    slow: { value: stratusPersonality.motion.duration.slow },
+  },
+  easings: {
+    default: { value: stratusPersonality.motion.easing.default },
+    enter: { value: stratusPersonality.motion.easing.enter },
+    exit: { value: stratusPersonality.motion.easing.exit },
+  },
   fonts,
   fontSizes,
   fontWeights,
@@ -39,6 +49,6 @@ export const semanticTokens = defineSemanticTokens({
   spacing,
   zIndex,
   transitions: {
-    base: { value: '0.2s ease-out' },
+    base: { value: '{durations.normal} {easings.default}' },
   },
 });

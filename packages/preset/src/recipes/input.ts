@@ -6,11 +6,11 @@ export const inputRecipe = defineSlotRecipe({
   className: 'Input',
   base: {
     root: {
-      rounded: 'lg',
+      rounded: 'control',
       transitionProperty: 'colors, border-color, background-color',
       transitionDuration: 'fast',
-      transitionTimingFunction: 'ease-in-out',
-      divideX: '1px',
+      transitionTimingFunction: 'default',
+      divideX: 'base',
       _hover: {
         cursor: 'text',
       },
@@ -45,20 +45,20 @@ export const inputRecipe = defineSlotRecipe({
     size: {
       sm: {
         input: {
-          height: '8',
+          height: 'control.sm',
         },
         wrapper: {
-          paddingInline: '2',
-          gap: '1',
+          paddingInline: 'sm',
+          gap: 'xs',
         },
       },
       md: {
         input: {
-          height: '10',
+          height: 'control.md',
         },
         wrapper: {
-          paddingInline: '3',
-          gap: '2',
+          paddingInline: 'md',
+          gap: 'sm',
         },
         icon: {
           width: '5',
@@ -66,16 +66,16 @@ export const inputRecipe = defineSlotRecipe({
         },
         element: {},
         addon: {
-          paddingInline: '3',
+          paddingInline: 'md',
         },
       },
       lg: {
         input: {
-          height: '12',
+          height: 'control.lg',
         },
         wrapper: {
-          paddingInline: '4',
-          gap: '3',
+          paddingInline: 'lg',
+          gap: 'md',
         },
       },
     },
@@ -90,7 +90,7 @@ export const inputRecipe = defineSlotRecipe({
           backgroundColor: 'fill',
           border: 'weak',
           divideColor: 'stroke.weak',
-          shadow: 'xs',
+          shadow: 'surface',
         },
       },
     },

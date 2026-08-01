@@ -17,7 +17,7 @@ export const comboboxRecipe = defineSlotRecipe({
     root: {
       display: 'flex',
       flexDirection: 'column',
-      gap: '2',
+      gap: 'sm',
       width: 'full',
     },
     label: {
@@ -41,8 +41,8 @@ export const comboboxRecipe = defineSlotRecipe({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
-      paddingX: '2',
-      height: '10',
+      paddingX: 'sm',
+      height: 'control.md',
       _hover: {
         bg: 'fill.hover',
       },
@@ -68,13 +68,13 @@ export const comboboxRecipe = defineSlotRecipe({
   variants: {
     size: {
       sm: {
-        item: { height: '8', fontSize: 'sm' },
+        item: { height: 'control.sm', fontSize: 'sm' },
       },
       md: {
-        item: { height: '10', fontSize: 'md' },
+        item: { height: 'control.md', fontSize: 'md' },
       },
       lg: {
-        item: { height: '12', fontSize: 'lg' },
+        item: { height: 'control.lg', fontSize: 'lg' },
       },
     },
   },

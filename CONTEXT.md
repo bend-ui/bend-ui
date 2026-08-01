@@ -30,6 +30,8 @@ Use these terms when discussing the repo.
 
 - **Design system**: the whole Bend UI product: tokens, recipes, React primitives, package adapters, generation/ejection paths, docs, demos, and release checks.
 - **Token system**: named design values such as colors, spacing, typography, shadows, radii, and semantic tones.
+- **Primitive token**: a context-free design value in a scale or palette, such as a color shade or spacing step. Primitive tokens are implementation ingredients rather than the preferred vocabulary for product UI.
+- **Semantic token**: a purpose-driven alias that tells consumers what a design value is for, such as a page background or muted text. Its canonical description defines intended usage and is the source for consumer-facing token documentation.
 - **Recipe**: a Panda CSS style module for one visual pattern. Recipes may be single-part or slot-based.
 - **Structural preset**: `@bend-ui/preset-base`, the Panda CSS preset for structural recipe shape only. It should define parts, slots, state selectors, and minimal layout structure; it should not define product colors, padding scales, typography choices, or other visual decisions.
 - **Design preset**: `@bend-ui/preset`, the Panda CSS preset for the actual Bend UI visual language. It composes the structural preset and adds tokens, semantic tokens, colors, spacing, typography, themes, global CSS, and the canonical state-attribute conditions.

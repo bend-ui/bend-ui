@@ -9,14 +9,15 @@ export const switchRecipe = defineSlotRecipe({
     root: {
       display: 'flex',
       alignItems: 'center',
-      gap: '2',
+      gap: 'sm',
     },
     control: {
       display: 'flex',
       p: '1',
       backgroundColor: 'fill',
       rounded: 'full',
-      transition: 'background 200ms',
+      transition:
+        'background-color {durations.fast} {easings.default}',
       _checked: {
         backgroundColor: 'primary',
       },
@@ -24,7 +25,7 @@ export const switchRecipe = defineSlotRecipe({
     thumb: {
       backgroundColor: 'fill.white',
       rounded: 'full',
-      transition: 'transform 200ms',
+      transition: 'transform {durations.fast} {easings.default}',
       _checked: {
         transform: 'translateX(100%)',
       },

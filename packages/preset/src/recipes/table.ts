@@ -45,19 +45,19 @@ export const tableRecipe = defineSlotRecipe({
   variants: {
     density: {
       compact: {
-        head: { paddingX: '2', paddingY: '2' },
-        headerCell: { paddingX: '2', paddingY: '2' },
-        cell: { paddingX: '2', paddingY: '2' },
+        head: { paddingX: 'sm', paddingY: 'sm' },
+        headerCell: { paddingX: 'sm', paddingY: 'sm' },
+        cell: { paddingX: 'sm', paddingY: 'sm' },
       },
       comfortable: {
-        head: { paddingX: '3', paddingY: '3' },
-        headerCell: { paddingX: '3', paddingY: '3' },
-        cell: { paddingX: '3', paddingY: '3' },
+        head: { paddingX: 'md', paddingY: 'md' },
+        headerCell: { paddingX: 'md', paddingY: 'md' },
+        cell: { paddingX: 'md', paddingY: 'md' },
       },
       spacious: {
-        head: { paddingX: '4', paddingY: '4' },
-        headerCell: { paddingX: '4', paddingY: '4' },
-        cell: { paddingX: '4', paddingY: '4' },
+        head: { paddingX: 'lg', paddingY: 'lg' },
+        headerCell: { paddingX: 'lg', paddingY: 'lg' },
+        cell: { paddingX: 'lg', paddingY: 'lg' },
       },
     },
     isStriped: {
@@ -76,7 +76,7 @@ export const tableRecipe = defineSlotRecipe({
       true: {
         root: {
           border: 'border.weak',
-          borderRadius: '8px',
+          borderRadius: 'surface',
         },
       },
     },

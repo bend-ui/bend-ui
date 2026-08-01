@@ -5,8 +5,10 @@ export const textareaRecipe = defineSlotRecipe({
   slots: ['root', 'field'],
   base: {
     root: {
-      rounded: 'lg',
-      border: '1px solid transparent',
+      rounded: 'control',
+      borderWidth: 'base',
+      borderStyle: 'solid',
+      borderColor: 'transparent',
       _focusWithin: {
         layerStyle: 'focus',
       },

@@ -7,14 +7,14 @@ export const angleSliderRecipe = defineSlotRecipe({
     root: {
       display: 'flex',
       flexDirection: 'column',
-      gap: '0.5rem',
-      marginBottom: '1rem',
+      gap: 'sm',
+      marginBottom: 'lg',
       alignItems: 'center',
     },
     label: {
       display: 'flex',
       alignItems: 'center',
-      gap: '8px',
+      gap: 'sm',
     },
     control: {
       '--size': '120px',

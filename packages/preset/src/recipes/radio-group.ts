@@ -50,12 +50,12 @@ export const radioGroupRecipe = defineSlotRecipe({
       sm: {
         root: {
           gap: {
-            _vertical: '3',
-            _horizontal: '4',
+            _vertical: 'md',
+            _horizontal: 'lg',
           },
         },
         item: {
-          gap: '2',
+          gap: 'sm',
         },
         itemControl: {
           width: '4',
@@ -72,12 +72,12 @@ export const radioGroupRecipe = defineSlotRecipe({
       md: {
         root: {
           gap: {
-            _vertical: '4',
-            _horizontal: '6',
+            _vertical: 'lg',
+            _horizontal: 'lg',
           },
         },
         item: {
-          gap: '3',
+          gap: 'md',
         },
         itemControl: {
           width: '5',
@@ -94,12 +94,12 @@ export const radioGroupRecipe = defineSlotRecipe({
       lg: {
         root: {
           gap: {
-            _vertical: '5',
-            _horizontal: '8',
+            _vertical: 'lg',
+            _horizontal: 'lg',
           },
         },
         item: {
-          gap: '4',
+          gap: 'lg',
         },
         itemControl: {
           width: '6',

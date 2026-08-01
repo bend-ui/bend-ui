@@ -12,12 +12,13 @@ export const accordionRecipe = defineSlotRecipe({
       flexDirection: 'column',
       border: 'base',
       padding: 'base',
-      rounded: 'base',
+      rounded: 'surface',
     },
     trigger: {
       display: 'flex',
       flex: '1 1 100%',
       width: 'full',
+      minHeight: 'control.md',
       placeItems: 'center',
     },
     indicator: {
@@ -55,10 +56,10 @@ export const accordionRecipe = defineSlotRecipe({
           borderRadius: '0',
           _first: {
             borderTop: 'base',
-            roundedTop: 'base',
+            roundedTop: 'surface',
           },
           _last: {
-            roundedBottom: 'base',
+            roundedBottom: 'surface',
           },
         },
       },

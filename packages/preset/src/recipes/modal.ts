@@ -37,7 +37,7 @@ export const modalRecipe = defineSlotRecipe({
       maxH: '85vh',
       layerStyle: 'surface.overlay',
       padding: 'lg',
-      rounded: 'lg',
+      rounded: 'overlay',
       _open: {
         animation: 'panel.in',
       },
@@ -54,8 +54,8 @@ export const modalRecipe = defineSlotRecipe({
     footer: {},
     close: {
       position: 'absolute',
-      top: '10px',
-      right: '10px',
+      top: 'md',
+      right: 'md',
     },
     title: {
       textStyle: 'title',

@@ -103,7 +103,6 @@ const ThemeOption = ({
         paddingInline: '3',
         border: '0',
         borderRadius: 'md',
-        background: 'transparent',
         color: 'fg.default',
         textAlign: 'left',
         cursor: 'pointer',

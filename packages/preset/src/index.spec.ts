@@ -1,7 +1,17 @@
 import { describe, it, expect } from 'vitest';
 import { definePreset } from '@pandacss/dev';
 import basePreset from '@bend-ui/preset-base';
-import { createBendPreset, conditions } from './index';
+import {
+  createBendPreset,
+  conditions,
+  themePersonalities,
+} from './index';
+
+const getAtPath = (value: unknown, path: readonly string[]) =>
+  path.reduce<unknown>((current, segment) => {
+    if (typeof current !== 'object' || current === null) return undefined;
+    return (current as Record<string, unknown>)[segment];
+  }, value);
 
 /**
  * Seam B — preset builder unit tests.
@@ -203,6 +213,151 @@ describe('createBendPreset', () => {
     expect(preset.theme?.extend?.recipes).toBeDefined();
     expect(preset.theme?.extend?.tokens).toBeDefined();
     expect(preset.themes).toHaveProperty('default');
+  });
+
+  it('keeps default as the exact Stratus theme object alias', () => {
+    const themes = createBendPreset().themes;
+
+    expect(Object.keys(themes ?? {})).toEqual([
+      'default',
+      'stratus',
+      'solstice',
+      'volt',
+      'nebula',
+      'canopy',
+      'aster',
+    ]);
+    expect(themes?.default).toBe(themes?.stratus);
+    expect(themes).not.toHaveProperty('proton');
+    expect(themes).not.toHaveProperty('neutron');
+    expect(themes).not.toHaveProperty('quark');
+  });
+
+  it('resolves all six personality axes through semantic theme roles', () => {
+    const themes = createBendPreset().themes;
+    const axes = [
+      ['semanticTokens', 'fonts', 'heading', 'value'],
+      ['semanticTokens', 'radii', 'control', 'value'],
+      ['semanticTokens', 'shadows', 'raised', 'value'],
+      ['semanticTokens', 'sizes', 'control', 'md', 'value'],
+      ['semanticTokens', 'spacing', 'md', 'value'],
+      ['semanticTokens', 'durations', 'normal', 'value'],
+      ['semanticTokens', 'easings', 'default', 'value'],
+    ] as const;
+
+    for (const path of axes) {
+      const values = [
+        'stratus',
+        'solstice',
+        'volt',
+        'nebula',
+        'canopy',
+        'aster',
+      ].map((id) => getAtPath(themes?.[id], path));
+
+      expect(
+        new Set(values).size,
+        `${path.join('.')} does not vary across personalities`,
+      ).toBeGreaterThan(1);
+    }
+  });
+
+  it('keeps every personality-sensitive recipe value behind a semantic role', () => {
+    const recipes = createBendPreset().theme?.extend?.slotRecipes;
+    const allowedShapeValues = new Set([
+      '0',
+      '100%',
+      '999px',
+      'control',
+      'full',
+      'overlay',
+      'surface',
+      'var(--size)',
+    ]);
+    const durationValues = new Set(['fast', 'normal', 'slow']);
+    const easingValues = new Set(['default', 'enter', 'exit']);
+
+    const audit = (value: unknown, path: string[] = []) => {
+      if (typeof value !== 'object' || value === null) return;
+
+      for (const [property, child] of Object.entries(value)) {
+        const childPath = [...path, property];
+        const location = childPath.join('.');
+
+        if (
+          typeof child === 'string' &&
+          /^(borderRadius|rounded(?:Top|Bottom|Left|Right|TopLeft|TopRight|BottomLeft|BottomRight)?)$/.test(
+            property,
+          )
+        ) {
+          expect(
+            allowedShapeValues.has(child),
+            `${location} bypasses the personality shape roles`,
+          ).toBe(true);
+        }
+
+        if (
+          typeof child === 'string' &&
+          /^(borderWidth|divideX)$/.test(property)
+        ) {
+          expect(
+            child,
+            `${location} bypasses the personality border width`,
+          ).not.toBe('1px');
+        }
+
+        if (property === 'transitionDuration' && typeof child === 'string') {
+          expect(
+            durationValues.has(child),
+            `${location} bypasses the personality duration roles`,
+          ).toBe(true);
+        }
+
+        if (
+          property === 'transitionTimingFunction' &&
+          typeof child === 'string'
+        ) {
+          expect(
+            easingValues.has(child),
+            `${location} bypasses the personality easing roles`,
+          ).toBe(true);
+        }
+
+        if (property === 'transition' && typeof child === 'string') {
+          expect(child, `${location} needs a semantic duration`).toContain(
+            '{durations.',
+          );
+          expect(child, `${location} needs a semantic easing`).toContain(
+            '{easings.',
+          );
+        }
+
+        audit(child, childPath);
+      }
+    };
+
+    audit(recipes);
+  });
+
+  it('keeps Stratus base fallbacks sourced from the Stratus manifest', () => {
+    const semanticTokens = createBendPreset().theme?.extend?.semanticTokens;
+    const stratus = themePersonalities.stratus;
+
+    expect(getAtPath(semanticTokens, ['fonts', 'body', 'value'])).toBe(
+      stratus.typography.body,
+    );
+    expect(getAtPath(semanticTokens, ['radii', 'control', 'value'])).toBe(
+      stratus.shape.control,
+    );
+    expect(getAtPath(semanticTokens, ['shadows', 'overlay', 'value'])).toBe(
+      stratus.elevation.overlay,
+    );
+    expect(
+      getAtPath(semanticTokens, ['sizes', 'control', 'md', 'value']),
+    ).toBe(stratus.density.controlHeights.md);
+    expect(getAtPath(semanticTokens, ['durations', 'normal', 'value'])).toBe(
+      stratus.motion.duration.normal,
+    );
   });
 
   it('is callable with no arguments (no required library option)', () => {
