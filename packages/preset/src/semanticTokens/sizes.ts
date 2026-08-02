@@ -7,4 +7,10 @@ export const sizes = defineSemanticTokens.sizes({
     md: { value: stratusPersonality.density.controlHeights.md },
     lg: { value: stratusPersonality.density.controlHeights.lg },
   },
+  indicator: {
+    xs: { value: stratusPersonality.density.spacing.xs },
+    sm: { value: stratusPersonality.density.spacing.sm },
+    md: { value: stratusPersonality.density.spacing.md },
+  },
+  scrollbar: { value: stratusPersonality.density.spacing.md },
 });

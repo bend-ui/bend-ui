@@ -6,7 +6,6 @@ import './index.css';
 declare const __CUSTOMIZATION_LEVEL__: 'Level 2' | 'Level 3';
 
 const themes = [
-  'default',
   'stratus',
   'solstice',
   'volt',
@@ -16,7 +15,7 @@ const themes = [
 ] as const;
 
 export function App() {
-  const [theme, setTheme] = useState<(typeof themes)[number]>('default');
+  const [theme, setTheme] = useState<(typeof themes)[number]>('stratus');
 
   useEffect(() => {
     document.documentElement.dataset.pandaTheme = theme;

@@ -13,11 +13,10 @@ export const switchRecipe = defineSlotRecipe({
     },
     control: {
       display: 'flex',
-      p: '1',
+      p: 'xs',
       backgroundColor: 'fill',
       rounded: 'full',
-      transition:
-        'background-color {durations.fast} {easings.default}',
+      transition: 'background-color {durations.fast} {easings.default}',
       _checked: {
         backgroundColor: 'primary',
       },

@@ -56,25 +56,29 @@ export const sidebarRecipe = defineSlotRecipe({
       '&[data-collapsible="icon"][data-state="collapsed"]': {
         width: 'var(--sidebar-width-icon)',
       },
-      '&[data-collapsible="icon"][data-state="collapsed"] [data-part="label"], &[data-collapsible="icon"][data-state="collapsed"] [data-part="footer"], &[data-collapsible="icon"][data-state="collapsed"] [data-part="groupLabel"], &[data-collapsible="icon"][data-state="collapsed"] [data-part="menuBadge"], &[data-collapsible="icon"][data-state="collapsed"] [data-part="menuAction"]': {
-        opacity: '0',
-        width: '0',
-        overflow: 'hidden',
-        pointerEvents: 'none',
-      },
-      '&[data-collapsible="icon"][data-state="collapsed"] [data-part="header"]': {
-        paddingInline: 'sm',
-      },
-      '&[data-collapsible="icon"][data-state="collapsed"] [data-part="content"]': {
-        paddingInline: 'sm',
-      },
+      '&[data-collapsible="icon"][data-state="collapsed"] [data-part="label"], &[data-collapsible="icon"][data-state="collapsed"] [data-part="footer"], &[data-collapsible="icon"][data-state="collapsed"] [data-part="groupLabel"], &[data-collapsible="icon"][data-state="collapsed"] [data-part="menuBadge"], &[data-collapsible="icon"][data-state="collapsed"] [data-part="menuAction"]':
+        {
+          opacity: '0',
+          width: '0',
+          overflow: 'hidden',
+          pointerEvents: 'none',
+        },
+      '&[data-collapsible="icon"][data-state="collapsed"] [data-part="header"]':
+        {
+          paddingInline: 'sm',
+        },
+      '&[data-collapsible="icon"][data-state="collapsed"] [data-part="content"]':
+        {
+          paddingInline: 'sm',
+        },
       '&[data-collapsible="offcanvas"][data-state="collapsed"]': {
         width: '0',
         transform: 'translateX(-100%)',
       },
-      '&[data-side="right"][data-collapsible="offcanvas"][data-state="collapsed"]': {
-        transform: 'translateX(100%)',
-      },
+      '&[data-side="right"][data-collapsible="offcanvas"][data-state="collapsed"]':
+        {
+          transform: 'translateX(100%)',
+        },
       '@media (max-width: 767px)': {
         position: 'fixed',
         insetBlock: '0',
@@ -315,7 +319,7 @@ export const sidebarRecipe = defineSlotRecipe({
     },
     menuSub: {
       margin: '0',
-      marginLeft: '5',
+      marginLeft: 'lg',
       padding: '0',
       paddingLeft: 'md',
       listStyle: 'none',

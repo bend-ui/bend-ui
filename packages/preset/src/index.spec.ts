@@ -5,6 +5,7 @@ import {
   createBendPreset,
   conditions,
   themePersonalities,
+  themePersonalityIds,
 } from './index';
 
 const getAtPath = (value: unknown, path: readonly string[]) =>
@@ -246,14 +247,9 @@ describe('createBendPreset', () => {
     ] as const;
 
     for (const path of axes) {
-      const values = [
-        'stratus',
-        'solstice',
-        'volt',
-        'nebula',
-        'canopy',
-        'aster',
-      ].map((id) => getAtPath(themes?.[id], path));
+      const values = themePersonalityIds.map((id) =>
+        getAtPath(themes?.[id], path),
+      );
 
       expect(
         new Set(values).size,
@@ -263,7 +259,11 @@ describe('createBendPreset', () => {
   });
 
   it('keeps every personality-sensitive recipe value behind a semantic role', () => {
-    const recipes = createBendPreset().theme?.extend?.slotRecipes;
+    const theme = createBendPreset().theme?.extend;
+    const recipeCollections = {
+      recipes: theme?.recipes,
+      slotRecipes: theme?.slotRecipes,
+    };
     const allowedShapeValues = new Set([
       '0',
       '100%',
@@ -276,6 +276,19 @@ describe('createBendPreset', () => {
     ]);
     const durationValues = new Set(['fast', 'normal', 'slow']);
     const easingValues = new Set(['default', 'enter', 'exit']);
+    const fontFamilyValues = new Set(['body', 'code', 'heading', 'inherit']);
+    const elevationValues = new Set([
+      'base',
+      'focusRing',
+      'none',
+      'overlay',
+      'raised',
+      'revert',
+      'surface',
+    ]);
+    const densityProperties =
+      /^(?:gap|columnGap|rowGap|p|px|py|pt|pr|pb|pl|padding|paddingX|paddingY|paddingTop|paddingRight|paddingBottom|paddingLeft|m|mx|my|mt|mr|mb|ml|margin|marginX|marginY|marginTop|marginRight|marginBottom|marginLeft)$/;
+    const primitiveLength = /^-?(?:\d*\.)?\d+(?:px|r?em)?$/;
 
     const audit = (value: unknown, path: string[] = []) => {
       if (typeof value !== 'object' || value === null) return;
@@ -332,11 +345,95 @@ describe('createBendPreset', () => {
           );
         }
 
+        if (property === 'fontFamily' && typeof child === 'string') {
+          expect(
+            fontFamilyValues.has(child),
+            `${location} bypasses the personality typography roles`,
+          ).toBe(true);
+        }
+
+        if (
+          /^(?:boxShadow|shadow)$/.test(property) &&
+          typeof child === 'string'
+        ) {
+          expect(
+            elevationValues.has(child),
+            `${location} bypasses the personality elevation roles`,
+          ).toBe(true);
+        }
+
+        if (
+          densityProperties.test(property) &&
+          typeof child === 'string' &&
+          child !== '0'
+        ) {
+          expect(
+            primitiveLength.test(child),
+            `${location} bypasses the personality density roles`,
+          ).toBe(false);
+        }
+
         audit(child, childPath);
       }
     };
 
-    audit(recipes);
+    audit(recipeCollections);
+
+    expect(
+      getAtPath(theme?.slotRecipes, ['indicator', 'base', 'root', 'size']),
+    ).toBe('indicator.xs');
+    expect(
+      getAtPath(theme?.slotRecipes, [
+        'scrollArea',
+        'base',
+        'scrollbar',
+        '_vertical',
+        'width',
+      ]),
+    ).toBe('scrollbar');
+  });
+
+  it('resolves representative recipe roles differently by personality', () => {
+    const preset = createBendPreset();
+    const themes = preset.themes;
+    const slotRecipes = preset.theme?.extend?.slotRecipes;
+    const cases = [
+      {
+        recipePath: ['button', 'variants', 'size', 'md', 'root', 'minHeight'],
+        semanticCategory: 'sizes',
+      },
+      {
+        recipePath: ['indicator', 'variants', 'size', 'md', 'root', 'width'],
+        semanticCategory: 'sizes',
+      },
+      {
+        recipePath: ['card', 'base', 'root', 'rounded'],
+        semanticCategory: 'radii',
+      },
+    ] as const;
+
+    for (const { recipePath, semanticCategory } of cases) {
+      const role = getAtPath(slotRecipes, recipePath);
+      expect(typeof role).toBe('string');
+
+      const values = themePersonalityIds.map((id) =>
+        getAtPath(themes?.[id], [
+          'semanticTokens',
+          semanticCategory,
+          ...(role as string).split('.'),
+          'value',
+        ]),
+      );
+
+      expect(
+        values.every((value) => value !== undefined),
+        `${recipePath.join('.')} does not resolve for every personality`,
+      ).toBe(true);
+      expect(
+        new Set(values).size,
+        `${recipePath.join('.')} does not vary by personality`,
+      ).toBeGreaterThan(1);
+    }
   });
 
   it('keeps Stratus base fallbacks sourced from the Stratus manifest', () => {
@@ -352,12 +449,25 @@ describe('createBendPreset', () => {
     expect(getAtPath(semanticTokens, ['shadows', 'overlay', 'value'])).toBe(
       stratus.elevation.overlay,
     );
-    expect(
-      getAtPath(semanticTokens, ['sizes', 'control', 'md', 'value']),
-    ).toBe(stratus.density.controlHeights.md);
+    expect(getAtPath(semanticTokens, ['sizes', 'control', 'md', 'value'])).toBe(
+      stratus.density.controlHeights.md,
+    );
     expect(getAtPath(semanticTokens, ['durations', 'normal', 'value'])).toBe(
       stratus.motion.duration.normal,
     );
+    expect(
+      getAtPath(semanticTokens, ['colors', 'primary', '500', 'value']),
+    ).toBe('{colors.signal-blue.500}');
+    expect(
+      getAtPath(semanticTokens, [
+        'colors',
+        'text',
+        'primary',
+        'inverse',
+        'strong',
+        'value',
+      ]),
+    ).toBe('{colors.porcelain.50}');
   });
 
   it('is callable with no arguments (no required library option)', () => {

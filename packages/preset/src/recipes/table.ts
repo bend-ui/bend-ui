@@ -22,7 +22,7 @@ export const tableRecipe = defineSlotRecipe({
     },
     caption: {
       color: 'fg.muted',
-      paddingTop: '2',
+      paddingTop: 'sm',
       textAlign: 'left',
     },
     header: {
