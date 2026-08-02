@@ -18,6 +18,15 @@ export default defineConfig({
 
   staticCss: {
     recipes: '*',
+    themes: [
+      'default',
+      'stratus',
+      'solstice',
+      'volt',
+      'nebula',
+      'canopy',
+      'aster',
+    ],
   },
 
   importMap: '@bend-ui/styled-system',

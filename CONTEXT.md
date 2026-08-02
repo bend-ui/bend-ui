@@ -30,10 +30,12 @@ Use these terms when discussing the repo.
 
 - **Design system**: the whole Bend UI product: tokens, recipes, React primitives, package adapters, generation/ejection paths, docs, demos, and release checks.
 - **Token system**: named design values such as colors, spacing, typography, shadows, radii, and semantic tones.
+- **Primitive token**: a context-free design value in a scale or palette, such as a color shade or spacing step. Primitive tokens are implementation ingredients rather than the preferred vocabulary for product UI.
+- **Semantic token**: a purpose-driven alias that tells consumers what a design value is for, such as a page background or muted text. Its canonical description defines intended usage and is the source for consumer-facing token documentation.
 - **Recipe**: a Panda CSS style module for one visual pattern. Recipes may be single-part or slot-based.
 - **Structural preset**: `@bend-ui/preset-base`, the Panda CSS preset for structural recipe shape only. It should define parts, slots, state selectors, and minimal layout structure; it should not define product colors, padding scales, typography choices, or other visual decisions.
 - **Design preset**: `@bend-ui/preset`, the Panda CSS preset for the actual Bend UI visual language. It composes the structural preset and adds tokens, semantic tokens, colors, spacing, typography, themes, global CSS, and the canonical state-attribute conditions.
-- **Theme**: a single swappable brand variant registered under Panda's `themes:` key inside the design preset (e.g. `default`, `proton`, `neutron`, `quark`). Reserve "theme" for this concept only. Do not use "theme preset" to mean the whole visual layer — that is the **Design preset**.
+- **Theme**: a single swappable brand variant registered under Panda's `themes:` key inside the design preset (e.g. `stratus`, `solstice`, `volt`, `nebula`, `canopy`, or `aster`; `default` is a compatibility alias for Stratus). Reserve "theme" for this concept only. Do not use "theme preset" to mean the whole visual layer — that is the **Design preset**.
 - **Theme personality**: the complete visual identity of a Theme across color, typography, shape, elevation, density, and motion. Theme personality is independent of Color mode: changing personality swaps brand expression, while changing color mode selects its light or dark presentation.
 - **Color mode**: the light, dark, or system-controlled presentation axis for a Theme personality. In the Docs site it is managed independently from the selected Theme personality.
 - **Styled system**: generated Panda CSS output consumed by the React packages. Do not hand-edit generated styled-system output unless a plan explicitly says so.

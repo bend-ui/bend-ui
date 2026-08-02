@@ -32,13 +32,13 @@ ramp when an interface state requires more contrast.
 Describe the theme before assigning individual tokens. Keep the brief short
 enough to resolve later choices.
 
-| Decision | Example |
-| --- | --- |
-| Identifier | `canopy` |
-| Public name | Canopy |
-| Primary | Emerald Ink `#064E3B` |
-| Secondary | Champagne `#F8E7C9` |
-| Character | Premium, organic, editorial, and timeless |
+| Decision               | Example                                                       |
+| ---------------------- | ------------------------------------------------------------- |
+| Identifier             | `canopy`                                                      |
+| Public name            | Canopy                                                        |
+| Primary                | Emerald Ink `#064E3B`                                         |
+| Secondary              | Champagne `#F8E7C9`                                           |
+| Character              | Premium, organic, editorial, and timeless                     |
 | Interface consequences | Serif headings, restrained radii, warm hairlines, calm motion |
 
 Use the brief as a constraint. If a shadow, radius, or transition does not
@@ -101,11 +101,14 @@ hue, every formatted value is inside sRGB, and lightness decreases from `50` to
 
 ## 3. Define the full personality manifest
 
-Add an entry to `themePersonalities` in
-`packages/preset/src/themes/personalities.ts`:
+Create `packages/preset/src/themes/personalities/<id>.ts` and define the manifest
+with `defineThemePersonality`:
 
 ```ts
-canopy: {
+import { defineThemePersonality } from './contract';
+
+export const canopyPersonality = defineThemePersonality({
+  id: 'canopy',
   name: 'Canopy',
   description: 'Premium, organic, editorial, and timeless.',
   primary: 'emerald-ink',
@@ -121,19 +124,19 @@ canopy: {
   secondaryShade: '50',
   onPrimary: { color: 'champagne', shade: '50' },
   // typography, shape, elevation, density, and motion follow
-},
+});
 ```
 
 Define every axis:
 
-| Axis | Required decisions |
-| --- | --- |
-| Color | Primary, secondary, light partner, dark partner, interaction steps, primary foreground |
-| Typography | Heading, body, and code stacks plus heading tracking |
-| Shape | Control, surface, and overlay radii plus border width |
-| Elevation | Surface, raised, and overlay shadows |
-| Density | Control height and `xs`, `sm`, `md`, and `lg` spacing aliases |
-| Motion | Character statement; fast, normal, and slow durations; default, entrance, and exit easing |
+| Axis       | Required decisions                                                                        |
+| ---------- | ----------------------------------------------------------------------------------------- |
+| Color      | Primary, secondary, light partner, dark partner, interaction steps, primary foreground    |
+| Typography | Heading, body, and code stacks plus heading tracking                                      |
+| Shape      | Control, surface, and overlay radii plus border width                                     |
+| Elevation  | Surface, raised, and overlay shadows                                                      |
+| Density    | `sm`, `md`, and `lg` control heights plus `xs`, `sm`, `md`, and `lg` spacing aliases      |
+| Motion     | Character statement; fast, normal, and slow durations; default, entrance, and exit easing |
 
 Prefer installed or system font stacks. A personality manifest must remain
 usable without silently depending on a font the application never loads.
@@ -174,11 +177,11 @@ Check the foreground against the actual background used for `default`, `hover`,
 
 Use these thresholds:
 
-| Content | APCA target | WCAG 2 target when required |
-| --- | ---: | ---: |
-| Normal text | `|Lc| ≥ 60` | `4.5:1` |
-| Large text | `|Lc| ≥ 45` | `3:1` |
-| UI components | `|Lc| ≥ 30` | `3:1` |
+| Content       |                      APCA target | WCAG 2 target when required |
+| ------------- | -------------------------------: | --------------------------: |
+| Normal text   | <code>&#124;Lc&#124; ≥ 60</code> |                     `4.5:1` |
+| Large text    | <code>&#124;Lc&#124; ≥ 45</code> |                       `3:1` |
+| UI components | <code>&#124;Lc&#124; ≥ 30</code> |                       `3:1` |
 
 When a pair fails, select a lighter or darker step by changing the semantic
 mapping. Keep the named source color intact. Contrast is primarily controlled by
@@ -191,12 +194,13 @@ Night Violet text clears the normal-text threshold.
 **Complete when:** every text-bearing primary state reaches `|Lc| ≥ 60`, and any
 required WCAG 2 checks also pass.
 
-## 6. Confirm automatic registration and documentation
+## 6. Register the manifest and confirm documentation
 
-The preset derives `personalityThemes` from every entry in `themePersonalities`,
-and the docs catalog reads the same manifests. Adding one valid manifest should
-therefore make the new identifier available in both places without copying its
-values.
+Import the manifest in `packages/preset/src/themes/personalities/index.ts` and add
+it to `definitions`. The registry derives `themePersonalities` and
+`themePersonalityIds` from that ordered list, while the preset and docs derive
+their variants and catalog from those public values. No theme values need to be
+copied outside the manifest.
 
 Confirm that:
 
@@ -242,16 +246,16 @@ widths.
 
 ## Common corrections
 
-| Before | After |
-| --- | --- |
-| Hex used directly in component recipes | Component recipe uses a semantic token |
-| Same absolute chroma used for every hue | Each hue uses the same percentage of its available maximum chroma |
-| Formatted OKLCH value clips outside sRGB | Chroma reduced slightly after three-decimal formatting |
-| Bright source forced into step `500` | Exact source preserved separately; ramp follows perceptual lightness |
+| Before                                                | After                                                                    |
+| ----------------------------------------------------- | ------------------------------------------------------------------------ |
+| Hex used directly in component recipes                | Component recipe uses a semantic token                                   |
+| Same absolute chroma used for every hue               | Each hue uses the same percentage of its available maximum chroma        |
+| Formatted OKLCH value clips outside sRGB              | Chroma reduced slightly after three-decimal formatting                   |
+| Bright source forced into step `500`                  | Exact source preserved separately; ramp follows perceptual lightness     |
 | One foreground checked only against the default state | Foreground checked against default, hover, active, and focus backgrounds |
-| Accent mutated to repair contrast | Semantic state selects a more suitable lightness step |
-| Theme adds only two color ramps | Theme defines color, typography, shape, elevation, density, and motion |
-| Docs repeat manifest values manually | Docs render directly from `themePersonalities` |
+| Accent mutated to repair contrast                     | Semantic state selects a more suitable lightness step                    |
+| Theme adds only two color ramps                       | Theme defines color, typography, shape, elevation, density, and motion   |
+| Docs repeat manifest values manually                  | Docs render directly from `themePersonalities`                           |
 
 ## Completion checklist
 

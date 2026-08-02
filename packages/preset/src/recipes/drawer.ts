@@ -40,7 +40,7 @@ export const drawerRecipe = defineSlotRecipe({
     placement: {
       left: {
         content: {
-          roundedRight: 'lg',
+          roundedRight: 'overlay',
           roundedLeft: '0',
           width: '90vw',
           maxW: '450px',
@@ -55,7 +55,7 @@ export const drawerRecipe = defineSlotRecipe({
       },
       right: {
         content: {
-          roundedLeft: 'lg',
+          roundedLeft: 'overlay',
           roundedRight: '0',
           width: '90vw',
           maxW: '450px',

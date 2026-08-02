@@ -27,7 +27,8 @@ export const menuRecipe = defineSlotRecipe({
     },
     item: {
       padding: 'sm',
-      borderRadius: 'sm',
+      minHeight: 'control.md',
+      borderRadius: 'control',
       cursor: 'pointer',
       _hover: {
         backgroundColor: 'fill.hover',

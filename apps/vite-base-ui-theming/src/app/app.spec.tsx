@@ -20,9 +20,9 @@ describe('Customization gallery', () => {
 
   it('swaps a bundled theme without changing component code', () => {
     render(<App />);
-    fireEvent.click(screen.getByRole('button', { name: 'proton' }));
+    fireEvent.click(screen.getByRole('button', { name: 'solstice' }));
 
-    expect(document.documentElement.dataset.pandaTheme).toBe('proton');
-    expect(screen.getByText(/active theme: proton/i)).toBeTruthy();
+    expect(document.documentElement.dataset.pandaTheme).toBe('solstice');
+    expect(screen.getByText(/active theme: solstice/i)).toBeTruthy();
   });
 });

@@ -13,7 +13,7 @@ export const popoverRecipe = defineSlotRecipe({
   base: {
     content: {
       layerStyle: 'surface.overlay',
-      borderRadius: 'md',
+      borderRadius: 'overlay',
       _open: {
         animation: 'fade-in',
       },

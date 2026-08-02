@@ -15,9 +15,10 @@ export const navRecipe = defineSlotRecipe({
       gap: 'sm',
       py: 'sm',
       px: 'md',
+      minHeight: 'control.md',
       color: 'text.weak',
       textDecoration: 'none',
-      rounded: 'md',
+      rounded: 'control',
       _hover: {
         color: 'text.strong',
       },

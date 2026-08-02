@@ -10,7 +10,7 @@ export const checkboxRecipe = defineSlotRecipe({
       color: 'text.strong',
     },
     control: {
-      rounded: 'sm',
+      rounded: 'control',
       border: 'base',
       _focusVisible: {
         boxShadow: 'focusRing',

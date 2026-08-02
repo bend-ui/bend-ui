@@ -12,6 +12,8 @@ export const layerStyles = defineLayerStyles({
       value: {
         backgroundColor: 'fill',
         border: 'base',
+        borderRadius: 'surface',
+        boxShadow: 'surface',
         _focus: {},
         _focusVisible: {
           boxShadow: 'inner',
@@ -22,8 +24,8 @@ export const layerStyles = defineLayerStyles({
       value: {
         backgroundColor: 'fill.strong',
         border: 'base',
-        borderRadius: 'md',
-        boxShadow: 'md',
+        borderRadius: 'surface',
+        boxShadow: 'raised',
         _focus: {},
         _focusVisible: {
           boxShadow: 'inner',
@@ -34,16 +36,16 @@ export const layerStyles = defineLayerStyles({
       value: {
         backgroundColor: 'bg.overlay',
         border: 'base',
-        borderRadius: 'md',
-        boxShadow: 'md',
+        borderRadius: 'overlay',
+        boxShadow: 'overlay',
       },
     },
     sunken: {
       value: {
         backgroundColor: 'fill.weak',
         border: 'base',
-        borderRadius: 'md',
-        boxShadow: 'md',
+        borderRadius: 'surface',
+        boxShadow: 'surface',
       },
     },
   },
@@ -91,6 +93,7 @@ export const layerStyles = defineLayerStyles({
   raised: {
     value: {
       border: 'subtle',
+      borderRadius: 'surface',
       backgroundColor: 'bg.raised',
       boxShadow: 'raised',
     },
@@ -98,6 +101,7 @@ export const layerStyles = defineLayerStyles({
   overlay: {
     value: {
       border: 'weak',
+      borderRadius: 'overlay',
       backgroundColor: 'bg.overlay',
       boxShadow: 'overlay',
     },
@@ -105,7 +109,9 @@ export const layerStyles = defineLayerStyles({
   panel: {
     value: {
       border: 'weak',
+      borderRadius: 'surface',
       backgroundColor: 'bg.raised',
+      boxShadow: 'surface',
     },
   },
 });

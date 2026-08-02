@@ -213,7 +213,7 @@ export function ThemePersonalityCatalog() {
               </div>
               <div>
                 <dt className={css({ fontSize: 'xs', opacity: '0.7' })}>
-                  Control height
+                  Control heights
                 </dt>
                 <dd
                   className={css({
@@ -222,7 +222,7 @@ export function ThemePersonalityCatalog() {
                     fontVariantNumeric: 'tabular-nums',
                   })}
                 >
-                  {theme.density.controlHeight}
+                  {Object.values(theme.density.controlHeights).join(' / ')}
                 </dd>
               </div>
               <div>

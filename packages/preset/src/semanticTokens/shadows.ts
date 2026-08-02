@@ -1,7 +1,9 @@
 import { defineSemanticTokens } from '@pandacss/dev';
+import { stratusPersonality } from '../themes/personalities/stratus';
 
 export const shadows = defineSemanticTokens.shadows({
-  base: { value: '0 0 0 1px {colors.shadow}' },
+  base: { value: stratusPersonality.elevation.surface },
+  surface: { value: stratusPersonality.elevation.surface },
   focusRing: { value: '0 0 0 2px {colors.primary}' },
   interaction: {
     neutral: {
@@ -20,24 +22,6 @@ export const shadows = defineSemanticTokens.shadows({
       },
     },
   },
-  raised: {
-    DEFAULT: {
-      value: {
-        _light: [
-          '0 4px 8px -2px {colors.neutral.200}',
-          '0 2px 4px -2px {colors.neutral.200}',
-        ],
-      },
-    },
-  },
-  overlay: {
-    DEFAULT: {
-      value: {
-        _light: [
-          '0 20px 24px -4px {colors.neutral.200}',
-          '0 8px 8px -4px {colors.neutral.200}',
-        ],
-      },
-    },
-  },
+  raised: { value: stratusPersonality.elevation.raised },
+  overlay: { value: stratusPersonality.elevation.overlay },
 });
