@@ -1,3 +1,8 @@
+import { loadConfig } from '@pandacss/dev/node';
+import { mkdtempSync, writeFileSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { describe, it, expect, vi } from 'vitest';
 import { definePreset } from '@pandacss/dev';
 import { bendHooks } from './bend-hooks';
@@ -59,7 +64,10 @@ describe('createBendConfig', () => {
     const consumerHook = vi.fn(() => 'consumer-css');
     const config = createBendConfig({ hooks: { 'cssgen:done': consumerHook } });
 
-    const result = config.hooks?.['cssgen:done']?.({ artifact: 'global', content: 'a' });
+    const result = config.plugins?.[0]?.hooks?.['cssgen:done']?.({
+      artifact: 'styles.css',
+      content: 'a',
+    });
 
     expect(bendHook).toHaveBeenCalledTimes(1);
     expect(consumerHook).toHaveBeenCalledTimes(1);
@@ -73,8 +81,39 @@ describe('createBendConfig', () => {
     const config = createBendConfig({ hooks: consumerHooks });
 
     expect(composeHooksSpy).toHaveBeenCalledWith(bendHooks, consumerHooks);
-    expect(config.hooks).toBe(composeHooksSpy.mock.results[0]?.value);
+    expect(config.plugins?.[0]?.hooks).toBe(
+      composeHooksSpy.mock.results[0]?.value,
+    );
 
     composeHooksSpy.mockRestore();
+  });
+});
+
+describe('native Panda v2 plugin integration', () => {
+  it('runs compatibility hooks before consumer plugins in the real config loader', async () => {
+    const directory = mkdtempSync(join(tmpdir(), 'bend-panda-hooks-'));
+    const source = fileURLToPath(new URL('./index.ts', import.meta.url));
+    const file = join(directory, 'panda.config.mjs');
+    try {
+      writeFileSync(
+        file,
+        `
+        import { createBendConfig } from ${JSON.stringify(source)};
+        export default createBendConfig({
+          hooks: { 'config:resolved': async ({ config }) => ({ ...config, prefix: 'bend-hook' }) },
+          plugins: [{ name: 'consumer', hooks: {
+            'config:resolved': ({ config }) => {
+              if (config.prefix !== 'bend-hook') throw new Error('Bend hook did not run first');
+              return { ...config, prefix: 'consumer-hook' };
+            }
+          }}]
+        });
+      `,
+      );
+      const snapshot = await loadConfig({ cwd: process.cwd(), file });
+      expect(snapshot.config.prefix).toBe('consumer-hook');
+    } finally {
+      rmSync(directory, { recursive: true, force: true });
+    }
   });
 });

@@ -1,9 +1,9 @@
 import { Pagination as ArkPagination } from '@ark-ui/react';
 import { pagination } from '@bend-ui/styled-system/recipes';
 import { Assign, HTMLStyledProps } from '@bend-ui/styled-system/types';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 
-const { withProvider, withContext } = createStyleContext(pagination);
+const { withProvider, withContext } = createSlotRecipeContext(pagination);
 
 export type PaginationRootProps = Assign<
   HTMLStyledProps<'div'>,

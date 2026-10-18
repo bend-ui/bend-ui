@@ -1,10 +1,7 @@
-import path from 'path';
 import { defineConfig } from '@pandacss/dev';
 import { createBendPreset } from '@bend-ui/preset';
 
 export default defineConfig({
-  cwd: path.resolve(__dirname),
-
   // Whether to use css reset
   preflight: true,
 
@@ -20,10 +17,16 @@ export default defineConfig({
 
   jsxFramework: 'react',
 
-  lightningcss: true,
-
   staticCss: {
     recipes: '*',
-    themes: ['default', 'stratus', 'solstice', 'volt', 'nebula', 'canopy', 'aster'],
+    themes: [
+      'default',
+      'stratus',
+      'solstice',
+      'volt',
+      'nebula',
+      'canopy',
+      'aster',
+    ],
   },
 });

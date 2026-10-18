@@ -1,17 +1,26 @@
+import type { SlotRecipeComponent } from '@bend-ui/core';
 import * as React from 'react';
 import { Switch as SwitchPrimitive } from '@base-ui/react/switch';
 import { switchRecipe } from '@bend-ui/styled-system/recipes';
-import { styled, createStyleContext } from '@bend-ui/styled-system/jsx';
+import { styled, createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 
-const { withProvider, withContext } = createStyleContext(switchRecipe);
+const { withProvider, withContext } = createSlotRecipeContext(switchRecipe);
 
-const SwitchRoot = withProvider(styled('label'), 'root');
+const SwitchRoot: SlotRecipeComponent<
+  'label',
+  (typeof switchRecipe)['__type']
+> = withProvider(styled('label'), 'root');
 
-const SwitchControl = withContext(SwitchPrimitive.Root, 'control');
+const SwitchControl: SlotRecipeComponent<typeof SwitchPrimitive.Root> =
+  withContext(SwitchPrimitive.Root, 'control');
 
-const SwitchThumb = withContext(SwitchPrimitive.Thumb, 'thumb');
+const SwitchThumb: SlotRecipeComponent<typeof SwitchPrimitive.Thumb> =
+  withContext(SwitchPrimitive.Thumb, 'thumb');
 
-const SwitchLabel = withContext(styled('span'), 'label');
+const SwitchLabel: SlotRecipeComponent<'span'> = withContext(
+  styled('span'),
+  'label',
+);
 
 const Component = () => {
   return (
@@ -24,7 +33,7 @@ const Component = () => {
   );
 };
 
-Component.displayName = 'Switch';
+Object.assign(Component, { displayName: 'Switch' });
 
 export const Switch = Object.assign(Component, {
   Root: SwitchRoot,

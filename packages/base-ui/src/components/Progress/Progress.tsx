@@ -1,9 +1,9 @@
 import React from 'react';
 import { Progress as ProgressPrimitive } from '@base-ui/react/progress';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import { progress } from '@bend-ui/styled-system/recipes';
 
-const { withProvider, withContext } = createStyleContext(progress);
+const { withProvider, withContext } = createSlotRecipeContext(progress);
 
 const ProgressRoot = withProvider(ProgressPrimitive.Root, 'root');
 const ProgressLabel = withContext(ProgressPrimitive.Label, 'label');

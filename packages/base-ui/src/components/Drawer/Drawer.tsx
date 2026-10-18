@@ -1,9 +1,9 @@
 import { Dialog } from '@base-ui/react/dialog';
 import { bend } from '@bend-ui/core';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import { drawer } from '@bend-ui/styled-system/recipes';
 
-const { withRootProvider, withContext } = createStyleContext(drawer);
+const { withRootProvider, withContext } = createSlotRecipeContext(drawer);
 
 const DrawerRoot = withRootProvider(Dialog.Root);
 
@@ -52,7 +52,7 @@ const Component = (props: DrawerProps) => {
   );
 };
 
-Component.displayName = 'Drawer';
+Object.assign(Component, { displayName: 'Drawer' });
 
 export const Drawer = Object.assign(Component, {
   Root: DrawerRoot,

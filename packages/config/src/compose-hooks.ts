@@ -2,27 +2,21 @@ import type { PandaHooks } from '@pandacss/types';
 
 type HookFn = (...args: unknown[]) => unknown;
 
-/**
- * Panda only auto-merges hooks declared via `plugins` or the top-level
- * config's own `hooks` field — it does not compose a `hooks` field carried by
- * a preset with the consumer config's `hooks`. Some hooks are called
- * synchronously by Panda's pipeline (e.g. `cssgen:done` feeds its return
- * value straight into `css = hook(...) ?? css` with no `await`), so those
- * must stay sync here too instead of being wrapped in an async function.
- * Mirrors the `syncHooks` list Panda's own hook merger uses internally
- * (`@pandacss/config`'s `merge-hooks.ts`, pinned via `@pandacss/dev@^1.11.4`)
- * — re-check this list on a Panda upgrade.
+/** Compatibility for function-form hooks. Filtered hooks belong in native plugins.
+ * Panda v2 observe hooks stay synchronous; config/parser transforms may be async.
+ * cssgen:done return values are ignored by Panda v2.
  */
 const SYNC_HOOK_KEYS: Array<keyof PandaHooks> = [
-  'context:created',
-  'parser:before',
-  'parser:preprocess',
-  'parser:after',
+  'codegen:prepare',
+  'codegen:done',
   'cssgen:done',
-  'css:optimize',
 ];
 
-function composeHookFn(key: keyof PandaHooks, base: HookFn, override: HookFn): HookFn {
+function composeHookFn(
+  key: keyof PandaHooks,
+  base: HookFn,
+  override: HookFn,
+): HookFn {
   if (SYNC_HOOK_KEYS.includes(key)) {
     return (...args: unknown[]) => {
       const baseResult = base(...args);
@@ -49,7 +43,9 @@ export function composeHooks(
   base: Partial<PandaHooks> = {},
   override: Partial<PandaHooks> = {},
 ): Partial<PandaHooks> {
-  const keys = new Set([...Object.keys(base), ...Object.keys(override)]) as Set<keyof PandaHooks>;
+  const keys = new Set([...Object.keys(base), ...Object.keys(override)]) as Set<
+    keyof PandaHooks
+  >;
   const composed: Record<string, HookFn> = {};
 
   for (const key of keys) {

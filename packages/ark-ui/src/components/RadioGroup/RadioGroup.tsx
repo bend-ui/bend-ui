@@ -5,9 +5,9 @@ import { radioGroup } from '@bend-ui/styled-system/recipes';
 import type { JsxStyleProps } from '@bend-ui/styled-system/types';
 import type { RadioGroupVariantProps } from '@bend-ui/styled-system/recipes';
 import type { Assign } from '@ark-ui/react';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 
-const { withProvider, withContext } = createStyleContext(radioGroup);
+const { withProvider, withContext } = createSlotRecipeContext(radioGroup);
 
 export interface RootProps
   extends
@@ -55,7 +55,7 @@ const Component = (props: RadioGroupProps) => {
   );
 };
 
-Component.displayName = 'RadioGroup';
+Object.assign(Component, { displayName: 'RadioGroup' });
 
 export const RadioGroup = Object.assign(Component, {
   Root,

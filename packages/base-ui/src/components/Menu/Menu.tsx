@@ -1,9 +1,9 @@
 import { Menu as MenuPrimitive } from '@base-ui/react/menu';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import { menu } from '@bend-ui/styled-system/recipes';
 import { Button } from '../Button';
 
-const { withRootProvider, withContext } = createStyleContext(menu);
+const { withRootProvider, withContext } = createSlotRecipeContext(menu);
 const MenuRoot = withRootProvider(MenuPrimitive.Root);
 
 export type MenuTriggerProps = MenuPrimitive.Trigger.Props;

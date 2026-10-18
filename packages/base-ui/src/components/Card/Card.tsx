@@ -1,17 +1,27 @@
 'use client';
+import type { SlotRecipeComponent } from '@bend-ui/core';
 
-import { createStyleContext, styled } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext, styled } from '@bend-ui/styled-system/jsx';
 import { card } from '@bend-ui/styled-system/recipes';
 
-const { withProvider, withContext } = createStyleContext(card);
+const { withProvider, withContext } = createSlotRecipeContext(card);
 
-const Root = withProvider(styled('div'), 'root');
-const Header = withContext(styled('div'), 'header');
-const Body = withContext(styled('div'), 'body');
-const Footer = withContext(styled('div'), 'footer');
-const Title = withContext(styled('h3'), 'title');
-const Description = withContext(styled('div'), 'description');
-const Section = withContext(styled('div'), 'section');
+const Root: SlotRecipeComponent<'div', (typeof card)['__type']> = withProvider(
+  styled('div'),
+  'root',
+);
+const Header: SlotRecipeComponent<'div'> = withContext(styled('div'), 'header');
+const Body: SlotRecipeComponent<'div'> = withContext(styled('div'), 'body');
+const Footer: SlotRecipeComponent<'div'> = withContext(styled('div'), 'footer');
+const Title: SlotRecipeComponent<'h3'> = withContext(styled('h3'), 'title');
+const Description: SlotRecipeComponent<'div'> = withContext(
+  styled('div'),
+  'description',
+);
+const Section: SlotRecipeComponent<'div'> = withContext(
+  styled('div'),
+  'section',
+);
 
 export const Card = Object.assign(Root, {
   Root,

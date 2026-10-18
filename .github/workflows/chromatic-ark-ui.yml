@@ -1,12 +1,9 @@
 name: 'Chromatic - Ark UI components'
 
+# Automatic visual testing currently focuses on the Base UI adapter.
+# Keep this workflow available for explicit manual runs.
 on:
-  push:
-    paths:
-      - 'packages/ark-ui/**'
-    branches-ignore:
-      - 'dependabot/**'
-      - 'renovate/**'
+  workflow_dispatch:
 
 jobs:
   chromatic:

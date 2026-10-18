@@ -1,12 +1,12 @@
 import { Avatar as AvatarPrimitive } from '@base-ui/react/avatar';
 import { avatar, AvatarVariantProps } from '@bend-ui/styled-system/recipes';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import type { ComponentType } from 'react';
 import type { ReactNode } from 'react';
 
 export type AvatarRootProps = AvatarPrimitive.Root.Props & AvatarVariantProps;
 
-const { withProvider, withContext } = createStyleContext(avatar);
+const { withProvider, withContext } = createSlotRecipeContext(avatar);
 
 const AvatarRoot = withProvider(
   AvatarPrimitive.Root,
@@ -46,7 +46,7 @@ const Component = (props: AvatarProps) => {
   );
 };
 
-Component.displayName = 'Avatar';
+Object.assign(Component, { displayName: 'Avatar' });
 
 export const Avatar = Object.assign(Component, {
   Root: AvatarRoot,

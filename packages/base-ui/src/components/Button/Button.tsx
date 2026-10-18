@@ -1,10 +1,10 @@
 import { Button as ButtonPrimitive } from '@base-ui/react/button';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import { button } from '@bend-ui/styled-system/recipes';
 import type { ButtonVariantProps } from '@bend-ui/styled-system/recipes';
 import type { ComponentProps, ReactNode } from 'react';
 
-const { withProvider, withContext } = createStyleContext(button);
+const { withProvider, withContext } = createSlotRecipeContext(button);
 
 const ButtonRoot = withProvider(ButtonPrimitive, 'root');
 const ButtonLabel = withContext('span', 'label');
@@ -20,15 +20,8 @@ export interface ButtonProps
 }
 
 const Component = (props: ButtonProps) => {
-  const {
-    children,
-    icon,
-    iconEnd,
-    isDisabled,
-    isLoading,
-    disabled,
-    ...rest
-  } = props;
+  const { children, icon, iconEnd, isDisabled, isLoading, disabled, ...rest } =
+    props;
   const actuallyDisabled = disabled || isDisabled;
 
   return (
@@ -47,7 +40,7 @@ const Component = (props: ButtonProps) => {
   );
 };
 
-Component.displayName = 'Button';
+Object.assign(Component, { displayName: 'Button' });
 
 export const Button = Object.assign(Component, {
   Root: ButtonRoot,

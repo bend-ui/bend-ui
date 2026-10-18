@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Fieldset as FieldsetPrimitive } from '@base-ui/react/fieldset';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import { fieldset } from '@bend-ui/styled-system/recipes';
 import { Field } from '../Field';
 
-const { withProvider, withContext } = createStyleContext(fieldset);
+const { withProvider, withContext } = createSlotRecipeContext(fieldset);
 
 const FieldsetRoot = withProvider(FieldsetPrimitive.Root, 'root');
 const FieldsetLegend = withContext(FieldsetPrimitive.Legend, 'legend');

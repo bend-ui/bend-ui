@@ -6,9 +6,9 @@ import {
   DatePickerVariantProps,
 } from '@bend-ui/styled-system/recipes';
 import { Assign, HTMLStyledProps } from '@bend-ui/styled-system/types';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 
-const { withProvider, withContext } = createStyleContext(datePicker);
+const { withProvider, withContext } = createSlotRecipeContext(datePicker);
 
 export interface DatePickerRootProps
   extends

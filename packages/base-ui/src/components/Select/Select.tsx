@@ -1,27 +1,34 @@
+import type { SlotRecipeComponent } from '@bend-ui/core';
 import { Select as SelectPrimitive } from '@base-ui/react/select';
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react';
 import { withParts } from '@bend-ui/core';
 import { selectDropdown, select } from '@bend-ui/styled-system/recipes';
-import { createStyleContext, styled } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext, styled } from '@bend-ui/styled-system/jsx';
 
 const {
   withRootProvider: withSelectRootProvider,
   withContext: withSelectContext,
-} = createStyleContext(select);
+} = createSlotRecipeContext(select);
 const { withProvider: withDropdownProvider, withContext: withDropdownContext } =
-  createStyleContext(selectDropdown);
+  createSlotRecipeContext(selectDropdown);
 
 const SelectRoot = withSelectRootProvider(
   SelectPrimitive.Root,
 ) as unknown as typeof SelectPrimitive.Root;
 
-const SelectControl = withSelectContext(styled('div'), 'control');
+const SelectControl: SlotRecipeComponent<'div'> = withSelectContext(
+  styled('div'),
+  'control',
+);
 
-const SelectTrigger = withSelectContext(SelectPrimitive.Trigger, 'trigger');
+const SelectTrigger: SlotRecipeComponent<typeof SelectPrimitive.Trigger> =
+  withSelectContext(SelectPrimitive.Trigger, 'trigger');
 
-const SelectValue = withSelectContext(SelectPrimitive.Value, 'valueText');
+const SelectValue: SlotRecipeComponent<typeof SelectPrimitive.Value> =
+  withSelectContext(SelectPrimitive.Value, 'valueText');
 
-const SelectIcon = withSelectContext(SelectPrimitive.Icon, 'indicator');
+const SelectIcon: SlotRecipeComponent<typeof SelectPrimitive.Icon> =
+  withSelectContext(SelectPrimitive.Icon, 'indicator');
 
 const SelectBackdrop = withParts<SelectPrimitive.Backdrop.Props>(
   SelectPrimitive.Backdrop,
@@ -30,18 +37,19 @@ const SelectBackdrop = withParts<SelectPrimitive.Backdrop.Props>(
 
 const SelectPortal = SelectPrimitive.Portal;
 
-const SelectPositioner = withDropdownProvider(
-  SelectPrimitive.Positioner,
-  'positioner',
-);
+const SelectPositioner: SlotRecipeComponent<
+  typeof SelectPrimitive.Positioner,
+  (typeof selectDropdown)['__type']
+> = withDropdownProvider(SelectPrimitive.Positioner, 'positioner');
 
-const SelectPopup = withDropdownContext(SelectPrimitive.Popup, 'content', {
-  defaultProps: {
-    style: {
-      width: 'var(--anchor-width)',
+const SelectPopup: SlotRecipeComponent<typeof SelectPrimitive.Popup> =
+  withDropdownContext(SelectPrimitive.Popup, 'content', {
+    defaultProps: {
+      style: {
+        width: 'var(--anchor-width)',
+      },
     },
-  },
-});
+  });
 
 const SelectArrow = withParts<SelectPrimitive.Arrow.Props>(
   SelectPrimitive.Arrow,
@@ -53,24 +61,21 @@ const SelectList = withParts<SelectPrimitive.List.Props>(
   'list',
 );
 
-const SelectItem = withDropdownContext(SelectPrimitive.Item, 'item');
+const SelectItem: SlotRecipeComponent<typeof SelectPrimitive.Item> =
+  withDropdownContext(SelectPrimitive.Item, 'item');
 
-const SelectItemText = withDropdownContext(
-  SelectPrimitive.ItemText,
-  'itemText',
-);
+const SelectItemText: SlotRecipeComponent<typeof SelectPrimitive.ItemText> =
+  withDropdownContext(SelectPrimitive.ItemText, 'itemText');
 
-const SelectItemIndicator = withDropdownContext(
-  SelectPrimitive.ItemIndicator,
-  'itemIndicator',
-);
+const SelectItemIndicator: SlotRecipeComponent<
+  typeof SelectPrimitive.ItemIndicator
+> = withDropdownContext(SelectPrimitive.ItemIndicator, 'itemIndicator');
 
-const SelectGroup = withDropdownContext(SelectPrimitive.Group, 'itemGroup');
+const SelectGroup: SlotRecipeComponent<typeof SelectPrimitive.Group> =
+  withDropdownContext(SelectPrimitive.Group, 'itemGroup');
 
-const SelectGroupLabel = withDropdownContext(
-  SelectPrimitive.GroupLabel,
-  'itemGroupLabel',
-);
+const SelectGroupLabel: SlotRecipeComponent<typeof SelectPrimitive.GroupLabel> =
+  withDropdownContext(SelectPrimitive.GroupLabel, 'itemGroupLabel');
 
 const SelectSeparator = withParts<SelectPrimitive.Separator.Props>(
   SelectPrimitive.Separator,
@@ -143,7 +148,7 @@ const Component = <Value, Multiple extends boolean | undefined = false>(
   );
 };
 
-Component.displayName = 'Select';
+Object.assign(Component, { displayName: 'Select' });
 
 export const Select = Object.assign(Component, {
   Root: SelectRoot,

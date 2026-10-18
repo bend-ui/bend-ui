@@ -69,9 +69,8 @@
     "@nx/web": "23.1.0",
     "@nx/webpack": "23.1.0",
     "@nx/workspace": "23.1.0",
-    "@pandacss/dev": "^1.11.4",
-    "@pandacss/eslint-plugin": "^0.3.2",
-    "@pandacss/studio": "^1.11.4",
+    "@pandacss/dev": "^2.2.0",
+    "@pandacss/eslint-plugin": "^2.2.0",
     "@playwright/test": "^1.36.0",
     "@rollup/plugin-url": "8.0.2",
     "@storybook/addon-a11y": "10.5.2",
@@ -174,5 +173,8 @@
     "workerDirectory": [
       "apps/storybook/public"
     ]
+  },
+  "engines": {
+    "node": ">=24"
   }
 }

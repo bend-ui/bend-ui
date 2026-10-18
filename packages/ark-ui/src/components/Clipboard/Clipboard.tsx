@@ -3,9 +3,9 @@ import { CheckIcon, ClipboardCopyIcon } from 'lucide-react';
 
 import { Assign, HTMLStyledProps } from '@bend-ui/styled-system/types';
 import { clipboard } from '@bend-ui/styled-system/recipes';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 
-const { withProvider, withContext } = createStyleContext(clipboard);
+const { withProvider, withContext } = createSlotRecipeContext(clipboard);
 
 export type ClipboardRootProps = Assign<
   HTMLStyledProps<'div'>,
@@ -41,7 +41,10 @@ export type ClipboardIndicatorProps = Assign<
   HTMLStyledProps<'div'>,
   ClipboardPrimitive.IndicatorProps
 >;
-const ClipboardIndicator = withContext(ClipboardPrimitive.Indicator, 'indicator');
+const ClipboardIndicator = withContext(
+  ClipboardPrimitive.Indicator,
+  'indicator',
+);
 
 export type ClipboardProps = ClipboardRootProps;
 
