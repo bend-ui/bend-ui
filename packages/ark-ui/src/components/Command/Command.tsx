@@ -1,9 +1,9 @@
 import { Dialog as ArkDialog, Portal } from '@ark-ui/react';
 import { command } from '@bend-ui/styled-system/recipes';
 import type { CommandVariantProps } from '@bend-ui/styled-system/recipes';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 
-const { withProvider, withContext } = createStyleContext(command);
+const { withProvider, withContext } = createSlotRecipeContext(command);
 
 export type CommandRootProps = ArkDialog.RootProps & CommandVariantProps;
 const CommandRoot = withProvider(ArkDialog.Root, 'root');
@@ -16,10 +16,7 @@ const CommandPositioner = ArkDialog.Positioner;
 const CommandContent = withContext(ArkDialog.Content, 'content');
 const CommandTitle = withContext(ArkDialog.Title, 'title');
 const CommandDescription = withContext(ArkDialog.Description, 'description');
-const CommandCloseTrigger = withContext(
-  ArkDialog.CloseTrigger,
-  'closeTrigger',
-);
+const CommandCloseTrigger = withContext(ArkDialog.CloseTrigger, 'closeTrigger');
 
 export type CommandProps = CommandRootProps & CommandVariantProps;
 

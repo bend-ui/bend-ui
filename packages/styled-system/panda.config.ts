@@ -6,7 +6,7 @@ import { defineConfig } from '@pandacss/dev';
 // ex: `{ color: "red.300" }` => `text_red_300`
 
 export default defineConfig({
-  presets: ['@pandacss/dev/presets', createBendPreset()],
+  presets: [createBendPreset()],
 
   // Whether to use css reset
   preflight: false,

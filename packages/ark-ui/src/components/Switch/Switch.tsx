@@ -1,9 +1,9 @@
 import { Switch as SwitchPrimitive } from '@ark-ui/react';
 import { switchRecipe } from '@bend-ui/styled-system/recipes';
 import type { SwitchProps } from './Switch.types';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 
-const { withProvider, withContext } = createStyleContext(switchRecipe);
+const { withProvider, withContext } = createSlotRecipeContext(switchRecipe);
 
 const Root = withProvider(SwitchPrimitive.Root, 'root');
 
@@ -28,7 +28,7 @@ const Component = (props: SwitchProps) => {
   );
 };
 
-Component.displayName = 'Switch';
+Object.assign(Component, { displayName: 'Switch' });
 
 export const Switch = Object.assign(Component, {
   Root,

@@ -2,9 +2,9 @@ import { Popover as ArkPopover } from '@ark-ui/react';
 import { popover } from '@bend-ui/styled-system/recipes';
 import type { PopoverVariantProps } from '@bend-ui/styled-system/recipes';
 import { Button } from '../Button';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 
-const { withRootProvider, withContext } = createStyleContext(popover);
+const { withRootProvider, withContext } = createSlotRecipeContext(popover);
 
 const PopoverRoot = ArkPopover.Root;
 const PopoverAnchor = ArkPopover.Anchor;
@@ -21,10 +21,7 @@ const PopoverPositioner = withRootProvider(ArkPopover.Positioner);
 
 const PopoverContent = withContext(ArkPopover.Content, 'content');
 const PopoverTitle = withContext(ArkPopover.Title, 'title');
-const PopoverDescription = withContext(
-  ArkPopover.Description,
-  'description',
-);
+const PopoverDescription = withContext(ArkPopover.Description, 'description');
 
 export interface PopoverProps
   extends ArkPopover.RootProps, PopoverVariantProps {
@@ -78,7 +75,7 @@ const Component = (props: PopoverProps) => {
   );
 };
 
-Component.displayName = 'Popover';
+Object.assign(Component, { displayName: 'Popover' });
 
 export const Popover = Object.assign(Component, {
   Root: PopoverRoot,

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Toolbar as ToolbarPrimitive } from '@base-ui/react/toolbar';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import { toolbar } from '@bend-ui/styled-system/recipes';
 import { Toggle } from '../Toggle';
 import { Select } from '../Select';
 
-const { withProvider, withContext } = createStyleContext(toolbar);
+const { withProvider, withContext } = createSlotRecipeContext(toolbar);
 
 const ToolbarRoot = withProvider(ToolbarPrimitive.Root, 'root');
 const ToolbarGroup = ToolbarPrimitive.Group;
@@ -77,7 +77,7 @@ const Component = (props: ToolbarProps) => {
   );
 };
 
-Component.displayName = 'Toolbar';
+Object.assign(Component, { displayName: 'Toolbar' });
 
 function ArrowSvg(props: React.ComponentProps<'svg'>) {
   return (

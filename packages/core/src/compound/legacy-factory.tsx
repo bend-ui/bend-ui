@@ -5,8 +5,7 @@ import { styled } from '@bend-ui/styled-system/jsx';
 import type {
   HTMLStyledProps,
   JsxStyleProps,
-  RecipeVariantFn,
-  SystemStyleObject,
+  RecipeRuntimeFn,
 } from '@bend-ui/styled-system/types';
 import type {
   ComponentProps,
@@ -17,9 +16,7 @@ import type {
 } from 'react';
 
 type AnyProps = object;
-type Recipe = RecipeVariantFn<
-  Record<string, Record<string, SystemStyleObject>>
-> & {
+type Recipe = RecipeRuntimeFn<Record<string, unknown>> & {
   splitVariantProps: (props: AnyProps) => [Record<string, unknown>, AnyProps];
 };
 

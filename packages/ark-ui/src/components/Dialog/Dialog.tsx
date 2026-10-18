@@ -5,9 +5,9 @@ import {
   DialogVariantProps,
 } from '@bend-ui/styled-system/recipes';
 import { withRecipe } from '../../utils';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 
-const { withRootProvider, withContext } = createStyleContext(dialog);
+const { withRootProvider, withContext } = createSlotRecipeContext(dialog);
 
 export type DialogRootProps = ArkDialog.RootProps & DialogVariantProps;
 const DialogRoot = withRootProvider(ArkDialog.Root);

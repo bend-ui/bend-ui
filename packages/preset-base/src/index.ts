@@ -5,7 +5,7 @@ import { conditions } from './conditions';
 
 export default definePreset({
   name: 'bend-ui-base',
-  presets: ['@pandacss/dev/presets'],
+  presets: ['@pandacss/preset-base', '@pandacss/preset-panda'],
 
   patterns: {
     extend: patterns,

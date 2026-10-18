@@ -16,8 +16,11 @@ describe('composeHooks', () => {
     const base = vi.fn();
     const override = vi.fn();
 
-    const composed = composeHooks({ 'cssgen:done': base }, { 'cssgen:done': override });
-    composed['cssgen:done']?.({ artifact: 'global', content: 'a' });
+    const composed = composeHooks(
+      { 'cssgen:done': base },
+      { 'cssgen:done': override },
+    );
+    composed['cssgen:done']?.({ artifact: 'styles.css', content: 'a' });
 
     expect(base).toHaveBeenCalledTimes(1);
     expect(override).toHaveBeenCalledTimes(1);
@@ -27,7 +30,10 @@ describe('composeHooks', () => {
     const base = vi.fn(async () => undefined);
     const override = vi.fn(async () => undefined);
 
-    const composed = composeHooks({ 'config:resolved': base }, { 'config:resolved': override });
+    const composed = composeHooks(
+      { 'config:resolved': base },
+      { 'config:resolved': override },
+    );
     await composed['config:resolved']?.({
       config: {},
       path: '',
@@ -43,8 +49,14 @@ describe('composeHooks', () => {
     const base = vi.fn(() => 'base-css');
     const override = vi.fn(() => 'override-css');
 
-    const composed = composeHooks({ 'cssgen:done': base }, { 'cssgen:done': override });
-    const result = composed['cssgen:done']?.({ artifact: 'global', content: 'a' });
+    const composed = composeHooks(
+      { 'cssgen:done': base },
+      { 'cssgen:done': override },
+    );
+    const result = composed['cssgen:done']?.({
+      artifact: 'styles.css',
+      content: 'a',
+    });
 
     expect(result).toBe('override-css');
   });
@@ -53,8 +65,14 @@ describe('composeHooks', () => {
     const base = vi.fn(() => 'base-css');
     const override = vi.fn(() => undefined);
 
-    const composed = composeHooks({ 'cssgen:done': base }, { 'cssgen:done': override });
-    const result = composed['cssgen:done']?.({ artifact: 'global', content: 'a' });
+    const composed = composeHooks(
+      { 'cssgen:done': base },
+      { 'cssgen:done': override },
+    );
+    const result = composed['cssgen:done']?.({
+      artifact: 'styles.css',
+      content: 'a',
+    });
 
     expect(base).toHaveBeenCalledTimes(1);
     expect(override).toHaveBeenCalledTimes(1);
@@ -67,11 +85,11 @@ describe('composeHooks', () => {
 
     const composed = composeHooks(
       { 'cssgen:done': baseOnly },
-      { 'css:optimize': overrideOnly },
+      { 'codegen:done': overrideOnly },
     );
 
     expect(composed['cssgen:done']).toBe(baseOnly);
-    expect(composed['css:optimize']).toBe(overrideOnly);
+    expect(composed['codegen:done']).toBe(overrideOnly);
   });
 
   it('is callable with no arguments and returns an empty hook set', () => {

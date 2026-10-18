@@ -1,24 +1,46 @@
+import type { SlotRecipeComponent } from '@bend-ui/core';
 import { bend } from '@bend-ui/core';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import { sidebar } from '@bend-ui/styled-system/recipes';
 import type { ComponentProps } from 'react';
 import { ScrollArea } from '../ScrollArea';
 
-const { withProvider, withContext } = createStyleContext(sidebar);
+const { withProvider, withContext } = createSlotRecipeContext(sidebar);
 
-const SidebarRoot = withProvider(bend.div, 'root');
+const SidebarRoot: SlotRecipeComponent<
+  typeof bend.div,
+  (typeof sidebar)['__type']
+> = withProvider(bend.div, 'root');
 
-const SidebarHeader = withContext(bend.div, 'header');
+const SidebarHeader: SlotRecipeComponent<typeof bend.div> = withContext(
+  bend.div,
+  'header',
+);
 
-const SidebarContent = withContext(ScrollArea, 'content');
+const SidebarContent: SlotRecipeComponent<typeof ScrollArea> = withContext(
+  ScrollArea,
+  'content',
+);
 
-const SidebarFooter = withContext(bend.div, 'footer');
+const SidebarFooter: SlotRecipeComponent<typeof bend.div> = withContext(
+  bend.div,
+  'footer',
+);
 
-const SidebarItem = withContext(bend.div, 'item');
+const SidebarItem: SlotRecipeComponent<typeof bend.div> = withContext(
+  bend.div,
+  'item',
+);
 
-const SidebarLabel = withContext(bend.div, 'label');
+const SidebarLabel: SlotRecipeComponent<typeof bend.div> = withContext(
+  bend.div,
+  'label',
+);
 
-const SidebarLink = withContext(bend.a, 'link');
+const SidebarLink: SlotRecipeComponent<typeof bend.a> = withContext(
+  bend.a,
+  'link',
+);
 
 export type SidebarRootProps = ComponentProps<typeof SidebarRoot>;
 export type SidebarHeaderProps = ComponentProps<typeof SidebarHeader>;
@@ -34,7 +56,7 @@ const Component = (props: SidebarProps) => {
   return <SidebarRoot {...rest}>{children}</SidebarRoot>;
 };
 
-Component.displayName = 'Sidebar';
+Object.assign(Component, { displayName: 'Sidebar' });
 
 export const Sidebar = Object.assign(Component, {
   Root: SidebarRoot,

@@ -3,7 +3,7 @@ import {
   accordion,
   AccordionVariantProps,
 } from '@bend-ui/styled-system/recipes';
-import { Box, createStyleContext } from '@bend-ui/styled-system/jsx';
+import { Box, createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import { LucideChevronDown } from 'lucide-react';
 import { Assign } from '@bend-ui/styled-system/types';
 import { HTMLBendUIProps, withParts } from '@bend-ui/core';
@@ -16,7 +16,7 @@ export interface AccordionRootProps extends Assign<
   attached?: AccordionVariantProps['attached'];
 }
 
-const { withProvider, withContext } = createStyleContext(accordion);
+const { withProvider, withContext } = createSlotRecipeContext(accordion);
 
 const AccordionRoot = withProvider(AccordionPrimitive.Root, 'root', {
   defaultProps: { 'data-part': 'root' },

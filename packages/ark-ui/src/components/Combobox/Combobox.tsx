@@ -5,10 +5,10 @@ import {
 } from '@bend-ui/styled-system/recipes';
 import { Input } from '../..';
 import { ChevronDownIcon } from 'lucide-react';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 
 const { withProvider, withContext, withRootProvider } =
-  createStyleContext(combobox);
+  createSlotRecipeContext(combobox);
 
 type ComboboxRootProps = ArkCombobox.RootProps<ArkCombobox.CollectionItem> &
   ComboboxVariantProps;

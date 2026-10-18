@@ -1,4 +1,5 @@
 'use client';
+import type { SlotRecipeComponent } from '@bend-ui/core';
 import { Field as ArkField } from '@ark-ui/react';
 import type { HTMLStyledProps } from '@bend-ui/styled-system/types';
 import { withParts } from '@bend-ui/core';
@@ -7,15 +8,21 @@ import {
   formField,
   type FormFieldVariantProps,
 } from '@bend-ui/styled-system/recipes';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 
-const { withProvider, withContext } = createStyleContext(formField);
+const { withProvider, withContext } = createSlotRecipeContext(formField);
 
 export type FieldRootProps = ArkField.RootProps & FormFieldVariantProps;
 
-const FieldRoot = withProvider(ArkField.Root, 'root');
+const FieldRoot: SlotRecipeComponent<
+  typeof ArkField.Root,
+  (typeof formField)['__type']
+> = withProvider(ArkField.Root, 'root');
 
-const FieldLabel = withContext(ArkField.Label, 'label');
+const FieldLabel: SlotRecipeComponent<typeof ArkField.Label> = withContext(
+  ArkField.Label,
+  'label',
+);
 
 export type FieldInputProps = ArkField.InputProps & InputProps;
 
@@ -29,9 +36,11 @@ const FieldTextarea = withParts<FieldTextareaProps>(
   'textarea',
 );
 
-const FieldHelperText = withContext(ArkField.HelperText, 'helper');
+const FieldHelperText: SlotRecipeComponent<typeof ArkField.HelperText> =
+  withContext(ArkField.HelperText, 'helper');
 
-const FieldErrorText = withContext(ArkField.ErrorText, 'error');
+const FieldErrorText: SlotRecipeComponent<typeof ArkField.ErrorText> =
+  withContext(ArkField.ErrorText, 'error');
 
 export interface FieldProps extends FieldRootProps {
   label?: string;
@@ -51,7 +60,7 @@ const Component = (props: FieldProps) => {
   );
 };
 
-Component.displayName = 'Field';
+Object.assign(Component, { displayName: 'Field' });
 
 export const Field = Object.assign(Component, {
   Root: FieldRoot,

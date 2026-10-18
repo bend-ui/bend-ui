@@ -40,62 +40,68 @@ const button = defineSlotRecipe({
   defaultVariants: { variant: 'secondary', size: 'md' },
 });
 
-const badge = defineRecipe({
+const badge = defineSlotRecipe({
+  slots: ['root'],
   className: 'Badge',
   base: {
-    border: '2px solid #18181b',
-    borderRadius: '999px',
-    color: '#18181b',
-    fontFamily: 'Space Mono, ui-monospace, monospace',
-    fontSize: '11px',
-    fontWeight: '700',
-    letterSpacing: '0.04em',
-    padding: '5px 10px',
-    textTransform: 'uppercase',
+    root: {
+      border: '2px solid #18181b',
+      borderRadius: '999px',
+      color: '#18181b',
+      fontFamily: 'Space Mono, ui-monospace, monospace',
+      fontSize: '11px',
+      fontWeight: '700',
+      letterSpacing: '0.04em',
+      padding: '5px 10px',
+      textTransform: 'uppercase',
+    },
   },
   variants: {
     variant: {
-      solid: {},
-      subtle: { opacity: '0.82' },
-      outline: { background: 'transparent' },
+      solid: { root: {} },
+      subtle: { root: { opacity: '0.82' } },
+      outline: { root: { background: 'transparent' } },
     },
     palette: {
-      default: { background: '#e7e5e4' },
-      primary: { background: '#c7ff4a' },
-      danger: { background: '#ff8a8a' },
-      warning: { background: '#ffd166' },
-      success: { background: '#86efac' },
-      info: { background: '#b8d8ff' },
+      default: { root: { background: '#e7e5e4' } },
+      primary: { root: { background: '#c7ff4a' } },
+      danger: { root: { background: '#ff8a8a' } },
+      warning: { root: { background: '#ffd166' } },
+      success: { root: { background: '#86efac' } },
+      info: { root: { background: '#b8d8ff' } },
     },
   },
   defaultVariants: { variant: 'solid', palette: 'primary' },
 });
 
-const input = defineRecipe({
+const input = defineSlotRecipe({
+  slots: ['root', 'wrapper', 'input', 'icon', 'element', 'addon'],
   className: 'Input',
   base: {
-    background: '#fffdf4',
-    border: '2px solid #18181b',
-    borderRadius: '14px',
-    color: '#18181b',
-    fontFamily: 'Space Grotesk, ui-sans-serif, sans-serif',
-    outline: 'none',
-    transitionProperty: 'box-shadow, transform',
-    transitionDuration: '140ms',
-    _focus: {
-      boxShadow: '4px 4px 0 #7c3aed',
-      transform: 'translate(-1px, -1px)',
+    root: {
+      background: '#fffdf4',
+      border: '2px solid #18181b',
+      borderRadius: '14px',
+      color: '#18181b',
+      fontFamily: 'Space Grotesk, ui-sans-serif, sans-serif',
+      outline: 'none',
+      transitionProperty: 'box-shadow, transform',
+      transitionDuration: '140ms',
+      _focusWithin: {
+        boxShadow: '4px 4px 0 #7c3aed',
+        transform: 'translate(-1px, -1px)',
+      },
     },
   },
   variants: {
     size: {
-      sm: { height: '40px', paddingInline: '12px' },
-      md: { height: '46px', paddingInline: '16px' },
-      lg: { height: '52px', paddingInline: '18px' },
+      sm: { root: { height: '40px', paddingInline: '12px' } },
+      md: { root: { height: '46px', paddingInline: '16px' } },
+      lg: { root: { height: '52px', paddingInline: '18px' } },
     },
     variant: {
-      solid: { background: '#f1efe5' },
-      outline: { background: '#fffdf4' },
+      solid: { root: { background: '#f1efe5' } },
+      outline: { root: { background: '#fffdf4' } },
     },
   },
   defaultVariants: { size: 'md', variant: 'outline' },
@@ -209,8 +215,8 @@ export const customDesignPreset = definePreset({
           mono: { value: 'Space Mono, ui-monospace, monospace' },
         },
       },
-      recipes: { alertDialog, badge, button, formField, input, overlay, text },
-      slotRecipes: { card, navbar, tabs },
+      recipes: { alertDialog, formField, overlay, text },
+      slotRecipes: { badge, button, input, card, navbar, tabs },
     },
   },
   globalCss: {

@@ -1,11 +1,11 @@
 import { Checkbox as CheckboxPrimitive } from '@base-ui/react/checkbox';
 import { checkbox, CheckboxVariantProps } from '@bend-ui/styled-system/recipes';
 import { CheckIcon } from 'lucide-react';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 
 export type CheckboxRootProps = CheckboxPrimitive.Root.Props;
 
-const { withProvider, withContext } = createStyleContext(checkbox);
+const { withProvider, withContext } = createSlotRecipeContext(checkbox);
 
 const CheckboxRoot = withProvider(CheckboxPrimitive.Root, 'control');
 
@@ -37,7 +37,7 @@ const Component = (props: CheckboxProps) => {
   );
 };
 
-Component.displayName = 'Checkbox';
+Object.assign(Component, { displayName: 'Checkbox' });
 
 export const Checkbox = Object.assign(Component, {
   Root: CheckboxRoot,

@@ -1,11 +1,11 @@
 import { bend, type HTMLBendUIProps } from '@bend-ui/core';
 import { cx } from '@bend-ui/styled-system/css';
 import { input, type InputVariantProps } from '@bend-ui/styled-system/recipes';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import type { Assign } from '@bend-ui/styled-system/types';
 import { forwardRef, type ReactNode } from 'react';
 
-const { withProvider, withContext } = createStyleContext(input);
+const { withProvider, withContext } = createSlotRecipeContext(input);
 
 export type InputRootProps = Assign<HTMLBendUIProps<'div'>, InputVariantProps>;
 
@@ -15,11 +15,7 @@ const StyledInputRoot = withProvider(bend.div, 'root', {
 const InputRoot = forwardRef<HTMLDivElement, InputRootProps>((props, ref) => {
   const { className, ...rest } = props;
   return (
-    <StyledInputRoot
-      {...rest}
-      className={cx('group', className)}
-      ref={ref}
-    />
+    <StyledInputRoot {...rest} className={cx('group', className)} ref={ref} />
   );
 });
 
@@ -37,12 +33,14 @@ export type InputInputProps = HTMLBendUIProps<'input'>;
 const StyledInput = withContext(bend.input, 'input', {
   defaultProps: { 'data-part': 'input' },
 });
-const InputInput = forwardRef<HTMLInputElement, InputInputProps>((props, ref) => {
-  const { className, ...rest } = props;
-  return (
-    <StyledInput {...rest} className={cx('peer', className)} ref={ref} />
-  );
-});
+const InputInput = forwardRef<HTMLInputElement, InputInputProps>(
+  (props, ref) => {
+    const { className, ...rest } = props;
+    return (
+      <StyledInput {...rest} className={cx('peer', className)} ref={ref} />
+    );
+  },
+);
 
 export type InputElementProps = HTMLBendUIProps<'div'>;
 const InputElement = withContext(bend.div, 'element', {
@@ -95,7 +93,7 @@ const Component = (props: InputProps) => {
   );
 };
 
-Component.displayName = 'Input';
+Object.assign(Component, { displayName: 'Input' });
 
 export const Input = Object.assign(Component, {
   Root: InputRoot,

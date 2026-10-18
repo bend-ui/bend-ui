@@ -1,5 +1,6 @@
 import { defineConfig } from '@pandacss/dev';
 import type { Config } from '@pandacss/dev';
+import type { PandaHooks } from '@pandacss/types';
 import { createBendPreset } from '@bend-ui/preset';
 import { bendHooks } from './bend-hooks';
 import { composeHooks } from './compose-hooks';
@@ -8,7 +9,6 @@ const BEND_DEFAULTS = {
   preflight: true,
   jsxFramework: 'react',
   importMap: '@bend-ui/styled-system',
-  lightningcss: true,
 } as const;
 
 /**
@@ -19,13 +19,21 @@ const BEND_DEFAULTS = {
  * `defineConfig()` remains usable directly for consumers who want explicit
  * control over every option.
  */
-export function createBendConfig(config: Config = {}): Config {
-  const { hooks, presets = [], ...rest } = config;
+export interface BendConfig extends Config {
+  /** @deprecated Prefer named Panda plugins. Only v2-supported hooks are accepted. */
+  hooks?: Partial<PandaHooks>;
+}
+
+export function createBendConfig(config: BendConfig = {}): Config {
+  const { hooks, plugins = [], presets = [], ...rest } = config;
 
   return defineConfig({
     ...BEND_DEFAULTS,
     ...rest,
     presets: [createBendPreset(), ...presets],
-    hooks: composeHooks(bendHooks, hooks),
+    plugins: [
+      { name: 'bend-ui', hooks: composeHooks(bendHooks, hooks) },
+      ...plugins,
+    ],
   });
 }

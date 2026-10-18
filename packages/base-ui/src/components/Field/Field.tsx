@@ -4,10 +4,10 @@ import { withParts } from '@bend-ui/core';
 import { formField } from '@bend-ui/styled-system/recipes';
 import { Input } from '../Input';
 import { HTMLBendUIProps } from '@bend-ui/core';
-import { createStyleContext, styled } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext, styled } from '@bend-ui/styled-system/jsx';
 
 export type FieldRootProps = FieldPrimitive.Root.Props;
-const { withProvider, withContext } = createStyleContext(formField);
+const { withProvider, withContext } = createSlotRecipeContext(formField);
 
 const FieldRoot = withProvider(FieldPrimitive.Root, 'root', {
   defaultProps: { 'data-part': 'root' },

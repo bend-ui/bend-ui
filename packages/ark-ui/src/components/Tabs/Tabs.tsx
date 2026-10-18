@@ -1,23 +1,37 @@
+import type { SlotRecipeComponent } from '@bend-ui/core';
 import { Tabs as TabsPrimitive } from '@ark-ui/react';
 import { tabs, type TabsVariantProps } from '@bend-ui/styled-system/recipes';
 import type { JsxStyleProps } from '@bend-ui/styled-system/types';
 import type { Assign } from '@ark-ui/react';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 
-const { withProvider, withContext } = createStyleContext(tabs);
+const { withProvider, withContext } = createSlotRecipeContext(tabs);
 
 export interface TabsRootProps
   extends Assign<JsxStyleProps, TabsPrimitive.RootProps>, TabsVariantProps {}
 
-const Root = withProvider(TabsPrimitive.Root, 'root');
+const Root: SlotRecipeComponent<
+  typeof TabsPrimitive.Root,
+  (typeof tabs)['__type']
+> = withProvider(TabsPrimitive.Root, 'root');
 
-const List = withContext(TabsPrimitive.List, 'list');
+const List: SlotRecipeComponent<typeof TabsPrimitive.List> = withContext(
+  TabsPrimitive.List,
+  'list',
+);
 
-const Trigger = withContext(TabsPrimitive.Trigger, 'trigger');
+const Trigger: SlotRecipeComponent<typeof TabsPrimitive.Trigger> = withContext(
+  TabsPrimitive.Trigger,
+  'trigger',
+);
 
-const Indicator = withContext(TabsPrimitive.Indicator, 'indicator');
+const Indicator: SlotRecipeComponent<typeof TabsPrimitive.Indicator> =
+  withContext(TabsPrimitive.Indicator, 'indicator');
 
-const Content = withContext(TabsPrimitive.Content, 'content');
+const Content: SlotRecipeComponent<typeof TabsPrimitive.Content> = withContext(
+  TabsPrimitive.Content,
+  'content',
+);
 
 export {
   TabsContext as Context,
@@ -31,7 +45,7 @@ const Component = (props: TabsProps) => {
   return <Root {...rest}>{children}</Root>;
 };
 
-Component.displayName = 'Tabs';
+Object.assign(Component, { displayName: 'Tabs' });
 
 export const Tabs = Object.assign(Component, {
   Root,

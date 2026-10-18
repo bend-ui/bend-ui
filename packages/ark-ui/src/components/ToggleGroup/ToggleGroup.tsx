@@ -1,10 +1,15 @@
+import type { SlotRecipeComponent } from '@bend-ui/core';
 import { ToggleGroup as ToggleGroupPrimitive } from '@ark-ui/react';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import { toggleGroup } from '@bend-ui/styled-system/recipes';
 
-const { withProvider, withContext } = createStyleContext(toggleGroup);
-const ToggleGroupRoot = withProvider(ToggleGroupPrimitive.Root, 'root');
-const ToggleGroupItem = withContext(ToggleGroupPrimitive.Item, 'item');
+const { withProvider, withContext } = createSlotRecipeContext(toggleGroup);
+const ToggleGroupRoot: SlotRecipeComponent<
+  typeof ToggleGroupPrimitive.Root,
+  (typeof toggleGroup)['__type']
+> = withProvider(ToggleGroupPrimitive.Root, 'root');
+const ToggleGroupItem: SlotRecipeComponent<typeof ToggleGroupPrimitive.Item> =
+  withContext(ToggleGroupPrimitive.Item, 'item');
 
 const Component = () => {
   return (
