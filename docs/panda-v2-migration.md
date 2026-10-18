@@ -90,4 +90,4 @@ PR CI exposed a lifecycle-ordering gap: the customization harness loads the stru
 
 A source-only archive with no generated output passed `pnpm install --frozen-lockfile --offline` with lifecycle scripts enabled on Node 24.16.0, including all package and app prepare steps. The earlier scripts-disabled installation caveat is superseded by this check. Clean packed-package consumer validation remains BEN-30.
 
-Chromatic workflows now also run for shared foundation, lockfile and runtime-pin changes, so fixes to shared dependencies revalidate every adapter.
+Base UI Chromatic runs automatically for shared foundation, lockfile, runtime-pin and visual-workflow changes. Ark UI and React Aria Chromatic are temporarily manual-only (`workflow_dispatch`); their package build and test coverage remains enabled.

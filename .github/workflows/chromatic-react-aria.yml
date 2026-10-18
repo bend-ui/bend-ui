@@ -1,21 +1,10 @@
 name: 'Chromatic - React Aria components'
 
+# Automatic visual testing currently focuses on the Base UI adapter.
+# Keep this workflow available for explicit manual runs.
 on:
-  push:
-    paths:
-      - 'packages/react-aria/**'
-      - 'packages/preset-base/**'
-      - 'packages/preset/**'
-      - 'packages/config/**'
-      - 'packages/core/**'
-      - 'packages/styled-system/**'
-      - 'package.json'
-      - 'pnpm-lock.yaml'
-      - '.node-version'
-      - '.github/workflows/chromatic-react-aria.yml'
-    branches-ignore:
-      - 'dependabot/**'
-      - 'renovate/**'
+  workflow_dispatch:
+
 jobs:
   chromatic:
     runs-on: ubuntu-latest
