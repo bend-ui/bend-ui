@@ -83,3 +83,11 @@ This migration does not publish npm packages or deploy applications. Clean packe
 ## Node 24 alignment
 
 The project runtime pins and CI now select Node 24, with a minimum engine requirement of `>=24`. On Node 24.16.0, config, preset and Base UI tests were rerun without the Nx cache: all 55 tests passed. Historical Node 22 migration results above are retained as historical evidence.
+
+## Fresh-checkout installation fix
+
+PR CI exposed a lifecycle-ordering gap: the customization harness loads the structural preset through its package export, but a fresh checkout has no built preset files. `@bend-ui/preset-base` now builds during its own `prepare` lifecycle, before dependent codegen runs. This intentionally uses the package's build script during dependency installation, before Nx workspace bootstrap is complete.
+
+A source-only archive with no generated output passed `pnpm install --frozen-lockfile --offline` with lifecycle scripts enabled on Node 24.16.0, including all package and app prepare steps. The earlier scripts-disabled installation caveat is superseded by this check. Clean packed-package consumer validation remains BEN-30.
+
+Chromatic workflows now also run for shared foundation, lockfile and runtime-pin changes, so fixes to shared dependencies revalidate every adapter.

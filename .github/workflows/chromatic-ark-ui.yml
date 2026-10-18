@@ -4,6 +4,15 @@ on:
   push:
     paths:
       - 'packages/ark-ui/**'
+      - 'packages/preset-base/**'
+      - 'packages/preset/**'
+      - 'packages/config/**'
+      - 'packages/core/**'
+      - 'packages/styled-system/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - '.node-version'
+      - '.github/workflows/chromatic-ark-ui.yml'
     branches-ignore:
       - 'dependabot/**'
       - 'renovate/**'

@@ -19,7 +19,8 @@
   ],
   "scripts": {
     "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
-    "build": "tsup"
+    "build": "tsup",
+    "prepare": "pnpm run build"
   },
   "dependencies": {
     "@pandacss/dev": "^2.2.0",
