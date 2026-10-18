@@ -37,8 +37,7 @@ export const level2DesignExtension = definePreset({
         fonts: { body: { value: 'Inter Variable, ui-sans-serif, sans-serif' } },
         colors: { consumerAccent: { value: '#7048e8' } },
       },
-      recipes: { button },
-      slotRecipes: { card },
+      slotRecipes: { button, card },
     },
   },
 });

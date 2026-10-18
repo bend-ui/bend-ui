@@ -1,9 +1,9 @@
 import { Menu as ArkMenu } from '@ark-ui/react';
 import { Button } from '../Button';
 import { menu } from '@bend-ui/styled-system/recipes';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 
-const { withRootProvider, withContext } = createStyleContext(menu);
+const { withRootProvider, withContext } = createSlotRecipeContext(menu);
 
 type MenuRootProps = ArkMenu.RootProps;
 const MenuRoot = withRootProvider(ArkMenu.Root);
@@ -25,13 +25,13 @@ const MenuTriggerBase = (props: MenuTriggerProps) => {
   );
 };
 const MenuTrigger = withContext(MenuTriggerBase, 'trigger');
-MenuTrigger.displayName = 'MenuTrigger';
+Object.assign(MenuTrigger, { displayName: 'MenuTrigger' });
 
 const MenuPositioner = withContext(
   withContext(ArkMenu.Positioner, 'positioner'),
   'root',
 );
-MenuPositioner.displayName = 'MenuPositioner';
+Object.assign(MenuPositioner, { displayName: 'MenuPositioner' });
 
 const MenuContent = withContext(ArkMenu.Content, 'content');
 

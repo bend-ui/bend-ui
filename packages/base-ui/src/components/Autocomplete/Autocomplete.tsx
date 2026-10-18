@@ -1,37 +1,38 @@
+import type { SlotRecipeComponent } from '@bend-ui/core';
 import { Autocomplete as AutocompletePrimitive } from '@base-ui/react/autocomplete';
 import { ChevronsUpDownIcon } from 'lucide-react';
 import { withParts } from '@bend-ui/core';
 import { selectDropdown, select } from '@bend-ui/styled-system/recipes';
-import { createStyleContext, styled } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext, styled } from '@bend-ui/styled-system/jsx';
 import { Input as StyledInput } from '../Input';
 
 const {
   withRootProvider: withSelectRootProvider,
   withContext: withSelectContext,
-} = createStyleContext(select);
+} = createSlotRecipeContext(select);
 const { withProvider: withDropdownProvider, withContext: withDropdownContext } =
-  createStyleContext(selectDropdown);
+  createSlotRecipeContext(selectDropdown);
 
 const AutocompleteRoot = withSelectRootProvider(
   AutocompletePrimitive.Root,
 ) as unknown as typeof AutocompletePrimitive.Root;
 
-const AutocompleteControl = withSelectContext(styled('div'), 'control');
+const AutocompleteControl: SlotRecipeComponent<'div'> = withSelectContext(
+  styled('div'),
+  'control',
+);
 
 const AutocompleteInput = withParts<AutocompletePrimitive.Input.Props>(
   AutocompletePrimitive.Input,
   'input',
 );
 
-const AutocompleteTrigger = withSelectContext(
-  AutocompletePrimitive.Trigger,
-  'trigger',
-);
+const AutocompleteTrigger: SlotRecipeComponent<
+  typeof AutocompletePrimitive.Trigger
+> = withSelectContext(AutocompletePrimitive.Trigger, 'trigger');
 
-const AutocompleteIcon = withSelectContext(
-  AutocompletePrimitive.Icon,
-  'indicator',
-);
+const AutocompleteIcon: SlotRecipeComponent<typeof AutocompletePrimitive.Icon> =
+  withSelectContext(AutocompletePrimitive.Icon, 'indicator');
 
 const AutocompleteBackdrop = withParts<AutocompletePrimitive.Backdrop.Props>(
   AutocompletePrimitive.Backdrop,
@@ -40,22 +41,20 @@ const AutocompleteBackdrop = withParts<AutocompletePrimitive.Backdrop.Props>(
 
 const AutocompletePortal = AutocompletePrimitive.Portal;
 
-const AutocompletePositioner = withDropdownProvider(
-  AutocompletePrimitive.Positioner,
-  'positioner',
-);
+const AutocompletePositioner: SlotRecipeComponent<
+  typeof AutocompletePrimitive.Positioner,
+  (typeof selectDropdown)['__type']
+> = withDropdownProvider(AutocompletePrimitive.Positioner, 'positioner');
 
-const AutocompletePopup = withDropdownContext(
-  AutocompletePrimitive.Popup,
-  'content',
-  {
-    defaultProps: {
-      style: {
-        width: 'var(--anchor-width)',
-      },
+const AutocompletePopup: SlotRecipeComponent<
+  typeof AutocompletePrimitive.Popup
+> = withDropdownContext(AutocompletePrimitive.Popup, 'content', {
+  defaultProps: {
+    style: {
+      width: 'var(--anchor-width)',
     },
   },
-);
+});
 
 const AutocompleteArrow = withParts<AutocompletePrimitive.Arrow.Props>(
   AutocompletePrimitive.Arrow,
@@ -67,20 +66,16 @@ const AutocompleteList = withParts<AutocompletePrimitive.List.Props>(
   'list',
 );
 
-const AutocompleteItem = withDropdownContext(
-  AutocompletePrimitive.Item,
-  'item',
-);
+const AutocompleteItem: SlotRecipeComponent<typeof AutocompletePrimitive.Item> =
+  withDropdownContext(AutocompletePrimitive.Item, 'item');
 
-const AutocompleteGroup = withDropdownContext(
-  AutocompletePrimitive.Group,
-  'itemGroup',
-);
+const AutocompleteGroup: SlotRecipeComponent<
+  typeof AutocompletePrimitive.Group
+> = withDropdownContext(AutocompletePrimitive.Group, 'itemGroup');
 
-const AutocompleteGroupLabel = withDropdownContext(
-  AutocompletePrimitive.GroupLabel,
-  'itemGroupLabel',
-);
+const AutocompleteGroupLabel: SlotRecipeComponent<
+  typeof AutocompletePrimitive.GroupLabel
+> = withDropdownContext(AutocompletePrimitive.GroupLabel, 'itemGroupLabel');
 
 const AutocompleteSeparator = withParts<AutocompletePrimitive.Separator.Props>(
   AutocompletePrimitive.Separator,
@@ -118,7 +113,7 @@ const Component = <Value extends string = string>(
   );
 };
 
-Component.displayName = 'Autocomplete';
+Object.assign(Component, { displayName: 'Autocomplete' });
 
 export const Autocomplete = Object.assign(Component, {
   Root: AutocompleteRoot,

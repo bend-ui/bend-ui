@@ -2,14 +2,14 @@
 import React from 'react';
 import { Toast as ToastPrimitive } from '@base-ui/react/toast';
 import { withParts } from '@bend-ui/core';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import { toast } from '@bend-ui/styled-system/recipes';
 
 const ToastProvider: React.ComponentType<ToastPrimitive.Provider.Props> =
   ToastPrimitive.Provider;
 const ToastPortal: React.ComponentType<ToastPrimitive.Portal.Props> =
   ToastPrimitive.Portal;
-const { withProvider, withContext } = createStyleContext(toast);
+const { withProvider, withContext } = createSlotRecipeContext(toast);
 const ToastViewport = withProvider(ToastPrimitive.Viewport, 'viewport');
 const ToastRoot = withProvider(ToastPrimitive.Root, 'root');
 const ToastTitle = withContext(ToastPrimitive.Title, 'title');

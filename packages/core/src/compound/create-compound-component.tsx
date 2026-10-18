@@ -1,6 +1,6 @@
 'use client';
 
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import type { Assign, JsxStyleProps } from '@bend-ui/styled-system/types';
 import type { ComponentProps, ComponentType, ElementType } from 'react';
 
@@ -59,9 +59,11 @@ export const createCompoundComponent = <
   options: CreateCompoundComponentOptions<Recipe, Slots>,
 ): CompoundComponent<Slots, RecipeVariantProps<Recipe>> => {
   const { name, recipe, slots } = options;
-  const { withProvider, withContext } = createStyleContext(
-    recipe as unknown as Parameters<typeof createStyleContext>[0],
-  );
+  // Keep generated intrinsic-element unions behind the existing typed slot seam.
+  const createContext = createSlotRecipeContext as unknown as (
+    recipe: Recipe,
+  ) => { withProvider: StyleContextFactory; withContext: StyleContextFactory };
+  const { withProvider, withContext } = createContext(recipe);
 
   return Object.fromEntries(
     Object.entries(slots).map(([slotName, definition]) => {
@@ -76,7 +78,7 @@ export const createCompoundComponent = <
           : undefined,
       );
 
-      Component.displayName = `${name}.${slotName}`;
+      Object.assign(Component, { displayName: `${name}.${slotName}` });
       return [slotName, Component];
     }),
   ) as unknown as CompoundComponent<Slots, RecipeVariantProps<Recipe>>;

@@ -2,9 +2,9 @@ import * as React from 'react';
 import { Toggle } from '../Toggle';
 import { ToggleGroup as ToggleGroupPrimitive } from '@base-ui/react/toggle-group';
 import { toggleGroup } from '@bend-ui/styled-system/recipes';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 
-const { withProvider, withContext } = createStyleContext(toggleGroup);
+const { withProvider, withContext } = createSlotRecipeContext(toggleGroup);
 
 const ToggleGroupRoot = withProvider(ToggleGroupPrimitive, 'root');
 const ToggleGroupItem = withContext(Toggle.Root, 'item');

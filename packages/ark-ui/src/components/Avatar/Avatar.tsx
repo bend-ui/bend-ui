@@ -1,11 +1,11 @@
 import { Avatar as ArkAvatar } from '@ark-ui/react';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import {
   avatar,
   type AvatarVariantProps,
 } from '@bend-ui/styled-system/recipes';
 
-const { withProvider, withContext } = createStyleContext(avatar);
+const { withProvider, withContext } = createSlotRecipeContext(avatar);
 
 export type AvatarRootProps = ArkAvatar.RootProps & AvatarVariantProps;
 
@@ -29,7 +29,7 @@ const Component = (props: AvatarProps) => {
   );
 };
 
-Component.displayName = 'Avatar';
+Object.assign(Component, { displayName: 'Avatar' });
 
 export const Avatar = Object.assign(Component, {
   Root: AvatarRoot,

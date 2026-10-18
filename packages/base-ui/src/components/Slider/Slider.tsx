@@ -1,8 +1,8 @@
 import { Slider as SliderPrimitive } from '@base-ui/react/slider';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import { slider } from '@bend-ui/styled-system/recipes';
 
-const { withProvider, withContext } = createStyleContext(slider);
+const { withProvider, withContext } = createSlotRecipeContext(slider);
 
 const SliderRoot = withProvider(SliderPrimitive.Root, 'root');
 const SliderControl = withContext(SliderPrimitive.Control, 'control');

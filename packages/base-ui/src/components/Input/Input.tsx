@@ -1,32 +1,48 @@
+import type { SlotRecipeComponent } from '@bend-ui/core';
 import { Input as InputPrimitive } from '@base-ui/react/input';
 import { bend, type HTMLBendUIProps } from '@bend-ui/core';
 import { cx } from '@bend-ui/styled-system/css';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import { input, type InputVariantProps } from '@bend-ui/styled-system/recipes';
 import type { Assign } from '@bend-ui/styled-system/types';
 import type { ReactNode } from 'react';
 
-const { withProvider, withContext } = createStyleContext(input);
+const { withProvider, withContext } = createSlotRecipeContext(input);
 
 export type InputRootProps = Assign<HTMLBendUIProps<'div'>, InputVariantProps>;
-const InputRoot = withProvider(bend.div, 'root', {
+const InputRoot: SlotRecipeComponent<
+  typeof bend.div,
+  (typeof input)['__type']
+> = withProvider(bend.div, 'root', {
   defaultProps: { 'data-part': 'root' },
 });
 
 export type InputWrapperProps = HTMLBendUIProps<'label'>;
-const InputWrapper = withContext(bend.label, 'wrapper', {
-  defaultProps: { 'data-part': 'wrapper' },
-});
+const InputWrapper: SlotRecipeComponent<typeof bend.label> = withContext(
+  bend.label,
+  'wrapper',
+  {
+    defaultProps: { 'data-part': 'wrapper' },
+  },
+);
 
 export type InputIconProps = HTMLBendUIProps<'span'>;
-const InputIcon = withContext(bend.span, 'icon', {
-  defaultProps: { 'data-part': 'icon' },
-});
+const InputIcon: SlotRecipeComponent<typeof bend.span> = withContext(
+  bend.span,
+  'icon',
+  {
+    defaultProps: { 'data-part': 'icon' },
+  },
+);
 
 export type InputInputProps = InputPrimitive.Props;
-const InputControl = withContext(InputPrimitive, 'input', {
-  defaultProps: { 'data-part': 'input' },
-});
+const InputControl: SlotRecipeComponent<typeof InputPrimitive> = withContext(
+  InputPrimitive,
+  'input',
+  {
+    defaultProps: { 'data-part': 'input' },
+  },
+);
 
 const InputStandaloneControl = (props: InputInputProps) => {
   const { className, ...rest } = props;
@@ -45,14 +61,22 @@ const InputStandaloneControl = (props: InputInputProps) => {
 };
 
 export type InputElementProps = HTMLBendUIProps<'div'>;
-const InputElement = withContext(bend.div, 'element', {
-  defaultProps: { 'data-part': 'element' },
-});
+const InputElement: SlotRecipeComponent<typeof bend.div> = withContext(
+  bend.div,
+  'element',
+  {
+    defaultProps: { 'data-part': 'element' },
+  },
+);
 
 export type InputAddonProps = HTMLBendUIProps<'div'>;
-const InputAddon = withContext(bend.div, 'addon', {
-  defaultProps: { 'data-part': 'addon' },
-});
+const InputAddon: SlotRecipeComponent<typeof bend.div> = withContext(
+  bend.div,
+  'addon',
+  {
+    defaultProps: { 'data-part': 'addon' },
+  },
+);
 
 export interface InputOwnProps {
   icon?: ReactNode;
@@ -96,7 +120,7 @@ const Component = (props: InputProps) => {
   );
 };
 
-Component.displayName = 'Input';
+Object.assign(Component, { displayName: 'Input' });
 
 export const Input = Object.assign(Component, {
   Root: InputRoot,

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Tooltip as TooltipPrimitive } from '@base-ui/react/tooltip';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import { tooltip } from '@bend-ui/styled-system/recipes';
 
 const TooltipProvider = TooltipPrimitive.Provider;
-const { withRootProvider, withContext } = createStyleContext(tooltip);
+const { withRootProvider, withContext } = createSlotRecipeContext(tooltip);
 const TooltipRoot = withRootProvider(TooltipPrimitive.Root);
 const TooltipTrigger = withContext(TooltipPrimitive.Trigger, 'trigger');
 const TooltipPortal = TooltipPrimitive.Portal;

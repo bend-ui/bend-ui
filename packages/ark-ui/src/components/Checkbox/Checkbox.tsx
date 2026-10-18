@@ -2,9 +2,9 @@ import { Checkbox as ArkCheckbox } from '@ark-ui/react';
 import { CheckIcon } from 'lucide-react';
 import { CheckboxVariantProps } from '@bend-ui/styled-system/recipes';
 import { checkbox } from '@bend-ui/styled-system/recipes';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 
-const { withProvider, withContext } = createStyleContext(checkbox);
+const { withProvider, withContext } = createSlotRecipeContext(checkbox);
 
 export type CheckboxRootProps = ArkCheckbox.RootProps & CheckboxVariantProps;
 
@@ -43,7 +43,7 @@ const Component = (props: CheckboxProps) => {
   );
 };
 
-Component.displayName = 'Checkbox';
+Object.assign(Component, { displayName: 'Checkbox' });
 
 export const Checkbox = Object.assign(Component, {
   Root: CheckboxRoot,

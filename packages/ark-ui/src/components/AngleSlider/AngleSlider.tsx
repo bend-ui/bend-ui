@@ -1,30 +1,44 @@
+import type { SlotRecipeComponent } from '@bend-ui/core';
 import { AngleSlider as ArkAngleSlider } from '@ark-ui/react';
 import { angleSlider } from '@bend-ui/styled-system/recipes';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 
-const { withProvider, withContext } = createStyleContext(angleSlider);
+const { withProvider, withContext } = createSlotRecipeContext(angleSlider);
 
 export interface AngleSliderRootProps extends ArkAngleSlider.RootProps {
   children?: React.ReactNode;
 }
 
-const Root = withProvider(ArkAngleSlider.Root, 'root');
+const Root: SlotRecipeComponent<
+  typeof ArkAngleSlider.Root,
+  (typeof angleSlider)['__type']
+> = withProvider(ArkAngleSlider.Root, 'root');
 
 export type AngleSliderLabelProps = ArkAngleSlider.LabelProps;
 
-const Label = withContext(ArkAngleSlider.Label, 'label');
+const Label: SlotRecipeComponent<typeof ArkAngleSlider.Label> = withContext(
+  ArkAngleSlider.Label,
+  'label',
+);
 
 export type AngleSliderThumbProps = ArkAngleSlider.ThumbProps;
 
-const Thumb = withContext(ArkAngleSlider.Thumb, 'thumb');
+const Thumb: SlotRecipeComponent<typeof ArkAngleSlider.Thumb> = withContext(
+  ArkAngleSlider.Thumb,
+  'thumb',
+);
 
 export type AngleSliderMarkerGroupProps = ArkAngleSlider.MarkerGroupProps;
 
-const MarkerGroup = withContext(ArkAngleSlider.MarkerGroup, 'markerGroup');
+const MarkerGroup: SlotRecipeComponent<typeof ArkAngleSlider.MarkerGroup> =
+  withContext(ArkAngleSlider.MarkerGroup, 'markerGroup');
 
 export type AngleSliderMarkerProps = ArkAngleSlider.MarkerProps;
 
-const Marker = withContext(ArkAngleSlider.Marker, 'marker');
+const Marker: SlotRecipeComponent<typeof ArkAngleSlider.Marker> = withContext(
+  ArkAngleSlider.Marker,
+  'marker',
+);
 
 export type AngleSliderValueTextProps = ArkAngleSlider.ValueTextProps;
 
@@ -36,7 +50,10 @@ const HiddenInput = ArkAngleSlider.HiddenInput;
 
 export type AngleSliderControlProps = ArkAngleSlider.ControlProps;
 
-const Control = withContext(ArkAngleSlider.Control, 'control');
+const Control: SlotRecipeComponent<typeof ArkAngleSlider.Control> = withContext(
+  ArkAngleSlider.Control,
+  'control',
+);
 
 const Component = () => {
   return (

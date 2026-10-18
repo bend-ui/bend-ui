@@ -1,9 +1,9 @@
 import { Accordion as ArkAccordion } from '@ark-ui/react';
 import { accordion } from '@bend-ui/styled-system/recipes';
 import type { AccordionVariantProps } from '@bend-ui/styled-system/recipes';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 
-const { withProvider, withContext } = createStyleContext(accordion);
+const { withProvider, withContext } = createSlotRecipeContext(accordion);
 
 export interface AccordionRootProps extends ArkAccordion.RootProps {
   children: React.ReactNode;

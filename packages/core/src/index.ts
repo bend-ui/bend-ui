@@ -33,3 +33,5 @@ export {
   type JsxStyleProps,
   type PolymorphicProps,
 } from './compound';
+
+export type { SlotRecipeComponent } from './compound/recipe-component';

@@ -1,7 +1,7 @@
 'use client';
 
 import { css, cx } from '@bend-ui/styled-system/css';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import type { ComponentType, ReactNode } from 'react';
 import { appShell } from '@bend-ui/styled-system/recipes';
 
@@ -16,7 +16,7 @@ export interface CreateAppShellOptions {
 const nativeScrollAreaClassName = css({
   overflow: 'auto',
   scrollbarWidth: 'thin',
-  scrollbarColor: '{colors.border.weak}',
+  scrollbarThumb: 'border.weak',
 });
 
 /** Default scroll region using native overflow — for packages without a ScrollArea primitive. */
@@ -35,7 +35,7 @@ export const createNativeScrollArea = () => {
     );
   };
 
-  NativeScrollArea.displayName = 'AppShell.ScrollArea';
+  Object.assign(NativeScrollArea, { displayName: 'AppShell.ScrollArea' });
   return NativeScrollArea;
 };
 
@@ -72,7 +72,7 @@ export const createScrollAreaPart = <P extends AppShellScrollAreaProps>(
     );
   };
 
-  ScrollAreaPart.displayName = 'AppShell.ScrollArea';
+  Object.assign(ScrollAreaPart, { displayName: 'AppShell.ScrollArea' });
   return ScrollAreaPart;
 };
 
@@ -104,7 +104,7 @@ export interface AppShellFooterProps {
   children?: ReactNode;
 }
 
-const { withProvider, withContext } = createStyleContext(appShell);
+const { withProvider, withContext } = createSlotRecipeContext(appShell);
 
 export const createAppShell = (options: CreateAppShellOptions) => {
   const { ScrollArea } = options;
@@ -112,40 +112,40 @@ export const createAppShell = (options: CreateAppShellOptions) => {
   /** Full-page layout shell. Positions child regions only — does not render navigation, headers, or sidebar UI. */
   const Root = withProvider('div', 'root');
 
-  Root.displayName = 'AppShell';
+  Object.assign(Root, { displayName: 'AppShell' });
 
   /** Top-of-page placement region for app-wide notifications. Provide your own banner content (alerts, announcements, etc.). */
   const Banner = withContext('div', 'banner');
 
-  Banner.displayName = 'AppShell.Banner';
+  Object.assign(Banner, { displayName: 'AppShell.Banner' });
 
   /** Top placement region. Provide your own header content (title bar, toolbar, etc.). */
   const Header = withContext('header', 'header');
 
-  Header.displayName = 'AppShell.Header';
+  Object.assign(Header, { displayName: 'AppShell.Header' });
 
   /** Left placement region. Renders an `<aside>` — provide your own sidebar content (navigation, filters, etc.), not a pre-built sidebar component. */
   const Sidebar = withContext('aside', 'sidebar');
 
-  Sidebar.displayName = 'AppShell.Sidebar';
+  Object.assign(Sidebar, { displayName: 'AppShell.Sidebar' });
 
   /** Horizontal body row that grows to fill remaining vertical space. Wraps `Sidebar` and `Main` side by side. */
   const Body = withContext('div', 'body');
 
-  Body.displayName = 'AppShell.Body';
+  Object.assign(Body, { displayName: 'AppShell.Body' });
 
   /** Primary content column. Renders `<main>` — use once per page and do not nest another `<main>` inside. May contain nested shell regions (`Header`, `ScrollArea`, `Footer`). */
   const Main = withContext('main', 'main');
 
-  Main.displayName = 'AppShell.Main';
+  Object.assign(Main, { displayName: 'AppShell.Main' });
 
   /** Bottom placement region. Provide your own footer content. */
   const Footer = withContext('footer', 'footer');
 
-  Footer.displayName = 'AppShell.Footer';
+  Object.assign(Footer, { displayName: 'AppShell.Footer' });
 
   const AppShellScrollArea = withContext(ScrollArea, 'scrollArea');
-  AppShellScrollArea.displayName = 'AppShell.ScrollArea';
+  Object.assign(AppShellScrollArea, { displayName: 'AppShell.ScrollArea' });
 
   return Object.assign(Root, {
     Root,

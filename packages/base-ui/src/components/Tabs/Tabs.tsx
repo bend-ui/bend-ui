@@ -1,8 +1,8 @@
 import { Tabs as TabsPrimitive } from '@base-ui/react/tabs';
 import { tabs } from '@bend-ui/styled-system/recipes';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 
-const { withProvider, withContext } = createStyleContext(tabs);
+const { withProvider, withContext } = createSlotRecipeContext(tabs);
 
 const TabsRoot = withProvider(TabsPrimitive.Root, 'root');
 

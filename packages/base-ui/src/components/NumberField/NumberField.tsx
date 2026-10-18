@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { NumberField as NumberFieldPrimitive } from '@base-ui/react/number-field';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import { numberInput } from '@bend-ui/styled-system/recipes';
 
-const { withProvider, withContext } = createStyleContext(numberInput);
+const { withProvider, withContext } = createSlotRecipeContext(numberInput);
 
 const NumberFieldRoot = withProvider(NumberFieldPrimitive.Root, 'root');
 const NumberFieldScrubArea = withContext(

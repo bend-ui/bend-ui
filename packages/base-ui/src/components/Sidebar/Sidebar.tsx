@@ -3,11 +3,11 @@
 import * as React from 'react';
 import { PanelLeftIcon } from 'lucide-react';
 import { HTMLBendUIProps, bend } from '@bend-ui/core';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import { sidebar } from '@bend-ui/styled-system/recipes';
 import { ScrollArea } from '../ScrollArea';
 
-const { withProvider, withContext } = createStyleContext(sidebar);
+const { withProvider, withContext } = createSlotRecipeContext(sidebar);
 
 const SIDEBAR_WIDTH = '16rem';
 const SIDEBAR_WIDTH_ICON = '3.5rem';
@@ -290,7 +290,7 @@ const Component = (props: SidebarProps) => {
   return <SidebarRoot {...props} />;
 };
 
-Component.displayName = 'Sidebar';
+Object.assign(Component, { displayName: 'Sidebar' });
 
 export const Sidebar = Object.assign(Component, {
   Provider: SidebarProvider,

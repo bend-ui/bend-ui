@@ -1,9 +1,9 @@
 import { createToaster, Toaster, Toast as ArkToast } from '@ark-ui/react';
 import { toast, ToastVariantProps } from '@bend-ui/styled-system/recipes';
 import { Button, DismissButton } from '..';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 
-const { withProvider, withContext } = createStyleContext(toast);
+const { withProvider, withContext } = createSlotRecipeContext(toast);
 
 export type ToastRootProps = ArkToast.RootProps & ToastVariantProps;
 
@@ -20,10 +20,7 @@ const ToastCloseTriggerBase = (props: ToastCloseTriggerProps) => {
     </ArkToast.CloseTrigger>
   );
 };
-const ToastCloseTrigger = withContext(
-  ToastCloseTriggerBase,
-  'closeTrigger',
-);
+const ToastCloseTrigger = withContext(ToastCloseTriggerBase, 'closeTrigger');
 
 type ToastActionTriggerProps = ArkToast.ActionTriggerProps;
 
@@ -56,7 +53,7 @@ const Component = (props: ToastProps) => {
   );
 };
 
-Component.displayName = 'Toast';
+Object.assign(Component, { displayName: 'Toast' });
 
 export const Toast = Object.assign(Component, {
   Root: ToastRoot,

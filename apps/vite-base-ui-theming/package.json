@@ -6,7 +6,7 @@
     "prepare": "panda codegen --config panda.config.ts && panda cssgen --config panda.config.ts --outfile styled-system/styles.css"
   },
   "devDependencies": {
-    "@pandacss/dev": "^1.11.4"
+    "@pandacss/dev": "^2.2.0"
   },
   "dependencies": {
     "@bend-ui/base-ui": "workspace:*",

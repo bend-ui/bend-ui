@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { PreviewCard as PreviewCardPrimitive } from '@base-ui/react/preview-card';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import { hoverCard } from '@bend-ui/styled-system/recipes';
 
-const { withRootProvider, withContext } = createStyleContext(hoverCard);
+const { withRootProvider, withContext } = createSlotRecipeContext(hoverCard);
 
 const PreviewCardRoot = withRootProvider(PreviewCardPrimitive.Root);
 

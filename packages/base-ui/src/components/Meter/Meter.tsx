@@ -1,8 +1,8 @@
 import { Meter as MeterPrimitive } from '@base-ui/react/meter';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import { meter } from '@bend-ui/styled-system/recipes';
 
-const { withProvider, withContext } = createStyleContext(meter);
+const { withProvider, withContext } = createSlotRecipeContext(meter);
 
 const MeterRoot = withProvider(MeterPrimitive.Root, 'root');
 const MeterLabel = withContext(MeterPrimitive.Label, 'label');

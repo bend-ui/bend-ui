@@ -1,13 +1,13 @@
 import { alertDialog } from '@bend-ui/styled-system/recipes';
 import { AlertDialog as AlertDialogPrimitive } from '@base-ui/react/alert-dialog';
 import { withParts } from '@bend-ui/core';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import { Button } from '../Button';
 
 export interface AlertDialogRootProps extends AlertDialogPrimitive.Root.Props {
   children?: React.ReactNode;
 }
-const { withRootProvider, withContext } = createStyleContext(alertDialog);
+const { withRootProvider, withContext } = createSlotRecipeContext(alertDialog);
 const AlertDialogRoot = withRootProvider(AlertDialogPrimitive.Root);
 
 export interface AlertDialogTriggerProps

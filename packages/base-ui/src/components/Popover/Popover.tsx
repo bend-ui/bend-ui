@@ -1,9 +1,9 @@
 import { Popover as PopoverPrimitive } from '@base-ui/react/popover';
 import { popover } from '@bend-ui/styled-system/recipes';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import { Button } from '../Button';
 
-const { withRootProvider, withContext } = createStyleContext(popover);
+const { withRootProvider, withContext } = createSlotRecipeContext(popover);
 const PopoverRoot = withRootProvider(PopoverPrimitive.Root);
 const PopoverTrigger = (props: PopoverPrimitive.Trigger.Props) => {
   const { children, render, ...rest } = props;

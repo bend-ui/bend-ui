@@ -1,8 +1,8 @@
 import { ContextMenu as ContextMenuPrimitive } from '@base-ui/react/context-menu';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import { menu } from '@bend-ui/styled-system/recipes';
 
-const { withRootProvider, withContext } = createStyleContext(menu);
+const { withRootProvider, withContext } = createSlotRecipeContext(menu);
 
 const ContextMenuRoot = withRootProvider(ContextMenuPrimitive.Root);
 const ContextMenuTrigger = withContext(ContextMenuPrimitive.Trigger, 'trigger');

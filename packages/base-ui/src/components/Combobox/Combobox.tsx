@@ -1,31 +1,37 @@
+import type { SlotRecipeComponent } from '@bend-ui/core';
 import { Combobox as ComboboxPrimitive } from '@base-ui/react/combobox';
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react';
 import { withParts } from '@bend-ui/core';
 import { selectDropdown, select } from '@bend-ui/styled-system/recipes';
-import { createStyleContext, styled } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext, styled } from '@bend-ui/styled-system/jsx';
 import { Input as StyledInput } from '../Input';
 
 const {
   withRootProvider: withSelectRootProvider,
   withContext: withSelectContext,
-} = createStyleContext(select);
+} = createSlotRecipeContext(select);
 const { withProvider: withDropdownProvider, withContext: withDropdownContext } =
-  createStyleContext(selectDropdown);
+  createSlotRecipeContext(selectDropdown);
 
 const ComboboxRoot = withSelectRootProvider(
   ComboboxPrimitive.Root,
 ) as unknown as typeof ComboboxPrimitive.Root;
 
-const ComboboxControl = withSelectContext(styled('div'), 'control');
+const ComboboxControl: SlotRecipeComponent<'div'> = withSelectContext(
+  styled('div'),
+  'control',
+);
 
 const ComboboxInput = withParts<ComboboxPrimitive.Input.Props>(
   ComboboxPrimitive.Input,
   'input',
 );
 
-const ComboboxTrigger = withSelectContext(ComboboxPrimitive.Trigger, 'trigger');
+const ComboboxTrigger: SlotRecipeComponent<typeof ComboboxPrimitive.Trigger> =
+  withSelectContext(ComboboxPrimitive.Trigger, 'trigger');
 
-const ComboboxIcon = withSelectContext(ComboboxPrimitive.Icon, 'indicator');
+const ComboboxIcon: SlotRecipeComponent<typeof ComboboxPrimitive.Icon> =
+  withSelectContext(ComboboxPrimitive.Icon, 'indicator');
 
 const ComboboxBackdrop = withParts<ComboboxPrimitive.Backdrop.Props>(
   ComboboxPrimitive.Backdrop,
@@ -34,18 +40,19 @@ const ComboboxBackdrop = withParts<ComboboxPrimitive.Backdrop.Props>(
 
 const ComboboxPortal = ComboboxPrimitive.Portal;
 
-const ComboboxPositioner = withDropdownProvider(
-  ComboboxPrimitive.Positioner,
-  'positioner',
-);
+const ComboboxPositioner: SlotRecipeComponent<
+  typeof ComboboxPrimitive.Positioner,
+  (typeof selectDropdown)['__type']
+> = withDropdownProvider(ComboboxPrimitive.Positioner, 'positioner');
 
-const ComboboxPopup = withDropdownContext(ComboboxPrimitive.Popup, 'content', {
-  defaultProps: {
-    style: {
-      width: 'var(--anchor-width)',
+const ComboboxPopup: SlotRecipeComponent<typeof ComboboxPrimitive.Popup> =
+  withDropdownContext(ComboboxPrimitive.Popup, 'content', {
+    defaultProps: {
+      style: {
+        width: 'var(--anchor-width)',
+      },
     },
-  },
-});
+  });
 
 const ComboboxArrow = withParts<ComboboxPrimitive.Arrow.Props>(
   ComboboxPrimitive.Arrow,
@@ -57,21 +64,24 @@ const ComboboxList = withParts<ComboboxPrimitive.List.Props>(
   'list',
 );
 
-const ComboboxItem = withDropdownContext(ComboboxPrimitive.Item, 'item');
+const ComboboxItem: SlotRecipeComponent<typeof ComboboxPrimitive.Item> =
+  withDropdownContext(ComboboxPrimitive.Item, 'item');
 
-const ComboboxItemText = withDropdownContext(styled('span'), 'itemText');
-
-const ComboboxItemIndicator = withDropdownContext(
-  ComboboxPrimitive.ItemIndicator,
-  'itemIndicator',
+const ComboboxItemText: SlotRecipeComponent<'span'> = withDropdownContext(
+  styled('span'),
+  'itemText',
 );
 
-const ComboboxGroup = withDropdownContext(ComboboxPrimitive.Group, 'itemGroup');
+const ComboboxItemIndicator: SlotRecipeComponent<
+  typeof ComboboxPrimitive.ItemIndicator
+> = withDropdownContext(ComboboxPrimitive.ItemIndicator, 'itemIndicator');
 
-const ComboboxGroupLabel = withDropdownContext(
-  ComboboxPrimitive.GroupLabel,
-  'itemGroupLabel',
-);
+const ComboboxGroup: SlotRecipeComponent<typeof ComboboxPrimitive.Group> =
+  withDropdownContext(ComboboxPrimitive.Group, 'itemGroup');
+
+const ComboboxGroupLabel: SlotRecipeComponent<
+  typeof ComboboxPrimitive.GroupLabel
+> = withDropdownContext(ComboboxPrimitive.GroupLabel, 'itemGroupLabel');
 
 const ComboboxSeparator = withParts<ComboboxPrimitive.Separator.Props>(
   ComboboxPrimitive.Separator,
@@ -126,7 +136,7 @@ const Component = <Value, Multiple extends boolean | undefined = false>(
   );
 };
 
-Component.displayName = 'Combobox';
+Object.assign(Component, { displayName: 'Combobox' });
 
 export const Combobox = Object.assign(Component, {
   Root: ComboboxRoot,

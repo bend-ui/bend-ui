@@ -5,12 +5,12 @@ export const gradients = defineSemanticTokens.gradients({
     DEFAULT: {
       value: {
         _light: {
-          type: 'linear',
+          type: 'linear' as const,
           placement: 'to bottom',
           stops: ['{colors.white}', '{colors.neutral.50}'],
         },
         _dark: {
-          type: 'linear',
+          type: 'linear' as const,
           placement: 'to bottom',
           stops: ['{colors.neutral.900}', '{colors.neutral.950}'],
         },
@@ -20,7 +20,7 @@ export const gradients = defineSemanticTokens.gradients({
   primary: {
     DEFAULT: {
       value: {
-        type: 'linear',
+        type: 'linear' as const,
         placement: 'to bottom',
         stops: ['{colors.primary.500}', '{colors.primary.600}'],
       },

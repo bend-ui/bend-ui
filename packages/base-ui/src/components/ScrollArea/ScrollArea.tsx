@@ -1,10 +1,10 @@
 import { ScrollArea as ScrollAreaPrimitive } from '@base-ui/react/scroll-area';
-import { createStyleContext } from '@bend-ui/styled-system/jsx';
+import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import { scrollArea } from '@bend-ui/styled-system/recipes';
 import * as React from 'react';
 import type { ComponentProps } from 'react';
 
-const { withProvider, withContext } = createStyleContext(scrollArea);
+const { withProvider, withContext } = createSlotRecipeContext(scrollArea);
 
 const ScrollAreaRoot = withProvider(ScrollAreaPrimitive.Root, 'root');
 const ScrollAreaViewport = withContext(
