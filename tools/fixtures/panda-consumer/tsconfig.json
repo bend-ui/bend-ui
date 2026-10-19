@@ -10,5 +10,5 @@
     "noEmit": true,
     "types": ["vite/client"]
   },
-  "include": ["src", "panda.config.ts", "vite.config.mts"]
+  "include": ["src", "panda*.config.ts", "vite.config.mts"]
 }

@@ -11,7 +11,7 @@ import {
 } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const root = fileURLToPath(new URL('../../', import.meta.url));
 const fixture = path.join(root, 'tools/fixtures/panda-consumer');
@@ -171,6 +171,105 @@ try {
     '\nPASS: packed install, manifest hydration, consumer token overrides, generated types and production build.',
   );
   console.log(`Inspect or serve the app at ${app}`);
+  for (const mode of ['extend', 'replace']) {
+    console.log(`\nChecking native recipe ${mode}`);
+    const scenario = path.join(fixture, 'recipe-scenarios');
+    for (const [from, to] of [
+      ['src/app/app.tsx', 'src/app/app.tsx'],
+      ['src/recipe-button.tsx', 'src/recipe-button.tsx'],
+      ['src/contract.tsx', 'src/contract.tsx'],
+      ['src/types.test.ts', 'src/types.test.ts'],
+      [`src/recipe-mode.${mode}.test.ts`, 'src/recipe-mode.test.ts'],
+    ]) {
+      cpSync(path.join(scenario, from), path.join(app, to));
+    }
+    const config = `panda.${mode}.config.ts`;
+    exec(['panda', 'codegen', '--config', config, '--clean']);
+    exec([
+      'panda',
+      'cssgen',
+      '--config',
+      config,
+      '--outfile',
+      'styled-system/styles.css',
+    ]);
+    exec(['tsc', '--project', 'tsconfig.json']);
+    exec(['vite', 'build', '--outDir', `dist-${mode}`]);
+    exec([
+      'vite',
+      'build',
+      '--ssr',
+      'src/contract.tsx',
+      '--outDir',
+      `dist-contract-${mode}`,
+    ]);
+    const { contract } = await import(
+      pathToFileURL(path.join(app, `dist-contract-${mode}/contract.js`)).href
+    );
+    const styles = readFileSync(
+      path.join(app, 'styled-system/styles.css'),
+      'utf8',
+    );
+    assert.ok(contract.buttonVariants.variant.includes('editorial'));
+    assert.ok(contract.buttonVariants.size.includes('jumbo'));
+    assert.ok(contract.textVariants.variant.includes('billboard'));
+    assert.ok(!contract.publishedVariants.variant.includes('editorial'));
+    assert.ok(!contract.publishedVariants.size.includes('jumbo'));
+    assert.match(contract.published, /Button__root--variant_primary/);
+    assert.match(contract.local, /Button__label/);
+    assert.doesNotMatch(contract.local, / (?:variant|size)=/);
+    const knownCompound = contract.knownCompound.root
+      .split(' ')
+      .find((value) => value.includes('--compound'));
+    assert.ok(knownCompound);
+    assert.ok(
+      !contract.published.includes(knownCompound),
+      'Packed components cannot emit newly generated compound classes',
+    );
+    assert.ok(styles.includes(`.${knownCompound}`));
+    assert.match(contract.sibling, /Card__root/);
+    assert.match(styles, /\.Card__root/);
+    const compound = contract.compound.root
+      .split(' ')
+      .find((value) => value.includes('--compound'));
+    assert.ok(compound, 'The consumer runtime must emit its compound class');
+    assert.ok(
+      !contract.plain.root.includes(compound),
+      'Compound must require both variant values',
+    );
+    assert.ok(
+      contract.local.includes(compound),
+      'The local component must use the generated compound runtime',
+    );
+    assert.match(
+      styles,
+      new RegExp(
+        String.raw`\.${compound}\s*\{[^}]*border-width:\s*${mode === 'extend' ? 5 : 9}px`,
+      ),
+    );
+    assert.match(
+      styles,
+      new RegExp(
+        String.raw`\.Button__root--variant_primary\s*\{[^}]*background-color:\s*${mode === 'extend' ? '#be123c' : '#1e40af'}`,
+      ),
+    );
+    if (mode === 'extend') {
+      assert.ok(contract.buttonVariants.variant.includes('danger'));
+      assert.ok(contract.buttonVariants.size.includes('sm'));
+      assert.ok(contract.textVariants.variant.includes('headline'));
+      assert.match(styles, /outline-offset:\s*7px/);
+    } else {
+      assert.ok(!contract.buttonVariants.variant.includes('danger'));
+      assert.ok(!contract.buttonVariants.size.includes('sm'));
+      assert.ok(!contract.textVariants.variant.includes('headline'));
+      assert.doesNotMatch(styles, /\.Button__root--variant_danger/);
+      assert.doesNotMatch(styles, /\.Text--variant_headline/);
+      assert.match(styles, /outline-offset:\s*13px/);
+    }
+    console.log(
+      `PASS: native recipe ${mode}, compound runtime, slots and published/generated type boundary.`,
+    );
+  }
 } catch (error) {
   if (error.stdout) console.error(error.stdout.toString());
   if (error.stderr) console.error(error.stderr.toString());
