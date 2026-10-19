@@ -11,11 +11,56 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
+    },
+    "./panda/*": "./dist/panda/*",
+    "./css": {
+      "types": "./styled-system/css/index.d.ts",
+      "default": "./styled-system/css/index.mjs"
+    },
+    "./css/*": {
+      "types": "./styled-system/css/*.d.ts",
+      "default": "./styled-system/css/*.mjs"
+    },
+    "./recipes": {
+      "types": "./styled-system/recipes/index.d.ts",
+      "default": "./styled-system/recipes/index.mjs"
+    },
+    "./recipes/*": {
+      "types": "./styled-system/recipes/*.d.ts",
+      "default": "./styled-system/recipes/*.mjs"
+    },
+    "./patterns": {
+      "types": "./styled-system/patterns/index.d.ts",
+      "default": "./styled-system/patterns/index.mjs"
+    },
+    "./patterns/*": {
+      "types": "./styled-system/patterns/*.d.ts",
+      "default": "./styled-system/patterns/*.mjs"
+    },
+    "./jsx": {
+      "types": "./styled-system/jsx/index.d.ts",
+      "default": "./styled-system/jsx/index.mjs"
+    },
+    "./jsx/*": {
+      "types": "./styled-system/jsx/*.d.ts",
+      "default": "./styled-system/jsx/*.mjs"
+    },
+    "./tokens": {
+      "types": "./styled-system/tokens/index.d.ts",
+      "default": "./styled-system/tokens/index.mjs"
+    },
+    "./helpers": {
+      "types": "./styled-system/helpers.d.ts",
+      "default": "./styled-system/helpers.mjs"
+    },
+    "./types": {
+      "types": "./styled-system/types/index.d.ts"
     }
   },
   "sideEffects": false,
   "files": [
-    "dist"
+    "dist",
+    "styled-system"
   ],
   "dependencies": {
     "@base-ui/react": "1.6.0",
@@ -35,6 +80,6 @@
   "scripts": {
     "prepare": "panda codegen",
     "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
-    "build": "tsup"
+    "build": "tsup && panda codegen && panda lib --files \"./**/*.{js,mjs}\""
   }
 }
