@@ -15,6 +15,7 @@ Design system tools for React
 ## Development
 
 - [Testing conventions](docs/testing.md)
+- [Packed Panda consumer spike](docs/panda-published-consumer.md)
 
 ### Nx Cloud authentication
 

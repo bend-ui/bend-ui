@@ -7,9 +7,9 @@
   "targets": {
     "build": {
       "executor": "nx:run-commands",
-      "outputs": ["{projectRoot}/dist"],
+      "outputs": ["{projectRoot}/dist", "{projectRoot}/styled-system"],
       "options": {
-        "command": "tsup",
+        "command": "pnpm run build",
         "cwd": "packages/base-ui"
       }
     },

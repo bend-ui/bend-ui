@@ -1,0 +1,18 @@
+{
+  "name": "panda-consumer",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/fixtures/panda-consumer/src",
+  "projectType": "application",
+  "tags": ["test:packaging"],
+  "implicitDependencies": ["base-ui"],
+  "targets": {
+    "verify": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["^build"],
+      "cache": false,
+      "options": {
+        "command": "node tools/scripts/verify-panda-consumer.mjs"
+      }
+    }
+  }
+}

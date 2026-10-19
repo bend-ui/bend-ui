@@ -38,3 +38,6 @@ jobs:
 
       - name: Test affected packages
         run: pnpm test:packages
+
+      - name: Verify packed Panda consumer
+        run: pnpm nx run panda-consumer:verify
