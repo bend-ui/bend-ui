@@ -18,14 +18,14 @@ To view a completed run, use `pnpm exec vite --host 127.0.0.1` from the printed 
 
 ## Package contract
 
-`base-ui:build` now runs the normal tsup build, Panda codegen, and `panda lib`, in that order. tsup cleans `dist`, so the machine artifacts must be generated afterward. The package includes both `dist` and `styled-system`.
+`base-ui:build` now runs the normal tsup build, Panda codegen with `--clean`, and `panda lib`, in that order. Cleaning removes stale generated modules before Panda infers helper exports, so local and fresh-checkout builds both advertise the generated `.js` files. tsup cleans `dist`, so the machine artifacts must be generated afterward. The package includes both `dist` and `styled-system`.
 
 Panda owns the generated helper subpath exports. The handwritten root export keeps the existing ESM/CJS/declaration contract. The tarball check requires:
 
 - `dist/panda/lib.json`
 - `dist/panda/preset.mjs`
 - `dist/panda/buildinfo.json`
-- `styled-system/css/index.mjs`
+- `styled-system/css/index.js`
 
 The fallback globs point to published JavaScript relative to `dist`, rather than unpublished `src`. Buildinfo is the primary extraction path. The consumer rejects stale-buildinfo diagnostics so source fallback cannot silently mask a packaging failure.
 

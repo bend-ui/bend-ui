@@ -15,43 +15,43 @@
     "./panda/*": "./dist/panda/*",
     "./css": {
       "types": "./styled-system/css/index.d.ts",
-      "default": "./styled-system/css/index.mjs"
+      "default": "./styled-system/css/index.js"
     },
     "./css/*": {
       "types": "./styled-system/css/*.d.ts",
-      "default": "./styled-system/css/*.mjs"
+      "default": "./styled-system/css/*.js"
     },
     "./recipes": {
       "types": "./styled-system/recipes/index.d.ts",
-      "default": "./styled-system/recipes/index.mjs"
+      "default": "./styled-system/recipes/index.js"
     },
     "./recipes/*": {
       "types": "./styled-system/recipes/*.d.ts",
-      "default": "./styled-system/recipes/*.mjs"
+      "default": "./styled-system/recipes/*.js"
     },
     "./patterns": {
       "types": "./styled-system/patterns/index.d.ts",
-      "default": "./styled-system/patterns/index.mjs"
+      "default": "./styled-system/patterns/index.js"
     },
     "./patterns/*": {
       "types": "./styled-system/patterns/*.d.ts",
-      "default": "./styled-system/patterns/*.mjs"
+      "default": "./styled-system/patterns/*.js"
     },
     "./jsx": {
       "types": "./styled-system/jsx/index.d.ts",
-      "default": "./styled-system/jsx/index.mjs"
+      "default": "./styled-system/jsx/index.js"
     },
     "./jsx/*": {
       "types": "./styled-system/jsx/*.d.ts",
-      "default": "./styled-system/jsx/*.mjs"
+      "default": "./styled-system/jsx/*.js"
     },
     "./tokens": {
       "types": "./styled-system/tokens/index.d.ts",
-      "default": "./styled-system/tokens/index.mjs"
+      "default": "./styled-system/tokens/index.js"
     },
     "./helpers": {
       "types": "./styled-system/helpers.d.ts",
-      "default": "./styled-system/helpers.mjs"
+      "default": "./styled-system/helpers.js"
     },
     "./types": {
       "types": "./styled-system/types/index.d.ts"
@@ -80,6 +80,6 @@
   "scripts": {
     "prepare": "panda codegen",
     "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
-    "build": "tsup && panda codegen && panda lib --files \"./**/*.{js,mjs}\""
+    "build": "tsup && panda codegen --clean && panda lib --files \"./**/*.{js,mjs}\""
   }
 }

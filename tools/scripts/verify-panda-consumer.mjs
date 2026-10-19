@@ -87,7 +87,7 @@ try {
         'dist/panda/lib.json',
         'dist/panda/preset.mjs',
         'dist/panda/buildinfo.json',
-        'styled-system/css/index.mjs',
+        'styled-system/css/index.js',
       ]) {
         assert.ok(
           entries.includes(`package/${file}`),
