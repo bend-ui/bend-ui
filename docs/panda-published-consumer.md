@@ -39,7 +39,7 @@ A local `definePreset()` supplies the `consumer` purple color token. The consume
 
 The verification checks the emitted CSS for the local raw token, semantic reference, radius, and Button recipe selectors/declarations. TypeScript checks a valid published Button variant, rejects an unknown variant, accepts the generated local token, and rejects an unknown token. Unused `@ts-expect-error` directives fail compilation if those negative contracts stop working.
 
-Recipe extension/replacement and consumer-added component variants remain BEN-31. Published component props currently retain the library's generated variant types; adding consumer tokens does not widen those component props.
+Recipe extension/replacement and consumer-added component variants are validated in the [BEN-31 follow-up](panda-recipe-customization.md). Published component props retain the library's generated variant types; adding consumer tokens does not widen those component props.
 
 ## Release limits
 
