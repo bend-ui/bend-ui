@@ -91,7 +91,14 @@ try {
       ]) {
         assert.ok(
           entries.includes(`package/${file}`),
-          `Tarball missing ${file}`,
+          `Tarball missing ${file}. Matching entries:\n${
+            entries
+              .filter((entry) =>
+                /^package\/(styled-system|dist\/panda)\//.test(entry),
+              )
+              .slice(0, 50)
+              .join('\n') || '(none)'
+          }`,
         );
       }
     }
