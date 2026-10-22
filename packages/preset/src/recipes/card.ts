@@ -12,7 +12,7 @@ export const cardRecipe = defineSlotRecipe({
     'section',
   ],
   base: {
-    root: { p: 'lg', rounded: '2xl', layerStyle: 'panel' },
+    root: { p: 'lg', rounded: 'surface', layerStyle: 'panel' },
     header: { mb: 'md' },
     title: { fontSize: 'lg', fontWeight: 'bold' },
     description: { mt: 'xs', color: 'text.weak' },

@@ -1,2 +1,1 @@
-export * from './create-theme';
-export * from './personalities';
+export * from './personalities/index';

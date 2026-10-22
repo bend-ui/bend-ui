@@ -6,25 +6,28 @@ export const tagRecipe = defineSlotRecipe({
   slots: ['root', 'label', 'closeButton', 'startContent', 'endContent'],
   base: {
     root: {
-      borderRadius: 'md',
+      borderRadius: 'control',
     },
   },
   variants: {
     size: {
       sm: {
         root: {
+          minHeight: 'control.sm',
           textStyle: 'sm',
           px: 'sm',
         },
       },
       md: {
         root: {
+          minHeight: 'control.md',
           textStyle: 'md',
           px: 'md',
         },
       },
       lg: {
         root: {
+          minHeight: 'control.lg',
           textStyle: 'lg',
           px: 'lg',
         },

@@ -22,13 +22,13 @@ export const scrollArea = defineSlotRecipe({
       display: 'flex',
       userSelect: 'none',
       touchAction: 'none',
-      padding: '1',
+      padding: 'xs',
       backgroundColor: 'transparent',
       _vertical: {
-        width: '3',
+        width: 'scrollbar',
       },
       _horizontal: {
-        height: '3',
+        height: 'scrollbar',
         flexDirection: 'column',
       },
     },

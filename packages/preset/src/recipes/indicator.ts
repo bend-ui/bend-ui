@@ -6,7 +6,7 @@ export const indicatorRecipe = defineSlotRecipe({
   base: {
     root: {
       display: 'inline-block',
-      size: 'xs',
+      size: 'indicator.xs',
       borderRadius: 'full',
     },
   },
@@ -26,20 +26,20 @@ export const indicatorRecipe = defineSlotRecipe({
     size: {
       xs: {
         root: {
-          width: 'xs',
-          height: 'xs',
+          width: 'indicator.xs',
+          height: 'indicator.xs',
         },
       },
       sm: {
         root: {
-          width: 'sm',
-          height: 'sm',
+          width: 'indicator.sm',
+          height: 'indicator.sm',
         },
       },
       md: {
         root: {
-          width: 'md',
-          height: 'md',
+          width: 'indicator.md',
+          height: 'indicator.md',
         },
       },
     },
