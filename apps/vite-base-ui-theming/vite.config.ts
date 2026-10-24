@@ -1,9 +1,9 @@
 /// <reference types="vitest/config" />
 import { defineConfig, searchForWorkspaceRoot } from 'vite';
 import react from '@vitejs/plugin-react';
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
-import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 import path from 'path';
+import { nxReadySignal } from '@nx/vite/plugins/nx-ready-signal.plugin';
 
 export default defineConfig(({ mode }) => {
   const isLevel2 = mode === 'level2';
@@ -15,14 +15,26 @@ export default defineConfig(({ mode }) => {
     server: {
       port: 4201,
       host: 'localhost',
+      hmr:
+        process.env.NX_TASK_TARGET_CONFIGURATION === 'production'
+          ? false
+          : undefined,
       fs: { allow: [searchForWorkspaceRoot(process.cwd())] },
     },
     preview: { port: 4201, host: 'localhost' },
-    plugins: [react(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
+    plugins: [
+      react(),
+      viteStaticCopy({
+        targets: [{ src: path.resolve(__dirname, '*.md'), dest: '.' }],
+        silent: true,
+      }),
+      nxReadySignal(),
+    ],
     define: {
       __CUSTOMIZATION_LEVEL__: JSON.stringify(isLevel2 ? 'Level 2' : 'Level 3'),
     },
     resolve: {
+      tsconfigPaths: true,
       conditions: ['source', 'import', 'module', 'browser', 'default'],
       alias: [
         {

@@ -1,12 +1,16 @@
 /// <reference types='vitest/config' />
 import { defineConfig } from 'vite';
+import path from 'node:path';
 import tsconfigPaths from 'vite-tsconfig-paths';
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 
 export default defineConfig({
   cacheDir: '../../node_modules/.vite/packages/preset',
 
-  plugins: [tsconfigPaths(), nxViteTsPaths()],
+  plugins: [
+    tsconfigPaths({
+      projects: [path.resolve(__dirname, '../../tsconfig.base.json')],
+    }),
+  ],
 
   test: {
     globals: true,

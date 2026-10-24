@@ -7,29 +7,22 @@
   "implicitDependencies": ["vite-base-ui"],
   "targets": {
     "e2e": {
-      "executor": "@nx/playwright:playwright",
-      "outputs": ["{workspaceRoot}/dist/.playwright/apps/vite-base-ui-e2e"],
-      "options": {
-        "config": "apps/vite-base-ui-e2e/playwright.config.ts"
-      }
+      "outputs": ["{workspaceRoot}/dist/.playwright/apps/vite-base-ui-e2e"]
     },
     "e2e-local": {
-      "executor": "@nx/playwright:playwright",
+      "executor": "nx:run-commands",
       "outputs": ["{workspaceRoot}/dist/.playwright/apps/vite-base-ui-e2e"],
       "options": {
-        "config": "apps/vite-base-ui-e2e/playwright.config.ts",
-        "project": ["chromium"],
-        "skipInstall": true
+        "cwd": "apps/vite-base-ui-e2e",
+        "command": "playwright test --config=playwright.config.ts --project=chromium"
       }
     },
     "e2e-visual": {
-      "executor": "@nx/playwright:playwright",
+      "executor": "nx:run-commands",
       "outputs": ["{workspaceRoot}/dist/.playwright/apps/vite-base-ui-e2e"],
       "options": {
-        "config": "apps/vite-base-ui-e2e/playwright.config.ts",
-        "grep": "@visual",
-        "project": ["chromium"],
-        "skipInstall": true
+        "cwd": "apps/vite-base-ui-e2e",
+        "command": "playwright test --config=playwright.config.ts --project=chromium --grep=@visual"
       }
     }
   }

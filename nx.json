@@ -16,47 +16,97 @@
       ],
       "cache": true
     },
-    "@nx/jest:jest": {
-      "inputs": ["default", "^default", "{workspaceRoot}/jest.preset.js"],
-      "cache": true,
-      "options": {
-        "passWithNoTests": true
-      },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true
-        }
-      }
-    },
-    "@nx/eslint:lint": {
-      "inputs": [
-        "default",
-        "^default",
-        "{workspaceRoot}/.eslintrc.json",
-        "{workspaceRoot}/eslint.config.cjs",
-        "{workspaceRoot}/tools/eslint-rules/**/*"
-      ],
-      "cache": true
-    },
     "@nx/js:tsc": {
       "cache": true,
       "dependsOn": ["^build"],
       "inputs": ["default", "^default"]
     },
-    "@nx/vite:build": {
-      "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["default", "^default"]
-    },
-    "build": {
-      "cache": true,
-      "dependsOn": ["^build"]
-    },
-    "@nx/vitest:test": {
-      "inputs": ["default", "^default"],
-      "cache": true
-    }
+    "build": [
+      {
+        "cache": true,
+        "dependsOn": ["^build"]
+      },
+      {
+        "filter": {
+          "plugin": "@nx/vite/plugin"
+        },
+        "defaultConfiguration": "production",
+        "configurations": {
+          "development": {
+            "mode": "development"
+          },
+          "production": {
+            "mode": "production"
+          }
+        }
+      },
+      {
+        "filter": {
+          "plugin": "@nx/next/plugin"
+        },
+        "configurations": {
+          "development": {}
+        }
+      }
+    ],
+    "preview": [
+      {
+        "filter": {
+          "plugin": "@nx/vite/plugin"
+        },
+        "defaultConfiguration": "development",
+        "configurations": {
+          "development": {
+            "mode": "development"
+          },
+          "production": {
+            "mode": "production"
+          }
+        }
+      }
+    ],
+    "serve": [
+      {
+        "filter": {
+          "plugin": "@nx/vite/plugin"
+        },
+        "defaultConfiguration": "development",
+        "configurations": {
+          "development": {
+            "mode": "development"
+          },
+          "production": {
+            "mode": "production"
+          }
+        }
+      },
+      {
+        "filter": {
+          "plugin": "@nx/next/plugin"
+        },
+        "defaultConfiguration": "development",
+        "configurations": {
+          "development": {},
+          "production": {}
+        }
+      }
+    ],
+    "test": [
+      {
+        "filter": {
+          "plugin": "@nx/jest/plugin"
+        },
+        "configurations": {
+          "ci": {
+            "ci": true,
+            "coverage": true
+          }
+        },
+        "options": {
+          "passWithNoTests": true
+        }
+      }
+    ]
   },
   "generators": {
     "@nx/react": {
@@ -98,20 +148,84 @@
         "serveStorybookTargetName": "storybook",
         "staticStorybookTargetName": "static-storybook",
         "testStorybookTargetName": "test-storybook"
-      },
-      "include": [
-        "packages/ark-ui/**/*",
-        "packages/base-ui/**/*",
-        "packages/ariakit/**/*",
-        "packages/react-aria/**/*"
-      ]
+      }
     },
     {
       "plugin": "@nx/eslint/plugin",
       "options": {
         "targetName": "lint"
       }
+    },
+    {
+      "plugin": "@nx/vitest",
+      "options": {
+        "testMode": "run",
+        "testTargetName": "test"
+      },
+      "include": [
+        "apps/vite-ark-ui/**/*",
+        "apps/vite-base-ui/**/*",
+        "apps/vite-base-ui-theming/**/*",
+        "packages/ariakit/**/*",
+        "packages/ark-ui/**/*",
+        "packages/base-ui/**/*",
+        "packages/cli/**/*",
+        "packages/config/**/*",
+        "packages/preset/**/*",
+        "packages/react-aria/**/*",
+        "packages/react-utils/**/*"
+      ]
+    },
+    {
+      "plugin": "@nx/playwright/plugin",
+      "options": {
+        "targetName": "e2e",
+        "ciTargetName": "e2e-ci"
+      }
+    },
+    {
+      "plugin": "@nx/js/typescript",
+      "options": {
+        "typecheck": {
+          "targetName": "typecheck"
+        }
+      }
+    },
+    {
+      "plugin": "@nx/vite/plugin",
+      "options": {
+        "devTargetName": "dev",
+        "typecheckTargetName": "typecheck",
+        "buildTargetName": "build",
+        "serveTargetName": "serve",
+        "previewTargetName": "preview",
+        "serveStaticTargetName": "serve-static"
+      },
+      "include": [
+        "apps/vite-ark-ui/**/*",
+        "apps/vite-base-ui/**/*",
+        "apps/vite-base-ui-theming/**/*"
+      ]
+    },
+    {
+      "plugin": "@nx/jest/plugin",
+      "options": {
+        "targetName": "test"
+      },
+      "include": ["apps/playground-panda/**/*", "apps/website/**/*"]
+    },
+    {
+      "plugin": "@nx/next/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "devTargetName": "serve",
+        "startTargetName": "start",
+        "serveStaticTargetName": "serve-static"
+      }
     }
   ],
-  "analytics": true
+  "analytics": true,
+  "affected": {
+    "legacy": true
+  }
 }

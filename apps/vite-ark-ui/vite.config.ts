@@ -1,9 +1,9 @@
 /// <reference types='vitest/config' />
 import { defineConfig, searchForWorkspaceRoot } from 'vite';
 import react from '@vitejs/plugin-react';
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
-import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 import path from 'path';
+import { nxReadySignal } from '@nx/vite/plugins/nx-ready-signal.plugin';
 
 export default defineConfig({
   root: __dirname,
@@ -11,6 +11,10 @@ export default defineConfig({
   server: {
     port: 4200,
     host: 'localhost',
+    hmr:
+      process.env.NX_TASK_TARGET_CONFIGURATION === 'production'
+        ? false
+        : undefined,
     fs: {
       allow: [
         searchForWorkspaceRoot(process.cwd()),
@@ -22,8 +26,16 @@ export default defineConfig({
     port: 4300,
     host: 'localhost',
   },
-  plugins: [react({}), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
+  plugins: [
+    react({}),
+    viteStaticCopy({
+      targets: [{ src: path.resolve(__dirname, '*.md'), dest: '.' }],
+      silent: true,
+    }),
+    nxReadySignal(),
+  ],
   resolve: {
+    tsconfigPaths: true,
     conditions: ['source', 'import', 'module', 'browser', 'default'],
     alias: [
       {
@@ -32,10 +44,6 @@ export default defineConfig({
       },
     ],
   },
-  // Uncomment this if you are using workers.
-  // worker: {
-  //  plugins: [ nxViteTsPaths() ],
-  // },
   build: {
     outDir: '../../dist/apps/vite-ark-ui',
     emptyOutDir: true,

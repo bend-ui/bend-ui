@@ -3,9 +3,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
 import { playwright } from '@vitest/browser-playwright';
+import { nxReadySignal } from '@nx/vite/plugins/nx-ready-signal.plugin';
 
 const dirname =
   typeof __dirname !== 'undefined'
@@ -13,6 +13,9 @@ const dirname =
     : path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
+  resolve: {
+    tsconfigPaths: true,
+  },
   cacheDir: '../../node_modules/.vite/storybook',
 
   server: {
@@ -25,7 +28,7 @@ export default defineConfig({
     host: 'localhost',
   },
 
-  plugins: [react(), nxViteTsPaths()],
+  plugins: [react(), nxReadySignal()],
 
   define: {
     'import.meta.vitest': undefined,

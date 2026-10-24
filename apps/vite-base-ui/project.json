@@ -6,59 +6,21 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@nx/vite:build",
-      "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
+      "outputs": [
+        "{projectRoot}/{options.outDir}",
+        "{workspaceRoot}/dist/apps/vite-base-ui"
+      ],
       "options": {
-        "outputPath": "dist/apps/vite-base-ui"
-      },
-      "configurations": {
-        "development": {
-          "mode": "development"
-        },
-        "production": {
-          "mode": "production"
-        }
-      }
-    },
-    "serve": {
-      "executor": "@nx/vite:dev-server",
-      "defaultConfiguration": "development",
-      "options": {
-        "buildTarget": "vite-base-ui:build"
-      },
-      "configurations": {
-        "development": {
-          "buildTarget": "vite-base-ui:build:development",
-          "hmr": true
-        },
-        "production": {
-          "buildTarget": "vite-base-ui:build:production",
-          "hmr": false
-        }
-      }
-    },
-    "preview": {
-      "dependsOn": ["build"],
-      "executor": "@nx/vite:preview-server",
-      "defaultConfiguration": "development",
-      "options": {
-        "buildTarget": "vite-base-ui:build"
-      },
-      "configurations": {
-        "development": {
-          "buildTarget": "vite-base-ui:build:development"
-        },
-        "production": {
-          "buildTarget": "vite-base-ui:build:production"
-        }
+        "outDir": "../../dist/apps/vite-base-ui"
       }
     },
     "test": {
-      "executor": "@nx/vitest:test",
-      "outputs": ["{options.reportsDirectory}"],
+      "outputs": [
+        "{projectRoot}/{options.coverage.reportsDirectory}",
+        "{workspaceRoot}/coverage/apps/vite-base-ui"
+      ],
       "options": {
-        "reportsDirectory": "{projectRoot}/../../coverage/apps/vite-base-ui"
+        "coverage.reportsDirectory": "../../coverage/apps/vite-base-ui"
       }
     },
     "serve-static": {
@@ -67,6 +29,9 @@
       "options": {
         "buildTarget": "vite-base-ui:build",
         "spa": true
+      },
+      "readyWhen": {
+        "signal": true
       }
     }
   }

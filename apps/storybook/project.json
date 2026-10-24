@@ -6,23 +6,27 @@
   "tags": ["app"],
   "targets": {
     "storybook": {
-      "executor": "@nx/storybook:storybook",
       "options": {
         "port": 4400,
-        "configDir": "apps/storybook/.storybook"
+        "config-dir": ".storybook"
       },
       "configurations": {
         "ci": {
-          "quiet": true
+          "args": ["--quiet"]
         }
       }
     },
     "build-storybook": {
-      "executor": "@nx/storybook:build",
-      "outputs": ["{workspaceRoot}/dist/storybook/storybook"],
+      "outputs": [
+        "{workspaceRoot}/dist/storybook/storybook",
+        "{projectRoot}/storybook-static",
+        "{projectRoot}/{options.output-dir}",
+        "{projectRoot}/{options.outputDir}",
+        "{projectRoot}/{options.o}"
+      ],
       "options": {
-        "outputDir": "dist/storybook/storybook",
-        "configDir": "apps/storybook/.storybook"
+        "config-dir": ".storybook",
+        "output-dir": "../../dist/storybook/storybook"
       },
       "configurations": {
         "ci": {
