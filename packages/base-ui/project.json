@@ -5,6 +5,20 @@
   "projectType": "library",
   "tags": ["ui"],
   "targets": {
+    "typecheck": {
+      "cache": true,
+      "inputs": ["default", "^default"],
+      "dependsOn": ["^build"],
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "packages/base-ui",
+        "commands": [
+          "tsc -p tsconfig.lib.json --noEmit",
+          "tsc -p tsconfig.spec.json --noEmit"
+        ],
+        "parallel": false
+      }
+    },
     "build": {
       "executor": "nx:run-commands",
       "outputs": ["{projectRoot}/dist", "{projectRoot}/styled-system"],

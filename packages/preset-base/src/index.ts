@@ -23,3 +23,4 @@ export default definePreset({
 });
 
 export * from './recipes';
+export * from './contracts';
