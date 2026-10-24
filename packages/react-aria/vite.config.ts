@@ -1,13 +1,18 @@
 /// <reference types='vitest/config' />
 import { defineConfig } from 'vite';
+import path from 'node:path';
 import react from '@vitejs/plugin-react';
 import tsconfigPaths from 'vite-tsconfig-paths';
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 
 export default defineConfig({
   cacheDir: '../../node_modules/.vite/packages/react-aria',
 
-  plugins: [react(), tsconfigPaths(), nxViteTsPaths()],
+  plugins: [
+    react(),
+    tsconfigPaths({
+      projects: [path.resolve(__dirname, '../../tsconfig.base.json')],
+    }),
+  ],
 
   test: {
     globals: true,

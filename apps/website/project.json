@@ -6,50 +6,40 @@
   "tags": ["app"],
   "targets": {
     "build": {
-      "executor": "@nx/next:build",
-      "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/apps/website",
-        "webpack": true
+        "command": "next build --webpack"
       },
+      "defaultConfiguration": "production",
       "configurations": {
-        "development": {
-          "outputPath": "apps/website"
-        },
+        "development": {},
         "production": {}
-      }
+      },
+      "outputs": [
+        "{workspaceRoot}/dist/apps/website/.next",
+        "{projectRoot}/.next"
+      ]
     },
     "serve": {
-      "executor": "@nx/next:server",
-      "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "website:build",
-        "dev": true,
         "port": 4200
       },
       "configurations": {
-        "development": {
-          "buildTarget": "website:build:development",
-          "dev": true
-        },
         "production": {
-          "buildTarget": "website:build:production",
-          "dev": false
+          "command": "pnpm exec nx run website:start"
         }
       }
     },
     "export": {
-      "executor": "@nx/next:export",
+      "executor": "nx:run-commands",
+      "cache": true,
+      "dependsOn": ["^build"],
+      "outputs": ["{workspaceRoot}/dist/apps/website/export"],
       "options": {
-        "buildTarget": "website:build:production"
-      }
-    },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
-      "options": {
-        "jestConfig": "apps/website/jest.config.ts"
+        "cwd": "apps/website",
+        "command": "next build --webpack",
+        "env": {
+          "BEND_NEXT_EXPORT": "true"
+        }
       }
     }
   }

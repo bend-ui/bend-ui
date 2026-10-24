@@ -6,59 +6,21 @@
   "tags": ["example", "app"],
   "targets": {
     "build": {
-      "executor": "@nx/vite:build",
-      "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
+      "outputs": [
+        "{projectRoot}/{options.outDir}",
+        "{workspaceRoot}/dist/apps/vite-ark-ui"
+      ],
       "options": {
-        "outputPath": "dist/apps/vite-ark-ui"
-      },
-      "configurations": {
-        "development": {
-          "mode": "development"
-        },
-        "production": {
-          "mode": "production"
-        }
-      }
-    },
-    "serve": {
-      "executor": "@nx/vite:dev-server",
-      "defaultConfiguration": "development",
-      "options": {
-        "buildTarget": "vite-ark-ui:build"
-      },
-      "configurations": {
-        "development": {
-          "buildTarget": "vite-ark-ui:build:development",
-          "hmr": true
-        },
-        "production": {
-          "buildTarget": "vite-ark-ui:build:production",
-          "hmr": false
-        }
-      }
-    },
-    "preview": {
-      "dependsOn": ["build"],
-      "executor": "@nx/vite:preview-server",
-      "defaultConfiguration": "development",
-      "options": {
-        "buildTarget": "vite-ark-ui:build"
-      },
-      "configurations": {
-        "development": {
-          "buildTarget": "vite-ark-ui:build:development"
-        },
-        "production": {
-          "buildTarget": "vite-ark-ui:build:production"
-        }
+        "outDir": "../../dist/apps/vite-ark-ui"
       }
     },
     "test": {
-      "executor": "@nx/vitest:test",
-      "outputs": ["{options.reportsDirectory}"],
+      "outputs": [
+        "{projectRoot}/{options.coverage.reportsDirectory}",
+        "{workspaceRoot}/coverage/apps/vite-ark-ui"
+      ],
       "options": {
-        "reportsDirectory": "{projectRoot}/../../coverage/apps/vite-ark-ui"
+        "coverage.reportsDirectory": "../../coverage/apps/vite-ark-ui"
       }
     },
     "serve-static": {
@@ -67,6 +29,9 @@
       "options": {
         "buildTarget": "vite-ark-ui:build",
         "spa": true
+      },
+      "readyWhen": {
+        "signal": true
       }
     }
   }

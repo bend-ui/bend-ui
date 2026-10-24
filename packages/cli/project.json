@@ -18,11 +18,9 @@
       "dependsOn": ["build"]
     },
     "test": {
-      "executor": "@nx/vitest:test",
-      "outputs": ["{workspaceRoot}/coverage/packages/cli"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "{projectRoot}/../../coverage/packages/cli"
+        "coverage.reportsDirectory": "../../coverage/packages/cli"
       }
     }
   }

@@ -14,11 +14,9 @@
       }
     },
     "test": {
-      "executor": "@nx/vitest:test",
-      "outputs": ["{workspaceRoot}/coverage/packages/react-utils"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "{projectRoot}/../../coverage/packages/react-utils"
+        "coverage.reportsDirectory": "../../coverage/packages/react-utils"
       }
     }
   }
