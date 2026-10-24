@@ -82,7 +82,7 @@ AppShell/Sidebar operational patterns).
 | Collapsible | v0 | implemented | — | ✓ | — |
 | Combobox | v0 | implemented | — | ✓ | — |
 | ContextMenu | v0 | implemented | — | ✓ | — |
-| Dialog | v0 | implemented | — | ✓ | — |
+| Dialog | v0 | implemented | ✓ | ✓ | — |
 | Drawer | v0 | implemented | — | ✓ | — |
 | Field | v0 | implemented | ✓ | ✓ | — |
 | Fieldset | v0 | implemented | — | ✓ | — |
@@ -104,7 +104,7 @@ AppShell/Sidebar operational patterns).
 | Radio | v0 | implemented | — | ✓ | — |
 | ScrollArea | v0 | implemented | — | ✓ | — |
 | SegmentedControl | v0 | implemented | — | ✓ | — |
-| Select | v0 | implemented | — | ✓ | — |
+| Select | v0 | implemented | ✓ | ✓ | — |
 | Separator | v0 | implemented | — | ✓ | — |
 | Sidebar | covered-by-pattern | implemented | — | ✓ | — |
 | Slider | v0 | implemented | — | ✓ | — |
