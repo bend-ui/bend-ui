@@ -3,7 +3,7 @@ Thanks for contributing to Bend UI. Keep the change focused and call out any new
 runtime dependencies, public API changes, or work that should land first.
 -->
 
-Closes # <!-- GitHub issue number -->
+<!-- If applicable, add `Closes #123` with the actual GitHub issue number. -->
 
 ## Summary
 

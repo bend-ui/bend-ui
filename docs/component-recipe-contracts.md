@@ -84,7 +84,5 @@ This is a metadata prototype, not a new docs generator, schema-validation CLI or
 
 Run `pnpm nx test preset` for the real-preset integration and positive/negative compatibility tests. Run `pnpm nx build preset-base` for the exported schema and validator declarations. No component rendering or styling changes are part of this task.
 
-Verified on 19 October 2026: all 39 preset tests passed, including 11 contract cases. Structural and design preset builds passed, and the metadata/validator loaded from both built ESM and CommonJS entry points. Targeted lint passed with only the existing unused-import warnings in the ESLint configuration files.
-
 - [BEN-32](https://linear.app/benoit-deziel/issue/BEN-32/define-public-component-anatomy-and-recipe-contracts)
 - [Canonical state-attribute contract](adr/0002-canonical-state-attribute-contract.md)
