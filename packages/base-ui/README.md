@@ -12,7 +12,7 @@ npm install @bend-ui/base-ui
 
 This package requires the following peer dependencies:
 
-- `@pandacss/dev` (^1)
+- `@pandacss/dev` (^2.2.0)
 - `react` (^19)
 - `react-dom` (^19)
 
@@ -70,6 +70,9 @@ function App() {
 ```
 
 ## Development
+
+See [Base UI composition with Panda v2](../../docs/base-ui-panda-contexts.md)
+for context factories, prop collisions, slots, refs and portal validation.
 
 ### Build
 
