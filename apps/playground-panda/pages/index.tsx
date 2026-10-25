@@ -4,7 +4,7 @@ import { center, container, grid } from '@bend-ui/styled-system/patterns';
 import { Button, ButtonGroup, Card, Heading, Paragraph } from '@bend-ui/ark-ui';
 
 export function Index() {
-  const [theme, setTheme] = useState('quark');
+  const [theme, setTheme] = useState('stratus');
 
   useEffect(() => {
     document.documentElement.setAttribute('data-panda-theme', theme);
@@ -13,9 +13,12 @@ export function Index() {
   return (
     <div className={container({ h: 'screen' })}>
       <ButtonGroup>
-        <Button onClick={() => setTheme('quark')}>Quark</Button>
-        <Button onClick={() => setTheme('neutron')}>Neutron</Button>
-        <Button onClick={() => setTheme('proton')}>Proton</Button>
+        <Button onClick={() => setTheme('stratus')}>Stratus</Button>
+        <Button onClick={() => setTheme('solstice')}>Solstice</Button>
+        <Button onClick={() => setTheme('volt')}>Volt</Button>
+        <Button onClick={() => setTheme('nebula')}>Nebula</Button>
+        <Button onClick={() => setTheme('canopy')}>Canopy</Button>
+        <Button onClick={() => setTheme('aster')}>Aster</Button>
       </ButtonGroup>
       <div className={center({ h: 'full' })}>
         <div className={grid({ columns: 3, gap: '6' })}>

@@ -8,7 +8,7 @@ export const badgeRecipe = defineSlotRecipe({
       fontSize: 'xs',
       lineHeight: 'none',
       fontWeight: 'medium',
-      rounded: 'sm',
+      rounded: 'control',
       paddingX: 'sm',
       paddingY: 'xs',
       color: 'white',

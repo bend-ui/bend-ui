@@ -6,9 +6,9 @@ export const alertRecipe = defineSlotRecipe({
   base: {
     root: {
       padding: 'md',
-      borderRadius: 'base',
+      borderRadius: 'surface',
       gap: 'md',
-      borderWidth: '1px',
+      borderWidth: 'base',
       borderStyle: 'solid',
     },
     icon: {

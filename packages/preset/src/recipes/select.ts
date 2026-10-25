@@ -22,7 +22,7 @@ export const selectRecipe = defineSlotRecipe({
   base: {
     control: {
       gap: 'sm',
-      rounded: 'md',
+      rounded: 'control',
       backgroundColor: 'fill',
       border: 'base',
     },
@@ -30,6 +30,7 @@ export const selectRecipe = defineSlotRecipe({
       flex: '1 1 auto',
       display: 'flex',
       alignItems: 'center',
+      minHeight: 'control.md',
       py: 'sm',
       px: 'md',
       gap: 'sm',
@@ -66,7 +67,7 @@ export const selectDropdownRecipe = defineSlotRecipe({
   className: 'SelectDropdown',
   base: {
     content: {
-      rounded: 'md',
+      rounded: 'overlay',
       layerStyle: 'overlay',
       py: 'sm',
       px: 'md',
@@ -81,6 +82,7 @@ export const selectDropdownRecipe = defineSlotRecipe({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
+      minHeight: 'control.md',
       gap: 'sm',
       _hover: {
         backgroundColor: 'fill.hover',

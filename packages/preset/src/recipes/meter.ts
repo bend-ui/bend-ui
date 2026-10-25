@@ -28,8 +28,8 @@ export const meter = defineSlotRecipe({
       bg: 'fill.primary',
       borderRadius: 'full',
       transitionProperty: 'width',
-      transitionDuration: 'slowest',
-      transitionTimingFunction: 'easeInOut',
+      transitionDuration: 'slow',
+      transitionTimingFunction: 'default',
     },
   },
 });

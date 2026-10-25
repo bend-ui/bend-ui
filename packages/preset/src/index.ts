@@ -9,7 +9,7 @@ import { textStyles } from './textStyles';
 import { layerStyles } from './layerStyles';
 import { keyframes } from './keyframes';
 import { globalCss } from './globalCss';
-import { createTheme, personalityThemes } from './themes';
+import { personalityThemes } from './themes/personality-themes';
 import { conditions } from './conditions';
 
 const bendPreset = definePreset({
@@ -36,25 +36,7 @@ const bendPreset = definePreset({
   },
   globalCss,
   themes: {
-    default: createTheme(),
-    proton: createTheme({
-      primaryColor: 'indigo',
-      neutralColor: 'slate',
-      defaultPrimaryColor: '500',
-      defaultNeutralColor: '500',
-    }),
-    neutron: createTheme({
-      primaryColor: 'amber',
-      neutralColor: 'sand',
-      defaultPrimaryColor: '500',
-      defaultNeutralColor: '500',
-    }),
-    quark: createTheme({
-      primaryColor: 'lime',
-      neutralColor: 'olive',
-      defaultPrimaryColor: '500',
-      defaultNeutralColor: '500',
-    }),
+    default: personalityThemes.stratus,
     ...personalityThemes,
   },
 });
@@ -80,9 +62,9 @@ export {
   type NamedThemeColor,
 } from './tokens/theme-colors';
 export {
-  personalityThemes,
+  defineThemePersonality,
   themePersonalities,
-  themePersonalityCatalog,
+  themePersonalityIds,
   type ThemePersonality,
   type ThemePersonalityName,
 } from './themes';

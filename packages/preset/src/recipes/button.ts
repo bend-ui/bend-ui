@@ -6,8 +6,8 @@ export const buttonRecipe = defineSlotRecipe({
   slots: ['root', 'label', 'icon', 'spinner'],
   base: {
     root: {
-      rounded: 'md',
-      borderWidth: '1px',
+      rounded: 'control',
+      borderWidth: 'base',
       borderStyle: 'solid',
       borderColor: 'transparent',
       fontWeight: 'medium',
@@ -15,7 +15,7 @@ export const buttonRecipe = defineSlotRecipe({
       overflow: 'hidden',
       transitionProperty: 'transform',
       transitionDuration: 'fast',
-      transitionTimingFunction: 'ease-in-out',
+      transitionTimingFunction: 'default',
       _focusVisible: {
         layerStyle: 'focus',
       },
@@ -24,7 +24,7 @@ export const buttonRecipe = defineSlotRecipe({
         cursor: 'disabled',
       },
       _active: {
-        transform: 'scale(0.9)',
+        transform: 'scale(0.96)',
       },
     },
     label: {
@@ -50,10 +50,10 @@ export const buttonRecipe = defineSlotRecipe({
           color: 'text.primary.inverse.strong',
           backgroundColor: 'fill.primary',
           borderColor: 'stroke.primary',
-          boxShadow: 'xs',
+          boxShadow: 'surface',
           _notDisabled: {
             _hover: {
-              backgroundColor: 'fill.primary.fill.hover',
+              backgroundColor: 'fill.primary.hover',
             },
             _active: {
               backgroundColor: 'fill.primary.active',
@@ -108,20 +108,22 @@ export const buttonRecipe = defineSlotRecipe({
     size: {
       sm: {
         root: {
+          minHeight: 'control.sm',
           py: 'xs',
           px: 'sm',
-          gap: '1',
+          gap: 'xs',
           fontSize: 'xs',
         },
         label: {
-          px: '1',
+          px: 'xs',
         },
       },
       md: {
         root: {
+          minHeight: 'control.md',
           py: 'sm',
           px: 'md',
-          gap: '1',
+          gap: 'xs',
           fontSize: 'sm',
         },
         label: {
@@ -130,9 +132,10 @@ export const buttonRecipe = defineSlotRecipe({
       },
       lg: {
         root: {
+          minHeight: 'control.lg',
           py: 'md',
           px: 'lg',
-          gap: '1',
+          gap: 'xs',
           fontSize: 'lg',
         },
         label: {

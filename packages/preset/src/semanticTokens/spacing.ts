@@ -1,9 +1,10 @@
 import { defineSemanticTokens } from '@pandacss/dev';
+import { stratusPersonality } from '../themes/personalities/stratus';
 
 export const spacing = defineSemanticTokens.spacing({
-  base: { value: '{spacing.3}' },
-  xs: { value: '{spacing.1}' },
-  sm: { value: '{spacing.2}' },
-  md: { value: '{spacing.3}' },
-  lg: { value: '{spacing.5}' },
+  base: { value: stratusPersonality.density.spacing.md },
+  xs: { value: stratusPersonality.density.spacing.xs },
+  sm: { value: stratusPersonality.density.spacing.sm },
+  md: { value: stratusPersonality.density.spacing.md },
+  lg: { value: stratusPersonality.density.spacing.lg },
 });
