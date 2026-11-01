@@ -6,8 +6,10 @@
   "tags": ["app"],
   "targets": {
     "serve": {
+      "dependsOn": ["prepare"],
       "options": {
-        "port": 4202
+        "port": 4202,
+        "command": "next dev --webpack"
       },
       "configurations": {
         "production": {
@@ -18,11 +20,11 @@
     "export": {
       "executor": "nx:run-commands",
       "cache": true,
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "prepare"],
       "outputs": ["{workspaceRoot}/dist/apps/playground-panda/export"],
       "options": {
         "cwd": "apps/playground-panda",
-        "command": "next build",
+        "command": "next build --webpack",
         "env": {
           "BEND_NEXT_EXPORT": "true"
         }
@@ -37,7 +39,40 @@
       "outputs": [
         "{workspaceRoot}/dist/apps/playground-panda/.next",
         "{projectRoot}/.next"
-      ]
+      ],
+      "dependsOn": ["^build", "prepare"],
+      "options": {
+        "command": "next build --webpack"
+      }
+    },
+    "prepare": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["^build"],
+      "outputs": ["{projectRoot}/styled-system"],
+      "options": {
+        "cwd": "apps/playground-panda",
+        "parallel": false,
+        "commands": [
+          "panda codegen --clean",
+          "panda cssgen --outfile styled-system/styles.css"
+        ]
+      }
+    },
+    "test": {
+      "dependsOn": ["^build", "prepare"]
+    },
+    "typecheck": {
+      "dependsOn": ["build"],
+      "executor": "nx:run-commands",
+      "cache": true,
+      "options": {
+        "cwd": "apps/playground-panda",
+        "commands": [
+          "tsc -p tsconfig.json --noEmit",
+          "tsc -p tsconfig.spec.json --noEmit"
+        ],
+        "parallel": false
+      }
     }
   }
 }

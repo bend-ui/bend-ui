@@ -454,7 +454,7 @@ const createPersonalityTheme = (
         overlay: { value: personality.elevation.overlay },
       },
       sizes: {
-        control: { value: personality.density.controlHeight },
+        control: { DEFAULT: { value: personality.density.controlHeight } },
       },
       spacing: {
         base: { value: personality.density.spacing.md },

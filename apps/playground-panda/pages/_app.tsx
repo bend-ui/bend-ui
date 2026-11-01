@@ -6,21 +6,19 @@ import { Button, Dialog } from '@bend-ui/ark-ui';
 
 import type { AppProps } from 'next/app';
 import './styles.css';
+import '../styled-system/styles.css';
 
 function CustomApp({ Component, pageProps }: AppProps) {
   const [open, setOpen] = useState(false);
   useEffect(() => {
-    document.addEventListener('keydown', (event) => {
-      const keyName = event.key;
-
-      if (event.metaKey && keyName === 'k') {
+    const openCommandDialog = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
+        event.preventDefault();
         setOpen(true);
       }
-    });
-
-    return () => {
-      document.removeEventListener('keydown', () => ({}));
     };
+    document.addEventListener('keydown', openCommandDialog);
+    return () => document.removeEventListener('keydown', openCommandDialog);
   }, []);
 
   return (
@@ -29,14 +27,17 @@ function CustomApp({ Component, pageProps }: AppProps) {
         <title>Welcome to playground-panda!</title>
       </Head>
       <main>
-        <Dialog.Root open={open}>
-          <Dialog.Content>
-            <Dialog.Title>Hello</Dialog.Title>
-            <Dialog.Description>Hello</Dialog.Description>
+        <Dialog.Root open={open} onOpenChange={({ open }) => setOpen(open)}>
+          <Dialog.Backdrop />
+          <Dialog.Positioner>
             <Dialog.Content>
-              <Button onClick={() => setOpen(false)}>Hello</Button>
+              <Dialog.Title>Quick actions</Dialog.Title>
+              <Dialog.Description>
+                Navigate the playground demos.
+              </Dialog.Description>
+              <Button onClick={() => setOpen(false)}>Close</Button>
             </Dialog.Content>
-          </Dialog.Content>
+          </Dialog.Positioner>
         </Dialog.Root>
         <Component {...pageProps} />
       </main>

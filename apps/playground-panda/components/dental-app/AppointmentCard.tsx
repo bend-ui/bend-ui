@@ -1,11 +1,5 @@
-import {
-  Button,
-  ButtonGroup,
-  Card,
-  Grid,
-  Heading,
-  Paragraph,
-} from '@bend-ui/ark-ui';
+import { Button } from '@bend-ui/ark-ui';
+import { Card, Grid, Heading, Paragraph, Stack } from '@bend-ui/base-ui';
 
 interface AppointmentCardProps {
   data: any;
@@ -15,7 +9,7 @@ const AppointmentCard = (props: AppointmentCardProps) => {
   const { data } = props;
 
   return (
-    <Card withBorder>
+    <Card>
       <Card.Section>#{data.id}</Card.Section>
       <Card.Section>
         <Grid columns={2}>
@@ -50,10 +44,10 @@ const AppointmentCard = (props: AppointmentCardProps) => {
         </Grid>
       </Card.Section>
       <Card.Section>
-        <ButtonGroup>
+        <Stack direction="row">
           <Button>Decline</Button>
           <Button>Approve</Button>
-        </ButtonGroup>
+        </Stack>
       </Card.Section>
     </Card>
   );

@@ -1,4 +1,5 @@
 import { defineSlotRecipe } from '@pandacss/dev';
+import { controlSizes } from './control-sizes';
 
 export const buttonRecipe = defineSlotRecipe({
   description: 'Button styles',
@@ -6,25 +7,19 @@ export const buttonRecipe = defineSlotRecipe({
   slots: ['root', 'label', 'icon', 'spinner'],
   base: {
     root: {
-      rounded: 'md',
+      rounded: 'control',
       borderWidth: '1px',
       borderStyle: 'solid',
       borderColor: 'transparent',
       fontWeight: 'medium',
       position: 'relative',
       overflow: 'hidden',
-      transitionProperty: 'transform',
-      transitionDuration: 'fast',
-      transitionTimingFunction: 'ease-in-out',
       _focusVisible: {
         layerStyle: 'focus',
       },
       _disabled: {
         opacity: 'state.disabled',
         cursor: 'disabled',
-      },
-      _active: {
-        transform: 'scale(0.9)',
       },
     },
     label: {
@@ -106,39 +101,9 @@ export const buttonRecipe = defineSlotRecipe({
       },
     },
     size: {
-      sm: {
-        root: {
-          py: 'xs',
-          px: 'sm',
-          gap: '1',
-          fontSize: 'xs',
-        },
-        label: {
-          px: '1',
-        },
-      },
-      md: {
-        root: {
-          py: 'sm',
-          px: 'md',
-          gap: '1',
-          fontSize: 'sm',
-        },
-        label: {
-          px: 'xs',
-        },
-      },
-      lg: {
-        root: {
-          py: 'md',
-          px: 'lg',
-          gap: '1',
-          fontSize: 'lg',
-        },
-        label: {
-          px: 'xs',
-        },
-      },
+      sm: { root: controlSizes.sm },
+      md: { root: controlSizes.md },
+      lg: { root: controlSizes.lg },
     },
     isRounded: {
       true: {
