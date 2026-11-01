@@ -1,9 +1,9 @@
 import RootLayout from '../../app/layout';
 import pandaConfig from '../../panda.config';
 
-jest.mock('@fontsource-variable/inter', () => ({}));
-jest.mock('../../styles/globals.css', () => ({}));
-jest.mock('./root-provider', () => ({
+vi.mock('@fontsource-variable/inter', () => ({}));
+vi.mock('../../styles/globals.css', () => ({}));
+vi.mock('./root-provider', () => ({
   RootProvider: ({ children }: { children: React.ReactNode }) => children,
 }));
 

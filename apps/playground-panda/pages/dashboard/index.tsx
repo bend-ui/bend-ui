@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { Button, Card, Level, Nav } from '@bend-ui/ark-ui';
+import { Button } from '@bend-ui/ark-ui';
+import { Card, Stack } from '@bend-ui/base-ui';
 import { css } from '@bend-ui/styled-system/css';
 import { Container } from '@bend-ui/styled-system/jsx';
 import type { NextPage } from 'next';
@@ -8,14 +9,10 @@ const DashboardPage: NextPage = () => (
   <div className={css({ h: 'screen', display: 'flex', flexDirection: 'row' })}>
     <div className={css({ p: 'sm', minW: 'xs' })}>
       <h1>Ski resort</h1>
-      <Nav direction="vertical">
-        <Nav.Link asChild>
-          <Link href="/dashboard/clients">Clients</Link>
-        </Nav.Link>
-        <Nav.Link asChild>
-          <a href="/dashboard/profile">Profile</a>
-        </Nav.Link>
-      </Nav>
+      <nav aria-label="Dashboard">
+        <Link href="/dashboard/clients">Clients</Link>
+        <a href="/dashboard/profile">Profile</a>
+      </nav>
     </div>
     <div
       className={css({
@@ -23,12 +20,12 @@ const DashboardPage: NextPage = () => (
       })}
     >
       <div className={css({ p: 'lg' })}>
-        <Level>
+        <Stack direction="row" align="center" justify="space-between">
           <div>Dashboard</div>
           <div>
             <Button>Create new</Button>
           </div>
-        </Level>
+        </Stack>
       </div>
       <div className={css({ p: 'lg' })}>
         <Container>

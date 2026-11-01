@@ -38,6 +38,11 @@
           "production": {
             "mode": "production"
           }
+        },
+        "options": {
+          "env": {
+            "NODE_ENV": "production"
+          }
         }
       },
       {
@@ -46,6 +51,11 @@
         },
         "configurations": {
           "development": {}
+        },
+        "options": {
+          "env": {
+            "NODE_ENV": "production"
+          }
         }
       }
     ],
@@ -91,22 +101,12 @@
         }
       }
     ],
-    "test": [
-      {
-        "filter": {
-          "plugin": "@nx/jest/plugin"
-        },
-        "configurations": {
-          "ci": {
-            "ci": true,
-            "coverage": true
-          }
-        },
-        "options": {
-          "passWithNoTests": true
-        }
-      }
-    ]
+    "test": {
+      "dependsOn": ["^build"]
+    },
+    "typecheck": {
+      "dependsOn": ["^build"]
+    }
   },
   "generators": {
     "@nx/react": {
@@ -173,7 +173,9 @@
         "packages/config/**/*",
         "packages/preset/**/*",
         "packages/react-aria/**/*",
-        "packages/react-utils/**/*"
+        "packages/react-utils/**/*",
+        "apps/website/**/*",
+        "apps/playground-panda/**/*"
       ]
     },
     {
@@ -189,7 +191,8 @@
         "typecheck": {
           "targetName": "typecheck"
         }
-      }
+      },
+      "exclude": ["tools/fixtures/**"]
     },
     {
       "plugin": "@nx/vite/plugin",
@@ -206,13 +209,6 @@
         "apps/vite-base-ui/**/*",
         "apps/vite-base-ui-theming/**/*"
       ]
-    },
-    {
-      "plugin": "@nx/jest/plugin",
-      "options": {
-        "targetName": "test"
-      },
-      "include": ["apps/playground-panda/**/*", "apps/website/**/*"]
     },
     {
       "plugin": "@nx/next/plugin",
