@@ -1,4 +1,5 @@
 import { defineSlotRecipe } from '@pandacss/dev';
+import { controlSizes } from './control-sizes';
 
 export const selectRecipe = defineSlotRecipe({
   slots: [
@@ -22,20 +23,22 @@ export const selectRecipe = defineSlotRecipe({
   base: {
     control: {
       gap: 'sm',
-      rounded: 'md',
+      rounded: 'control',
       backgroundColor: 'fill',
       border: 'base',
+      _focusWithin: { layerStyle: 'focus' },
     },
     trigger: {
       flex: '1 1 auto',
       display: 'flex',
       alignItems: 'center',
-      py: 'sm',
-      px: 'md',
+      paddingBlock: '0',
+      alignSelf: 'stretch',
+      rounded: 'inherit',
       gap: 'sm',
     },
     valueText: {
-      textAlign: 'left',
+      textAlign: 'start',
     },
     indicator: {
       marginLeft: 'auto',
@@ -44,6 +47,41 @@ export const selectRecipe = defineSlotRecipe({
       flex: 'none',
     },
   },
+  variants: {
+    size: {
+      sm: {
+        control: {
+          minHeight: controlSizes.sm.minHeight,
+          textStyle: controlSizes.sm.textStyle,
+        },
+        trigger: {
+          paddingInline: controlSizes.sm.paddingInline,
+          gap: controlSizes.sm.gap,
+        },
+      },
+      md: {
+        control: {
+          minHeight: controlSizes.md.minHeight,
+          textStyle: controlSizes.md.textStyle,
+        },
+        trigger: {
+          paddingInline: controlSizes.md.paddingInline,
+          gap: controlSizes.md.gap,
+        },
+      },
+      lg: {
+        control: {
+          minHeight: controlSizes.lg.minHeight,
+          textStyle: controlSizes.lg.textStyle,
+        },
+        trigger: {
+          paddingInline: controlSizes.lg.paddingInline,
+          gap: controlSizes.lg.gap,
+        },
+      },
+    },
+  },
+  defaultVariants: { size: 'md' },
 });
 
 export const selectDropdownRecipe = defineSlotRecipe({
@@ -66,18 +104,21 @@ export const selectDropdownRecipe = defineSlotRecipe({
   className: 'SelectDropdown',
   base: {
     content: {
-      rounded: 'md',
+      rounded: 'overlay',
       layerStyle: 'overlay',
       py: 'sm',
-      px: 'md',
+      px: 'sm',
       _open: {
-        animation: 'overlay.in',
+        animation: 'fade-in',
       },
       _closed: {
-        animation: 'overlay.out',
+        animation: 'fade-out',
       },
     },
     item: {
+      rounded: 'max(0px, calc({radii.overlay} - {spacing.sm}))',
+      paddingInline: 'sm',
+      paddingBlock: 'xs',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',

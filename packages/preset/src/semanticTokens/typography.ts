@@ -11,4 +11,6 @@ export const fontWeights = defineSemanticTokens.fontWeights({});
 
 export const lineHeights = defineSemanticTokens.lineHeights({});
 
-export const letterSpacings = defineSemanticTokens.letterSpacings({});
+export const letterSpacings = defineSemanticTokens.letterSpacings({
+  heading: { value: '-0.02em' },
+});

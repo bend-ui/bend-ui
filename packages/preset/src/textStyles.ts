@@ -3,77 +3,82 @@ import { defineTextStyles } from '@pandacss/dev';
 export const textStyles = defineTextStyles({
   body: {
     DEFAULT: {
-      description: 'The body text style - used in paragraphs',
       value: {
         fontFamily: 'body',
-        fontWeight: '500',
-        fontSize: '16px',
-        lineHeight: '24px',
-        letterSpacing: '0',
-        textDecoration: 'none',
-        textTransform: 'none',
+        fontWeight: 'normal',
+        fontSize: '1rem',
+        lineHeight: '1.5',
       },
     },
     sm: {
-      description: 'The body text style - used in paragraphs',
       value: {
         fontFamily: 'body',
-        fontWeight: '500',
-        fontSize: '14px',
-        lineHeight: '24px',
-        letterSpacing: '0',
-        textDecoration: 'none',
-        textTransform: 'none',
+        fontWeight: 'normal',
+        fontSize: '0.875rem',
+        lineHeight: '1.5',
       },
     },
   },
   headline: {
-    description: 'The headline text style - used for big titles',
     value: {
       fontFamily: 'heading',
-      fontWeight: '800',
-      fontSize: '36px',
-      lineHeight: '56px',
-      letterSpacing: '0',
-      textDecoration: 'none',
-      textTransform: 'none',
+      fontWeight: 'bold',
+      fontSize: '2.25rem',
+      lineHeight: '1.2',
+      letterSpacing: 'heading',
     },
   },
   title: {
     DEFAULT: {
-      description: 'The title text style - used for headings',
       value: {
         fontFamily: 'heading',
-        fontWeight: '600',
-        fontSize: '24px',
-        lineHeight: '30px',
-        letterSpacing: '0',
-        textDecoration: 'none',
-        textTransform: 'none',
+        fontWeight: 'semibold',
+        fontSize: '1.5rem',
+        lineHeight: '1.25',
+        letterSpacing: 'heading',
       },
     },
   },
   subtitle: {
-    description: 'The subtitle text style - used for content under headings',
     value: {
       fontFamily: 'heading',
-      fontWeight: '600',
-      fontSize: '18px',
-      lineHeight: '28px',
-      letterSpacing: '0',
-      textDecoration: 'none',
-      textTransform: 'none',
+      fontWeight: 'semibold',
+      fontSize: '1.125rem',
+      lineHeight: '1.5',
     },
   },
   caption: {
     value: {
       fontFamily: 'body',
-      fontWeight: '800',
-      fontSize: '24px',
-      lineHeight: '56px',
-      letterSpacing: '0',
-      textDecoration: 'none',
-      textTransform: 'none',
+      fontWeight: 'normal',
+      fontSize: '0.8125rem',
+      lineHeight: '1.5',
+    },
+  },
+  control: {
+    sm: {
+      value: {
+        fontFamily: 'body',
+        fontWeight: 'medium',
+        fontSize: { base: '1rem', sm: '0.875rem' },
+        lineHeight: '1.5',
+      },
+    },
+    md: {
+      value: {
+        fontFamily: 'body',
+        fontWeight: 'medium',
+        fontSize: { base: '1rem', sm: '0.875rem' },
+        lineHeight: '1.5',
+      },
+    },
+    lg: {
+      value: {
+        fontFamily: 'body',
+        fontWeight: 'medium',
+        fontSize: '1rem',
+        lineHeight: '1.5',
+      },
     },
   },
 });
