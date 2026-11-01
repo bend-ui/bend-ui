@@ -114,6 +114,9 @@ try {
     path.join(root, 'package.json'),
   ).packageManager;
   manifest.dependencies = { '@bend-ui/base-ui': overrides['@bend-ui/base-ui'] };
+  if (process.env.BEND_VERIFY_TOKENS === '1') {
+    manifest.dependencies['@bend-ui/preset'] = overrides['@bend-ui/preset'];
+  }
   manifest.devDependencies = {};
   for (const name of [
     '@pandacss/dev',
