@@ -1,4 +1,5 @@
 import { defineSlotRecipe } from '@pandacss/dev';
+import { controlSizes } from './control-sizes';
 
 export const inputRecipe = defineSlotRecipe({
   slots: ['root', 'wrapper', 'input', 'icon', 'element', 'addon'],
@@ -6,10 +7,10 @@ export const inputRecipe = defineSlotRecipe({
   className: 'Input',
   base: {
     root: {
-      rounded: 'lg',
-      transitionProperty: 'colors, border-color, background-color',
-      transitionDuration: 'fast',
-      transitionTimingFunction: 'ease-in-out',
+      rounded: 'control',
+      borderWidth: '1px',
+      borderStyle: 'solid',
+      borderColor: 'transparent',
       divideX: '1px',
       _hover: {
         cursor: 'text',
@@ -31,6 +32,10 @@ export const inputRecipe = defineSlotRecipe({
     },
     input: {
       outline: 'none',
+      minWidth: '0',
+      alignSelf: 'stretch',
+      font: 'inherit',
+      paddingBlock: '0',
     },
     icon: {
       width: '1lh',
@@ -44,39 +49,49 @@ export const inputRecipe = defineSlotRecipe({
   variants: {
     size: {
       sm: {
+        root: {
+          minHeight: controlSizes.sm.minHeight,
+          textStyle: controlSizes.sm.textStyle,
+        },
         input: {
-          height: '8',
+          minHeight: 'calc({sizes.control.sm} - 2px)',
+          textStyle: controlSizes.sm.textStyle,
         },
         wrapper: {
-          paddingInline: '2',
-          gap: '1',
+          paddingInline: controlSizes.sm.paddingInline,
+          gap: controlSizes.sm.gap,
         },
+        addon: { paddingInline: controlSizes.sm.paddingInline },
       },
       md: {
+        root: {
+          minHeight: controlSizes.md.minHeight,
+          textStyle: controlSizes.md.textStyle,
+        },
         input: {
-          height: '10',
+          minHeight: 'calc({sizes.control} - 2px)',
+          textStyle: controlSizes.md.textStyle,
         },
         wrapper: {
-          paddingInline: '3',
-          gap: '2',
+          paddingInline: controlSizes.md.paddingInline,
+          gap: controlSizes.md.gap,
         },
-        icon: {
-          width: '5',
-          height: '5',
-        },
-        element: {},
-        addon: {
-          paddingInline: '3',
-        },
+        addon: { paddingInline: controlSizes.md.paddingInline },
       },
       lg: {
+        root: {
+          minHeight: controlSizes.lg.minHeight,
+          textStyle: controlSizes.lg.textStyle,
+        },
         input: {
-          height: '12',
+          minHeight: 'calc({sizes.control.lg} - 2px)',
+          textStyle: controlSizes.lg.textStyle,
         },
         wrapper: {
-          paddingInline: '4',
-          gap: '3',
+          paddingInline: controlSizes.lg.paddingInline,
+          gap: controlSizes.lg.gap,
         },
+        addon: { paddingInline: controlSizes.lg.paddingInline },
       },
     },
     variant: {

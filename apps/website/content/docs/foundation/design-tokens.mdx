@@ -74,15 +74,25 @@ Run Panda code generation after changing tokens so the generated types and CSS s
 
 ## Token categories
 
-| Category | Typical use |
-| --- | --- |
-| Colors | Text, fills, strokes, and state feedback |
-| Spacing | Gaps, padding, margins, and layout rhythm |
+| Category   | Typical use                                |
+| ---------- | ------------------------------------------ |
+| Colors     | Text, fills, strokes, and state feedback   |
+| Spacing    | Gaps, padding, margins, and layout rhythm  |
 | Typography | Font family, size, weight, and line height |
-| Radii | Control and surface shapes |
-| Shadows | Surface elevation |
-| Motion | Transition duration and easing |
+| Radii      | Control and surface shapes                 |
+| Shadows    | Surface elevation                          |
+| Motion     | Transition duration and easing             |
 
 Prefer semantic tokens in product UI. Use raw palette values when defining or extending the semantic layer, not throughout component code.
 
 See [Theme Personalities](/docs/foundation/themes) for the canonical manifests and generated color specimens.
+
+## Control foundations
+
+Button, Input and Select share `sm`, `md` and `lg` sizes, with `md` as the default. Their minimum heights are 2rem, 2.5rem and 3rem; Theme personalities can adjust `sizes.control.DEFAULT`, and the other sizes follow it. All three use `radii.control` and the `control.sm`, `control.md` and `control.lg` text styles.
+
+Use `body` and `body.sm` for paragraphs; `headline`, `title` and `subtitle` for visual headings; and `caption` for supporting text. These styles use rem sizes and unitless line heights. Heading appearance does not choose the HTML heading level.
+
+For nested corners, subtract padding from the outer radius. `radii.inset` is the clamped inner radius for a `radii.surface` container with `spacing.sm` padding. Other insets need their own corresponding calculation.
+
+Focus uses the shared `focus` layer style. Motion uses `fast` (120ms), `normal` (180ms) and `slow` (260ms) durations, with Theme-aware easing. The preset's global reduced-motion rule makes transitions and animations effectively immediate, stops continuous loops, and disables smooth scrolling when the user requests reduced motion.

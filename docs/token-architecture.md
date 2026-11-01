@@ -85,7 +85,7 @@ themes: {
 },
 ```
 
-`fill` covers the neutral Input/Select treatment; `fill.primary` covers the primary Button treatment. Both `md` and `lg` are changed because the existing recipes consume different radius steps. This preserves the current recipe API rather than pretending `radii.base` controls every component. The [browser verifier](../tools/scripts/verify-token-consumer.mjs) checks unchanged packed Button/Input/Select components, their computed fills and radii, and the reverse compatibility alias in both Color modes, with and without the selected Theme.
+`fill` covers the neutral Input/Select treatment; `fill.primary` covers the primary Button treatment. This original BEN-34 fixture changes both `md` and `lg`; following BEN-38, all three controls consume `control`, whose baseline resolves through `base` to `md`. A selected Theme can override `control` directly. The [browser verifier](../tools/scripts/verify-token-consumer.mjs) checks unchanged packed Button/Input/Select components, their computed fills and radii, and the reverse compatibility alias in both Color modes, with and without the selected Theme.
 
 ## Verification and completion evidence
 
@@ -108,7 +108,7 @@ This establishes the observed precedence: Bend defaults < global consumer extens
 - **BEN-35:** Owns OKLCH ramp generation and neutral tint configuration. The current alias ramp is a starting point; palette quality and measured contrast remain its deliverables.
 - **BEN-36:** Owns contextual surface/elevation behavior across nested content and portals. It must define how semantic surface roles travel to portal content and keep elevation separate from stacking order.
 - **BEN-37:** Owns hover, pressed, selected, focus and disabled treatments. It should consume BEN-34 role names and preserve ADR-0002 selectors, with measured contrast and keyboard focus evidence.
-- **BEN-38:** Owns typography, density, radii and motion defaults, including reduced motion. Existing empty semantic duration/easing tables and personality-specific values need reconciliation into a documented baseline.
+- **BEN-38:** Owns typography, density, radii and motion defaults, including reduced motion. The [control foundations](control-foundations.md) define shared control density, text styles, radius aliases and duration/easing defaults, including the document-wide reduced-motion policy.
 
 These are proposed execution boundaries, not new dependency links in Linear. Agree the BEN-34 naming contract before downstream work introduces additional aliases; downstream prototypes can proceed with their assumptions recorded.
 
