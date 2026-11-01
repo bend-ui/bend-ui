@@ -92,3 +92,13 @@ BEN-39/40/41 remain owners of reference component behavior and API decisions. BE
 - [Customize a Button recipe](../apps/website/content/docs/foundation/recipe-customization.mdx): extend an existing variant and understand whole-recipe replacement and published-runtime limits, using the existing packed-consumer proof.
 
 The reference page and how-to guide exercise distinct content needs without introducing another MDX renderer or a generic UI package.
+
+## Integration validation
+
+After merging main with the workspace validation and control-foundation prerequisites (PRs #207 and #208), `NX_DAEMON=false pnpm validate --base=origin/main --output-style=static` passed all 12 tasks in 6m14s, including the production website build, lint, five website tests, and typechecks. The earlier generated `index.mjs` build blocker is resolved. Log: `/tmp/ben44-final-validation.log`.
+
+The actual production routes `/docs/components/button` and `/docs/foundation/recipe-customization` returned HTTP 200 at 1280 × 900 and 320 × 640. Chromium verified representative headings, highlighted source text (`Button.Root` and `validateReplacementRecipe`), and reciprocal links. Button renders 10 code blocks and the recipe guide renders three; all four route/viewport checks completed without runtime errors. This verifies the compiled documentation content, not live component/render parity, which remains BEN-45 work.
+
+An additional horizontal-code-scrolling assertion failed: shared `MdxPre` presentation styles are not extracted, so computed `overflow-x` is `visible` rather than `auto`. At 320px the code container measures 655px and content clips. Screenshots also show incomplete shared heading/code presentation. These shared Docs chrome/layout limitations are recorded for BEN-50; the content proof does not certify responsive presentation. BEN-44 adds no chrome fix or new preview infrastructure.
+
+Evidence: `/tmp/ben44-built-docs-results.json` and `/tmp/ben44-built-docs-check.cjs`; desktop/narrow screenshots use `/tmp/ben44-components-button-{1280,320}.png` and `/tmp/ben44-foundation-recipe-customization-{1280,320}.png`. The temporary production server was stopped after verification.
