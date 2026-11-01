@@ -18,6 +18,7 @@ describe('Dental playground', () => {
     expect(
       screen.getByRole('navigation', { name: 'Dental management' }),
     ).toBeTruthy();
+    expect(screen.queryByRole('link', { name: 'Pricing' })).toBeNull();
     expect(screen.getByRole('tab', { name: 'Confirmed 1' })).toBeTruthy();
     expect(screen.getByText('#1')).toBeTruthy();
     fireEvent.click(screen.getByRole('tab', { name: 'Pending 1' }));

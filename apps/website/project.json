@@ -62,7 +62,11 @@
       "cache": true,
       "options": {
         "cwd": "apps/website",
-        "command": "tsc -p tsconfig.json --noEmit"
+        "commands": [
+          "tsc -p tsconfig.json --noEmit",
+          "tsc -p tsconfig.spec.json --noEmit"
+        ],
+        "parallel": false
       }
     }
   }

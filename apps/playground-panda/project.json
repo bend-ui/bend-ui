@@ -67,7 +67,11 @@
       "cache": true,
       "options": {
         "cwd": "apps/playground-panda",
-        "command": "tsc -p tsconfig.json --noEmit"
+        "commands": [
+          "tsc -p tsconfig.json --noEmit",
+          "tsc -p tsconfig.spec.json --noEmit"
+        ],
+        "parallel": false
       }
     }
   }

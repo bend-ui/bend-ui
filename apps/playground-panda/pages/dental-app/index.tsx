@@ -55,7 +55,7 @@ const DentalApp = () => {
               <IconButton icon={<SearchIcon />}>Search</IconButton>
               <IconButton icon={<BellIcon />}>Notifications</IconButton>
             </Stack>
-            <Separator />
+            <Separator.Root orientation="vertical" />
             <Avatar.Root>
               <Avatar.Image src="https://github.com/shadcn.png" />
               <Avatar.Fallback>CN</Avatar.Fallback>
