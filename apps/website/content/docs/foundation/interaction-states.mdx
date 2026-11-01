@@ -1,0 +1,52 @@
+---
+title: Interaction States
+description: Map semantic fills, focus, availability, and elevation to recipes
+---
+
+# Interaction States
+
+The Design preset defines visual treatments through shared semantic tokens. Recipes use the same state conditions across Base UI, Ark UI, and React Aria.
+
+## Choose a fill
+
+Use `bg.page`, `bg.raised`, and `bg.overlay` for opaque surfaces. Use `fill`, `fill.hover`, `fill.active`, and `fill.selected` for neutral controls. Primary and danger controls use the corresponding tone, such as `fill.primary.hover`, paired with its on-tone text role.
+
+`fill.translucent` mixes the current semantic text color at 8% into transparent. Its hover, active, and selected states use 12%, 16%, and 20%. The content remains opaque. Place translucent fills over a known surface and check the resulting contrast; a readable fill over a plain background may be unreadable over an image.
+
+## Keep focus visible
+
+The `focus` layer style adds a solid 2px outline using `stroke.focus`, offset by 2px. It preserves the existing fill and elevation shadow. Menu items inset this outline so it remains inside their popup. Compound Inputs use focus within their root; standalone controls draw their own outline.
+
+```ts
+// Abbreviated primary Button root mapping.
+{
+  color: 'text.primary.inverse.strong',
+  backgroundColor: 'fill.primary',
+  _focusVisible: { layerStyle: 'focus' },
+  _notDisabled: {
+    _hover: { backgroundColor: 'fill.primary.hover' },
+    _active: { backgroundColor: 'fill.primary.active' },
+    _pressed: { backgroundColor: 'fill.primary.active' },
+    _selected: { backgroundColor: 'fill.primary.selected' },
+  },
+  _disabled: { opacity: 'state.disabled', cursor: 'disabled' },
+}
+```
+
+## Map component states
+
+| Component | Rest                                    | Navigation and interaction                                         | Persistent or unavailable state                                                                                                        |
+| --------- | --------------------------------------- | ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Button    | Variant fill and matching text          | Enabled hover and press fills; visible focus outline               | Selected fill; disabled controls retain their rest fill and do not scale                                                               |
+| Input     | `fill`, `text`, strong outline boundary | Editable hover boundary; focus within the root                     | Invalid danger boundary; disabled opacity; read-only remains focusable                                                                 |
+| Menu Item | Transparent fill and `text`             | Hover/highlight use `fill.translucent.hover`; press uses `.active` | Checked/selected use `.selected` with the primitive's indicator; disabled items use `text.disabled` and retain keyboard focus outlines |
+
+State attributes convey behavior and semantics supplied by the primitive. Use the appropriate toggle or selection primitive rather than adding an ARIA attribute only to obtain a color.
+
+## Match elevation to the surface
+
+`surface.raised` uses `bg.raised`, a weak structural border, and the `raised` shadow. `surface.overlay` uses `bg.overlay` and the `overlay` shadow. Both shadow tokens define light and dark defaults. `surface.sunken` adds no shadow. `surface.translucent` adds an alpha fill without changing content opacity or stacking order.
+
+Elevation does not set z-index or carry DOM variables across portals. The opt-in Base UI `SurfaceProvider` handles logical surface scope for contextual surfaces.
+
+When overriding a Theme's state fills, check their foreground pair, focus outline, and surrounding surface in both color modes. Bundled baseline values cannot guarantee readability for arbitrary overrides or backdrops.

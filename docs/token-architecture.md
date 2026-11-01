@@ -115,3 +115,7 @@ These are proposed execution boundaries, not new dependency links in Linear. Agr
 ## Nested danger Theme regression
 
 `createTheme` redeclares danger roles and compatibility aliases at the selected Theme scope, where CSS variable references resolve. The legacy `error.DEFAULT` references `{colors.danger}` so a canonical default override propagates. The packed-consumer regression verifies nested purple danger Button fill and invalid Textarea recipe border in light/dark, plus a separate `danger.DEFAULT: #123456` override resolving through the legacy alias. Consumer CSS generation, typechecking and production build pass.
+
+## Interaction treatment follow-up (BEN-37)
+
+[Interaction states and surfaces](interaction-states.md) defines the shared state mapping. Primary fill defaults now use step 600, with 700 hover/selection and 800 active states; danger uses 700, 800 and 900 respectively; the danger stroke and legacy error palette default remain at their configured steps. This changes default control colors while preserving the role names, compatibility aliases and Theme override seams verified above.

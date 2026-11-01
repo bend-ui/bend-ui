@@ -1,5 +1,12 @@
 import { defineLayerStyles } from '@pandacss/dev';
 
+const focus = {
+  outlineOffset: '2px',
+  outlineWidth: '2px',
+  outlineStyle: 'solid',
+  outlineColor: 'stroke.focus',
+} as const;
+
 export const layerStyles = defineLayerStyles({
   container: {
     description: 'Container styles',
@@ -10,87 +17,55 @@ export const layerStyles = defineLayerStyles({
   surface: {
     DEFAULT: {
       value: {
-        backgroundColor: 'fill',
-        border: 'base',
-        _focus: {},
-        _focusVisible: {
-          boxShadow: 'inner',
-        },
+        backgroundColor: 'bg.page',
+        border: 'weak',
+        _focusVisible: focus,
       },
     },
     raised: {
       value: {
-        backgroundColor: 'fill.strong',
-        border: 'base',
+        backgroundColor: 'bg.raised',
+        border: 'weak',
         borderRadius: 'md',
-        boxShadow: 'md',
-        _focus: {},
-        _focusVisible: {
-          boxShadow: 'inner',
-        },
+        boxShadow: 'raised',
+        _focusVisible: focus,
       },
     },
     overlay: {
       value: {
         backgroundColor: 'bg.overlay',
-        border: 'base',
+        border: 'weak',
         borderRadius: 'md',
-        boxShadow: 'md',
+        boxShadow: 'overlay',
+      },
+    },
+    translucent: {
+      description:
+        'Alpha fill over a known readable surface; content stays opaque.',
+      value: {
+        backgroundColor: 'fill.translucent',
+        color: 'text',
+        border: 'weak',
+        borderRadius: 'md',
       },
     },
     sunken: {
       value: {
-        backgroundColor: 'fill.weak',
+        backgroundColor: 'bg.sunken',
         border: 'base',
         borderRadius: 'md',
-        boxShadow: 'md',
+        boxShadow: 'none',
       },
     },
   },
   focus: {
     DEFAULT: {
-      value: {
-        boxShadow: 'focusRing',
-        outlineOffset: '2px',
-        outlineWidth: '4px',
-        outlineStyle: 'solid',
-        outlineColor: 'stroke.primary/32',
-      },
+      value: focus,
     },
   },
-  // interaction: {
-  //   neutral: {
-  //     value: {
-  //       color: 'neutral.fg',
-  //       bgGradient: 'neutral',
-  //       borderColor: 'neutral.200',
-  //       borderWidth: '1px',
-  //       borderStyle: 'solid',
-  //       _hover: {
-  //         bgGradient: 'to-b',
-  //         gradientFrom: 'neutral.50',
-  //         gradientTo: 'white',
-  //       },
-  //     },
-  //   },
-  //   primary: {
-  //     value: {
-  //       color: 'primary.fg',
-  //       bgGradient: 'primary',
-  //       borderColor: 'primary.500',
-  //       borderWidth: '1px',
-  //       borderStyle: 'solid',
-  //       _hover: {
-  //         bgGradient: 'to-b',
-  //         gradientFrom: 'primary.600',
-  //         gradientTo: 'primary.500',
-  //       },
-  //     },
-  //   },
-  // },
   raised: {
     value: {
-      border: 'subtle',
+      border: 'weak',
       backgroundColor: 'bg.raised',
       boxShadow: 'raised',
     },

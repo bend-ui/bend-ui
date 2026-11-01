@@ -7,13 +7,24 @@ export const inputRecipe = defineSlotRecipe({
   base: {
     root: {
       rounded: 'lg',
-      transitionProperty: 'colors, border-color, background-color',
+      color: 'text',
+      border: 'strong',
+      transitionProperty: 'border-color, background-color',
       transitionDuration: 'fast',
       transitionTimingFunction: 'ease-in-out',
       divideX: '1px',
-      _hover: {
-        cursor: 'text',
-      },
+      // The upstream primitive owns state on the input, not the layout root.
+      '&:not(:has(input:is(:disabled, [data-disabled], [aria-disabled="true"], :read-only, :invalid, [aria-invalid="true"], [data-invalid])))':
+        {
+          _notDisabled: {
+            _hover: {
+              '@media (hover: hover)': {
+                borderColor: 'stroke.focus',
+                cursor: 'text',
+              },
+            },
+          },
+        },
       _focusWithin: {
         layerStyle: 'focus',
       },
@@ -22,6 +33,14 @@ export const inputRecipe = defineSlotRecipe({
       },
       _disabled: {
         opacity: 'state.disabled',
+        cursor: 'disabled',
+      },
+      '&:has(input:is(:disabled, [data-disabled], [aria-disabled="true"]))': {
+        opacity: 'state.disabled',
+        cursor: 'disabled',
+      },
+      '&:has(input:is(:invalid, [aria-invalid="true"], [data-invalid]))': {
+        border: 'danger',
       },
     },
     wrapper: {
@@ -31,6 +50,12 @@ export const inputRecipe = defineSlotRecipe({
     },
     input: {
       outline: 'none',
+      color: 'inherit',
+      _disabled: { cursor: 'disabled' },
+      // Standalone Input.Control has no surrounding recipe root to draw focus.
+      '&:not(.Input__root *)': {
+        _focusVisible: { layerStyle: 'focus' },
+      },
     },
     icon: {
       width: '1lh',
@@ -88,7 +113,6 @@ export const inputRecipe = defineSlotRecipe({
       outline: {
         root: {
           backgroundColor: 'fill',
-          border: 'weak',
           divideColor: 'stroke.weak',
           shadow: 'xs',
         },
