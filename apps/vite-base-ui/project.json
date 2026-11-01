@@ -12,7 +12,8 @@
       ],
       "options": {
         "outDir": "../../dist/apps/vite-base-ui"
-      }
+      },
+      "dependsOn": ["^build", "prepare"]
     },
     "test": {
       "outputs": [
@@ -21,7 +22,8 @@
       ],
       "options": {
         "coverage.reportsDirectory": "../../coverage/apps/vite-base-ui"
-      }
+      },
+      "dependsOn": ["^build", "prepare"]
     },
     "serve-static": {
       "executor": "@nx/web:file-server",
@@ -33,6 +35,18 @@
       "readyWhen": {
         "signal": true
       }
+    },
+    "prepare": {
+      "dependsOn": ["^build"],
+      "executor": "nx:run-commands",
+      "outputs": ["{projectRoot}/styled-system"],
+      "options": {
+        "cwd": "apps/vite-base-ui",
+        "command": "panda codegen --clean"
+      }
+    },
+    "typecheck": {
+      "dependsOn": ["^build", "prepare"]
     }
   }
 }

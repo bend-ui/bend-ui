@@ -17,7 +17,8 @@
       "outputs": [
         "{workspaceRoot}/dist/apps/website/.next",
         "{projectRoot}/.next"
-      ]
+      ],
+      "dependsOn": ["^build", "prepare"]
     },
     "serve": {
       "options": {
@@ -40,6 +41,28 @@
         "env": {
           "BEND_NEXT_EXPORT": "true"
         }
+      }
+    },
+    "prepare": {
+      "dependsOn": ["^build"],
+      "executor": "nx:run-commands",
+      "outputs": ["{projectRoot}/styled-system", "{projectRoot}/.source"],
+      "options": {
+        "cwd": "apps/website",
+        "commands": ["panda codegen --clean", "fumadocs-mdx"],
+        "parallel": false
+      }
+    },
+    "test": {
+      "dependsOn": ["^build", "prepare"]
+    },
+    "typecheck": {
+      "dependsOn": ["build"],
+      "executor": "nx:run-commands",
+      "cache": true,
+      "options": {
+        "cwd": "apps/website",
+        "command": "tsc -p tsconfig.json --noEmit"
       }
     }
   }

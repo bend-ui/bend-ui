@@ -1,23 +1,17 @@
 'use client';
 import { useFetchData } from '@/hooks';
+import { Avatar, Button, Menu, Tabs } from '@bend-ui/ark-ui';
 import {
-  Heading,
   AppShell,
-  Avatar,
   Box,
-  Breadcrumbs,
-  Divider,
-  IconButton,
-  Level,
-  Nav,
-  Button,
-  ButtonGroup,
   Card,
   Grid,
+  Heading,
+  IconButton,
   Paragraph,
-  Menu,
-  Tabs,
-} from '@bend-ui/ark-ui';
+  Separator,
+  Stack,
+} from '@bend-ui/base-ui';
 import {
   SearchIcon,
   BellIcon,
@@ -26,7 +20,7 @@ import {
   PlusIcon,
 } from 'lucide-react';
 import Link from 'next/link';
-import { AppointmentCard } from './components';
+import { AppointmentCard } from '@/components/dental-app';
 
 const DentalApp = () => {
   const { data: appointments, loading } = useFetchData(
@@ -48,55 +42,45 @@ const DentalApp = () => {
   return (
     <AppShell>
       <AppShell.Header>
-        <Level>
+        <Stack direction="row" align="center" justify="space-between">
           <Box>
             <HexagonIcon />
-            <Breadcrumbs>
-              <Breadcrumbs.Item>
-                <Link href="/dental-app">Home</Link>
-              </Breadcrumbs.Item>
-              <Breadcrumbs.Item>
-                <Link href="/dental-app/patients">Patients</Link>
-              </Breadcrumbs.Item>
-            </Breadcrumbs>
+            <nav aria-label="Breadcrumb">
+              <Link href="/dental-app">Home</Link>
+              <Link href="/dental-app/patients">Patients</Link>
+            </nav>
           </Box>
           <Box>
-            <ButtonGroup>
+            <Stack direction="row">
               <IconButton icon={<SearchIcon />}>Search</IconButton>
               <IconButton icon={<BellIcon />}>Notifications</IconButton>
-            </ButtonGroup>
-            <Divider />
-            <Avatar>
+            </Stack>
+            <Separator />
+            <Avatar.Root>
               <Avatar.Image src="https://github.com/shadcn.png" />
               <Avatar.Fallback>CN</Avatar.Fallback>
-            </Avatar>
+            </Avatar.Root>
           </Box>
-        </Level>
+        </Stack>
       </AppShell.Header>
       <AppShell.Sidebar>
-        <Nav direction="vertical">
-          <Nav.Link asChild>
-            <Link href="/dental-app">Appointments</Link>
-          </Nav.Link>
-          <Nav.Link asChild>
-            <Link href="/dental-app/patients">Patients</Link>
-          </Nav.Link>
-          <Nav.Link asChild>
-            <Link href="/dental-app/doctors">Doctors</Link>
-          </Nav.Link>
-        </Nav>
+        <nav aria-label="Dental management">
+          <Link href="/dental-app">Appointments</Link>
+          <Link href="/dental-app/patients">Patients</Link>
+          <Link href="/dental-app/doctors">Doctors</Link>
+        </nav>
       </AppShell.Sidebar>
       <AppShell.Main>
         <Box>
-          <Level>
+          <Stack direction="row" align="center" justify="space-between">
             <Box>
               <Heading>Patients appointments</Heading>
             </Box>
-            <ButtonGroup>
+            <Stack direction="row">
               <Button>
                 <CalendarIcon /> January 2025
               </Button>
-              <ButtonGroup isAttached>
+              <Stack direction="row" gap="0">
                 <Button>Add new appointment</Button>
                 <Menu.Root>
                   <Menu.Trigger asChild>
@@ -104,18 +88,20 @@ const DentalApp = () => {
                       Add new appointment
                     </IconButton>
                   </Menu.Trigger>
-                  <Menu.Content>
-                    <Menu.Item value="add-new-appointment">
-                      Add new appointment
-                    </Menu.Item>
-                    <Menu.Item value="add-new-patient">
-                      Add new patient
-                    </Menu.Item>
-                  </Menu.Content>
+                  <Menu.Positioner>
+                    <Menu.Content>
+                      <Menu.Item value="add-new-appointment">
+                        Add new appointment
+                      </Menu.Item>
+                      <Menu.Item value="add-new-patient">
+                        Add new patient
+                      </Menu.Item>
+                    </Menu.Content>
+                  </Menu.Positioner>
                 </Menu.Root>
-              </ButtonGroup>
-            </ButtonGroup>
-          </Level>
+              </Stack>
+            </Stack>
+          </Stack>
           <Grid columns={4}>
             <Grid.Item>
               <Card>

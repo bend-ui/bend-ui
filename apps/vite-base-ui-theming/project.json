@@ -54,7 +54,8 @@
           "panda codegen --config panda.config.ts --clean",
           "panda cssgen --config panda.config.ts --outfile styled-system/styles.css"
         ]
-      }
+      },
+      "dependsOn": ["^build"]
     },
     "prepare-level2": {
       "executor": "nx:run-commands",
@@ -66,7 +67,8 @@
           "panda codegen --config panda.level2.config.ts --clean",
           "panda cssgen --config panda.level2.config.ts --outfile styled-system-level2/styles.css"
         ]
-      }
+      },
+      "dependsOn": ["^build"]
     },
     "build-level2": {
       "executor": "nx:run-commands",
@@ -76,6 +78,9 @@
         "cwd": "apps/vite-base-ui-theming",
         "command": "vite build --mode level2"
       }
+    },
+    "typecheck": {
+      "dependsOn": ["^build", "prepare-level3"]
     }
   }
 }
