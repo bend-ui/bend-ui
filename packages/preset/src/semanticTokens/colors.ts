@@ -1,8 +1,7 @@
 import { defineSemanticTokens } from '@pandacss/dev';
 import { danger, info, neutral, primary, success, warning } from './tones';
 
-// Role-first paths own values; tone-first paths remain compatible aliases.
-// DEFAULT names the containing token rather than an extra CSS variable segment.
+/** Reference canonical role leaves, flattening DEFAULT to its containing path. */
 const aliasRole = <T extends object>(tokens: T, path: string): T =>
   Object.fromEntries(
     Object.entries(tokens).map(([key, token]) => {
@@ -16,6 +15,7 @@ const aliasRole = <T extends object>(tokens: T, path: string): T =>
     }),
   ) as T;
 
+/** Preserve a tone's ramp while routing its role trees to canonical values. */
 const aliasTone = (name: string, tone: typeof primary) => ({
   ...tone,
   ...Object.fromEntries(

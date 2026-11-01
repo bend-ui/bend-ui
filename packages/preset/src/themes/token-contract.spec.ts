@@ -20,7 +20,22 @@ describe('semantic token customization contract', () => {
       expect(palette.danger[shade].value).toBe(`{colors.purple.${shade}}`);
       expect(palette.error[shade].value).toBe(`{colors.danger.${shade}}`);
     }
-    expect(palette.error.DEFAULT.value).toBe('{colors.danger.700}');
+    expect(palette.error.DEFAULT.value).toBe('{colors.danger}');
+  });
+
+  it('rebinds danger role trees within each selected Theme scope', () => {
+    const palette = createTheme({ errorColor: 'purple' }).semanticTokens
+      ?.colors as unknown as Record<string, Record<string, unknown>>;
+    for (const role of ['fill', 'text', 'stroke', 'icon'] as const) {
+      expect(palette[role].danger).toEqual(colors[role].danger);
+      expect(palette.danger[role]).toEqual(colors.danger[role]);
+    }
+    expect(palette.fill.danger).toMatchObject({
+      DEFAULT: { value: '{colors.danger.500}' },
+    });
+    expect(palette.stroke.danger).toMatchObject({
+      DEFAULT: { value: '{colors.danger.500}' },
+    });
   });
 
   it('makes every tone-first leaf follow its canonical role-first override', () => {

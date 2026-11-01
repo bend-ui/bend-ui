@@ -4,6 +4,7 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { chromium } from 'playwright';
 
+/** Verify packed consumer overrides and nested danger aliases in both color modes. */
 export async function verifyTokenConsumer(app) {
   const folder = path.join(app, 'dist-tokens');
   const server = createServer(async (request, response) => {
@@ -88,6 +89,64 @@ export async function verifyTokenConsumer(app) {
           theme ? '#7c3aed' : '#0f766e',
           'Reverse alias must follow canonical override',
         );
+        const danger = await page.evaluate(() => {
+          const read = (scope) => {
+            const parent = document.querySelector(`[data-testid="${scope}"]`);
+            const probe = document.createElement('span');
+            parent.append(probe);
+            const resolve = (value) => {
+              probe.style.color = value;
+              return getComputedStyle(probe).color;
+            };
+            const expected = resolve('var(--colors-purple-500)');
+            const override = resolve('#123456');
+            const result = {
+              button: getComputedStyle(parent.querySelector('button'))
+                .backgroundColor,
+              textarea: getComputedStyle(
+                parent.querySelector('.Textarea__root'),
+              ).borderTopColor,
+              legacy: getComputedStyle(
+                parent.querySelector(`[data-testid="${scope}-legacy"]`),
+              ).color,
+              expected,
+              override,
+            };
+            probe.remove();
+            return result;
+          };
+          return {
+            base: read('default'),
+            nested: read('nested'),
+            override: read('override'),
+          };
+        });
+        assert.equal(
+          danger.nested.button,
+          danger.nested.expected,
+          'Nested Theme must recolor danger Button',
+        );
+        assert.equal(
+          danger.nested.textarea,
+          danger.nested.expected,
+          'Nested Theme must recolor invalid Textarea',
+        );
+        assert.notEqual(
+          danger.nested.button,
+          danger.base.button,
+          'Nested Theme must differ from inherited danger palette',
+        );
+        assert.equal(
+          danger.nested.legacy,
+          danger.nested.expected,
+          'Legacy DEFAULT must follow nested danger',
+        );
+        assert.equal(
+          danger.override.legacy,
+          danger.override.override,
+          'Legacy error.DEFAULT must follow canonical danger.DEFAULT override',
+        );
+        console.log(`PASS scoped danger ${mode}: ${JSON.stringify(danger)}`);
         console.log(
           `PASS token consumer ${mode}, selected Theme=${theme}: ${JSON.stringify(result)}`,
         );

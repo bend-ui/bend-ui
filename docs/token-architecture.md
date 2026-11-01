@@ -89,7 +89,7 @@ themes: {
 
 ## Verification and completion evidence
 
-The preset's complete Nx test target passes 42 tests, including the new [token contract regressions](../packages/preset/src/themes/token-contract.spec.ts). These verify all eleven danger shades and DEFAULT for an `errorColor: purple` / `defaultErrorColor: 700` Theme, legacy error references, recursive compatibility alias paths for all six tones, and neutral light/dark reversal. Preset lint and typecheck pass; lint retains an existing unused `nx` warning in its ESLint configuration.
+The preset's complete Nx test target passes 43 tests, including the new [token contract regressions](../packages/preset/src/themes/token-contract.spec.ts). These verify all eleven danger shades and DEFAULT for an `errorColor: purple` / `defaultErrorColor: 700` Theme, legacy error references, recursive compatibility alias paths for all six tones, and neutral light/dark reversal. Preset lint and typecheck pass; lint retains an existing unused `nx` warning in its ESLint configuration.
 
 Source inventory and regressions establish alias ownership, status naming, mode mapping and preservation of the minimal existing component aliases. Fresh packed-consumer validation passed package installation, Panda codegen and CSS generation, consumer TypeScript checking and a Vite production build. Chromium then verified every combination below against unchanged packed Button, Input and Select components:
 
@@ -111,3 +111,7 @@ This establishes the observed precedence: Bend defaults < global consumer extens
 - **BEN-38:** Owns typography, density, radii and motion defaults, including reduced motion. Existing empty semantic duration/easing tables and personality-specific values need reconciliation into a documented baseline.
 
 These are proposed execution boundaries, not new dependency links in Linear. Agree the BEN-34 naming contract before downstream work introduces additional aliases; downstream prototypes can proceed with their assumptions recorded.
+
+## Nested danger Theme regression
+
+`createTheme` redeclares danger roles and compatibility aliases at the selected Theme scope, where CSS variable references resolve. The legacy `error.DEFAULT` references `{colors.danger}` so a canonical default override propagates. The packed-consumer regression verifies nested purple danger Button fill and invalid Textarea recipe border in light/dark, plus a separate `danger.DEFAULT: #123456` override resolving through the legacy alias. Consumer CSS generation, typechecking and production build pass.
