@@ -1,3 +1,10 @@
+import * as React from 'react';
+import {
+  contextualSurfaceProps,
+  SurfaceScopeProvider,
+  useSurfaceScope,
+  type SurfaceLevel,
+} from '../SurfaceContext/SurfaceContext';
 import { Dialog as DialogPrimitive } from '@base-ui/react/dialog';
 import {
   dialog,
@@ -5,7 +12,10 @@ import {
   backdrop,
 } from '@bend-ui/styled-system/recipes';
 import { withParts, withRecipe } from '@bend-ui/core';
-import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
+import {
+  createSlotRecipeContext,
+  type HTMLStyledProps,
+} from '@bend-ui/styled-system/jsx';
 import { Button, type ButtonProps } from '../Button';
 import type { HTMLBendUIProps } from '@bend-ui/core';
 import { Assign } from '@bend-ui/styled-system/types';
@@ -45,9 +55,76 @@ export type DialogPositionerProps = HTMLBendUIProps<'div'>;
 
 const DialogPositioner = withContext('div', 'positioner');
 
-export type DialogPopupProps = DialogPrimitive.Popup.Props;
+export type DialogPopupProps = Assign<
+  HTMLStyledProps<'div'>,
+  DialogPrimitive.Popup.Props
+> & {
+  surfaceLevel?: SurfaceLevel;
+};
 
-const DialogPopup = withContext(DialogPrimitive.Popup, 'content');
+// Keep state callbacks outside Panda's string-based class merging.
+const DialogPopupBridge = React.forwardRef<
+  HTMLDivElement,
+  DialogPopupProps & {
+    surfaceClassName?: DialogPrimitive.Popup.Props['className'];
+    surfaceStyle?: DialogPrimitive.Popup.Props['style'];
+  }
+>(function DialogPopupBridge(
+  { surfaceClassName, surfaceStyle, className, ...props },
+  ref,
+) {
+  return (
+    <DialogPrimitive.Popup
+      {...props}
+      ref={ref}
+      className={
+        typeof surfaceClassName === 'function'
+          ? (state) =>
+              [
+                typeof className === 'function' ? className(state) : className,
+                surfaceClassName(state),
+              ]
+                .filter(Boolean)
+                .join(' ')
+          : className
+      }
+      style={surfaceStyle ?? props.style}
+    />
+  );
+});
+const StyledDialogPopup = withContext(DialogPopupBridge, 'content');
+
+const DialogPopup = React.forwardRef<HTMLDivElement, DialogPopupProps>(
+  function DialogPopup({ surfaceLevel, ...props }, ref) {
+    const scope = useSurfaceScope(surfaceLevel);
+    const merged = {
+      ...props,
+      ...contextualSurfaceProps<DialogPrimitive.Popup.State>(scope, props),
+    };
+    return (
+      <SurfaceScopeProvider scope={scope}>
+        <StyledDialogPopup
+          {...merged}
+          className={
+            typeof merged.className === 'function'
+              ? undefined
+              : merged.className
+          }
+          style={typeof merged.style === 'function' ? undefined : merged.style}
+          surfaceClassName={
+            typeof merged.className === 'function'
+              ? merged.className
+              : undefined
+          }
+          surfaceStyle={
+            typeof merged.style === 'function' ? merged.style : undefined
+          }
+          ref={ref}
+        />
+      </SurfaceScopeProvider>
+    );
+  },
+);
 
 export type DialogTitleProps = DialogPrimitive.Title.Props;
 

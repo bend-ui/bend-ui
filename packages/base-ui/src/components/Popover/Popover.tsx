@@ -1,7 +1,18 @@
+import * as React from 'react';
+import {
+  contextualSurfaceProps,
+  SurfaceScopeProvider,
+  useSurfaceScope,
+  type SurfaceLevel,
+} from '../SurfaceContext/SurfaceContext';
 import { Popover as PopoverPrimitive } from '@base-ui/react/popover';
 import { popover } from '@bend-ui/styled-system/recipes';
-import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
+import {
+  createSlotRecipeContext,
+  type HTMLStyledProps,
+} from '@bend-ui/styled-system/jsx';
 import { Button } from '../Button';
+import type { Assign } from '@bend-ui/styled-system/types';
 
 const { withRootProvider, withContext } = createSlotRecipeContext(popover);
 const PopoverRoot = withRootProvider(PopoverPrimitive.Root);
@@ -20,9 +31,76 @@ export type PopoverPositionerProps = PopoverPrimitive.Positioner.Props;
 
 const PopoverPositioner = PopoverPrimitive.Positioner;
 
-export type PopoverPopupProps = PopoverPrimitive.Popup.Props;
+export type PopoverPopupProps = Assign<
+  HTMLStyledProps<'div'>,
+  PopoverPrimitive.Popup.Props
+> & {
+  surfaceLevel?: SurfaceLevel;
+};
 
-const PopoverPopup = withContext(PopoverPrimitive.Popup, 'content');
+// Keep state callbacks outside Panda's string-based class merging.
+const PopoverPopupBridge = React.forwardRef<
+  HTMLDivElement,
+  PopoverPopupProps & {
+    surfaceClassName?: PopoverPrimitive.Popup.Props['className'];
+    surfaceStyle?: PopoverPrimitive.Popup.Props['style'];
+  }
+>(function PopoverPopupBridge(
+  { surfaceClassName, surfaceStyle, className, ...props },
+  ref,
+) {
+  return (
+    <PopoverPrimitive.Popup
+      {...props}
+      ref={ref}
+      className={
+        typeof surfaceClassName === 'function'
+          ? (state) =>
+              [
+                typeof className === 'function' ? className(state) : className,
+                surfaceClassName(state),
+              ]
+                .filter(Boolean)
+                .join(' ')
+          : className
+      }
+      style={surfaceStyle ?? props.style}
+    />
+  );
+});
+const StyledPopoverPopup = withContext(PopoverPopupBridge, 'content');
+
+const PopoverPopup = React.forwardRef<HTMLDivElement, PopoverPopupProps>(
+  function PopoverPopup({ surfaceLevel, ...props }, ref) {
+    const scope = useSurfaceScope(surfaceLevel);
+    const merged = {
+      ...props,
+      ...contextualSurfaceProps<PopoverPrimitive.Popup.State>(scope, props),
+    };
+    return (
+      <SurfaceScopeProvider scope={scope}>
+        <StyledPopoverPopup
+          {...merged}
+          className={
+            typeof merged.className === 'function'
+              ? undefined
+              : merged.className
+          }
+          style={typeof merged.style === 'function' ? undefined : merged.style}
+          surfaceClassName={
+            typeof merged.className === 'function'
+              ? merged.className
+              : undefined
+          }
+          surfaceStyle={
+            typeof merged.style === 'function' ? merged.style : undefined
+          }
+          ref={ref}
+        />
+      </SurfaceScopeProvider>
+    );
+  },
+);
 
 export type PopoverArrowProps = PopoverPrimitive.Arrow.Props;
 
