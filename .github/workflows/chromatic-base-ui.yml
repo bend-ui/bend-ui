@@ -12,10 +12,12 @@ on:
       - 'package.json'
       - 'pnpm-lock.yaml'
       - '.node-version'
+      - 'nx.json'
+      - 'pnpm-workspace.yaml'
+      - 'tsconfig.base.json'
+      - '.storybook/**'
+      - 'packages/storybook/**'
       - '.github/workflows/chromatic-*.yml'
-    branches-ignore:
-      - 'dependabot/**'
-      - 'renovate/**'
 
 jobs:
   chromatic:
@@ -42,7 +44,7 @@ jobs:
         uses: pnpm/action-setup@v4
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Build
         run: pnpm exec nx run base-ui:build-storybook

@@ -227,9 +227,15 @@ export const componentContracts = {
           label: 'optional',
           positioner: 'optional',
         },
-        variants: {},
+        variants: {
+          size: {
+            description: 'Shared control density and typography scale.',
+            values: ['sm', 'md', 'lg'],
+            defaultValue: 'md',
+          },
+        },
         defaultTreatment:
-          'Token-based fill, border and medium corners; no public recipe variant axes yet.',
+          'Token-based fill and border with shared control corners and medium density.',
         states: [
           {
             name: 'open',

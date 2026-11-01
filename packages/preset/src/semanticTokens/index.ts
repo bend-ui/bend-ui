@@ -15,13 +15,14 @@ import { spacing } from './spacing';
 import { zIndex } from './zIndex';
 import { gradients } from './gradients';
 import { opacity } from './opacity';
+import { durations, easings } from './motion';
 
 export const semanticTokens = defineSemanticTokens({
   borders,
   borderWidths: {},
   colors,
-  durations: {},
-  easings: {},
+  durations,
+  easings,
   fonts,
   fontSizes,
   fontWeights,
@@ -39,6 +40,6 @@ export const semanticTokens = defineSemanticTokens({
   spacing,
   zIndex,
   transitions: {
-    base: { value: '0.2s ease-out' },
+    base: { value: '{durations.normal} {easings.default}' },
   },
 });

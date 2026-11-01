@@ -16,7 +16,9 @@
     "cli": "tsx packages/cli/src/index.ts",
     "e2e:base-ui": "pnpm nx run vite-base-ui-e2e:e2e-local",
     "e2e:base-ui:visual": "pnpm nx run vite-base-ui-e2e:e2e-visual",
-    "prepare": "husky"
+    "prepare": "husky",
+    "validate": "nx affected -t build,lint,test,typecheck --exclude=tag:status:parked",
+    "validate:all": "nx run-many -t build,lint,test,typecheck --exclude=tag:status:parked"
   },
   "workspaces": [
     "packages/*",

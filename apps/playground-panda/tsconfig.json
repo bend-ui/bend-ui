@@ -16,24 +16,27 @@
         "name": "next"
       }
     ],
-    "types": ["jest", "node"],
+    "types": ["vitest/globals", "node"],
     "paths": {
       "@bend-ui/ark-ui": ["packages/ark-ui/src/index.ts"],
       "@bend-ui/preset": ["packages/preset/src/index.ts"],
       "@bend-ui/preset-base": ["packages/preset-base/src/index.ts"],
       "@bend-ui/react-utils": ["packages/react-utils/src/index.ts"],
       "@bend-ui/storybook": ["packages/storybook/src/index.ts"],
-      "@bend-ui/styled-system/*": ["packages/styled-system/dist/*"],
+      "@bend-ui/styled-system/*": ["apps/playground-panda/styled-system/*"],
       "@bend-ui/theme": ["packages/theme/src/index.ts"],
-      "@/*": ["apps/playground-panda/*"]
+      "@/*": ["apps/playground-panda/*"],
+      "@bend-ui/base-ui": ["packages/base-ui/src/index.ts"]
     },
-    "ignoreDeprecations": "6.0"
+    "ignoreDeprecations": "6.0",
+    "moduleResolution": "bundler"
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "next-env.d.ts"],
   "exclude": [
     "node_modules",
-    "jest.config.ts",
-    "src/**/*.spec.ts",
-    "src/**/*.test.ts"
+    "vitest.config.ts",
+    "specs",
+    ".next",
+    "../../dist"
   ]
 }

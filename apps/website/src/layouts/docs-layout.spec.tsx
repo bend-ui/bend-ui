@@ -3,24 +3,24 @@ import type { Root } from 'fumadocs-core/page-tree';
 
 import { DocsLayout, DocsPage } from './docs-layout';
 
-const mockSetTheme = jest.fn();
+const { mockSetTheme } = vi.hoisted(() => ({ mockSetTheme: vi.fn() }));
 
-jest.mock('fumadocs-core/framework', () => ({
+vi.mock('fumadocs-core/framework', () => ({
   Link: (props: React.ComponentProps<'a'>) => <a {...props} />,
   usePathname: () => '/docs/components/button',
 }));
 
-jest.mock('@iconify/react', () => ({
+vi.mock('@iconify/react', () => ({
   Icon: (props: React.ComponentProps<'svg'>) => <svg {...props} />,
 }));
 
-jest.mock('fumadocs-core/toc', () => ({
+vi.mock('fumadocs-core/toc', () => ({
   AnchorProvider: ({ children }: { children: React.ReactNode }) => children,
   ScrollProvider: ({ children }: { children: React.ReactNode }) => children,
   TOCItem: (props: React.ComponentProps<'a'>) => <a {...props} />,
 }));
 
-jest.mock('fumadocs-core/page-tree', () => ({
+vi.mock('fumadocs-core/page-tree', () => ({
   findNeighbour: (pageTree: Root) => ({
     previous: pageTree.children[1],
     next:
@@ -30,12 +30,14 @@ jest.mock('fumadocs-core/page-tree', () => ({
   }),
 }));
 
-jest.mock('next-themes', () => ({
+vi.mock('next-themes', () => ({
   useTheme: () => ({ theme: 'system', setTheme: mockSetTheme }),
 }));
 
-jest.mock('../../styled-system/css/index.mjs', () => ({
-  ...jest.requireActual('../../styled-system/css/index.mjs'),
+vi.mock('../../styled-system/css/index.mjs', async (importOriginal) => ({
+  ...(await importOriginal<
+    typeof import('../../styled-system/css/index.mjs')
+  >()),
   css: (styles: unknown) => JSON.stringify(styles),
 }));
 
@@ -68,7 +70,9 @@ describe('Docs route layout', () => {
       </DocsLayout>,
     );
 
-    expect(screen.getByRole('navigation', { name: 'Documentation' })).toBeTruthy();
+    expect(
+      screen.getByRole('navigation', { name: 'Documentation' }),
+    ).toBeTruthy();
     expect(screen.getByRole('link', { name: 'Introduction' })).toBeTruthy();
     expect(screen.getByRole('link', { name: 'Avatar' })).toBeTruthy();
     expect(
@@ -80,10 +84,7 @@ describe('Docs route layout', () => {
 
   it('renders the current page title, description, and MDX body', () => {
     render(
-      <DocsPage
-        title="Button"
-        description="The primary action primitive."
-      >
+      <DocsPage title="Button" description="The primary action primitive.">
         <p>Compiled MDX content</p>
       </DocsPage>,
     );
@@ -108,7 +109,9 @@ describe('Docs route layout', () => {
       </DocsPage>,
     );
 
-    expect(screen.getByRole('navigation', { name: 'On this page' })).toBeTruthy();
+    expect(
+      screen.getByRole('navigation', { name: 'On this page' }),
+    ).toBeTruthy();
     const tocLink = screen.getByRole('link', { name: 'Props' });
     const tocLinkStyles = JSON.parse(tocLink.className);
 
@@ -117,7 +120,9 @@ describe('Docs route layout', () => {
       borderLeftColor: 'stroke.primary',
       color: 'text.primary',
     });
-    expect(screen.getByRole('link', { name: /previous.*introduction/i })).toBeTruthy();
+    expect(
+      screen.getByRole('link', { name: /previous.*introduction/i }),
+    ).toBeTruthy();
     expect(screen.getByRole('link', { name: /next.*avatar/i })).toBeTruthy();
   });
 
@@ -128,9 +133,12 @@ describe('Docs route layout', () => {
       </DocsLayout>,
     );
 
-    fireEvent.change(await screen.findByRole('combobox', { name: 'Color mode' }), {
-      target: { value: 'dark' },
-    });
+    fireEvent.change(
+      await screen.findByRole('combobox', { name: 'Color mode' }),
+      {
+        target: { value: 'dark' },
+      },
+    );
 
     expect(mockSetTheme).toHaveBeenCalledWith('dark');
   });
