@@ -116,7 +116,8 @@ try {
   manifest.dependencies = { '@bend-ui/base-ui': overrides['@bend-ui/base-ui'] };
   if (
     process.env.BEND_VERIFY_RAMPS === '1' ||
-    process.env.BEND_VERIFY_TOKENS === '1'
+    process.env.BEND_VERIFY_TOKENS === '1' ||
+    process.env.BEND_VERIFY_SURFACES === '1'
   ) {
     manifest.dependencies['@bend-ui/preset'] = overrides['@bend-ui/preset'];
   }
@@ -223,6 +224,34 @@ try {
     exec(['vite', 'build', '--outDir', 'dist-ramps']);
     const { verifyRampConsumer } = await import('./verify-ramp-consumer.mjs');
     await verifyRampConsumer(app);
+  }
+  if (process.env.BEND_VERIFY_SURFACES === '1') {
+    const scenario = path.join(fixture, 'surface-scenarios');
+    cpSync(
+      path.join(scenario, 'panda.surfaces.config.ts'),
+      path.join(app, 'panda.surfaces.config.ts'),
+    );
+    cpSync(path.join(scenario, 'app.tsx'), path.join(app, 'src/app/app.tsx'));
+    exec([
+      'panda',
+      'codegen',
+      '--config',
+      'panda.surfaces.config.ts',
+      '--clean',
+    ]);
+    exec([
+      'panda',
+      'cssgen',
+      '--config',
+      'panda.surfaces.config.ts',
+      '--outfile',
+      'styled-system/styles.css',
+    ]);
+    exec(['tsc', '--project', 'tsconfig.json']);
+    exec(['vite', 'build', '--outDir', 'dist-surfaces']);
+    const { verifySurfaceConsumer } =
+      await import('./verify-surface-consumer.mjs');
+    await verifySurfaceConsumer(app);
   }
   for (const mode of ['extend', 'replace']) {
     console.log(`\nChecking native recipe ${mode}`);

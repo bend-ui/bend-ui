@@ -38,6 +38,7 @@ export * from './Separator';
 export * from './Sidebar';
 export * from './Stack';
 export * from './Slider';
+export * from './SurfaceContext';
 export * from './Switch';
 export * from './Table';
 export * from './Tabs';

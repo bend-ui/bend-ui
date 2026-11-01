@@ -20,6 +20,13 @@ import { IconButton } from '../IconButton';
 import { Stack } from '../Stack';
 import { Text } from '../Text';
 
+import {
+  contextualSurfaceProps,
+  SurfaceScopeProvider,
+  useSurfaceScope,
+  type SurfaceLevel,
+} from '../SurfaceContext/SurfaceContext';
+
 const Box = styled('div');
 const ActionButton = styled('button');
 
@@ -35,14 +42,43 @@ type PatternBoxProps = Omit<ComponentProps<typeof Box>, 'direction' | 'title'>;
 export interface SurfaceProps extends PatternBoxProps {
   children?: ReactNode;
   elevation?: 'none' | 'raised';
+  contextual?: boolean;
+  surfaceLevel?: SurfaceLevel;
 }
 
 export const Surface = (props: SurfaceProps) => {
-  const { children, className, elevation = 'none', ...rest } = props;
+  const {
+    children,
+    className,
+    elevation = 'none',
+    contextual = false,
+    surfaceLevel,
+    ...rest
+  } = props;
+  const scope = useSurfaceScope(surfaceLevel, contextual);
+  const contextualProps =
+    contextual || surfaceLevel !== undefined
+      ? contextualSurfaceProps(scope, { style: rest.style, className })
+      : undefined;
   return (
-    <Box className={cx(surface({ elevation }), className)} {...rest}>
-      {children}
-    </Box>
+    <SurfaceScopeProvider
+      scope={contextual || surfaceLevel !== undefined ? scope : null}
+    >
+      <Box
+        {...rest}
+        {...contextualProps}
+        style={
+          (contextualProps?.style as React.CSSProperties | undefined) ??
+          rest.style
+        }
+        className={cx(
+          surface({ elevation }),
+          (contextualProps?.className as string) ?? className,
+        )}
+      >
+        {children}
+      </Box>
+    </SurfaceScopeProvider>
   );
 };
 
