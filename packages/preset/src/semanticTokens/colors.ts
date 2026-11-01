@@ -1,6 +1,31 @@
 import { defineSemanticTokens } from '@pandacss/dev';
 import { danger, info, neutral, primary, success, warning } from './tones';
 
+/** Reference canonical role leaves, flattening DEFAULT to its containing path. */
+const aliasRole = <T extends object>(tokens: T, path: string): T =>
+  Object.fromEntries(
+    Object.entries(tokens).map(([key, token]) => {
+      const tokenPath = key === 'DEFAULT' ? path : `${path}.${key}`;
+      return [
+        key,
+        'value' in token
+          ? { value: `{colors.${tokenPath}}` }
+          : aliasRole(token, tokenPath),
+      ];
+    }),
+  ) as T;
+
+/** Preserve a tone's ramp while routing its role trees to canonical values. */
+const aliasTone = (name: string, tone: typeof primary) => ({
+  ...tone,
+  ...Object.fromEntries(
+    (['fill', 'text', 'stroke', 'icon'] as const).map((role) => [
+      role,
+      aliasRole(tone[role], name === 'neutral' ? role : `${role}.${name}`),
+    ]),
+  ),
+});
+
 export const colors = defineSemanticTokens.colors({
   bg: {
     DEFAULT: {
@@ -63,12 +88,12 @@ export const colors = defineSemanticTokens.colors({
     success: success.icon,
     info: info.icon,
   },
-  neutral,
-  primary,
-  danger,
-  warning,
-  success,
-  info,
+  neutral: aliasTone('neutral', neutral),
+  primary: aliasTone('primary', primary),
+  danger: aliasTone('danger', danger),
+  warning: aliasTone('warning', warning),
+  success: aliasTone('success', success),
+  info: aliasTone('info', info),
   shadow: {
     value: '{colors.neutral.100}',
   },

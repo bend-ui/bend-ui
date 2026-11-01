@@ -1,8 +1,10 @@
 import { type ThemeVariant } from '@pandacss/types';
 import { ColorRamp, createColorScale } from '../utils/create-color-scale';
 import { createNeutralScale } from '../utils/create-neutral-scale';
+import { colors } from '../semanticTokens/colors';
+import { danger } from '../semanticTokens/tones';
 
-interface ThemeOptions {
+export interface ThemeOptions {
   primaryColor?: string;
   neutralColor?: string;
   successColor?: string;
@@ -17,6 +19,7 @@ interface ThemeOptions {
   defaultInfoColor?: ColorRamp;
 }
 
+/** Build a scoped Theme, rebinding danger roles where its palette is selected. */
 export const createTheme = (options: ThemeOptions = {}): ThemeVariant => {
   const {
     primaryColor = 'indigo',
@@ -39,7 +42,22 @@ export const createTheme = (options: ThemeOptions = {}): ThemeVariant => {
         primary: createColorScale(primaryColor, defaultPrimaryColor),
         success: createColorScale(successColor, defaultSuccessColor),
         warning: createColorScale(warningColor, defaultWarningColor),
-        error: createColorScale(errorColor, defaultErrorColor),
+        // CSS custom-property references resolve at their declaration scope.
+        // Redeclare both role directions beside this Theme's palette so nested
+        // Theme boundaries do not inherit values resolved against a parent.
+        danger: {
+          ...colors.danger,
+          ...createColorScale(errorColor, defaultErrorColor),
+        },
+        fill: { danger: danger.fill },
+        text: { danger: danger.text },
+        stroke: { danger: danger.stroke },
+        icon: { danger: danger.icon },
+        // Retain the legacy ramp while danger owns the status palette.
+        error: {
+          ...createColorScale('danger', defaultErrorColor),
+          DEFAULT: { value: '{colors.danger}' },
+        },
         info: createColorScale(infoColor, defaultInfoColor),
         neutral: createNeutralScale(neutralColor, defaultNeutralColor),
       },

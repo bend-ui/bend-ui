@@ -396,19 +396,6 @@ const createPersonalityTheme = (
             personality.primary,
             personality.primaryStates.default,
           ),
-          fill: primaryFill,
-          text: {
-            inverse: {
-              strong: { value: onPrimary },
-              weak: { value: onPrimary },
-            },
-          },
-          icon: {
-            inverse: {
-              strong: { value: onPrimary },
-              weak: { value: onPrimary },
-            },
-          },
         },
         secondary: createColorScale(
           personality.secondary,
@@ -419,6 +406,14 @@ const createPersonalityTheme = (
           personality.darkColor,
         ),
         text: {
+          primary: {
+            inverse: {
+              strong: { value: onPrimary },
+              weak: { value: onPrimary },
+            },
+          },
+        },
+        icon: {
           primary: {
             inverse: {
               strong: { value: onPrimary },

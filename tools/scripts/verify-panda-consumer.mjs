@@ -22,12 +22,17 @@ const app = path.join(work, 'app');
 const readJson = (file) => JSON.parse(readFileSync(file, 'utf8'));
 function run(command, args, cwd = app) {
   console.log(`\n${command} ${args.join(' ')}`);
-  const result = spawnSync(command, args, {
-    cwd,
-    encoding: 'utf8',
-    maxBuffer: 32 * 1024 * 1024,
-    timeout: 180_000,
-  });
+  const pinnedPnpm = command === 'pnpm' && process.env.BEND_PNPM_CLI;
+  const result = spawnSync(
+    pinnedPnpm ? process.execPath : command,
+    pinnedPnpm ? [pinnedPnpm, ...args] : args,
+    {
+      cwd,
+      encoding: 'utf8',
+      maxBuffer: 32 * 1024 * 1024,
+      timeout: 180_000,
+    },
+  );
   const output = `${result.stdout ?? ''}${result.stderr ?? ''}`;
   if (result.error) throw result.error;
   assert.equal(result.status, 0, output);
@@ -109,6 +114,9 @@ try {
     path.join(root, 'package.json'),
   ).packageManager;
   manifest.dependencies = { '@bend-ui/base-ui': overrides['@bend-ui/base-ui'] };
+  if (process.env.BEND_VERIFY_TOKENS === '1') {
+    manifest.dependencies['@bend-ui/preset'] = overrides['@bend-ui/preset'];
+  }
   manifest.devDependencies = {};
   for (const name of [
     '@pandacss/dev',
@@ -171,6 +179,27 @@ try {
     '\nPASS: packed install, manifest hydration, consumer token overrides, generated types and production build.',
   );
   console.log(`Inspect or serve the app at ${app}`);
+  if (process.env.BEND_VERIFY_TOKENS === '1') {
+    const scenario = path.join(fixture, 'token-scenarios');
+    cpSync(
+      path.join(scenario, 'panda.tokens.config.ts'),
+      path.join(app, 'panda.tokens.config.ts'),
+    );
+    cpSync(path.join(scenario, 'app.tsx'), path.join(app, 'src/app/app.tsx'));
+    exec(['panda', 'codegen', '--config', 'panda.tokens.config.ts', '--clean']);
+    exec([
+      'panda',
+      'cssgen',
+      '--config',
+      'panda.tokens.config.ts',
+      '--outfile',
+      'styled-system/styles.css',
+    ]);
+    exec(['tsc', '--project', 'tsconfig.json']);
+    exec(['vite', 'build', '--outDir', 'dist-tokens']);
+    const { verifyTokenConsumer } = await import('./verify-token-consumer.mjs');
+    await verifyTokenConsumer(app);
+  }
   for (const mode of ['extend', 'replace']) {
     console.log(`\nChecking native recipe ${mode}`);
     const scenario = path.join(fixture, 'recipe-scenarios');
