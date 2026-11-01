@@ -29,13 +29,26 @@ export const selectRecipe = defineSlotRecipe({
       _focusWithin: { layerStyle: 'focus' },
     },
     trigger: {
+      rounded: 'control',
+      backgroundColor: 'fill',
+      border: 'base',
+      _focusVisible: {
+        '&:not(:where(.Select__control *))': { layerStyle: 'focus' },
+      },
+      _disabled: { opacity: 'state.disabled', cursor: 'disabled' },
       flex: '1 1 auto',
       display: 'flex',
       alignItems: 'center',
       paddingBlock: '0',
       alignSelf: 'stretch',
-      rounded: 'inherit',
       gap: 'sm',
+      // Grouped adapters retain the surrounding Control's visual treatment.
+      ':where(.Select__control) &': {
+        backgroundColor: 'transparent',
+        border: '0',
+        rounded: 'inherit',
+        minHeight: 'auto',
+      },
     },
     valueText: {
       textAlign: 'start',
@@ -55,6 +68,8 @@ export const selectRecipe = defineSlotRecipe({
           textStyle: controlSizes.sm.textStyle,
         },
         trigger: {
+          minHeight: controlSizes.sm.minHeight,
+          textStyle: controlSizes.sm.textStyle,
           paddingInline: controlSizes.sm.paddingInline,
           gap: controlSizes.sm.gap,
         },
@@ -65,6 +80,8 @@ export const selectRecipe = defineSlotRecipe({
           textStyle: controlSizes.md.textStyle,
         },
         trigger: {
+          minHeight: controlSizes.md.minHeight,
+          textStyle: controlSizes.md.textStyle,
           paddingInline: controlSizes.md.paddingInline,
           gap: controlSizes.md.gap,
         },
@@ -75,6 +92,8 @@ export const selectRecipe = defineSlotRecipe({
           textStyle: controlSizes.lg.textStyle,
         },
         trigger: {
+          minHeight: controlSizes.lg.minHeight,
+          textStyle: controlSizes.lg.textStyle,
           paddingInline: controlSizes.lg.paddingInline,
           gap: controlSizes.lg.gap,
         },
@@ -106,6 +125,9 @@ export const selectDropdownRecipe = defineSlotRecipe({
     content: {
       rounded: 'overlay',
       layerStyle: 'overlay',
+      maxHeight: 'min(20rem, var(--available-height, calc(100dvh - 2rem)))',
+      maxWidth: 'var(--available-width, calc(100vw - 2rem))',
+      overflowY: 'auto',
       py: 'sm',
       px: 'sm',
       _open: {
@@ -123,9 +145,12 @@ export const selectDropdownRecipe = defineSlotRecipe({
       alignItems: 'center',
       justifyContent: 'space-between',
       gap: 'sm',
-      _hover: {
-        backgroundColor: 'fill.hover',
+      _notDisabled: {
+        _hover: { backgroundColor: 'fill.hover' },
       },
+      _highlighted: { backgroundColor: 'fill.hover' },
+      _selected: { fontWeight: 'semibold' },
+      _disabled: { opacity: 'state.disabled', cursor: 'disabled' },
     },
   },
 });

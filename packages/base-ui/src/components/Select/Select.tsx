@@ -1,4 +1,5 @@
 import type { SlotRecipeComponent } from '@bend-ui/core';
+import type { ReactNode, JSX } from 'react';
 import { Select as SelectPrimitive } from '@base-ui/react/select';
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react';
 import { withParts } from '@bend-ui/core';
@@ -16,9 +17,17 @@ const {
 const { withProvider: withDropdownProvider, withContext: withDropdownContext } =
   createSlotRecipeContext(selectDropdown);
 
-const SelectRoot = withSelectRootProvider(
-  SelectPrimitive.Root,
-) as unknown as typeof SelectPrimitive.Root;
+export type SelectRootProps<
+  Value,
+  Multiple extends boolean | undefined = false,
+> = SelectPrimitive.Root.Props<Value, Multiple> & SelectVariantProps;
+
+const SelectRoot = withSelectRootProvider(SelectPrimitive.Root) as unknown as <
+  Value,
+  Multiple extends boolean | undefined = false,
+>(
+  props: SelectRootProps<Value, Multiple>,
+) => JSX.Element;
 
 const SelectControl: SlotRecipeComponent<'div'> = withSelectContext(
   styled('div'),
@@ -96,61 +105,59 @@ const SelectScrollDownArrow = withParts<SelectPrimitive.ScrollDownArrow.Props>(
   'scrollDownArrow',
 );
 
-export type SelectProps<
-  T,
-  Multiple extends boolean | undefined = false,
-> = SelectPrimitive.Root.Props<T, Multiple> & SelectVariantProps;
+export interface SelectOption<Value> {
+  value: Value;
+  label: ReactNode;
+  disabled?: boolean;
+}
 
-const Component = <Value, Multiple extends boolean | undefined = false>(
-  props: SelectProps<Value, Multiple>,
-) => {
-  return (
-    <SelectRoot {...props}>
-      <SelectControl>
-        <SelectTrigger>
-          <SelectValue />
-          <SelectIcon>
-            <ChevronsUpDownIcon />
-          </SelectIcon>
-        </SelectTrigger>
-      </SelectControl>
-      <SelectPortal>
-        <SelectPositioner sideOffset={8}>
-          <SelectScrollUpArrow />
-          <SelectPopup>
-            <SelectList>
-              <SelectItem value="sans">
-                <SelectItemText>Sans-serif</SelectItemText>
-                <SelectItemIndicator>
-                  <CheckIcon />
-                </SelectItemIndicator>
-              </SelectItem>
-              <SelectItem value="serif">
-                <SelectItemText>Serif</SelectItemText>
-                <SelectItemIndicator>
-                  <CheckIcon />
-                </SelectItemIndicator>
-              </SelectItem>
-              <SelectItem value="mono">
-                <SelectItemText>Monospace</SelectItemText>
-                <SelectItemIndicator>
-                  <CheckIcon />
-                </SelectItemIndicator>
-              </SelectItem>
-              <SelectItem value="cursive">
-                <SelectItemText>Cursive</SelectItemText>
-                <SelectItemIndicator>
-                  <CheckIcon />
-                </SelectItemIndicator>
-              </SelectItem>
-            </SelectList>
-          </SelectPopup>
-          <SelectScrollDownArrow />
-        </SelectPositioner>
-      </SelectPortal>
-    </SelectRoot>
-  );
+/** Flat data-driven convenience API; use compound parts for groups/custom content. */
+export type SelectProps<
+  Value,
+  Multiple extends boolean | undefined = false,
+> = Omit<SelectRootProps<Value, Multiple>, 'items' | 'children'> & {
+  items: ReadonlyArray<SelectOption<Value>>;
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
 };
+
+const Component = <Value, Multiple extends boolean | undefined = false>({
+  items,
+  'aria-label': ariaLabel,
+  'aria-labelledby': ariaLabelledby,
+  ...props
+}: SelectProps<Value, Multiple>) => (
+  <SelectRoot {...props} items={items}>
+    <SelectControl>
+      <SelectTrigger aria-label={ariaLabel} aria-labelledby={ariaLabelledby}>
+        <SelectValue />
+        <SelectIcon>
+          <ChevronsUpDownIcon />
+        </SelectIcon>
+      </SelectTrigger>
+    </SelectControl>
+    <SelectPortal>
+      <SelectPositioner sideOffset={8} alignItemWithTrigger={false}>
+        <SelectPopup>
+          <SelectList>
+            {items.map((item, index) => (
+              <SelectItem
+                key={index}
+                value={item.value}
+                disabled={item.disabled}
+              >
+                <SelectItemText>{item.label}</SelectItemText>
+                <SelectItemIndicator>
+                  <CheckIcon />
+                </SelectItemIndicator>
+              </SelectItem>
+            ))}
+          </SelectList>
+        </SelectPopup>
+      </SelectPositioner>
+    </SelectPortal>
+  </SelectRoot>
+);
 
 Object.assign(Component, { displayName: 'Select' });
 

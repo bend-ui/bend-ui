@@ -39,7 +39,12 @@ describe('compiled foundation contract', () => {
     expect(css).toContain(
       '--sizes-control-lg: calc(var(--sizes-control) + 0.5rem)',
     );
-    for (const name of ['Button__root', 'Input__root', 'Select__control']) {
+    for (const name of [
+      'Button__root',
+      'Input__root',
+      'Select__control',
+      'Select__trigger',
+    ]) {
       for (const size of ['sm', 'md', 'lg']) {
         const selector = `.${name}--size_${size}`;
         const block = css.slice(css.indexOf(selector)).split('}')[0];

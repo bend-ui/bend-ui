@@ -1,0 +1,141 @@
+---
+title: Select
+description: Data-driven selection, compound slots, keyboard behavior, and recipe replacement
+---
+
+# Select
+
+Use Select to choose from a known set of values. Use a native HTML select when custom option rendering and popup styling are unnecessary. For searchable or freely entered values, use a Combobox instead.
+
+## Live example
+
+This compound example has 60 grouped options and a disabled Workspace 03. Open with Enter, Space, or an arrow key. Navigate with arrows, Home/End, or type an option label. Enter commits a choice; Escape dismisses without committing a highlighted value. Tab continues to the next control.
+
+<SelectReferenceExample />
+
+The list scrolls within its available viewport space. Base UI permits disabled options to receive keyboard highlight so their presence remains discoverable, but they cannot be selected. The selection indicator and text weight distinguish selection from the highlighted navigation target.
+
+## Data-driven usage
+
+```tsx
+import { Select } from '@bend-ui/base-ui';
+
+const workspaces = [
+  { label: 'Design team', value: 'design' },
+  { label: 'Engineering', value: 'engineering' },
+  { label: 'Archived team', value: 'archive', disabled: true },
+];
+
+export function WorkspaceSelect() {
+  return (
+    <Select
+      aria-label="Workspace"
+      items={workspaces}
+      defaultValue="design"
+      size="md"
+      name="workspace"
+    />
+  );
+}
+```
+
+The convenience component requires a flat `items` array of `{ value, label, disabled? }`. It renders those options and passes the same labels to Base UI. Values retain their generic type; `multiple` uses an array of values. Supply an accessible name with `aria-label` or `aria-labelledby`. The selected value's text alone is not a field label.
+
+This is a v0 API change: earlier Select code always rendered four font options and treated `items` as optional upstream label metadata. Callers must now pass the actual option data. There is no implicit font catalog.
+
+## Compound composition
+
+Use compound parts for groups, custom content, separate labels, or popup positioning:
+
+```tsx
+import { Select } from '@bend-ui/base-ui';
+
+export function FontSelect() {
+  return (
+    <>
+      <label htmlFor="font-choice">Font family</label>
+      <Select.Root
+        size="lg"
+        items={{ serif: 'Serif', sans: 'Sans-serif' }}
+        defaultValue="serif"
+      >
+        <Select.Trigger id="font-choice">
+          <Select.Value />
+          <Select.Icon aria-hidden="true">⌄</Select.Icon>
+        </Select.Trigger>
+        <Select.Portal>
+          <Select.Positioner alignItemWithTrigger={false} sideOffset={8}>
+            <Select.Popup>
+              <Select.List>
+                <Select.Item value="serif">
+                  <Select.ItemText>Serif</Select.ItemText>
+                  <Select.ItemIndicator aria-hidden="true">
+                    ✓
+                  </Select.ItemIndicator>
+                </Select.Item>
+                <Select.Item value="sans">
+                  <Select.ItemText>Sans-serif</Select.ItemText>
+                  <Select.ItemIndicator aria-hidden="true">
+                    ✓
+                  </Select.ItemIndicator>
+                </Select.Item>
+              </Select.List>
+            </Select.Popup>
+          </Select.Positioner>
+        </Select.Portal>
+      </Select.Root>
+    </>
+  );
+}
+```
+
+`Root` renders no DOM wrapper and owns value/open state and the `select` recipe context. Its `items` remains Base UI's label metadata API (record, flat array, or grouped array); the compound caller renders the actual items. Keep metadata and rendered options consistent so `Value` displays the right label.
+
+`Trigger` owns the complete control appearance and accepts its recipe context without a private Control wrapper. Set `size="sm" | "md" | "lg"` on `Root`; `md` is the default. The convenience component still renders an internal layout control, which is not a public compound part.
+
+## Slots and states
+
+Select uses two independent slot recipes. The dropdown provider is on `Positioner`, so it carries its recipe into portalled descendants.
+
+| Public part            | Recipe / slot                                 | Responsibility                                            |
+| ---------------------- | --------------------------------------------- | --------------------------------------------------------- |
+| `Root`                 | Behavior only                                 | Value/open state and control recipe context               |
+| `Trigger`              | `select.trigger`                              | Named combobox button and complete control styling        |
+| `Value`                | `select.valueText`                            | Selected value's label                                    |
+| `Icon`                 | `select.indicator`                            | Disclosure decoration                                     |
+| `Portal`               | Behavior only                                 | Body or custom-container portal                           |
+| `Positioner`           | `selectDropdown.positioner`                   | Floating placement and dropdown recipe provider           |
+| `Popup`                | `selectDropdown.content`                      | Bounded popup surface; width defaults to the anchor width |
+| `List`                 | Unstyled DOM part                             | Listbox semantics                                         |
+| `Item`                 | `selectDropdown.item`                         | Option value, disabled state, highlight, selection        |
+| `ItemText`             | `selectDropdown.itemText`                     | Option's visible text                                     |
+| `ItemIndicator`        | `selectDropdown.itemIndicator`                | Selected marker                                           |
+| `Group` / `GroupLabel` | `selectDropdown.itemGroup` / `itemGroupLabel` | Accessible option grouping                                |
+
+`Backdrop`, `Arrow`, `Separator`, and scroll-arrow exports are not additional public recipe slots in this Base UI contract. A portal, provider, and focus manager are not visual slots.
+
+| State          | Hook                                            | Meaning                                          |
+| -------------- | ----------------------------------------------- | ------------------------------------------------ |
+| Open / closed  | `_open` / `_closed`, native data attributes     | Popup lifecycle; trigger also exposes open state |
+| Highlighted    | `_highlighted`, `[data-highlighted]`            | Current keyboard/pointer navigation target       |
+| Selected       | `_selected`, `[data-selected]`, `aria-selected` | Committed option; distinct from highlight        |
+| Disabled       | `_disabled`, `[data-disabled]`                  | Unavailable trigger or option                    |
+| Keyboard focus | `_focusVisible`                                 | Visible trigger focus treatment                  |
+
+Base UI owns behavior. Adding a state attribute manually changes styling, not selection or disabled behavior.
+
+## Long lists and portal appearance
+
+The dropdown recipe bounds its popup height to 20rem and the available height, with a viewport fallback and internal scrolling. `Positioner` owns placement. `alignItemWithTrigger={false}` gives predictable below/above-trigger placement; the upstream default can align the selected option over the trigger for mouse interaction. Use Base UI's positioning props instead of deriving placement from visual elevation.
+
+React recipe context crosses portals; arbitrary DOM classes and CSS variable inheritance do not. The live example inherits the Docs site's document-level Theme and color mode, which also reach the body portal. Use the site's color-mode toggle to compare appearances. For locally scoped themes, use a portal container inside the same fully resolved token boundary; moving only a mode class onto a popup does not recompute semantic aliases inherited from an ancestor. Select does not automatically participate in Dialog/Popover's contextual SurfaceProvider bridge.
+
+## Replace the recipes without changing behavior
+
+Extend existing styling under `theme.extend.slotRecipes.select` and `selectDropdown`. Put complete replacements under `theme.slotRecipes` instead. Preserve the `Select` and `SelectDropdown` class namespaces and the slots above. A replacement must retain private required `select.control` for the convenience component, even though compound consumers do not style it directly.
+
+Preserve `size` values `sm`/`md`/`lg` and default `md` in `select`. `selectDropdown` currently has no variant axes. Preserve visible focus, highlighted/selected/disabled distinctions, bounded scrolling, and the Base UI positioning variables.
+
+The repository's packed-consumer fixture extends and replaces **both** recipes while importing the same installed Select implementation. It verifies emitted CSS, the published trigger classes, and production builds. Run `pnpm nx run panda-consumer:verify` from this repository to reproduce that maintainer proof.
+
+New consumer-defined variant values or compound rules do not widen the published component's declarations or runtime metadata. Use a consumer-owned component with its generated recipe when adding those selection rules; existing supported values can be restyled without editing Select React source.
