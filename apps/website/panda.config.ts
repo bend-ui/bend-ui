@@ -2,6 +2,7 @@ import { defineConfig } from '@pandacss/dev';
 import { createBendPreset } from '@bend-ui/preset';
 
 export default defineConfig({
+  outExtension: 'mjs',
   // Whether to use css reset
   preflight: true,
 
@@ -20,7 +21,17 @@ export default defineConfig({
   presets: [createBendPreset()],
 
   staticCss: {
-    themes: ['default', 'stratus', 'solstice', 'volt', 'nebula', 'canopy', 'aster'],
+    // Compound adapter contexts are not discoverable from the JSX call sites.
+    recipes: { select: ['*'], selectDropdown: ['*'] },
+    themes: [
+      'default',
+      'stratus',
+      'solstice',
+      'volt',
+      'nebula',
+      'canopy',
+      'aster',
+    ],
   },
 
   importMap: '@bend-ui/styled-system',

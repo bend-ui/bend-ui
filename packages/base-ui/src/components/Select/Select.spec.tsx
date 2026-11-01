@@ -233,3 +233,24 @@ describe('Select public props', () => {
     },
   );
 });
+
+describe('Select compound API', () => {
+  it('exposes recipe size props on Root and the control slot', () => {
+    const props: Parameters<typeof Select.Root>[0] = { size: 'sm' };
+
+    expect(props.size).toBe('sm');
+    expect(Select.Control).toBeDefined();
+    render(
+      <Select.Root {...props}>
+        <Select.Control data-testid="select-control">
+          <Select.Trigger aria-label="Grouped choice">
+            <Select.Value />
+          </Select.Trigger>
+        </Select.Control>
+      </Select.Root>,
+    );
+    expect(screen.getByTestId('select-control').className).toContain(
+      'Select__control--size_sm',
+    );
+  });
+});

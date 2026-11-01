@@ -112,6 +112,13 @@ export const componentContracts = {
           'Owns selection and recipe context; does not promise a DOM slot.',
       },
       {
+        name: 'control',
+        kind: 'slot',
+        recipe: 'select',
+        slot: 'control',
+        description: 'Optional grouping surface around the trigger.',
+      },
+      {
         name: 'trigger',
         kind: 'slot',
         recipe: 'select',
@@ -215,7 +222,6 @@ export const componentContracts = {
         kind: 'slotRecipe',
         className: 'Select',
         privateSlots: {
-          control: 'required',
           root: 'optional',
           clearTrigger: 'optional',
           content: 'optional',

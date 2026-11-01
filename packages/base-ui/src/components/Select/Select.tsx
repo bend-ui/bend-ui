@@ -163,6 +163,7 @@ Object.assign(Component, { displayName: 'Select' });
 
 export const Select = Object.assign(Component, {
   Root: SelectRoot,
+  Control: SelectControl,
   Trigger: SelectTrigger,
   Value: SelectValue,
   Icon: SelectIcon,

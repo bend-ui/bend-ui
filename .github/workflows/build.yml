@@ -31,13 +31,10 @@ jobs:
         uses: pnpm/action-setup@v4
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
-      - name: Build affected packages
-        run: pnpm build:packages
-
-      - name: Test affected packages
-        run: pnpm test:packages
+      - name: Validate affected projects
+        run: pnpm validate
 
       - name: Verify packed Panda consumer
         run: pnpm nx run panda-consumer:verify

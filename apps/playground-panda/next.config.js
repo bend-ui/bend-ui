@@ -8,6 +8,16 @@ module.exports = function nextConfig(phase) {
     process.env.NX_TASK_TARGET_CONFIGURATION === 'development';
   const exporting = process.env.BEND_NEXT_EXPORT === 'true';
   return {
+    webpack(config) {
+      config.resolve.extensionAlias = {
+        ...config.resolve.extensionAlias,
+        '.js': ['.ts', '.tsx', '.js', '.jsx'],
+        '.mjs': ['.mts', '.mjs'],
+        '.cjs': ['.cts', '.cjs'],
+        '.jsx': ['.tsx', '.jsx'],
+      };
+      return config;
+    },
     distDir: exporting
       ? '../../dist/apps/playground-panda/export'
       : development
@@ -16,6 +26,7 @@ module.exports = function nextConfig(phase) {
     ...(exporting ? { output: 'export' } : {}),
     transpilePackages: [
       '@bend-ui/ark-ui',
+      '@bend-ui/base-ui',
       '@bend-ui/preset',
       '@bend-ui/preset-base',
       '@bend-ui/react-utils',

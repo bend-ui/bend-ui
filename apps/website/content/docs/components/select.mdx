@@ -91,7 +91,7 @@ export function FontSelect() {
 
 `Root` renders no DOM wrapper and owns value/open state and the `select` recipe context. Its `items` remains Base UI's label metadata API (record, flat array, or grouped array); the compound caller renders the actual items. Keep metadata and rendered options consistent so `Value` displays the right label.
 
-`Trigger` owns the complete control appearance and accepts its recipe context without a private Control wrapper. Set `size="sm" | "md" | "lg"` on `Root`; `md` is the default. The convenience component still renders an internal layout control, which is not a public compound part.
+`Trigger` accepts recipe context directly and can render a complete standalone control. Wrap it in the public `Select.Control` when composing a grouping surface; Control then owns the surrounding border and focus ring. The convenience component uses this grouped anatomy. Set `size="sm" | "md" | "lg"` on `Root`; `md` is the default.
 
 ## Slots and states
 
@@ -100,6 +100,7 @@ Select uses two independent slot recipes. The dropdown provider is on `Positione
 | Public part            | Recipe / slot                                 | Responsibility                                            |
 | ---------------------- | --------------------------------------------- | --------------------------------------------------------- |
 | `Root`                 | Behavior only                                 | Value/open state and control recipe context               |
+| `Control`              | `select.control`                              | Optional grouping surface, border, and focus ring         |
 | `Trigger`              | `select.trigger`                              | Named combobox button and complete control styling        |
 | `Value`                | `select.valueText`                            | Selected value's label                                    |
 | `Icon`                 | `select.indicator`                            | Disclosure decoration                                     |
@@ -114,13 +115,13 @@ Select uses two independent slot recipes. The dropdown provider is on `Positione
 
 `Backdrop`, `Arrow`, `Separator`, and scroll-arrow exports are not additional public recipe slots in this Base UI contract. A portal, provider, and focus manager are not visual slots.
 
-| State          | Hook                                            | Meaning                                          |
-| -------------- | ----------------------------------------------- | ------------------------------------------------ |
-| Open / closed  | `_open` / `_closed`, native data attributes     | Popup lifecycle; trigger also exposes open state |
-| Highlighted    | `_highlighted`, `[data-highlighted]`            | Current keyboard/pointer navigation target       |
-| Selected       | `_selected`, `[data-selected]`, `aria-selected` | Committed option; distinct from highlight        |
-| Disabled       | `_disabled`, `[data-disabled]`                  | Unavailable trigger or option                    |
-| Keyboard focus | `_focusVisible`                                 | Visible trigger focus treatment                  |
+| State          | Hook                                            | Meaning                                            |
+| -------------- | ----------------------------------------------- | -------------------------------------------------- |
+| Open / closed  | `_open` / `_closed`, native data attributes     | Popup lifecycle; trigger also exposes open state   |
+| Highlighted    | `_highlighted`, `[data-highlighted]`            | Current keyboard/pointer navigation target         |
+| Selected       | `_selected`, `[data-selected]`, `aria-selected` | Committed option; distinct from highlight          |
+| Disabled       | `_disabled`, `[data-disabled]`                  | Unavailable trigger or option                      |
+| Keyboard focus | `_focusVisible` / `_focusWithin`                | Visible standalone Trigger / grouped Control focus |
 
 Base UI owns behavior. Adding a state attribute manually changes styling, not selection or disabled behavior.
 
@@ -132,9 +133,11 @@ React recipe context crosses portals; arbitrary DOM classes and CSS variable inh
 
 ## Replace the recipes without changing behavior
 
-Extend existing styling under `theme.extend.slotRecipes.select` and `selectDropdown`. Put complete replacements under `theme.slotRecipes` instead. Preserve the `Select` and `SelectDropdown` class namespaces and the slots above. A replacement must retain private required `select.control` for the convenience component, even though compound consumers do not style it directly.
+Extend existing styling under `theme.extend.slotRecipes.select` and `selectDropdown`. Put complete replacements under `theme.slotRecipes` instead. Preserve the `Select` and `SelectDropdown` class namespaces and the slots above. A replacement must retain `select.control`, which is public and also rendered by the convenience component.
 
 Preserve `size` values `sm`/`md`/`lg` and default `md` in `select`. `selectDropdown` currently has no variant axes. Preserve visible focus, highlighted/selected/disabled distinctions, bounded scrolling, and the Base UI positioning variables.
+
+When scanning adapter source without the published design-system metadata, ensure Panda generates the compound recipes. The Docs site uses `staticCss: { recipes: { select: ['*'], selectDropdown: ['*'] } }` so context-driven parts receive their CSS in production.
 
 The repository's packed-consumer fixture extends and replaces **both** recipes while importing the same installed Select implementation. It verifies emitted CSS, the published trigger classes, and production builds. Run `pnpm nx run panda-consumer:verify` from this repository to reproduce that maintainer proof.
 
