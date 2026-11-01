@@ -7,6 +7,7 @@ The Base UI Dialog already composes native modal behavior with Panda slot contex
 - `packages/base-ui/src/components/Dialog/Dialog.spec.tsx` tests accessible title/description, initial focus, Escape close reasons, default return focus, controlled open state, outside-dismissal opt-out, explicit final focus, and nested Escape/return focus in light and dark mode.
 - `packages/preset/src/recipes/dialog.ts` replaces size `minWidth` with `width`, bounds the popup to `100vw - 2rem` and `100dvh - 2rem`, and makes long popup content scroll vertically. Minimum width previously overrode a smaller viewport, so adding `maxWidth` alone would not solve narrow-screen overflow.
 - `apps/website/lib/examples/dialog-example.tsx` renders real nested Dialog parts. The MDX map exposes it to the [Dialog page](../apps/website/content/docs/components/dialog.mdx). It uses explicit preview color modes and distinct surface appearances; it does not change the site's theme settings or introduce generic preview infrastructure.
+- `apps/website/panda.config.ts` explicitly generates the non-JSX `backdrop` recipe. Production extraction already found the Dialog and Button rules, but omitted the ordinary Backdrop recipe used through `Dialog.Backdrop`; the targeted static recipe entry restores the real viewport overlay.
 - The Dialog Storybook trigger now uses the supported `secondary` treatment instead of the unsupported `outline` value. The component catalog records the new Docs page.
 
 The recipe retains its slots, class namespace, default medium size, and `sm`/`md`/`lg` values. Surface elevation remains independent of stacking. No new focus trap, portal manager, or runtime behavior wrapper is added.
@@ -14,15 +15,12 @@ The recipe retains its slots, class namespace, default medium size, and `sm`/`md
 ## Permanent regression checks
 
 ```sh
-pnpm nx run base-ui:test
-pnpm nx run-many -t lint,typecheck,build -p preset,base-ui
+NX_DAEMON=false pnpm validate --base=origin/main --output-style=static
 ```
 
-On November 1, 2026, all 30 Base UI tests passed, including four new modal cases. Lint, library/spec typechecking, and production builds passed across 11 tasks; Base UI lint retained its 21 existing warnings. Initial use of the older documentation's `--testFiles` flag failed because the inferred target now passes options directly to Vitest; the full test target above is verified.
+On November 1, 2026, the integrated gate passed all 60 tasks for 15 projects and nine dependency tasks in 13m35s, including the production Docs build, package tests, lint, and typechecking. The Base UI suite passed all 34 tests, including the four Dialog modal cases; the preset suite passed all 66 tests. The complete log is `/tmp/ben41-final-validation.log`. PR #207's website build changes and PR #208's foundations are now integrated, so the earlier Docs build prerequisite is resolved.
 
-The Dialog MDX page separately compiled using the installed Fumadocs MDX preset and the site's light/dark Shiki options. A full Docs-site build remains dependent on PR #207's existing generated-helper import fix; this work does not copy that configuration change.
-
-## Browser proof
+## Initial source browser proof
 
 A temporary Vite harness imported the actual `DialogReferenceExample` and Base UI source through the workspace aliases. Panda 2.2 generated CSS from the actual design preset with static recipe variants, including the changed Dialog recipe. This was not a CSS mock. Chromium ran at 1000 × 800 and 320 × 640 in both preview modes.
 
@@ -44,3 +42,15 @@ The browser reported no runtime errors. Visual review at 320px caught a long clo
 | Dark         | `rgb(250,250,250)` / `rgb(38,38,38)` | `rgb(250,250,250)` / `rgb(54,54,54)` | 14.50:1              | 11.58:1               |
 
 Ratios use browser-resolved RGB values and WCAG relative luminance for these four example text pairs. They do not certify every component state, backdrop, or consumer override. Existing [contextual-surface evidence](contextual-surfaces.md) remains the proof for custom portal targets, SSR/hydration, style callbacks, and scope overrides.
+
+## Integrated production Docs proof
+
+After the gate, the completed Next production build was served locally on port 4300. The temporary `/tmp/ben41-built-docs-check.cjs` checked `/docs/components/dialog` in Chromium at 320 × 640, using the site's emitted production CSS rather than the initial harness's static recipe generation. Both preview modes returned HTTP 200 with no runtime errors.
+
+The check repeated initial focus, eight forward and eight reverse Tab steps in each modal, nested Escape dismissal and return focus, outer Escape dismissal and return focus, and default outside-click dismissal. Both popups were body portals with the intended raised/overlay levels and browser-resolved colors from the table above. Visual review of the settled light popup and dark nested popup confirmed the geometry and distinct surfaces.
+
+In each mode, the outer popup measured x=16px, y=184px, width=288px, and height=272px. Its generated recipe resolved to max-width 288px, max-height 608px, and `overflow-y: auto`. The real Backdrop was fixed at 320 × 640px with `rgba(0, 0, 0, 0.5)`, 10px backdrop blur, and final opacity 1. This verifies the targeted extraction fix in the actual Docs build.
+
+Appending excessive content produced a 606px client height, 7486px scroll height, and scroll position 6880px. Keyboard focus scrolled the labeled 32 × 32px Close action back into view; Enter dismissed the dialog and returned focus to Open preferences.
+
+Results are recorded in `/tmp/ben41-built-docs-results.json`. Screenshots are `/tmp/ben41-built-docs-light-320.png`, `/tmp/ben41-built-docs-dark-320.png`, `/tmp/ben41-built-docs-light-nested-320.png`, and `/tmp/ben41-built-docs-dark-nested-320.png`. The production server was stopped after verification. Shared Docs chrome styling and narrow-page layout remain tracked separately in BEN-50.

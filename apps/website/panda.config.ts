@@ -21,6 +21,8 @@ export default defineConfig({
   presets: [createBendPreset()],
 
   staticCss: {
+    // Generate the non-JSX recipe used by Dialog.Backdrop.
+    recipes: { backdrop: ['*'] },
     themes: [
       'default',
       'stratus',
