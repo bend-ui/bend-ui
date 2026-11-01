@@ -56,7 +56,8 @@ export const buttonRecipe = defineSlotRecipe({
           _notDisabled: {
             _hover: {
               '@media (hover: hover)': {
-                '&:not(:active)': { backgroundColor: 'fill.primary.hover' },
+                '&:not(:active, [data-pressed], [aria-pressed="true"], [data-selected], [aria-selected="true"], [data-state="selected"])':
+                  { backgroundColor: 'fill.primary.hover' },
               },
             },
             _active: {
@@ -76,7 +77,8 @@ export const buttonRecipe = defineSlotRecipe({
           _notDisabled: {
             _hover: {
               '@media (hover: hover)': {
-                '&:not(:active)': { backgroundColor: 'fill.hover' },
+                '&:not(:active, [data-pressed], [aria-pressed="true"], [data-selected], [aria-selected="true"], [data-state="selected"])':
+                  { backgroundColor: 'fill.hover' },
               },
             },
             _active: { backgroundColor: 'fill.active' },
@@ -92,7 +94,8 @@ export const buttonRecipe = defineSlotRecipe({
           _notDisabled: {
             _hover: {
               '@media (hover: hover)': {
-                '&:not(:active)': { backgroundColor: 'fill.translucent.hover' },
+                '&:not(:active, [data-pressed], [aria-pressed="true"], [data-selected], [aria-selected="true"], [data-state="selected"])':
+                  { backgroundColor: 'fill.translucent.hover' },
               },
             },
             _active: { backgroundColor: 'fill.translucent.active' },
@@ -108,7 +111,8 @@ export const buttonRecipe = defineSlotRecipe({
           _notDisabled: {
             _hover: {
               '@media (hover: hover)': {
-                '&:not(:active)': { backgroundColor: 'fill.danger.hover' },
+                '&:not(:active, [data-pressed], [aria-pressed="true"], [data-selected], [aria-selected="true"], [data-state="selected"])':
+                  { backgroundColor: 'fill.danger.hover' },
               },
             },
             _active: { backgroundColor: 'fill.danger.active' },
@@ -125,7 +129,8 @@ export const buttonRecipe = defineSlotRecipe({
           _notDisabled: {
             _hover: {
               '@media (hover: hover)': {
-                '&:not(:active)': { backgroundColor: 'fill.inverse.weak' },
+                '&:not(:active, [data-pressed], [aria-pressed="true"], [data-selected], [aria-selected="true"], [data-state="selected"])':
+                  { backgroundColor: 'fill.inverse.weak' },
               },
             },
             _active: { backgroundColor: 'fill.inverse.weak' },

@@ -150,12 +150,24 @@ export async function verifyInteractionConsumer(app) {
           }
           await page.mouse.up();
         }
-        await readable('selected', label);
+        const selected = await readable('selected', label);
+        await page.getByTestId('selected').hover();
+        assert.equal(
+          (await sample('selected')).fill,
+          selected.fill,
+          `${label} selected fill persists on hover`,
+        );
         assert.equal(
           (await sample('selected')).fill,
           await roleFill('selected', 'fill-selected'),
         );
-        await readable('toggle', label);
+        const toggle = await readable('toggle', label);
+        await page.getByTestId('toggle').hover();
+        assert.equal(
+          (await sample('toggle')).fill,
+          toggle.fill,
+          `${label} pressed fill persists on hover`,
+        );
         assert.equal(
           (await sample('toggle')).transform,
           'none',
