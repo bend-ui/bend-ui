@@ -31,7 +31,7 @@ describe('semantic token customization contract', () => {
       expect(palette.danger[role]).toEqual(colors.danger[role]);
     }
     expect(palette.fill.danger).toMatchObject({
-      DEFAULT: { value: '{colors.danger.500}' },
+      DEFAULT: { value: '{colors.danger.700}' },
     });
     expect(palette.stroke.danger).toMatchObject({
       DEFAULT: { value: '{colors.danger.500}' },

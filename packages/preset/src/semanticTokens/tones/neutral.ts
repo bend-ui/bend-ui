@@ -13,6 +13,7 @@ export const neutral = defineTone('neutral', {
       active: {
         value: '{colors.neutral.400}',
       },
+      selected: { value: '{colors.neutral.300}' },
       disabled: {
         value: '{colors.neutral.400}',
       },

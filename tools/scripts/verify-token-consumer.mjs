@@ -99,8 +99,10 @@ export async function verifyTokenConsumer(app) {
               return getComputedStyle(probe).color;
             };
             const expected = resolve('var(--colors-purple-500)');
+            const expectedButton = resolve('var(--colors-purple-700)');
             const override = resolve('#123456');
             const result = {
+              expectedButton,
               button: getComputedStyle(parent.querySelector('button'))
                 .backgroundColor,
               textarea: getComputedStyle(
@@ -123,7 +125,7 @@ export async function verifyTokenConsumer(app) {
         });
         assert.equal(
           danger.nested.button,
-          danger.nested.expected,
+          danger.nested.expectedButton,
           'Nested Theme must recolor danger Button',
         );
         assert.equal(

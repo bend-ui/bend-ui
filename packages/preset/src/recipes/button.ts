@@ -23,8 +23,10 @@ export const buttonRecipe = defineSlotRecipe({
         opacity: 'state.disabled',
         cursor: 'disabled',
       },
-      _active: {
-        transform: 'scale(0.9)',
+      _notDisabled: {
+        _motionSafe: {
+          _active: { transform: 'scale(0.96)' },
+        },
       },
     },
     label: {
@@ -53,27 +55,35 @@ export const buttonRecipe = defineSlotRecipe({
           boxShadow: 'xs',
           _notDisabled: {
             _hover: {
-              backgroundColor: 'fill.primary.fill.hover',
+              '@media (hover: hover)': {
+                '&:not(:active, [data-pressed], [aria-pressed="true"], [data-selected], [aria-selected="true"], [data-state="selected"])':
+                  { backgroundColor: 'fill.primary.hover' },
+              },
             },
             _active: {
               backgroundColor: 'fill.primary.active',
             },
-            _focusVisible: {
-              backgroundColor: 'fill.primary.focus',
-            },
+            _pressed: { backgroundColor: 'fill.primary.active' },
+            _selected: { backgroundColor: 'fill.primary.selected' },
           },
         },
       },
       secondary: {
         root: {
           color: 'text',
-          backgroundColor: 'fill.weak',
+          backgroundColor: 'fill',
           borderColor: 'stroke.weak',
           boxShadow: 'revert',
           _notDisabled: {
             _hover: {
-              backgroundColor: 'fill.weak.hover',
+              '@media (hover: hover)': {
+                '&:not(:active, [data-pressed], [aria-pressed="true"], [data-selected], [aria-selected="true"], [data-state="selected"])':
+                  { backgroundColor: 'fill.hover' },
+              },
             },
+            _active: { backgroundColor: 'fill.active' },
+            _pressed: { backgroundColor: 'fill.active' },
+            _selected: { backgroundColor: 'fill.selected' },
           },
         },
       },
@@ -81,27 +91,52 @@ export const buttonRecipe = defineSlotRecipe({
         root: {
           color: 'text',
           backgroundColor: 'transparent',
-          _hover: {
-            backgroundColor: 'fill.weak.hover',
+          _notDisabled: {
+            _hover: {
+              '@media (hover: hover)': {
+                '&:not(:active, [data-pressed], [aria-pressed="true"], [data-selected], [aria-selected="true"], [data-state="selected"])':
+                  { backgroundColor: 'fill.translucent.hover' },
+              },
+            },
+            _active: { backgroundColor: 'fill.translucent.active' },
+            _pressed: { backgroundColor: 'fill.translucent.active' },
+            _selected: { backgroundColor: 'fill.translucent.selected' },
           },
         },
       },
       danger: {
         root: {
-          color: 'text.danger',
+          color: 'text.danger.inverse.strong',
           backgroundColor: 'fill.danger',
           _notDisabled: {
             _hover: {
-              backgroundColor: 'fill.danger.hover',
+              '@media (hover: hover)': {
+                '&:not(:active, [data-pressed], [aria-pressed="true"], [data-selected], [aria-selected="true"], [data-state="selected"])':
+                  { backgroundColor: 'fill.danger.hover' },
+              },
             },
+            _active: { backgroundColor: 'fill.danger.active' },
+            _pressed: { backgroundColor: 'fill.danger.active' },
+            _selected: { backgroundColor: 'fill.danger.selected' },
           },
         },
       },
       inverse: {
         root: {
-          color: 'text.inverse.strong',
+          color: 'text',
           backgroundColor: 'fill.inverse.strong',
           borderColor: 'stroke.inverse.strong',
+          _notDisabled: {
+            _hover: {
+              '@media (hover: hover)': {
+                '&:not(:active, [data-pressed], [aria-pressed="true"], [data-selected], [aria-selected="true"], [data-state="selected"])':
+                  { backgroundColor: 'fill.inverse.weak' },
+              },
+            },
+            _active: { backgroundColor: 'fill.inverse.weak' },
+            _pressed: { backgroundColor: 'fill.inverse.weak' },
+            _selected: { backgroundColor: 'fill.inverse.weak' },
+          },
         },
       },
     },

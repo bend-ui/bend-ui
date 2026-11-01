@@ -52,6 +52,13 @@ export const colors = defineSemanticTokens.colors({
   },
   fill: {
     ...neutral.fill,
+    // Alpha belongs to the fill, never the entire surface or its content.
+    translucent: {
+      DEFAULT: { value: 'color-mix(in srgb, {colors.text} 8%, transparent)' },
+      hover: { value: 'color-mix(in srgb, {colors.text} 12%, transparent)' },
+      active: { value: 'color-mix(in srgb, {colors.text} 16%, transparent)' },
+      selected: { value: 'color-mix(in srgb, {colors.text} 20%, transparent)' },
+    },
     primary: primary.fill,
     danger: danger.fill,
     warning: warning.fill,
