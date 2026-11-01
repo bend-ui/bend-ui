@@ -35,6 +35,7 @@ export const inputRecipe = defineSlotRecipe({
       minWidth: '0',
       alignSelf: 'stretch',
       font: 'inherit',
+      fontSize: '1rem',
       paddingBlock: '0',
     },
     icon: {
@@ -53,10 +54,7 @@ export const inputRecipe = defineSlotRecipe({
           minHeight: controlSizes.sm.minHeight,
           textStyle: controlSizes.sm.textStyle,
         },
-        input: {
-          minHeight: 'calc({sizes.control.sm} - 2px)',
-          textStyle: controlSizes.sm.textStyle,
-        },
+        input: { minHeight: 'calc({sizes.control.sm} - 2px)' },
         wrapper: {
           paddingInline: controlSizes.sm.paddingInline,
           gap: controlSizes.sm.gap,
@@ -68,10 +66,7 @@ export const inputRecipe = defineSlotRecipe({
           minHeight: controlSizes.md.minHeight,
           textStyle: controlSizes.md.textStyle,
         },
-        input: {
-          minHeight: 'calc({sizes.control} - 2px)',
-          textStyle: controlSizes.md.textStyle,
-        },
+        input: { minHeight: 'calc({sizes.control} - 2px)' },
         wrapper: {
           paddingInline: controlSizes.md.paddingInline,
           gap: controlSizes.md.gap,
@@ -83,10 +78,7 @@ export const inputRecipe = defineSlotRecipe({
           minHeight: controlSizes.lg.minHeight,
           textStyle: controlSizes.lg.textStyle,
         },
-        input: {
-          minHeight: 'calc({sizes.control.lg} - 2px)',
-          textStyle: controlSizes.lg.textStyle,
-        },
+        input: { minHeight: 'calc({sizes.control.lg} - 2px)' },
         wrapper: {
           paddingInline: controlSizes.lg.paddingInline,
           gap: controlSizes.lg.gap,

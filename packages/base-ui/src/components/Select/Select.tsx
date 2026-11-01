@@ -2,7 +2,11 @@ import type { SlotRecipeComponent } from '@bend-ui/core';
 import { Select as SelectPrimitive } from '@base-ui/react/select';
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react';
 import { withParts } from '@bend-ui/core';
-import { selectDropdown, select } from '@bend-ui/styled-system/recipes';
+import {
+  selectDropdown,
+  select,
+  type SelectVariantProps,
+} from '@bend-ui/styled-system/recipes';
 import { createSlotRecipeContext, styled } from '@bend-ui/styled-system/jsx';
 
 const {
@@ -95,7 +99,7 @@ const SelectScrollDownArrow = withParts<SelectPrimitive.ScrollDownArrow.Props>(
 export type SelectProps<
   T,
   Multiple extends boolean | undefined = false,
-> = SelectPrimitive.Root.Props<T, Multiple>;
+> = SelectPrimitive.Root.Props<T, Multiple> & SelectVariantProps;
 
 const Component = <Value, Multiple extends boolean | undefined = false>(
   props: SelectProps<Value, Multiple>,

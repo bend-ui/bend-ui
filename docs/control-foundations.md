@@ -14,7 +14,7 @@ Button, Input and Select share `sm`, `md` and `lg`, defaulting to `md`.
 
 Heights include the one-pixel border on each edge. Use minimum heights so wrapped Button/Select labels and enlarged text can grow. Input's inner minimum height subtracts those two border pixels. Input addons use the same horizontal padding as their wrapper. Select's `size` is selected on its recipe provider; its portalled dropdown has a separate recipe context.
 
-All three use the same `control.sm/md/lg` text styles. Small and medium controls use 1rem text below Panda's `sm` breakpoint, keeping editable text at 16px with the default browser font size. Heights and text use rem so browser font preferences scale them together. Compact controls are not a promise of a 44px touch target; use `lg` or add space around controls in touch-oriented layouts.
+The Button and Select labels, plus the Input root and its addons, use `control.sm/md/lg` text styles. Small and medium controls use 1rem text below Panda's `sm` breakpoint. The editable Input slot keeps a 1rem font at every viewport width, so it remains 16px even when the `sm` breakpoint applies. Heights and text use rem so browser font preferences scale them together. Compact controls are not a promise of a 44px touch target; use `lg` or add space around controls in touch-oriented layouts.
 
 Theme personalities override `sizes.control.DEFAULT`; small and large stay 0.5rem below/above it through CSS references. For example, Volt yields 28/36/44px and Nebula yields 36/44/52px at a 16px root font. Keep `DEFAULT` when extending this token tree so its siblings survive:
 
