@@ -75,10 +75,7 @@ export const createBendPreset = (extend?: Preset): Preset =>
     : bendPreset;
 
 export { conditions };
-export {
-  namedThemeColors,
-  type NamedThemeColor,
-} from './tokens/theme-colors';
+export { namedThemeColors, type NamedThemeColor } from './tokens/theme-colors';
 export {
   personalityThemes,
   themePersonalities,
@@ -86,3 +83,14 @@ export {
   type ThemePersonality,
   type ThemePersonalityName,
 } from './themes';
+
+export {
+  createTheme,
+  type ThemeOptions,
+  type GeneratedColorsOptions,
+  type NeutralTintOptions,
+} from './themes/create-theme';
+export {
+  createOklchRamp,
+  type OklchRampOptions,
+} from './utils/create-oklch-ramp';
