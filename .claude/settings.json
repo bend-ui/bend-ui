@@ -14,5 +14,11 @@
     "network": {
       "allowedDomains": ["www.google-analytics.com"]
     }
+  },
+  "mcpServers": {
+    "mdn": {
+      "type": "http",
+      "url": "https://developer.mozilla.org/en-US/mcp"
+    }
   }
 }
