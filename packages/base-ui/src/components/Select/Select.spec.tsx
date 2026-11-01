@@ -1,5 +1,5 @@
 import { expect } from 'vitest';
-import type { SelectProps } from './Select';
+import { Select, type SelectProps } from './Select';
 
 describe('Select public props', () => {
   it.each(['sm', 'md', 'lg'] as const)(
@@ -10,4 +10,13 @@ describe('Select public props', () => {
       expect(props.size).toBe(size);
     },
   );
+});
+
+describe('Select compound API', () => {
+  it('exposes recipe size props on Root and the control slot', () => {
+    const props: Parameters<typeof Select.Root>[0] = { size: 'sm' };
+
+    expect(props.size).toBe('sm');
+    expect(Select.Control).toBeDefined();
+  });
 });

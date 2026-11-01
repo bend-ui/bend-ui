@@ -16,9 +16,17 @@ const {
 const { withProvider: withDropdownProvider, withContext: withDropdownContext } =
   createSlotRecipeContext(selectDropdown);
 
+export type SelectProps<
+  T,
+  Multiple extends boolean | undefined = false,
+> = SelectPrimitive.Root.Props<T, Multiple> & SelectVariantProps;
+
 const SelectRoot = withSelectRootProvider(
   SelectPrimitive.Root,
-) as unknown as typeof SelectPrimitive.Root;
+) as unknown as typeof SelectPrimitive.Root &
+  (<T, Multiple extends boolean | undefined = false>(
+    props: SelectProps<T, Multiple>,
+  ) => ReturnType<typeof SelectPrimitive.Root>);
 
 const SelectControl: SlotRecipeComponent<'div'> = withSelectContext(
   styled('div'),
@@ -96,11 +104,6 @@ const SelectScrollDownArrow = withParts<SelectPrimitive.ScrollDownArrow.Props>(
   'scrollDownArrow',
 );
 
-export type SelectProps<
-  T,
-  Multiple extends boolean | undefined = false,
-> = SelectPrimitive.Root.Props<T, Multiple> & SelectVariantProps;
-
 const Component = <Value, Multiple extends boolean | undefined = false>(
   props: SelectProps<Value, Multiple>,
 ) => {
@@ -156,6 +159,7 @@ Object.assign(Component, { displayName: 'Select' });
 
 export const Select = Object.assign(Component, {
   Root: SelectRoot,
+  Control: SelectControl,
   Trigger: SelectTrigger,
   Value: SelectValue,
   Icon: SelectIcon,
