@@ -84,4 +84,13 @@ export {
   type ThemePersonalityName,
 } from './themes';
 
-export { createTheme, type ThemeOptions } from './themes/create-theme';
+export {
+  createTheme,
+  type ThemeOptions,
+  type GeneratedColorsOptions,
+  type NeutralTintOptions,
+} from './themes/create-theme';
+export {
+  createOklchRamp,
+  type OklchRampOptions,
+} from './utils/create-oklch-ramp';

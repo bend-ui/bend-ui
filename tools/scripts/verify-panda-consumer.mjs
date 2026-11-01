@@ -114,7 +114,10 @@ try {
     path.join(root, 'package.json'),
   ).packageManager;
   manifest.dependencies = { '@bend-ui/base-ui': overrides['@bend-ui/base-ui'] };
-  if (process.env.BEND_VERIFY_TOKENS === '1') {
+  if (
+    process.env.BEND_VERIFY_RAMPS === '1' ||
+    process.env.BEND_VERIFY_TOKENS === '1'
+  ) {
     manifest.dependencies['@bend-ui/preset'] = overrides['@bend-ui/preset'];
   }
   manifest.devDependencies = {};
@@ -199,6 +202,27 @@ try {
     exec(['vite', 'build', '--outDir', 'dist-tokens']);
     const { verifyTokenConsumer } = await import('./verify-token-consumer.mjs');
     await verifyTokenConsumer(app);
+  }
+  if (process.env.BEND_VERIFY_RAMPS === '1') {
+    const scenario = path.join(fixture, 'ramp-scenarios');
+    cpSync(
+      path.join(scenario, 'panda.ramps.config.ts'),
+      path.join(app, 'panda.ramps.config.ts'),
+    );
+    cpSync(path.join(scenario, 'app.tsx'), path.join(app, 'src/app/app.tsx'));
+    exec(['panda', 'codegen', '--config', 'panda.ramps.config.ts', '--clean']);
+    exec([
+      'panda',
+      'cssgen',
+      '--config',
+      'panda.ramps.config.ts',
+      '--outfile',
+      'styled-system/styles.css',
+    ]);
+    exec(['tsc', '--project', 'tsconfig.json']);
+    exec(['vite', 'build', '--outDir', 'dist-ramps']);
+    const { verifyRampConsumer } = await import('./verify-ramp-consumer.mjs');
+    await verifyRampConsumer(app);
   }
   for (const mode of ['extend', 'replace']) {
     console.log(`\nChecking native recipe ${mode}`);

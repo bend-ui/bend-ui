@@ -1,4 +1,6 @@
 import { Button, Input, Select } from '@bend-ui/base-ui';
+// Copied to the isolated consumer's src/app; this imports its generated recipes.
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { textarea } from '../../styled-system/recipes';
 
 function DangerControls({ scope }: { scope: string }) {

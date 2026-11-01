@@ -3,8 +3,26 @@ import { ColorRamp, createColorScale } from '../utils/create-color-scale';
 import { createNeutralScale } from '../utils/create-neutral-scale';
 import { colors } from '../semanticTokens/colors';
 import { danger } from '../semanticTokens/tones';
+import {
+  createOklchRamp,
+  type OklchRampOptions,
+} from '../utils/create-oklch-ramp';
+
+export interface NeutralTintOptions {
+  /** Omit to derive the neutral hue from the primary hue. */
+  hue?: number;
+  /** Neutral chroma ceiling (0–0.04), default 0.012. */
+  chroma?: number;
+}
+
+export interface GeneratedColorsOptions {
+  primary: OklchRampOptions;
+  neutralTint?: NeutralTintOptions;
+}
 
 export interface ThemeOptions {
+  /** Opt into generated colors; named-palette defaults remain unchanged. */
+  generatedColors?: GeneratedColorsOptions;
   primaryColor?: string;
   neutralColor?: string;
   successColor?: string;
@@ -22,6 +40,7 @@ export interface ThemeOptions {
 /** Build a scoped Theme, rebinding danger roles where its palette is selected. */
 export const createTheme = (options: ThemeOptions = {}): ThemeVariant => {
   const {
+    generatedColors,
     primaryColor = 'indigo',
     neutralColor = 'dove-gray',
     successColor = 'green',
@@ -36,10 +55,35 @@ export const createTheme = (options: ThemeOptions = {}): ThemeVariant => {
     defaultInfoColor = '500',
   } = options;
 
+  let generatedPrimary;
+  let generatedNeutral;
+  if (generatedColors) {
+    const { primary, neutralTint = {} } = generatedColors;
+    const neutralChroma = neutralTint.chroma ?? 0.012;
+    if (
+      !Number.isFinite(neutralChroma) ||
+      neutralChroma < 0 ||
+      neutralChroma > 0.04
+    ) {
+      throw new RangeError('neutralTint.chroma must be between 0 and 0.04');
+    }
+    generatedPrimary = createOklchRamp(primary);
+    const neutralRamp = createOklchRamp({
+      hue: neutralTint.hue ?? primary.hue,
+      chroma: neutralChroma,
+    });
+    generatedNeutral = createNeutralScale(neutralRamp, defaultNeutralColor);
+  }
+
   const theme = {
     semanticTokens: {
       colors: {
-        primary: createColorScale(primaryColor, defaultPrimaryColor),
+        primary: generatedPrimary
+          ? {
+              DEFAULT: { value: `{colors.primary.${defaultPrimaryColor}}` },
+              ...generatedPrimary,
+            }
+          : createColorScale(primaryColor, defaultPrimaryColor),
         success: createColorScale(successColor, defaultSuccessColor),
         warning: createColorScale(warningColor, defaultWarningColor),
         // CSS custom-property references resolve at their declaration scope.
@@ -59,7 +103,9 @@ export const createTheme = (options: ThemeOptions = {}): ThemeVariant => {
           DEFAULT: { value: '{colors.danger}' },
         },
         info: createColorScale(infoColor, defaultInfoColor),
-        neutral: createNeutralScale(neutralColor, defaultNeutralColor),
+        neutral:
+          generatedNeutral ??
+          createNeutralScale(neutralColor, defaultNeutralColor),
       },
     },
   };
