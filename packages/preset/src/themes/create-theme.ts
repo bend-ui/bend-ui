@@ -39,7 +39,9 @@ export const createTheme = (options: ThemeOptions = {}): ThemeVariant => {
         primary: createColorScale(primaryColor, defaultPrimaryColor),
         success: createColorScale(successColor, defaultSuccessColor),
         warning: createColorScale(warningColor, defaultWarningColor),
-        error: createColorScale(errorColor, defaultErrorColor),
+        danger: createColorScale(errorColor, defaultErrorColor),
+        // Retain the legacy ramp while danger owns the status palette.
+        error: createColorScale('danger', defaultErrorColor),
         info: createColorScale(infoColor, defaultInfoColor),
         neutral: createNeutralScale(neutralColor, defaultNeutralColor),
       },

@@ -1,6 +1,31 @@
 import { defineSemanticTokens } from '@pandacss/dev';
 import { danger, info, neutral, primary, success, warning } from './tones';
 
+// Role-first paths own values; tone-first paths remain compatible aliases.
+// DEFAULT names the containing token rather than an extra CSS variable segment.
+const aliasRole = <T extends object>(tokens: T, path: string): T =>
+  Object.fromEntries(
+    Object.entries(tokens).map(([key, token]) => {
+      const tokenPath = key === 'DEFAULT' ? path : `${path}.${key}`;
+      return [
+        key,
+        'value' in token
+          ? { value: `{colors.${tokenPath}}` }
+          : aliasRole(token, tokenPath),
+      ];
+    }),
+  ) as T;
+
+const aliasTone = (name: string, tone: typeof primary) => ({
+  ...tone,
+  ...Object.fromEntries(
+    (['fill', 'text', 'stroke', 'icon'] as const).map((role) => [
+      role,
+      aliasRole(tone[role], name === 'neutral' ? role : `${role}.${name}`),
+    ]),
+  ),
+});
+
 export const colors = defineSemanticTokens.colors({
   bg: {
     DEFAULT: {
@@ -63,12 +88,12 @@ export const colors = defineSemanticTokens.colors({
     success: success.icon,
     info: info.icon,
   },
-  neutral,
-  primary,
-  danger,
-  warning,
-  success,
-  info,
+  neutral: aliasTone('neutral', neutral),
+  primary: aliasTone('primary', primary),
+  danger: aliasTone('danger', danger),
+  warning: aliasTone('warning', warning),
+  success: aliasTone('success', success),
+  info: aliasTone('info', info),
   shadow: {
     value: '{colors.neutral.100}',
   },
