@@ -3,6 +3,7 @@ import type { ComponentProps } from 'react';
 
 import { css, cx } from '../styled-system/css/index.mjs';
 import { Accordion, Box, Stack, Tabs } from './interactive-mdx-components';
+import { DialogReferenceExample } from './examples/dialog-example';
 
 const codeBlock = css({
   backgroundColor: 'bg.muted',
@@ -23,6 +24,7 @@ const MdxPre = ({ className, ...props }: ComponentProps<'pre'>) => (
 const MdxCode = (props: ComponentProps<'code'>) => <code {...props} />;
 
 export const mdxComponents: MDXComponents = {
+  DialogReferenceExample,
   pre: MdxPre,
   code: MdxCode,
   Tabs,
