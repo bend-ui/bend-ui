@@ -1,4 +1,4 @@
-import { Button, Card, Heading } from '@bend-ui/base-ui';
+import { Button, Card, Heading, IconButton } from '@bend-ui/base-ui';
 import { text } from '../../styled-system/recipes';
 import { RecipeButton } from '../recipe-button';
 
@@ -9,9 +9,17 @@ export default function App() {
       <Card.Root>
         <Card.Body>
           <p className={text({ variant: 'billboard' })}>Local Text variant</p>
-          <Button variant="primary" size="lg">
+          <Button data-testid="published-button" variant="primary" size="lg">
             Published primary
           </Button>
+          <IconButton
+            data-testid="published-icon"
+            variant="primary"
+            size="lg"
+            icon={<span aria-hidden="true">+</span>}
+          >
+            Add item
+          </IconButton>
           <RecipeButton variant="primary" size="lg">
             Local primary compound
           </RecipeButton>
