@@ -11,6 +11,10 @@
     "ux-components": {
       "type": "http",
       "url": "https://www.ux-components.com/api/mcp"
+    },
+    "mdn": {
+      "type": "http",
+      "url": "https://mcp.mdn.mozilla.net/"
     }
   }
 }
