@@ -14,7 +14,7 @@
     },
     "mdn": {
       "type": "http",
-      "url": "https://developer.mozilla.org/en-US/mcp"
+      "url": "https://mcp.mdn.mozilla.net/"
     }
   }
 }
