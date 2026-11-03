@@ -82,7 +82,7 @@ AppShell/Sidebar operational patterns).
 | Collapsible | v0 | implemented | — | ✓ | — |
 | Combobox | v0 | implemented | — | ✓ | — |
 | ContextMenu | v0 | implemented | — | ✓ | — |
-| Dialog | v0 | implemented | ✓ | ✓ | — |
+| Dialog | v0 | implemented | ✓ | ✓ | ✓ |
 | Drawer | v0 | implemented | — | ✓ | — |
 | Field | v0 | implemented | ✓ | ✓ | — |
 | Fieldset | v0 | implemented | — | ✓ | — |
