@@ -104,7 +104,7 @@ AppShell/Sidebar operational patterns).
 | Radio | v0 | implemented | — | ✓ | — |
 | ScrollArea | v0 | implemented | — | ✓ | — |
 | SegmentedControl | v0 | implemented | — | ✓ | — |
-| Select | v0 | implemented | ✓ | ✓ | — |
+| Select | v0 | implemented | ✓ | ✓ | ✓ |
 | Separator | v0 | implemented | — | ✓ | — |
 | Sidebar | covered-by-pattern | implemented | — | ✓ | — |
 | Slider | v0 | implemented | — | ✓ | — |
