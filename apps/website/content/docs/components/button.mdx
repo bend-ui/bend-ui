@@ -61,6 +61,34 @@ export function Sizes() {
 }
 ```
 
+## Anatomy
+
+The convenience `Button` renders these public styling slots from the `button` slot recipe, whose class namespace is `Button`:
+
+| Part      | Export           | Purpose                                        |
+| --------- | ---------------- | ---------------------------------------------- |
+| `root`    | `Button.Root`    | Interactive Base UI button and recipe provider |
+| `label`   | `Button.Label`   | Action text                                    |
+| `icon`    | `Button.Icon`    | Leading or trailing icon                       |
+| `spinner` | `Button.Spinner` | Loading presentation                           |
+
+Use the compound exports when you need to arrange the content yourself:
+
+```tsx
+import { Button } from '@bend-ui/base-ui';
+
+export function ComposedButton() {
+  return (
+    <Button.Root variant="secondary" size="md">
+      <Button.Icon aria-hidden="true">+</Button.Icon>
+      <Button.Label>Add item</Button.Label>
+    </Button.Root>
+  );
+}
+```
+
+The compound root supplies recipe context; it does not add the convenience component's loading indicator or normalize `isDisabled`. Use native `disabled` on `Button.Root` and compose busy presentation explicitly.
+
 ## Disabled and loading states
 
 ```tsx
@@ -77,7 +105,17 @@ export function States() {
 }
 ```
 
-`isLoading` sets the busy state and renders the button's spinner slot. Keep the action label in the button so its purpose remains available to assistive technology.
+`isLoading` sets `aria-busy` and renders the spinner slot. It does not disable the action or provide an animated spinner graphic. Keep the action label and set `disabled` as well when repeat activation must be prevented.
+
+| State          | Current styling hook                     | Responsibility                                                   |
+| -------------- | ---------------------------------------- | ---------------------------------------------------------------- |
+| Hover          | `_hover`                                 | Recipe presentation                                              |
+| Pressed        | `_active`                                | Recipe presentation                                              |
+| Keyboard focus | `_focusVisible`                          | Preserve a visible focus indicator                               |
+| Disabled       | `_disabled`, including `[data-disabled]` | Native disabled behavior plus recipe presentation                |
+| Loading        | `[data-loading]` on the spinner          | Convenience component renders the slot and sets root `aria-busy` |
+
+These are styling hooks, not instructions to force interaction states by adding DOM attributes.
 
 ## Icons
 
@@ -90,6 +128,20 @@ export function AddButton() {
   return <Button icon={<span aria-hidden>+</span>}>Add item</Button>;
 }
 ```
+
+For an icon-only action, supply its accessible name as `IconButton` children:
+
+```tsx
+import { IconButton } from '@bend-ui/base-ui';
+
+export function AddIconButton() {
+  return (
+    <IconButton icon={<span aria-hidden="true">+</span>}>Add item</IconButton>
+  );
+}
+```
+
+The label is visually hidden. A tooltip can supplement the name but does not replace it.
 
 ## Full width
 
@@ -122,15 +174,23 @@ export function AlignedButton() {
 
 `Button` accepts Base UI button props plus Bend UI recipe variants.
 
-| Prop | Type | Default | Purpose |
-| --- | --- | --- | --- |
-| `variant` | `'primary' \| 'secondary' \| 'tertiary' \| 'danger' \| 'inverse'` | `'secondary'` | Visual emphasis |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Control size |
-| `isFull` | `boolean` | `false` | Fill the available width |
-| `isRounded` | `boolean` | `false` | Use a fully rounded shape |
-| `isDisabled` | `boolean` | `false` | Disable the action |
-| `isLoading` | `boolean` | `false` | Mark the action busy and show the spinner slot |
-| `icon` | `ReactNode` | — | Leading icon |
-| `iconEnd` | `ReactNode` | — | Trailing icon |
+| Prop         | Type                                                              | Default       | Purpose                                        |
+| ------------ | ----------------------------------------------------------------- | ------------- | ---------------------------------------------- |
+| `variant`    | `'primary' \| 'secondary' \| 'tertiary' \| 'danger' \| 'inverse'` | `'secondary'` | Visual emphasis                                |
+| `size`       | `'sm' \| 'md' \| 'lg'`                                            | `'md'`        | Control size                                   |
+| `isFull`     | `boolean`                                                         | `false`       | Fill the available width                       |
+| `isRounded`  | `boolean`                                                         | `false`       | Use a fully rounded shape                      |
+| `isDisabled` | `boolean`                                                         | `false`       | Disable the action                             |
+| `isLoading`  | `boolean`                                                         | `false`       | Mark the action busy and show the spinner slot |
+| `icon`       | `ReactNode`                                                       | —             | Leading icon                                   |
+| `iconEnd`    | `ReactNode`                                                       | —             | Trailing icon                                  |
 
 Use a link for navigation. Use a button when activating the control changes application state or performs an action.
+
+## Accessibility and customization
+
+Keep a meaningful action label, preserve visible keyboard focus, and use native form props such as `type="submit"` deliberately. Verify activation with both Enter and Space in the consuming flow. Use native `disabled` when an action is unavailable; changing opacity alone does not disable a button.
+
+[Customize a Button recipe](/docs/foundation/recipe-customization) to change visual treatment without editing component behavior. Preserve the public slots, class namespace, supported variants, and defaults for a drop-in replacement. New consumer variant values and compound rules require a consumer-owned component using the consumer-generated recipe; they do not update the published Button runtime.
+
+This page describes the current Base UI v0 adapter. The reference component work may revise the public variant conventions.
