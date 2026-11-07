@@ -1,0 +1,113 @@
+---
+title: Customize a Button recipe
+description: Change Button styling while preserving its composition and published runtime contract
+---
+
+# Customize a Button recipe
+
+Use this guide when an existing Button variant needs a different visual treatment in your Panda application. Keep behavior in the Base UI package adapter and change styling in the design preset configuration.
+
+Start with a working [installation](/docs/getting-started/installation) and Panda code generation. The examples use the packed design-system consumption path validated by the repository's clean consumer fixture.
+
+## Extend an existing variant
+
+Button uses a **slot recipe** named `button`, not an ordinary recipe. Extend `theme.extend.slotRecipes.button` to preserve inherited slots, variants, and defaults:
+
+```ts
+import { defineConfig } from '@pandacss/dev';
+
+export default defineConfig({
+  designSystem: '@bend-ui/base-ui',
+  include: ['./src/**/*.{ts,tsx}'],
+  outdir: 'styled-system',
+  jsxFramework: 'react',
+  preflight: true,
+  theme: {
+    extend: {
+      slotRecipes: {
+        button: {
+          variants: {
+            size: {
+              lg: { root: { borderRadius: '3px' } },
+            },
+          },
+        },
+      },
+    },
+  },
+});
+```
+
+Merge this override into your application's existing configuration rather than discarding its other settings. Regenerate Panda output and rebuild your CSS after the change.
+
+Use the existing published variant in application code:
+
+```tsx
+import { Button } from '@bend-ui/base-ui';
+
+export function ContinueButton() {
+  return (
+    <Button variant="primary" size="lg">
+      Continue
+    </Button>
+  );
+}
+```
+
+The large Button now has 3px corners. Its label, icon, loading slot, and behavior remain owned by the same component. Review the result in your application's light and dark color modes and verify keyboard focus after styling changes.
+
+## Decide whether to replace the whole recipe
+
+Use `theme.slotRecipes.button` for whole-recipe replacement. Unlike extension, replacement must supply every layout rule, state treatment, slot, and variant required by your use of the component. An empty slot declaration preserves its name, not its styling.
+
+For a drop-in replacement of the current published Button, preserve:
+
+| Contract        | Current value                                                        |
+| --------------- | -------------------------------------------------------------------- |
+| Recipe key      | `button` under `slotRecipes`                                         |
+| Class namespace | `Button`                                                             |
+| Public slots    | `root`, `label`, `icon`, `spinner`                                   |
+| Emphasis values | `primary`, `secondary`, `tertiary`, `danger`, `inverse` on `variant` |
+| Size values     | `sm`, `md`, `lg`                                                     |
+| Boolean axes    | `isFull`, `isRounded`                                                |
+| Defaults        | `variant: 'secondary'`, `size: 'md'`                                 |
+
+Preserve visible focus, disabled presentation, readable text, and the loading slot. Replacement changes styling; it must not take over keyboard activation or native disabled behavior.
+
+The structural preset exports a compatibility checker for a **resolved, complete** recipe. Declare `@bend-ui/preset-base` as a direct development dependency before importing this build-time checker:
+
+```ts
+import {
+  componentContracts,
+  validateReplacementRecipe,
+} from '@bend-ui/preset-base';
+
+// resolvedButtonRecipe is the complete result after Panda preset composition.
+const issues = validateReplacementRecipe(
+  componentContracts.button,
+  'button',
+  resolvedButtonRecipe,
+);
+const errors = issues.filter((issue) => issue.severity === 'error');
+```
+
+The `resolvedButtonRecipe` variable above represents your composed recipe; this is not a Panda configuration loader. Do not pass a partial `theme.extend` patch to the checker. Structural compatibility does not certify contrast, focus visibility, or accessible behavior; review those with the rendered component.
+
+## Know the published runtime boundary
+
+Consumer-generated Panda types describe the consumer configuration. Published Button declarations and recipe selection metadata describe the package build. Running code generation in your app does not rewrite that package.
+
+- Changing styles for an existing supported variant works with the published Button.
+- Adding a new variant value does not make the published Button's props accept it.
+- Adding compound variants does not make the published Button emit newly generated compound classes, even for existing variant values.
+- Removing a value from a replacement does not remove it from the published component's TypeScript props.
+
+For new values or compound selection behavior, use a consumer-owned component wired to your generated recipe and chosen primitive, with props derived from the generated recipe. Do not cast new strings into the published props to imply runtime support.
+
+## Verify the result
+
+Check the styles used by your actual consumer, including default, small, medium, and large buttons; leading/trailing icons; disabled and busy presentation; light/dark color modes; and visible keyboard focus. Confirm that repeated activation is prevented when your application requires it—`isLoading` alone does not disable the current Button.
+
+The repository's `pnpm nx run panda-consumer:verify` target exercises clean installation, extension/replacement, emitted CSS, generated types, and published-versus-local compound behavior. It is a maintainer check, not a command required in your application.
+
+See the [Button reference](/docs/components/button) for composition, slots, and current props.
