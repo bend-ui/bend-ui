@@ -14,6 +14,11 @@ export const scrollArea = defineSlotRecipe({
       width: 'full',
       height: 'full',
       minHeight: '0',
+      _focusVisible: {
+        layerStyle: 'focus',
+        outlineColor: 'text',
+        outlineOffset: '-4px',
+      },
     },
     content: {
       minWidth: 'full',

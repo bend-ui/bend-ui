@@ -1,0 +1,25 @@
+---
+title: Popover
+description: Contextual content anchored to a trigger
+---
+
+# Popover
+
+Use a Popover for interactive content related to a trigger. The [working workspace](/docs/components/overlays-navigation) demonstrates keyboard opening, Escape and focus return.
+
+```tsx
+<Popover.Root>
+  <Popover.Trigger>Details</Popover.Trigger>
+  <Popover.Portal>
+    <Popover.Positioner sideOffset={8} collisionPadding={8}>
+      <Popover.Popup>
+        <Popover.Title>Workspace details</Popover.Title>
+        <Popover.Description>Settings for this project.</Popover.Description>
+        <Popover.Close>Close</Popover.Close>
+      </Popover.Popup>
+    </Popover.Positioner>
+  </Popover.Portal>
+</Popover.Root>
+```
+
+The `popover` recipe owns content, title, description, arrow and close slots. Popup dimensions respect Base UI's available space and scroll when needed. SurfaceProvider scope crosses the portal; `surfaceLevel` and consumer styles can override it. `Popover` convenience accepts trigger, title, description and children; children remain content even when a title or description is supplied.

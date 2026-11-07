@@ -3,6 +3,14 @@
   "pages": [
     "overview",
     "avatar",
-    "button"
+    "button",
+    "overlays-navigation",
+    "popover",
+    "tooltip",
+    "menu",
+    "tabs",
+    "card",
+    "scroll-area",
+    "navigation"
   ]
 }

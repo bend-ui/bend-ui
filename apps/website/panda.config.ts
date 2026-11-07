@@ -20,7 +20,18 @@ export default defineConfig({
 
   presets: [createBendPreset()],
 
+  // Adapter wrappers own recipe calls, so include their public variants.
   staticCss: {
+    recipes: {
+      popover: ['*'],
+      tooltip: ['*'],
+      menu: ['*'],
+      tabs: ['*'],
+      card: ['*'],
+      scrollArea: ['*'],
+      navbar: ['*'],
+      surface: ['*'],
+    },
     themes: [
       'default',
       'stratus',

@@ -1,0 +1,21 @@
+---
+title: Menu
+description: Actions in a keyboard-navigable menu
+---
+
+# Menu
+
+Menu follows Base UI's Menu anatomy. Use it for actions, and ordinary links for navigation. Try arrows, typeahead and Escape in the [working workspace](/docs/components/overlays-navigation).
+
+```tsx
+<Menu.Root>
+  <Menu.Trigger>Actions</Menu.Trigger>
+  <Menu.Content>
+    <Menu.Item onClick={rename}>Rename</Menu.Item>
+    <Menu.Item disabled>Archive unavailable</Menu.Item>
+    <Menu.Item onClick={share}>Share</Menu.Item>
+  </Menu.Content>
+</Menu.Root>
+```
+
+The `menu` recipe styles popup, items, highlighted and disabled states and separator; long menus scroll within available space. `Menu.Content` forwards native popup props and ref. The compound Portal, Positioner, Popup, checkbox, radio and group parts remain available. Popup surface context and caller-provided state callbacks are retained through the portal.
