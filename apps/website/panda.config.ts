@@ -21,6 +21,17 @@ export default defineConfig({
   presets: [createBendPreset()],
 
   staticCss: {
+    // Native adapter wrappers are not inferred as recipe calls by extraction.
+    recipes: {
+      input: ['*'],
+      textarea: ['*'],
+      checkbox: ['*'],
+      radioGroup: ['*'],
+      switchRecipe: ['*'],
+      formField: ['*'],
+      badge: ['*'],
+      separator: ['*'],
+    },
     themes: [
       'default',
       'stratus',

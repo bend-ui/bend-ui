@@ -3,6 +3,14 @@
   "pages": [
     "overview",
     "avatar",
-    "button"
+    "button",
+    "field",
+    "input",
+    "textarea",
+    "checkbox",
+    "radio",
+    "switch",
+    "badge",
+    "separator"
   ]
 }
