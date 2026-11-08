@@ -12,6 +12,14 @@
     "tabs",
     "card",
     "scroll-area",
-    "navigation"
+    "navigation",
+    "field",
+    "input",
+    "textarea",
+    "checkbox",
+    "radio",
+    "switch",
+    "badge",
+    "separator"
   ]
 }

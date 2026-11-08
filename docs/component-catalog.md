@@ -73,24 +73,24 @@ AppShell/Sidebar operational patterns).
 | AppShell | covered-by-pattern | implemented | — | ✓ | — |
 | Autocomplete | v0 | implemented | — | ✓ | — |
 | Avatar | v0 | implemented | — | ✓ | ✓ |
-| Badge | v0 | implemented | — | ✓ | — |
+| Badge | v0 | implemented | ✓ | ✓ | ✓ |
 | Box | primitive-only | implemented | — | — | — |
 | Button | v0 | implemented | ✓ | ✓ | ✓ |
 | Card | v0 | implemented | ✓ | — | ✓ |
-| Checkbox | v0 | implemented | ✓ | ✓ | — |
+| Checkbox | v0 | implemented | ✓ | ✓ | ✓ |
 | CheckboxGroup | v0 | implemented | — | ✓ | — |
 | Collapsible | v0 | implemented | — | ✓ | — |
 | Combobox | v0 | implemented | — | ✓ | — |
 | ContextMenu | v0 | implemented | — | ✓ | — |
 | Dialog | v0 | implemented | ✓ | ✓ | — |
 | Drawer | v0 | implemented | — | ✓ | — |
-| Field | v0 | implemented | ✓ | ✓ | — |
+| Field | v0 | implemented | ✓ | ✓ | ✓ |
 | Fieldset | v0 | implemented | — | ✓ | — |
 | Form | v0 | implemented | — | ✓ | — |
 | Grid | primitive-only | implemented | — | — | — |
 | Heading | primitive-only | implemented | — | — | — |
 | IconButton | v0 | implemented | ✓ | ✓ | ✓ |
-| Input | v0 | implemented | — | ✓ | — |
+| Input | v0 | implemented | ✓ | ✓ | ✓ |
 | Menu | v0 | implemented | ✓ | ✓ | ✓ |
 | Menubar | v0 | implemented | — | ✓ | — |
 | Meter | v0 | implemented | — | ✓ | — |
@@ -101,25 +101,26 @@ AppShell/Sidebar operational patterns).
 | Popover | v0 | implemented | ✓ | ✓ | ✓ |
 | PreviewCard | v0 | implemented | — | ✓ | — |
 | Progress | v0 | implemented | — | ✓ | — |
-| Radio | v0 | implemented | — | ✓ | — |
+| Radio | v0 | implemented | ✓ | ✓ | ✓ |
 | ScrollArea | v0 | implemented | — | ✓ | ✓ |
 | SegmentedControl | v0 | implemented | — | ✓ | — |
 | Select | v0 | implemented | ✓ | ✓ | ✓ |
-| Separator | v0 | implemented | — | ✓ | — |
+| Separator | v0 | implemented | ✓ | ✓ | ✓ |
 | Sidebar | covered-by-pattern | implemented | — | ✓ | — |
 | Slider | v0 | implemented | — | ✓ | — |
 | Stack | primitive-only | implemented | — | — | — |
-| Switch | v0 | implemented | — | ✓ | — |
+| Switch | v0 | implemented | ✓ | ✓ | ✓ |
 | Table | v0 | implemented | — | ✓ | — |
 | Tabs | v0 | implemented | ✓ | ✓ | ✓ |
 | Text | primitive-only | implemented | — | — | — |
+| Textarea | v0 | implemented | ✓ | ✓ | ✓ |
 | Toast | v0 | implemented | — | ✓ | — |
 | Toggle | v0 | implemented | — | ✓ | — |
 | ToggleGroup | v0 | implemented | — | ✓ | — |
 | Toolbar | v0 | implemented | — | ✓ | — |
 | Tooltip | v0 | implemented | ✓ | ✓ | ✓ |
 
-**Base UI summary:** 50 components implemented · 13 tested · 43 with Storybook · 11 documented.
+**Base UI summary:** 51 components implemented · 19 tested · 44 with Storybook · 19 documented.
 Button and IconButton share the documented Button reference and recipe customization proof.
 
 ## Ark UI — `@bend-ui/ark-ui` (`packages/ark-ui`)
