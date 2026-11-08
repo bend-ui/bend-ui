@@ -25,7 +25,7 @@ Private slots are listed per recipe. `required` means the adapter renders the sl
 | Dialog          | `dialog` / `Dialog`                 | `positioner`, `content`, `title`, `description`, `closeTrigger`                             | Root and Portal are behavior parts. The default Trigger uses Button's styling contract.                                                         |
 | Dialog backdrop | `backdrop` / `Backdrop`             | Ordinary recipe, not a slot map                                                             | Replace independently from the Dialog content recipe.                                                                                           |
 
-Button currently defaults to `variant="secondary"` and `size="md"`, with `primary`, `secondary`, `tertiary`, `danger`, `inverse`, and `sm`/`md`/`lg` values. `isFull` comes from the structural preset and `isRounded` from the design preset. Dialog defaults to `size="md"`. Select now shares the `sm`/`md`/`lg` size axis and `md` default (BEN-38). These are current-runtime facts, not the future hierarchy/size/treatment API planned for the reference component work.
+Button currently defaults to `variant="secondary"` and `size="md"`, with `primary`, `secondary`, `tertiary`, `danger`, `inverse`, and `sm`/`md`/`lg` values. `isFull` comes from the structural preset and `isRounded` from the design preset. Dialog defaults to `size="md"`. Select now shares the `sm`/`md`/`lg` size axis and `md` default (BEN-38). For the Button reference contract (BEN-39), `primary`/`secondary`/`tertiary` express hierarchy and `danger`/`inverse` express contextual treatment through the existing `variant` axis; size remains independent. IconButton shares that recipe and these values.
 
 ## Replacement validation
 

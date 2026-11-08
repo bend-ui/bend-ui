@@ -89,7 +89,7 @@ AppShell/Sidebar operational patterns).
 | Form | v0 | implemented | — | ✓ | — |
 | Grid | primitive-only | implemented | — | — | — |
 | Heading | primitive-only | implemented | — | — | — |
-| IconButton | v0 | implemented | — | — | — |
+| IconButton | v0 | implemented | ✓ | ✓ | ✓ |
 | Input | v0 | implemented | — | ✓ | — |
 | Menu | v0 | implemented | ✓ | ✓ | ✓ |
 | Menubar | v0 | implemented | — | ✓ | — |
@@ -119,7 +119,8 @@ AppShell/Sidebar operational patterns).
 | Toolbar | v0 | implemented | — | ✓ | — |
 | Tooltip | v0 | implemented | ✓ | ✓ | ✓ |
 
-**Base UI summary:** 50 components implemented · 12 tested · 42 with Storybook · 9 documented.
+**Base UI summary:** 50 components implemented · 13 tested · 43 with Storybook · 10 documented.
+Button and IconButton share the documented Button reference and recipe customization proof.
 
 ## Ark UI — `@bend-ui/ark-ui` (`packages/ark-ui`)
 

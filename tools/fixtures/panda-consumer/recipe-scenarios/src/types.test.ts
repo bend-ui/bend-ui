@@ -1,5 +1,5 @@
-import type { ComponentProps } from 'react';
-import { Button } from '@bend-ui/base-ui';
+import { createElement, createRef, type ComponentProps } from 'react';
+import { Button, IconButton } from '@bend-ui/base-ui';
 import {
   button,
   text,
@@ -17,6 +17,17 @@ const published: ComponentProps<typeof Button> = {
   variant: 'primary',
   size: 'lg',
 };
+const icon: ComponentProps<typeof IconButton> = {
+  icon: createElement('span'),
+  children: 'Open account',
+  isDisabled: true,
+  isLoading: true,
+  size: 'lg',
+  variant: 'primary',
+  render: createElement('span'),
+  nativeButton: false,
+  ref: createRef<HTMLElement>(),
+};
 const unsupportedVariant: ComponentProps<typeof Button> = {
   // @ts-expect-error The packed declaration does not grow consumer-defined variants.
   variant: 'editorial',
@@ -31,4 +42,4 @@ button({ size: 'not-a-size' });
 button({ size: { base: 'lg', md: 'jumbo' } });
 text({ variant: 'billboard' });
 text({ variant: 'body' });
-void [local, published, unsupportedVariant, unsupportedSize];
+void [local, published, icon, unsupportedVariant, unsupportedSize];
