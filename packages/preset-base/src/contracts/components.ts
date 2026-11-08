@@ -51,7 +51,8 @@ export const componentContracts = {
           'Secondary emphasis at medium size; loading and disabled behavior remain component-owned.',
         variants: {
           variant: {
-            description: 'Visual treatment.',
+            description:
+              'Hierarchy (primary, secondary, tertiary), destructive treatment (danger), or inverse-surface treatment (inverse).',
             values: ['primary', 'secondary', 'tertiary', 'danger', 'inverse'],
             defaultValue: 'secondary',
           },
