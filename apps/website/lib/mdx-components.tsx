@@ -3,6 +3,7 @@ import type { ComponentProps } from 'react';
 
 import { css, cx } from '../styled-system/css/index.mjs';
 import { Accordion, Box, Stack, Tabs } from './interactive-mdx-components';
+import { GeneratedComponent, GeneratedTokens } from './generated-reference/reference';
 
 const codeBlock = css({
   backgroundColor: 'bg.muted',
@@ -25,6 +26,8 @@ const MdxCode = (props: ComponentProps<'code'>) => <code {...props} />;
 export const mdxComponents: MDXComponents = {
   pre: MdxPre,
   code: MdxCode,
+  GeneratedComponent,
+  GeneratedTokens,
   Tabs,
   Accordion,
   Stack,
