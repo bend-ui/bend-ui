@@ -76,7 +76,7 @@ AppShell/Sidebar operational patterns).
 | Badge | v0 | implemented | ✓ | ✓ | ✓ |
 | Box | primitive-only | implemented | — | — | — |
 | Button | v0 | implemented | ✓ | ✓ | ✓ |
-| Card | v0 | implemented | — | — | — |
+| Card | v0 | implemented | ✓ | — | ✓ |
 | Checkbox | v0 | implemented | ✓ | ✓ | ✓ |
 | CheckboxGroup | v0 | implemented | — | ✓ | — |
 | Collapsible | v0 | implemented | — | ✓ | — |
@@ -91,18 +91,18 @@ AppShell/Sidebar operational patterns).
 | Heading | primitive-only | implemented | — | — | — |
 | IconButton | v0 | implemented | ✓ | ✓ | ✓ |
 | Input | v0 | implemented | ✓ | ✓ | ✓ |
-| Menu | v0 | implemented | — | ✓ | — |
+| Menu | v0 | implemented | ✓ | ✓ | ✓ |
 | Menubar | v0 | implemented | — | ✓ | — |
 | Meter | v0 | implemented | — | ✓ | — |
-| NavigationMenu | v0 | implemented | — | ✓ | — |
+| NavigationMenu | v0 | implemented | ✓ | ✓ | ✓ |
 | NumberField | v0 | implemented | — | ✓ | — |
 | Paragraph | primitive-only | implemented | — | — | — |
 | Patterns | covered-by-pattern | implemented | — | ✓ | — |
-| Popover | v0 | implemented | — | ✓ | — |
+| Popover | v0 | implemented | ✓ | ✓ | ✓ |
 | PreviewCard | v0 | implemented | — | ✓ | — |
 | Progress | v0 | implemented | — | ✓ | — |
 | Radio | v0 | implemented | ✓ | ✓ | ✓ |
-| ScrollArea | v0 | implemented | — | ✓ | — |
+| ScrollArea | v0 | implemented | — | ✓ | ✓ |
 | SegmentedControl | v0 | implemented | — | ✓ | — |
 | Select | v0 | implemented | ✓ | ✓ | ✓ |
 | Separator | v0 | implemented | ✓ | ✓ | ✓ |
@@ -111,19 +111,17 @@ AppShell/Sidebar operational patterns).
 | Stack | primitive-only | implemented | — | — | — |
 | Switch | v0 | implemented | ✓ | ✓ | ✓ |
 | Table | v0 | implemented | — | ✓ | — |
-| Tabs | v0 | implemented | ✓ | ✓ | — |
+| Tabs | v0 | implemented | ✓ | ✓ | ✓ |
 | Text | primitive-only | implemented | — | — | — |
 | Textarea | v0 | implemented | ✓ | ✓ | ✓ |
 | Toast | v0 | implemented | — | ✓ | — |
 | Toggle | v0 | implemented | — | ✓ | — |
 | ToggleGroup | v0 | implemented | — | ✓ | — |
 | Toolbar | v0 | implemented | — | ✓ | — |
-| Tooltip | v0 | implemented | — | ✓ | — |
+| Tooltip | v0 | implemented | ✓ | ✓ | ✓ |
 
-**Base UI summary:** 51 components implemented · 14 tested · 44 with Storybook · 12 documented.
-Coverage now includes the core form and feedback slice. Unit tests and Docs-site pages
-remain gaps across the rest of the catalog, including Card.
-
+**Base UI summary:** 51 components implemented · 19 tested · 44 with Storybook · 19 documented.
+Button and IconButton share the documented Button reference and recipe customization proof.
 
 ## Ark UI — `@bend-ui/ark-ui` (`packages/ark-ui`)
 

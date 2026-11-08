@@ -1,0 +1,21 @@
+---
+title: Tabs
+description: Switch between related panels
+---
+
+# Tabs
+
+Tabs group related views. A labeled list and associated panels preserve native selection and keyboard behavior. See the [working workspace](/docs/components/overlays-navigation).
+
+```tsx
+<Tabs defaultValue="overview">
+  <Tabs.List aria-label="Workspace sections">
+    <Tabs.Tab value="overview">Overview</Tabs.Tab>
+    <Tabs.Tab value="activity">Activity</Tabs.Tab>
+  </Tabs.List>
+  <Tabs.Panel value="overview">Overview content</Tabs.Panel>
+  <Tabs.Panel value="activity">Recent activity</Tabs.Panel>
+</Tabs>
+```
+
+The `tabs` recipe owns `list`, `trigger`, `indicator` and `content` slots (`Tabs.Panel` binds to `content`). By default, arrow keys move focus and Enter or Space activates the focused tab. Selected, disabled and keyboard focus states are visible.
