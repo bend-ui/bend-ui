@@ -119,8 +119,8 @@ AppShell/Sidebar operational patterns).
 | Toolbar | v0 | implemented | — | ✓ | — |
 | Tooltip | v0 | implemented | — | ✓ | — |
 
-**Base UI summary:** 50 components implemented · 5 tested · 42 with Storybook · 2 documented.
-Biggest gaps: unit tests and Docs-site pages (only Avatar and Button). Untested/unstoried
+**Base UI summary:** 50 components implemented · 5 tested · 42 with Storybook · 4 documented.
+Biggest gaps: unit tests and Docs-site pages (only Avatar, Button, IconButton, and Select). Untested/unstoried
 items are layout/typography primitives plus Card. Button and IconButton share the documented Button reference and recipe customization proof.
 
 ## Ark UI — `@bend-ui/ark-ui` (`packages/ark-ui`)
