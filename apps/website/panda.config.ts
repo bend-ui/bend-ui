@@ -12,7 +12,7 @@ export default defineConfig({
     './src/**/*.{tsx,ts,jsx}',
     './lib/**/*.{tsx,ts,jsx}',
     './pages/**/*.{jsx,tsx}',
-    './app/**/*.{jsx,tsx}',
+    './app/**/*.{js,jsx,ts,tsx}',
   ],
 
   // Files to exclude
@@ -26,6 +26,7 @@ export default defineConfig({
     recipes: {
       backdrop: ['*'],
       button: ['*'],
+      dialog: ['*'],
       avatar: ['*'],
       popover: ['*'],
       tooltip: ['*'],

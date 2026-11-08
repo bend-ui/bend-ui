@@ -1,6 +1,6 @@
 'use client';
 
-import { Heading, Sidebar, Text } from '@bend-ui/base-ui';
+import { Heading, Sidebar, Text, useSidebar } from '@bend-ui/base-ui';
 import { Icon } from '@iconify/react';
 import { Link, usePathname } from 'fumadocs-core/framework';
 import {
@@ -16,7 +16,14 @@ import {
   TOCItem,
   type TableOfContents,
 } from 'fumadocs-core/toc';
-import { useRef, useSyncExternalStore, type ReactNode } from 'react';
+import {
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type ReactNode,
+  type RefObject,
+} from 'react';
 import { useTheme } from 'next-themes';
 
 import {
@@ -25,7 +32,7 @@ import {
   externalLinkIcon,
   sidebarIcon,
 } from '../icons';
-import { css } from '../../styled-system/css/index.mjs';
+import { css } from '@bend-ui/styled-system/css';
 import { ThemePersonalitySwitcher } from '../../lib/theme-personality-switcher-prototype';
 
 interface DocsLayoutProps {
@@ -62,14 +69,26 @@ const PageLink = ({ item, pathname }: { item: Item; pathname: string }) => {
   );
 };
 
-const FolderItems = ({ folder, pathname }: { folder: Folder; pathname: string }) => (
+const FolderItems = ({
+  folder,
+  pathname,
+}: {
+  folder: Folder;
+  pathname: string;
+}) => (
   <Sidebar.Group>
     <Sidebar.GroupLabel>{folder.name}</Sidebar.GroupLabel>
     <Sidebar.GroupContent>
       <Sidebar.MenuSub>
-        {folder.index ? <PageLink item={folder.index} pathname={pathname} /> : null}
+        {folder.index ? (
+          <PageLink item={folder.index} pathname={pathname} />
+        ) : null}
         {folder.children.map((node, index) => (
-          <TreeNode key={node.$id ?? `${node.type}-${index}`} node={node} pathname={pathname} />
+          <TreeNode
+            key={node.$id ?? `${node.type}-${index}`}
+            node={node}
+            pathname={pathname}
+          />
         ))}
       </Sidebar.MenuSub>
     </Sidebar.GroupContent>
@@ -92,6 +111,21 @@ const TreeNode = ({ node, pathname }: { node: Node; pathname: string }) => {
   );
 };
 
+function filterTree(nodes: Node[], query: string): Node[] {
+  return nodes.flatMap<Node>((node) => {
+    if (node.type === 'separator') return [];
+    if (node.type === 'folder') {
+      const children = filterTree(node.children, query);
+      const index =
+        node.index && String(node.index.name).toLowerCase().includes(query)
+          ? node.index
+          : undefined;
+      return children.length || index ? [{ ...node, children, index }] : [];
+    }
+    return String(node.name).toLowerCase().includes(query) ? [node] : [];
+  });
+}
+
 const ColorModeControl = () => {
   const mounted = useSyncExternalStore(
     () => () => undefined,
@@ -101,11 +135,20 @@ const ColorModeControl = () => {
   const { theme, setTheme } = useTheme();
 
   if (!mounted) {
-    return <span aria-hidden="true" className={css({ width: '10', height: '10' })} />;
+    return (
+      <span aria-hidden="true" className={css({ width: '10', height: '10' })} />
+    );
   }
 
   return (
-    <label className={css({ display: 'inline-flex', alignItems: 'center', gap: '2', fontSize: 'sm' })}>
+    <label
+      className={css({
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '2',
+        fontSize: 'sm',
+      })}
+    >
       <span className={css({ color: 'fg.muted' })}>Color mode</span>
       <select
         aria-label="Color mode"
@@ -118,7 +161,11 @@ const ColorModeControl = () => {
           borderRadius: 'md',
           background: 'bg.page',
           color: 'fg.default',
-          _focusVisible: { outline: '2px solid', outlineColor: 'stroke.primary', outlineOffset: '2px' },
+          _focusVisible: {
+            outline: '2px solid',
+            outlineColor: 'stroke.primary',
+            outlineOffset: '2px',
+          },
         })}
       >
         <option value="system">System</option>
@@ -129,12 +176,36 @@ const ColorModeControl = () => {
   );
 };
 
+function MobileSidebarEscape({
+  trigger,
+}: {
+  trigger: RefObject<HTMLButtonElement | null>;
+}) {
+  const { isMobile, openMobile, setOpenMobile } = useSidebar();
+  useEffect(() => {
+    if (!isMobile || !openMobile) return;
+    const close = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return;
+      event.preventDefault();
+      setOpenMobile(false);
+      trigger.current?.focus();
+    };
+    document.addEventListener('keydown', close);
+    return () => document.removeEventListener('keydown', close);
+  }, [isMobile, openMobile, setOpenMobile, trigger]);
+  return null;
+}
+
 export const DocsLayout = ({ children, tree }: DocsLayoutProps) => {
   const pathname = usePathname();
-  const navigationLabel = typeof tree.name === 'string' ? tree.name : 'Documentation';
+  const sidebarTrigger = useRef<HTMLButtonElement>(null);
+  const [query, setQuery] = useState('');
+  const navigationLabel =
+    typeof tree.name === 'string' ? tree.name : 'Documentation';
 
   return (
     <Sidebar.Provider>
+      <MobileSidebarEscape trigger={sidebarTrigger} />
       <Sidebar.Root collapsible="none">
         <Sidebar.Header>
           <Link
@@ -150,8 +221,39 @@ export const DocsLayout = ({ children, tree }: DocsLayoutProps) => {
           </Link>
         </Sidebar.Header>
         <Sidebar.Content>
+          <label
+            htmlFor="docs-filter"
+            className={css({
+              display: 'block',
+              paddingInline: '3',
+              marginBottom: '2',
+              fontSize: 'sm',
+            })}
+          >
+            Filter documentation
+          </label>
+          <input
+            id="docs-filter"
+            type="search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            className={css({
+              width: 'calc(100% - 1.5rem)',
+              marginInline: '3',
+              padding: '2',
+              borderWidth: '1px',
+              borderStyle: 'solid',
+              borderColor: 'stroke',
+              borderRadius: 'md',
+              backgroundColor: 'bg.page',
+              color: 'text',
+            })}
+          />
           <nav aria-label={navigationLabel}>
-            {tree.children.map((node, index) => (
+            {(query.trim()
+              ? filterTree(tree.children, query.trim().toLowerCase())
+              : tree.children
+            ).map((node, index) => (
               <TreeNode
                 key={node.$id ?? `${node.type}-${index}`}
                 node={node}
@@ -177,7 +279,10 @@ export const DocsLayout = ({ children, tree }: DocsLayoutProps) => {
             borderBottom: 'border.weak',
           })}
         >
-          <Sidebar.Trigger className={css({ display: { base: 'inline-flex', md: 'none' } })}>
+          <Sidebar.Trigger
+            ref={sidebarTrigger}
+            className={css({ display: { base: 'inline-flex', md: 'none' } })}
+          >
             <Icon icon={sidebarIcon} aria-hidden="true" />
           </Sidebar.Trigger>
           <span className={css({ display: { base: 'none', md: 'block' } })} />
@@ -214,7 +319,11 @@ const prose = css({
     scrollMarginTop: '20',
     textWrap: 'balance',
   },
-  '& :where(h2)': { borderBottom: 'border.weak', fontSize: '2xl', paddingBottom: '2' },
+  '& :where(h2)': {
+    borderBottom: 'border.weak',
+    fontSize: '2xl',
+    paddingBottom: '2',
+  },
   '& :where(h3)': { fontSize: 'xl' },
   '& :where(p, ul, ol, blockquote, table)': { marginTop: '5' },
   '& :where(ul, ol)': { paddingLeft: '6' },
@@ -237,8 +346,6 @@ const prose = css({
   '& :where(hr)': { border: '0', borderTop: 'border.weak', marginBlock: '10' },
   '& :where(table)': {
     borderCollapse: 'collapse',
-    display: 'block',
-    overflowX: 'auto',
     width: '100%',
   },
   '& :where(th, td)': {
@@ -264,7 +371,13 @@ const prose = css({
   },
 });
 
-const PagerLink = ({ direction, item }: { direction: 'next' | 'previous'; item: Item }) => (
+const PagerLink = ({
+  direction,
+  item,
+}: {
+  direction: 'next' | 'previous';
+  item: Item;
+}) => (
   <Link
     href={item.url}
     aria-label={`${direction === 'previous' ? 'Previous' : 'Next'}: ${String(item.name)}`}
@@ -289,9 +402,13 @@ const PagerLink = ({ direction, item }: { direction: 'next' | 'previous'; item: 
       },
     })}
   >
-    {direction === 'previous' ? <Icon icon={arrowLeftIcon} aria-hidden="true" /> : null}
+    {direction === 'previous' ? (
+      <Icon icon={arrowLeftIcon} aria-hidden="true" />
+    ) : null}
     <span>{item.name}</span>
-    {direction === 'next' ? <Icon icon={arrowRightIcon} aria-hidden="true" /> : null}
+    {direction === 'next' ? (
+      <Icon icon={arrowRightIcon} aria-hidden="true" />
+    ) : null}
   </Link>
 );
 
@@ -310,13 +427,17 @@ export const DocsPage = ({
     <div
       className={css({
         display: 'grid',
-        gridTemplateColumns: { base: 'minmax(0, 1fr)', xl: 'minmax(0, 1fr) 16rem' },
+        gridTemplateColumns: {
+          base: 'minmax(0, 1fr)',
+          xl: 'minmax(0, 1fr) 16rem',
+        },
         minHeight: '100vh',
       })}
     >
       <article
         className={css({
           width: '100%',
+          minWidth: '0',
           maxWidth: '4xl',
           marginInline: 'auto',
           paddingInline: { base: '5', md: '10' },
@@ -366,7 +487,9 @@ export const DocsPage = ({
             ) : (
               <span />
             )}
-            {neighbours.next ? <PagerLink direction="next" item={neighbours.next} /> : null}
+            {neighbours.next ? (
+              <PagerLink direction="next" item={neighbours.next} />
+            ) : null}
           </nav>
         ) : null}
       </article>
@@ -387,12 +510,26 @@ export const DocsPage = ({
               <nav
                 ref={tocRef}
                 aria-label="On this page"
-                className={css({ maxHeight: 'calc(100vh - 8rem)', overflowY: 'auto' })}
+                className={css({
+                  maxHeight: 'calc(100vh - 8rem)',
+                  overflowY: 'auto',
+                })}
               >
-                <Text as="p" fontSize="sm" fontWeight="semibold" marginBottom="3">
+                <Text
+                  as="p"
+                  fontSize="sm"
+                  fontWeight="semibold"
+                  marginBottom="3"
+                >
                   On this page
                 </Text>
-                <ul className={css({ listStyle: 'none', margin: '0', padding: '0' })}>
+                <ul
+                  className={css({
+                    listStyle: 'none',
+                    margin: '0',
+                    padding: '0',
+                  })}
+                >
                   {toc.map((item) => (
                     <li key={item.url}>
                       <TOCItem
