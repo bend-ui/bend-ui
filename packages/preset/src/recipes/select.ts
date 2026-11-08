@@ -1,6 +1,19 @@
 import { defineSlotRecipe } from '@pandacss/dev';
 import { controlSizes } from './control-sizes';
 
+const groupedTrigger = ':where(.Select__control) &';
+
+// Size variants live in a later cascade layer than base styles, so the grouped
+// reset must be repeated here or the trigger keeps its standalone min-height
+// and the Control's border makes the group taller than sibling controls.
+const triggerSize = (size: keyof typeof controlSizes) => ({
+  minHeight: controlSizes[size].minHeight,
+  textStyle: controlSizes[size].textStyle,
+  paddingInline: controlSizes[size].paddingInline,
+  gap: controlSizes[size].gap,
+  [groupedTrigger]: { minHeight: 'auto' },
+});
+
 export const selectRecipe = defineSlotRecipe({
   slots: [
     'root',
@@ -29,13 +42,25 @@ export const selectRecipe = defineSlotRecipe({
       _focusWithin: { layerStyle: 'focus' },
     },
     trigger: {
+      rounded: 'control',
+      backgroundColor: 'fill',
+      border: 'base',
+      _focusVisible: {
+        '&:not(:where(.Select__control *))': { layerStyle: 'focus' },
+      },
+      _disabled: { opacity: 'state.disabled', cursor: 'disabled' },
       flex: '1 1 auto',
       display: 'flex',
       alignItems: 'center',
       paddingBlock: '0',
       alignSelf: 'stretch',
-      rounded: 'inherit',
       gap: 'sm',
+      // Grouped adapters retain the surrounding Control's visual treatment.
+      [groupedTrigger]: {
+        backgroundColor: 'transparent',
+        border: '0',
+        rounded: 'inherit',
+      },
     },
     valueText: {
       textAlign: 'start',
@@ -54,30 +79,21 @@ export const selectRecipe = defineSlotRecipe({
           minHeight: controlSizes.sm.minHeight,
           textStyle: controlSizes.sm.textStyle,
         },
-        trigger: {
-          paddingInline: controlSizes.sm.paddingInline,
-          gap: controlSizes.sm.gap,
-        },
+        trigger: triggerSize('sm'),
       },
       md: {
         control: {
           minHeight: controlSizes.md.minHeight,
           textStyle: controlSizes.md.textStyle,
         },
-        trigger: {
-          paddingInline: controlSizes.md.paddingInline,
-          gap: controlSizes.md.gap,
-        },
+        trigger: triggerSize('md'),
       },
       lg: {
         control: {
           minHeight: controlSizes.lg.minHeight,
           textStyle: controlSizes.lg.textStyle,
         },
-        trigger: {
-          paddingInline: controlSizes.lg.paddingInline,
-          gap: controlSizes.lg.gap,
-        },
+        trigger: triggerSize('lg'),
       },
     },
   },
@@ -106,6 +122,9 @@ export const selectDropdownRecipe = defineSlotRecipe({
     content: {
       rounded: 'overlay',
       layerStyle: 'overlay',
+      maxHeight: 'min(20rem, var(--available-height, calc(100dvh - 2rem)))',
+      maxWidth: 'var(--available-width, calc(100vw - 2rem))',
+      overflowY: 'auto',
       py: 'sm',
       px: 'sm',
       _open: {
@@ -123,9 +142,12 @@ export const selectDropdownRecipe = defineSlotRecipe({
       alignItems: 'center',
       justifyContent: 'space-between',
       gap: 'sm',
-      _hover: {
-        backgroundColor: 'fill.hover',
+      _notDisabled: {
+        _hover: { backgroundColor: 'fill.hover' },
       },
+      _highlighted: { backgroundColor: 'fill.hover' },
+      _selected: { fontWeight: 'semibold' },
+      _disabled: { opacity: 'state.disabled', cursor: 'disabled' },
     },
   },
 });

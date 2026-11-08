@@ -89,7 +89,7 @@ AppShell/Sidebar operational patterns).
 | Form | v0 | implemented | — | ✓ | — |
 | Grid | primitive-only | implemented | — | — | — |
 | Heading | primitive-only | implemented | — | — | — |
-| IconButton | v0 | implemented | — | — | — |
+| IconButton | v0 | implemented | ✓ | ✓ | ✓ |
 | Input | v0 | implemented | — | ✓ | — |
 | Menu | v0 | implemented | — | ✓ | — |
 | Menubar | v0 | implemented | — | ✓ | — |
@@ -104,7 +104,7 @@ AppShell/Sidebar operational patterns).
 | Radio | v0 | implemented | — | ✓ | — |
 | ScrollArea | v0 | implemented | — | ✓ | — |
 | SegmentedControl | v0 | implemented | — | ✓ | — |
-| Select | v0 | implemented | ✓ | ✓ | — |
+| Select | v0 | implemented | ✓ | ✓ | ✓ |
 | Separator | v0 | implemented | — | ✓ | — |
 | Sidebar | covered-by-pattern | implemented | — | ✓ | — |
 | Slider | v0 | implemented | — | ✓ | — |
@@ -119,9 +119,9 @@ AppShell/Sidebar operational patterns).
 | Toolbar | v0 | implemented | — | ✓ | — |
 | Tooltip | v0 | implemented | — | ✓ | — |
 
-**Base UI summary:** 50 components implemented · 5 tested · 42 with Storybook · 2 documented.
-Biggest gaps: unit tests and Docs-site pages (only Avatar and Button). Untested/unstoried
-items are layout/typography primitives plus Card and IconButton.
+**Base UI summary:** 50 components implemented · 5 tested · 42 with Storybook · 4 documented.
+Biggest gaps: unit tests and Docs-site pages (only Avatar, Button, IconButton, and Select). Untested/unstoried
+items are layout/typography primitives plus Card. Button and IconButton share the documented Button reference and recipe customization proof.
 
 ## Ark UI — `@bend-ui/ark-ui` (`packages/ark-ui`)
 
