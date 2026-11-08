@@ -1,0 +1,805 @@
+{
+  "tokens": {
+    "theme": "Stratus",
+    "paletteName": "signal-blue",
+    "palette": [
+      {
+        "shade": "50",
+        "value": "oklch(0.937 0.029 262.466)"
+      },
+      {
+        "shade": "100",
+        "value": "oklch(0.857 0.07 262.466)"
+      },
+      {
+        "shade": "200",
+        "value": "oklch(0.777 0.113 262.466)"
+      },
+      {
+        "shade": "300",
+        "value": "oklch(0.697 0.157 262.466)"
+      },
+      {
+        "shade": "400",
+        "value": "oklch(0.617 0.205 262.466)"
+      },
+      {
+        "shade": "500",
+        "value": "oklch(0.537 0.257 262.466)"
+      },
+      {
+        "shade": "600",
+        "value": "oklch(0.457 0.219 262.466)"
+      },
+      {
+        "shade": "700",
+        "value": "oklch(0.377 0.18 262.466)"
+      },
+      {
+        "shade": "800",
+        "value": "oklch(0.297 0.142 262.466)"
+      },
+      {
+        "shade": "900",
+        "value": "oklch(0.217 0.104 262.466)"
+      },
+      {
+        "shade": "950",
+        "value": "oklch(0.137 0.066 262.466)"
+      }
+    ],
+    "aliases": [
+      {
+        "name": "fill.primary",
+        "value": "{colors.primary.500}",
+        "resolved": "oklch(0.537 0.257 262.466)"
+      },
+      {
+        "name": "fill.primary.hover",
+        "value": "{colors.primary.600}",
+        "resolved": "oklch(0.457 0.219 262.466)"
+      },
+      {
+        "name": "fill.primary.active",
+        "value": "{colors.primary.700}",
+        "resolved": "oklch(0.377 0.18 262.466)"
+      },
+      {
+        "name": "fill.primary.focus",
+        "value": "{colors.primary.700}",
+        "resolved": "oklch(0.377 0.18 262.466)"
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "button",
+      "contract": {
+        "schemaVersion": 1,
+        "status": "prototype",
+        "scope": "base-ui-v0",
+        "name": "Button",
+        "description": "One action with optional label, icons and loading indicator.",
+        "anatomy": [
+          {
+            "name": "root",
+            "kind": "slot",
+            "recipe": "button",
+            "slot": "root",
+            "description": "Interactive action."
+          },
+          {
+            "name": "label",
+            "kind": "slot",
+            "recipe": "button",
+            "slot": "label",
+            "description": "Action text."
+          },
+          {
+            "name": "icon",
+            "kind": "slot",
+            "recipe": "button",
+            "slot": "icon",
+            "description": "Leading or trailing icon."
+          },
+          {
+            "name": "spinner",
+            "kind": "slot",
+            "recipe": "button",
+            "slot": "spinner",
+            "description": "Loading indicator."
+          }
+        ],
+        "recipes": {
+          "button": {
+            "kind": "slotRecipe",
+            "className": "Button",
+            "privateSlots": {},
+            "defaultTreatment": "Secondary emphasis at medium size; loading and disabled behavior remain component-owned.",
+            "variants": {
+              "variant": {
+                "description": "Visual treatment.",
+                "values": [
+                  "primary",
+                  "secondary",
+                  "tertiary",
+                  "danger",
+                  "inverse"
+                ],
+                "defaultValue": "secondary"
+              },
+              "size": {
+                "description": "Spacing and typography scale.",
+                "values": [
+                  "sm",
+                  "md",
+                  "lg"
+                ],
+                "defaultValue": "md"
+              },
+              "isFull": {
+                "description": "Fill the available inline space.",
+                "values": [
+                  "true"
+                ]
+              },
+              "isRounded": {
+                "description": "Use a fully rounded shape.",
+                "values": [
+                  "true"
+                ]
+              }
+            },
+            "states": [
+              {
+                "name": "loading",
+                "selector": "[data-loading]",
+                "slots": [
+                  "spinner"
+                ]
+              },
+              {
+                "name": "hover",
+                "condition": "_hover",
+                "selector": ":hover",
+                "slots": [
+                  "root"
+                ]
+              },
+              {
+                "name": "disabled",
+                "condition": "_disabled",
+                "selector": "[data-disabled]",
+                "slots": [
+                  "root"
+                ]
+              },
+              {
+                "name": "active",
+                "condition": "_active",
+                "selector": ":active",
+                "slots": [
+                  "root"
+                ]
+              },
+              {
+                "name": "focusVisible",
+                "condition": "_focusVisible",
+                "selector": ":focus-visible",
+                "slots": [
+                  "root"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "anatomyIssues": [],
+      "recipes": [
+        {
+          "name": "button",
+          "variants": [
+            {
+              "axis": "isFull",
+              "values": [
+                "true"
+              ],
+              "defaultValue": null,
+              "description": "Fill the available inline space.",
+              "mismatch": false
+            },
+            {
+              "axis": "variant",
+              "values": [
+                "primary",
+                "secondary",
+                "tertiary",
+                "danger",
+                "inverse"
+              ],
+              "defaultValue": "secondary",
+              "description": "Visual treatment.",
+              "mismatch": false
+            },
+            {
+              "axis": "size",
+              "values": [
+                "sm",
+                "md",
+                "lg"
+              ],
+              "defaultValue": "md",
+              "description": "Spacing and typography scale.",
+              "mismatch": false
+            },
+            {
+              "axis": "isRounded",
+              "values": [
+                "true"
+              ],
+              "defaultValue": null,
+              "description": "Use a fully rounded shape.",
+              "mismatch": false
+            }
+          ],
+          "states": [
+            {
+              "name": "loading",
+              "selector": "[data-loading]",
+              "slots": [
+                "spinner"
+              ],
+              "missingSlots": []
+            },
+            {
+              "name": "hover",
+              "condition": "_hover",
+              "selector": ":hover",
+              "slots": [
+                "root"
+              ],
+              "missingSlots": []
+            },
+            {
+              "name": "disabled",
+              "condition": "_disabled",
+              "selector": "[data-disabled]",
+              "slots": [
+                "root"
+              ],
+              "missingSlots": []
+            },
+            {
+              "name": "active",
+              "condition": "_active",
+              "selector": ":active",
+              "slots": [
+                "root"
+              ],
+              "missingSlots": []
+            },
+            {
+              "name": "focusVisible",
+              "condition": "_focusVisible",
+              "selector": ":focus-visible",
+              "slots": [
+                "root"
+              ],
+              "missingSlots": []
+            }
+          ],
+          "slots": [
+            "root",
+            "icon",
+            "label",
+            "spinner"
+          ]
+        }
+      ],
+      "props": [
+        {
+          "name": "children",
+          "type": "import(\"react\").ReactNode",
+          "optional": true,
+          "description": "",
+          "source": "node_modules/.pnpm/@types+react@19.2.14/node_modules/@types/react/index.d.ts"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean | undefined",
+          "optional": true,
+          "description": "",
+          "source": "node_modules/.pnpm/@types+react@19.2.14/node_modules/@types/react/index.d.ts"
+        },
+        {
+          "name": "isDisabled",
+          "type": "boolean | undefined",
+          "optional": true,
+          "description": "",
+          "source": "packages/base-ui/src/components/Button/Button.tsx"
+        },
+        {
+          "name": "isLoading",
+          "type": "boolean | undefined",
+          "optional": true,
+          "description": "",
+          "source": "packages/base-ui/src/components/Button/Button.tsx"
+        },
+        {
+          "name": "icon",
+          "type": "import(\"react\").ReactNode",
+          "optional": true,
+          "description": "",
+          "source": "packages/base-ui/src/components/Button/Button.tsx"
+        },
+        {
+          "name": "iconEnd",
+          "type": "import(\"react\").ReactNode",
+          "optional": true,
+          "description": "",
+          "source": "packages/base-ui/src/components/Button/Button.tsx"
+        },
+        {
+          "name": "onClick",
+          "type": "((event: import(\"@base-ui/react/types\").BaseUIEvent<import(\"react\").MouseEvent<HTMLButtonElement, MouseEvent>>) => void) | undefined",
+          "optional": true,
+          "description": "",
+          "source": "node_modules/.pnpm/@types+react@19.2.14/node_modules/@types/react/index.d.ts"
+        },
+        {
+          "name": "variant",
+          "type": "import(\"../../styled-system/types\").ConditionalValue<\"danger\" | \"inverse\" | \"primary\" | \"secondary\" | \"tertiary\" | undefined>",
+          "optional": true,
+          "description": "",
+          "source": "apps/website/styled-system/recipes/button.d.ts"
+        },
+        {
+          "name": "size",
+          "type": "import(\"../../styled-system/types\").ConditionalValue<\"lg\" | \"md\" | \"sm\" | undefined>",
+          "optional": true,
+          "description": "",
+          "source": "apps/website/styled-system/recipes/button.d.ts"
+        }
+      ]
+    },
+    {
+      "id": "select",
+      "contract": {
+        "schemaVersion": 1,
+        "status": "prototype",
+        "scope": "base-ui-v0",
+        "name": "Select",
+        "description": "Value selection with a separately styled dropdown, including portalled composition.",
+        "anatomy": [
+          {
+            "name": "root",
+            "kind": "behavior",
+            "description": "Owns selection and recipe context; does not promise a DOM slot."
+          },
+          {
+            "name": "trigger",
+            "kind": "slot",
+            "recipe": "select",
+            "slot": "trigger",
+            "description": "Opens the dropdown."
+          },
+          {
+            "name": "value",
+            "kind": "slot",
+            "recipe": "select",
+            "slot": "valueText",
+            "description": "Selected value or placeholder."
+          },
+          {
+            "name": "icon",
+            "kind": "slot",
+            "recipe": "select",
+            "slot": "indicator",
+            "description": "Disclosure indicator."
+          },
+          {
+            "name": "portal",
+            "kind": "behavior",
+            "description": "Changes DOM placement without changing recipe ownership."
+          },
+          {
+            "name": "positioner",
+            "kind": "slot",
+            "recipe": "selectDropdown",
+            "slot": "positioner",
+            "description": "Anchored dropdown layout."
+          },
+          {
+            "name": "popup",
+            "kind": "slot",
+            "recipe": "selectDropdown",
+            "slot": "content",
+            "description": "Dropdown surface."
+          },
+          {
+            "name": "item",
+            "kind": "slot",
+            "recipe": "selectDropdown",
+            "slot": "item",
+            "description": "Selectable option."
+          },
+          {
+            "name": "itemText",
+            "kind": "slot",
+            "recipe": "selectDropdown",
+            "slot": "itemText",
+            "description": "Option label."
+          },
+          {
+            "name": "itemIndicator",
+            "kind": "slot",
+            "recipe": "selectDropdown",
+            "slot": "itemIndicator",
+            "description": "Selection mark."
+          },
+          {
+            "name": "group",
+            "kind": "slot",
+            "recipe": "selectDropdown",
+            "slot": "itemGroup",
+            "description": "Option grouping."
+          },
+          {
+            "name": "groupLabel",
+            "kind": "slot",
+            "recipe": "selectDropdown",
+            "slot": "itemGroupLabel",
+            "description": "Group heading."
+          },
+          {
+            "name": "backdrop",
+            "kind": "unstyled",
+            "description": "Public DOM part, with no recipe slot bound by this adapter."
+          },
+          {
+            "name": "arrow",
+            "kind": "unstyled",
+            "description": "Optional positioning arrow."
+          },
+          {
+            "name": "list",
+            "kind": "unstyled",
+            "description": "Option-list container."
+          },
+          {
+            "name": "separator",
+            "kind": "unstyled",
+            "description": "Option separator."
+          },
+          {
+            "name": "scrollUpArrow",
+            "kind": "unstyled",
+            "description": "Upward scroll affordance."
+          },
+          {
+            "name": "scrollDownArrow",
+            "kind": "unstyled",
+            "description": "Downward scroll affordance."
+          }
+        ],
+        "recipes": {
+          "select": {
+            "kind": "slotRecipe",
+            "className": "Select",
+            "privateSlots": {
+              "control": "required",
+              "root": "optional",
+              "clearTrigger": "optional",
+              "content": "optional",
+              "itemGroupLabel": "optional",
+              "itemGroup": "optional",
+              "item": "optional",
+              "itemText": "optional",
+              "itemIndicator": "optional",
+              "label": "optional",
+              "positioner": "optional"
+            },
+            "variants": {
+              "size": {
+                "description": "Shared control density and typography scale.",
+                "values": [
+                  "sm",
+                  "md",
+                  "lg"
+                ],
+                "defaultValue": "md"
+              }
+            },
+            "defaultTreatment": "Token-based fill and border with shared control corners and medium density.",
+            "states": [
+              {
+                "name": "open",
+                "condition": "_open",
+                "selector": "[data-open]",
+                "slots": [
+                  "trigger"
+                ]
+              },
+              {
+                "name": "disabled",
+                "condition": "_disabled",
+                "selector": "[data-disabled]",
+                "slots": [
+                  "trigger"
+                ]
+              },
+              {
+                "name": "focusVisible",
+                "condition": "_focusVisible",
+                "selector": ":focus-visible",
+                "slots": [
+                  "trigger"
+                ]
+              }
+            ]
+          },
+          "selectDropdown": {
+            "kind": "slotRecipe",
+            "className": "SelectDropdown",
+            "privateSlots": {
+              "root": "optional",
+              "clearTrigger": "optional",
+              "control": "optional",
+              "indicator": "optional",
+              "label": "optional",
+              "trigger": "optional",
+              "valueText": "optional"
+            },
+            "variants": {},
+            "defaultTreatment": "Overlay surface with open/closed motion; positioning behavior remains primitive-owned.",
+            "states": [
+              {
+                "name": "open",
+                "condition": "_open",
+                "selector": "[data-open]",
+                "slots": [
+                  "content"
+                ]
+              },
+              {
+                "name": "closed",
+                "condition": "_closed",
+                "selector": "[data-closed]",
+                "slots": [
+                  "content"
+                ]
+              },
+              {
+                "name": "highlighted",
+                "condition": "_highlighted",
+                "selector": "[data-highlighted]",
+                "slots": [
+                  "item"
+                ]
+              },
+              {
+                "name": "selected",
+                "condition": "_selected",
+                "selector": "[data-selected]",
+                "slots": [
+                  "item"
+                ]
+              },
+              {
+                "name": "disabled",
+                "condition": "_disabled",
+                "selector": "[data-disabled]",
+                "slots": [
+                  "item"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "anatomyIssues": [],
+      "recipes": [
+        {
+          "name": "select",
+          "variants": [
+            {
+              "axis": "size",
+              "values": [
+                "sm",
+                "md",
+                "lg"
+              ],
+              "defaultValue": "md",
+              "description": "Shared control density and typography scale.",
+              "mismatch": false
+            }
+          ],
+          "states": [
+            {
+              "name": "open",
+              "condition": "_open",
+              "selector": "[data-open]",
+              "slots": [
+                "trigger"
+              ],
+              "missingSlots": []
+            },
+            {
+              "name": "disabled",
+              "condition": "_disabled",
+              "selector": "[data-disabled]",
+              "slots": [
+                "trigger"
+              ],
+              "missingSlots": []
+            },
+            {
+              "name": "focusVisible",
+              "condition": "_focusVisible",
+              "selector": ":focus-visible",
+              "slots": [
+                "trigger"
+              ],
+              "missingSlots": []
+            }
+          ],
+          "slots": [
+            "root",
+            "clearTrigger",
+            "content",
+            "control",
+            "indicator",
+            "itemGroupLabel",
+            "itemGroup",
+            "item",
+            "itemText",
+            "itemIndicator",
+            "label",
+            "positioner",
+            "trigger",
+            "valueText"
+          ]
+        },
+        {
+          "name": "selectDropdown",
+          "variants": [],
+          "states": [
+            {
+              "name": "open",
+              "condition": "_open",
+              "selector": "[data-open]",
+              "slots": [
+                "content"
+              ],
+              "missingSlots": []
+            },
+            {
+              "name": "closed",
+              "condition": "_closed",
+              "selector": "[data-closed]",
+              "slots": [
+                "content"
+              ],
+              "missingSlots": []
+            },
+            {
+              "name": "highlighted",
+              "condition": "_highlighted",
+              "selector": "[data-highlighted]",
+              "slots": [
+                "item"
+              ],
+              "missingSlots": []
+            },
+            {
+              "name": "selected",
+              "condition": "_selected",
+              "selector": "[data-selected]",
+              "slots": [
+                "item"
+              ],
+              "missingSlots": []
+            },
+            {
+              "name": "disabled",
+              "condition": "_disabled",
+              "selector": "[data-disabled]",
+              "slots": [
+                "item"
+              ],
+              "missingSlots": []
+            }
+          ],
+          "slots": [
+            "root",
+            "clearTrigger",
+            "content",
+            "control",
+            "indicator",
+            "itemGroupLabel",
+            "itemGroup",
+            "item",
+            "itemText",
+            "itemIndicator",
+            "label",
+            "positioner",
+            "trigger",
+            "valueText"
+          ]
+        }
+      ],
+      "props": [
+        {
+          "name": "value",
+          "type": "string | null | undefined",
+          "optional": true,
+          "description": "The value of the select. Use when controlled.",
+          "source": "node_modules/.pnpm/@base-ui+react@1.6.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.7_react@19.2.7__react@19.2.7/node_modules/@base-ui/react/select/root/SelectRoot.d.mts"
+        },
+        {
+          "name": "defaultValue",
+          "type": "string | null | undefined",
+          "optional": true,
+          "description": "The uncontrolled value of the select when it's initially rendered.\n\nTo render a controlled select, use the `value` prop instead.",
+          "source": "node_modules/.pnpm/@base-ui+react@1.6.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.7_react@19.2.7__react@19.2.7/node_modules/@base-ui/react/select/root/SelectRoot.d.mts"
+        },
+        {
+          "name": "onValueChange",
+          "type": "((value: string | null, eventDetails: import(\"@base-ui/react/select\").SelectRootChangeEventDetails) => void) | undefined",
+          "optional": true,
+          "description": "Event handler called when the value of the select changes.",
+          "source": "node_modules/.pnpm/@base-ui+react@1.6.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.7_react@19.2.7__react@19.2.7/node_modules/@base-ui/react/select/root/SelectRoot.d.mts"
+        },
+        {
+          "name": "open",
+          "type": "boolean | undefined",
+          "optional": true,
+          "description": "Whether the select popup is currently open.",
+          "source": "node_modules/.pnpm/@base-ui+react@1.6.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.7_react@19.2.7__react@19.2.7/node_modules/@base-ui/react/select/root/SelectRoot.d.mts"
+        },
+        {
+          "name": "defaultOpen",
+          "type": "boolean | undefined",
+          "optional": true,
+          "description": "Whether the select popup is initially open.\n\nTo render a controlled select popup, use the `open` prop instead.",
+          "source": "node_modules/.pnpm/@base-ui+react@1.6.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.7_react@19.2.7__react@19.2.7/node_modules/@base-ui/react/select/root/SelectRoot.d.mts"
+        },
+        {
+          "name": "onOpenChange",
+          "type": "((open: boolean, eventDetails: import(\"@base-ui/react/select\").SelectRootChangeEventDetails) => void) | undefined",
+          "optional": true,
+          "description": "Event handler called when the select popup is opened or closed.",
+          "source": "node_modules/.pnpm/@base-ui+react@1.6.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.7_react@19.2.7__react@19.2.7/node_modules/@base-ui/react/select/root/SelectRoot.d.mts"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean | undefined",
+          "optional": true,
+          "description": "Whether the component should ignore user interaction.",
+          "source": "node_modules/.pnpm/@base-ui+react@1.6.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.7_react@19.2.7__react@19.2.7/node_modules/@base-ui/react/select/root/SelectRoot.d.mts"
+        },
+        {
+          "name": "name",
+          "type": "string | undefined",
+          "optional": true,
+          "description": "Identifies the field when a form is submitted.",
+          "source": "node_modules/.pnpm/@base-ui+react@1.6.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.7_react@19.2.7__react@19.2.7/node_modules/@base-ui/react/select/root/SelectRoot.d.mts"
+        },
+        {
+          "name": "required",
+          "type": "boolean | undefined",
+          "optional": true,
+          "description": "Whether the user must choose a value before submitting a form.",
+          "source": "node_modules/.pnpm/@base-ui+react@1.6.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.7_react@19.2.7__react@19.2.7/node_modules/@base-ui/react/select/root/SelectRoot.d.mts"
+        },
+        {
+          "name": "size",
+          "type": "import(\"../../styled-system/types\").ConditionalValue<\"lg\" | \"md\" | \"sm\" | undefined>",
+          "optional": true,
+          "description": "",
+          "source": "apps/website/styled-system/recipes/select.d.ts"
+        }
+      ]
+    }
+  ]
+}

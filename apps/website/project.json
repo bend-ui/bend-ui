@@ -22,7 +22,8 @@
     },
     "serve": {
       "options": {
-        "port": 4200
+        "port": 4200,
+        "command": "next dev --webpack"
       },
       "configurations": {
         "production": {
@@ -46,10 +47,25 @@
     "prepare": {
       "dependsOn": ["^build"],
       "executor": "nx:run-commands",
-      "outputs": ["{projectRoot}/styled-system", "{projectRoot}/.source"],
+      "inputs": [
+        "default",
+        "^default",
+        "{workspaceRoot}/packages/preset/src/**/*",
+        "{workspaceRoot}/packages/preset-base/src/**/*",
+        "{workspaceRoot}/packages/base-ui/src/**/*"
+      ],
+      "outputs": [
+        "{projectRoot}/styled-system",
+        "{projectRoot}/.source",
+        "{projectRoot}/lib/generated-reference/data.json"
+      ],
       "options": {
         "cwd": "apps/website",
-        "commands": ["panda codegen --clean", "fumadocs-mdx"],
+        "commands": [
+          "panda codegen --clean",
+          "fumadocs-mdx",
+          "node --import tsx scripts/generate-reference.ts"
+        ],
         "parallel": false
       }
     },
