@@ -12,6 +12,9 @@ export default defineConfig({
     ...base.theme,
     extend: {
       ...base.theme?.extend,
+      slotRecipes: {
+        button: { base: { root: { _focusVisible: { outlineColor: 'stroke' } } } },
+      },
       layerStyles: {
         focus: { DEFAULT: { value: { outlineColor: 'stroke' } } },
       },
