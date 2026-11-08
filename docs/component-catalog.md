@@ -89,7 +89,7 @@ AppShell/Sidebar operational patterns).
 | Form | v0 | implemented | — | ✓ | — |
 | Grid | primitive-only | implemented | — | — | — |
 | Heading | primitive-only | implemented | — | — | — |
-| IconButton | v0 | implemented | — | — | — |
+| IconButton | v0 | implemented | ✓ | ✓ | ✓ |
 | Input | v0 | implemented | ✓ | ✓ | ✓ |
 | Menu | v0 | implemented | — | ✓ | — |
 | Menubar | v0 | implemented | — | ✓ | — |
@@ -104,7 +104,7 @@ AppShell/Sidebar operational patterns).
 | Radio | v0 | implemented | ✓ | ✓ | ✓ |
 | ScrollArea | v0 | implemented | — | ✓ | — |
 | SegmentedControl | v0 | implemented | — | ✓ | — |
-| Select | v0 | implemented | ✓ | ✓ | — |
+| Select | v0 | implemented | ✓ | ✓ | ✓ |
 | Separator | v0 | implemented | ✓ | ✓ | ✓ |
 | Sidebar | covered-by-pattern | implemented | — | ✓ | — |
 | Slider | v0 | implemented | — | ✓ | — |
@@ -120,9 +120,10 @@ AppShell/Sidebar operational patterns).
 | Toolbar | v0 | implemented | — | ✓ | — |
 | Tooltip | v0 | implemented | — | ✓ | — |
 
-**Base UI summary:** 51 components implemented · 13 tested · 43 with Storybook · 10 documented.
+**Base UI summary:** 51 components implemented · 14 tested · 44 with Storybook · 12 documented.
 Coverage now includes the core form and feedback slice. Unit tests and Docs-site pages
-remain gaps across the rest of the catalog, including Card and IconButton.
+remain gaps across the rest of the catalog, including Card.
+
 
 ## Ark UI — `@bend-ui/ark-ui` (`packages/ark-ui`)
 

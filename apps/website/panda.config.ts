@@ -21,7 +21,8 @@ export default defineConfig({
   presets: [createBendPreset()],
 
   staticCss: {
-    // Native adapter wrappers are not inferred as recipe calls by extraction.
+    // Native adapter wrappers and compound adapter contexts are not inferred
+    // as recipe calls by extraction.
     recipes: {
       input: ['*'],
       textarea: ['*'],
@@ -31,6 +32,8 @@ export default defineConfig({
       formField: ['*'],
       badge: ['*'],
       separator: ['*'],
+      select: ['*'],
+      selectDropdown: ['*'],
     },
     themes: [
       'default',

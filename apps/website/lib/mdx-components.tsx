@@ -4,6 +4,8 @@ import type { ComponentProps } from 'react';
 
 import { css, cx } from '../styled-system/css/index.mjs';
 import { Accordion, Box, Stack, Tabs } from './interactive-mdx-components';
+import { ButtonReferenceExample } from './examples/button-example';
+import { SelectReferenceExample } from './examples/select-example';
 
 const codeBlock = css({
   backgroundColor: 'bg.muted',
@@ -24,7 +26,9 @@ const MdxPre = ({ className, ...props }: ComponentProps<'pre'>) => (
 const MdxCode = (props: ComponentProps<'code'>) => <code {...props} />;
 
 export const mdxComponents: MDXComponents = {
+  ButtonReferenceExample,
   CoreFormsExample,
+  SelectReferenceExample,
   pre: MdxPre,
   code: MdxCode,
   Tabs,

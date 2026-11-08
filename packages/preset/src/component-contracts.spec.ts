@@ -127,7 +127,7 @@ describe('public component recipe contracts', () => {
     ).toContainEqual(expect.objectContaining({ code: 'kind-mismatch' }));
   });
 
-  it('requires public slots and private slots that the adapter renders', () => {
+  it('requires public slots on complete and reduced replacement recipes', () => {
     expect(
       errors(componentContracts.button, 'button', {
         ...recipes['button'],
