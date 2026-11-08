@@ -1,3 +1,4 @@
+import { CoreFormsExample } from './examples/core-forms-example';
 import type { MDXComponents } from 'mdx/types';
 import type { ComponentProps } from 'react';
 
@@ -26,6 +27,7 @@ const MdxCode = (props: ComponentProps<'code'>) => <code {...props} />;
 
 export const mdxComponents: MDXComponents = {
   ButtonReferenceExample,
+  CoreFormsExample,
   SelectReferenceExample,
   pre: MdxPre,
   code: MdxCode,

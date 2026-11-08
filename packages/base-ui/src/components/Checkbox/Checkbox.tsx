@@ -1,6 +1,6 @@
 import { Checkbox as CheckboxPrimitive } from '@base-ui/react/checkbox';
 import { checkbox, CheckboxVariantProps } from '@bend-ui/styled-system/recipes';
-import { CheckIcon } from 'lucide-react';
+import { CheckIcon, MinusIcon } from 'lucide-react';
 import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 
 export type CheckboxRootProps = CheckboxPrimitive.Root.Props;
@@ -27,12 +27,12 @@ const Component = (props: CheckboxProps) => {
   const classes = checkbox({ size });
   return (
     <CheckboxLabel className={classes.root}>
-      <CheckboxRoot defaultChecked size={size} {...rest}>
-        <CheckboxIndicator>
-          <CheckIcon />
+      <CheckboxRoot size={size} {...rest}>
+        <CheckboxIndicator aria-hidden="true">
+          {rest.indeterminate ? <MinusIcon /> : <CheckIcon />}
         </CheckboxIndicator>
       </CheckboxRoot>
-      {children}
+      <span className={classes.label}>{children}</span>
     </CheckboxLabel>
   );
 };

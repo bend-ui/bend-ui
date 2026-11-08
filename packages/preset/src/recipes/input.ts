@@ -10,18 +10,20 @@ export const inputRecipe = defineSlotRecipe({
       rounded: 'control',
       borderWidth: '1px',
       borderStyle: 'solid',
-      borderColor: 'transparent',
+      borderColor: 'stroke.focus',
       divideX: '1px',
       _hover: {
         cursor: 'text',
       },
-      _focusWithin: {
+      '&:has(:focus-visible)': {
         layerStyle: 'focus',
+        outlineColor: 'stroke.primary',
       },
-      _invalid: {
-        border: 'danger',
+      '&:has([data-invalid], [aria-invalid="true"])': {
+        borderColor: 'stroke.danger.strong',
+        _dark: { borderColor: 'stroke.danger' },
       },
-      _disabled: {
+      '&:has(:disabled, [data-disabled])': {
         opacity: 'state.disabled',
       },
     },
@@ -34,6 +36,8 @@ export const inputRecipe = defineSlotRecipe({
       outline: 'none',
       minWidth: '0',
       alignSelf: 'stretch',
+      color: 'text',
+      _readOnly: { cursor: 'default' },
       font: 'inherit',
       fontSize: '1rem',
       paddingBlock: '0',
@@ -89,13 +93,17 @@ export const inputRecipe = defineSlotRecipe({
     variant: {
       solid: {
         root: {
-          backgroundColor: 'fill',
+          borderColor: 'transparent',
+          '&:has([data-invalid], [aria-invalid="true"])': {
+            borderColor: 'stroke.danger.strong',
+            _dark: { borderColor: 'stroke.danger' },
+          },
+          backgroundColor: 'bg.raised',
         },
       },
       outline: {
         root: {
-          backgroundColor: 'fill',
-          border: 'weak',
+          backgroundColor: 'bg.raised',
           divideColor: 'stroke.weak',
           shadow: 'xs',
         },
