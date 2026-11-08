@@ -7,6 +7,7 @@ import {
   readFileSync,
   readdirSync,
   realpathSync,
+  rmSync,
   writeFileSync,
 } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -117,7 +118,8 @@ try {
   if (
     process.env.BEND_VERIFY_RAMPS === '1' ||
     process.env.BEND_VERIFY_TOKENS === '1' ||
-    process.env.BEND_VERIFY_SURFACES === '1'
+    process.env.BEND_VERIFY_SURFACES === '1' ||
+    process.env.BEND_VERIFY_COLLECTION === '1'
   ) {
     manifest.dependencies['@bend-ui/preset'] = overrides['@bend-ui/preset'];
   }
@@ -252,6 +254,84 @@ try {
     const { verifySurfaceConsumer } =
       await import('./verify-surface-consumer.mjs');
     await verifySurfaceConsumer(app);
+  }
+  if (process.env.BEND_VERIFY_COLLECTION === '1') {
+    const scenario = path.join(fixture, 'collection-scenarios');
+    cpSync(
+      path.join(scenario, 'panda.collection.config.ts'),
+      path.join(app, 'panda.collection.config.ts'),
+    );
+    cpSync(path.join(scenario, 'app.tsx'), path.join(app, 'src/app/app.tsx'));
+    cpSync(
+      path.join(scenario, 'types.test.ts'),
+      path.join(app, 'src/collection-types.test.ts'),
+    );
+    const source = readFileSync(path.join(app, 'src/app/app.tsx'), 'utf8');
+    const styles = {};
+    for (const collection of ['default', 'atelier']) {
+      process.env.BEND_RECIPE_COLLECTION = collection;
+      exec([
+        'panda',
+        'codegen',
+        '--config',
+        'panda.collection.config.ts',
+        '--clean',
+      ]);
+      exec([
+        'panda',
+        'cssgen',
+        '--config',
+        'panda.collection.config.ts',
+        '--outfile',
+        'styled-system/styles.css',
+      ]);
+      exec(['tsc', '--project', 'tsconfig.json']);
+      exec(['vite', 'build', '--outDir', `dist-collection-${collection}`]);
+      assert.equal(
+        readFileSync(path.join(app, 'src/app/app.tsx'), 'utf8'),
+        source,
+      );
+      styles[collection] = readFileSync(
+        path.join(app, 'styled-system/styles.css'),
+        'utf8',
+      );
+      for (const name of [
+        'Button',
+        'Input',
+        'Select',
+        'SelectDropdown',
+        'Card',
+      ]) {
+        assert.ok(
+          styles[collection].includes(`.${name}__`),
+          `missing ${name} CSS in ${collection}`,
+        );
+      }
+    }
+    delete process.env.BEND_RECIPE_COLLECTION;
+    rmSync(path.join(app, 'src/collection-types.test.ts'));
+    assert.notEqual(styles.default, styles.atelier);
+    for (const selector of [
+      'Button__root',
+      'Input__root',
+      'Select__control',
+      'SelectDropdown__content',
+      'Card__root',
+    ]) {
+      assert.match(
+        styles.atelier,
+        new RegExp(`\\.${selector}\\s*\\{[^}]*border-radius:\\s*2px`),
+      );
+    }
+    assert.match(styles.atelier, /\.Card__root\s*\{[^}]*padding:\s*24px/);
+    assert.match(
+      styles.atelier,
+      /\.Card__section\s*\{[^}]*margin-inline:\s*-24px/,
+    );
+    assert.match(styles.atelier, /letter-spacing:\s*0\.08em/);
+    console.log(
+      'PASS: same consumer source, generated types and built CSS for both collections.',
+    );
   }
   for (const mode of ['extend', 'replace']) {
     console.log(`\nChecking native recipe ${mode}`);
