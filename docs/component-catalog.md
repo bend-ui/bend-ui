@@ -89,7 +89,7 @@ AppShell/Sidebar operational patterns).
 | Form | v0 | implemented | — | ✓ | — |
 | Grid | primitive-only | implemented | — | — | — |
 | Heading | primitive-only | implemented | — | — | — |
-| IconButton | v0 | implemented | — | — | — |
+| IconButton | v0 | implemented | ✓ | ✓ | ✓ |
 | Input | v0 | implemented | — | ✓ | — |
 | Menu | v0 | implemented | — | ✓ | — |
 | Menubar | v0 | implemented | — | ✓ | — |
@@ -121,7 +121,7 @@ AppShell/Sidebar operational patterns).
 
 **Base UI summary:** 50 components implemented · 5 tested · 42 with Storybook · 2 documented.
 Biggest gaps: unit tests and Docs-site pages (only Avatar and Button). Untested/unstoried
-items are layout/typography primitives plus Card and IconButton.
+items are layout/typography primitives plus Card. Button and IconButton share the documented Button reference and recipe customization proof.
 
 ## Ark UI — `@bend-ui/ark-ui` (`packages/ark-ui`)
 
