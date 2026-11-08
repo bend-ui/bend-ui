@@ -1,6 +1,19 @@
 import { defineSlotRecipe } from '@pandacss/dev';
 import { controlSizes } from './control-sizes';
 
+const groupedTrigger = ':where(.Select__control) &';
+
+// Size variants live in a later cascade layer than base styles, so the grouped
+// reset must be repeated here or the trigger keeps its standalone min-height
+// and the Control's border makes the group taller than sibling controls.
+const triggerSize = (size: keyof typeof controlSizes) => ({
+  minHeight: controlSizes[size].minHeight,
+  textStyle: controlSizes[size].textStyle,
+  paddingInline: controlSizes[size].paddingInline,
+  gap: controlSizes[size].gap,
+  [groupedTrigger]: { minHeight: 'auto' },
+});
+
 export const selectRecipe = defineSlotRecipe({
   slots: [
     'root',
@@ -43,11 +56,10 @@ export const selectRecipe = defineSlotRecipe({
       alignSelf: 'stretch',
       gap: 'sm',
       // Grouped adapters retain the surrounding Control's visual treatment.
-      ':where(.Select__control) &': {
+      [groupedTrigger]: {
         backgroundColor: 'transparent',
         border: '0',
         rounded: 'inherit',
-        minHeight: 'auto',
       },
     },
     valueText: {
@@ -67,36 +79,21 @@ export const selectRecipe = defineSlotRecipe({
           minHeight: controlSizes.sm.minHeight,
           textStyle: controlSizes.sm.textStyle,
         },
-        trigger: {
-          minHeight: controlSizes.sm.minHeight,
-          textStyle: controlSizes.sm.textStyle,
-          paddingInline: controlSizes.sm.paddingInline,
-          gap: controlSizes.sm.gap,
-        },
+        trigger: triggerSize('sm'),
       },
       md: {
         control: {
           minHeight: controlSizes.md.minHeight,
           textStyle: controlSizes.md.textStyle,
         },
-        trigger: {
-          minHeight: controlSizes.md.minHeight,
-          textStyle: controlSizes.md.textStyle,
-          paddingInline: controlSizes.md.paddingInline,
-          gap: controlSizes.md.gap,
-        },
+        trigger: triggerSize('md'),
       },
       lg: {
         control: {
           minHeight: controlSizes.lg.minHeight,
           textStyle: controlSizes.lg.textStyle,
         },
-        trigger: {
-          minHeight: controlSizes.lg.minHeight,
-          textStyle: controlSizes.lg.textStyle,
-          paddingInline: controlSizes.lg.paddingInline,
-          gap: controlSizes.lg.gap,
-        },
+        trigger: triggerSize('lg'),
       },
     },
   },
