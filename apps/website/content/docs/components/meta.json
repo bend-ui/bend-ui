@@ -1,8 +1,4 @@
 {
   "title": "Components",
-  "pages": [
-    "overview",
-    "avatar",
-    "button"
-  ]
+  "pages": ["overview", "avatar", "button", "select", "component-preview"]
 }

@@ -3,6 +3,7 @@ import type { ComponentProps } from 'react';
 
 import { css, cx } from '../styled-system/css/index.mjs';
 import { Accordion, Box, Stack, Tabs } from './interactive-mdx-components';
+import { ComponentPreview } from './component-preview/component-preview';
 
 const codeBlock = css({
   backgroundColor: 'bg.muted',
@@ -29,4 +30,5 @@ export const mdxComponents: MDXComponents = {
   Accordion,
   Stack,
   Box,
+  ComponentPreview,
 };

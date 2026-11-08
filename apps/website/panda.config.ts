@@ -21,6 +21,12 @@ export default defineConfig({
   presets: [createBendPreset()],
 
   staticCss: {
+    recipes: {
+      button: ['*'],
+      select: ['*'],
+      selectDropdown: ['*'],
+      avatar: ['*'],
+    },
     themes: [
       'default',
       'stratus',
