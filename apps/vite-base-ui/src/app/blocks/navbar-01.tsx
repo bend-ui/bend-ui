@@ -1,8 +1,8 @@
 import { NavigationMenu } from '@bend-ui/base-ui';
 
 const links = [
-  { href: '/overview', label: 'Overview' },
-  { href: '/handbook', label: 'Handbook' },
+  { href: '/blocks', label: 'Overview' },
+  { href: '/', label: 'Handbook' },
   { href: 'https://github.com/mui/base-ui', label: 'GitHub' },
 ];
 
