@@ -1,4 +1,4 @@
-import { Button, Card, Heading, IconButton } from '@bend-ui/base-ui';
+import { Button, Card, Heading, IconButton, Select } from '@bend-ui/base-ui';
 import { text } from '../../styled-system/recipes';
 import { RecipeButton } from '../recipe-button';
 
@@ -9,6 +9,15 @@ export default function App() {
       <Card.Root>
         <Card.Body>
           <p className={text({ variant: 'billboard' })}>Local Text variant</p>
+          <Select
+            aria-label="Consumer font"
+            size="lg"
+            defaultValue="serif"
+            items={[
+              { label: 'Serif', value: 'serif' },
+              { label: 'Monospace', value: 'mono' },
+            ]}
+          />
           <Button data-testid="published-button" variant="primary" size="lg">
             Published primary
           </Button>

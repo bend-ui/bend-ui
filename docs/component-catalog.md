@@ -104,7 +104,7 @@ AppShell/Sidebar operational patterns).
 | Radio | v0 | implemented | — | ✓ | — |
 | ScrollArea | v0 | implemented | — | ✓ | ✓ |
 | SegmentedControl | v0 | implemented | — | ✓ | — |
-| Select | v0 | implemented | ✓ | ✓ | — |
+| Select | v0 | implemented | ✓ | ✓ | ✓ |
 | Separator | v0 | implemented | — | ✓ | — |
 | Sidebar | covered-by-pattern | implemented | — | ✓ | — |
 | Slider | v0 | implemented | — | ✓ | — |
@@ -119,7 +119,7 @@ AppShell/Sidebar operational patterns).
 | Toolbar | v0 | implemented | — | ✓ | — |
 | Tooltip | v0 | implemented | ✓ | ✓ | ✓ |
 
-**Base UI summary:** 50 components implemented · 13 tested · 43 with Storybook · 10 documented.
+**Base UI summary:** 50 components implemented · 13 tested · 43 with Storybook · 11 documented.
 Button and IconButton share the documented Button reference and recipe customization proof.
 
 ## Ark UI — `@bend-ui/ark-ui` (`packages/ark-ui`)

@@ -22,6 +22,7 @@ export default defineConfig({
 
   // Adapter wrappers own recipe calls, so include their public variants.
   staticCss: {
+    // Compound adapter contexts are not discoverable from the JSX call sites.
     recipes: {
       popover: ['*'],
       tooltip: ['*'],
@@ -31,6 +32,8 @@ export default defineConfig({
       scrollArea: ['*'],
       navbar: ['*'],
       surface: ['*'],
+      select: ['*'],
+      selectDropdown: ['*'],
     },
     themes: [
       'default',
