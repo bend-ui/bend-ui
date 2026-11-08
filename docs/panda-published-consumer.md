@@ -60,3 +60,21 @@ The existing Base UI suite passed all 13 tests. Base UI and consumer lint passed
 - [BEN-30](https://linear.app/benoit-deziel/issue/BEN-30/prototype-a-publishable-panda-design-system-in-a-consumer-app)
 - [Panda: build a design system](https://panda-css.com/docs/design-systems/build-a-design-system)
 - [Panda: publishing](https://panda-css.com/docs/design-systems/publishing)
+
+## npm and Node package smoke (BEN-48)
+
+For the npm-specific check, run the uncached Nx target after other builds finish:
+
+```sh
+NX_DAEMON=false BEND_VERIFY_NPM=1 pnpm nx run panda-consumer:verify --output-style=static
+```
+
+It uses `pnpm pack` to rewrite workspace ranges in the tarballs, then installs all Bend dependencies as local tarballs in a fresh external npm app. npm's direct-dependency override references keep those tarballs in the transitive graph. `npm install --ignore-scripts --no-audit --no-fund` uses normal peer resolution: it does not use `--legacy-peer-deps` or `--force`. Registry access is needed for the pinned non-Bend dependencies. The fixture checks the installed graph, direct Node ESM and CommonJS entry points, generated declarations, Panda layer ordering, consumer token overrides, and recipe extension and replacement. It scans only consumer source. Successful npm runs remove their temporary directory; set `BEND_KEEP_CONSUMER=1` to inspect it. Failures preserve it for diagnosis.
+
+A Vite 8/Rolldown production comparison inspects emitted code and module sizes for installed ESM imports. The generated recipe subpath removes the unused SelectDropdown recipe when only Button is imported; it retains the recipe when requested. The Base UI root comparison is less favorable: Button alone still retains Select in the measured bundle because of the adapter’s top-level initialization. It does not establish minimal CSS, which is generated for the configured recipe catalog, or guarantee bundle sizes for other applications.
+
+This is a local tarball and setup smoke, not a registry publication. Base UI, Ark UI, React Aria, and Ariakit depend at runtime on `@bend-ui/core`, which is explicitly private and tagged internal. Publishing requires a deliberate decision to publish that dependency or remove/bundle the dependency first; do not treat this check as release authorization.
+
+On November 8, 2026, the npm mode passed with Node 24.22.1, npm 11.19.1, Panda 2.2.0 and Vite 8.1.4. Before enabling Panda's `forceImportExtension`, a direct Node import failed on an extensionless generated recipe import; the rebuilt packed packages passed both ESM and CommonJS imports. In the unminified comparison, the recipe-only output was 21,066 bytes for Button and 21,580 bytes with SelectDropdown; the latter contributed 680 rendered module bytes. The root adapter's measured rendered module was 111,332 bytes in both Button-only and Button-plus-Select builds, with Select retained in both. These are diagnostic measurements, not bundle-size budgets.
+
+Final workspace validation ran `NX_DAEMON=false pnpm validate --base=origin/main --output-style=static` successfully (52 tasks for 12 projects and dependencies, 14m 29s). The npm verifier then passed sequentially (8 tasks, 17.1s). Nx reported a remote-cache authorization warning, but both local commands exited successfully.

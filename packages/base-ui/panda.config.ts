@@ -16,6 +16,8 @@ export default defineConfig({
   importMap: '@bend-ui/styled-system',
 
   jsxFramework: 'react',
+  // Published ESM is also consumed directly by Node, which requires extensions.
+  forceImportExtension: true,
 
   staticCss: {
     recipes: '*',

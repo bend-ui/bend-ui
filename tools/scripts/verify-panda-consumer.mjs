@@ -7,6 +7,7 @@ import {
   readFileSync,
   readdirSync,
   realpathSync,
+  rmSync,
   writeFileSync,
 } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -137,19 +138,32 @@ try {
       path.join(root, 'node_modules', name, 'package.json'),
     ).version;
   }
-  manifest.pnpm = { overrides };
+  const npmMode = process.env.BEND_VERIFY_NPM === '1';
+  if (npmMode) {
+    // Direct tarball dependencies let npm's $ references override the rewritten
+    // workspace ranges without resolving any Bend package from a registry.
+    Object.assign(manifest.dependencies, overrides);
+    manifest.overrides = Object.fromEntries(
+      Object.keys(overrides).map((name) => [name, `$${name}`]),
+    );
+    delete manifest.packageManager;
+  } else {
+    manifest.pnpm = { overrides };
+  }
   writeFileSync(
     path.join(app, 'package.json'),
     `${JSON.stringify(manifest, null, 2)}\n`,
   );
   console.log(
-    run('pnpm', [
-      'install',
-      '--ignore-workspace',
-      '--ignore-scripts',
-      '--no-frozen-lockfile',
-      '--prefer-offline',
-    ]),
+    npmMode
+      ? run('npm', ['install', '--ignore-scripts', '--no-audit', '--no-fund'])
+      : run('pnpm', [
+          'install',
+          '--ignore-workspace',
+          '--ignore-scripts',
+          '--no-frozen-lockfile',
+          '--prefer-offline',
+        ]),
   );
   const installed = realpathSync(
     path.join(app, 'node_modules/@bend-ui/base-ui'),
@@ -162,6 +176,45 @@ try {
     !existsSync(path.join(installed, 'src')),
     'Consumer must not have library source',
   );
+  if (npmMode) {
+    for (const name of Object.keys(overrides)) {
+      const location = realpathSync(path.join(app, 'node_modules', name));
+      assert.ok(
+        location.startsWith(app + path.sep),
+        `${name} escaped the consumer`,
+      );
+      assert.ok(
+        !existsSync(path.join(location, 'src')),
+        `${name} has source fallback`,
+      );
+    }
+    console.log(run('npm', ['ls', '--all']));
+    console.log(
+      run('node', [
+        '--input-type=module',
+        '-e',
+        `
+      import assert from 'node:assert/strict';
+      import { Button, Select } from '@bend-ui/base-ui';
+      import { css } from '@bend-ui/base-ui/css';
+      import { button } from '@bend-ui/base-ui/recipes';
+      assert.ok(Button && Select && typeof css === 'function' && typeof button === 'function');
+      console.log('PASS: installed ESM root and helper exports');
+    `,
+      ]),
+    );
+    console.log(
+      run('node', [
+        '-e',
+        `
+      const assert = require('node:assert/strict');
+      const { Button, Select } = require('@bend-ui/base-ui');
+      assert.ok(Button && Select);
+      console.log('PASS: installed CommonJS root export');
+    `,
+      ]),
+    );
+  }
   const config = readFileSync(path.join(app, 'panda.config.ts'), 'utf8');
   assert.ok(
     config.includes("include: ['./src/**/*.{ts,tsx}']"),
@@ -171,7 +224,12 @@ try {
   exec(['panda', 'cssgen', '--outfile', 'styled-system/styles.css']);
   exec(['tsc', '--project', 'tsconfig.json']);
   exec(['vite', 'build']);
+  if (npmMode) console.log(run('node', ['tree-shaking.mjs']));
   const css = readFileSync(path.join(app, 'styled-system/styles.css'), 'utf8');
+  assert.match(
+    css,
+    /@layer\s+reset\s*,\s*base\s*,\s*tokens\s*,\s*recipes\s*,\s*utilities\s*;/,
+  );
   assert.match(css, /--radii-md:\s*19px/);
   assert.match(css, /--colors-consumer:\s*#6d28d9/i);
   assert.match(css, /--colors-fill-primary:\s*var\(--colors-consumer\)/);
@@ -182,7 +240,7 @@ try {
   console.log(
     '\nPASS: packed install, manifest hydration, consumer token overrides, generated types and production build.',
   );
-  console.log(`Inspect or serve the app at ${app}`);
+  if (!npmMode) console.log(`Inspect or serve the app at ${app}`);
   if (process.env.BEND_VERIFY_TOKENS === '1') {
     const scenario = path.join(fixture, 'token-scenarios');
     cpSync(
@@ -351,6 +409,10 @@ try {
     console.log(
       `PASS: native recipe ${mode}, compound runtime, slots and published/generated type boundary.`,
     );
+  }
+  if (npmMode && process.env.BEND_KEEP_CONSUMER !== '1') {
+    rmSync(work, { recursive: true, force: true });
+    console.log('Removed successful temporary npm consumer.');
   }
 } catch (error) {
   if (error.stdout) console.error(error.stdout.toString());
