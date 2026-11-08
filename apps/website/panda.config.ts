@@ -21,6 +21,8 @@ export default defineConfig({
   presets: [createBendPreset()],
 
   staticCss: {
+    // Compound adapter contexts are not discoverable from the JSX call sites.
+    recipes: { select: ['*'], selectDropdown: ['*'] },
     themes: [
       'default',
       'stratus',

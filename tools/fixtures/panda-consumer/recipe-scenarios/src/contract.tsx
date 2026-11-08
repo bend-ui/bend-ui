@@ -1,10 +1,23 @@
 import { renderToStaticMarkup } from 'react-dom/server';
-import { Button, Card, IconButton } from '@bend-ui/base-ui';
-import { button as publishedButton } from '@bend-ui/base-ui/recipes';
-import { button, text } from '../styled-system/recipes';
+import { Button, Card, IconButton, Select } from '@bend-ui/base-ui';
+import {
+  button as publishedButton,
+  selectDropdown as publishedSelectDropdown,
+} from '@bend-ui/base-ui/recipes';
+import { button, text, selectDropdown } from '../styled-system/recipes';
 import { RecipeButton } from './recipe-button';
 
 export const contract = {
+  select: renderToStaticMarkup(
+    <Select
+      aria-label="Consumer font"
+      size="lg"
+      items={[{ label: 'Serif', value: 'serif' }]}
+      defaultValue="serif"
+    />,
+  ),
+  selectDropdown: selectDropdown(),
+  publishedSelectDropdown: publishedSelectDropdown(),
   buttonVariants: button.variantMap,
   textVariants: text.variantMap,
   publishedVariants: publishedButton.variantMap,

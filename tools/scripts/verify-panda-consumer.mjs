@@ -355,6 +355,37 @@ try {
       path.join(app, 'styled-system/styles.css'),
       'utf8',
     );
+    assert.match(contract.select, /role="combobox"/);
+    assert.match(contract.select, /Select__trigger--size_lg/);
+    assert.match(contract.select, /Serif/);
+    assert.equal(contract.selectDropdown.content, 'SelectDropdown__content');
+    for (const slot of [
+      'positioner',
+      'content',
+      'item',
+      'itemText',
+      'itemIndicator',
+      'itemGroup',
+      'itemGroupLabel',
+    ]) {
+      assert.equal(
+        contract.publishedSelectDropdown[slot],
+        contract.selectDropdown[slot],
+      );
+    }
+    assert.match(
+      styles,
+      new RegExp(
+        String.raw`\.SelectDropdown__content\s*\{[^}]*border-width:\s*${mode === 'extend' ? 7 : 3}px`,
+      ),
+    );
+    if (mode === 'replace')
+      assert.match(styles, /\.Select__trigger\s*\{[^}]*border-radius:\s*2px/);
+    else
+      assert.match(
+        styles,
+        /\.Select__trigger--size_lg\s*\{[^}]*border-radius:\s*11px/,
+      );
     assert.ok(contract.buttonVariants.variant.includes('editorial'));
     assert.ok(contract.buttonVariants.size.includes('jumbo'));
     assert.ok(contract.textVariants.variant.includes('billboard'));
