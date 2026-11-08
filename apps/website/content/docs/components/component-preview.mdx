@@ -20,3 +20,27 @@ portalled content without changing the surrounding documentation. Width controls
 set a maximum width within the available space. Reset restores the default theme,
 mode and width and remounts the example. Changing theme or mode also reloads the
 example. Source is always visible and can be selected if copying is unavailable.
+
+## Interactive props
+
+Button and Select provide optional prop controls. The Button example uses the
+primary variant; the remaining public variants are omitted from this
+playground pending contrast fixes in their current recipes. Change a field to update the
+live component and the **Generated usage** module. A selection made inside the
+Select also updates the Value control and generated module. Reset restores the
+prop defaults and remounts the example. The generated Select module starts with
+the current selection and includes a controlled `onValueChange` handler.
+
+The **Full example source** is the exact registered module, including its
+preview-specific state interface. The generated usage is a copyable standalone
+module derived from that same source; it replaces only marked setup and import
+sections with the current validated values. The component JSX and behavior are
+shared. The values are serialized as data, not evaluated as code.
+
+A configurable example has an entry in the typed `schemas` registry with
+its defaults and fields. Supported fields are a bounded text input, an
+allowlisted select, and a boolean. Add the corresponding typed state to the
+example and mark its preview-specific imports and setup for usage generation.
+Examples such as Avatar can omit a schema and retain the ordinary source-backed
+preview. Frame messages are checked against the current origin, frame and
+schema before they are applied.
