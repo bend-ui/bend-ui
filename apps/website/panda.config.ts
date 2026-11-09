@@ -24,6 +24,8 @@ export default defineConfig({
   staticCss: {
     // Compound adapter contexts are not discoverable from the JSX call sites.
     recipes: {
+      button: ['*'],
+      avatar: ['*'],
       popover: ['*'],
       tooltip: ['*'],
       menu: ['*'],
