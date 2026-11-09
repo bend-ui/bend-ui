@@ -21,6 +21,7 @@
     "switch",
     "badge",
     "separator",
+    "dialog",
     "component-preview"
   ]
 }
