@@ -1,0 +1,35 @@
+---
+title: Field
+description: Labels, descriptions and validation around native form controls
+---
+
+# Field
+
+`Field` and `Field.Root` group a label, one control, its description, and inline errors. They share the same native Base UI field context. `Field.Control` renders a complete styled Input; other Bend controls can be placed directly inside the field.
+
+## Working form
+
+This form uses Input, Textarea, Checkbox, Radio, Switch, Field, Badge and Separator. Submit it empty to reveal errors and focus the first invalid control. Enter an email and multiline note, choose delivery with arrow keys, toggle reminders and updates with Space, and save. Reset remounts this uncontrolled form to restore initial values; Base UI 1.6 does not synchronize every choice primitive with native form reset. For application forms, reset controlled values or use the same explicit remount pattern. The example inherits the document's color mode.
+
+<CoreFormsExample />
+
+## Composition
+
+```tsx
+import { Field, Form, Input } from '@bend-ui/base-ui';
+
+<Form.Root onFormSubmit={(values) => console.log(values)}>
+  <Field name="email">
+    <Field.Label>Email address</Field.Label>
+    <Field.Description>Where we send updates.</Field.Description>
+    <Input type="email" autoComplete="email" required />
+    <Field.Error match="valueMissing">Enter your email address.</Field.Error>
+    <Field.Error match="typeMismatch">Use a valid email address.</Field.Error>
+  </Field>
+  <button type="submit">Save</button>
+</Form.Root>;
+```
+
+Keep submit enabled so people can discover errors. Base UI links labels, descriptions and matching errors to the control, marks invalid state, and manages validation through `Form.Root`. Use `invalid` for externally managed errors and `Field.Error match={true}` for their message. A Badge is status text, not a substitute for an error description.
+
+The former top-level `Field` export rendered a fixed Name demo. It now accepts native Root props and children. Compound parts remain available: `Root`, `Label`, `Control`, `Description`, `Error`, `Helper`, and `Validity`.

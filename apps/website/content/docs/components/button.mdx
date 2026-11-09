@@ -7,6 +7,12 @@ description: Trigger an action with the Base UI button adapter
 
 Use `Button` for actions such as submitting a form, confirming a choice, or opening a surface.
 
+## Live example
+
+<ButtonReferenceExample />
+
+Use Enter or Space on an action and watch the result count. The icon-only Add item action has a visually hidden label; unavailable actions are skipped during keyboard navigation. The Composed action uses Base UI native render composition and retains button semantics. The example inherits the document color mode.
+
 ## Import
 
 ```tsx
@@ -25,7 +31,7 @@ export function Example() {
 }
 ```
 
-## Variants
+## Hierarchy and treatment
 
 ```tsx
 import { Button } from '@bend-ui/base-ui';
@@ -44,7 +50,17 @@ export function Variants() {
 }
 ```
 
-Use `primary` once for the main action in a region. Use `danger` only for destructive actions.
+The existing `variant` prop carries hierarchy and contextual treatment; these are not separate runtime axes.
+
+| Value       | Intent                                 |
+| ----------- | -------------------------------------- |
+| `primary`   | Main action in a region; use sparingly |
+| `secondary` | Supporting action and the default      |
+| `tertiary`  | Low-emphasis action                    |
+| `danger`    | Destructive action with a clear label  |
+| `inverse`   | Inverse surface treatment              |
+
+Size is independent of treatment. The shared control scale is `sm`/`md`/`lg`, with `md` as the default. `isRounded` changes shape; `isFull` fills the available width.
 
 ## Sizes
 
@@ -143,7 +159,19 @@ export function AddIconButton() {
 }
 ```
 
-The label is visually hidden. A tooltip can supplement the name but does not replace it.
+The label is visually hidden, and the icon is decorative. A tooltip can supplement the name but does not replace it. `IconButton` shares Button variants, native composition/ref props, and the `isDisabled`/`isLoading` aliases. Busy state does not implicitly disable either component.
+
+## Native composition
+
+Keep Base UI's `render` and `nativeButton` model when composing a custom element. Native `<button>` is the preferred default. A non-native action needs `nativeButton={false}` so the primitive supplies button semantics and keyboard activation:
+
+```tsx
+<Button render={<span />} nativeButton={false} onClick={runAction}>
+  Run action
+</Button>
+```
+
+This changes the rendered element, not the control's purpose. Use a real link for navigation. `IconButton` accepts the same composition props and HTMLElement ref. For an unavailable native button, use `disabled` or `isDisabled`. The opt-in `focusableWhenDisabled` keeps it focusable while Base UI prevents activation; explain the reason for unavailability nearby.
 
 ## Full width
 
@@ -195,4 +223,4 @@ Keep a meaningful action label, preserve visible keyboard focus, and use native 
 
 [Customize a Button recipe](/docs/foundation/recipe-customization) to change visual treatment without editing component behavior. Preserve the public slots, class namespace, supported variants, and defaults for a drop-in replacement. New consumer variant values and compound rules require a consumer-owned component using the consumer-generated recipe; they do not update the published Button runtime.
 
-This page describes the current Base UI v0 adapter. The reference component work may revise the public variant conventions.
+This is the Base UI v0 reference contract. Existing recipe values remain deliberate; new hierarchy or treatment axes are not introduced.

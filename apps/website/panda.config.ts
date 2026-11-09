@@ -20,12 +20,30 @@ export default defineConfig({
 
   presets: [createBendPreset()],
 
+  // Adapter wrappers own recipe calls, so include their public variants.
   staticCss: {
+    // Compound adapter contexts are not discoverable from the JSX call sites.
     recipes: {
       button: ['*'],
+      avatar: ['*'],
+      popover: ['*'],
+      tooltip: ['*'],
+      menu: ['*'],
+      tabs: ['*'],
+      card: ['*'],
+      scrollArea: ['*'],
+      navbar: ['*'],
+      surface: ['*'],
+      input: ['*'],
+      textarea: ['*'],
+      checkbox: ['*'],
+      radioGroup: ['*'],
+      switchRecipe: ['*'],
+      formField: ['*'],
+      badge: ['*'],
+      separator: ['*'],
       select: ['*'],
       selectDropdown: ['*'],
-      avatar: ['*'],
     },
     themes: [
       'default',

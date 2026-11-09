@@ -1,3 +1,4 @@
+import { separatorRecipe } from './separator';
 import { accordionRecipe } from './accordion';
 import { alertRecipe } from './alert';
 import { appShellRecipe } from './app-shell';
@@ -98,6 +99,7 @@ export const slotRecipes: Theme['slotRecipes'] = {
 };
 
 export const recipes: Theme['recipes'] = {
+  separator: separatorRecipe,
   backdrop: backdropRecipe,
   cardSection: cardSectionRecipe,
   icon: iconRecipe,
