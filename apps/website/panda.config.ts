@@ -25,6 +25,8 @@ export default defineConfig({
     // Compound adapter contexts are not discoverable from the JSX call sites.
     recipes: {
       backdrop: ['*'],
+      button: ['*'],
+      avatar: ['*'],
       popover: ['*'],
       tooltip: ['*'],
       menu: ['*'],

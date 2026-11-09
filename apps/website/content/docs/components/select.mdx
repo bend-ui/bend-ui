@@ -142,3 +142,9 @@ When scanning adapter source without the published design-system metadata, ensur
 The repository's packed-consumer fixture extends and replaces **both** recipes while importing the same installed Select implementation. It verifies emitted CSS, the published trigger classes, and production builds. Run `pnpm nx run panda-consumer:verify` from this repository to reproduce that maintainer proof.
 
 New consumer-defined variant values or compound rules do not widen the published component's declarations or runtime metadata. Use a consumer-owned component with its generated recipe when adding those selection rules; existing supported values can be restyled without editing Select React source.
+
+## Isolated preview
+
+This preview renders in its own document, so the popup portals into the same themed frame. Change the theme, color mode or width, then open the list.
+
+<ComponentPreview example="select" />
