@@ -5,6 +5,7 @@ import type { ComponentProps } from 'react';
 
 import { css, cx } from '../styled-system/css/index.mjs';
 import { Accordion, Box, Stack, Tabs } from './interactive-mdx-components';
+import { DialogReferenceExample } from './examples/dialog-example';
 import { ComponentPreview } from './component-preview/component-preview';
 import { ButtonReferenceExample } from './examples/button-example';
 import { SelectReferenceExample } from './examples/select-example';
@@ -30,6 +31,7 @@ const MdxCode = (props: ComponentProps<'code'>) => <code {...props} />;
 export const mdxComponents: MDXComponents = {
   OverlaysNavigationExample,
   ButtonReferenceExample,
+  DialogReferenceExample,
   CoreFormsExample,
   SelectReferenceExample,
   pre: MdxPre,
