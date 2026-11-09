@@ -1,4 +1,5 @@
 import { defineSlotRecipe } from '@pandacss/dev';
+import { controlSizes } from './control-sizes';
 import { switchRecipe as baseSwitchRecipe } from '@bend-ui/preset-base';
 
 export const switchRecipe = defineSlotRecipe({
@@ -13,27 +14,41 @@ export const switchRecipe = defineSlotRecipe({
     },
     control: {
       display: 'flex',
+      flexShrink: 0,
       p: '1',
-      backgroundColor: 'fill',
+      backgroundColor: 'stroke.focus',
+      border: '1px solid {colors.stroke.focus}',
+      _focusVisible: { layerStyle: 'focus', outlineColor: 'stroke.primary' },
+      _disabled: { opacity: 'state.disabled', cursor: 'disabled' },
+      _invalid: {
+        borderColor: 'stroke.danger.strong',
+        _dark: { borderColor: 'stroke.danger' },
+      },
       rounded: 'full',
-      transition: 'background 200ms',
+      transition: 'background {durations.normal} {easings.default}',
       _checked: {
-        backgroundColor: 'primary',
+        backgroundColor: 'fill.primary',
+        borderColor: 'stroke.primary',
       },
     },
     thumb: {
-      backgroundColor: 'fill.white',
+      backgroundColor: 'bg.page',
       rounded: 'full',
-      transition: 'transform 200ms',
+      transition: 'transform {durations.normal} {easings.default}',
       _checked: {
-        transform: 'translateX(100%)',
+        transform: 'translateX(calc(100% - 2px))',
+        _rtl: { transform: 'translateX(calc(-100% + 2px))' },
       },
     },
-    label: {},
+    label: { color: 'text' },
   },
   variants: {
     size: {
       sm: {
+        root: {
+          minHeight: controlSizes.sm.minHeight,
+          textStyle: controlSizes.sm.textStyle,
+        },
         control: {
           w: '8',
         },
@@ -43,6 +58,10 @@ export const switchRecipe = defineSlotRecipe({
         },
       },
       md: {
+        root: {
+          minHeight: controlSizes.md.minHeight,
+          textStyle: controlSizes.md.textStyle,
+        },
         control: {
           w: '10',
         },
@@ -52,6 +71,10 @@ export const switchRecipe = defineSlotRecipe({
         },
       },
       lg: {
+        root: {
+          minHeight: controlSizes.lg.minHeight,
+          textStyle: controlSizes.lg.textStyle,
+        },
         control: {
           w: '12',
         },

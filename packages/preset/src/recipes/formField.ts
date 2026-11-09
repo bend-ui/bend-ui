@@ -9,10 +9,13 @@ export const formFieldRecipe = defineSlotRecipe({
       flexDirection: 'column',
       gap: 'sm',
     },
+    description: { color: 'text', fontSize: 'sm' },
+    helper: { color: 'text', fontSize: 'sm' },
+    error: { color: 'text.danger', fontSize: 'sm', _dark: { color: 'text' } },
     label: {
       fontSize: 'sm',
       fontWeight: 'medium',
-      color: 'text.primary',
+      color: 'text',
     },
   },
 });

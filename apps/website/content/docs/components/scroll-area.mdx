@@ -1,0 +1,22 @@
+---
+title: ScrollArea
+description: A constrained, keyboard-scrollable region
+---
+
+# ScrollArea
+
+Give a constrained scrollable region an accessible name and keyboard focus when it has no naturally focusable content. Try the activity region in the [working workspace](/docs/components/overlays-navigation).
+
+```tsx
+<ScrollArea.Root style={{ height: 144 }}>
+  <ScrollArea.Viewport tabIndex={0} aria-label="Recent activity">
+    <ScrollArea.Content>{items}</ScrollArea.Content>
+  </ScrollArea.Viewport>
+  <ScrollArea.Scrollbar>
+    <ScrollArea.Thumb />
+  </ScrollArea.Scrollbar>
+  <ScrollArea.Corner />
+</ScrollArea.Root>
+```
+
+The `scrollArea` recipe owns root, viewport, content, scrollbar, thumb and corner. Set the available height on the root or a containing layout. The convenience `ScrollArea` wraps its children with the same parts.

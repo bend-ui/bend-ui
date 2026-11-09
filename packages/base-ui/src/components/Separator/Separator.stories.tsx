@@ -11,5 +11,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  render: () => (
+    <div style={{ display: 'flex', height: 40, gap: 16 }}>
+      <span>Profile</span>
+      <Separator orientation="vertical" />
+      <span>Security</span>
+    </div>
+  ),
 };

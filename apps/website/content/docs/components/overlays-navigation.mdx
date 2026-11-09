@@ -1,0 +1,12 @@
+---
+title: Overlays and navigation
+description: A keyboard-operable project workspace
+---
+
+# Overlays and navigation
+
+This workspace combines a contextual Surface and Card, native navigation links, Tabs, Popover, Menu, Tooltip and ScrollArea. Use the keyboard to move through the links and controls: arrows move focus between tabs or within an open menu, Enter or Space activates a focused tab, Escape dismisses an overlay, and the activity viewport scrolls with the keyboard. The action status reports the chosen menu item.
+
+<OverlaysNavigationExample />
+
+The example inherits the document's color mode. `SurfaceProvider` carries the logical raised Card surface into portalled Popover, Menu and Tooltip content; the Menu inside the Popover stays at the overlay level. It does not read ambient DOM styles or isolate root-resolved semantic aliases. Supply explicit `surfaces`, `theme` and `colorMode` when a portal must reproduce a local appearance.
