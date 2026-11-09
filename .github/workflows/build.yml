@@ -23,6 +23,9 @@ jobs:
     env:
       # Nx Cloud org is disabled (free plan exceeded), so use a local cache persisted via actions/cache.
       NX_NO_CLOUD: 'true'
+      # Pin both locations inside the workspace. Nx 24 otherwise keeps them under ~/.nx/<id>/, which actions/cache does not capture.
+      NX_CACHE_DIRECTORY: ${{ github.workspace }}/.nx/cache
+      NX_WORKSPACE_DATA_DIRECTORY: ${{ github.workspace }}/.nx/workspace-data
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -43,14 +46,34 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # Nx indexes cached task outputs in a SQLite database whose filename embeds a
+      # machine ID. A database restored from another runner is ignored (0% hits),
+      # so record this runner's name first and adopt the restored database under it.
+      - name: Record Nx database name
+        run: |
+          pnpm nx show projects > /dev/null
+          ls .nx/workspace-data/*-v6.db > "$RUNNER_TEMP/nx-db-name"
+
       - name: Restore Nx cache
         uses: actions/cache@v4
         with:
-          path: .nx/cache
+          path: |
+            .nx/cache
+            .nx/workspace-data/*.db*
           key: nx-${{ matrix.target }}-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}-${{ github.sha }}
           restore-keys: |
             nx-${{ matrix.target }}-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}-
             nx-${{ matrix.target }}-${{ runner.os }}-
+
+      - name: Adopt restored Nx database
+        run: |
+          current=$(cat "$RUNNER_TEMP/nx-db-name")
+          for restored in .nx/workspace-data/*-v6.db; do
+            [ "$restored" = "$current" ] && continue
+            for ext in "" -wal -shm; do
+              if [ -f "$restored$ext" ]; then mv -f "$restored$ext" "$current$ext"; fi
+            done
+          done
 
       - name: Run affected ${{ matrix.target }}
         run: pnpm nx affected -t ${{ matrix.target }} --exclude=tag:status:parked
