@@ -1,0 +1,22 @@
+---
+title: Component previews
+description: Live examples and their source
+---
+
+# Component previews
+
+`ComponentPreview` embeds a registered example by its stable identifier:
+
+```mdx
+<ComponentPreview example="button" />
+```
+
+The current identifiers are `button`, `select`, and `avatar`. Each example is a
+real React module. Its displayed and copied source is captured from that same
+module during the build. Add a module, its metadata and component registry entry, and a matching build-time source definition under the same identifier to add an example. The build watches the example file for source changes.
+
+The preview uses a separate document so its theme and color mode apply to
+portalled content without changing the surrounding documentation. Width controls
+set a maximum width within the available space. Reset restores the default theme,
+mode and width and remounts the example. Changing theme or mode also reloads the
+example. Source is always visible and can be selected if copying is unavailable.

@@ -1,0 +1,10 @@
+.canvas {
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 2rem;
+  background: var(--colors-bg-page);
+  color: var(--colors-text);
+}
+.canvas p {
+  margin-block: 1rem 0;
+}

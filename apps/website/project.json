@@ -22,7 +22,8 @@
     },
     "serve": {
       "options": {
-        "port": 4200
+        "port": 4200,
+        "command": "next dev --webpack"
       },
       "configurations": {
         "production": {
