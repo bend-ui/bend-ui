@@ -3,6 +3,23 @@
   "pages": [
     "overview",
     "avatar",
-    "button"
+    "button",
+    "select",
+    "overlays-navigation",
+    "popover",
+    "tooltip",
+    "menu",
+    "tabs",
+    "card",
+    "scroll-area",
+    "navigation",
+    "field",
+    "input",
+    "textarea",
+    "checkbox",
+    "radio",
+    "switch",
+    "badge",
+    "separator"
   ]
 }

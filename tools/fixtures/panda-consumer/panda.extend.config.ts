@@ -13,6 +13,18 @@ export default defineConfig({
         },
       },
       slotRecipes: {
+        select: {
+          variants: { size: { lg: { trigger: { borderRadius: '11px' } } } },
+        },
+        selectDropdown: {
+          base: {
+            content: {
+              borderWidth: '7px',
+              borderStyle: 'solid',
+              borderColor: '#7c3aed',
+            },
+          },
+        },
         button: {
           jsx: ['RecipeButton'],
           base: { root: { outlineOffset: '7px' } },

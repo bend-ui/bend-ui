@@ -2,6 +2,7 @@ import { Meta, StoryObj } from '@storybook/react-vite';
 import { button } from '@bend-ui/styled-system/recipes';
 import { Stack } from '@bend-ui/styled-system/jsx';
 import { Button } from './Button';
+import { IconButton } from '../IconButton';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Form/Button',
@@ -10,8 +11,9 @@ const meta: Meta<typeof Button> = {
     variant: {
       control: 'select',
       options: button.variantMap.variant,
-      description: 'The button variant',
-      defaultValue: 'primary',
+      description:
+        'Hierarchy (primary/secondary/tertiary) or danger/inverse treatment',
+      defaultValue: 'secondary',
     },
     size: {
       control: 'select',
@@ -60,4 +62,16 @@ export const Disabled: Story = {
     children: 'Disabled Button',
     disabled: true,
   },
+};
+
+export const IconOnly: Story = {
+  render: (args) => (
+    <IconButton {...args} icon={<span aria-hidden="true">+</span>}>
+      Add item
+    </IconButton>
+  ),
+};
+
+export const Busy: Story = {
+  args: { children: 'Saving', isLoading: true, disabled: true },
 };

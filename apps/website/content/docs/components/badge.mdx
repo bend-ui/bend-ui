@@ -1,0 +1,18 @@
+---
+title: Badge
+description: Compact text for a status or classification
+---
+
+# Badge
+
+Badges provide text for a status or category. See the [working form](/docs/components/field) for a saved status that also updates a stable live region.
+
+```tsx
+import { Badge } from '@bend-ui/base-ui';
+
+<Badge tone="success">Saved</Badge>
+<Badge tone="warning" variant="subtle">Needs review</Badge>
+<Badge tone="danger" variant="outline">Action required</Badge>
+```
+
+Tones are `neutral`, `success`, `warning`, `danger` and `info`; explicit `palette` takes precedence. Treatments are `solid` (default), `subtle` and `outline`. Include meaningful text: color alone must not convey status. Badge is a span, not an interactive control, and does not announce updates automatically. Use an existing `role="status"` region for a nonurgent result. Badge has no form-control size axis.

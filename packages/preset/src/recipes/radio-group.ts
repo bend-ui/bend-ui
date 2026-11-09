@@ -1,5 +1,5 @@
 import { defineSlotRecipe } from '@pandacss/dev';
-
+import { controlSizes } from './control-sizes';
 export const radioGroupRecipe = defineSlotRecipe({
   slots: [
     'root',
@@ -12,110 +12,54 @@ export const radioGroupRecipe = defineSlotRecipe({
   ],
   className: 'RadioGroup',
   base: {
-    root: {
-      colorPalette: 'primary',
+    root: { flexDirection: 'column', gap: 'sm' },
+    item: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 'sm',
+      cursor: 'pointer',
     },
     itemControl: {
-      background: 'fill.weak',
-      border: 'strong',
+      display: 'grid',
+      placeItems: 'center',
+      flexShrink: 0,
+      backgroundColor: 'bg.raised',
+      border: '1px solid {colors.stroke.focus}',
       borderRadius: 'full',
-      transitionDuration: 'normal',
-      transitionProperty: 'background',
-      transitionTimingFunction: 'default',
-      _hover: {
-        background: 'fill.weak.hover',
-      },
-      _checked: {
-        background: 'fill.white',
-      },
-      _disabled: {
-        opacity: 'state.disabled',
+      _checked: { borderColor: 'stroke.primary' },
+      _focusVisible: { layerStyle: 'focus', outlineColor: 'stroke.primary' },
+      _disabled: { opacity: 'state.disabled', cursor: 'disabled' },
+      _invalid: {
+        borderColor: 'stroke.danger.strong',
+        _dark: { borderColor: 'stroke.danger' },
       },
     },
-    item: {
-      alignItems: 'center',
-      cursor: 'pointer',
-      display: 'flex',
-      _disabled: {
-        cursor: 'not-allowed',
-      },
+    indicator: {
+      width: '50%',
+      height: '50%',
+      rounded: 'full',
+      backgroundColor: 'text',
     },
-    itemText: {
-      color: 'text',
-      fontWeight: 'medium',
-    },
+    itemText: { color: 'text' },
   },
   variants: {
     size: {
       sm: {
-        root: {
-          gap: {
-            _vertical: '3',
-            _horizontal: '4',
-          },
-        },
-        item: {
-          gap: '2',
-        },
-        itemControl: {
-          width: '4',
-          height: '4',
-          _checked: {
-            outlineWidth: '3px',
-            outlineOffset: '-4px',
-          },
-        },
-        itemText: {
-          textStyle: 'sm',
-        },
+        item: { minHeight: controlSizes.sm.minHeight },
+        itemControl: { width: '4', height: '4' },
+        itemText: { textStyle: 'control.sm' },
       },
       md: {
-        root: {
-          gap: {
-            _vertical: '4',
-            _horizontal: '6',
-          },
-        },
-        item: {
-          gap: '3',
-        },
-        itemControl: {
-          width: '5',
-          height: '5',
-          _checked: {
-            outlineWidth: '4px',
-            outlineOffset: '-5px',
-          },
-        },
-        itemText: {
-          textStyle: 'md',
-        },
+        item: { minHeight: controlSizes.md.minHeight },
+        itemControl: { width: '5', height: '5' },
+        itemText: { textStyle: 'control.md' },
       },
       lg: {
-        root: {
-          gap: {
-            _vertical: '5',
-            _horizontal: '8',
-          },
-        },
-        item: {
-          gap: '4',
-        },
-        itemControl: {
-          width: '6',
-          height: '6',
-          _checked: {
-            outlineWidth: '5px',
-            outlineOffset: '-6px',
-          },
-        },
-        itemText: {
-          textStyle: 'lg',
-        },
+        item: { minHeight: controlSizes.lg.minHeight },
+        itemControl: { width: '6', height: '6' },
+        itemText: { textStyle: 'control.lg' },
       },
     },
   },
-  defaultVariants: {
-    size: 'md',
-  },
+  defaultVariants: { size: 'md' },
 });

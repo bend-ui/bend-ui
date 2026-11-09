@@ -17,9 +17,12 @@ export const tabsRecipe = defineSlotRecipe({
     trigger: {
       position: 'relative',
       padding: 'md',
+      color: 'text',
       _hover: {
-        backgroundColor: 'shark.800',
+        backgroundColor: 'bg.page',
       },
+      _focusVisible: { layerStyle: 'focus', outlineColor: 'text' },
+      _disabled: { opacity: 'state.disabled', cursor: 'disabled' },
       _selected: {
         _after: {
           content: '""',
@@ -28,7 +31,7 @@ export const tabsRecipe = defineSlotRecipe({
           bottom: '0',
           width: '100%',
           height: '3px',
-          backgroundColor: 'primary',
+          backgroundColor: 'currentColor',
         },
       },
     },

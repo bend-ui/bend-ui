@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { createServer } from 'node:http';
 import { spawnSync } from 'node:child_process';
 import {
   cpSync,
@@ -47,6 +48,68 @@ function exec(args) {
   );
   console.log(output);
   return output;
+}
+
+// Serve the actual packed-consumer build, so matching classnames alone cannot
+// hide missing extraction or a cascade regression in the replacement styles.
+async function verifyPackedButtons(mode) {
+  const { chromium } = await import('playwright');
+  const folder = path.join(app, `dist-${mode}`);
+  const server = createServer((request, response) => {
+    try {
+      const pathname = new URL(request.url, 'http://localhost').pathname;
+      const file = path.join(
+        folder,
+        pathname === '/' ? 'index.html' : pathname,
+      );
+      response.setHeader(
+        'Content-Type',
+        { '.js': 'text/javascript', '.css': 'text/css', '.html': 'text/html' }[
+          path.extname(file)
+        ] ?? 'application/octet-stream',
+      );
+      response.end(readFileSync(file));
+    } catch {
+      response.statusCode = 404;
+      response.end();
+    }
+  });
+  await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
+  let browser;
+  try {
+    browser = await chromium.launch({ headless: true });
+    const page = await browser.newPage();
+    const errors = [];
+    page.on('pageerror', (error) => errors.push(error.message));
+    await page.goto(`http://127.0.0.1:${server.address().port}`);
+    for (const name of ['published-button', 'published-icon']) {
+      await page.getByTestId(name).waitFor();
+      const style = await page.getByTestId(name).evaluate((el) => {
+        const s = getComputedStyle(el);
+        return {
+          background: s.backgroundColor,
+          radius: s.borderRadius,
+          label: getComputedStyle(el.querySelector('.Button__label'))
+            .textDecorationLine,
+        };
+      });
+      assert.equal(
+        style.background,
+        mode === 'extend' ? 'rgb(190, 18, 60)' : 'rgb(30, 64, 175)',
+      );
+      if (mode === 'replace') {
+        assert.equal(style.radius, '3px');
+        assert.equal(style.label, 'underline');
+      }
+    }
+    assert.deepEqual(errors, []);
+    console.log(
+      `PASS: packed Button/IconButton computed ${mode} styles, no React-source changes.`,
+    );
+  } finally {
+    await browser?.close();
+    await new Promise((resolve) => server.close(resolve));
+  }
 }
 
 console.log(`Isolated packed consumer: ${app}`);
@@ -350,12 +413,58 @@ try {
       path.join(app, 'styled-system/styles.css'),
       'utf8',
     );
+    assert.match(contract.select, /role="combobox"/);
+    assert.match(contract.select, /Select__trigger--size_lg/);
+    assert.match(contract.select, /Serif/);
+    assert.equal(contract.selectDropdown.content, 'SelectDropdown__content');
+    for (const slot of [
+      'positioner',
+      'content',
+      'item',
+      'itemText',
+      'itemIndicator',
+      'itemGroup',
+      'itemGroupLabel',
+    ]) {
+      assert.equal(
+        contract.publishedSelectDropdown[slot],
+        contract.selectDropdown[slot],
+      );
+    }
+    assert.match(
+      styles,
+      new RegExp(
+        String.raw`\.SelectDropdown__content\s*\{[^}]*border-width:\s*${mode === 'extend' ? 7 : 3}px`,
+      ),
+    );
+    if (mode === 'replace')
+      assert.match(styles, /\.Select__trigger\s*\{[^}]*border-radius:\s*2px/);
+    else
+      assert.match(
+        styles,
+        /\.Select__trigger--size_lg\s*\{[^}]*border-radius:\s*11px/,
+      );
     assert.ok(contract.buttonVariants.variant.includes('editorial'));
     assert.ok(contract.buttonVariants.size.includes('jumbo'));
     assert.ok(contract.textVariants.variant.includes('billboard'));
     assert.ok(!contract.publishedVariants.variant.includes('editorial'));
     assert.ok(!contract.publishedVariants.size.includes('jumbo'));
     assert.match(contract.published, /Button__root--variant_primary/);
+    for (const slot of ['root', 'label', 'icon', 'spinner']) {
+      for (const className of contract.publishedSlots[slot].split(' ')) {
+        assert.ok(contract.consumerSlots[slot].split(' ').includes(className));
+      }
+    }
+    assert.match(contract.publishedIcon, /Button__icon/);
+    assert.match(contract.publishedIcon, /Button__label/);
+    assert.match(contract.publishedIcon, /data-disabled=/);
+    assert.match(contract.publishedIcon, / disabled=""/);
+    assert.match(contract.publishedIcon, /aria-busy="true"/);
+    assert.match(contract.publishedIcon, /data-loading=""/);
+    assert.doesNotMatch(
+      contract.publishedIcon,
+      /isDisabled|isLoading|isdisabled|isloading/,
+    );
     assert.match(contract.local, /Button__label/);
     assert.doesNotMatch(contract.local, / (?:variant|size)=/);
     const knownCompound = contract.knownCompound.root
@@ -406,6 +515,8 @@ try {
       assert.doesNotMatch(styles, /\.Text--variant_headline/);
       assert.match(styles, /outline-offset:\s*13px/);
     }
+    if (process.env.BEND_VERIFY_BUTTONS === '1')
+      await verifyPackedButtons(mode);
     console.log(
       `PASS: native recipe ${mode}, compound runtime, slots and published/generated type boundary.`,
     );
