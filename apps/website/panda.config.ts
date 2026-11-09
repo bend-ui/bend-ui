@@ -21,8 +21,21 @@ export default defineConfig({
   presets: [createBendPreset()],
 
   staticCss: {
-    // Generate the non-JSX recipe used by Dialog.Backdrop.
-    recipes: { backdrop: ['*'] },
+    // Native adapter wrappers and compound adapter contexts are not inferred
+    // as recipe calls by extraction.
+    recipes: {
+      backdrop: ['*'],
+      input: ['*'],
+      textarea: ['*'],
+      checkbox: ['*'],
+      radioGroup: ['*'],
+      switchRecipe: ['*'],
+      formField: ['*'],
+      badge: ['*'],
+      separator: ['*'],
+      select: ['*'],
+      selectDropdown: ['*'],
+    },
     themes: [
       'default',
       'stratus',

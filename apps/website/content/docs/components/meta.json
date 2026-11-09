@@ -1,4 +1,18 @@
 {
   "title": "Components",
-  "pages": ["overview", "avatar", "button", "dialog"]
+  "pages": [
+    "overview",
+    "avatar",
+    "button",
+    "select",
+    "field",
+    "input",
+    "textarea",
+    "checkbox",
+    "radio",
+    "switch",
+    "badge",
+    "separator",
+    "dialog"
+  ]
 }

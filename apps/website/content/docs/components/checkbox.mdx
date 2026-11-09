@@ -1,0 +1,20 @@
+---
+title: Checkbox
+description: Independent choices with checked and mixed indicators
+---
+
+# Checkbox
+
+Use Checkbox for independent boolean choices. The [working form](/docs/components/field) demonstrates keyboard toggling, submission and reset.
+
+```tsx
+import { Checkbox } from '@bend-ui/base-ui';
+
+<Checkbox name="reminders" value="yes" size="md">
+  Send appointment reminders
+</Checkbox>;
+```
+
+The convenience component starts unchecked unless `checked` or `defaultChecked` says otherwise. This corrects its former always-checked demo default. `indeterminate` displays a mixed indicator; the checked value still controls submission. Space toggles the native control; disabled and readOnly prevent changes.
+
+Sizes `sm`, `md` and `lg` scale the labeled row and indicator. The wrapping label is the hit target. For composition, use `Checkbox.Label`, `Root` and `Indicator`, and supply a visible label or accessible name. The convenience indicator is decorative and does not replace checked/mixed semantics.
