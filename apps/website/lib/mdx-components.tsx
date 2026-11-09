@@ -1,3 +1,4 @@
+import { OverlaysNavigationExample } from './examples/overlays-navigation-example';
 import { CoreFormsExample } from './examples/core-forms-example';
 import type { MDXComponents } from 'mdx/types';
 import type { ComponentProps } from 'react';
@@ -27,6 +28,7 @@ const MdxPre = ({ className, ...props }: ComponentProps<'pre'>) => (
 const MdxCode = (props: ComponentProps<'code'>) => <code {...props} />;
 
 export const mdxComponents: MDXComponents = {
+  OverlaysNavigationExample,
   ButtonReferenceExample,
   DialogReferenceExample,
   CoreFormsExample,
