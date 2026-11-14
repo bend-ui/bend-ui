@@ -247,6 +247,11 @@ export const DocsLayout = ({ children, tree }: DocsLayoutProps) => {
               borderRadius: 'md',
               backgroundColor: 'bg.page',
               color: 'text',
+              _focusVisible: {
+                outline: '2px solid',
+                outlineColor: 'stroke.primary',
+                outlineOffset: '2px',
+              },
             })}
           />
           <nav aria-label={navigationLabel}>
