@@ -21,7 +21,7 @@ export default function ButtonExample({ state }: { state: ButtonState }) {
           whiteSpace: 'normal',
           overflowWrap: 'anywhere',
         }}
-        aria-label={state.label ? undefined : 'Button'}
+        aria-label={state.label.trim() ? undefined : 'Button'}
         onClick={() => setSaved(true)}
       >
         {state.label}
