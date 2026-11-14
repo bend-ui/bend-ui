@@ -1,20 +1,17 @@
 /// <reference types="vitest" />
 import { defineConfig } from 'vite';
-import path from 'node:path';
 import react from '@vitejs/plugin-react';
-import tsconfigPaths from 'vite-tsconfig-paths';
 import { cache } from 'react';
 
 export default defineConfig({
   root: __dirname,
   cacheDir: '../../node_modules/.vite/packages/ariakit',
 
-  plugins: [
-    react(),
-    tsconfigPaths({
-      projects: [path.resolve(__dirname, '../../tsconfig.base.json')],
-    }),
-  ],
+  plugins: [react()],
+
+  resolve: {
+    tsconfigPaths: true,
+  },
 
   test: {
     globals: true,
