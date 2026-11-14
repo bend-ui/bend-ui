@@ -8,10 +8,10 @@ vi.mock('./root-provider', () => ({
 }));
 
 describe('website color-mode theme contract', () => {
-  it('generates and applies the default Panda theme', () => {
+  it('generates and initially applies the Stratus Panda theme', () => {
     const layout = RootLayout({ children: null });
 
-    expect(pandaConfig.staticCss?.themes).toContain('default');
-    expect(layout.props['data-panda-theme']).toBe('default');
+    expect(pandaConfig.staticCss?.themes).toContain('stratus');
+    expect(layout.props['data-panda-theme']).toBe('stratus');
   });
 });

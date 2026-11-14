@@ -1,30 +1,24 @@
-import * as React from 'react';
 import { Separator as SeparatorPrimitive } from '@base-ui/react/separator';
-import { withRecipe } from '@bend-ui/core';
+import { cx } from '@bend-ui/styled-system/css';
 import { separator } from '@bend-ui/styled-system/recipes';
 
-const SeparatorRoot = withRecipe<SeparatorPrimitive.Props>(
-  SeparatorPrimitive,
-  separator,
-  'root',
-);
-
-const Component = () => {
+export type SeparatorProps = SeparatorPrimitive.Props;
+function Component({
+  orientation = 'horizontal',
+  className,
+  ...props
+}: SeparatorProps) {
   return (
-    <div>
-      <a href="#">Home</a>
-      <a href="#">Pricing</a>
-      <a href="#">Blog</a>
-      <a href="#">Support</a>
-
-      <SeparatorRoot orientation="vertical" />
-
-      <a href="#">Log in</a>
-      <a href="#">Sign up</a>
-    </div>
+    <SeparatorPrimitive
+      {...props}
+      orientation={orientation}
+      className={(state) =>
+        cx(
+          separator({ orientation }),
+          typeof className === 'function' ? className(state) : className,
+        )
+      }
+    />
   );
-};
-
-export const Separator = Object.assign(Component, {
-  Root: SeparatorRoot,
-});
+}
+export const Separator = Object.assign(Component, { Root: Component });

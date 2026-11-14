@@ -3,7 +3,7 @@ import {
   themePersonalities,
   type ThemePersonalityName,
 } from '@bend-ui/preset';
-import { css } from '../styled-system/css/index.mjs';
+import { css } from '@bend-ui/styled-system/css';
 
 const themeEntries = Object.entries(themePersonalities) as Array<
   [ThemePersonalityName, (typeof themePersonalities)[ThemePersonalityName]]

@@ -1,0 +1,20 @@
+---
+title: Switch
+description: An on or off setting with a visible thumb
+---
+
+# Switch
+
+Use Switch for an on/off setting. See the [working form](/docs/components/field) for Space activation, form values, and reset.
+
+```tsx
+import { Switch } from '@bend-ui/base-ui';
+
+<Switch name="updates" value="yes" size="md">
+  Product updates
+</Switch>;
+```
+
+Switch accepts native Base UI checked/defaultChecked, onCheckedChange, disabled, readOnly, name, value and ref props. It starts off by default. The thumb position and control fill both indicate state. Sizes are `sm`, `md` (default) and `lg`; the wrapping label provides the full hit target.
+
+The former top-level Switch rendered a fixed Label demo. It now forwards props to the actual control. Existing compound parts remain `Switch.Root` (label and recipe provider), `Control` (native behavior), `Thumb`, and `Label`. Put variants on Root and behavior props on Control when composing them.

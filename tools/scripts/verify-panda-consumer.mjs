@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { createServer } from 'node:http';
 import { spawnSync } from 'node:child_process';
 import {
   cpSync,
@@ -7,6 +8,7 @@ import {
   readFileSync,
   readdirSync,
   realpathSync,
+  rmSync,
   writeFileSync,
 } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -46,6 +48,68 @@ function exec(args) {
   );
   console.log(output);
   return output;
+}
+
+// Serve the actual packed-consumer build, so matching classnames alone cannot
+// hide missing extraction or a cascade regression in the replacement styles.
+async function verifyPackedButtons(mode) {
+  const { chromium } = await import('playwright');
+  const folder = path.join(app, `dist-${mode}`);
+  const server = createServer((request, response) => {
+    try {
+      const pathname = new URL(request.url, 'http://localhost').pathname;
+      const file = path.join(
+        folder,
+        pathname === '/' ? 'index.html' : pathname,
+      );
+      response.setHeader(
+        'Content-Type',
+        { '.js': 'text/javascript', '.css': 'text/css', '.html': 'text/html' }[
+          path.extname(file)
+        ] ?? 'application/octet-stream',
+      );
+      response.end(readFileSync(file));
+    } catch {
+      response.statusCode = 404;
+      response.end();
+    }
+  });
+  await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
+  let browser;
+  try {
+    browser = await chromium.launch({ headless: true });
+    const page = await browser.newPage();
+    const errors = [];
+    page.on('pageerror', (error) => errors.push(error.message));
+    await page.goto(`http://127.0.0.1:${server.address().port}`);
+    for (const name of ['published-button', 'published-icon']) {
+      await page.getByTestId(name).waitFor();
+      const style = await page.getByTestId(name).evaluate((el) => {
+        const s = getComputedStyle(el);
+        return {
+          background: s.backgroundColor,
+          radius: s.borderRadius,
+          label: getComputedStyle(el.querySelector('.Button__label'))
+            .textDecorationLine,
+        };
+      });
+      assert.equal(
+        style.background,
+        mode === 'extend' ? 'rgb(190, 18, 60)' : 'rgb(30, 64, 175)',
+      );
+      if (mode === 'replace') {
+        assert.equal(style.radius, '3px');
+        assert.equal(style.label, 'underline');
+      }
+    }
+    assert.deepEqual(errors, []);
+    console.log(
+      `PASS: packed Button/IconButton computed ${mode} styles, no React-source changes.`,
+    );
+  } finally {
+    await browser?.close();
+    await new Promise((resolve) => server.close(resolve));
+  }
 }
 
 console.log(`Isolated packed consumer: ${app}`);
@@ -117,7 +181,8 @@ try {
   if (
     process.env.BEND_VERIFY_RAMPS === '1' ||
     process.env.BEND_VERIFY_TOKENS === '1' ||
-    process.env.BEND_VERIFY_SURFACES === '1'
+    process.env.BEND_VERIFY_SURFACES === '1' ||
+    process.env.BEND_VERIFY_COLLECTION === '1'
   ) {
     manifest.dependencies['@bend-ui/preset'] = overrides['@bend-ui/preset'];
   }
@@ -137,19 +202,32 @@ try {
       path.join(root, 'node_modules', name, 'package.json'),
     ).version;
   }
-  manifest.pnpm = { overrides };
+  const npmMode = process.env.BEND_VERIFY_NPM === '1';
+  if (npmMode) {
+    // Direct tarball dependencies let npm's $ references override the rewritten
+    // workspace ranges without resolving any Bend package from a registry.
+    Object.assign(manifest.dependencies, overrides);
+    manifest.overrides = Object.fromEntries(
+      Object.keys(overrides).map((name) => [name, `$${name}`]),
+    );
+    delete manifest.packageManager;
+  } else {
+    manifest.pnpm = { overrides };
+  }
   writeFileSync(
     path.join(app, 'package.json'),
     `${JSON.stringify(manifest, null, 2)}\n`,
   );
   console.log(
-    run('pnpm', [
-      'install',
-      '--ignore-workspace',
-      '--ignore-scripts',
-      '--no-frozen-lockfile',
-      '--prefer-offline',
-    ]),
+    npmMode
+      ? run('npm', ['install', '--ignore-scripts', '--no-audit', '--no-fund'])
+      : run('pnpm', [
+          'install',
+          '--ignore-workspace',
+          '--ignore-scripts',
+          '--no-frozen-lockfile',
+          '--prefer-offline',
+        ]),
   );
   const installed = realpathSync(
     path.join(app, 'node_modules/@bend-ui/base-ui'),
@@ -162,6 +240,45 @@ try {
     !existsSync(path.join(installed, 'src')),
     'Consumer must not have library source',
   );
+  if (npmMode) {
+    for (const name of Object.keys(overrides)) {
+      const location = realpathSync(path.join(app, 'node_modules', name));
+      assert.ok(
+        location.startsWith(app + path.sep),
+        `${name} escaped the consumer`,
+      );
+      assert.ok(
+        !existsSync(path.join(location, 'src')),
+        `${name} has source fallback`,
+      );
+    }
+    console.log(run('npm', ['ls', '--all']));
+    console.log(
+      run('node', [
+        '--input-type=module',
+        '-e',
+        `
+      import assert from 'node:assert/strict';
+      import { Button, Select } from '@bend-ui/base-ui';
+      import { css } from '@bend-ui/base-ui/css';
+      import { button } from '@bend-ui/base-ui/recipes';
+      assert.ok(Button && Select && typeof css === 'function' && typeof button === 'function');
+      console.log('PASS: installed ESM root and helper exports');
+    `,
+      ]),
+    );
+    console.log(
+      run('node', [
+        '-e',
+        `
+      const assert = require('node:assert/strict');
+      const { Button, Select } = require('@bend-ui/base-ui');
+      assert.ok(Button && Select);
+      console.log('PASS: installed CommonJS root export');
+    `,
+      ]),
+    );
+  }
   const config = readFileSync(path.join(app, 'panda.config.ts'), 'utf8');
   assert.ok(
     config.includes("include: ['./src/**/*.{ts,tsx}']"),
@@ -171,7 +288,12 @@ try {
   exec(['panda', 'cssgen', '--outfile', 'styled-system/styles.css']);
   exec(['tsc', '--project', 'tsconfig.json']);
   exec(['vite', 'build']);
+  if (npmMode) console.log(run('node', ['tree-shaking.mjs']));
   const css = readFileSync(path.join(app, 'styled-system/styles.css'), 'utf8');
+  assert.match(
+    css,
+    /@layer\s+reset\s*,\s*base\s*,\s*tokens\s*,\s*recipes\s*,\s*utilities\s*;/,
+  );
   assert.match(css, /--radii-md:\s*19px/);
   assert.match(css, /--colors-consumer:\s*#6d28d9/i);
   assert.match(css, /--colors-fill-primary:\s*var\(--colors-consumer\)/);
@@ -182,7 +304,7 @@ try {
   console.log(
     '\nPASS: packed install, manifest hydration, consumer token overrides, generated types and production build.',
   );
-  console.log(`Inspect or serve the app at ${app}`);
+  if (!npmMode) console.log(`Inspect or serve the app at ${app}`);
   if (process.env.BEND_VERIFY_TOKENS === '1') {
     const scenario = path.join(fixture, 'token-scenarios');
     cpSync(
@@ -253,6 +375,84 @@ try {
       await import('./verify-surface-consumer.mjs');
     await verifySurfaceConsumer(app);
   }
+  if (process.env.BEND_VERIFY_COLLECTION === '1') {
+    const scenario = path.join(fixture, 'collection-scenarios');
+    cpSync(
+      path.join(scenario, 'panda.collection.config.ts'),
+      path.join(app, 'panda.collection.config.ts'),
+    );
+    cpSync(path.join(scenario, 'app.tsx'), path.join(app, 'src/app/app.tsx'));
+    cpSync(
+      path.join(scenario, 'types.test.ts'),
+      path.join(app, 'src/collection-types.test.ts'),
+    );
+    const source = readFileSync(path.join(app, 'src/app/app.tsx'), 'utf8');
+    const styles = {};
+    for (const collection of ['default', 'atelier']) {
+      process.env.BEND_RECIPE_COLLECTION = collection;
+      exec([
+        'panda',
+        'codegen',
+        '--config',
+        'panda.collection.config.ts',
+        '--clean',
+      ]);
+      exec([
+        'panda',
+        'cssgen',
+        '--config',
+        'panda.collection.config.ts',
+        '--outfile',
+        'styled-system/styles.css',
+      ]);
+      exec(['tsc', '--project', 'tsconfig.json']);
+      exec(['vite', 'build', '--outDir', `dist-collection-${collection}`]);
+      assert.equal(
+        readFileSync(path.join(app, 'src/app/app.tsx'), 'utf8'),
+        source,
+      );
+      styles[collection] = readFileSync(
+        path.join(app, 'styled-system/styles.css'),
+        'utf8',
+      );
+      for (const name of [
+        'Button',
+        'Input',
+        'Select',
+        'SelectDropdown',
+        'Card',
+      ]) {
+        assert.ok(
+          styles[collection].includes(`.${name}__`),
+          `missing ${name} CSS in ${collection}`,
+        );
+      }
+    }
+    delete process.env.BEND_RECIPE_COLLECTION;
+    rmSync(path.join(app, 'src/collection-types.test.ts'));
+    assert.notEqual(styles.default, styles.atelier);
+    for (const selector of [
+      'Button__root',
+      'Input__root',
+      'Select__control',
+      'SelectDropdown__content',
+      'Card__root',
+    ]) {
+      assert.match(
+        styles.atelier,
+        new RegExp(`\\.${selector}\\s*\\{[^}]*border-radius:\\s*2px`),
+      );
+    }
+    assert.match(styles.atelier, /\.Card__root\s*\{[^}]*padding:\s*24px/);
+    assert.match(
+      styles.atelier,
+      /\.Card__section\s*\{[^}]*margin-inline:\s*-24px/,
+    );
+    assert.match(styles.atelier, /letter-spacing:\s*0\.08em/);
+    console.log(
+      'PASS: same consumer source, generated types and built CSS for both collections.',
+    );
+  }
   for (const mode of ['extend', 'replace']) {
     console.log(`\nChecking native recipe ${mode}`);
     const scenario = path.join(fixture, 'recipe-scenarios');
@@ -292,12 +492,58 @@ try {
       path.join(app, 'styled-system/styles.css'),
       'utf8',
     );
+    assert.match(contract.select, /role="combobox"/);
+    assert.match(contract.select, /Select__trigger--size_lg/);
+    assert.match(contract.select, /Serif/);
+    assert.equal(contract.selectDropdown.content, 'SelectDropdown__content');
+    for (const slot of [
+      'positioner',
+      'content',
+      'item',
+      'itemText',
+      'itemIndicator',
+      'itemGroup',
+      'itemGroupLabel',
+    ]) {
+      assert.equal(
+        contract.publishedSelectDropdown[slot],
+        contract.selectDropdown[slot],
+      );
+    }
+    assert.match(
+      styles,
+      new RegExp(
+        String.raw`\.SelectDropdown__content\s*\{[^}]*border-width:\s*${mode === 'extend' ? 7 : 3}px`,
+      ),
+    );
+    if (mode === 'replace')
+      assert.match(styles, /\.Select__trigger\s*\{[^}]*border-radius:\s*2px/);
+    else
+      assert.match(
+        styles,
+        /\.Select__trigger--size_lg\s*\{[^}]*border-radius:\s*11px/,
+      );
     assert.ok(contract.buttonVariants.variant.includes('editorial'));
     assert.ok(contract.buttonVariants.size.includes('jumbo'));
     assert.ok(contract.textVariants.variant.includes('billboard'));
     assert.ok(!contract.publishedVariants.variant.includes('editorial'));
     assert.ok(!contract.publishedVariants.size.includes('jumbo'));
     assert.match(contract.published, /Button__root--variant_primary/);
+    for (const slot of ['root', 'label', 'icon', 'spinner']) {
+      for (const className of contract.publishedSlots[slot].split(' ')) {
+        assert.ok(contract.consumerSlots[slot].split(' ').includes(className));
+      }
+    }
+    assert.match(contract.publishedIcon, /Button__icon/);
+    assert.match(contract.publishedIcon, /Button__label/);
+    assert.match(contract.publishedIcon, /data-disabled=/);
+    assert.match(contract.publishedIcon, / disabled=""/);
+    assert.match(contract.publishedIcon, /aria-busy="true"/);
+    assert.match(contract.publishedIcon, /data-loading=""/);
+    assert.doesNotMatch(
+      contract.publishedIcon,
+      /isDisabled|isLoading|isdisabled|isloading/,
+    );
     assert.match(contract.local, /Button__label/);
     assert.doesNotMatch(contract.local, / (?:variant|size)=/);
     const knownCompound = contract.knownCompound.root
@@ -348,9 +594,15 @@ try {
       assert.doesNotMatch(styles, /\.Text--variant_headline/);
       assert.match(styles, /outline-offset:\s*13px/);
     }
+    if (process.env.BEND_VERIFY_BUTTONS === '1')
+      await verifyPackedButtons(mode);
     console.log(
       `PASS: native recipe ${mode}, compound runtime, slots and published/generated type boundary.`,
     );
+  }
+  if (npmMode && process.env.BEND_KEEP_CONSUMER !== '1') {
+    rmSync(work, { recursive: true, force: true });
+    console.log('Removed successful temporary npm consumer.');
   }
 } catch (error) {
   if (error.stdout) console.error(error.stdout.toString());

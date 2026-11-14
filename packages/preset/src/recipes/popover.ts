@@ -13,7 +13,11 @@ export const popoverRecipe = defineSlotRecipe({
   base: {
     content: {
       layerStyle: 'surface.overlay',
+      color: 'text',
       borderRadius: 'md',
+      maxWidth: 'min(24rem, var(--available-width, calc(100vw - 1rem)))',
+      maxHeight: 'var(--available-height, calc(100vh - 1rem))',
+      overflowY: 'auto',
       _open: {
         animation: 'fade-in',
       },
@@ -27,7 +31,7 @@ export const popoverRecipe = defineSlotRecipe({
     },
     description: {
       fontSize: 'sm',
-      color: 'gray.500',
+      color: 'text',
     },
   },
   variants: {

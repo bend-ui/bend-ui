@@ -19,4 +19,6 @@ export default defineConfig({
 
   // The JSX framework to use
   jsxFramework: 'react',
+  // Published ESM is also consumed directly by Node, which requires extensions.
+  forceImportExtension: true,
 });

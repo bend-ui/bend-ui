@@ -1,0 +1,21 @@
+---
+title: Separator
+description: A semantic boundary between related content
+---
+
+# Separator
+
+Separator renders a native Base UI separator. See the [working form](/docs/components/field) for a horizontal boundary before the action row.
+
+```tsx
+import { Separator } from '@bend-ui/base-ui';
+
+<Separator />
+<div style={{ display: 'flex', gap: 16 }}>
+  <span>Profile</span>
+  <Separator orientation="vertical" />
+  <span>Security</span>
+</div>
+```
+
+Horizontal is the default. A vertical separator stretches within its flex container; give that container content or an explicit height. Orientation reaches both the recipe and the accessible `aria-orientation`. `Separator.Root` is an alias of the same component. The former top-level export rendered a fixed navigation demo; it now accepts native separator props and ref. Separator has no form-control size axis.

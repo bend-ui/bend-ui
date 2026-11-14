@@ -3,6 +3,9 @@ import { defineSlotRecipe } from '@pandacss/dev';
 export const menuRecipe = defineSlotRecipe({
   slots: [
     'root',
+    'trigger',
+    'positioner',
+    'content',
     'arrow',
     'arrowTip',
     'checkboxItem',
@@ -12,26 +15,38 @@ export const menuRecipe = defineSlotRecipe({
     'itemIndicator',
     'item',
     'itemText',
+    'radioGroup',
+    'separator',
   ],
   className: 'Menu',
   base: {
     root: {
-      padding: 'md',
+      padding: 'sm',
       layerStyle: 'surface.overlay',
-      // _open: {
-      //   animation: 'dialog-in',
-      // },
-      // _closed: {
-      //   animation: 'dialog-out',
-      // },
+      color: 'text',
+      maxWidth: 'var(--available-width, calc(100vw - 1rem))',
+      maxHeight: 'var(--available-height, calc(100vh - 1rem))',
+      overflowY: 'auto',
     },
     item: {
       padding: 'sm',
       borderRadius: 'sm',
       cursor: 'pointer',
-      _hover: {
-        backgroundColor: 'fill.hover',
+      color: 'text',
+      _highlighted: {
+        backgroundColor: 'bg.page',
       },
+      _disabled: { opacity: 'state.disabled', cursor: 'disabled' },
     },
+    checkboxItem: {
+      padding: 'sm',
+      borderRadius: 'sm',
+      color: 'text',
+      _highlighted: {
+        backgroundColor: 'bg.page',
+      },
+      _disabled: { opacity: 'state.disabled', cursor: 'disabled' },
+    },
+    separator: { height: '1px', backgroundColor: 'stroke.focus', my: '1' },
   },
 });
