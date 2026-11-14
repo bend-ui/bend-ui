@@ -1,11 +1,28 @@
 'use client';
 
 import { Select } from '@bend-ui/base-ui';
+/* playground:imports:start */
+import type { SelectState } from '../playground';
+/* playground:imports:end */
 
-export default function SelectExample() {
+/* playground:setup:start */
+export default function SelectExample({
+  state,
+  onValueChange,
+}: {
+  state: SelectState;
+  onValueChange: (value: SelectState['value']) => void;
+}) {
+  /* playground:setup:end */
   return (
     <Select.Root
-      defaultValue="sans"
+      value={state.value}
+      onValueChange={(value) => {
+        if (value === 'sans' || value === 'serif' || value === 'mono')
+          onValueChange(value);
+      }}
+      size={state.size}
+      disabled={state.disabled}
       items={{ sans: 'Sans-serif', serif: 'Serif', mono: 'Monospace' }}
     >
       <Select.Control>
