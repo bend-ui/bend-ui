@@ -51,7 +51,8 @@ export const componentContracts = {
           'Secondary emphasis at medium size; loading and disabled behavior remain component-owned.',
         variants: {
           variant: {
-            description: 'Visual treatment.',
+            description:
+              'Hierarchy (primary, secondary, tertiary), destructive treatment (danger), or inverse-surface treatment (inverse).',
             values: ['primary', 'secondary', 'tertiary', 'danger', 'inverse'],
             defaultValue: 'secondary',
           },
@@ -110,6 +111,13 @@ export const componentContracts = {
         kind: 'behavior',
         description:
           'Owns selection and recipe context; does not promise a DOM slot.',
+      },
+      {
+        name: 'control',
+        kind: 'slot',
+        recipe: 'select',
+        slot: 'control',
+        description: 'Optional grouping surface around the trigger.',
       },
       {
         name: 'trigger',
@@ -215,7 +223,6 @@ export const componentContracts = {
         kind: 'slotRecipe',
         className: 'Select',
         privateSlots: {
-          control: 'required',
           root: 'optional',
           clearTrigger: 'optional',
           content: 'optional',

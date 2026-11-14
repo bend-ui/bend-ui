@@ -109,11 +109,15 @@ const Component = (props: InputProps) => {
     <InputRoot size={size} variant={variant}>
       {addonStart && <InputAddon>{addonStart}</InputAddon>}
       <InputWrapper>
-        {icon && <InputIcon>{icon}</InputIcon>}
+        {icon != null && icon !== false && (
+          <InputIcon aria-hidden="true">{icon}</InputIcon>
+        )}
         {elementStart && <InputElement>{elementStart}</InputElement>}
         <InputControl {...rest} />
         {elementEnd && <InputElement>{elementEnd}</InputElement>}
-        {iconEnd && <InputIcon>{iconEnd}</InputIcon>}
+        {iconEnd != null && iconEnd !== false && (
+          <InputIcon aria-hidden="true">{iconEnd}</InputIcon>
+        )}
       </InputWrapper>
       {addonEnd && <InputAddon>{addonEnd}</InputAddon>}
     </InputRoot>

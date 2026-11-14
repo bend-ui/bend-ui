@@ -1,0 +1,23 @@
+---
+title: Surface and Card
+description: Group content at a contextual surface level
+---
+
+# Surface and Card
+
+Use Surface for a contextual background and Card to group related content within it. The [working workspace](/docs/components/overlays-navigation) nests both and opens portalled overlays from the raised surface.
+
+```tsx
+<SurfaceProvider>
+  <Surface contextual surfaceLevel="page">
+    <Card contextual>
+      <Card.Header>
+        <Card.Title>Workspace</Card.Title>
+      </Card.Header>
+      <Card.Body>Project details</Card.Body>
+    </Card>
+  </Surface>
+</SurfaceProvider>
+```
+
+The `surface` and `card` recipes are independently customizable. Context is opt-in on Surface and Card and caps at overlay. Card offers Root, Header, Title, Description, Body, Footer and Section. Explicit consumer styles retain precedence.

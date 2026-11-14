@@ -1,0 +1,23 @@
+---
+title: Navigation
+description: Real links for basic application navigation
+---
+
+# Navigation
+
+Use native anchors for destinations so browser navigation, opening in a new tab and link semantics remain available. The [working workspace](/docs/components/overlays-navigation) shows a labeled project navigation region.
+
+```tsx
+<NavigationMenu aria-label="Project">
+  <NavigationMenu.List>
+    <NavigationMenu.Item>
+      <NavigationMenu.Link href="/projects">Projects</NavigationMenu.Link>
+    </NavigationMenu.Item>
+    <NavigationMenu.Item>
+      <NavigationMenu.Link href="/settings">Settings</NavigationMenu.Link>
+    </NavigationMenu.Item>
+  </NavigationMenu.List>
+</NavigationMenu>
+```
+
+The `navbar` recipe styles links and triggers. `NavigationMenu` now forwards root props and children instead of rendering a fixed sample; its native compound parts and render composition remain available for framework links and richer navigation.

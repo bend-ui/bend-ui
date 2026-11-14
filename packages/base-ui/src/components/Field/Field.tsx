@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Field as FieldPrimitive } from '@base-ui/react/field';
 import { withParts } from '@bend-ui/core';
 import { formField } from '@bend-ui/styled-system/recipes';
-import { Input } from '../Input';
+import { Input, type InputProps } from '../Input';
 import { HTMLBendUIProps } from '@bend-ui/core';
 import { createSlotRecipeContext, styled } from '@bend-ui/styled-system/jsx';
 
@@ -18,14 +18,8 @@ const FieldLabel = withContext(FieldPrimitive.Label, 'label', {
   defaultProps: { 'data-part': 'label' },
 });
 
-export type FieldControlProps = FieldPrimitive.Control.Props;
-const FieldControl = withParts<FieldControlProps>(
-  FieldPrimitive.Control,
-  'control',
-  {
-    render: (props) => <Input.Control {...props} />,
-  },
-);
+export type FieldControlProps = InputProps;
+const FieldControl = (props: FieldControlProps) => <Input {...props} />;
 
 export type FieldErrorProps = FieldPrimitive.Error.Props;
 const FieldError = withContext(FieldPrimitive.Error, 'error', {
@@ -52,18 +46,7 @@ const FieldValidity = withParts<FieldValidityProps>(
   'validity',
 );
 
-const Component = () => {
-  return (
-    <FieldRoot>
-      <FieldLabel>Name</FieldLabel>
-      <FieldDescription>Visible on your profile</FieldDescription>
-      <FieldControl required placeholder="Required" />
-
-      <FieldError match="valueMissing">Please enter your name</FieldError>
-      <FieldHelper>This is a helper text</FieldHelper>
-    </FieldRoot>
-  );
-};
+const Component = (props: FieldRootProps) => <FieldRoot {...props} />;
 
 export const Field = Object.assign(Component, {
   Root: FieldRoot,

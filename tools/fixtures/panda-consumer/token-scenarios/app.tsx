@@ -36,7 +36,14 @@ export default function App() {
       <Input.Root data-testid="input">
         <Input.Input aria-label="Name" />
       </Input.Root>
-      <Select defaultValue="serif" />
+      <Select
+        aria-label="Font"
+        items={[
+          { label: 'Sans-serif', value: 'sans' },
+          { label: 'Serif', value: 'serif' },
+        ]}
+        defaultValue="serif"
+      />
       <DangerControls scope="default" />
       <section data-panda-theme="error-proof">
         <DangerControls scope="nested" />

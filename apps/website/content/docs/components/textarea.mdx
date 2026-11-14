@@ -1,0 +1,21 @@
+---
+title: Textarea
+description: Native multiline entry with Field validation
+---
+
+# Textarea
+
+Textarea renders a native textarea through Base UI's Field control composition. It retains native multiline value, rows, onChange, selection events, and HTMLTextAreaElement refs. See the [working form](/docs/components/field).
+
+```tsx
+import { Field, Textarea } from '@bend-ui/base-ui';
+
+<Field name="notes">
+  <Field.Label>Notes</Field.Label>
+  <Field.Description>Enter one or more lines.</Field.Description>
+  <Textarea rows={4} size="md" required />
+  <Field.Error match="valueMissing">Add a note.</Field.Error>
+</Field>;
+```
+
+Sizes `sm`, `md` (default), and `lg` share control density and typography; rows determines multiline height. Users can resize vertically. Treatments are `outline` (default) and `solid`. Native disabled/readOnly and Field invalid state are styled. Use `Textarea.Root` plus `Textarea.Field` when composing the frame; Field owns the native textarea props while Root owns recipe variants.

@@ -118,7 +118,7 @@
             "defaultTreatment": "Secondary emphasis at medium size; loading and disabled behavior remain component-owned.",
             "variants": {
               "variant": {
-                "description": "Visual treatment.",
+                "description": "Hierarchy (primary, secondary, tertiary), destructive treatment (danger), or inverse-surface treatment (inverse).",
                 "values": [
                   "primary",
                   "secondary",
@@ -218,7 +218,7 @@
                 "inverse"
               ],
               "defaultValue": "secondary",
-              "description": "Visual treatment.",
+              "description": "Hierarchy (primary, secondary, tertiary), destructive treatment (danger), or inverse-surface treatment (inverse).",
               "mismatch": false
             },
             {
@@ -377,6 +377,13 @@
             "description": "Owns selection and recipe context; does not promise a DOM slot."
           },
           {
+            "name": "control",
+            "kind": "slot",
+            "recipe": "select",
+            "slot": "control",
+            "description": "Optional grouping surface around the trigger."
+          },
+          {
             "name": "trigger",
             "kind": "slot",
             "recipe": "select",
@@ -487,7 +494,6 @@
             "kind": "slotRecipe",
             "className": "Select",
             "privateSlots": {
-              "control": "required",
               "root": "optional",
               "clearTrigger": "optional",
               "content": "optional",

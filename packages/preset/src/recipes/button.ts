@@ -16,6 +16,7 @@ export const buttonRecipe = defineSlotRecipe({
       overflow: 'hidden',
       _focusVisible: {
         layerStyle: 'focus',
+        outlineColor: 'stroke.primary',
       },
       _disabled: {
         opacity: 'state.disabled',
@@ -48,7 +49,7 @@ export const buttonRecipe = defineSlotRecipe({
           boxShadow: 'xs',
           _notDisabled: {
             _hover: {
-              backgroundColor: 'fill.primary.fill.hover',
+              backgroundColor: 'fill.primary.hover',
             },
             _active: {
               backgroundColor: 'fill.primary.active',
@@ -62,12 +63,12 @@ export const buttonRecipe = defineSlotRecipe({
       secondary: {
         root: {
           color: 'text',
-          backgroundColor: 'fill.weak',
+          backgroundColor: 'bg.raised',
           borderColor: 'stroke.weak',
           boxShadow: 'revert',
           _notDisabled: {
             _hover: {
-              backgroundColor: 'fill.weak.hover',
+              backgroundColor: 'fill.weaker',
             },
           },
         },
@@ -77,24 +78,24 @@ export const buttonRecipe = defineSlotRecipe({
           color: 'text',
           backgroundColor: 'transparent',
           _hover: {
-            backgroundColor: 'fill.weak.hover',
+            backgroundColor: 'fill.weaker',
           },
         },
       },
       danger: {
         root: {
           color: 'text.danger',
-          backgroundColor: 'fill.danger',
+          backgroundColor: 'fill.danger.weaker',
           _notDisabled: {
             _hover: {
-              backgroundColor: 'fill.danger.hover',
+              backgroundColor: 'fill.danger.weak',
             },
           },
         },
       },
       inverse: {
         root: {
-          color: 'text.inverse.strong',
+          color: 'text.strong',
           backgroundColor: 'fill.inverse.strong',
           borderColor: 'stroke.inverse.strong',
         },

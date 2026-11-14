@@ -1,0 +1,107 @@
+---
+title: Dialog
+description: Modal composition, focus restoration, and contextual surfaces through portals
+---
+
+# Dialog
+
+Use Dialog for a focused task that temporarily interrupts the current screen. The Base UI adapter owns focus management and dismissal; the Panda recipe owns appearance. Use a less disruptive inline region or Popover for supporting information that does not need a modal task.
+
+## Live example
+
+Choose a preview color mode, open Preferences, and open Sharing to see the nested surface. Tab and Shift+Tab stay within the top modal. Escape closes the top dialog and restores focus to its trigger.
+
+<DialogReferenceExample />
+
+This example uses deliberately distinct neutral appearances for raised and overlay surfaces. The bundled semantic backgrounds can share a neutral step; contextual elevation does not automatically generate a depth palette. The preview's explicit color mode is replayed onto each popup without changing the Docs site's color mode.
+
+## Composition
+
+```tsx
+import { Button, Dialog } from '@bend-ui/base-ui';
+
+export function SettingsDialog() {
+  return (
+    <Dialog.Root size="md">
+      <Dialog.Trigger>Open settings</Dialog.Trigger>
+      <Dialog.Portal>
+        <Dialog.Backdrop />
+        <Dialog.Positioner>
+          <Dialog.Popup>
+            <Dialog.Title>Settings</Dialog.Title>
+            <Dialog.Description>
+              Review your account preferences.
+            </Dialog.Description>
+            <Dialog.Close render={<Button size="sm" />}>Close</Dialog.Close>
+          </Dialog.Popup>
+        </Dialog.Positioner>
+      </Dialog.Portal>
+    </Dialog.Root>
+  );
+}
+```
+
+Render `Dialog.Title`, a useful `Dialog.Description`, and a visible `Dialog.Close` inside the popup. The trigger uses Bend's Button styling by default. Use Base UI's `render` composition API when supplying a custom trigger or close element.
+
+| Part          | Responsibility                                      | Styling contract           |
+| ------------- | --------------------------------------------------- | -------------------------- |
+| `Root`        | Open state and recipe context; renders no wrapper   | `size` belongs here        |
+| `Trigger`     | Opens the dialog                                    | Button recipe by default   |
+| `Portal`      | Moves content to the body or a supplied `container` | Behavior only              |
+| `Backdrop`    | Dims the background                                 | Separate `backdrop` recipe |
+| `Positioner`  | Centers and scrolls the overlay region              | `dialog.positioner`        |
+| `Popup`       | Dialog semantics, focus, and contextual surface     | `dialog.content`           |
+| `Title`       | Accessible name                                     | `dialog.title`             |
+| `Description` | Accessible description                              | `dialog.description`       |
+| `Close`       | Explicit dismissal                                  | `dialog.closeTrigger`      |
+
+`Popup` is the public component name; `content` is its recipe slot. Do not assume the slot is named `popup` when replacing the recipe.
+
+## Focus and dismissal
+
+The default modal traps focus, locks background scrolling, and prevents pointer interaction with background controls. Base UI chooses initial focus and restores focus after close. Set `Popup.initialFocus` to a ref when a task needs a specific initial target; `Popup.finalFocus` can select a different return target if the trigger will be removed.
+
+`Root.open` and `onOpenChange` support controlled state. `defaultOpen` is for initial uncontrolled state. `disablePointerDismissal` prevents outside presses from closing a dialog; retain a visible Close action and keyboard dismissal. `modal={false}` intentionally allows interaction outside the dialog and must not be used as a workaround for broken focus handling.
+
+For nested dialogs, place the nested `Root` inside the parent `Popup` in the React tree. Each popup may portal to the body. Escape should dismiss only the top dialog; closing it returns focus to its trigger inside the parent.
+
+## Contextual elevation
+
+Wrap a dialog flow in `SurfaceProvider` to opt into logical surface inheritance:
+
+```tsx
+import { Dialog, SurfaceProvider } from '@bend-ui/base-ui';
+
+<SurfaceProvider level="page" colorMode="dark" theme="my-brand">
+  <Dialog.Root>
+    <Dialog.Trigger>Open preferences</Dialog.Trigger>
+    <Dialog.Portal>
+      <Dialog.Positioner>
+        <Dialog.Popup>
+          <Dialog.Title>Preferences</Dialog.Title>
+          <Dialog.Description>
+            A raised surface, even in a body portal.
+          </Dialog.Description>
+          <Dialog.Close>Close</Dialog.Close>
+        </Dialog.Popup>
+      </Dialog.Positioner>
+    </Dialog.Portal>
+  </Dialog.Root>
+</SurfaceProvider>;
+```
+
+The first popup advances from `page` to `raised`; a nested popup advances to `overlay`, where further depth is capped. `Popup.surfaceLevel` selects an explicit level. Consumer `style` values take precedence over contextual appearance.
+
+Pass an explicit `colorMode` and `theme` when portalled content must preserve a local appearance boundary. The provider does not read ambient DOM classes or transport arbitrary ancestor CSS variables. Define overrides in a replayable Theme/mode scope or supply the provider's `surfaces` appearance map. `theme="my-brand"` assumes that Theme exists in your Panda configuration.
+
+Visual elevation is independent of stacking order. Context does not assign a z-index or redirect portals. A custom `Portal.container` must remain compatible with the modal's focus and background-interaction behavior; do not portal a popup into a hidden or inert subtree.
+
+## Size and long content
+
+Use `size="sm" | "md" | "lg"` on `Root` (`md` by default). The popup width is bounded by the viewport and long content scrolls inside a viewport-height limit. Keep close actions and focused controls reachable, and verify task flows at narrow widths and browser zoom. Prefer a concise task over placing a whole application inside a dialog.
+
+## Styling and verification
+
+Preserve the `dialog` slot recipe's `Dialog` class namespace, public slots, size values, and defaults when replacing it. Backdrop styling is a separate ordinary recipe. Keep focus indicators, readable text, open/closed presentation, and reduced-motion behavior in the chosen visual language.
+
+The adapter's tests cover accessible title/description wiring, initial and return focus, Escape, controlled close behavior, and nested modal restoration. The contextual-surface proof separately checks real portals, custom targets, SSR/hydration, and light/dark appearance. These checks do not certify every consumer's styling or assistive-technology combination.

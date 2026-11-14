@@ -6,13 +6,19 @@ export const tooltipRecipe = defineSlotRecipe({
   base: {
     content: {
       p: 'sm',
-      layerStyle: 'surface.raised',
+      layerStyle: 'surface.overlay',
+      color: 'text',
+      maxWidth: 'min(20rem, var(--available-width, calc(100vw - 1rem)))',
+      overflowWrap: 'anywhere',
       _open: {
         animation: 'fade-in',
       },
       _closed: {
         animation: 'fade-out',
       },
+    },
+    trigger: {
+      _focusVisible: { layerStyle: 'focus', outlineColor: 'text' },
     },
   },
 });

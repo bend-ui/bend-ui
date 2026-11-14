@@ -41,6 +41,7 @@ const Component = (props: ScrollAreaProps) => {
 export const ScrollArea = Object.assign(Component, {
   Root: ScrollAreaRoot,
   Viewport: ScrollAreaViewport,
+  Content: ScrollAreaContent,
   Scrollbar: ScrollAreaScrollbar,
   Thumb: ScrollAreaThumb,
   Corner: ScrollAreaCorner,

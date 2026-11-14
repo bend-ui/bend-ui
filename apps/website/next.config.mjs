@@ -56,7 +56,26 @@ export default function nextConfig(phase) {
   const exporting = process.env.BEND_NEXT_EXPORT === 'true';
   const config = {
     reactStrictMode: true,
-    webpack(config) {
+    webpack(config, { webpack }) {
+      const sourceDirectory = path.join(
+        projectDirectory,
+        'lib/component-preview/examples',
+      );
+      const sourceDefinitions = Object.fromEntries(
+        ['button', 'select', 'avatar'].map((id) => {
+          const file = path.join(sourceDirectory, `${id}.tsx`);
+          return [
+            `__PREVIEW_SOURCE_${id.toUpperCase()}__`,
+            webpack.DefinePlugin.runtimeValue(
+              () => JSON.stringify(readFileSync(file, 'utf8')),
+              {
+                fileDependencies: [file],
+              },
+            ),
+          ];
+        }),
+      );
+      config.plugins.push(new webpack.DefinePlugin(sourceDefinitions));
       if (development) {
         config.plugins.push({
           apply(compiler) {

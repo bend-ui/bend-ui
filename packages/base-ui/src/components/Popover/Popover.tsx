@@ -15,16 +15,24 @@ import { Button } from '../Button';
 import type { Assign } from '@bend-ui/styled-system/types';
 
 const { withRootProvider, withContext } = createSlotRecipeContext(popover);
-const PopoverRoot = withRootProvider(PopoverPrimitive.Root);
-const PopoverTrigger = (props: PopoverPrimitive.Trigger.Props) => {
-  const { children, render, ...rest } = props;
-  const renderProp = render || <Button />;
-  return (
-    <PopoverPrimitive.Trigger render={renderProp} {...rest}>
-      {children}
-    </PopoverPrimitive.Trigger>
-  );
-};
+const PopoverRoot = withRootProvider(PopoverPrimitive.Root) as <Payload>(
+  props: PopoverPrimitive.Root.Props<Payload>,
+) => React.ReactElement;
+export type PopoverTriggerProps<Payload = unknown> =
+  PopoverPrimitive.Trigger.Props<Payload>;
+const PopoverTrigger = React.forwardRef<HTMLButtonElement, PopoverTriggerProps>(
+  function PopoverTrigger({ render, ...props }, ref) {
+    return (
+      <PopoverPrimitive.Trigger
+        render={render ?? <Button />}
+        {...props}
+        ref={ref}
+      />
+    );
+  },
+) as <Payload>(
+  props: PopoverTriggerProps<Payload> & React.RefAttributes<HTMLElement>,
+) => React.ReactElement;
 const PopoverPortal = PopoverPrimitive.Portal;
 
 export type PopoverPositionerProps = PopoverPrimitive.Positioner.Props;
@@ -137,10 +145,10 @@ const PopoverContent = (props: PopoverContentProps) => {
             <ArrowSvg />
           </PopoverArrow>
           {title && <PopoverTitle>{title}</PopoverTitle>}
-          <PopoverDescription>
-            {description}
-            {children}
-          </PopoverDescription>
+          {description != null && (
+            <PopoverDescription>{description}</PopoverDescription>
+          )}
+          {children}
         </PopoverPopup>
       </PopoverPositioner>
     </PopoverPortal>
@@ -160,10 +168,9 @@ const Component = (props: PopoverProps) => {
     <PopoverRoot {...rest}>
       {trigger && <PopoverTrigger>{trigger}</PopoverTrigger>}
       {title || description ? (
-        <PopoverContent
-          title={title}
-          description={description}
-        ></PopoverContent>
+        <PopoverContent title={title} description={description}>
+          {children}
+        </PopoverContent>
       ) : (
         children
       )}

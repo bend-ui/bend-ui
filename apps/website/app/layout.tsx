@@ -9,7 +9,7 @@ interface RootLayoutProps {
 const RootLayout = (props: RootLayoutProps) => {
   const { children } = props;
   return (
-    <html lang="en" data-panda-theme="default" suppressHydrationWarning>
+    <html lang="en" data-panda-theme="stratus" suppressHydrationWarning>
       <body>
         <RootProvider>{children}</RootProvider>
       </body>

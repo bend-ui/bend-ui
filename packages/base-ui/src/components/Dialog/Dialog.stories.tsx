@@ -37,7 +37,7 @@ export const ButtonTriggers: Story = {
   render: (args) => (
     <Stack direction="row" gap="3">
       <Dialog.Root {...args}>
-        <Dialog.Trigger icon={<BellIcon />} variant="outline">
+        <Dialog.Trigger icon={<BellIcon />} variant="secondary">
           Alerts
         </Dialog.Trigger>
         <Dialog.Portal>

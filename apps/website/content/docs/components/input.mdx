@@ -1,0 +1,21 @@
+---
+title: Input
+description: Single-line text entry with shared control sizes
+---
+
+# Input
+
+Use Input for single-line text, email, and other native input types. Give every control a visible label. See the [working form](/docs/components/field) for validation, disabled and readonly examples.
+
+```tsx
+import { Field, Input } from '@bend-ui/base-ui';
+
+<Field name="email">
+  <Field.Label>Email address</Field.Label>
+  <Input size="md" type="email" autoComplete="email" required />
+</Field>;
+```
+
+`sm`, `md` (default), and `lg` follow the theme's shared control density. `outline` is the default treatment; `solid` omits the resting border. Native value, ref, validation, disabled and readOnly props reach the input. Use `onValueChange` for Base UI value callbacks or native input event handlers.
+
+For composed adornments, use `Input.Root`, `Wrapper`, `Input`, `Icon`, `Element`, and `Addon`. Set size/treatment on Root. `Input.Control` is the existing low-level standalone input-slot primitive; it does not render a frame. Decorative convenience icons are hidden from the accessible name. Use Textarea for multiline text.

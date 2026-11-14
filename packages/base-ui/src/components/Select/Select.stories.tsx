@@ -21,12 +21,14 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     items: fonts,
+    'aria-label': 'Font family',
   },
 };
 
 export const Multiple: Story = {
   args: {
     items: fonts,
+    'aria-label': 'Font family',
     multiple: true,
   },
 };

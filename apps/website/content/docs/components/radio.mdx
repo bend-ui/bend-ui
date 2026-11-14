@@ -1,0 +1,29 @@
+---
+title: Radio
+description: One selection within a native radio group
+---
+
+# Radio
+
+Use RadioGroup for mutually exclusive choices. Its native value type is preserved. See the [working form](/docs/components/field) for arrow-key selection and submitted values.
+
+```tsx
+import { Radio, RadioGroup } from '@bend-ui/base-ui';
+
+<RadioGroup
+  name="delivery"
+  defaultValue="email"
+  aria-label="Delivery"
+  size="md"
+>
+  <Radio value="email">Email</Radio>
+  <Radio value="post">Post</Radio>
+  <Radio value="courier" disabled>
+    Courier unavailable
+  </Radio>
+</RadioGroup>;
+```
+
+Tab enters the group; arrows move and select among enabled options. Sizes `sm`, `md` and `lg` belong on RadioGroup and flow into its item controls and labels. Checked options have a visible dot. Root and item disabled/readOnly behavior remain Base UI's responsibility.
+
+The former top-level Radio rendered a fixed apple picker. It now renders one prop-driven, labeled option. Native compound parts remain `Radio.Root` and `Radio.Indicator`; `Radio.Label` and `Radio.Text` expose the styled label anatomy. `RadioGroup.Root` remains available.

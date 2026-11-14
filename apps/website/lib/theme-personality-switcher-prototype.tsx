@@ -6,7 +6,7 @@ import {
   type ThemePersonalityName,
 } from '@bend-ui/preset';
 import { useEffect, useMemo, useState, useSyncExternalStore } from 'react';
-import { css } from '../styled-system/css/index.mjs';
+import { css } from '@bend-ui/styled-system/css';
 
 const personalityIds = Object.keys(themePersonalities) as Array<
   keyof typeof themePersonalities

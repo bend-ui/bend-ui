@@ -94,3 +94,5 @@ export {
   createOklchRamp,
   type OklchRampOptions,
 } from './utils/create-oklch-ramp';
+
+export { atelierRecipeCollection } from './collections/atelier';

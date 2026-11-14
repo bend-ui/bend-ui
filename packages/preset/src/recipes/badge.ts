@@ -11,19 +11,31 @@ export const badgeRecipe = defineSlotRecipe({
       rounded: 'sm',
       paddingX: 'sm',
       paddingY: 'xs',
-      color: 'white',
+      borderWidth: '1px',
+      borderStyle: 'solid',
+      borderColor: 'transparent',
     },
   },
   variants: {
     variant: {
       solid: {
-        root: { backgroundColor: 'colorPalette.fill' },
+        root: {
+          backgroundColor: 'colorPalette.fill.active',
+          color: 'colorPalette.text.inverse.strong',
+        },
       },
       subtle: {
-        root: { backgroundColor: 'colorPalette.fill.weak' },
+        root: {
+          backgroundColor: 'colorPalette.fill.weaker',
+          color: 'colorPalette.text',
+        },
       },
       outline: {
-        root: { borderColor: 'colorPalette.stroke' },
+        root: {
+          borderColor: 'colorPalette.stroke',
+          color: 'text',
+          backgroundColor: 'transparent',
+        },
       },
     },
     palette: {
@@ -59,6 +71,23 @@ export const badgeRecipe = defineSlotRecipe({
       },
     },
   },
+  compoundVariants: [
+    {
+      palette: 'default',
+      variant: 'solid',
+      css: { root: { backgroundColor: 'text.strong', color: 'bg.page' } },
+    },
+    {
+      palette: 'warning',
+      variant: 'solid',
+      css: {
+        root: {
+          backgroundColor: 'colorPalette.fill.weak',
+          color: 'colorPalette.text',
+        },
+      },
+    },
+  ],
   defaultVariants: {
     variant: 'solid',
     palette: 'primary',

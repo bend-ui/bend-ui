@@ -32,10 +32,14 @@ const Component = (props: ButtonProps) => {
       disabled={actuallyDisabled}
       {...rest}
     >
-      {isLoading && <ButtonSpinner data-loading="" />}
-      {icon && <ButtonIcon>{icon}</ButtonIcon>}
-      {children && <ButtonLabel>{children}</ButtonLabel>}
-      {iconEnd && <ButtonIcon>{iconEnd}</ButtonIcon>}
+      {isLoading && <ButtonSpinner data-loading="" aria-hidden="true" />}
+      {icon != null && icon !== false && (
+        <ButtonIcon aria-hidden="true">{icon}</ButtonIcon>
+      )}
+      {children != null && <ButtonLabel>{children}</ButtonLabel>}
+      {iconEnd != null && iconEnd !== false && (
+        <ButtonIcon aria-hidden="true">{iconEnd}</ButtonIcon>
+      )}
     </ButtonRoot>
   );
 };

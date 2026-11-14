@@ -8,6 +8,9 @@ export const dialogRecipe = defineSlotRecipe({
     content: {
       layerStyle: 'surface.overlay',
       borderRadius: 'md',
+      maxWidth: 'calc(100vw - 2rem)',
+      maxHeight: 'calc(100dvh - 2rem)',
+      overflowY: 'auto',
       _open: {
         animation: 'dialog-in',
       },
@@ -30,17 +33,17 @@ export const dialogRecipe = defineSlotRecipe({
   variants: {
     size: {
       sm: {
-        content: { minWidth: 'sm', padding: 2 },
+        content: { width: 'sm', padding: 2 },
         title: { textStyle: 'title' },
         description: { textStyle: 'body' },
       },
       md: {
-        content: { minWidth: 'md', padding: 4 },
+        content: { width: 'md', padding: 4 },
         title: { textStyle: 'title' },
         description: { textStyle: 'subtitle' },
       },
       lg: {
-        content: { minWidth: 'lg', padding: 6 },
+        content: { width: 'lg', padding: 6 },
         title: { textStyle: 'title' },
         description: { textStyle: 'subtitle' },
       },

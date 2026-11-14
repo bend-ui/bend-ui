@@ -411,9 +411,6 @@ importers:
       vite-plugin-static-copy:
         specifier: 4.1.1
         version: 4.1.1(vite@8.1.4(@types/node@22.14.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.4.0)(sass-embedded@1.100.0)(sass@1.93.0)(stylus@0.64.0)(terser@5.43.1)(tsx@4.22.4)(yaml@2.9.0))
-      vite-tsconfig-paths:
-        specifier: 6.1.1
-        version: 6.1.1(typescript@6.0.3)(vite@8.1.4(@types/node@22.14.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.4.0)(sass-embedded@1.100.0)(sass@1.93.0)(stylus@0.64.0)(terser@5.43.1)(tsx@4.22.4)(yaml@2.9.0))
       vitest:
         specifier: 4.1.10
         version: 4.1.10(@types/node@22.14.0)(@vitest/browser-playwright@4.1.10)(@vitest/coverage-v8@4.1.10)(@vitest/ui@4.1.10)(jsdom@26.0.0)(msw@2.14.6(@types/node@22.14.0)(typescript@6.0.3))(vite@8.1.4(@types/node@22.14.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.4.0)(sass-embedded@1.100.0)(sass@1.93.0)(stylus@0.64.0)(terser@5.43.1)(tsx@4.22.4)(yaml@2.9.0))
@@ -474,7 +471,7 @@ importers:
     devDependencies:
       '@pandacss/dev':
         specifier: ^2.2.0
-        version: 2.2.0(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)(postcss@8.5.17)
+        version: 2.2.0(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(postcss@8.5.17)
 
   apps/website:
     dependencies:
@@ -523,7 +520,7 @@ importers:
     devDependencies:
       '@pandacss/dev':
         specifier: ^2.2.0
-        version: 2.2.0(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)(postcss@8.5.17)
+        version: 2.2.0(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(postcss@8.5.17)
 
   packages/ark-ui:
     dependencies:
@@ -541,7 +538,7 @@ importers:
         version: link:../styled-system
       '@pandacss/dev':
         specifier: ^2.2.0
-        version: 2.2.0(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)(postcss@8.5.17)
+        version: 2.2.0(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(postcss@8.5.17)
       react:
         specifier: ^19
         version: 19.2.7
@@ -569,7 +566,7 @@ importers:
         version: link:../styled-system
       '@pandacss/dev':
         specifier: ^2.2.0
-        version: 2.2.0(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)(postcss@8.5.17)
+        version: 2.2.0(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(postcss@8.5.17)
       lucide-react:
         specifier: ^1.25.0
         version: 1.25.0(react@19.2.7)
@@ -603,7 +600,7 @@ importers:
         version: link:../preset
       '@pandacss/dev':
         specifier: ^2.2.0
-        version: 2.2.0(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)(postcss@8.5.17)
+        version: 2.2.0(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(postcss@8.5.17)
       '@pandacss/types':
         specifier: ^2.2.0
         version: 2.2.0
@@ -627,7 +624,7 @@ importers:
         version: link:../preset-base
       '@pandacss/dev':
         specifier: ^2.2.0
-        version: 2.2.0(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)(postcss@8.5.17)
+        version: 2.2.0(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(postcss@8.5.17)
       '@pandacss/types':
         specifier: ^2.2.0
         version: 2.2.0
@@ -642,7 +639,7 @@ importers:
     dependencies:
       '@pandacss/dev':
         specifier: ^2.2.0
-        version: 2.2.0(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)(postcss@8.5.17)
+        version: 2.2.0(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(postcss@8.5.17)
       '@pandacss/preset-base':
         specifier: ^2.2.0
         version: 2.2.0
@@ -666,7 +663,7 @@ importers:
         version: link:../styled-system
       '@pandacss/dev':
         specifier: ^2.2.0
-        version: 2.2.0(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)(postcss@8.5.17)
+        version: 2.2.0(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(postcss@8.5.17)
       react:
         specifier: ^19
         version: 19.2.7
@@ -690,7 +687,7 @@ importers:
         version: link:../theme
       storybook:
         specifier: '>=10'
-        version: 10.5.2(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)(@types/react@19.2.14)(prettier@3.9.5)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+        version: 10.5.2(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/react@19.2.14)(prettier@3.9.5)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
 
   packages/styled-system:
     dependencies:
@@ -699,7 +696,7 @@ importers:
         version: link:../preset
       '@pandacss/dev':
         specifier: ^2.2.0
-        version: 2.2.0(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)(postcss@8.5.17)
+        version: 2.2.0(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(postcss@8.5.17)
     devDependencies:
       '@types/react':
         specifier: ^19.2.14
@@ -7980,9 +7977,6 @@ packages:
     resolution: {integrity: sha512-jhIXaOzy1sb8IyocaruWSn1TjmnBVs8Ayhcy83rmxNJ8q2uWKCAj3CnJY+KpGSXCueAPc0i05kVvVKtP1t9S3g==}
     engines: {node: '>=10'}
 
-  globrex@0.1.2:
-    resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
-
   gopd@1.2.0:
     resolution: {integrity: sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==}
     engines: {node: '>= 0.4'}
@@ -8257,11 +8251,13 @@ packages:
   image-size@0.5.5:
     resolution: {integrity: sha512-6TDAlDPZxUFCv+fuOkIoXT/V/f3Qbq8e37p+YOiYrUv3v9cc3/6x78VdfPgFVaB9dZYeLUfKgHRebpkm/oP2VQ==}
     engines: {node: '>=0.10.0'}
+    deprecated: Please migrate to image-size@2.x
     hasBin: true
 
   image-size@2.0.2:
     resolution: {integrity: sha512-IRqXKlaXwgSMAMtpNzZa1ZAe8m+Sa1770Dhk8VkSsP9LS+iHD62Zd8FQKs8fbPiagBE7BzoFX23cxFnwshpV6w==}
     engines: {node: '>=16.x'}
+    deprecated: Use latest 2.x please
     hasBin: true
 
   immutable@5.1.9:
@@ -12092,17 +12088,6 @@ packages:
       '@swc/wasm':
         optional: true
 
-  tsconfck@3.1.6:
-    resolution: {integrity: sha512-ks6Vjr/jEw0P1gmOVwutM3B7fWxoWBL2KRDb1JfqGVawBmO5UsvmWOQFGHBPl5yxYz4eERr19E6L7NMv+Fej4w==}
-    engines: {node: ^18 || >=20}
-    deprecated: unmaintained
-    hasBin: true
-    peerDependencies:
-      typescript: ^5.0.0
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-
   tsconfig-paths-webpack-plugin@4.2.0:
     resolution: {integrity: sha512-zbem3rfRS8BgeNK50Zz5SIQgXzLafiHjOwUAvk/38/o1jHn/V5QAgVUcz884or7WYcPaH3N2CIfUc2u0ul7UcA==}
     engines: {node: '>=10.13.0'}
@@ -12494,11 +12479,6 @@ packages:
     engines: {node: ^22.0.0 || >=24.0.0}
     peerDependencies:
       vite: ^6.0.0 || ^7.0.0 || ^8.0.0
-
-  vite-tsconfig-paths@6.1.1:
-    resolution: {integrity: sha512-2cihq7zliibCCZ8P9cKJrQBkfgdvcFkOOc3Y02o3GWUDLgqjWsZudaoiuOwO/gzTzy17cS5F7ZPo4bsnS4DGkg==}
-    peerDependencies:
-      vite: '*'
 
   vite@8.1.4:
     resolution: {integrity: sha512-bTT9PsdWO+MQMNG9ZXIP/qM9wGh37DFxTV/sPq9cFpHr3w4jkgef032PkAL9jAqhk3Nz8NQw3O8n6/xFkqO4QQ==}
@@ -14997,7 +14977,6 @@ snapshots:
     dependencies:
       '@emnapi/wasi-threads': 1.2.3
       tslib: 2.8.1
-    optional: true
 
   '@emnapi/core@1.4.5':
     dependencies:
@@ -15021,7 +15000,6 @@ snapshots:
   '@emnapi/runtime@1.11.3':
     dependencies:
       tslib: 2.8.1
-    optional: true
 
   '@emnapi/runtime@1.4.5':
     dependencies:
@@ -15048,7 +15026,6 @@ snapshots:
   '@emnapi/wasi-threads@1.2.3':
     dependencies:
       tslib: 2.8.1
-    optional: true
 
   '@esbuild/aix-ppc64@0.27.7':
     optional: true
@@ -16144,10 +16121,10 @@ snapshots:
       '@emnapi/runtime': 1.11.1
       '@tybys/wasm-util': 0.10.3
 
-  '@napi-rs/wasm-runtime@1.1.6(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)':
+  '@napi-rs/wasm-runtime@1.1.6(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)':
     dependencies:
-      '@emnapi/core': 1.11.2
-      '@emnapi/runtime': 1.11.2
+      '@emnapi/core': 1.11.3
+      '@emnapi/runtime': 1.11.3
       '@tybys/wasm-util': 0.10.3
 
   '@napi-rs/wasm-runtime@1.1.6(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)':
@@ -16847,9 +16824,9 @@ snapshots:
       - '@emnapi/runtime'
     optional: true
 
-  '@oxc-resolver/binding-wasm32-wasi@11.19.1(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)':
+  '@oxc-resolver/binding-wasm32-wasi@11.19.1(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)':
     dependencies:
-      '@napi-rs/wasm-runtime': 1.1.6(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)
+      '@napi-rs/wasm-runtime': 1.1.6(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)
     transitivePeerDependencies:
       - '@emnapi/core'
       - '@emnapi/runtime'
@@ -16880,10 +16857,10 @@ snapshots:
       - '@emnapi/core'
       - '@emnapi/runtime'
 
-  '@pandacss/cli@2.2.0(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)':
+  '@pandacss/cli@2.2.0(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)':
     dependencies:
       '@clack/prompts': 1.7.0
-      '@pandacss/compiler': 2.2.0(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)
+      '@pandacss/compiler': 2.2.0(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)
       '@pandacss/compiler-shared': 2.2.0
       '@pandacss/config': 2.2.0
       '@pandacss/types': 2.2.0
@@ -16943,9 +16920,9 @@ snapshots:
       - '@emnapi/core'
       - '@emnapi/runtime'
 
-  '@pandacss/compiler@2.2.0(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)':
+  '@pandacss/compiler@2.2.0(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)':
     dependencies:
-      '@napi-rs/wasm-runtime': 1.1.6(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)
+      '@napi-rs/wasm-runtime': 1.1.6(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)
       '@pandacss/compiler-shared': 2.2.0
       '@pandacss/config': 2.2.0
       '@pandacss/types': 2.2.0
@@ -16986,12 +16963,12 @@ snapshots:
       - '@emnapi/core'
       - '@emnapi/runtime'
 
-  '@pandacss/dev@2.2.0(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)(postcss@8.5.17)':
+  '@pandacss/dev@2.2.0(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(postcss@8.5.17)':
     dependencies:
-      '@pandacss/cli': 2.2.0(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)
-      '@pandacss/compiler': 2.2.0(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)
+      '@pandacss/cli': 2.2.0(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)
+      '@pandacss/compiler': 2.2.0(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)
       '@pandacss/config': 2.2.0
-      '@pandacss/postcss': 2.2.0(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)(postcss@8.5.17)
+      '@pandacss/postcss': 2.2.0(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(postcss@8.5.17)
       '@pandacss/types': 2.2.0
     optionalDependencies:
       postcss: 8.5.17
@@ -17018,9 +16995,9 @@ snapshots:
       - '@emnapi/core'
       - '@emnapi/runtime'
 
-  '@pandacss/postcss@2.2.0(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)(postcss@8.5.17)':
+  '@pandacss/postcss@2.2.0(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(postcss@8.5.17)':
     dependencies:
-      '@pandacss/compiler': 2.2.0(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)
+      '@pandacss/compiler': 2.2.0(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)
       '@pandacss/compiler-shared': 2.2.0
       postcss: 8.5.17
     transitivePeerDependencies:
@@ -22427,8 +22404,6 @@ snapshots:
       merge2: 1.4.1
       slash: 3.0.0
 
-  globrex@0.1.2: {}
-
   gopd@1.2.0: {}
 
   got-cjs@12.5.4:
@@ -25157,7 +25132,7 @@ snapshots:
       - '@emnapi/core'
       - '@emnapi/runtime'
 
-  oxc-resolver@11.19.1(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2):
+  oxc-resolver@11.19.1(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2):
     optionalDependencies:
       '@oxc-resolver/binding-android-arm-eabi': 11.19.1
       '@oxc-resolver/binding-android-arm64': 11.19.1
@@ -25175,7 +25150,7 @@ snapshots:
       '@oxc-resolver/binding-linux-x64-gnu': 11.19.1
       '@oxc-resolver/binding-linux-x64-musl': 11.19.1
       '@oxc-resolver/binding-openharmony-arm64': 11.19.1
-      '@oxc-resolver/binding-wasm32-wasi': 11.19.1(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)
+      '@oxc-resolver/binding-wasm32-wasi': 11.19.1(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)
       '@oxc-resolver/binding-win32-arm64-msvc': 11.19.1
       '@oxc-resolver/binding-win32-ia32-msvc': 11.19.1
       '@oxc-resolver/binding-win32-x64-msvc': 11.19.1
@@ -26913,7 +26888,7 @@ snapshots:
       - react-dom
       - utf-8-validate
 
-  storybook@10.5.2(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)(@types/react@19.2.14)(prettier@3.9.5)(react-dom@19.2.7(react@19.2.7))(react@19.2.7):
+  storybook@10.5.2(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/react@19.2.14)(prettier@3.9.5)(react-dom@19.2.7(react@19.2.7))(react@19.2.7):
     dependencies:
       '@storybook/global': 5.0.0
       '@storybook/icons': 2.0.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -26927,7 +26902,7 @@ snapshots:
       jsonc-parser: 3.3.1
       open: 10.2.0
       oxc-parser: 0.127.0
-      oxc-resolver: 11.19.1(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)
+      oxc-resolver: 11.19.1(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)
       recast: 0.23.11
       semver: 7.8.5
       use-sync-external-store: 1.6.0(react@19.2.7)
@@ -27491,10 +27466,6 @@ snapshots:
     optionalDependencies:
       '@swc/core': 1.15.8(@swc/helpers@0.5.19)
 
-  tsconfck@3.1.6(typescript@6.0.3):
-    optionalDependencies:
-      typescript: 6.0.3
-
   tsconfig-paths-webpack-plugin@4.2.0:
     dependencies:
       chalk: 4.1.2
@@ -27975,16 +27946,6 @@ snapshots:
       picocolors: 1.1.1
       tinyglobby: 0.2.17
       vite: 8.1.4(@types/node@22.14.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.4.0)(sass-embedded@1.100.0)(sass@1.93.0)(stylus@0.64.0)(terser@5.43.1)(tsx@4.22.4)(yaml@2.9.0)
-
-  vite-tsconfig-paths@6.1.1(typescript@6.0.3)(vite@8.1.4(@types/node@22.14.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.4.0)(sass-embedded@1.100.0)(sass@1.93.0)(stylus@0.64.0)(terser@5.43.1)(tsx@4.22.4)(yaml@2.9.0)):
-    dependencies:
-      debug: 4.4.3
-      globrex: 0.1.2
-      tsconfck: 3.1.6(typescript@6.0.3)
-      vite: 8.1.4(@types/node@22.14.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.4.0)(sass-embedded@1.100.0)(sass@1.93.0)(stylus@0.64.0)(terser@5.43.1)(tsx@4.22.4)(yaml@2.9.0)
-    transitivePeerDependencies:
-      - supports-color
-      - typescript
 
   vite@8.1.4(@types/node@22.14.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.4.0)(sass-embedded@1.100.0)(sass@1.93.0)(stylus@0.64.0)(terser@5.43.1)(tsx@4.22.4)(yaml@2.9.0):
     dependencies:

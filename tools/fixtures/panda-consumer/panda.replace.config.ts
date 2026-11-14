@@ -18,6 +18,76 @@ export default defineConfig({
       }),
     },
     slotRecipes: {
+      select: defineSlotRecipe({
+        className: 'Select',
+        slots: ['control', 'trigger', 'valueText', 'indicator'],
+        base: {
+          control: { display: 'flex' },
+          trigger: {
+            display: 'flex',
+            alignItems: 'center',
+            width: '100%',
+            border: '2px solid #7c3aed',
+            borderRadius: '2px',
+            backgroundColor: 'bg',
+            color: 'text',
+            paddingInline: '12px',
+            _focusVisible: {
+              outline: '2px solid #7c3aed',
+              outlineOffset: '3px',
+            },
+            _disabled: { opacity: 0.5 },
+          },
+          valueText: { flex: '1', textAlign: 'start' },
+          indicator: { width: '20px', height: '20px' },
+        },
+        variants: {
+          size: {
+            sm: { trigger: { minHeight: '32px' } },
+            md: { trigger: { minHeight: '40px' } },
+            lg: { trigger: { minHeight: '48px' } },
+          },
+        },
+        defaultVariants: { size: 'md' },
+      }),
+      selectDropdown: defineSlotRecipe({
+        className: 'SelectDropdown',
+        slots: [
+          'positioner',
+          'content',
+          'item',
+          'itemText',
+          'itemIndicator',
+          'itemGroup',
+          'itemGroupLabel',
+        ],
+        base: {
+          content: {
+            backgroundColor: 'bg.overlay',
+            color: 'text',
+            borderWidth: '3px',
+            borderStyle: 'solid',
+            borderColor: '#7c3aed',
+            borderRadius: '2px',
+            padding: '4px',
+            maxHeight: 'min(20rem, var(--available-height))',
+            overflowY: 'auto',
+          },
+          item: {
+            display: 'flex',
+            justifyContent: 'space-between',
+            padding: '8px',
+            _highlighted: {
+              outline: '2px solid #7c3aed',
+              outlineOffset: '-2px',
+            },
+            _selected: { fontWeight: 'bold' },
+            _disabled: { opacity: 0.5 },
+          },
+          itemIndicator: { width: '20px', height: '20px' },
+          itemGroupLabel: { fontWeight: 'bold' },
+        },
+      }),
       button: defineSlotRecipe({
         className: 'Button',
         jsx: ['RecipeButton'],
