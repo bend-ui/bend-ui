@@ -229,7 +229,7 @@ Input, Menu, Pagination, Select, Tooltip. Rows marked "bare upstream re-export" 
 the upstream component without a recipe.
 
 **Style-context audit (2026-07-19):** Every Ark UI component that imports a
-generated recipe now uses its generated `createStyleContext` contract. The
+generated recipe now uses the generated `createSlotRecipeContext` contract. The
 remaining `withRecipe` uses apply only the regular backdrop recipe, and the
 remaining `withParts` uses are parts that are not generated recipe slots.
 

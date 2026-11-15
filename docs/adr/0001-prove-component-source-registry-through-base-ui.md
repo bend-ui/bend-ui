@@ -2,6 +2,8 @@
 
 Bend UI will not start by building component source registry tooling or deepening `@bend-ui/react` as the shared public runtime. Instead, the Base UI adapter will first absorb a small low-level component slice and migrate those components toward Panda's generated `createStyleContext` and styled-system helpers. Once that public package shape is proven, the component source registry can be extracted around source synchronization and future generation/ejection workflows rather than becoming a runtime dependency.
 
+> **Note 2026-11-15 (BEN-72):** Panda's generated helper is named `createSlotRecipeContext` (with `createRecipeContext` for single-part recipes), exported from `@bend-ui/styled-system/jsx`. The adapters use it; `createStyleContext` is not an export.
+
 Public package adapters should use their upstream primitive library's native composition model instead of preserving universal `asChild` polymorphism as a Bend UI abstraction. Base UI components should use Base UI composition, Ark UI components should use Ark UI composition, and React Aria Components should use React Aria composition.
 
 The first Base UI slice should rewrite, not copy as-is, a small set of low-level components: Button, IconButton, Input, Badge, Stack, Text, Heading, and Card. That slice should avoid imports from `@bend-ui/react`, prefer Panda's generated styled-system helpers directly, and become the example shape for later registry synchronization.
