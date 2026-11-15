@@ -5,8 +5,11 @@ import {
   themePersonalities,
   type ThemePersonalityName,
 } from '@bend-ui/preset';
+import { Popover } from '@bend-ui/base-ui';
+import { Icon } from '@iconify/react';
 import { useEffect, useMemo, useState, useSyncExternalStore } from 'react';
 import { css } from '@bend-ui/styled-system/css';
+import { checkIcon, chevronDownIcon } from '../src/icons';
 
 const personalityIds = Object.keys(themePersonalities) as Array<
   keyof typeof themePersonalities
@@ -90,10 +93,7 @@ const ThemeOption = ({
     <button
       type="button"
       aria-pressed={selected}
-      onClick={(event) => {
-        onSelect(id);
-        event.currentTarget.closest('details')?.removeAttribute('open');
-      }}
+      onClick={() => onSelect(id)}
       className={css({
         display: 'flex',
         alignItems: 'center',
@@ -101,30 +101,41 @@ const ThemeOption = ({
         width: '100%',
         minHeight: '11',
         paddingInline: '3',
+        paddingBlock: '2',
         border: '0',
         borderRadius: 'md',
-        color: 'fg.default',
-        textAlign: 'left',
+        color: 'text',
+        textAlign: 'start',
         cursor: 'pointer',
-        transitionProperty: 'background-color, color, transform',
+        transitionProperty: 'background-color, color',
         transitionDuration: 'fast',
-        background: selected ? 'fill.muted' : 'transparent',
+        background: selected ? 'fill.selected' : 'transparent',
         _hover: { background: 'fill.hover' },
-        _active: { transform: 'scale(0.96)' },
         _focusVisible: {
           outline: '2px solid',
-          outlineColor: 'stroke.primary',
-          outlineOffset: '2px',
+          outlineColor: 'stroke.focus',
+          outlineOffset: '-2px',
         },
       })}
     >
       <ThemeSwatch id={id} />
-      <span className={css({ display: 'grid', gap: '0.5', minWidth: '0' })}>
+      <span className={css({ display: 'grid', gap: '0.5', flex: '1', minWidth: '0' })}>
         <strong>{personality.name}</strong>
-        <span className={css({ color: 'fg.muted', fontSize: 'xs', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' })}>
+        <span className={css({ color: 'text.weak', fontSize: 'xs' })}>
           {personality.description}
         </span>
       </span>
+      {/* A check, not only the fill, marks the current personality. */}
+      <Icon
+        icon={checkIcon}
+        aria-hidden="true"
+        className={css({
+          flexShrink: '0',
+          width: '4',
+          height: '4',
+          visibility: selected ? 'visible' : 'hidden',
+        })}
+      />
     </button>
   );
 };
@@ -137,52 +148,81 @@ const HeaderVariant = ({
   onSelect: (id: keyof typeof themePersonalities) => void;
 }) => {
   const personality = themePersonalities[selected];
+  const [open, setOpen] = useState(false);
 
   return (
-    <details className={css({ position: 'relative', width: { base: '100%', sm: 'auto' } })}>
-      <summary
+    <Popover.Root open={open} onOpenChange={setOpen}>
+      <Popover.Trigger
         aria-label={`Theme personality: ${personality.name}`}
-        className={css({
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: '3',
-          minHeight: '12',
-          paddingInline: '3',
-          border: 'border.weak',
-          borderRadius: 'lg',
-          cursor: 'pointer',
-          listStyle: 'none',
-          _focusVisible: { outline: '2px solid', outlineColor: 'stroke.primary', outlineOffset: '2px' },
-        })}
+        render={
+          <button
+            type="button"
+            className={css({
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '2',
+              minHeight: '10',
+              paddingInline: '2',
+              borderWidth: '1px',
+              borderStyle: 'solid',
+              borderColor: 'stroke.strong',
+              borderRadius: 'md',
+              background: 'bg.page',
+              color: 'text',
+              fontSize: 'sm',
+              cursor: 'pointer',
+              _focusVisible: {
+                outline: '2px solid',
+                outlineColor: 'stroke.primary',
+                outlineOffset: '2px',
+              },
+            })}
+          />
+        }
       >
-        <span className={css({ display: 'flex', alignItems: 'center', gap: '2' })}>
-          <ThemeSwatch id={selected} />
-          <span>{personality.name}</span>
-        </span>
-        <span aria-hidden="true">⌄</span>
-      </summary>
-      <div
-        className={css({
-          position: 'absolute',
-          right: '0',
-          zIndex: '10',
-          display: 'grid',
-          gap: '1',
-          width: { base: '100%', sm: '18rem' },
-          marginTop: '2',
-          padding: '2',
-          border: 'border.weak',
-          borderRadius: 'lg',
-          background: 'bg.page',
-          boxShadow: '0 16px 40px rgb(0 0 0 / 14%)',
-        })}
-      >
-        {personalityIds.map((id) => (
-          <ThemeOption key={id} id={id} selected={selected === id} onSelect={onSelect} />
-        ))}
-      </div>
-    </details>
+        <ThemeSwatch id={selected} />
+        <span>{personality.name}</span>
+        <Icon
+          icon={chevronDownIcon}
+          aria-hidden="true"
+          className={css({ width: '4', height: '4' })}
+        />
+      </Popover.Trigger>
+      <Popover.Portal>
+        <Popover.Positioner align="end" sideOffset={8} collisionPadding={8}>
+          <Popover.Popup
+            className={css({
+              display: 'grid',
+              gap: '1',
+              width: 'min(20rem, calc(100vw - 2rem))',
+              padding: '2',
+            })}
+          >
+            <Popover.Title
+              className={css({
+                paddingInline: '3',
+                paddingBlock: '1',
+                fontSize: 'sm',
+                fontWeight: 'semibold',
+              })}
+            >
+              Theme personality
+            </Popover.Title>
+            {personalityIds.map((id) => (
+              <ThemeOption
+                key={id}
+                id={id}
+                selected={selected === id}
+                onSelect={(next) => {
+                  onSelect(next);
+                  setOpen(false);
+                }}
+              />
+            ))}
+          </Popover.Popup>
+        </Popover.Positioner>
+      </Popover.Portal>
+    </Popover.Root>
   );
 };
 
@@ -201,15 +241,15 @@ const SidebarVariant = ({
       width: '14rem',
       flexShrink: '0',
       padding: '3',
-      border: 'border.weak',
+      border: 'weak',
       borderRadius: 'lg',
-      background: 'bg.subtle',
+      background: 'bg.alternate',
     })}
     aria-label="Theme personality switcher"
   >
     <div className={css({ display: 'grid', gap: '1' })}>
       <strong>Theme personality</strong>
-      <span className={css({ color: 'fg.muted', fontSize: 'xs' })}>Compare the six identities.</span>
+      <span className={css({ color: 'text.weak', fontSize: 'xs' })}>Compare the six identities.</span>
     </div>
     <div className={css({ display: 'grid', gap: '1' })} role="radiogroup" aria-label="Theme personality">
       {personalityIds.map((id) => (
@@ -227,8 +267,8 @@ const SidebarVariant = ({
             paddingInline: '2',
             border: '0',
             borderRadius: 'md',
-            background: selected === id ? 'fill.muted' : 'transparent',
-            color: 'fg.default',
+            background: selected === id ? 'fill.selected' : 'transparent',
+            color: 'text',
             textAlign: 'left',
             cursor: 'pointer',
             _hover: { background: 'fill.hover' },
@@ -258,7 +298,7 @@ const PaletteVariant = ({
       maxWidth: '100%',
       overflowX: 'auto',
       padding: '2',
-      border: 'border.weak',
+      border: 'weak',
       borderRadius: 'full',
       background: 'bg.page/92',
       boxShadow: '0 8px 24px rgb(0 0 0 / 12%)',
@@ -280,7 +320,7 @@ const PaletteVariant = ({
           height: '8',
           padding: '0',
           border: selected === id ? '2px solid' : '1px solid',
-          borderColor: selected === id ? 'stroke.primary' : 'border.weak',
+          borderColor: selected === id ? 'stroke.primary' : 'weak',
           borderRadius: 'full',
           cursor: 'pointer',
           _focusVisible: { outline: '2px solid', outlineColor: 'stroke.primary', outlineOffset: '2px' },
@@ -340,14 +380,14 @@ export const ThemePersonalitySwitcherPrototype = () => {
         border: '1px dashed',
         borderColor: 'stroke.primary',
         borderRadius: 'xl',
-        background: 'bg.subtle',
+        background: 'bg.alternate',
       })}
       aria-label="Theme personality switcher prototype"
     >
       <div className={css({ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '3' })}>
         <div className={css({ display: 'grid', gap: '1' })}>
           <strong>Switcher prototype</strong>
-          <span className={css({ color: 'fg.muted', fontSize: 'sm' })}>
+          <span className={css({ color: 'text.weak', fontSize: 'sm' })}>
             Personality: {themePersonalities[selected].name}. Color mode remains independent in the header.
           </span>
         </div>
@@ -360,7 +400,7 @@ export const ThemePersonalitySwitcherPrototype = () => {
       {variant === 'sidebar' ? (
         <div className={css({ display: 'flex', gap: '4', alignItems: 'start' })}>
           <SidebarVariant selected={selected} onSelect={onSelectTheme} />
-          <p className={css({ margin: '0', color: 'fg.muted', fontSize: 'sm' })}>
+          <p className={css({ margin: '0', color: 'text.weak', fontSize: 'sm' })}>
             Desktop keeps the catalog comparison visible while the personality control stays in a persistent rail.
           </p>
         </div>
@@ -381,7 +421,7 @@ export const ThemePersonalitySwitcherPrototype = () => {
           gap: '2',
           maxWidth: 'calc(100vw - 2rem)',
           padding: '2',
-          border: 'border.strong',
+          border: 'strong',
           borderRadius: 'full',
           background: 'bg.page',
           boxShadow: '0 12px 32px rgb(0 0 0 / 18%)',

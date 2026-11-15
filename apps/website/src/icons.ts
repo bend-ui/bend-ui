@@ -35,3 +35,15 @@ export const moonIcon: IconifyIcon = {
   width: 24,
   height: 24,
 };
+
+export const checkIcon: IconifyIcon = {
+  body: '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 14.5s1.5 0 3.5 3.5c0 0 5.559-9.167 10.5-11"/>',
+  width: 24,
+  height: 24,
+};
+
+export const chevronDownIcon: IconifyIcon = {
+  body: '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18 9s-4.419 6-6 6s-6-6-6-6"/>',
+  width: 24,
+  height: 24,
+};
