@@ -11,5 +11,21 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    trigger: 'Recovery keys',
+    children: (
+      <div>
+        <div>alien-bean-pasta</div>
+        <div>wild-irish-burrito</div>
+        <div>horse-battery-staple</div>
+      </div>
+    ),
+  },
+};
+
+export const DefaultOpen: Story = {
+  args: {
+    ...Default.args,
+    defaultOpen: true,
+  },
 };

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 import { Collapsible as CollapsiblePrimitive } from '@base-ui/react/collapsible';
 import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import { collapsible } from '@bend-ui/styled-system/recipes';
@@ -9,23 +10,29 @@ const CollapsibleRoot = withProvider(CollapsiblePrimitive.Root, 'root');
 const CollapsibleTrigger = withContext(CollapsiblePrimitive.Trigger, 'trigger');
 const CollapsiblePanel = withContext(CollapsiblePrimitive.Panel, 'content');
 
-const Component = () => {
+export interface CollapsibleProps
+  extends Omit<ComponentProps<typeof CollapsibleRoot>, 'children'> {
+  /** Content of the trigger button, shown after the chevron. */
+  trigger: ReactNode;
+  /** Content of the panel. */
+  children?: ReactNode;
+}
+
+/** A trigger with a chevron that reveals its children; use the parts for custom layouts. */
+const Component = (props: CollapsibleProps) => {
+  const { trigger, children, ...rest } = props;
   return (
-    <CollapsibleRoot>
+    <CollapsibleRoot {...rest}>
       <CollapsibleTrigger>
-        <ChevronIcon />
-        Recovery keys
+        <ChevronIcon aria-hidden="true" />
+        {trigger}
       </CollapsibleTrigger>
-      <CollapsiblePanel>
-        <div>
-          <div>alien-bean-pasta</div>
-          <div>wild-irish-burrito</div>
-          <div>horse-battery-staple</div>
-        </div>
-      </CollapsiblePanel>
+      <CollapsiblePanel>{children}</CollapsiblePanel>
     </CollapsibleRoot>
   );
 };
+
+Object.assign(Component, { displayName: 'Collapsible' });
 
 export function ChevronIcon(props: React.ComponentProps<'svg'>) {
   return (

@@ -5,6 +5,7 @@ import { withParts } from '@bend-ui/core';
 import { selectDropdown, select } from '@bend-ui/styled-system/recipes';
 import { createSlotRecipeContext, styled } from '@bend-ui/styled-system/jsx';
 import { Input as StyledInput } from '../Input';
+import { itemKey, itemLabel } from '../../internal/itemLabel';
 
 const {
   withRootProvider: withSelectRootProvider,
@@ -82,17 +83,40 @@ const AutocompleteSeparator = withParts<AutocompletePrimitive.Separator.Props>(
   'separator',
 );
 
-export type AutocompleteProps<T = string> = AutocompletePrimitive.Root.Props<T>;
+export type AutocompleteProps<Value = string> = Omit<
+  AutocompletePrimitive.Root.Props<Value>,
+  'children' | 'items' | 'aria-label' | 'aria-labelledby'
+> & {
+  /** Flat list of items; use the parts for grouped items. */
+  items?: readonly Value[];
+  placeholder?: string;
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
+};
 
-const Component = <Value extends string = string>(
-  props: AutocompleteProps<Value>,
-) => {
-  const { items = [], ...rootProps } = props;
+/**
+ * Input and a popup listing the matching `items`; labels come from
+ * `itemToStringValue`, `item.label` or the item itself. Use the parts for
+ * groups or custom item content.
+ */
+const Component = <Value = string,>(props: AutocompleteProps<Value>) => {
+  const {
+    placeholder,
+    'aria-label': ariaLabel,
+    'aria-labelledby': ariaLabelledby,
+    ...rootProps
+  } = props;
+  const { itemToStringValue } = rootProps;
   return (
-    <AutocompleteRoot items={items} {...rootProps}>
+    <AutocompleteRoot {...rootProps}>
       <AutocompleteControl>
         <AutocompleteTrigger>
-          <AutocompleteInput render={(props) => <StyledInput {...props} />} />
+          <AutocompleteInput
+            placeholder={placeholder}
+            aria-label={ariaLabel}
+            aria-labelledby={ariaLabelledby}
+            render={(props) => <StyledInput {...props} />}
+          />
           <AutocompleteIcon>
             <ChevronsUpDownIcon />
           </AutocompleteIcon>
@@ -102,9 +126,11 @@ const Component = <Value extends string = string>(
         <AutocompletePositioner sideOffset={8}>
           <AutocompletePopup>
             <AutocompleteList>
-              <AutocompleteItem value="apple">Apple</AutocompleteItem>
-              <AutocompleteItem value="banana">Banana</AutocompleteItem>
-              <AutocompleteItem value="cherry">Cherry</AutocompleteItem>
+              {(item: Value) => (
+                <AutocompleteItem key={itemKey(item)} value={item}>
+                  {itemLabel(item, itemToStringValue)}
+                </AutocompleteItem>
+              )}
             </AutocompleteList>
           </AutocompletePopup>
         </AutocompletePositioner>

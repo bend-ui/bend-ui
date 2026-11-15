@@ -25,29 +25,51 @@ const NumberFieldIncrement = withContext(
   'incrementTrigger',
 );
 
-const Component = () => {
-  const id = React.useId();
+export interface NumberFieldProps
+  extends Omit<React.ComponentProps<typeof NumberFieldRoot>, 'children'> {
+  /** Visible label; dragging it scrubs the value. Without it, pass `aria-label`. */
+  label?: React.ReactNode;
+}
+
+/** Labelled input with decrement and increment buttons; use the parts for custom layouts. */
+const Component = (props: NumberFieldProps) => {
+  const {
+    label,
+    id: idProp,
+    'aria-label': ariaLabel,
+    'aria-labelledby': ariaLabelledby,
+    ...rest
+  } = props;
+  const generatedId = React.useId();
+  const id = idProp ?? generatedId;
   return (
-    <NumberFieldRoot id={id} defaultValue={100}>
-      <NumberFieldScrubArea>
-        <label htmlFor={id}>Amount</label>
-        <NumberFieldScrubAreaCursor>
-          <CursorGrowIcon />
-        </NumberFieldScrubAreaCursor>
-      </NumberFieldScrubArea>
+    <NumberFieldRoot id={id} {...rest}>
+      {label != null && (
+        <NumberFieldScrubArea>
+          <label htmlFor={id}>{label}</label>
+          <NumberFieldScrubAreaCursor>
+            <CursorGrowIcon />
+          </NumberFieldScrubAreaCursor>
+        </NumberFieldScrubArea>
+      )}
 
       <NumberFieldGroup>
         <NumberFieldDecrement>
-          <MinusIcon />
+          <MinusIcon aria-hidden="true" />
         </NumberFieldDecrement>
-        <NumberFieldInput />
+        <NumberFieldInput
+          aria-label={ariaLabel}
+          aria-labelledby={ariaLabelledby}
+        />
         <NumberFieldIncrement>
-          <PlusIcon />
+          <PlusIcon aria-hidden="true" />
         </NumberFieldIncrement>
       </NumberFieldGroup>
     </NumberFieldRoot>
   );
 };
+
+Object.assign(Component, { displayName: 'NumberField' });
 
 function CursorGrowIcon(props: React.ComponentProps<'svg'>) {
   return (

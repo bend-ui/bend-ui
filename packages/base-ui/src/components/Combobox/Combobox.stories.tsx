@@ -21,12 +21,16 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     items: fruits,
+    'aria-label': 'Fruit',
+    placeholder: 'Search fruits',
   },
 };
 
 export const Multiple: Story = {
   args: {
     items: fruits,
+    'aria-label': 'Fruit',
+    placeholder: 'Search fruits',
     multiple: true,
   },
 };

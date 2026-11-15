@@ -5,6 +5,7 @@ import { withParts } from '@bend-ui/core';
 import { selectDropdown, select } from '@bend-ui/styled-system/recipes';
 import { createSlotRecipeContext, styled } from '@bend-ui/styled-system/jsx';
 import { Input as StyledInput } from '../Input';
+import { itemKey, itemLabel } from '../../internal/itemLabel';
 
 const {
   withRootProvider: withSelectRootProvider,
@@ -89,18 +90,42 @@ const ComboboxSeparator = withParts<ComboboxPrimitive.Separator.Props>(
 );
 
 export type ComboboxProps<
-  T,
+  Value,
   Multiple extends boolean | undefined = false,
-> = ComboboxPrimitive.Root.Props<T, Multiple>;
+> = Omit<
+  ComboboxPrimitive.Root.Props<Value, Multiple>,
+  'children' | 'aria-label' | 'aria-labelledby'
+> & {
+  placeholder?: string;
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
+};
 
+/**
+ * Input, trigger and a popup listing `items`; labels come from
+ * `itemToStringLabel`, `item.label` or the item itself. Use the parts for
+ * groups or custom item content.
+ */
 const Component = <Value, Multiple extends boolean | undefined = false>(
   props: ComboboxProps<Value, Multiple>,
 ) => {
+  const {
+    placeholder,
+    'aria-label': ariaLabel,
+    'aria-labelledby': ariaLabelledby,
+    ...rootProps
+  } = props;
+  const { itemToStringLabel } = rootProps;
   return (
-    <ComboboxRoot {...props}>
+    <ComboboxRoot {...rootProps}>
       <ComboboxControl>
         <ComboboxTrigger>
-          <ComboboxInput render={(props) => <StyledInput {...props} />} />
+          <ComboboxInput
+            placeholder={placeholder}
+            aria-label={ariaLabel}
+            aria-labelledby={ariaLabelledby}
+            render={(props) => <StyledInput {...props} />}
+          />
           <ComboboxIcon>
             <ChevronsUpDownIcon />
           </ComboboxIcon>
@@ -110,24 +135,16 @@ const Component = <Value, Multiple extends boolean | undefined = false>(
         <ComboboxPositioner sideOffset={8}>
           <ComboboxPopup>
             <ComboboxList>
-              <ComboboxItem value="apple">
-                <ComboboxItemText>Apple</ComboboxItemText>
-                <ComboboxItemIndicator>
-                  <CheckIcon />
-                </ComboboxItemIndicator>
-              </ComboboxItem>
-              <ComboboxItem value="banana">
-                <ComboboxItemText>Banana</ComboboxItemText>
-                <ComboboxItemIndicator>
-                  <CheckIcon />
-                </ComboboxItemIndicator>
-              </ComboboxItem>
-              <ComboboxItem value="cherry">
-                <ComboboxItemText>Cherry</ComboboxItemText>
-                <ComboboxItemIndicator>
-                  <CheckIcon />
-                </ComboboxItemIndicator>
-              </ComboboxItem>
+              {(item: Value) => (
+                <ComboboxItem key={itemKey(item)} value={item}>
+                  <ComboboxItemText>
+                    {itemLabel(item, itemToStringLabel)}
+                  </ComboboxItemText>
+                  <ComboboxItemIndicator>
+                    <CheckIcon />
+                  </ComboboxItemIndicator>
+                </ComboboxItem>
+              )}
             </ComboboxList>
           </ComboboxPopup>
         </ComboboxPositioner>

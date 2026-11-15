@@ -37,34 +37,7 @@ const ContextMenuSeparator = withContext(
   'separator',
 );
 
-const Component = () => {
-  return (
-    <ContextMenuRoot>
-      <ContextMenuTrigger>Right click here</ContextMenuTrigger>
-      <ContextMenuPortal>
-        <ContextMenuBackdrop />
-        <ContextMenuPositioner>
-          <ContextMenuPopup>
-            <ContextMenuItem>Add to Library</ContextMenuItem>
-            <ContextMenuItem>Add to Playlist</ContextMenuItem>
-            <ContextMenuSeparator />
-            <ContextMenuItem>Play Next</ContextMenuItem>
-            <ContextMenuItem>Play Last</ContextMenuItem>
-            <ContextMenuSeparator />
-            <ContextMenuItem>Favorite</ContextMenuItem>
-            <ContextMenuItem>Share</ContextMenuItem>
-            <ContextMenuRadioGroup>
-              <ContextMenuRadioItem value="1" />
-            </ContextMenuRadioGroup>
-            <ContextMenuCheckboxItem />
-          </ContextMenuPopup>
-        </ContextMenuPositioner>
-      </ContextMenuPortal>
-    </ContextMenuRoot>
-  );
-};
-
-export const ContextMenu = Object.assign(Component, {
+export const ContextMenu = Object.assign(ContextMenuRoot, {
   Root: ContextMenuRoot,
   Trigger: ContextMenuTrigger,
   Portal: ContextMenuPortal,

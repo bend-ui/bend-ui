@@ -11,12 +11,10 @@ import {
   surface,
   timelineItem,
 } from '@bend-ui/styled-system/recipes';
-import { MoreHorizontalIcon } from 'lucide-react';
 import { Badge, type BadgeProps } from '../Badge';
 import { Avatar } from '../Avatar';
 import { Button } from '../Button';
 import { Heading } from '../Heading';
-import { IconButton } from '../IconButton';
 import { Stack } from '../Stack';
 import { Text } from '../Text';
 
@@ -205,7 +203,7 @@ export const PanelHeader = (props: PanelHeaderProps) => {
           </Text>
         ) : null}
       </Stack>
-      {action ?? <IconButton icon={<MoreHorizontalIcon />}>More</IconButton>}
+      {action}
     </Stack>
   );
 };
