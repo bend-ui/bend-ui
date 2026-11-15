@@ -320,7 +320,7 @@ const PaletteVariant = ({
           height: '8',
           padding: '0',
           border: selected === id ? '2px solid' : '1px solid',
-          borderColor: selected === id ? 'stroke.primary' : 'weak',
+          borderColor: selected === id ? 'stroke.primary' : 'stroke.weak',
           borderRadius: 'full',
           cursor: 'pointer',
           _focusVisible: { outline: '2px solid', outlineColor: 'stroke.primary', outlineOffset: '2px' },

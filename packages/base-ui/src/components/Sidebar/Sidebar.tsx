@@ -24,10 +24,29 @@ type SidebarContextValue = {
   toggleSidebar: () => void;
   state: 'expanded' | 'collapsed';
   sidebarId: string;
+  /** The id the root actually renders, which may be one the caller passed. */
+  rootId: string;
+  setRootId: (id: string | undefined) => void;
 };
 
 const FOCUSABLE =
-  'a[href], button:not([disabled]), input:not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])';
+  'a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+// Focus the first candidate that actually takes focus (rendered, enabled),
+// falling back to the drawer itself so focus never stays behind the overlay.
+const focusFirst = (root: HTMLElement) => {
+  for (const element of root.querySelectorAll<HTMLElement>(FOCUSABLE)) {
+    element.focus();
+    if (document.activeElement === element) {
+      return;
+    }
+  }
+
+  if (!root.hasAttribute('tabindex')) {
+    root.setAttribute('tabindex', '-1');
+  }
+  root.focus();
+};
 
 const SidebarContext = React.createContext<SidebarContextValue | null>(null);
 
@@ -82,6 +101,7 @@ const SidebarProvider = (props: SidebarProviderElementProps) => {
   const [openMobile, setOpenMobile] = React.useState(false);
   const isMobile = useIsMobile();
   const sidebarId = React.useId();
+  const [rootIdOverride, setRootId] = React.useState<string | undefined>();
   const returnFocus = React.useRef<HTMLElement | null>(null);
   const open = openProp ?? _open;
 
@@ -160,7 +180,7 @@ const SidebarProvider = (props: SidebarProviderElementProps) => {
 
     if (mobileOpen) {
       const frame = requestAnimationFrame(() => {
-        root.querySelector<HTMLElement>(FOCUSABLE)?.focus();
+        focusFirst(root);
       });
 
       return () => cancelAnimationFrame(frame);
@@ -189,8 +209,18 @@ const SidebarProvider = (props: SidebarProviderElementProps) => {
       toggleSidebar,
       state: open ? 'expanded' : 'collapsed',
       sidebarId,
+      rootId: rootIdOverride ?? sidebarId,
+      setRootId,
     }),
-    [isMobile, open, openMobile, setOpen, sidebarId, toggleSidebar],
+    [
+      isMobile,
+      open,
+      openMobile,
+      rootIdOverride,
+      setOpen,
+      sidebarId,
+      toggleSidebar,
+    ],
   );
 
   return (
@@ -233,7 +263,14 @@ const SidebarRoot = (props: SidebarRootProps) => {
     id,
     ...rest
   } = props;
-  const { open, openMobile, setOpenMobile, sidebarId } = useSidebar();
+  const { open, openMobile, setOpenMobile, sidebarId, setRootId } =
+    useSidebar();
+
+  // Share a caller-supplied id so the trigger's aria-controls points at it.
+  React.useEffect(() => {
+    setRootId(id);
+    return () => setRootId(undefined);
+  }, [id, setRootId]);
 
   return (
     <>
@@ -279,15 +316,14 @@ const SidebarTriggerElement = withContext(bend.button, 'trigger');
 
 const SidebarTrigger = (props: SidebarTriggerProps) => {
   const { children, type = 'button', onClick, ...rest } = props;
-  const { toggleSidebar, isMobile, openMobile, open, sidebarId } =
-    useSidebar();
+  const { toggleSidebar, isMobile, openMobile, open, rootId } = useSidebar();
 
   return (
     <SidebarTriggerElement
       type={type}
       aria-label="Toggle sidebar"
       aria-expanded={isMobile ? openMobile : open}
-      aria-controls={sidebarId}
+      aria-controls={rootId}
       onClick={(event) => {
         onClick?.(event);
         toggleSidebar();
