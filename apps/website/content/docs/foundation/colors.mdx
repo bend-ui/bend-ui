@@ -10,7 +10,7 @@ The design preset exposes semantic color tokens for text, fills, and strokes. Pr
 Generated Panda elements accept semantic token names as style props:
 
 ```tsx
-import { Box, Stack } from 'styled-system/jsx';
+import { Box, Stack } from '@bend-ui/base-ui';
 
 export function StatusPanel() {
   return (
@@ -48,8 +48,7 @@ export function MutedNote() {
 Adapter components already map their variants to semantic colors. Choose the variant that expresses intent instead of overriding its fill directly.
 
 ```tsx
-import { Button } from '@bend-ui/base-ui';
-import { Flex } from 'styled-system/jsx';
+import { Button, Flex } from '@bend-ui/base-ui';
 
 export function Actions() {
   return (

@@ -22,7 +22,7 @@ not carried over.
 
 | Adapter                            | Rows | `implemented` | `partial` |
 | ---------------------------------- | ---: | ------------: | --------: |
-| Base UI (`@bend-ui/base-ui`)       |   51 |            16 |        35 |
+| Base UI (`@bend-ui/base-ui`)       |   53 |            16 |        37 |
 | Ark UI (`@bend-ui/ark-ui`), frozen |   42 |             0 |        42 |
 | React Aria (`@bend-ui/react-aria`) |   52 |             0 |        52 |
 
@@ -78,71 +78,97 @@ primitive set and adds Bend-authored components that Base UI does not ship (Butt
 Badge, Card, Table, IconButton, SegmentedControl, layout primitives, and the
 AppShell/Sidebar operational patterns).
 
-| Component        | Intent             | Status      | Styled | Prop-driven | Typed | Tested | Documented | Storybook | Notes                                                                  |
-| ---------------- | ------------------ | ----------- | :----: | :---------: | :---: | :----: | :--------: | :-------: | ---------------------------------------------------------------------- |
-| Accordion        | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                        |
-| AlertDialog      | v0                 | partial     |   ✓    |      ✓      |   ✓   |   —    |     —      |     ✓     |                                                                        |
-| AppShell         | covered-by-pattern | partial     |   ✓    |      ✓      |   —   |   —    |     —      |     ✓     | Props type lives in `@bend-ui/core`; not re-exported.                  |
-| Autocomplete     | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                        |
-| Avatar           | v0                 | partial     |   ✓    |      ✓      |   ✓   |   —    |     ✓      |     ✓     |                                                                        |
-| Badge            | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
-| Box              | primitive-only     | partial     |   ✓    |      ✓      |   ✓   |   —    |     —      |     —     |                                                                        |
-| Button           | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
-| Card             | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     —     |                                                                        |
-| Checkbox         | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
-| CheckboxGroup    | v0                 | partial     |   —    |      ✓      |   ✓   |   ✓    |     —      |     ✓     | Bare upstream wrapper; test is a smoke render.                         |
-| Collapsible      | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                        |
-| Combobox         | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                        |
-| ContextMenu      | v0                 | partial     |   ✓    |      ✓      |   —   |   —    |     —      |     ✓     | Spec only checks `ContextMenu === ContextMenu.Root`.                   |
-| Dialog           | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
-| Drawer           | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                        |
-| Field            | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
-| Fieldset         | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                        |
-| Form             | v0                 | partial     |   —    |      ✓      |   ✓   |   ✓    |     —      |     ✓     | Bare upstream wrapper; test is a smoke render.                         |
-| Grid             | primitive-only     | partial     |   ✓    |      ✓      |   ✓   |   —    |     —      |     —     |                                                                        |
-| Heading          | primitive-only     | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     —     | Shown on the Components overview page, no page of its own.             |
-| IconButton       | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     —     | Documented on the Button page.                                         |
-| Input            | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
-| Menu             | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
-| Menubar          | v0                 | partial     |   ✓    |      ✓      |   —   |   ✓    |     —      |     ✓     | Test is a smoke render.                                                |
-| Meter            | v0                 | partial     |   ✓    |      ✓      |   ✓   |   —    |     —      |     ✓     |                                                                        |
-| NavigationMenu   | v0                 | partial     |   ✓    |      ✓      |   —   |   ✓    |     ✓      |     ✓     | Documented on the Navigation page.                                     |
-| NumberField      | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                        |
-| Paragraph        | primitive-only     | partial     |   ✓    |      ✓      |   ✓   |   —    |     —      |     —     |                                                                        |
-| Patterns         | covered-by-pattern | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                        |
-| Popover          | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
-| PreviewCard      | v0                 | partial     |   ✓    |      ✓      |   —   |   —    |     —      |     ✓     | Spec only checks `PreviewCard === PreviewCard.Root`.                   |
-| Progress         | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                        |
-| Radio            | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
-| ScrollArea       | v0                 | partial     |   ✓    |      ✓      |   ✓   |   —    |     ✓      |     ✓     |                                                                        |
-| SegmentedControl | v0                 | partial     |   ✓    |      ✓      |   —   |   —    |     —      |     ✓     |                                                                        |
-| Select           | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
-| Separator        | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
-| Sidebar          | covered-by-pattern | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                        |
-| Slider           | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                        |
-| Stack            | primitive-only     | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     —     |                                                                        |
-| Switch           | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
-| Table            | v0                 | partial     |   ✓    |      ✓      |   ✓   |   —    |     —      |     ✓     |                                                                        |
-| Tabs             | v0                 | partial     |   ✓    |      ✓      |   —   |   ✓    |     ✓      |     ✓     |                                                                        |
-| Text             | primitive-only     | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     —     |                                                                        |
-| Textarea         | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
-| Toast            | v0                 | partial     |   ✓    |      ✓      |   —   |   —    |     —      |     ✓     | Exports `ToastComponent`, not a props type; spec only checks identity. |
-| Toggle           | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     | Test is a smoke render.                                                |
-| ToggleGroup      | v0                 | partial     |   ✓    |      ✓      |   —   |   ✓    |     —      |     ✓     | Test is a smoke render.                                                |
-| Toolbar          | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                        |
-| Tooltip          | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
+**D3 keep list** (decided 2026-11-15): the Base UI keep list is the whole public
+index of `@bend-ui/base-ui`, that is every export reachable from
+[`packages/base-ui/src/index.ts`](../packages/base-ui/src/index.ts). Each component
+export maps to exactly one row below, and the non-component exports are listed after
+the table. Nothing is removed for lack of usage: the package is a library in
+development. Ark UI stays frozen and React Aria stays parked (D1).
 
-**Base UI summary:** 16 of 51 components implemented. The rest are `partial`:
+Layout ships from the same import. `Box`, `Stack`, `Flex`, and `Grid` are rows below,
+and the Panda `styled` factory is re-exported from the package root.
+
+| Component        | Intent             | Status      | Styled | Prop-driven | Typed | Tested | Documented | Storybook | Notes                                                                      |
+| ---------------- | ------------------ | ----------- | :----: | :---------: | :---: | :----: | :--------: | :-------: | -------------------------------------------------------------------------- |
+| Accordion        | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                            |
+| AlertDialog      | v0                 | partial     |   ✓    |      ✓      |   ✓   |   —    |     —      |     ✓     |                                                                            |
+| AppShell         | covered-by-pattern | partial     |   ✓    |      ✓      |   —   |   —    |     —      |     ✓     | Props type lives in `@bend-ui/core`; not re-exported.                      |
+| Autocomplete     | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                            |
+| Avatar           | v0                 | partial     |   ✓    |      ✓      |   ✓   |   —    |     ✓      |     ✓     |                                                                            |
+| Badge            | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                            |
+| Box              | primitive-only     | partial     |   ✓    |      ✓      |   ✓   |   —    |     —      |     —     |                                                                            |
+| Button           | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                            |
+| Card             | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     —     |                                                                            |
+| Checkbox         | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                            |
+| CheckboxGroup    | v0                 | partial     |   —    |      ✓      |   ✓   |   ✓    |     —      |     ✓     | Bare upstream wrapper; test is a smoke render.                             |
+| Collapsible      | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                            |
+| Combobox         | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                            |
+| ContextMenu      | v0                 | partial     |   ✓    |      ✓      |   —   |   —    |     —      |     ✓     | Spec only checks `ContextMenu === ContextMenu.Root`.                       |
+| Dialog           | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                            |
+| Drawer           | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                            |
+| Field            | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                            |
+| Fieldset         | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                            |
+| Flex             | primitive-only     | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     —     | Wraps the Panda `flex` pattern, like Stack.                                |
+| Form             | v0                 | partial     |   —    |      ✓      |   ✓   |   ✓    |     —      |     ✓     | Bare upstream wrapper; test is a smoke render.                             |
+| Grid             | primitive-only     | partial     |   ✓    |      ✓      |   ✓   |   —    |     —      |     —     |                                                                            |
+| Heading          | primitive-only     | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     —     | Shown on the Components overview page, no page of its own.                 |
+| IconButton       | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     —     | Documented on the Button page.                                             |
+| Input            | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                            |
+| Menu             | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                            |
+| Menubar          | v0                 | partial     |   ✓    |      ✓      |   —   |   ✓    |     —      |     ✓     | Test is a smoke render.                                                    |
+| Meter            | v0                 | partial     |   ✓    |      ✓      |   ✓   |   —    |     —      |     ✓     |                                                                            |
+| NavigationMenu   | v0                 | partial     |   ✓    |      ✓      |   —   |   ✓    |     ✓      |     ✓     | Documented on the Navigation page.                                         |
+| NumberField      | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                            |
+| Paragraph        | primitive-only     | partial     |   ✓    |      ✓      |   ✓   |   —    |     —      |     —     |                                                                            |
+| Patterns         | covered-by-pattern | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     | Metric, PageHeader, PanelHeader, ResponsiveGrid, TimelineItem, ActionItem. |
+| Popover          | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                            |
+| PreviewCard      | v0                 | partial     |   ✓    |      ✓      |   —   |   —    |     —      |     ✓     | Spec only checks `PreviewCard === PreviewCard.Root`.                       |
+| Progress         | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                            |
+| Radio            | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                            |
+| ScrollArea       | v0                 | partial     |   ✓    |      ✓      |   ✓   |   —    |     ✓      |     ✓     |                                                                            |
+| SegmentedControl | v0                 | partial     |   ✓    |      ✓      |   —   |   —    |     —      |     ✓     |                                                                            |
+| Select           | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                            |
+| Separator        | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                            |
+| Sidebar          | covered-by-pattern | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                            |
+| Slider           | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                            |
+| Stack            | primitive-only     | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     —     |                                                                            |
+| Surface          | covered-by-pattern | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     | `Surface` (Patterns) and `SurfaceProvider`; provider shown on Dialog.      |
+| Switch           | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                            |
+| Table            | v0                 | partial     |   ✓    |      ✓      |   ✓   |   —    |     —      |     ✓     |                                                                            |
+| Tabs             | v0                 | partial     |   ✓    |      ✓      |   —   |   ✓    |     ✓      |     ✓     |                                                                            |
+| Text             | primitive-only     | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     —     |                                                                            |
+| Textarea         | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                            |
+| Toast            | v0                 | partial     |   ✓    |      ✓      |   —   |   —    |     —      |     ✓     | Exports `ToastComponent`, not a props type; spec only checks identity.     |
+| Toggle           | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     | Test is a smoke render.                                                    |
+| ToggleGroup      | v0                 | partial     |   ✓    |      ✓      |   —   |   ✓    |     —      |     ✓     | Test is a smoke render.                                                    |
+| Toolbar          | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                            |
+| Tooltip          | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                            |
+
+**Base UI summary:** 16 of 53 components implemented. The rest are `partial`:
 
 - Missing only a Docs page: Accordion, Autocomplete, Collapsible, Combobox, Drawer,
-  Fieldset, Heading, NumberField, Patterns, Progress, Sidebar, Slider, Stack, Text,
-  Toggle, Toolbar.
+  Fieldset, Flex, Heading, NumberField, Patterns, Progress, Sidebar, Slider, Stack,
+  Surface, Text, Toggle, Toolbar.
 - Missing only a test: Avatar, ScrollArea.
 - Missing only an exported props type: NavigationMenu, Tabs.
 - Failing more than one criterion: AlertDialog, Box, Grid, Meter, Paragraph, Table
   (test, docs); Menubar, ToggleGroup (props type, docs); AppShell, ContextMenu,
   PreviewCard, SegmentedControl, Toast (props type, test, docs); CheckboxGroup, Form
   (styling, docs).
+
+**Export map.** Rows are named after component folders. Exports that are not the
+folder name map as follows: `RadioGroup` to Radio, `useSidebar` to Sidebar,
+`useToastManager` to Toast, `SurfaceProvider` to Surface, and `Metric`, `PageHeader`,
+`PanelHeader`, `ResponsiveGrid`, `TimelineItem`, `ActionItem` to Patterns. These
+non-component exports have no row: `styled` (the Panda JSX factory), `withRecipe`,
+`withParts`, `createRecipeContext`, `CSPProvider`, `DirectionProvider`,
+`useDirection`, `mergeProps`, `mergePropsN`, and `useRender`. `ChevronIcon` is
+internal to Collapsible and no longer exported.
+
+**W7 follow-ups:**
+
+- Form and CheckboxGroup need minimal layout recipes to meet **Styled**.
+- Meter, ContextMenu, and Toolbar need a Storybook check.
 
 ## Ark UI — `@bend-ui/ark-ui` (`packages/ark-ui`)
 

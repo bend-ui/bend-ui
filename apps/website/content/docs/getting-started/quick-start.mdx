@@ -1,15 +1,14 @@
 ---
 title: Quick start
-description: Build a small page with the Base UI adapter and generated layouts
+description: Build a small page with Bend UI components and layouts
 ---
 
-This tutorial builds a small sign-in card using adapter components for behavior and generated Panda elements for layout.
+This tutorial builds a small sign-in card using adapter components for behavior and Bend UI layout elements, both imported from `@bend-ui/base-ui`.
 
 ## Create the page
 
 ```tsx
-import { Button, Field } from '@bend-ui/base-ui';
-import { Box, Stack } from 'styled-system/jsx';
+import { Box, Button, Field, Stack } from '@bend-ui/base-ui';
 
 export function SignIn() {
   return (
@@ -35,7 +34,7 @@ export function SignIn() {
 }
 ```
 
-`Field` and `Button` come from the Base UI package adapter, so their behavior follows the upstream primitives. `Box` and `Stack` come from the generated styled system, so the application owns their output and styling API.
+`Field` and `Button` come from the Base UI package adapter, so their behavior follows the upstream primitives. `Box` and `Stack` are Bend UI layout elements; their style props are typed against Bend UI's tokens. If you extend the tokens and want your own tokens typed in layout props, import the layout elements from your generated `styled-system/jsx` instead.
 
 ## Add custom styling
 
