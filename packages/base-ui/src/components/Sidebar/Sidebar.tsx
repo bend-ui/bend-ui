@@ -23,7 +23,11 @@ type SidebarContextValue = {
   isMobile: boolean;
   toggleSidebar: () => void;
   state: 'expanded' | 'collapsed';
+  sidebarId: string;
 };
+
+const FOCUSABLE =
+  'a[href], button:not([disabled]), input:not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])';
 
 const SidebarContext = React.createContext<SidebarContextValue | null>(null);
 
@@ -77,6 +81,8 @@ const SidebarProvider = (props: SidebarProviderElementProps) => {
   const [_open, _setOpen] = React.useState(defaultOpen);
   const [openMobile, setOpenMobile] = React.useState(false);
   const isMobile = useIsMobile();
+  const sidebarId = React.useId();
+  const returnFocus = React.useRef<HTMLElement | null>(null);
   const open = openProp ?? _open;
 
   const setOpen = React.useCallback(
@@ -92,12 +98,17 @@ const SidebarProvider = (props: SidebarProviderElementProps) => {
 
   const toggleSidebar = React.useCallback(() => {
     if (isMobile) {
-      setOpenMobile((value) => !value);
+      // Record the opener now: once the drawer opens the inset turns inert
+      // and the browser moves focus to the body.
+      if (!openMobile) {
+        returnFocus.current = document.activeElement as HTMLElement | null;
+      }
+      setOpenMobile(!openMobile);
       return;
     }
 
     setOpen(!open);
-  }, [isMobile, open, setOpen]);
+  }, [isMobile, open, openMobile, setOpen]);
 
   React.useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -117,6 +128,57 @@ const SidebarProvider = (props: SidebarProviderElementProps) => {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [toggleSidebar]);
 
+  React.useEffect(() => {
+    if (!isMobile || !openMobile) {
+      return;
+    }
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') {
+        return;
+      }
+
+      event.preventDefault();
+      setOpenMobile(false);
+    };
+
+    document.addEventListener('keydown', onKeyDown);
+
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [isMobile, openMobile]);
+
+  // Move focus into the drawer when it opens and back to its opener when it
+  // closes, so keyboard users never land behind the overlay.
+  const mobileOpen = isMobile && openMobile;
+  React.useEffect(() => {
+    const root = Array.from(
+      document.querySelectorAll<HTMLElement>('[data-sidebar-root]'),
+    ).find((element) => element.dataset.sidebarRoot === sidebarId);
+    if (!root) {
+      return;
+    }
+
+    if (mobileOpen) {
+      const frame = requestAnimationFrame(() => {
+        root.querySelector<HTMLElement>(FOCUSABLE)?.focus();
+      });
+
+      return () => cancelAnimationFrame(frame);
+    }
+
+    const target = returnFocus.current;
+    returnFocus.current = null;
+    if (
+      target?.isConnected &&
+      (root.contains(document.activeElement) ||
+        document.activeElement === document.body)
+    ) {
+      target.focus();
+    }
+
+    return undefined;
+  }, [mobileOpen, sidebarId]);
+
   const value = React.useMemo<SidebarContextValue>(
     () => ({
       open,
@@ -126,8 +188,9 @@ const SidebarProvider = (props: SidebarProviderElementProps) => {
       isMobile,
       toggleSidebar,
       state: open ? 'expanded' : 'collapsed',
+      sidebarId,
     }),
-    [isMobile, open, openMobile, setOpen, toggleSidebar],
+    [isMobile, open, openMobile, setOpen, sidebarId, toggleSidebar],
   );
 
   return (
@@ -167,9 +230,10 @@ const SidebarRoot = (props: SidebarRootProps) => {
     side = 'left',
     variant = 'sidebar',
     collapsible = 'offcanvas',
+    id,
     ...rest
   } = props;
-  const { open, openMobile, setOpenMobile } = useSidebar();
+  const { open, openMobile, setOpenMobile, sidebarId } = useSidebar();
 
   return (
     <>
@@ -179,6 +243,8 @@ const SidebarRoot = (props: SidebarRootProps) => {
         onClick={() => setOpenMobile(false)}
       />
       <SidebarRootElement
+        id={id ?? sidebarId}
+        data-sidebar-root={sidebarId}
         data-side={side}
         data-variant={variant}
         data-collapsible={collapsible}
@@ -196,7 +262,14 @@ export interface SidebarInsetProps extends HTMLBendUIProps<'main'> {
   children?: React.ReactNode;
 }
 
-const SidebarInset = withContext(bend.main, 'inset');
+const SidebarInsetElement = withContext(bend.main, 'inset');
+
+const SidebarInset = (props: SidebarInsetProps) => {
+  const { isMobile, openMobile } = useSidebar();
+
+  // While the mobile drawer is open, the page behind it is out of reach.
+  return <SidebarInsetElement inert={isMobile && openMobile} {...props} />;
+};
 
 export interface SidebarTriggerProps extends HTMLBendUIProps<'button'> {
   children?: React.ReactNode;
@@ -206,12 +279,15 @@ const SidebarTriggerElement = withContext(bend.button, 'trigger');
 
 const SidebarTrigger = (props: SidebarTriggerProps) => {
   const { children, type = 'button', onClick, ...rest } = props;
-  const { toggleSidebar } = useSidebar();
+  const { toggleSidebar, isMobile, openMobile, open, sidebarId } =
+    useSidebar();
 
   return (
     <SidebarTriggerElement
       type={type}
       aria-label="Toggle sidebar"
+      aria-expanded={isMobile ? openMobile : open}
+      aria-controls={sidebarId}
       onClick={(event) => {
         onClick?.(event);
         toggleSidebar();

@@ -32,25 +32,30 @@ export const sidebarRecipe = defineSlotRecipe({
       minHeight: '100vh',
       width: '100%',
       backgroundColor: 'bg.page',
-      color: 'fg.default',
+      color: 'text',
       position: 'relative',
-      overflowX: 'hidden',
+      // `clip`, unlike `hidden`, does not create a scroll container, so the
+      // sticky root and any sticky inset header still stick to the viewport.
+      overflowX: 'clip',
     },
     root: {
       display: 'flex',
       flexDirection: 'column',
       flexShrink: '0',
+      position: 'sticky',
+      top: '0',
+      alignSelf: 'flex-start',
       width: 'var(--sidebar-width)',
-      minHeight: '100vh',
+      height: '100dvh',
       backgroundColor: 'bg.raised',
-      borderRight: 'border.weak',
-      transitionProperty: 'width, transform',
+      borderRight: 'weak',
+      transitionProperty: 'width, transform, visibility',
       transitionDuration: 'normal',
       transitionTimingFunction: 'default',
       zIndex: '10',
       '&[data-side="right"]': {
         borderRight: '0',
-        borderLeft: 'border.weak',
+        borderLeft: 'weak',
         order: '2',
       },
       '&[data-collapsible="icon"][data-state="collapsed"]': {
@@ -81,11 +86,19 @@ export const sidebarRecipe = defineSlotRecipe({
         left: '0',
         width: 'var(--sidebar-width-mobile)',
         maxWidth: 'calc(100vw - 2rem)',
-        minHeight: '100dvh',
+        height: '100dvh',
         boxShadow: 'overlay',
         transform: 'translateX(-100%)',
+        // Hidden, not just translated: a closed drawer must leave the tab
+        // order and the accessibility tree, and must not leak its shadow.
+        visibility: 'hidden',
+        overscrollBehavior: 'contain',
         '&[data-mobile-open="true"]': {
           transform: 'translateX(0)',
+          visibility: 'visible',
+          // Opening flips visibility at once so focus can move in on the
+          // first frame; closing keeps it until the slide-out finishes.
+          transitionProperty: 'width, transform',
         },
         '&[data-side="right"]': {
           left: 'auto',
@@ -128,14 +141,14 @@ export const sidebarRecipe = defineSlotRecipe({
       height: '10',
       margin: '3',
       borderRadius: 'md',
-      color: 'fg.muted',
+      color: 'text.weak',
       backgroundColor: 'transparent',
       border: '0',
       cursor: 'pointer',
       transitionProperty: 'background-color, color, transform',
       transitionDuration: 'fast',
       _hover: {
-        color: 'fg.default',
+        color: 'text',
         backgroundColor: 'fill.hover',
       },
       _active: {
@@ -143,7 +156,7 @@ export const sidebarRecipe = defineSlotRecipe({
       },
       _focusVisible: {
         outline: '2px solid',
-        outlineColor: 'stroke.primary',
+        outlineColor: 'stroke.focus',
         outlineOffset: '2px',
       },
       '& > svg': {
@@ -168,7 +181,7 @@ export const sidebarRecipe = defineSlotRecipe({
     footer: {
       flexShrink: '0',
       padding: 'md',
-      color: 'fg.muted',
+      color: 'text.weak',
       fontSize: 'sm',
       whiteSpace: 'nowrap',
       transitionProperty: 'opacity, width',
@@ -186,7 +199,7 @@ export const sidebarRecipe = defineSlotRecipe({
       alignItems: 'center',
       minHeight: '8',
       paddingInline: '2',
-      color: 'fg.muted',
+      color: 'text.weak',
       fontSize: 'xs',
       fontWeight: 'semibold',
       textTransform: 'uppercase',
@@ -206,10 +219,10 @@ export const sidebarRecipe = defineSlotRecipe({
       borderRadius: 'md',
       border: '0',
       backgroundColor: 'transparent',
-      color: 'fg.muted',
+      color: 'text.weak',
       cursor: 'pointer',
       _hover: {
-        color: 'fg.default',
+        color: 'text',
         backgroundColor: 'fill.hover',
       },
     },
@@ -244,7 +257,7 @@ export const sidebarRecipe = defineSlotRecipe({
       minHeight: '10',
       paddingInline: '2',
       borderRadius: 'md',
-      color: 'fg.muted',
+      color: 'text.weak',
       textDecoration: 'none',
       whiteSpace: 'nowrap',
       border: '0',
@@ -255,7 +268,7 @@ export const sidebarRecipe = defineSlotRecipe({
       transitionProperty: 'background-color, color, transform',
       transitionDuration: 'fast',
       _hover: {
-        color: 'fg.default',
+        color: 'text',
         backgroundColor: 'fill.hover',
       },
       _active: {
@@ -263,11 +276,11 @@ export const sidebarRecipe = defineSlotRecipe({
       },
       _focusVisible: {
         outline: '2px solid',
-        outlineColor: 'stroke.primary',
+        outlineColor: 'stroke.focus',
         outlineOffset: '2px',
       },
       '&[data-active="true"], &[aria-current="page"], &.active': {
-        color: 'fg.default',
+        color: 'text',
         backgroundColor: 'fill.hover',
       },
       '& > svg': {
@@ -292,12 +305,12 @@ export const sidebarRecipe = defineSlotRecipe({
       borderRadius: 'md',
       border: '0',
       backgroundColor: 'transparent',
-      color: 'fg.muted',
+      color: 'text.weak',
       cursor: 'pointer',
       transitionProperty: 'opacity, background-color, color',
       transitionDuration: 'fast',
       _hover: {
-        color: 'fg.default',
+        color: 'text',
         backgroundColor: 'fill.hover',
       },
     },
@@ -306,7 +319,7 @@ export const sidebarRecipe = defineSlotRecipe({
       minWidth: '6',
       borderRadius: 'full',
       paddingInline: '2',
-      color: 'fg.muted',
+      color: 'text.weak',
       fontSize: 'xs',
       fontWeight: 'semibold',
       textAlign: 'center',
@@ -315,11 +328,11 @@ export const sidebarRecipe = defineSlotRecipe({
     },
     menuSub: {
       margin: '0',
-      marginLeft: '5',
+      marginInlineStart: '2',
       padding: '0',
-      paddingLeft: '3',
+      paddingInlineStart: '2',
       listStyle: 'none',
-      borderLeft: 'border.weak',
+      borderInlineStart: 'weak',
     },
     menuSubItem: {
       position: 'relative',
@@ -330,12 +343,25 @@ export const sidebarRecipe = defineSlotRecipe({
       minHeight: '8',
       paddingInline: '2',
       borderRadius: 'md',
-      color: 'fg.muted',
+      color: 'text.weak',
       textDecoration: 'none',
       fontSize: 'sm',
+      transitionProperty: 'background-color, color',
+      transitionDuration: 'fast',
       _hover: {
-        color: 'fg.default',
+        color: 'text',
         backgroundColor: 'fill.hover',
+      },
+      _focusVisible: {
+        outline: '2px solid',
+        outlineColor: 'stroke.focus',
+        outlineOffset: '2px',
+      },
+      // Weight as well as fill, so the current page never relies on color.
+      '&[data-active="true"], &[aria-current="page"]': {
+        color: 'text',
+        backgroundColor: 'fill.hover',
+        fontWeight: 'semibold',
       },
     },
     rail: {
