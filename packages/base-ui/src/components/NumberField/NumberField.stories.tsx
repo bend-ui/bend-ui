@@ -11,5 +11,16 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    label: 'Amount',
+    defaultValue: 100,
+  },
+};
+
+export const WithoutLabel: Story = {
+  args: {
+    'aria-label': 'Quantity',
+    defaultValue: 1,
+    min: 0,
+  },
 };

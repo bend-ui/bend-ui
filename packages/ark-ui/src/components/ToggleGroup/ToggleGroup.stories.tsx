@@ -11,5 +11,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Basic: Story = {
-  args: {},
+  render: (args) => (
+    <ToggleGroup {...args}>
+      <ToggleGroup.Item value="a">A</ToggleGroup.Item>
+      <ToggleGroup.Item value="b">B</ToggleGroup.Item>
+      <ToggleGroup.Item value="c">C</ToggleGroup.Item>
+    </ToggleGroup>
+  ),
 };

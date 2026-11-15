@@ -11,5 +11,8 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Basic: Story = {
-  args: {},
+  args: {
+    trigger: 'Hover me',
+    children: 'Content',
+  },
 };

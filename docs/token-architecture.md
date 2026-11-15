@@ -15,7 +15,7 @@ Use the vocabulary in [CONTEXT.md](../CONTEXT.md): the **Design preset** owns vi
 | Recipe | [recipes](../packages/preset/src/recipes/index.ts) | Maps semantic roles and state conditions to component slots. |
 | Consumer | [createBendPreset](../packages/preset/src/index.ts) | Composes structural/design defaults with a consumer extension. |
 
-`packages/theme` contains additional token assets; the runtime Design preset entry point above is the source traced by this assessment. Reconcile any public ownership claim for those assets before treating them as a second authoritative token system.
+The runtime Design preset entry point above is the only token source. The former `packages/theme` token assets were retired (BEN-54).
 
 ## Naming and alias contract
 

@@ -55,27 +55,13 @@ const Control: SlotRecipeComponent<typeof ArkAngleSlider.Control> = withContext(
   'control',
 );
 
-const Component = () => {
-  return (
-    <Root>
-      <Label>Wind direction</Label>
-      <Control>
-        <Thumb />
-        <MarkerGroup>
-          {[0, 45, 90, 135, 180, 225, 270, 315].map((value, i) => (
-            <Marker key={i} value={value} />
-          ))}
-        </MarkerGroup>
-      </Control>
-      <ValueText />
-      <HiddenInput />
-    </Root>
-  );
-};
-
-export const AngleSlider = Object.assign(Component, {
+export const AngleSlider = Object.assign(Root, {
   Root,
   Label,
   Control,
   Thumb,
+  MarkerGroup,
+  Marker,
+  ValueText,
+  HiddenInput,
 });

@@ -4,58 +4,70 @@ The single central document that tracks, per package adapter, how up to date eac
 Bend UI component is. It covers Base UI, Ark UI, and React Aria together and is the
 source of truth for "how up to date are we."
 
-For each component it records three axes:
+For each component it records:
 
-- **Product intent** — whether the component is in scope, and at what tier.
-- **Implementation progress** — how far the adapter implementation has gotten.
-- **Quality coverage** — how well the component is verified and shown.
+- **Product intent**: whether the component is in scope, and at what tier.
+- **Status**: whether the component meets the definition of `implemented` below.
+- **Criteria**: which of the five `implemented` criteria it meets, one column each.
 
 API drift is caught by TypeScript when the upstream version is bumped (adapters
 extend upstream prop types), recorded per adapter as a **verified against upstream vX**
 marker below. There is no separate drift detector.
 
-> **Seed status.** This matrix was seeded on 2026-07-18 from an audit of the adapter
-> `src/components/` folders against upstream component lists. Rows reflect what exists
-> on disk plus measurable signals (Storybook stories, unit/spec tests, docs pages).
-> Product-intent tiers are a first-draft classification and should be refined as
-> product decisions land. Update a row whenever you touch a component.
+## Summary
+
+Audited from source on **2026-11-15**. Every row was re-checked against the adapter's
+`src/components/` folder, its spec files, and the Docs site pages. Earlier marks were
+not carried over.
+
+| Adapter                            | Rows | `implemented` | `partial` |
+| ---------------------------------- | ---: | ------------: | --------: |
+| Base UI (`@bend-ui/base-ui`)       |   51 |            16 |        35 |
+| Ark UI (`@bend-ui/ark-ui`), frozen |   42 |             0 |        42 |
+| React Aria (`@bend-ui/react-aria`) |   52 |             0 |        52 |
+
+The Docs site documents only the Base UI adapter, so no Ark UI or React Aria component
+can be `implemented` today.
 
 ## Legend
 
 ### Product intent
 
-| Value | Meaning |
-|---|---|
-| `v0` | In the initial v0 slice (Base UI first). |
-| `planned` | Intended, sequenced after the current focus. |
-| `defer` | Deliberately postponed; not current investment. |
-| `exclude` | Explicitly not a target. |
-| `primitive-only` | Low-level layout/utility primitive, not a styled product component. |
+| Value                | Meaning                                                                      |
+| -------------------- | ---------------------------------------------------------------------------- |
+| `v0`                 | In the initial v0 slice (Base UI first).                                     |
+| `planned`            | Intended, sequenced after the current focus.                                 |
+| `defer`              | Deliberately postponed; not current investment.                              |
+| `exclude`            | Explicitly not a target.                                                     |
+| `primitive-only`     | Low-level layout/utility primitive, not a styled product component.          |
 | `covered-by-pattern` | Delivered through an operational pattern rather than a standalone component. |
 
-### Implementation progress
+### Status
 
-| Value | Meaning |
-|---|---|
-| `missing` | No adapter implementation. |
-| `partial` | Present but incomplete (missing parts, variants, or wiring). |
-| `implemented` | Present and exported from the adapter. |
+| Value         | Meaning                                                                      |
+| ------------- | ---------------------------------------------------------------------------- |
+| `missing`     | No adapter implementation.                                                   |
+| `partial`     | Present in the adapter, but fails one or more of the five criteria below.    |
+| `implemented` | Meets **all five** criteria: styled, prop-driven, typed, tested, documented. |
 
-### Quality coverage
+Being present and exported is not enough. A component is `implemented` only when every
+criterion column shows `✓`. The same rule applies to `primitive-only` and
+`covered-by-pattern` rows.
 
-Coverage is tracked as independent signals rather than a single rung, mapping to the
-`untested` → `tested` → `storybook` → `documented` → `demoed` ladder:
+### Criteria
 
-- **Tested** — has a unit/spec test. New tests use `*.spec.tsx`; existing `*.test.tsx`
-  files remain supported during migration. See [Testing conventions](testing.md). A
-  component with no test and nothing else is `untested`.
-- **Storybook** — has a `*.stories.tsx` in Storybook.
-- **Documented** — has a page on the Docs site (`apps/website`).
-- **Demoed** — appears in an adapter demo app. _Not yet tracked per component; the Base
-  UI demo (`apps/vite-base-ui`) exercises many components but the mapping has not been
-  audited._
+| Criterion       | Meets it when                                                                                                                                                                                                                                                                                                                            |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Styled**      | The component applies a Panda recipe or the styled system (`createSlotRecipeContext`, `withRecipe`, a recipe function, or the `bend` JSX factory). A plain re-export or a bare wrapper of the upstream component is not styled.                                                                                                          |
+| **Prop-driven** | It renders only what it is given. No hardcoded demo labels, items, or content, and consumer content such as `children` is not discarded.                                                                                                                                                                                                 |
+| **Typed**       | The adapter exports a props type for it (`<Name>Props` or part props), extending the upstream props where an upstream component exists.                                                                                                                                                                                                  |
+| **Tested**      | A `*.spec.tsx` or `*.test.tsx` renders and asserts on it. Shared specs count (for example `compositions.spec.tsx`, `forms.spec.tsx`, `overlays-navigation.spec.tsx`). An assertion that only checks `Component === Component.Root` does not count. A smoke render counts and is flagged in Notes. See [Testing conventions](testing.md). |
+| **Documented**  | It has a page on the Docs site (`apps/website/content/docs/components/`), or is covered by a page about a closely related component (noted per row).                                                                                                                                                                                     |
 
-`✓` = present, `—` = absent.
+`✓` = meets the criterion, `—` = does not.
+
+**Storybook** (has a `*.stories.tsx`) is tracked as an extra signal. It is not one of
+the five criteria. Appearing in an adapter demo app is not tracked per component.
 
 ## Base UI — `@bend-ui/base-ui` (`packages/base-ui`)
 
@@ -66,117 +78,129 @@ primitive set and adds Bend-authored components that Base UI does not ship (Butt
 Badge, Card, Table, IconButton, SegmentedControl, layout primitives, and the
 AppShell/Sidebar operational patterns).
 
-| Component | Intent | Progress | Tested | Storybook | Documented |
-|---|---|---|:--:|:--:|:--:|
-| Accordion | v0 | implemented | ✓ | ✓ | — |
-| AlertDialog | v0 | implemented | — | ✓ | — |
-| AppShell | covered-by-pattern | implemented | — | ✓ | — |
-| Autocomplete | v0 | implemented | — | ✓ | — |
-| Avatar | v0 | implemented | — | ✓ | ✓ |
-| Badge | v0 | implemented | ✓ | ✓ | ✓ |
-| Box | primitive-only | implemented | — | — | — |
-| Button | v0 | implemented | ✓ | ✓ | ✓ |
-| Card | v0 | implemented | ✓ | — | ✓ |
-| Checkbox | v0 | implemented | ✓ | ✓ | ✓ |
-| CheckboxGroup | v0 | implemented | — | ✓ | — |
-| Collapsible | v0 | implemented | — | ✓ | — |
-| Combobox | v0 | implemented | — | ✓ | — |
-| ContextMenu | v0 | implemented | — | ✓ | — |
-| Dialog | v0 | implemented | ✓ | ✓ | ✓ |
-| Drawer | v0 | implemented | — | ✓ | — |
-| Field | v0 | implemented | ✓ | ✓ | ✓ |
-| Fieldset | v0 | implemented | — | ✓ | — |
-| Form | v0 | implemented | — | ✓ | — |
-| Grid | primitive-only | implemented | — | — | — |
-| Heading | primitive-only | implemented | — | — | — |
-| IconButton | v0 | implemented | ✓ | ✓ | ✓ |
-| Input | v0 | implemented | ✓ | ✓ | ✓ |
-| Menu | v0 | implemented | ✓ | ✓ | ✓ |
-| Menubar | v0 | implemented | — | ✓ | — |
-| Meter | v0 | implemented | — | ✓ | — |
-| NavigationMenu | v0 | implemented | ✓ | ✓ | ✓ |
-| NumberField | v0 | implemented | — | ✓ | — |
-| Paragraph | primitive-only | implemented | — | — | — |
-| Patterns | covered-by-pattern | implemented | — | ✓ | — |
-| Popover | v0 | implemented | ✓ | ✓ | ✓ |
-| PreviewCard | v0 | implemented | — | ✓ | — |
-| Progress | v0 | implemented | — | ✓ | — |
-| Radio | v0 | implemented | ✓ | ✓ | ✓ |
-| ScrollArea | v0 | implemented | — | ✓ | ✓ |
-| SegmentedControl | v0 | implemented | — | ✓ | — |
-| Select | v0 | implemented | ✓ | ✓ | ✓ |
-| Separator | v0 | implemented | ✓ | ✓ | ✓ |
-| Sidebar | covered-by-pattern | implemented | — | ✓ | — |
-| Slider | v0 | implemented | — | ✓ | — |
-| Stack | primitive-only | implemented | — | — | — |
-| Switch | v0 | implemented | ✓ | ✓ | ✓ |
-| Table | v0 | implemented | — | ✓ | — |
-| Tabs | v0 | implemented | ✓ | ✓ | ✓ |
-| Text | primitive-only | implemented | — | — | — |
-| Textarea | v0 | implemented | ✓ | ✓ | ✓ |
-| Toast | v0 | implemented | — | ✓ | — |
-| Toggle | v0 | implemented | — | ✓ | — |
-| ToggleGroup | v0 | implemented | — | ✓ | — |
-| Toolbar | v0 | implemented | — | ✓ | — |
-| Tooltip | v0 | implemented | ✓ | ✓ | ✓ |
+| Component        | Intent             | Status      | Styled | Prop-driven | Typed | Tested | Documented | Storybook | Notes                                                                  |
+| ---------------- | ------------------ | ----------- | :----: | :---------: | :---: | :----: | :--------: | :-------: | ---------------------------------------------------------------------- |
+| Accordion        | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                        |
+| AlertDialog      | v0                 | partial     |   ✓    |      ✓      |   ✓   |   —    |     —      |     ✓     |                                                                        |
+| AppShell         | covered-by-pattern | partial     |   ✓    |      ✓      |   —   |   —    |     —      |     ✓     | Props type lives in `@bend-ui/core`; not re-exported.                  |
+| Autocomplete     | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                        |
+| Avatar           | v0                 | partial     |   ✓    |      ✓      |   ✓   |   —    |     ✓      |     ✓     |                                                                        |
+| Badge            | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
+| Box              | primitive-only     | partial     |   ✓    |      ✓      |   ✓   |   —    |     —      |     —     |                                                                        |
+| Button           | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
+| Card             | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     —     |                                                                        |
+| Checkbox         | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
+| CheckboxGroup    | v0                 | partial     |   —    |      ✓      |   ✓   |   ✓    |     —      |     ✓     | Bare upstream wrapper; test is a smoke render.                         |
+| Collapsible      | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                        |
+| Combobox         | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                        |
+| ContextMenu      | v0                 | partial     |   ✓    |      ✓      |   —   |   —    |     —      |     ✓     | Spec only checks `ContextMenu === ContextMenu.Root`.                   |
+| Dialog           | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
+| Drawer           | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                        |
+| Field            | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
+| Fieldset         | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                        |
+| Form             | v0                 | partial     |   —    |      ✓      |   ✓   |   ✓    |     —      |     ✓     | Bare upstream wrapper; test is a smoke render.                         |
+| Grid             | primitive-only     | partial     |   ✓    |      ✓      |   ✓   |   —    |     —      |     —     |                                                                        |
+| Heading          | primitive-only     | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     —     | Shown on the Components overview page, no page of its own.             |
+| IconButton       | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     —     | Documented on the Button page.                                         |
+| Input            | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
+| Menu             | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
+| Menubar          | v0                 | partial     |   ✓    |      ✓      |   —   |   ✓    |     —      |     ✓     | Test is a smoke render.                                                |
+| Meter            | v0                 | partial     |   ✓    |      ✓      |   ✓   |   —    |     —      |     ✓     |                                                                        |
+| NavigationMenu   | v0                 | partial     |   ✓    |      ✓      |   —   |   ✓    |     ✓      |     ✓     | Documented on the Navigation page.                                     |
+| NumberField      | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                        |
+| Paragraph        | primitive-only     | partial     |   ✓    |      ✓      |   ✓   |   —    |     —      |     —     |                                                                        |
+| Patterns         | covered-by-pattern | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                        |
+| Popover          | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
+| PreviewCard      | v0                 | partial     |   ✓    |      ✓      |   —   |   —    |     —      |     ✓     | Spec only checks `PreviewCard === PreviewCard.Root`.                   |
+| Progress         | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                        |
+| Radio            | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
+| ScrollArea       | v0                 | partial     |   ✓    |      ✓      |   ✓   |   —    |     ✓      |     ✓     |                                                                        |
+| SegmentedControl | v0                 | partial     |   ✓    |      ✓      |   —   |   —    |     —      |     ✓     |                                                                        |
+| Select           | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
+| Separator        | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
+| Sidebar          | covered-by-pattern | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                        |
+| Slider           | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                        |
+| Stack            | primitive-only     | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     —     |                                                                        |
+| Switch           | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
+| Table            | v0                 | partial     |   ✓    |      ✓      |   ✓   |   —    |     —      |     ✓     |                                                                        |
+| Tabs             | v0                 | partial     |   ✓    |      ✓      |   —   |   ✓    |     ✓      |     ✓     |                                                                        |
+| Text             | primitive-only     | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     —     |                                                                        |
+| Textarea         | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
+| Toast            | v0                 | partial     |   ✓    |      ✓      |   —   |   —    |     —      |     ✓     | Exports `ToastComponent`, not a props type; spec only checks identity. |
+| Toggle           | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     | Test is a smoke render.                                                |
+| ToggleGroup      | v0                 | partial     |   ✓    |      ✓      |   —   |   ✓    |     —      |     ✓     | Test is a smoke render.                                                |
+| Toolbar          | v0                 | partial     |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                                        |
+| Tooltip          | v0                 | implemented |   ✓    |      ✓      |   ✓   |   ✓    |     ✓      |     ✓     |                                                                        |
 
-**Base UI summary:** 51 components implemented · 19 tested · 44 with Storybook · 19 documented.
-Button and IconButton share the documented Button reference and recipe customization proof.
+**Base UI summary:** 16 of 51 components implemented. The rest are `partial`:
+
+- Missing only a Docs page: Accordion, Autocomplete, Collapsible, Combobox, Drawer,
+  Fieldset, Heading, NumberField, Patterns, Progress, Sidebar, Slider, Stack, Text,
+  Toggle, Toolbar.
+- Missing only a test: Avatar, ScrollArea.
+- Missing only an exported props type: NavigationMenu, Tabs.
+- Failing more than one criterion: AlertDialog, Box, Grid, Meter, Paragraph, Table
+  (test, docs); Menubar, ToggleGroup (props type, docs); AppShell, ContextMenu,
+  PreviewCard, SegmentedControl, Toast (props type, test, docs); CheckboxGroup, Form
+  (styling, docs).
 
 ## Ark UI — `@bend-ui/ark-ui` (`packages/ark-ui`)
 
+> **Experimental and frozen** (decision D1). Keep it building and tested. Do not add
+> components or invest in it unless that decision changes. Product intent is `defer`
+> for every non-primitive, non-pattern row.
+
 **Verified against upstream:** `@ark-ui/react` `^5.37.2`.
 
-Sequenced after the Base UI v0 slice. Keep it building, but do not invest until Ark UI
-adapter work resumes. The full missing-vs-upstream audit is pending; rows below reflect
-what is implemented today.
+| Component   | Intent             | Status  | Styled | Prop-driven | Typed | Tested | Documented | Storybook | Notes                                                 |
+| ----------- | ------------------ | ------- | :----: | :---------: | :---: | :----: | :--------: | :-------: | ----------------------------------------------------- |
+| Accordion   | defer              | partial |   ✓    |      ✓      |   ✓   |   —    |     —      |     ✓     |                                                       |
+| AngleSlider | defer              | partial |   ✓    |      ✓      |   ✓   |   —    |     —      |     ✓     | Spec only checks `AngleSlider === AngleSlider.Root`.  |
+| AppShell    | covered-by-pattern | partial |   ✓    |      ✓      |   —   |   —    |     —      |     —     | Props type lives in `@bend-ui/core`; not re-exported. |
+| Avatar      | defer              | partial |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                       |
+| Button      | defer              | partial |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     —     |                                                       |
+| Carousel    | defer              | partial |   ✓    |      ✓      |   ✓   |   —    |     —      |     ✓     | Spec only checks identity.                            |
+| Checkbox    | defer              | partial |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                       |
+| ClientOnly  | primitive-only     | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain upstream re-export.                             |
+| Clipboard   | defer              | partial |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                       |
+| Collapsible | defer              | partial |   —    |      ✓      |   —   |   ✓    |     —      |     ✓     | Bare upstream re-export.                              |
+| Collection  | primitive-only     | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain upstream re-export.                             |
+| ColorPicker | defer              | partial |   —    |      ✓      |   —   |   —    |     —      |     ✓     | Bare upstream re-export; spec only checks identity.   |
+| Combobox    | defer              | partial |   ✓    |      ✓      |   ✓   |   —    |     —      |     ✓     |                                                       |
+| Command     | defer              | partial |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                       |
+| DatePicker  | defer              | partial |   ✓    |      ✓      |   ✓   |   —    |     —      |     ✓     | Spec only checks identity.                            |
+| Dialog      | defer              | partial |   ✓    |      ✓      |   ✓   |   —    |     —      |     ✓     |                                                       |
+| Drawer      | defer              | partial |   ✓    |      ✓      |   ✓   |   —    |     —      |     ✓     |                                                       |
+| Editable    | defer              | partial |   —    |      ✓      |   —   |   —    |     —      |     ✓     | Bare upstream re-export; spec only checks identity.   |
+| Environment | primitive-only     | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain upstream re-export.                             |
+| Field       | defer              | partial |   ✓    |      ✓      |   ✓   |   —    |     —      |     ✓     |                                                       |
+| Fieldset    | defer              | partial |   —    |      ✓      |   —   |   —    |     —      |     ✓     | Bare upstream re-export; spec only checks identity.   |
+| FileUpload  | defer              | partial |   —    |      ✓      |   —   |   —    |     —      |     ✓     | Bare upstream re-export; spec only checks identity.   |
+| FocusTrap   | primitive-only     | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain upstream re-export.                             |
+| Format      | primitive-only     | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain upstream re-export.                             |
+| HoverCard   | defer              | partial |   —    |      ✓      |   ✓   |   ✓    |     —      |     ✓     | Composes upstream parts with no recipe.               |
+| Input       | defer              | partial |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     —     |                                                       |
+| Locale      | primitive-only     | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain upstream re-export.                             |
+| Menu        | defer              | partial |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                       |
+| Pagination  | defer              | partial |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                       |
+| Popover     | defer              | partial |   ✓    |      ✓      |   ✓   |   —    |     —      |     ✓     |                                                       |
+| Portal      | primitive-only     | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain upstream re-export.                             |
+| Presence    | primitive-only     | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain upstream re-export.                             |
+| RadioGroup  | defer              | partial |   ✓    |      ✓      |   ✓   |   —    |     —      |     ✓     |                                                       |
+| ScrollArea  | defer              | partial |   ✓    |      ✓      |   ✓   |   —    |     —      |     —     |                                                       |
+| Select      | defer              | partial |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                       |
+| Sidebar     | covered-by-pattern | partial |   ✓    |      ✓      |   ✓   |   —    |     —      |     ✓     |                                                       |
+| Switch      | defer              | partial |   ✓    |      ✓      |   ✓   |   —    |     —      |     ✓     |                                                       |
+| Tabs        | defer              | partial |   ✓    |      ✓      |   ✓   |   —    |     —      |     ✓     |                                                       |
+| Toast       | defer              | partial |   ✓    |      ✓      |   ✓   |   —    |     —      |     ✓     |                                                       |
+| Toggle      | defer              | partial |   —    |      ✓      |   —   |   —    |     —      |     ✓     | Bare upstream re-export; spec only checks identity.   |
+| ToggleGroup | defer              | partial |   ✓    |      ✓      |   —   |   —    |     —      |     ✓     | Spec only checks identity.                            |
+| Tooltip     | defer              | partial |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     |                                                       |
 
-| Component | Intent | Progress | Tested | Storybook | Documented |
-|---|---|---|:--:|:--:|:--:|
-| Accordion | planned | implemented | — | ✓ | — |
-| AngleSlider | planned | implemented | — | ✓ | — |
-| AppShell | covered-by-pattern | implemented | — | — | — |
-| Avatar | planned | implemented | ✓ | ✓ | — |
-| Button | planned | implemented | — | — | — |
-| Carousel | planned | implemented | — | ✓ | — |
-| Checkbox | planned | implemented | ✓ | ✓ | — |
-| ClientOnly | primitive-only | implemented | — | — | — |
-| Clipboard | planned | implemented | — | ✓ | — |
-| Collapsible | planned | implemented | — | ✓ | — |
-| Collection | primitive-only | implemented | — | — | — |
-| ColorPicker | planned | implemented | — | ✓ | — |
-| Combobox | planned | implemented | — | ✓ | — |
-| Command | planned | implemented | — | ✓ | — |
-| DatePicker | planned | implemented | — | ✓ | — |
-| Dialog | planned | implemented | — | ✓ | — |
-| Drawer | planned | implemented | — | ✓ | — |
-| Editable | planned | implemented | — | ✓ | — |
-| Environment | primitive-only | implemented | — | — | — |
-| Field | planned | implemented | — | ✓ | — |
-| Fieldset | planned | implemented | — | ✓ | — |
-| FileUpload | planned | implemented | — | ✓ | — |
-| FocusTrap | primitive-only | implemented | — | — | — |
-| Format | primitive-only | implemented | — | — | — |
-| HoverCard | planned | implemented | — | ✓ | — |
-| Input | planned | implemented | ✓ | — | — |
-| Locale | primitive-only | implemented | — | — | — |
-| Menu | planned | implemented | ✓ | ✓ | — |
-| Pagination | planned | implemented | — | ✓ | — |
-| Popover | planned | implemented | — | ✓ | — |
-| Portal | primitive-only | implemented | — | — | — |
-| Presence | primitive-only | implemented | — | — | — |
-| RadioGroup | planned | implemented | — | ✓ | — |
-| ScrollArea | planned | implemented | — | — | — |
-| Select | planned | implemented | — | ✓ | — |
-| Sidebar | covered-by-pattern | implemented | — | ✓ | — |
-| Switch | planned | implemented | — | ✓ | — |
-| Tabs | planned | implemented | — | ✓ | — |
-| Toast | planned | implemented | — | ✓ | — |
-| Toggle | planned | implemented | — | ✓ | — |
-| ToggleGroup | planned | implemented | — | ✓ | — |
-| Tooltip | planned | implemented | — | ✓ | — |
-
-**Ark UI summary:** 42 components implemented · 4 tested · 30 with Storybook · 0 documented.
+**Ark UI summary:** 0 of 42 components implemented. No Ark UI component has a Docs
+page. Ten rows miss only that page: Avatar, Button, Checkbox, Clipboard, Command,
+Input, Menu, Pagination, Select, Tooltip. Rows marked "bare upstream re-export" expose
+the upstream component without a recipe.
 
 **Style-context audit (2026-07-19):** Every Ark UI component that imports a
 generated recipe now uses its generated `createStyleContext` contract. The
@@ -188,82 +212,76 @@ remaining `withParts` uses are parts that are not generated recipe slots.
 **Verified against upstream:** `react-aria-components` `^1.19.0`.
 
 Sequenced after the Base UI v0 slice; a dedicated React Aria demo app is added when the
-adapter is prioritized. The full missing-vs-upstream audit is pending; rows below reflect
-what is implemented today.
+adapter is prioritized. The full missing-vs-upstream audit is pending. Most rows are
+plain `react-aria-components` re-exports: they are neither styled nor typed by Bend UI,
+so they cannot be `implemented`.
 
-| Component | Intent | Progress | Tested | Storybook | Documented |
-|---|---|---|:--:|:--:|:--:|
-| AppShell | covered-by-pattern | implemented | — | — | — |
-| Autocomplete | planned | implemented | — | — | — |
-| Breadcrumbs | planned | implemented | ✓ | ✓ | — |
-| Button | planned | implemented | ✓ | ✓ | — |
-| Calendar | planned | implemented | — | — | — |
-| Checkbox | planned | implemented | ✓ | ✓ | — |
-| CheckboxGroup | planned | implemented | ✓ | ✓ | — |
-| ColorArea | planned | implemented | — | — | — |
-| ColorField | planned | implemented | — | — | — |
-| ColorPicker | planned | implemented | — | — | — |
-| ColorSlider | planned | implemented | — | — | — |
-| ColorSwatch | planned | implemented | — | — | — |
-| ColorSwatchPicker | planned | implemented | — | — | — |
-| ColorWheel | planned | implemented | — | — | — |
-| ComboBox | planned | implemented | — | — | — |
-| DateField | planned | implemented | — | — | — |
-| DatePicker | planned | implemented | — | — | — |
-| DateRangePicker | planned | implemented | — | — | — |
-| Dialog | planned | implemented | — | — | — |
-| Disclosure | planned | implemented | — | — | — |
-| DropZone | planned | implemented | — | — | — |
-| FileTrigger | planned | implemented | — | — | — |
-| Form | planned | implemented | — | — | — |
-| GridList | planned | implemented | — | — | — |
-| Group | primitive-only | implemented | — | — | — |
-| Hooks | primitive-only | implemented | — | — | — |
-| Input | planned | implemented | ✓ | ✓ | — |
-| Label | primitive-only | implemented | — | — | — |
-| Link | planned | implemented | — | — | — |
-| ListBox | planned | implemented | — | — | — |
-| Menu | planned | implemented | — | — | — |
-| Meter | planned | implemented | — | — | — |
-| Modal | planned | implemented | ✓ | ✓ | — |
-| NumberField | planned | implemented | — | — | — |
-| Popover | planned | implemented | — | — | — |
-| Primitives | primitive-only | implemented | — | — | — |
-| ProgressBar | planned | implemented | — | — | — |
-| Providers | primitive-only | implemented | — | — | — |
-| Radio | planned | implemented | ✓ | ✓ | — |
-| RadioGroup | planned | implemented | — | — | — |
-| RangeCalendar | planned | implemented | — | — | — |
-| SearchField | planned | implemented | — | — | — |
-| Select | planned | implemented | — | — | — |
-| Separator | planned | implemented | — | — | — |
-| Slider | planned | implemented | — | — | — |
-| Switch | planned | implemented | — | — | — |
-| Table | planned | implemented | — | — | — |
-| Tabs | planned | implemented | — | — | — |
-| TagGroup | planned | implemented | — | — | — |
-| TextArea | planned | implemented | — | — | — |
-| TextField | planned | implemented | — | — | — |
-| TimeField | planned | implemented | — | — | — |
-| Toast | planned | implemented | — | — | — |
-| ToggleButton | planned | implemented | — | — | — |
-| Toolbar | planned | implemented | — | — | — |
-| Tooltip | planned | implemented | — | — | — |
-| Tree | planned | implemented | — | — | — |
+| Component         | Intent             | Status  | Styled | Prop-driven | Typed | Tested | Documented | Storybook | Notes                                                                               |
+| ----------------- | ------------------ | ------- | :----: | :---------: | :---: | :----: | :--------: | :-------: | ----------------------------------------------------------------------------------- |
+| AppShell          | covered-by-pattern | partial |   ✓    |      ✓      |   —   |   —    |     —      |     —     | Uses the `@bend-ui/core` app shell recipe; props type not re-exported.              |
+| Autocomplete      | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| Button            | planned            | partial |   ✓    |      ✓      |   ✓   |   ✓    |     —      |     ✓     | Spec is a bare smoke render.                                                        |
+| Calendar          | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| Checkbox          | planned            | partial |   ✓    |      —      |   ✓   |   ✓    |     —      |     ✓     | Discards `children`: the label passed by the consumer is replaced by the indicator. |
+| ColorArea         | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| ColorField        | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| ColorPicker       | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| ColorSlider       | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| ColorSwatch       | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| ColorSwatchPicker | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| ColorWheel        | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| ComboBox          | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| DateField         | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| DatePicker        | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| DateRangePicker   | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| Dialog            | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| Disclosure        | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| DropZone          | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| FileTrigger       | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| Form              | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| GridList          | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| Group             | primitive-only     | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| Hooks             | primitive-only     | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| Label             | primitive-only     | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| Link              | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| ListBox           | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| Menu              | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| Meter             | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| NumberField       | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| Popover           | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| Primitives        | primitive-only     | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| ProgressBar       | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| Providers         | primitive-only     | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| RadioGroup        | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| RangeCalendar     | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| SearchField       | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| Select            | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| Separator         | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| Slider            | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| Switch            | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| Table             | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| Tabs              | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| TagGroup          | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| TextArea          | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| TextField         | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| TimeField         | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| Toast             | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| ToggleButton      | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| Toolbar           | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| Tooltip           | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
+| Tree              | planned            | partial |   —    |      ✓      |   —   |   —    |     —      |     —     | Plain `react-aria-components` re-export.                                            |
 
-**React Aria summary:** 57 components implemented · 7 tested · 7 with Storybook · 0 documented.
-
-## Ariakit — `@bend-ui/ariakit` (`packages/ariakit`)
-
-Parked. Not a current support target unless explicitly revived (upstream
-`@ariakit/react` `^0.4.34`). Only `AppShell` and `Select` exist; not tracked here.
+**React Aria summary:** 0 of 52 components implemented. Only Button and Checkbox apply
+a recipe, and neither has a Docs page. The remaining rows are upstream re-exports or
+the core app shell.
 
 ## How to update
 
 - When you add, change, or remove a component, update its row (or add one) in the
-  relevant adapter table in the same change.
+  relevant adapter table in the same change. Set the status to `implemented` only when
+  all five criteria columns are `✓`, and update the summary counts.
 - When you bump an upstream version, re-check the adapter against the upstream component
   list, resolve any TypeScript prop-type breakage, and update that adapter's
   **verified against upstream** marker.
-- Keep the vocabulary aligned with `CONTEXT.md`. If you need a new intent or coverage
+- Keep the vocabulary aligned with `CONTEXT.md`. If you need a new intent or status
   value, add it to `CONTEXT.md` first, then use it here.

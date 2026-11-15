@@ -1,3 +1,4 @@
+import type { SlotRecipeComponent } from '@bend-ui/core';
 import { Clipboard as ClipboardPrimitive } from '@ark-ui/react';
 import { CheckIcon, ClipboardCopyIcon } from 'lucide-react';
 
@@ -11,7 +12,10 @@ export type ClipboardRootProps = Assign<
   HTMLStyledProps<'div'>,
   ClipboardPrimitive.RootProps
 >;
-const ClipboardRoot = withProvider(ClipboardPrimitive.Root, 'root');
+const ClipboardRoot: SlotRecipeComponent<
+  typeof ClipboardPrimitive.Root,
+  (typeof clipboard)['__type']
+> = withProvider(ClipboardPrimitive.Root, 'root');
 
 export type ClipboardLabelProps = Assign<
   HTMLStyledProps<'label'>,
@@ -46,12 +50,16 @@ const ClipboardIndicator = withContext(
   'indicator',
 );
 
-export type ClipboardProps = ClipboardRootProps;
+export type ClipboardProps = ClipboardRootProps & {
+  /** Visible label for the copied value. */
+  label?: React.ReactNode;
+};
 
 const ClipboardComponent = (props: ClipboardProps) => {
+  const { label, ...rest } = props;
   return (
-    <ClipboardRoot {...props}>
-      <ClipboardLabel>Copy this link</ClipboardLabel>
+    <ClipboardRoot {...rest}>
+      {!!label && <ClipboardLabel>{label}</ClipboardLabel>}
       <ClipboardControl>
         <ClipboardInput />
         <ClipboardTrigger>
@@ -71,4 +79,4 @@ export const Clipboard = Object.assign(ClipboardComponent, {
   Input: ClipboardInput,
   Trigger: ClipboardTrigger,
   Indicator: ClipboardIndicator,
-}) as unknown as typeof ClipboardPrimitive;
+});

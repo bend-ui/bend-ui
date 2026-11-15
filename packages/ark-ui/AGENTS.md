@@ -2,6 +2,9 @@
 
 Bend UI package adapter over **Ark UI** (`@ark-ui/react`).
 
+**Status: experimental, frozen.** Keep it building and tested. Do not add components or
+invest in it, and do not treat it as a support target for new work. Base UI is the focus.
+
 - **Upstream library**: Ark UI — https://ark-ui.com/docs/components/overview
 - **Pinned version**: see `@ark-ui/react` in `package.json` (source of truth).
 
@@ -12,5 +15,4 @@ Bend UI package adapter over **Ark UI** (`@ark-ui/react`).
 - **What's implemented and how complete it is** (product intent, progress, quality
   coverage, verified-against-upstream marker): `docs/component-catalog.md`.
 
-This adapter is sequenced after the Base UI v0 slice — keep it building, but do not invest
-until Ark UI adapter work resumes. This file is intentionally thin.
+This file is intentionally thin.

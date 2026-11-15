@@ -3,6 +3,7 @@ import {
   AlertTriangleIcon,
   CalendarIcon,
   CreditCardIcon,
+  MoreHorizontalIcon,
   UsersIcon,
 } from 'lucide-react';
 import {
@@ -15,6 +16,7 @@ import {
   TimelineItem,
 } from './Patterns';
 import { Badge } from '../Badge';
+import { IconButton } from '../IconButton';
 import { Input } from '../Input';
 import { Stack } from '@bend-ui/styled-system/jsx';
 
@@ -24,6 +26,10 @@ const meta: Meta<typeof Surface> = {
 };
 
 export default meta;
+
+const moreAction = (
+  <IconButton icon={<MoreHorizontalIcon />}>More</IconButton>
+);
 
 type Story = StoryObj<typeof meta>;
 
@@ -72,6 +78,7 @@ export const DashboardShell: Story = {
           <PanelHeader
             title="Response board"
             description="Dense list rows for schedules, clients, terrain zones, and incident queues."
+            action={moreAction}
           />
           <TimelineItem
             avatarFallback="MC"
@@ -99,7 +106,7 @@ export const ActionRowsAndInputs: Story = {
   render: () => (
     <Surface>
       <Stack gap="4">
-        <PanelHeader title="Quick actions" />
+        <PanelHeader title="Quick actions" action={moreAction} />
         <Stack gap="2">
           <ActionItem
             icon={<CalendarIcon />}

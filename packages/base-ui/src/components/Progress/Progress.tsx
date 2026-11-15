@@ -1,4 +1,4 @@
-import React from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 import { Progress as ProgressPrimitive } from '@base-ui/react/progress';
 import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
 import { progress } from '@bend-ui/styled-system/recipes';
@@ -11,22 +11,17 @@ const ProgressValue = withContext(ProgressPrimitive.Value, 'value');
 const ProgressTrack = withContext(ProgressPrimitive.Track, 'track');
 const ProgressIndicator = withContext(ProgressPrimitive.Indicator, 'indicator');
 
-const Component = () => {
-  const [value, setValue] = React.useState(20);
+export interface ProgressProps
+  extends Omit<ComponentProps<typeof ProgressRoot>, 'children'> {
+  label?: ReactNode;
+}
 
-  // Simulate changes
-  React.useEffect(() => {
-    const interval = window.setInterval(() => {
-      setValue((current) =>
-        Math.min(100, Math.round(current + Math.random() * 25)),
-      );
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
+/** Label, value and track for a progress value; use the parts for custom layouts. */
+const Component = (props: ProgressProps) => {
+  const { label, ...rest } = props;
   return (
-    <ProgressRoot value={value}>
-      <ProgressLabel>Export data</ProgressLabel>
+    <ProgressRoot {...rest}>
+      {label != null && <ProgressLabel>{label}</ProgressLabel>}
       <ProgressValue />
       <ProgressTrack>
         <ProgressIndicator />
@@ -34,6 +29,8 @@ const Component = () => {
     </ProgressRoot>
   );
 };
+
+Object.assign(Component, { displayName: 'Progress' });
 
 export const Progress = Object.assign(Component, {
   Root: ProgressRoot,

@@ -1,3 +1,4 @@
+import type { ComponentProps, ReactNode } from 'react';
 import { Dialog } from '@base-ui/react/dialog';
 import { bend } from '@bend-ui/core';
 import { createSlotRecipeContext } from '@bend-ui/styled-system/jsx';
@@ -23,28 +24,32 @@ const DrawerContent = withContext(bend.div, 'content');
 
 const DrawerClose = withContext(Dialog.Close, 'closeTrigger');
 
-export interface DrawerProps {
-  trigger?: React.ReactNode;
-  title?: React.ReactNode;
-  description?: React.ReactNode;
-  children: React.ReactNode;
+export interface DrawerProps
+  extends Omit<ComponentProps<typeof DrawerRoot>, 'children'> {
+  trigger?: ReactNode;
+  title?: ReactNode;
+  description?: ReactNode;
+  /** Content of the close button; the button is omitted when not provided. */
+  closeLabel?: ReactNode;
+  children?: ReactNode;
 }
 
 const Component = (props: DrawerProps) => {
-  const { children, trigger, title, description, ...rest } = props;
+  const { children, trigger, title, description, closeLabel, ...rest } =
+    props;
   return (
     <DrawerRoot {...rest}>
-      <DrawerTrigger>{trigger}</DrawerTrigger>
+      {trigger != null && <DrawerTrigger>{trigger}</DrawerTrigger>}
       <DrawerPortal>
         <DrawerBackdrop />
         <DrawerPopup>
           <DrawerContent>
-            {!!title && <DrawerTitle>{title}</DrawerTitle>}
-            {!!description && (
+            {title != null && <DrawerTitle>{title}</DrawerTitle>}
+            {description != null && (
               <DrawerDescription>{description}</DrawerDescription>
             )}
             {children}
-            <DrawerClose>Close</DrawerClose>
+            {closeLabel != null && <DrawerClose>{closeLabel}</DrawerClose>}
           </DrawerContent>
         </DrawerPopup>
       </DrawerPortal>

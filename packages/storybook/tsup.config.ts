@@ -2,7 +2,7 @@ import { defineConfig } from 'tsup';
 
 export default defineConfig({
   entry: ['src/index.ts'],
-  external: ['storybook', '@storybook/*', '@bend-ui/theme'],
+  external: ['storybook', '@storybook/*'],
   platform: 'browser',
   format: ['cjs', 'esm'],
   target: 'es2020',
@@ -12,7 +12,8 @@ export default defineConfig({
   sourcemap: true,
   minify: false,
   keepNames: true,
-  dts: false,
+  dts: true,
+  tsconfig: 'tsconfig.lib.json',
   treeshake: true,
   bundle: true,
   outDir: 'dist',

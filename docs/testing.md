@@ -22,7 +22,7 @@ is not required before adding new tests.
 Run `pnpm validate` locally and in CI to build, lint, test, and type-check affected
 projects. Nx uses `NX_BASE` / `NX_HEAD` in CI; locally it compares against `main`
 and includes working-tree changes. Use `pnpm validate:all` for the full active
-workspace. Both commands exclude `status:parked`; currently only Ariakit carries
+workspace. Both commands exclude `status:parked`; no project currently carries
 that tag. Config, the Docs site, the Ark and Base UI demos, the customization
 harness, and the migrated Panda playground are included.
 

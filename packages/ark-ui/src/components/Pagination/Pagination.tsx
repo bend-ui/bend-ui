@@ -51,11 +51,16 @@ export type PaginationEllipsisProps = Assign<
 
 const PaginationEllipsis = withContext(ArkPagination.Ellipsis, 'ellipsis');
 
-export type PaginationProps = PaginationRootProps;
+export type PaginationProps = PaginationRootProps & {
+  /** Content of the previous-page button. */
+  prevTrigger: React.ReactNode;
+  /** Content of the next-page button. */
+  nextTrigger: React.ReactNode;
+};
 
-const Component = (props: PaginationProps) => (
+const Component = ({ prevTrigger, nextTrigger, ...props }: PaginationProps) => (
   <PaginationRoot {...props}>
-    <PaginationPrevTrigger>Previous Page</PaginationPrevTrigger>
+    <PaginationPrevTrigger>{prevTrigger}</PaginationPrevTrigger>
     <PaginationContext>
       {(pagination) =>
         pagination.pages.map((page, index) =>
@@ -71,7 +76,7 @@ const Component = (props: PaginationProps) => (
         )
       }
     </PaginationContext>
-    <PaginationNextTrigger>Next Page</PaginationNextTrigger>
+    <PaginationNextTrigger>{nextTrigger}</PaginationNextTrigger>
   </PaginationRoot>
 );
 

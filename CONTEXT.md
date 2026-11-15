@@ -17,7 +17,7 @@ Longer term, Bend UI should include tooling for design-system creation and maint
 Current supported adapter direction:
 
 - Base UI
-- Ark UI
+- Ark UI (frozen as experimental: kept building and tested, but no new components or investment)
 - React Aria Components
 
 The prior experimental Radix UI adapter has been removed. Do not treat Radix parity as a goal unless that decision changes.
@@ -38,9 +38,10 @@ Use these terms when discussing the repo.
 - **Color mode**: the light, dark, or system-controlled presentation axis for a Theme personality. In the Docs site it is managed independently from the selected Theme personality.
 - **Styled system**: generated Panda CSS output consumed by the React packages. Do not hand-edit generated styled-system output unless a plan explicitly says so.
 - **React foundation**: the removed transitional module that previously centralized styled elements, layout primitives, polymorphic composition, and shared helpers. Package adapters now use Panda's generated helpers and their upstream primitive library's native composition model instead.
-- **Package adapter**: a package that adapts an upstream primitive library into the Bend UI design system. Current support targets are Base UI, Ark UI, and React Aria Components.
+- **Package adapter**: a package that adapts an upstream primitive library into the Bend UI design system. Current support targets are Base UI and React Aria Components; Ark UI is frozen as experimental (kept building and tested, not a target for new work).
 - **Adapter-native component catalog**: the set of Bend-styled components an adapter exposes by following its upstream primitive library's names, composition model, and API shape. It should share Bend UI visual intent without forcing identical component parity across adapters.
-- **Component catalog matrix**: the single central document (`docs/component-catalog.md`) that tracks, per adapter, product intent (`v0`, `planned`, `defer`, `exclude`, `primitive-only`, `covered-by-pattern`), implementation progress (`missing`, `partial`, `implemented`), and quality coverage (`untested`, `tested`, `storybook`, `documented`, `demoed`). It covers Base UI, Ark UI, and React Aria together and is the source of truth for "how up to date are we." API drift is caught by TypeScript when the upstream version is bumped (adapters extend upstream prop types), recorded as a per-adapter "verified against upstream vX" marker; there is no separate drift detector.
+- **Component catalog matrix**: the single central document (`docs/component-catalog.md`) that tracks, per adapter, product intent (`v0`, `planned`, `defer`, `exclude`, `primitive-only`, `covered-by-pattern`) and status (`missing`, `partial`, `implemented`), with one column per implemented criterion. It covers Base UI, Ark UI, and React Aria together and is the source of truth for "how up to date are we." API drift is caught by TypeScript when the upstream version is bumped (adapters extend upstream prop types), recorded as a per-adapter "verified against upstream vX" marker; there is no separate drift detector.
+- **Implemented**: a component status that requires all five criteria: **styled** (applies a Panda recipe or the styled system, not a bare upstream re-export), **prop-driven** (renders only what it is given, no hardcoded demo content), **typed** (exports a props type extending upstream), **tested** (a spec renders and asserts on it), and **documented** (has a Docs site page). A component that is merely present and exported is `partial`.
 - **Upstream primitive**: a component primitive from an external library such as `@ark-ui/react`, `@base-ui/react`, `react-aria-components`, or `radix-ui`.
 - **Part**: a named slot in a compound module, usually exposed through a `data-part` attribute and styled by a slot recipe.
 - **State-attribute contract**: the canonical, discrete-boolean DOM state attributes (`data-open`, `data-checked`, `data-disabled`, `data-selected`, `data-invalid`, `data-readonly`, `data-highlighted`, …) that recipes style against. Panda conditions match every supported library's native attributes via `:is()` unions (e.g. `open: '&:is([data-open], [data-state="open"])'`), so a single conditions set is implementation-agnostic. Runtime normalization inside an adapter component is a last resort, only for states where a union selector is ambiguous. See `docs/adr/0002`.
@@ -65,15 +66,13 @@ Use these terms when discussing the repo.
 - `packages/preset`: design preset. It composes `preset-base` and adds the Bend UI visual language: tokens, semantic tokens, themes, global CSS, and the canonical state-attribute conditions. Exposes `createBendPreset()` (the former `preset()` factory, minus the per-library option).
 - `packages/config`: `@bend-ui/config`. Thin setup package exposing `createBendConfig()`, sugar over Panda's `defineConfig()` that installs the Bend preset, sets defaults, and composes consumer hooks without clobbering them. `defineConfig()` remains usable directly.
 - `packages/styled-system`: checked-in workspace package for generated Panda output used by examples and packages.
-- `packages/theme`: token-oriented package for theme assets.
 - `packages/react-utils`: small shared utilities. Keep these deep enough to justify their existence; avoid pass-through helpers.
 
 ### Package adapters
 
 - `packages/base-ui`: Bend UI adapter over Base UI. This is the v0 focus and currently the most active adapter.
-- `packages/ark-ui`: Bend UI adapter over Ark UI (`@bend-ui/ark-ui`).
+- `packages/ark-ui`: Bend UI adapter over Ark UI (`@bend-ui/ark-ui`). Frozen as experimental: keep it building and tested, but add no new components and do not treat it as a support target for new work.
 - `packages/react-aria`: Bend UI adapter over React Aria Components (`@bend-ui/react-aria`).
-- `packages/ariakit`: early adapter over Ariakit. Keep it for possible future support, but do not treat it as a current support target unless explicitly revived.
 
 Package adapters should hide upstream primitive details where Bend UI has a clear opinion. They may expose compound parts when callers need composition, but callers should not need to relearn every upstream primitive's naming and styling quirks.
 
@@ -90,7 +89,7 @@ Do not introduce a replacement shared React foundation for the package adapters.
 - `apps/vite-base-ui`: Base UI demo app with dental management and ski resort operations. This is the reference demo; other adapter demos follow its contract.
 - `apps/vite-base-ui-e2e`: Playwright coverage for the Base UI demo.
 - `apps/vite-base-ui-theming`: customization harness. Consumes the Base UI adapter but wires its own Panda config to prove Level 2 and Level 3 design-system customization; renders a curated component gallery. Verified as a visual proof surface plus a renderability smoke test, riding the existing visual-review workflow.
-- `apps/vite-ark-ui`: Ark UI demo (renamed from `vite-ark`). Keep it building, but do not invest until Ark UI adapter work resumes.
+- `apps/vite-ark-ui`: Ark UI demo (renamed from `vite-ark`). Ark UI is frozen as experimental: keep the demo building, but do not invest in it.
 - `apps/playground-panda`: Panda proof surface.
 - `demo-data`: private, unscoped workspace lib holding shared demo scenario fixtures and types (dental management, ski resort). No adapter or product dependencies; consumed by adapter demos and the customization harness.
 - Future `apps/vite-react-aria`: React Aria demo, added when the React Aria adapter is implemented.
@@ -100,9 +99,8 @@ Do not introduce a replacement shared React foundation for the package adapters.
 - `CLAUDE.md`: agent instructions for Nx usage and project context.
 - `plans/`: advisor-authored implementation plans. Treat these as work orders, not design decisions.
 - `.github/workflows/`: CI and visual review workflows.
-- `packages/cli`: early home for CLI tooling inspired by shadcn/ui and Park UI. CLI work is deferred until after the Base UI v0 slice has a coherent preset, adapter, and docs story.
-- `docs/component-catalog.md`: the Component catalog matrix (see glossary). Seeded from an audit of adapter component folders against upstream component lists.
-- Per-adapter `AGENTS.md`: thin, auto-loaded orientation for each adapter package (base-ui, ark-ui, react-aria) pointing to its upstream library's canonical docs and pinned version, plus pointers to the `component-libraries` skill and the catalog matrix. `ariakit` carries only a one-line "parked / not a support target" note. These do not duplicate the implementation how-to.
+- `docs/component-catalog.md`: the Component catalog matrix (see glossary). Re-audited from source on 2026-11-15 against the five-criterion definition of **Implemented**.
+- Per-adapter `AGENTS.md`: thin, auto-loaded orientation for each adapter package (base-ui, ark-ui, react-aria) pointing to its upstream library's canonical docs and pinned version, plus pointers to the `component-libraries` skill and the catalog matrix. These do not duplicate the implementation how-to.
 - `component-libraries` skill: the detailed, on-demand adapter workflow (structure, `createStyleContext` implementation pattern, adding components, missing-component checks). It is the counterpart to the thin per-adapter `AGENTS.md` files and must track the current package names and patterns.
 
 ## Main Flows

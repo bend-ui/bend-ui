@@ -11,5 +11,10 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Basic: Story = {
-  args: {},
+  render: (args) => (
+    <Collapsible {...args}>
+      <Collapsible.Trigger>Toggle</Collapsible.Trigger>
+      <Collapsible.Content>Content</Collapsible.Content>
+    </Collapsible>
+  ),
 };

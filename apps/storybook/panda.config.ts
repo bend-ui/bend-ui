@@ -5,7 +5,6 @@ export default defineConfig({
   preflight: true,
   include: [
     './src/**/*.{js,jsx,ts,tsx}',
-    '../../packages/ariakit/src/**/*.{js,jsx,ts,tsx}',
     '../../packages/ark-ui/src/**/*.{js,jsx,ts,tsx}',
     '../../packages/base-ui/src/**/*.{js,jsx,ts,tsx}',
     '../../packages/react-aria/src/**/*.{js,jsx,ts,tsx}',

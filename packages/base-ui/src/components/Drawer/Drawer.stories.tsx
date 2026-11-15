@@ -16,5 +16,6 @@ export const Default: Story = {
     title: 'Drawer Title',
     description: 'This is a description for the drawer.',
     children: <p>This is the content of the drawer.</p>,
+    closeLabel: 'Close',
   },
 };
