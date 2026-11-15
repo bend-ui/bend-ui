@@ -117,8 +117,9 @@ describe('Docs route layout', () => {
 
     expect(tocLinkStyles.color).toBe('text.weak');
     expect(tocLinkStyles['&[data-active="true"]']).toMatchObject({
-      borderLeftColor: 'stroke.primary',
-      color: 'text.primary',
+      borderInlineStartColor: 'stroke.primary',
+      color: 'text',
+      fontWeight: 'semibold',
     });
     expect(
       screen.getByRole('link', { name: /previous.*introduction/i }),

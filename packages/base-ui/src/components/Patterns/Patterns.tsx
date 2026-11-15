@@ -106,11 +106,11 @@ export const Metric = (props: MetricProps) => {
     <Surface className={cx(metric(), className)} {...rest}>
       <Stack gap="3">
         <Stack direction="row" align="center" justify="space-between" gap="3">
-          <Text as="span" color="fg.muted" fontSize="sm" fontWeight="medium">
+          <Text as="span" color="text.weak" fontSize="sm" fontWeight="medium">
             {label}
           </Text>
           {icon ? (
-            <Box color="fg.muted" display="inline-flex">
+            <Box color="text.weak" display="inline-flex">
               {icon}
             </Box>
           ) : null}
@@ -118,7 +118,7 @@ export const Metric = (props: MetricProps) => {
         <Stack gap="1">
           <Text
             as="strong"
-            color={tone === 'neutral' ? 'fg.default' : `text.${tone}`}
+            color={tone === 'neutral' ? 'text' : `text.${tone}`}
             fontSize="3xl"
             lineHeight="1"
             style={{ fontVariantNumeric: 'tabular-nums' }}
@@ -128,7 +128,7 @@ export const Metric = (props: MetricProps) => {
           {detail || trend ? (
             <Stack direction="row" align="center" gap="2" flexWrap="wrap">
               {detail ? (
-                <Text as="span" color="fg.muted" fontSize="sm">
+                <Text as="span" color="text.weak" fontSize="sm">
                   {detail}
                 </Text>
               ) : null}
@@ -163,7 +163,7 @@ export const PageHeader = (props: PageHeaderProps) => {
         {eyebrow ? (
           <Text
             as="span"
-            color="fg.muted"
+            color="text.weak"
             fontSize="xs"
             fontWeight="semibold"
             textTransform="uppercase"
@@ -175,7 +175,7 @@ export const PageHeader = (props: PageHeaderProps) => {
           {title}
         </Heading>
         {description ? (
-          <Text as="p" color="fg.muted" maxW="68ch">
+          <Text as="p" color="text.weak" maxW="68ch">
             {description}
           </Text>
         ) : null}
@@ -200,7 +200,7 @@ export const PanelHeader = (props: PanelHeaderProps) => {
           {title}
         </Heading>
         {description ? (
-          <Text as="p" color="fg.muted" fontSize="sm">
+          <Text as="p" color="text.weak" fontSize="sm">
             {description}
           </Text>
         ) : null}
@@ -279,13 +279,13 @@ export const TimelineItem = (props: TimelineItemProps) => {
             {title}
           </Text>
           {metadata ? (
-            <Text as="span" color="fg.muted" fontSize="xs">
+            <Text as="span" color="text.weak" fontSize="xs">
               {metadata}
             </Text>
           ) : null}
         </Stack>
         {description ? (
-          <Text as="span" color="fg.muted" fontSize="sm">
+          <Text as="span" color="text.weak" fontSize="sm">
             {description}
           </Text>
         ) : null}
@@ -316,7 +316,7 @@ export const ActionItem = (props: ActionItemProps) => {
           {children}
         </Text>
         {description ? (
-          <Text as="span" color="fg.muted" fontSize="sm">
+          <Text as="span" color="text.weak" fontSize="sm">
             {description}
           </Text>
         ) : null}

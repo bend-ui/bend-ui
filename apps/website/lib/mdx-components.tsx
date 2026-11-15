@@ -12,7 +12,7 @@ import { ButtonReferenceExample } from './examples/button-example';
 import { SelectReferenceExample } from './examples/select-example';
 
 const codeBlock = css({
-  backgroundColor: 'bg.muted',
+  backgroundColor: 'bg.alternate',
   borderRadius: 'lg',
   boxShadow: '0 1px 2px rgb(0 0 0 / 8%), 0 8px 24px rgb(0 0 0 / 6%)',
   fontSize: 'sm',

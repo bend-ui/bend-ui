@@ -7,9 +7,14 @@ const lightModeRamp: Record<ColorRamp, ColorRamp> = {
   300: '300',
   400: '400',
   500: '50',
-  600: '200',
-  700: '400',
-  800: '600',
+  // 600 backs `stroke.strong` and `text.weaker`; the dark palette's 200 step
+  // measured 1.57:1 on raised surfaces in Stratus, below the 3:1 a control
+  // boundary needs. 500 holds at least 4.25:1 in every personality.
+  600: '500',
+  // 700 backs `text.weak`. The dark palette's 400 step fell to 2.95:1 on
+  // raised surfaces in Stratus; 600 holds at least 5.9:1 in every personality.
+  700: '600',
+  800: '700',
   900: '800',
   950: '950',
 };

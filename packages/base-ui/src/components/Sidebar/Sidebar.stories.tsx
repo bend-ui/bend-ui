@@ -58,7 +58,7 @@ export const Default: Story = {
             <Box as="h1" fontSize="3xl" fontWeight="bold">
               Sidebar inset
             </Box>
-            <Box as="p" color="fg.muted">
+            <Box as="p" color="text.weak">
               Main content stays in the inset while the sidebar collapses or
               opens as an off-canvas panel on small screens.
             </Box>

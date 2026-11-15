@@ -1,6 +1,6 @@
 'use client';
 
-import { Heading, Sidebar, Text, useSidebar } from '@bend-ui/base-ui';
+import { Heading, Sidebar, Text } from '@bend-ui/base-ui';
 import { Icon } from '@iconify/react';
 import { Link, usePathname } from 'fumadocs-core/framework';
 import {
@@ -16,14 +16,7 @@ import {
   TOCItem,
   type TableOfContents,
 } from 'fumadocs-core/toc';
-import {
-  useEffect,
-  useRef,
-  useState,
-  useSyncExternalStore,
-  type ReactNode,
-  type RefObject,
-} from 'react';
+import { useRef, useState, useSyncExternalStore, type ReactNode } from 'react';
 import { useTheme } from 'next-themes';
 
 import {
@@ -149,18 +142,21 @@ const ColorModeControl = () => {
         fontSize: 'sm',
       })}
     >
-      <span className={css({ color: 'fg.muted' })}>Color mode</span>
+      <span className={css({ color: 'text.weak', srOnly: { base: true, sm: false } })}>
+        Color mode
+      </span>
       <select
-        aria-label="Color mode"
         value={theme ?? 'system'}
         onChange={(event) => setTheme(event.target.value)}
         className={css({
           minHeight: '10',
           paddingInline: '2',
-          border: 'border.weak',
+          borderWidth: '1px',
+          borderStyle: 'solid',
+          borderColor: 'stroke.strong',
           borderRadius: 'md',
           background: 'bg.page',
-          color: 'fg.default',
+          color: 'text',
           _focusVisible: {
             outline: '2px solid',
             outlineColor: 'stroke.primary',
@@ -176,42 +172,25 @@ const ColorModeControl = () => {
   );
 };
 
-function MobileSidebarEscape({
-  trigger,
-}: {
-  trigger: RefObject<HTMLButtonElement | null>;
-}) {
-  const { isMobile, openMobile, setOpenMobile } = useSidebar();
-  useEffect(() => {
-    if (!isMobile || !openMobile) return;
-    const close = (event: KeyboardEvent) => {
-      if (event.key !== 'Escape') return;
-      event.preventDefault();
-      setOpenMobile(false);
-      trigger.current?.focus();
-    };
-    document.addEventListener('keydown', close);
-    return () => document.removeEventListener('keydown', close);
-  }, [isMobile, openMobile, setOpenMobile, trigger]);
-  return null;
-}
-
 export const DocsLayout = ({ children, tree }: DocsLayoutProps) => {
   const pathname = usePathname();
-  const sidebarTrigger = useRef<HTMLButtonElement>(null);
   const [query, setQuery] = useState('');
   const navigationLabel =
     typeof tree.name === 'string' ? tree.name : 'Documentation';
+  const trimmedQuery = query.trim();
+  const visibleNodes = trimmedQuery
+    ? filterTree(tree.children, trimmedQuery.toLowerCase())
+    : tree.children;
 
   return (
     <Sidebar.Provider>
-      <MobileSidebarEscape trigger={sidebarTrigger} />
       <Sidebar.Root collapsible="none">
         <Sidebar.Header>
           <Link
             href="/"
             className={css({
-              color: 'fg.default',
+              paddingInline: '2',
+              color: 'text',
               fontWeight: 'bold',
               letterSpacing: 'tight',
               textDecoration: 'none',
@@ -225,7 +204,7 @@ export const DocsLayout = ({ children, tree }: DocsLayoutProps) => {
             htmlFor="docs-filter"
             className={css({
               display: 'block',
-              paddingInline: '3',
+              paddingInline: '2',
               marginBottom: '2',
               fontSize: 'sm',
             })}
@@ -238,27 +217,54 @@ export const DocsLayout = ({ children, tree }: DocsLayoutProps) => {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             className={css({
-              width: 'calc(100% - 1.5rem)',
-              marginInline: '3',
+              width: 'calc(100% - 1rem)',
+              marginInline: '2',
+              marginBottom: '2',
               padding: '2',
               borderWidth: '1px',
               borderStyle: 'solid',
-              borderColor: 'stroke',
+              borderColor: 'stroke.strong',
               borderRadius: 'md',
               backgroundColor: 'bg.page',
               color: 'text',
               _focusVisible: {
                 outline: '2px solid',
-                outlineColor: 'stroke.primary',
+                outlineColor: 'stroke.focus',
                 outlineOffset: '2px',
               },
             })}
           />
+          {/* Rendered empty first so the no-match message is announced. */}
+          <div
+            role="status"
+            className={css({ paddingInline: '2', fontSize: 'sm' })}
+          >
+            {trimmedQuery && visibleNodes.length === 0 ? (
+              <p className={css({ marginBlock: '2' })}>
+                No pages match “{trimmedQuery}”.{' '}
+                <button
+                  type="button"
+                  onClick={() => setQuery('')}
+                  className={css({
+                    color: 'text',
+                    fontWeight: 'medium',
+                    textDecoration: 'underline',
+                    textUnderlineOffset: '4px',
+                    cursor: 'pointer',
+                    _focusVisible: {
+                      outline: '2px solid',
+                      outlineColor: 'stroke.focus',
+                      outlineOffset: '2px',
+                    },
+                  })}
+                >
+                  Clear filter
+                </button>
+              </p>
+            ) : null}
+          </div>
           <nav aria-label={navigationLabel}>
-            {(query.trim()
-              ? filterTree(tree.children, query.trim().toLowerCase())
-              : tree.children
-            ).map((node, index) => (
+            {visibleNodes.map((node, index) => (
               <TreeNode
                 key={node.$id ?? `${node.type}-${index}`}
                 node={node}
@@ -277,16 +283,19 @@ export const DocsLayout = ({ children, tree }: DocsLayoutProps) => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
+            gap: '2',
             minHeight: '14',
             paddingInline: '3',
             backgroundColor: 'bg.page/88',
             backdropFilter: 'blur(12px)',
-            borderBottom: 'border.weak',
+            borderBottom: 'weak',
           })}
         >
           <Sidebar.Trigger
-            ref={sidebarTrigger}
-            className={css({ display: { base: 'inline-flex', md: 'none' } })}
+            className={css({
+              display: { base: 'inline-flex', md: 'none' },
+              margin: '0',
+            })}
           >
             <Icon icon={sidebarIcon} aria-hidden="true" />
           </Sidebar.Trigger>
@@ -294,10 +303,10 @@ export const DocsLayout = ({ children, tree }: DocsLayoutProps) => {
           <div
             className={css({
               display: 'flex',
-              flexWrap: 'wrap',
               alignItems: 'center',
               justifyContent: 'flex-end',
               gap: '2',
+              minWidth: '0',
             })}
           >
             <ColorModeControl />
@@ -311,11 +320,11 @@ export const DocsLayout = ({ children, tree }: DocsLayoutProps) => {
 };
 
 const prose = css({
-  color: 'fg.default',
+  color: 'text',
   lineHeight: 'relaxed',
   textWrap: 'pretty',
   '& :where(h2, h3, h4, h5, h6)': {
-    color: 'fg.default',
+    color: 'text',
     fontWeight: 'extrabold',
     letterSpacing: 'tight',
     lineHeight: 'tight',
@@ -325,44 +334,46 @@ const prose = css({
     textWrap: 'balance',
   },
   '& :where(h2)': {
-    borderBottom: 'border.weak',
+    borderBottom: 'weak',
     fontSize: '2xl',
     paddingBottom: '2',
   },
   '& :where(h3)': { fontSize: 'xl' },
   '& :where(p, ul, ol, blockquote, table)': { marginTop: '5' },
-  '& :where(ul, ol)': { paddingLeft: '6' },
+  // Cap running text near 70–75 characters (`ch` measures the wide "0", so
+  // 60ch lands there); examples and tables keep the full column.
+  '& :where(p, ul, ol, blockquote)': { maxWidth: '60ch' },
+  '& :where(ul, ol)': { paddingInlineStart: '6' },
   '& :where(ul)': { listStyleType: 'disc' },
   '& :where(ol)': { listStyleType: 'decimal' },
   '& :where(li + li)': { marginTop: '2' },
   '& :where(a)': {
-    color: 'fg.default',
+    color: 'text',
     fontWeight: 'medium',
     textDecoration: 'underline',
     textUnderlineOffset: '4px',
   },
   '& :where(blockquote)': {
-    borderLeft: '4px solid',
-    borderColor: 'border.emphasized',
-    color: 'fg.muted',
+    borderInlineStart: '4px solid',
+    borderColor: 'stroke.strong',
+    color: 'text.weak',
     fontStyle: 'italic',
-    paddingLeft: '5',
+    paddingInlineStart: '5',
   },
-  '& :where(hr)': { border: '0', borderTop: 'border.weak', marginBlock: '10' },
+  '& :where(hr)': { border: '0', borderTop: 'weak', marginBlock: '10' },
   '& :where(table)': {
     borderCollapse: 'collapse',
     width: '100%',
   },
   '& :where(th, td)': {
-    border: 'border.weak',
+    border: 'weak',
     paddingInline: '4',
     paddingBlock: '3',
-    textAlign: 'left',
+    textAlign: 'start',
   },
-  '& :where(th)': { backgroundColor: 'bg.muted', fontWeight: 'semibold' },
-  '& :where(tbody tr:nth-child(even))': { backgroundColor: 'bg.subtle' },
+  '& :where(th)': { backgroundColor: 'bg.alternate', fontWeight: 'semibold' },
   '& :where(:not(pre) > code)': {
-    backgroundColor: 'bg.muted',
+    backgroundColor: 'bg.alternate',
     borderRadius: 'sm',
     fontSize: 'sm',
     fontWeight: 'semibold',
@@ -394,11 +405,11 @@ const PagerLink = ({
       paddingInline: '4',
       paddingBlock: '3',
       borderRadius: 'lg',
-      color: 'fg.muted',
+      color: 'text.weak',
       textDecoration: 'none',
       transitionProperty: 'background-color, color, transform',
       transitionDuration: 'fast',
-      _hover: { backgroundColor: 'fill.hover', color: 'fg.default' },
+      _hover: { backgroundColor: 'fill.hover', color: 'text' },
       _active: { transform: 'scale(0.96)' },
       _focusVisible: {
         outline: '2px solid',
@@ -463,7 +474,7 @@ export const DocsPage = ({
           {description ? (
             <Text
               as="p"
-              color="fg.muted"
+              color="text.weak"
               fontSize="lg"
               lineHeight="relaxed"
               marginTop="4"
@@ -484,7 +495,7 @@ export const DocsPage = ({
               gap: '4',
               marginTop: '16',
               paddingTop: '6',
-              borderTop: 'border.weak',
+              borderTop: 'weak',
             })}
           >
             {neighbours.previous ? (
@@ -546,17 +557,19 @@ export const DocsPage = ({
                           color: 'text.weak',
                           fontSize: 'sm',
                           paddingBlock: '1',
-                          paddingLeft: item.depth > 2 ? '7' : '3',
-                          borderLeftWidth: '2px',
-                          borderLeftStyle: 'solid',
-                          borderLeftColor: 'stroke.weak',
+                          paddingInlineStart: item.depth > 2 ? '7' : '3',
+                          borderInlineStartWidth: '2px',
+                          borderInlineStartStyle: 'solid',
+                          borderInlineStartColor: 'stroke.weak',
                           textDecoration: 'none',
                           transitionProperty: 'color, border-color',
                           transitionDuration: 'fast',
                           _hover: { color: 'text.strong' },
+                          // Neutral text flips with the color mode; the
+                          // primary bar and weight mark the current section.
                           '&[data-active="true"]': {
-                            color: 'text.primary',
-                            borderLeftColor: 'stroke.primary',
+                            color: 'text',
+                            borderInlineStartColor: 'stroke.primary',
                             fontWeight: 'semibold',
                           },
                         })}
