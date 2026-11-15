@@ -24,7 +24,6 @@
       "@bend-ui/react-utils": ["packages/react-utils/src/index.ts"],
       "@bend-ui/storybook": ["packages/storybook/src/index.ts"],
       "@bend-ui/styled-system/*": ["apps/playground-panda/styled-system/*"],
-      "@bend-ui/theme": ["packages/theme/src/index.ts"],
       "@/*": ["apps/playground-panda/*"],
       "@bend-ui/base-ui": ["packages/base-ui/src/index.ts"]
     },

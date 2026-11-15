@@ -5,10 +5,6 @@
       "path": ".",
     },
     {
-      "name": "📦 @bend-ui/theme",
-      "path": "packages/theme",
-    },
-    {
       "name": "📦 @bend-ui/react-aria",
       "path": "packages/react-aria",
     },
@@ -19,10 +15,6 @@
     {
       "name": "📦 @bend-ui/base-ui",
       "path": "packages/base-ui",
-    },
-    {
-      "name": "📦 @bend-ui/ariakit",
-      "path": "packages/ariakit",
     },
     {
       "name": "🎨 @bend-ui/preset-base",
@@ -39,10 +31,6 @@
     {
       "name": "🛠️ @bend-ui/react-utils",
       "path": "packages/react-utils",
-    },
-    {
-      "name": "🛠️ @bend-ui/cli",
-      "path": "packages/cli",
     },
     {
       "name": "🛠️ @bend-ui/core",

@@ -10,7 +10,6 @@ Design system tools for React
 - `@bend-ui/preset` - the Bend UI design preset
 - `@bend-ui/config` - Panda configuration helpers
 - `@bend-ui/styled-system` - generated Panda runtime helpers
-- `@bend-ui/theme` - theme assets
 
 ## Development
 

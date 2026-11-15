@@ -16,10 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@bend-ui/ariakit": ["packages/ariakit/src/index.ts"],
       "@bend-ui/ark-ui": ["packages/ark-ui/src/index.ts"],
       "@bend-ui/base-ui": ["packages/base-ui/src/index.ts"],
-      "@bend-ui/cli": ["packages/cli/src/index.ts"],
       "@bend-ui/config": ["packages/config/src/index.ts"],
       "@bend-ui/preset": ["packages/preset/src/index.ts"],
       "@bend-ui/preset-base": ["packages/preset-base/src/index.ts"],
@@ -27,7 +25,6 @@
       "@bend-ui/react-utils": ["packages/react-utils/src/index.ts"],
       "@bend-ui/storybook": ["packages/storybook/src/index.ts"],
       "@bend-ui/styled-system/*": ["packages/styled-system/dist/*"],
-      "@bend-ui/theme": ["packages/theme/src/index.ts"],
       "@bend-ui/core": ["packages/core/src/index.ts"],
       "demo-data": ["./demo-data/src/index.ts"]
     },

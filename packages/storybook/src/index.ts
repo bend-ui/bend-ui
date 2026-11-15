@@ -1,5 +1,4 @@
 import { create } from 'storybook/theming';
-import { theme } from '@bend-ui/theme';
 import type { ThemeVars } from 'storybook/theming';
 
 const common: Partial<ThemeVars> = {
