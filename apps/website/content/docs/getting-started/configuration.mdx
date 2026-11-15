@@ -70,12 +70,11 @@ If your build does not resolve the generated directory automatically, add a path
 
 ## Use generated helpers
 
-Generated JSX elements accept Panda style props. The `css` helper creates classes for native or adapter components.
+Bend UI layout elements accept Panda style props. The generated `css` helper creates classes for native or adapter components.
 
 ```tsx
-import { Button } from '@bend-ui/base-ui';
+import { Box, Button, Stack } from '@bend-ui/base-ui';
 import { css } from 'styled-system/css';
-import { Box, Stack } from 'styled-system/jsx';
 
 export function Example() {
   return (

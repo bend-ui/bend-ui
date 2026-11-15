@@ -1,15 +1,14 @@
 ---
 title: Components overview
-description: Compose Base UI adapter components with generated Panda layouts
+description: Compose Base UI adapter components with Bend UI layout elements
 ---
 
-The Base UI package adapter combines accessible upstream behavior with Bend UI recipes. Import interactive components from `@bend-ui/base-ui`; import layout elements and styling helpers from the styled system generated in your application.
+The Base UI package adapter combines accessible upstream behavior with Bend UI recipes. Import interactive components and layout elements from `@bend-ui/base-ui`; import class-based styling helpers from the styled system generated in your application.
 
 ## Import components and layouts
 
 ```tsx
-import { Button, Heading, Input, Text } from '@bend-ui/base-ui';
-import { Box, Stack } from 'styled-system/jsx';
+import { Box, Button, Heading, Input, Stack, Text } from '@bend-ui/base-ui';
 ```
 
 `@bend-ui/base-ui` exposes a named-import catalog. It does not require a separate foundation package or per-component subpath imports.
@@ -17,15 +16,14 @@ import { Box, Stack } from 'styled-system/jsx';
 ## Compose a card
 
 ```tsx
-import { Button, Heading, Text } from '@bend-ui/base-ui';
-import { Box, Stack } from 'styled-system/jsx';
+import { Box, Button, Heading, Stack, Text } from '@bend-ui/base-ui';
 
 export function FeatureCard() {
   return (
     <Box padding="6" borderWidth="1px" borderRadius="lg">
       <Stack gap="4">
         <Heading as="h2">Foundation-free composition</Heading>
-        <Text as="p">Behavior and layout come from separate, focused modules.</Text>
+        <Text as="p">Behavior and layout come from one import.</Text>
         <Button variant="primary">Learn more</Button>
       </Stack>
     </Box>
@@ -38,8 +36,7 @@ export function FeatureCard() {
 Compound components follow Base UI's composition model:
 
 ```tsx
-import { Button, Field } from '@bend-ui/base-ui';
-import { Stack } from 'styled-system/jsx';
+import { Button, Field, Stack } from '@bend-ui/base-ui';
 
 export function SearchForm() {
   return (
@@ -61,9 +58,11 @@ export function SearchForm() {
 | Need | Import from |
 | --- | --- |
 | Interactive component or compound part | `@bend-ui/base-ui` |
-| Layout element such as `Box`, `Stack`, `Flex`, or `Grid` | `styled-system/jsx` |
+| Layout element: `Box`, `Stack`, `Flex`, `Grid`, or the `styled` factory | `@bend-ui/base-ui` |
 | A class for custom styling | `styled-system/css` |
 | A layout class rather than a JSX element | `styled-system/patterns` |
+
+If you extend the Bend UI tokens and want those tokens typed in layout props, import layout elements from your own generated `styled-system/jsx` instead.
 
 ## Accessibility
 

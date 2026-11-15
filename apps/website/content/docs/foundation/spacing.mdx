@@ -1,14 +1,14 @@
 ---
 title: Spacing
-description: Build consistent layouts with generated Panda elements and patterns
+description: Build consistent layouts with Bend UI layout elements and Panda patterns
 ---
 
-Use the generated styled-system elements for layout. Their spacing props resolve through the Bend UI token system.
+Use the layout elements from `@bend-ui/base-ui` (`Box`, `Stack`, `Flex`, `Grid`). Their spacing props resolve through the Bend UI token system.
 
 ## Add space inside a surface
 
 ```tsx
-import { Box } from 'styled-system/jsx';
+import { Box } from '@bend-ui/base-ui';
 
 export function Panel({ children }: { children: React.ReactNode }) {
   return (
@@ -22,8 +22,7 @@ export function Panel({ children }: { children: React.ReactNode }) {
 ## Stack content vertically
 
 ```tsx
-import { Button, Heading, Text } from '@bend-ui/base-ui';
-import { Stack } from 'styled-system/jsx';
+import { Button, Heading, Stack, Text } from '@bend-ui/base-ui';
 
 export function EmptyState() {
   return (
@@ -39,8 +38,7 @@ export function EmptyState() {
 ## Arrange actions horizontally
 
 ```tsx
-import { Button } from '@bend-ui/base-ui';
-import { Flex } from 'styled-system/jsx';
+import { Button, Flex } from '@bend-ui/base-ui';
 
 export function FormActions() {
   return (
@@ -55,13 +53,13 @@ export function FormActions() {
 ## Constrain page content
 
 ```tsx
-import { Container, Stack } from 'styled-system/jsx';
+import { Box, Stack } from '@bend-ui/base-ui';
 
 export function Page({ children }: { children: React.ReactNode }) {
   return (
-    <Container maxWidth="7xl" paddingX="6" paddingY="8">
+    <Box maxWidth="7xl" marginX="auto" paddingX="6" paddingY="8">
       <Stack gap="8">{children}</Stack>
-    </Container>
+    </Box>
   );
 }
 ```
@@ -70,5 +68,5 @@ export function Page({ children }: { children: React.ReactNode }) {
 
 - Use `gap` on layout containers instead of margins between their children.
 - Use `Stack` for one-dimensional groups and `Flex` when alignment or wrapping matters.
-- Use `Container` to constrain page width and `Box` for a styled semantic-neutral surface.
+- Use `Box` with `maxWidth` and `marginX="auto"` to constrain page width, and as a styled semantic-neutral surface.
 - Choose token values before introducing one-off literal measurements.
