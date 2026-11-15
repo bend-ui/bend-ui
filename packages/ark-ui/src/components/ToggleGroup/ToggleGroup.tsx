@@ -11,17 +11,7 @@ const ToggleGroupRoot: SlotRecipeComponent<
 const ToggleGroupItem: SlotRecipeComponent<typeof ToggleGroupPrimitive.Item> =
   withContext(ToggleGroupPrimitive.Item, 'item');
 
-const Component = () => {
-  return (
-    <ToggleGroupRoot>
-      <ToggleGroupItem value="a">A</ToggleGroupItem>
-      <ToggleGroupItem value="b">B</ToggleGroupItem>
-      <ToggleGroupItem value="c">C</ToggleGroupItem>
-    </ToggleGroupRoot>
-  );
-};
-
-export const ToggleGroup = Object.assign(Component, {
+export const ToggleGroup = Object.assign(ToggleGroupRoot, {
   Root: ToggleGroupRoot,
   Item: ToggleGroupItem,
 });

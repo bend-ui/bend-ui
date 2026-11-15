@@ -1,6 +1,8 @@
 {
   "name": "@bend-ui/ark-ui",
   "version": "0.0.1",
+  "private": true,
+  "description": "Experimental, frozen Bend UI adapter over Ark UI. Kept building and tested; not a support target for new work.",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",

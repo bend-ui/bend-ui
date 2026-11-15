@@ -15,11 +15,11 @@ type MenuTriggerProps = ArkMenu.TriggerProps;
 const MenuTriggerBase = (props: MenuTriggerProps) => {
   const { children, asChild, ...rest } = props;
   return (
-    <ArkMenu.Trigger {...rest} asChild={asChild}>
-      {!asChild ? (
-        <Button icon={<MenuIndicator />}>{children}</Button>
-      ) : (
+    <ArkMenu.Trigger {...rest} asChild>
+      {asChild ? (
         children
+      ) : (
+        <Button icon={<MenuIndicator />}>{children}</Button>
       )}
     </ArkMenu.Trigger>
   );
@@ -38,20 +38,19 @@ const MenuContent = withContext(ArkMenu.Content, 'content');
 const MenuItem = withContext(ArkMenu.Item, 'item');
 
 export interface MenuProps extends MenuRootProps {
+  /** Content of the trigger button. */
   trigger: React.ReactNode;
+  /** Menu items, typically `Menu.Item` elements. */
+  children: React.ReactNode;
 }
 
 const Component = (props: MenuProps) => {
-  const { trigger, ...rest } = props;
+  const { trigger, children, ...rest } = props;
   return (
     <MenuRoot {...rest}>
       <MenuTrigger>{trigger}</MenuTrigger>
       <MenuPositioner>
-        <MenuContent>
-          <MenuItem value="react">React</MenuItem>
-          <MenuItem value="solid">Solid</MenuItem>
-          <MenuItem value="vue">Vue</MenuItem>
-        </MenuContent>
+        <MenuContent>{children}</MenuContent>
       </MenuPositioner>
     </MenuRoot>
   );

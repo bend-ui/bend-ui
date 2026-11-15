@@ -11,5 +11,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Basic: Story = {
-  args: {},
+  render: (args) => (
+    <Editable placeholder="Placeholder" {...args}>
+      <Editable.Label>Label</Editable.Label>
+      <Editable.Area>
+        <Editable.Input />
+        <Editable.Preview />
+      </Editable.Area>
+    </Editable>
+  ),
 };

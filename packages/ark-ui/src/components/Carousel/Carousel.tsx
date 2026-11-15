@@ -42,37 +42,7 @@ const NextTrigger: SlotRecipeComponent<typeof CarouselPrimitive.NextTrigger> =
 const PrevTrigger: SlotRecipeComponent<typeof CarouselPrimitive.PrevTrigger> =
   withContext(CarouselPrimitive.PrevTrigger, 'prevTrigger');
 
-const Component = () => {
-  const images = [
-    'https://tinyurl.com/5b6ka8jd',
-    'https://tinyurl.com/7rmccdn5',
-    'https://tinyurl.com/59jxz9uu',
-  ];
-  return (
-    <Root defaultPage={0} slideCount={images.length}>
-      <Control>
-        <PrevTrigger>Previous</PrevTrigger>
-        <NextTrigger>Next</NextTrigger>
-      </Control>
-      <IndicatorGroup>
-        {images.map((_, index) => (
-          <Indicator key={index} index={index}>
-            {index + 1}
-          </Indicator>
-        ))}
-      </IndicatorGroup>
-      <ItemGroup>
-        {images.map((image, index) => (
-          <Item key={index} index={index}>
-            <img alt={`Slide ${index}`} src={image} />
-          </Item>
-        ))}
-      </ItemGroup>
-    </Root>
-  );
-};
-
-export const Carousel = Object.assign(Component, {
+export const Carousel = Object.assign(Root, {
   RootProvider,
   Root,
   Control,

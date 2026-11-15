@@ -11,5 +11,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Basic: Story = {
-  args: {},
+  render: (args) => (
+    <Fieldset {...args}>
+      <Fieldset.Legend>Legend</Fieldset.Legend>
+      <Fieldset.HelperText>Helper text</Fieldset.HelperText>
+      <Fieldset.ErrorText>Error text</Fieldset.ErrorText>
+    </Fieldset>
+  ),
 };

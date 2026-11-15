@@ -47,31 +47,35 @@ const SelectClearTrigger: SlotRecipeComponent<typeof ArkSelect.ClearTrigger> =
 
 export type SelectItemGroupProps = ArkSelect.ItemGroupProps;
 
-const SelectItemGroup: SlotRecipeComponent<typeof ArkSelect.ItemGroup> = withContext(
-  withDropdownContext(ArkSelect.ItemGroup, 'itemGroup'),
-  'itemGroup',
-);
+const SelectItemGroup: SlotRecipeComponent<typeof ArkSelect.ItemGroup> =
+  withContext(
+    withDropdownContext(ArkSelect.ItemGroup, 'itemGroup'),
+    'itemGroup',
+  );
 
 export type SelectItemGroupLabelProps = ArkSelect.ItemGroupLabelProps;
 
-const SelectItemGroupLabel: SlotRecipeComponent<typeof ArkSelect.ItemGroupLabel> = withContext(
+const SelectItemGroupLabel: SlotRecipeComponent<
+  typeof ArkSelect.ItemGroupLabel
+> = withContext(
   withDropdownContext(ArkSelect.ItemGroupLabel, 'itemGroupLabel'),
   'itemGroupLabel',
 );
 
 export type SelectPositionerProps = ArkSelect.PositionerProps;
 
-const SelectPositioner: SlotRecipeComponent<typeof ArkSelect.Positioner, typeof selectDropdown['__type']> = withDropdownProvider(
+const SelectPositioner: SlotRecipeComponent<
+  typeof ArkSelect.Positioner,
+  (typeof selectDropdown)['__type']
+> = withDropdownProvider(
   withContext(ArkSelect.Positioner, 'positioner'),
   'root',
 );
 
 export type SelectContentProps = ArkSelect.ContentProps;
 
-const SelectContent: SlotRecipeComponent<typeof ArkSelect.Content> = withContext(
-  withDropdownContext(ArkSelect.Content, 'content'),
-  'content',
-);
+const SelectContent: SlotRecipeComponent<typeof ArkSelect.Content> =
+  withContext(withDropdownContext(ArkSelect.Content, 'content'), 'content');
 
 export type SelectItemTextProps = ArkSelect.ItemTextProps;
 
@@ -82,17 +86,16 @@ const SelectItem: SlotRecipeComponent<typeof ArkSelect.Item> = withContext(
   'item',
 );
 
-const SelectItemText: SlotRecipeComponent<typeof ArkSelect.ItemText> = withContext(
-  withDropdownContext(ArkSelect.ItemText, 'itemText'),
-  'itemText',
-);
+const SelectItemText: SlotRecipeComponent<typeof ArkSelect.ItemText> =
+  withContext(withDropdownContext(ArkSelect.ItemText, 'itemText'), 'itemText');
 
 export type SelectItemIndicatorProps = ArkSelect.ItemIndicatorProps;
 
-const SelectItemIndicator: SlotRecipeComponent<typeof ArkSelect.ItemIndicator> = withContext(
-  withDropdownContext(ArkSelect.ItemIndicator, 'itemIndicator'),
-  'itemIndicator',
-);
+const SelectItemIndicator: SlotRecipeComponent<typeof ArkSelect.ItemIndicator> =
+  withContext(
+    withDropdownContext(ArkSelect.ItemIndicator, 'itemIndicator'),
+    'itemIndicator',
+  );
 
 export type SelectHiddenSelectProps = ArkSelect.HiddenSelectProps;
 
@@ -113,7 +116,7 @@ const Component = (props: SelectProps<any>) => {
       positioning={{ sameWidth: true }}
       {...rest}
     >
-      <SelectLabel>{label}</SelectLabel>
+      {!!label && <SelectLabel>{label}</SelectLabel>}
       <SelectControl>
         <SelectTrigger>
           <SelectValueText placeholder={placeholder} />
@@ -128,15 +131,14 @@ const Component = (props: SelectProps<any>) => {
       <Portal>
         <SelectPositioner>
           <SelectContent>
-            <SelectItemGroup>
-              <SelectItemGroupLabel>Frameworks</SelectItemGroupLabel>
-              {collection.items.map((item) => (
-                <SelectItem key={item} item={item}>
-                  <SelectItemText>{item}</SelectItemText>
-                  <SelectItemIndicator>✓</SelectItemIndicator>
-                </SelectItem>
-              ))}
-            </SelectItemGroup>
+            {collection.items.map((item) => (
+              <SelectItem key={collection.getItemValue(item)} item={item}>
+                <SelectItemText>
+                  {collection.stringifyItem(item)}
+                </SelectItemText>
+                <SelectItemIndicator>✓</SelectItemIndicator>
+              </SelectItem>
+            ))}
           </SelectContent>
         </SelectPositioner>
       </Portal>

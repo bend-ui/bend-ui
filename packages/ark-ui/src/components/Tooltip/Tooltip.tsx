@@ -26,16 +26,24 @@ const TooltipArrow: SlotRecipeComponent<typeof ArkTooltip.Arrow> = withContext(
 const TooltipArrowTip: SlotRecipeComponent<typeof ArkTooltip.ArrowTip> =
   withContext(ArkTooltip.ArrowTip, 'arrowTip');
 
-export type TooltipProps = ArkTooltip.RootProps;
+export interface TooltipProps extends ArkTooltip.RootProps {
+  /** Content of the trigger button that opens the tooltip. */
+  trigger: React.ReactNode;
+  /** Tooltip content. */
+  children: React.ReactNode;
+}
 
-const Component = (props: TooltipProps) => (
-  <TooltipRoot {...props}>
-    <TooltipTrigger>Hover Me</TooltipTrigger>
-    <TooltipPositioner>
-      <TooltipContent>I am a tooltip!</TooltipContent>
-    </TooltipPositioner>
-  </TooltipRoot>
-);
+const Component = (props: TooltipProps) => {
+  const { trigger, children, ...rest } = props;
+  return (
+    <TooltipRoot {...rest}>
+      <TooltipTrigger>{trigger}</TooltipTrigger>
+      <TooltipPositioner>
+        <TooltipContent>{children}</TooltipContent>
+      </TooltipPositioner>
+    </TooltipRoot>
+  );
+};
 
 export const Tooltip = Object.assign(Component, {
   Root: TooltipRoot,

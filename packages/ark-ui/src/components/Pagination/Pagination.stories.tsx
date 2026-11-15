@@ -14,4 +14,11 @@ export default meta;
 
 type Story = StoryObj<typeof Pagination>;
 
-export const Base: Story = {};
+export const Base: Story = {
+  args: {
+    count: 100,
+    pageSize: 10,
+    prevTrigger: 'Previous Page',
+    nextTrigger: 'Next Page',
+  },
+};

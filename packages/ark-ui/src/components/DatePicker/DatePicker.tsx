@@ -1,5 +1,5 @@
-import { DatePicker as DatePickerPrimitive, Portal } from '@ark-ui/react';
-import { Input } from '../Input';
+import type { SlotRecipeComponent } from '@bend-ui/core';
+import { DatePicker as DatePickerPrimitive } from '@ark-ui/react';
 import { withParts } from '../../utils';
 import {
   datePicker,
@@ -14,7 +14,10 @@ export interface DatePickerRootProps
   extends
     Assign<HTMLStyledProps<'div'>, DatePickerPrimitive.RootProps>,
     DatePickerVariantProps {}
-const DatePickerRoot = withProvider(DatePickerPrimitive.Root, 'root');
+const DatePickerRoot: SlotRecipeComponent<
+  typeof DatePickerPrimitive.Root,
+  (typeof datePicker)['__type']
+> = withProvider(DatePickerPrimitive.Root, 'root');
 
 export type DatePickerLabelProps = Assign<
   HTMLStyledProps<'label'>,
@@ -207,143 +210,7 @@ const DatePickerContent = withParts<DatePickerContentProps>(
 
 export type DatePickerProps = DatePickerRootProps;
 
-const DatePickerComponent = (props: DatePickerProps) => {
-  return (
-    <DatePickerRoot {...props}>
-      <DatePickerLabel>Label</DatePickerLabel>
-      <DatePickerControl>
-        <DatePickerInput asChild>
-          <Input />
-        </DatePickerInput>
-        <DatePickerTrigger>
-          <span role="img" aria-label="calendar">
-            📅
-          </span>
-        </DatePickerTrigger>
-        <DatePickerClearTrigger>Clear</DatePickerClearTrigger>
-      </DatePickerControl>
-      <Portal>
-        <DatePickerPositioner>
-          <DatePickerContent>
-            <DatePickerYearSelect />
-            <DatePickerMonthSelect />
-            <DatePickerView view="day">
-              <DatePickerContext>
-                {(datePicker) => (
-                  <>
-                    <DatePickerViewControl>
-                      <DatePickerPrevTrigger>Prev</DatePickerPrevTrigger>
-                      <DatePickerViewTrigger>
-                        <DatePickerRangeText />
-                      </DatePickerViewTrigger>
-                      <DatePickerNextTrigger>Next</DatePickerNextTrigger>
-                    </DatePickerViewControl>
-                    <DatePickerTable>
-                      <DatePickerTableHead>
-                        <DatePickerTableRow>
-                          {datePicker.weekDays.map((weekDay, id) => (
-                            <DatePickerTableHeader key={id}>
-                              {weekDay.short}
-                            </DatePickerTableHeader>
-                          ))}
-                        </DatePickerTableRow>
-                      </DatePickerTableHead>
-                      <DatePickerTableBody>
-                        {datePicker.weeks.map((week, id) => (
-                          <DatePickerTableRow key={id}>
-                            {week.map((day, id) => (
-                              <DatePickerTableCell key={id} value={day}>
-                                <DatePickerTableCellTrigger>
-                                  {day.day}
-                                </DatePickerTableCellTrigger>
-                              </DatePickerTableCell>
-                            ))}
-                          </DatePickerTableRow>
-                        ))}
-                      </DatePickerTableBody>
-                    </DatePickerTable>
-                  </>
-                )}
-              </DatePickerContext>
-            </DatePickerView>
-            <DatePickerView view="month">
-              <DatePickerContext>
-                {(datePicker) => (
-                  <>
-                    <DatePickerViewControl>
-                      <DatePickerPrevTrigger>Prev</DatePickerPrevTrigger>
-                      <DatePickerViewTrigger>
-                        <DatePickerRangeText />
-                      </DatePickerViewTrigger>
-                      <DatePickerNextTrigger>Next</DatePickerNextTrigger>
-                    </DatePickerViewControl>
-                    <DatePickerTable>
-                      <DatePickerTableBody>
-                        {datePicker
-                          .getMonthsGrid({ columns: 4, format: 'short' })
-                          .map((months, id) => (
-                            <DatePickerTableRow key={id}>
-                              {months.map((month, id) => (
-                                <DatePickerTableCell
-                                  key={id}
-                                  value={month.value}
-                                >
-                                  <DatePickerTableCellTrigger>
-                                    {month.label}
-                                  </DatePickerTableCellTrigger>
-                                </DatePickerTableCell>
-                              ))}
-                            </DatePickerTableRow>
-                          ))}
-                      </DatePickerTableBody>
-                    </DatePickerTable>
-                  </>
-                )}
-              </DatePickerContext>
-            </DatePickerView>
-            <DatePickerView view="year">
-              <DatePickerContext>
-                {(datePicker) => (
-                  <>
-                    <DatePickerViewControl>
-                      <DatePickerPrevTrigger>Prev</DatePickerPrevTrigger>
-                      <DatePickerViewTrigger>
-                        <DatePickerRangeText />
-                      </DatePickerViewTrigger>
-                      <DatePickerNextTrigger>Next</DatePickerNextTrigger>
-                    </DatePickerViewControl>
-                    <DatePickerTable>
-                      <DatePickerTableBody>
-                        {datePicker
-                          .getYearsGrid({ columns: 4 })
-                          .map((years, id) => (
-                            <DatePickerTableRow key={id}>
-                              {years.map((year, id) => (
-                                <DatePickerTableCell
-                                  key={id}
-                                  value={year.value}
-                                >
-                                  <DatePickerTableCellTrigger>
-                                    {year.label}
-                                  </DatePickerTableCellTrigger>
-                                </DatePickerTableCell>
-                              ))}
-                            </DatePickerTableRow>
-                          ))}
-                      </DatePickerTableBody>
-                    </DatePickerTable>
-                  </>
-                )}
-              </DatePickerContext>
-            </DatePickerView>
-          </DatePickerContent>
-        </DatePickerPositioner>
-      </Portal>
-    </DatePickerRoot>
-  );
-};
-
-export const DatePicker = Object.assign(DatePickerComponent, {
+export const DatePicker = Object.assign(DatePickerRoot, {
   Root: DatePickerRoot,
   Label: DatePickerLabel,
   Control: DatePickerControl,
@@ -368,4 +235,4 @@ export const DatePicker = Object.assign(DatePickerComponent, {
   MonthSelect: DatePickerMonthSelect,
   Positioner: DatePickerPositioner,
   Content: DatePickerContent,
-}) as unknown as typeof DatePickerPrimitive;
+});
