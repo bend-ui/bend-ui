@@ -116,7 +116,7 @@ Do not introduce a replacement shared React foundation for the package adapters.
 ### Adapter flow
 
 1. A package adapter imports an upstream primitive.
-2. It applies a recipe through Panda's generated `createSlotRecipeContext` (slot recipes, via `withProvider` / `withRootProvider` / `withContext`), or `withRecipe` / `withParts` from `@bend-ui/core`.
+2. It applies a recipe through Panda's generated `createSlotRecipeContext` (slot recipes, via `withProvider` / `withRootProvider` / `withContext`), or through `withRecipe` from `@bend-ui/core` for a single-part recipe applied on its own. Parts that only need a `data-part` attribute and style props, with no recipe class of their own, use `withParts` from `@bend-ui/core`; `withParts` does not apply a recipe.
 3. It exports a compound Bend UI module.
 4. Apps and docs import the Bend UI module, not the upstream primitive.
 5. CLI generation/ejection tooling may copy the module shape into a user's project while keeping recipe-driven styling.
