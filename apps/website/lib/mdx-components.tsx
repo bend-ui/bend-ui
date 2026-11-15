@@ -5,6 +5,7 @@ import type { ComponentProps } from 'react';
 
 import { css, cx } from '@bend-ui/styled-system/css';
 import { Accordion, Box, Stack, Tabs } from './interactive-mdx-components';
+import { GeneratedComponent, GeneratedTokens } from './generated-reference/reference';
 import { DialogReferenceExample } from './examples/dialog-example';
 import { ComponentPreview } from './component-preview/component-preview';
 import { ButtonReferenceExample } from './examples/button-example';
@@ -67,6 +68,8 @@ export const mdxComponents: MDXComponents = {
   pre: MdxPre,
   table: MdxTable,
   code: MdxCode,
+  GeneratedComponent,
+  GeneratedTokens,
   Tabs,
   Accordion,
   Stack,
