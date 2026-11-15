@@ -21,20 +21,20 @@ export const tableRecipe = defineSlotRecipe({
       fontSize: 'sm',
     },
     caption: {
-      color: 'fg.muted',
+      color: 'text.weak',
       paddingTop: '2',
       textAlign: 'left',
     },
     header: {
-      backgroundColor: 'bg.subtle',
+      backgroundColor: 'bg.alternate',
     },
     head: {
-      color: 'fg.muted',
+      color: 'text.weak',
       fontWeight: 'semibold',
       textAlign: 'left',
     },
     headerCell: {
-      color: 'fg.muted',
+      color: 'text.weak',
       fontWeight: 'semibold',
       textAlign: 'left',
     },
@@ -65,7 +65,7 @@ export const tableRecipe = defineSlotRecipe({
         row: {
           _odd: {
             '&:has(td)': {
-              backgroundColor: 'bg.subtle',
+              backgroundColor: 'bg.alternate',
             },
           },
         },
@@ -75,7 +75,7 @@ export const tableRecipe = defineSlotRecipe({
     withTableBorder: {
       true: {
         root: {
-          border: 'border.weak',
+          border: 'weak',
           borderRadius: '8px',
         },
       },
@@ -83,26 +83,26 @@ export const tableRecipe = defineSlotRecipe({
     withColumnBorder: {
       true: {
         head: {
-          borderRight: 'border.weak',
+          borderRight: 'weak',
         },
         headerCell: {
-          borderRight: 'border.weak',
+          borderRight: 'weak',
         },
         cell: {
-          borderRight: 'border.weak',
+          borderRight: 'weak',
         },
       },
     },
     withRowBorder: {
       true: {
         head: {
-          borderBottom: 'border.weak',
+          borderBottom: 'weak',
         },
         headerCell: {
-          borderBottom: 'border.weak',
+          borderBottom: 'weak',
         },
         cell: {
-          borderBottom: 'border.weak',
+          borderBottom: 'weak',
         },
       },
     },

@@ -61,7 +61,7 @@ export const comboboxRecipe = defineSlotRecipe({
       textStyle: 'sm',
     },
     itemIndicator: {
-      color: 'icon.strong',
+      color: 'icon',
     },
     clearTrigger: {},
   },

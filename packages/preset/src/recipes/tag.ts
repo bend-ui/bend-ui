@@ -40,7 +40,9 @@ export const tagRecipe = defineSlotRecipe({
       outline: {
         root: {
           backgroundColor: 'transparent',
-          border: 'colorPalette.stroke',
+          borderWidth: '1px',
+          borderStyle: 'solid',
+          borderColor: 'colorPalette.stroke',
         },
       },
       subtle: {
