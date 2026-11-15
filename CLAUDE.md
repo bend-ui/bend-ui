@@ -26,7 +26,7 @@
 
 ### Issue tracker
 
-Issues and PRDs are tracked in GitHub Issues. See `docs/agents/issue-tracker.md`.
+Issues and PRDs are tracked in Linear (Bend UI project, team `BEN`). See `docs/agents/issue-tracker.md`.
 
 ### Triage labels
 
