@@ -14,11 +14,15 @@ Bend UI wraps three upstream primitive libraries. Each package adapter lives und
 | `packages/ark-ui` | `@ark-ui/react` | `@bend-ui/ark-ui` |
 | `packages/react-aria` | `react-aria-components` | `@bend-ui/react-aria` |
 
-`packages/ariakit` is parked and not a support target.
+`packages/ark-ui` is frozen as experimental: keep it building and tested, but do not add
+new Ark UI components or invest in it unless that decision changes. Base UI is the focus.
+
+The former Ariakit adapter is archived (removed from the workspace; see git history). It is not a support target.
 
 For each adapter's upstream identity and pinned version, see that package's `AGENTS.md`.
-For per-component intent, progress, and quality coverage, see the **Component catalog
-matrix** at `docs/component-catalog.md`.
+For per-component intent and status, see the **Component catalog matrix** at
+`docs/component-catalog.md`. A component is `implemented` only when it is styled,
+prop-driven, typed, tested, and documented; anything less is `partial`.
 
 ---
 
@@ -177,7 +181,7 @@ Special groupings in the react-aria package:
 4. For re-exports, avoid duplicating shared sub-parts (e.g. `DateInput`, `ColorThumb`)
    across folders — export them from one canonical folder only.
 5. Add every new export to the barrel in alphabetical order.
-6. Record the result in `docs/component-catalog.md` (progress + quality coverage), and
+6. Record the result in `docs/component-catalog.md` (status + the five criteria columns), and
    update that adapter's **verified against upstream vX** marker when you bump the upstream
    version. API drift is caught by the TypeScript build because adapters extend upstream
    prop types.
