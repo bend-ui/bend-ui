@@ -15,3 +15,5 @@ export {
 export { mergeProps, mergePropsN } from '@base-ui/react/merge-props';
 
 export { useRender } from '@base-ui/react/use-render';
+
+export { styled } from '@bend-ui/styled-system/jsx';

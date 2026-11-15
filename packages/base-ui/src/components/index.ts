@@ -16,6 +16,7 @@ export * from './Dialog';
 export * from './Drawer';
 export * from './Field';
 export * from './Fieldset';
+export * from './Flex';
 export * from './Form';
 export * from './Grid';
 export * from './Heading';
