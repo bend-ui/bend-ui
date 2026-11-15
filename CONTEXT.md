@@ -101,7 +101,7 @@ Do not introduce a replacement shared React foundation for the package adapters.
 - `.github/workflows/`: CI and visual review workflows.
 - `docs/component-catalog.md`: the Component catalog matrix (see glossary). Re-audited from source on 2026-11-15 against the five-criterion definition of **Implemented**.
 - Per-adapter `AGENTS.md`: thin, auto-loaded orientation for each adapter package (base-ui, ark-ui, react-aria) pointing to its upstream library's canonical docs and pinned version, plus pointers to the `component-libraries` skill and the catalog matrix. These do not duplicate the implementation how-to.
-- `component-libraries` skill: the detailed, on-demand adapter workflow (structure, `createStyleContext` implementation pattern, adding components, missing-component checks). It is the counterpart to the thin per-adapter `AGENTS.md` files and must track the current package names and patterns.
+- `component-libraries` skill: the detailed, on-demand adapter workflow (structure, `createSlotRecipeContext` / `withRecipe` / `withParts` implementation patterns, adding components, missing-component checks). It is the counterpart to the thin per-adapter `AGENTS.md` files and must track the current package names and patterns.
 
 ## Main Flows
 
@@ -116,7 +116,7 @@ Do not introduce a replacement shared React foundation for the package adapters.
 ### Adapter flow
 
 1. A package adapter imports an upstream primitive.
-2. It applies a recipe through `withRecipe`, `withParts`, or `createStyleContext`.
+2. It applies a recipe through Panda's generated `createSlotRecipeContext` (slot recipes, via `withProvider` / `withRootProvider` / `withContext`), or through `withRecipe` from `@bend-ui/core` for a single-part recipe applied on its own. Parts that only need a `data-part` attribute and style props, with no recipe class of their own, use `withParts` from `@bend-ui/core`; `withParts` does not apply a recipe.
 3. It exports a compound Bend UI module.
 4. Apps and docs import the Bend UI module, not the upstream primitive.
 5. CLI generation/ejection tooling may copy the module shape into a user's project while keeping recipe-driven styling.

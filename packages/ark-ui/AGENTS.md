@@ -10,7 +10,7 @@ invest in it, and do not treat it as a support target for new work. Base UI is t
 
 ## Where to look
 
-- **How to build components here** (structure, `createStyleContext` / `withRecipe` pattern,
+- **How to build components here** (structure, `createSlotRecipeContext` / `withRecipe` patterns,
   adding a component, missing-component checks): the `component-libraries` skill.
 - **What's implemented and how complete it is** (product intent, progress, quality
   coverage, verified-against-upstream marker): `docs/component-catalog.md`.

@@ -11,7 +11,6 @@ import { cardRecipe, cardSectionRecipe } from './card';
 import { carouselRecipe } from './carousel';
 import { checkboxRecipe } from './checkbox';
 import { tagsInputRecipe } from './tags-input';
-// import { dividerRecipe } from './divider';
 import { drawerRecipe } from './drawer';
 import { menuRecipe } from './menu';
 import { formFieldRecipe } from './formField';
@@ -50,7 +49,6 @@ import { scrollArea } from './scroll-area';
 import { navbarRecipe } from './navbar';
 
 export const slotRecipes: Theme['slotRecipes'] = {
-  // divider: dividerRecipe,
   accordion: accordionRecipe,
   alert: alertRecipe,
   alertDialog: modalRecipe,
