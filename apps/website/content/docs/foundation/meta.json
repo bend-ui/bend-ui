@@ -2,11 +2,10 @@
   "title": "Foundation",
   "pages": [
     "design-tokens",
-    "recipe-customization",
-    "themes",
-    "creating-a-theme",
     "colors",
     "typography",
-    "spacing"
+    "spacing",
+    "themes",
+    "recipe-customization"
   ]
 }

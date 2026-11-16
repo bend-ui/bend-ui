@@ -77,15 +77,7 @@ export function GeneratedComponent({ name }: { name: 'button' | 'select' }) {
   if (!item) return <p>Component metadata unavailable.</p>;
   return (
     <div className={styles.reference}>
-      <p>
-        {item.contract.description} This prototype contract describes Base UI
-        v0; recipe and type sources remain authoritative.
-      </p>
-      {item.anatomyIssues.length > 0 && (
-        <p className={styles.warning}>
-          Anatomy mismatch: {item.anatomyIssues.join('; ')}
-        </p>
-      )}
+      <p>{item.contract.description}</p>
       <h3>Anatomy</h3>
       <Table
         label={`${item.contract.name} anatomy`}
@@ -107,29 +99,20 @@ export function GeneratedComponent({ name }: { name: 'button' | 'select' }) {
           <p>Source recipe slots: {recipe.slots.join(', ')}.</p>
           <Table
             label={`${recipe.name} variants`}
-            headings={[
-              'Axis',
-              'Source values',
-              'Default',
-              'Contract agreement',
-            ]}
+            headings={['Axis', 'Source values', 'Default']}
             rows={recipe.variants.map((v) => [
               v.axis,
               v.values.join(', '),
               v.defaultValue,
-              v.mismatch ? 'Mismatch: review recipe and contract' : 'Matches',
             ])}
           />
           <Table
             label={`${recipe.name} states`}
-            headings={['State', 'Selector', 'Slots', 'Contract agreement']}
+            headings={['State', 'Selector', 'Slots']}
             rows={recipe.states.map((state) => [
               state.name,
               state.selector,
               state.slots.join(', '),
-              state.missingSlots.length
-                ? `Missing recipe slots: ${state.missingSlots.join(', ')}`
-                : 'Slots match',
             ])}
           />
         </section>
@@ -138,8 +121,7 @@ export function GeneratedComponent({ name }: { name: 'button' | 'select' }) {
       <p>
         Types are resolved at generation from ButtonProps and
         SelectProps&lt;string&gt;, including inherited members. This is a
-        selected reference, not the full upstream API. Missing entries require
-        investigation.
+        selected reference, not the full upstream API.
       </p>
       <Table
         label={`${item.contract.name} selected props`}

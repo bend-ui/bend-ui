@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
 import type { Root } from 'fumadocs-core/page-tree';
 
 import { DocsLayout, DocsPage } from './docs-layout';
@@ -142,5 +142,24 @@ describe('Docs route layout', () => {
     );
 
     expect(mockSetTheme).toHaveBeenCalledWith('dark');
+  });
+
+  it('offers a single plain color-mode control and no prototype controls', async () => {
+    render(
+      <DocsLayout tree={tree}>
+        <p>Current page</p>
+      </DocsLayout>,
+    );
+
+    const header = await screen.findByRole('banner');
+
+    expect(
+      within(header).getByRole('combobox', { name: 'Color mode' }),
+    ).toBeTruthy();
+    expect(within(header).queryAllByRole('combobox')).toHaveLength(1);
+    expect(
+      within(header).queryByRole('button', { name: /personality/i }),
+    ).toBeNull();
+    expect(header.textContent).not.toMatch(/prototype|personality/i);
   });
 });
