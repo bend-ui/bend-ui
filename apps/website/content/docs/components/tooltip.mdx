@@ -6,6 +6,8 @@ description: A visual label on hover or focus
 Tooltips display a visual label on hover or keyboard focus. Match the label to the trigger’s accessible name; put supplemental information inline or in a Popover so it is accessible to screen readers. See the [working workspace](/docs/components/overlays-navigation).
 
 ```tsx
+import { Tooltip } from '@bend-ui/base-ui';
+
 <Tooltip.Provider>
   <Tooltip.Root>
     <Tooltip.Trigger>Help</Tooltip.Trigger>
@@ -15,7 +17,7 @@ Tooltips display a visual label on hover or keyboard focus. Match the label to t
       </Tooltip.Positioner>
     </Tooltip.Portal>
   </Tooltip.Root>
-</Tooltip.Provider>
+</Tooltip.Provider>;
 ```
 
-The `tooltip` recipe styles trigger, popup and arrow. Use `Tooltip.Provider` to coordinate delays. `Tooltip` now aliases its prop-driven Root; the former fixed formatting-toolbar demo is removed. Popup surface context and consumer overrides survive the portal.
+The `tooltip` recipe styles trigger, popup and arrow. Use `Tooltip.Provider` to coordinate delays. `Tooltip` is an alias of its prop-driven Root. Popup surface context and consumer overrides survive the portal.

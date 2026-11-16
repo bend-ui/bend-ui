@@ -6,6 +6,8 @@ description: Group content at a contextual surface level
 Use Surface for a contextual background and Card to group related content within it. The [working workspace](/docs/components/overlays-navigation) nests both and opens portalled overlays from the raised surface.
 
 ```tsx
+import { Card, Surface, SurfaceProvider } from '@bend-ui/base-ui';
+
 <SurfaceProvider>
   <Surface contextual surfaceLevel="page">
     <Card contextual>
@@ -15,7 +17,7 @@ Use Surface for a contextual background and Card to group related content within
       <Card.Body>Project details</Card.Body>
     </Card>
   </Surface>
-</SurfaceProvider>
+</SurfaceProvider>;
 ```
 
 The `surface` and `card` recipes are independently customizable. Context is opt-in on Surface and Card and caps at overlay. Card offers Root, Header, Title, Description, Body, Footer and Section. Explicit consumer styles retain precedence.

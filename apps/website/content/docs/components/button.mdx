@@ -163,9 +163,11 @@ The label is visually hidden, and the icon is decorative. A tooltip can suppleme
 Keep Base UI's `render` and `nativeButton` model when composing a custom element. Native `<button>` is the preferred default. A non-native action needs `nativeButton={false}` so the primitive supplies button semantics and keyboard activation:
 
 ```tsx
+import { Button } from '@bend-ui/base-ui';
+
 <Button render={<span />} nativeButton={false} onClick={runAction}>
   Run action
-</Button>
+</Button>;
 ```
 
 This changes the rendered element, not the control's purpose. Use a real link for navigation. `IconButton` accepts the same composition props and HTMLElement ref. For an unavailable native button, use `disabled` or `isDisabled`. The opt-in `focusableWhenDisabled` keeps it focusable while Base UI prevents activation; explain the reason for unavailability nearby.
@@ -219,5 +221,3 @@ Use a link for navigation. Use a button when activating the control changes appl
 Keep a meaningful action label, preserve visible keyboard focus, and use native form props such as `type="submit"` deliberately. Verify activation with both Enter and Space in the consuming flow. Use native `disabled` when an action is unavailable; changing opacity alone does not disable a button.
 
 [Customize a Button recipe](/docs/foundation/recipe-customization) to change visual treatment without editing component behavior. Preserve the public slots, class namespace, supported variants, and defaults for a drop-in replacement. New consumer variant values and compound rules require a consumer-owned component using the consumer-generated recipe; they do not update the published Button runtime.
-
-This is the Base UI v0 reference contract. Existing recipe values remain deliberate; new hierarchy or treatment axes are not introduced.
