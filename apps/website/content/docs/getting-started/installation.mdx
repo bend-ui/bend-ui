@@ -3,34 +3,38 @@ title: Installation
 description: Install the Base UI adapter and generate the Panda styled system
 ---
 
-Install the Base UI package adapter, the Bend UI design preset, and Panda CSS. The adapter provides accessible components; Panda generates the layout and styling helpers used by your application.
+Install the Base UI package adapter and Panda CSS. The adapter provides accessible components and ships Bend UI's Panda design system; Panda generates the layout and styling helpers used by your application.
+
+## Release status
+
+Bend UI packages are not published yet. They are at version `0.0.1` and are not on npm, so the install commands below will fail until a release ships. `@bend-ui/base-ui` also depends on `@bend-ui/core`, which is private. The repository checks this setup by installing packed tarballs in a separate app (`pnpm nx run panda-consumer:verify`).
 
 ## Prerequisites
 
-- Node.js 18 or later
+- Node.js 24 or later
 - React 19
-- A project configured for Panda CSS
+- Panda CSS 2 (`@pandacss/dev` 2.2.0 or later)
 
 ## 1. Install the packages
 
 ### pnpm
 
 ```bash
-pnpm add @bend-ui/base-ui @bend-ui/preset
+pnpm add @bend-ui/base-ui
 pnpm add -D @pandacss/dev
 ```
 
 ### npm
 
 ```bash
-npm install @bend-ui/base-ui @bend-ui/preset
+npm install @bend-ui/base-ui
 npm install --save-dev @pandacss/dev
 ```
 
 ### Yarn
 
 ```bash
-yarn add @bend-ui/base-ui @bend-ui/preset
+yarn add @bend-ui/base-ui
 yarn add --dev @pandacss/dev
 ```
 
@@ -40,61 +44,44 @@ Create `panda.config.ts`:
 
 ```typescript
 import { defineConfig } from '@pandacss/dev';
-import { createBendPreset } from '@bend-ui/preset';
 
 export default defineConfig({
-  preflight: true,
-  presets: [createBendPreset()],
-  include: [
-    './src/**/*.{js,jsx,ts,tsx}',
-    './app/**/*.{js,jsx,ts,tsx}',
-    './node_modules/@bend-ui/base-ui/**/*.{js,jsx,ts,tsx}',
-  ],
+  designSystem: '@bend-ui/base-ui',
+  include: ['./src/**/*.{ts,tsx}'],
   outdir: 'styled-system',
   jsxFramework: 'react',
+  preflight: true,
 });
 ```
 
-## 3. Connect Panda to your CSS build
+`designSystem` loads Bend UI's preset, recipes, and prebuilt extraction data from the installed package. Scan only your own source: do not add a `node_modules` glob or repeat Bend UI's preset. If your code lives outside `src`, add that folder to `include`.
 
-Create `postcss.config.cjs` so Panda emits the styles it discovers:
+## 3. Generate the styled system and CSS
 
-```javascript
-module.exports = {
-  plugins: {
-    '@pandacss/dev/postcss': {},
-  },
-};
-```
-
-Create a CSS entry with Panda's layer order:
-
-```css
-@layer reset, base, tokens, recipes, utilities;
-```
-
-Import that CSS entry from your application root. For example, in a Next.js App Router layout:
-
-```tsx
-import '../styles/globals.css';
-```
-
-## 4. Generate the styled system
-
-Add Panda code generation to `package.json`:
+Add Panda generation to `package.json`:
 
 ```json
 {
   "scripts": {
-    "prepare": "panda codegen"
+    "prepare": "panda codegen && panda cssgen --outfile styled-system/styles.css"
   }
 }
 ```
 
-Then generate the local `styled-system` directory:
+Then run it:
 
 ```bash
 pnpm prepare
+```
+
+This writes the local `styled-system` directory and a `styled-system/styles.css` file. Run it again after you change your source or `panda.config.ts`.
+
+## 4. Import the CSS
+
+Import the generated CSS once from your application entry:
+
+```tsx
+import '../styled-system/styles.css';
 ```
 
 ## 5. Render a component
@@ -118,4 +105,4 @@ Use `@bend-ui/base-ui` for interactive adapter components and layout elements (`
 
 - [Quick start](/docs/getting-started/quick-start)
 - [Configuration](/docs/getting-started/configuration)
-- [Components](/docs/components)
+- [Components](/docs/components/overview)

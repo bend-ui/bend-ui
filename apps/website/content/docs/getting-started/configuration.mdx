@@ -5,39 +5,40 @@ description: Configure the Bend UI preset and generated Panda helpers
 
 Bend UI separates component behavior from application styling:
 
-- `@bend-ui/base-ui` provides the Base UI package adapter.
-- `@bend-ui/preset` provides Bend UI tokens, recipes, themes, and conditions.
+- `@bend-ui/base-ui` provides the Base UI package adapter and ships Bend UI's Panda design system: tokens, recipes, themes, and conditions.
 - Panda generates application-owned styling helpers in `styled-system`.
 
 ## Basic Panda configuration
 
+Use the same configuration as [Installation](/docs/getting-started/installation):
+
 ```typescript
 import { defineConfig } from '@pandacss/dev';
-import { createBendPreset } from '@bend-ui/preset';
 
 export default defineConfig({
-  preflight: true,
-  presets: [createBendPreset()],
-  include: [
-    './src/**/*.{js,jsx,ts,tsx}',
-    './app/**/*.{js,jsx,ts,tsx}',
-    './node_modules/@bend-ui/base-ui/**/*.{js,jsx,ts,tsx}',
-  ],
+  designSystem: '@bend-ui/base-ui',
+  include: ['./src/**/*.{ts,tsx}'],
   outdir: 'styled-system',
   jsxFramework: 'react',
+  preflight: true,
 });
 ```
 
+`designSystem` loads Bend UI's preset and recipes from the package. Do not add a `node_modules` glob or repeat Bend UI's preset.
+
 ## Extend design tokens
 
-Pass Panda configuration alongside the design preset when your product needs additional tokens:
+Add your own tokens under `theme.extend`:
 
 ```typescript
 import { defineConfig } from '@pandacss/dev';
-import { createBendPreset } from '@bend-ui/preset';
 
 export default defineConfig({
-  presets: [createBendPreset()],
+  designSystem: '@bend-ui/base-ui',
+  include: ['./src/**/*.{ts,tsx}'],
+  outdir: 'styled-system',
+  jsxFramework: 'react',
+  preflight: true,
   theme: {
     extend: {
       tokens: {
@@ -93,4 +94,4 @@ Regenerate the styled system after changing the Panda configuration.
 ## Next steps
 
 - [Design Tokens](/docs/foundation/design-tokens)
-- [Components](/docs/components)
+- [Components](/docs/components/overview)
