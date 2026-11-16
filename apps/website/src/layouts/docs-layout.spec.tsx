@@ -89,7 +89,9 @@ describe('Docs route layout', () => {
       </DocsPage>,
     );
 
-    expect(screen.getByRole('heading', { name: 'Button' })).toBeTruthy();
+    expect(
+      screen.getAllByRole('heading', { level: 1 }).map((h) => h.textContent),
+    ).toEqual(['Button']);
     expect(screen.getByText('The primary action primitive.')).toBeTruthy();
     expect(screen.getByText('Compiled MDX content')).toBeTruthy();
   });
