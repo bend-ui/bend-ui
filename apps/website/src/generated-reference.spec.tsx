@@ -37,6 +37,12 @@ describe('generated reference', () => {
       expect(
         component.recipes.flatMap((r) => r.variants).every((v) => !v.mismatch),
       ).toBe(true);
+      expect(component.anatomyIssues).toEqual([]);
+      expect(
+        component.recipes
+          .flatMap((r) => r.states)
+          .flatMap((state) => state.missingSlots),
+      ).toEqual([]);
     }
     expect(select.props.find((p) => p.name === 'onValueChange')).toMatchObject({
       type: expect.stringContaining('string | null'),
@@ -69,5 +75,25 @@ describe('generated reference', () => {
         screen.getByRole('region', { name: 'Select selected props' }),
       ).getByText('onValueChange'),
     ).toBeTruthy();
+  });
+  it('shows readers the reference without internal QA columns or prototype disclaimers', () => {
+    const { container } = render(
+      <>
+        <GeneratedComponent name="button" />
+        <GeneratedComponent name="select" />
+      </>,
+    );
+
+    expect(
+      screen.queryAllByRole('columnheader', { name: 'Contract agreement' }),
+    ).toHaveLength(0);
+    expect(container.textContent).not.toMatch(
+      /prototype|mismatch|require investigation/i,
+    );
+    expect(
+      within(
+        screen.getByRole('region', { name: 'button variants' }),
+      ).getAllByRole('columnheader').map((cell) => cell.textContent),
+    ).toEqual(['Axis', 'Source values', 'Default']);
   });
 });

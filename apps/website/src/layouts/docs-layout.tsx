@@ -26,7 +26,6 @@ import {
   sidebarIcon,
 } from '../icons';
 import { css } from '@bend-ui/styled-system/css';
-import { ThemePersonalitySwitcher } from '../../lib/theme-personality-switcher-prototype';
 
 interface DocsLayoutProps {
   children: ReactNode;
@@ -310,7 +309,6 @@ export const DocsLayout = ({ children, tree }: DocsLayoutProps) => {
             })}
           >
             <ColorModeControl />
-            <ThemePersonalitySwitcher />
           </div>
         </header>
         {children}
