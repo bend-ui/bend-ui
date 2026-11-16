@@ -3,7 +3,15 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 
 const contentRoot = path.resolve(__dirname, '../content/docs');
-const docsLink = /\]\((\/docs(?:\/[^)\s#?]*)?)(?:[#?][^)\s]*)?\)/g;
+// Destination, optional #hash or ?query, then an optional "title".
+const docsLink =
+  /\]\((\/docs(?:\/[^)\s#?]*)?)(?:[#?][^)\s]*)?(?:\s+"[^"]*")?\)/g;
+
+const docsLinks = (source: string) =>
+  Array.from(source.matchAll(docsLink), (match) => ({
+    href: match[1],
+    index: match.index,
+  }));
 
 const mdxFiles = (directory: string): string[] =>
   readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -22,17 +30,23 @@ const resolvesToPage = (href: string) => {
 };
 
 describe('docs links', () => {
+  it('extracts links with and without a title', () => {
+    expect(
+      docsLinks(
+        '[A](/docs/a) [B](/docs/b#part) [C](/docs/c "Title") [D](/docs "Home")',
+      ).map((link) => link.href),
+    ).toEqual(['/docs/a', '/docs/b', '/docs/c', '/docs']);
+  });
+
   it('only links to docs pages that exist', () => {
     const broken: string[] = [];
 
     for (const file of mdxFiles(contentRoot)) {
       const source = readFileSync(file, 'utf8');
-      for (const match of source.matchAll(docsLink)) {
-        if (resolvesToPage(match[1])) continue;
-        const line = source.slice(0, match.index).split('\n').length;
-        broken.push(
-          `${path.relative(contentRoot, file)}:${line} -> ${match[1]}`,
-        );
+      for (const { href, index } of docsLinks(source)) {
+        if (resolvesToPage(href)) continue;
+        const line = source.slice(0, index).split('\n').length;
+        broken.push(`${path.relative(contentRoot, file)}:${line} -> ${href}`);
       }
     }
 

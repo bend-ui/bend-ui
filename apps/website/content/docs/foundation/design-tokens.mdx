@@ -52,7 +52,7 @@ import { defineConfig } from '@pandacss/dev';
 
 export default defineConfig({
   designSystem: '@bend-ui/base-ui',
-  include: ['./src/**/*.{ts,tsx}'],
+  include: ['./src/**/*.{js,jsx,ts,tsx}'],
   outdir: 'styled-system',
   jsxFramework: 'react',
   preflight: true,
@@ -73,7 +73,7 @@ export default defineConfig({
 });
 ```
 
-Run Panda code generation after changing tokens so the generated types and CSS stay in sync.
+Run your `prepare` script (`panda codegen && panda cssgen`, see [Installation](/docs/getting-started/installation)) after changing tokens so the generated types and CSS stay in sync.
 
 ## Token categories
 
