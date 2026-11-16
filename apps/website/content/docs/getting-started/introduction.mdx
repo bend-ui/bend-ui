@@ -1,38 +1,29 @@
 ---
 title: Introduction
-description: Welcome to Bend UI Design System - A modern, accessible, and customizable component library
+description: Learn what Bend UI is, how its packages fit together, and what works today
 ---
 
-Welcome to **Bend UI Design System** - a comprehensive design system built with modern web technologies to help you create consistent, beautiful, and accessible user interfaces.
+Bend UI is a set of Panda CSS recipes and React package adapters that style headless component libraries. Base UI is the first supported library.
 
-## What is Bend UI?
+## How it works
 
-Bend UI is a design system that provides a set of reusable components, design tokens, and utilities to build cohesive user experiences. Built with TypeScript, React, and Panda CSS, it offers:
+Base UI provides component behavior: state, keyboard interaction, focus management and ARIA attributes. Bend UI provides the styling as Panda CSS recipes, so you can change how a component looks without rewriting its behavior.
 
-- **Consistent Design Language**: A unified set of design principles and components
-- **Fully Typed**: Built with TypeScript for excellent developer experience
-- **Accessible**: WCAG-compliant components out of the box
-- **Customizable**: Flexible theming system with design tokens
-- **Performance-focused**: Optimized for production use
+The work is split across packages:
 
-## Key Features
+- `@bend-ui/preset-base` provides the shared foundation: component contracts (parts, slots and state selectors), conditions, patterns and base recipes.
+- `@bend-ui/preset` adds the visual language: tokens, semantic tokens, recipes and themes.
+- `@bend-ui/base-ui` wraps Base UI components and applies the recipes.
 
-- **Design Tokens**: Centralized design decisions for colors, typography, spacing, and more
-- **Component Library**: Pre-built, tested, and documented React components
-- **Theming System**: Easy customization to match your brand
-- **Developer Tools**: Storybook integration for component development
-- **Documentation**: Comprehensive guides and examples
+## Current status
 
-## Who is it for?
+- The packages are at version 0.0.1 and are not published to npm. The API can change.
+- These docs cover only the Base UI adapter. Adapters for React Aria Components and Ark UI exist in the repository, but they are not documented and not ready to use. The Ark UI adapter is frozen as an experiment.
+- Bend UI does not claim WCAG conformance. Accessible behavior comes from Base UI, and some recipe colors don't yet meet contrast requirements.
+- Generating components into your own project and ejecting them for local ownership are planned, not built.
 
-Bend UI is designed for:
+## Next steps
 
-- **Product Teams**: Building consistent user experiences across applications
-- **Developers**: Looking for well-documented, type-safe components
-- **Designers**: Who need a system to maintain design consistency
-
-## Next Steps
-
-- [Installation](/docs/getting-started/installation) - Set up Bend UI in your project
-- [Quick start](/docs/getting-started/quick-start) - Build your first page
-- [Design Tokens](/docs/foundation/design-tokens) - Understand the design system foundation
+- [Installation](/docs/getting-started/installation): set up Bend UI in your project.
+- [Quick start](/docs/getting-started/quick-start): build your first page.
+- [Design tokens](/docs/foundation/design-tokens): learn the tokens that recipes use.

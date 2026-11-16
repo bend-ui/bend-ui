@@ -45,14 +45,17 @@ export const notice = css({
 
 ## Extend the token system
 
-Extend the preset in `panda.config.ts` when a product needs additional design values:
+Extend the design system in `panda.config.ts` when a product needs additional design values:
 
 ```typescript
 import { defineConfig } from '@pandacss/dev';
-import { createBendPreset } from '@bend-ui/preset';
 
 export default defineConfig({
-  presets: [createBendPreset()],
+  designSystem: '@bend-ui/base-ui',
+  include: ['./src/**/*.{js,jsx,ts,tsx}'],
+  outdir: 'styled-system',
+  jsxFramework: 'react',
+  preflight: true,
   theme: {
     extend: {
       tokens: {
@@ -70,7 +73,7 @@ export default defineConfig({
 });
 ```
 
-Run Panda code generation after changing tokens so the generated types and CSS stay in sync.
+Run your `prepare` script (`panda codegen && panda cssgen`, see [Installation](/docs/getting-started/installation)) after changing tokens so the generated types and CSS stay in sync.
 
 ## Token categories
 
