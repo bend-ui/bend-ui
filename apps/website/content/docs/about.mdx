@@ -1,30 +1,22 @@
 ---
 title: About
+description: Why Bend UI exists and the decisions behind it
 ---
 
-Bend UI is a design system that provides a set of components and utilities to build a consistent and beautiful UI.
+Bend UI helps teams build a design system without tying their visual design to one headless component library.
 
-## Philosophy
+## Why recipes
 
-Bend UI is built on the following principles:
+Styles live in Panda CSS recipes, not in component code. A package adapter applies the recipes to one headless library's components, so changing a token, a theme or a recipe restyles every component that uses it.
 
-- **Consistency**: All components should look and behave consistently.
-- **Customizability**: Components should be highly customizable to fit different design needs.
-- **Accessibility**: Components should be accessible to all users.
-- **Performance**: Components should be performant and efficient.
-- **Theming**: Components should be themeable to fit different brand needs.
+## Why Base UI first
 
-## Design
+Base UI is the first supported adapter and the focus of the initial release. That release aims for a small, complete set of Base UI components, a design preset and these docs.
 
-Bend UI is designed to be a modern and responsive design system. It is built with the following in mind:
+## How these docs are built
 
-- **Responsiveness**: Components should be responsive to fit different screen sizes.
-- **Theming**: Components should be themeable to fit different brand needs.
+This site is a Next.js app built on the headless Fumadocs packages. Its layout, sidebar and navigation use `@bend-ui/base-ui` components and the Bend UI design preset, so the docs also exercise the Base UI adapter.
 
-## Development
+## Project status
 
-Bend UI is built with the following in mind:
-
-- **Typescript**: Components should be built with Typescript to ensure type safety.
-- **Storybook**: Components should be built with Storybook to ensure a consistent and beautiful UI.
-- **Next.js**: Components should be built with Next.js to ensure a consistent and beautiful UI.
+Bend UI is a proof of concept. The packages are not published to npm, and the API can change without a deprecation period.
